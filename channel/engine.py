@@ -439,6 +439,14 @@ def align(tokens, heard, dur):
         for w in sp.replace('-', ' ').split():
             if _norm(w):
                 spoken.append((ti, _norm(w)))
+    merged = []  # Whisper sometimes splits "$1.83" into "$1" + ".83"; rejoin before matching
+    for h in heard:
+        w = h['w'].strip()
+        if merged and re.fullmatch(r'\.\d+[.,?!]*', w) and re.search(r'\d$', merged[-1]['w'].strip()):
+            merged[-1] = {'w': merged[-1]['w'].strip() + w, 's': merged[-1]['s'], 'e': h['e']}
+        else:
+            merged.append(h)
+    heard = merged
     hw = []
     for h in heard:
         sub = [x for x in (_norm(y) for y in say(h['w'].strip()).replace('-', ' ').split()) if x]

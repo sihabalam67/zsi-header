@@ -567,11 +567,11 @@ def end_card(line):
         specks(c, x.t, 13, 50)
         penny(c, 640, 330, 90, x.t, 'happy', wave=True, talk=x.talk())
         c.text(640, 560, 'Full story on Coin Theory', 40, GOLD, 900, a=fade(x.t, 0.3))
-    return dict(draw=draw, lines=[line], tail=1.2)
+    return dict(draw=draw, lines=[line], tail=0.8)
 
 
 SHORTS = {
-    'ep01_short_prices': [SCENES[0], SCENES[3], end_card(
+    'ep01_short_prices': [dict(SCENES[0], tail=0.3), dict(SCENES[3], tail=0.3), end_card(
         "Where does the rest of your money go? Watch the full story on Coin Theory.")],
     'ep01_short_wages': [dict(SCENES[11], lines=[
         "Your boss gives you a raise every year. So why don't you feel richer?"] + SCENES[11]['lines'][1:]),
