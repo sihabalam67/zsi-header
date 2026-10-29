@@ -514,8 +514,11 @@ class Ctx:
         self.t, self.L, self.E, self.dur = t, starts, ends, dur
 
 
-def _render_scene(job):
-    si, scenes, plan, build_dir = job
+_JOB = {}  # set before the worker pool forks; scenes hold lambdas that can't be pickled
+
+
+def _render_scene(si):
+    scenes, plan, build_dir = _JOB['scenes'], _JOB['plan'], _JOB['build_dir']
     sc = scenes[si]
     dur, starts, ends, chunks = plan[si]
     path = os.path.join(build_dir, f'seg_{si:02d}.mp4')
@@ -568,8 +571,9 @@ def build(scenes, out_path, build_dir, only=None):
         clock += dur
     total = clock
     print(f'total {total:.1f}s ({total / 60:.1f} min); rendering...', flush=True)
-    jobs = [(i, scenes, plan, build_dir) for i in range(len(scenes)) if only is None or i in only]
-    jobs.sort(key=lambda j: -plan[j[0]][0])
+    _JOB.update(scenes=scenes, plan=plan, build_dir=build_dir)
+    jobs = [i for i in range(len(scenes)) if only is None or i in only]
+    jobs.sort(key=lambda i: -plan[i][0])
     with Pool(os.cpu_count()) as pool:
         for p in pool.imap_unordered(_render_scene, jobs):
             print('  done', os.path.basename(p), flush=True)
