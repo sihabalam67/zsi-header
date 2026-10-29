@@ -1,0 +1,1104 @@
+1
+00:00:00,550 --> 00:00:01,710
+On September 17,
+
+2
+00:00:02,110 --> 00:00:04,030
+the Federal Reserve did something it
+
+3
+00:00:03,830 --> 00:00:05,450
+hadn't done in more than three
+
+4
+00:00:05,250 --> 00:00:05,730
+years.
+
+5
+00:00:06,250 --> 00:00:07,510
+It raised interest rates.
+
+6
+00:00:08,033 --> 00:00:08,853
+Then in October,
+
+7
+00:00:09,253 --> 00:00:10,153
+it held them there,
+
+8
+00:00:10,413 --> 00:00:12,093
+and two officials voted to raise
+
+9
+00:00:11,893 --> 00:00:12,593
+them again.
+
+10
+00:00:13,062 --> 00:00:14,242
+If you have a credit card,
+
+11
+00:00:14,482 --> 00:00:15,202
+a car loan,
+
+12
+00:00:15,362 --> 00:00:15,922
+a mortgage,
+
+13
+00:00:16,082 --> 00:00:17,802
+or even just a savings account,
+
+14
+00:00:17,902 --> 00:00:18,762
+this affects you.
+
+15
+00:00:19,202 --> 00:00:20,382
+Here's exactly how.
+
+16
+00:00:24,483 --> 00:00:24,963
+First,
+
+17
+00:00:24,923 --> 00:00:26,583
+what does the Fed actually control?
+
+18
+00:00:27,103 --> 00:00:28,323
+It's not your mortgage rate,
+
+19
+00:00:28,463 --> 00:00:29,723
+and it's not your credit card
+
+20
+00:00:29,523 --> 00:00:30,003
+rate.
+
+21
+00:00:30,463 --> 00:00:30,883
+At least,
+
+22
+00:00:31,023 --> 00:00:31,643
+not directly.
+
+23
+00:00:32,307 --> 00:00:33,667
+It sets a target for the
+
+24
+00:00:33,467 --> 00:00:34,527
+federal funds rate.
+
+25
+00:00:35,027 --> 00:00:36,687
+That's the interest rate banks charge
+
+26
+00:00:36,487 --> 00:00:38,227
+each other for overnight loans.
+
+27
+00:00:38,809 --> 00:00:39,429
+Right now,
+
+28
+00:00:39,489 --> 00:00:43,009
+that target is 3.75% to 4%.
+
+29
+00:00:43,433 --> 00:00:44,833
+When banks pay more to borrow,
+
+30
+00:00:45,213 --> 00:00:46,573
+they charge you more to borrow.
+
+31
+00:00:47,193 --> 00:00:48,993
+That's how one number ripples through
+
+32
+00:00:48,793 --> 00:00:49,753
+the whole economy.
+
+33
+00:00:50,275 --> 00:00:52,135
+Congress gave the Fed two jobs:
+
+34
+00:00:52,635 --> 00:00:53,735
+keep prices stable,
+
+35
+00:00:54,115 --> 00:00:55,695
+and keep as many people working
+
+36
+00:00:55,495 --> 00:00:56,495
+as possible.
+
+37
+00:00:57,095 --> 00:00:58,875
+Economists call it the dual mandate,
+
+38
+00:00:59,235 --> 00:01:01,295
+and those two jobs sometimes pull
+
+39
+00:01:01,095 --> 00:01:02,215
+in opposite directions.
+
+40
+00:01:03,617 --> 00:01:05,237
+Here's where that rate has been
+
+41
+00:01:05,037 --> 00:01:06,297
+over the last ten years.
+
+42
+00:01:06,833 --> 00:01:07,873
+In early 2022,
+
+43
+00:01:07,773 --> 00:01:09,493
+it was close to zero.
+
+44
+00:01:10,273 --> 00:01:11,533
+Then inflation took off,
+
+45
+00:01:11,333 --> 00:01:13,473
+and the Fed raised rates 11
+
+46
+00:01:13,273 --> 00:01:15,193
+times in about a year and
+
+47
+00:01:14,993 --> 00:01:15,513
+a half,
+
+48
+00:01:15,753 --> 00:01:17,653
+up to 5.5%.
+
+49
+00:01:18,219 --> 00:01:19,399
+Once inflation cooled,
+
+50
+00:01:19,879 --> 00:01:20,719
+it started cutting,
+
+51
+00:01:20,519 --> 00:01:23,059
+in 2024 and 2025,
+
+52
+00:01:23,499 --> 00:01:26,159
+down to a range of 3.5%
+
+53
+00:01:25,959 --> 00:01:28,619
+to 3.75%.
+
+54
+00:01:28,945 --> 00:01:29,365
+Then,
+
+55
+00:01:29,425 --> 00:01:31,005
+in September 2026,
+
+56
+00:01:31,345 --> 00:01:33,165
+it turned around and raised rates
+
+57
+00:01:32,965 --> 00:01:33,525
+again.
+
+58
+00:01:34,717 --> 00:01:35,457
+So why now?
+
+59
+00:01:35,597 --> 00:01:36,237
+In one word:
+
+60
+00:01:36,257 --> 00:01:36,577
+oil.
+
+61
+00:01:37,143 --> 00:01:38,803
+After the war with Iran stopped
+
+62
+00:01:38,603 --> 00:01:40,463
+tankers in the Strait of Hormuz,
+
+63
+00:01:40,743 --> 00:01:42,563
+gas and diesel prices soared.
+
+64
+00:01:43,103 --> 00:01:44,383
+We broke that down in our
+
+65
+00:01:44,183 --> 00:01:44,963
+last video.
+
+66
+00:01:45,437 --> 00:01:48,657
+Inflation climbed from about 2.4% in
+
+67
+00:01:48,457 --> 00:01:51,617
+February to 3.7% in September,
+
+68
+00:01:52,197 --> 00:01:54,537
+almost double the Fed's 2% target.
+
+69
+00:01:55,074 --> 00:01:56,594
+The Fed's job is to keep
+
+70
+00:01:56,394 --> 00:01:57,374
+prices stable,
+
+71
+00:01:57,834 --> 00:01:59,354
+and its main tool is interest
+
+72
+00:01:59,154 --> 00:01:59,814
+rates.
+
+73
+00:02:00,274 --> 00:02:02,574
+Higher rates make borrowing more expensive,
+
+74
+00:02:03,034 --> 00:02:04,814
+so people and businesses spend a
+
+75
+00:02:04,614 --> 00:02:05,234
+little less,
+
+76
+00:02:05,454 --> 00:02:07,174
+and that cools prices down.
+
+77
+00:02:07,719 --> 00:02:08,459
+But there's a catch.
+
+78
+00:02:09,159 --> 00:02:10,779
+The Fed can't pump more oil,
+
+79
+00:02:11,119 --> 00:02:12,919
+and higher rates can't reopen a
+
+80
+00:02:12,719 --> 00:02:13,459
+shipping lane.
+
+81
+00:02:13,839 --> 00:02:15,459
+They can only slow spending,
+
+82
+00:02:15,679 --> 00:02:17,379
+so a fuel shock doesn't turn
+
+83
+00:02:17,179 --> 00:02:18,859
+into higher prices for everything.
+
+84
+00:02:20,250 --> 00:02:21,090
+You might wonder:
+
+85
+00:02:21,330 --> 00:02:22,730
+why doesn't the Fed just keep
+
+86
+00:02:22,530 --> 00:02:24,450
+rates low and make life easier?
+
+87
+00:02:24,938 --> 00:02:26,618
+Because if inflation gets stuck,
+
+88
+00:02:26,978 --> 00:02:29,118
+everyone's paycheck buys a little less
+
+89
+00:02:28,918 --> 00:02:30,098
+every single year.
+
+90
+00:02:30,501 --> 00:02:32,841
+That's what happened in the 1970s.
+
+91
+00:02:33,761 --> 00:02:36,001
+Inflation hit about 15% in 1980,
+
+92
+00:02:36,641 --> 00:02:37,881
+and the Fed had to push
+
+93
+00:02:37,681 --> 00:02:40,141
+this rate to about 19% in
+
+94
+00:02:39,941 --> 00:02:41,681
+1981 to break it,
+
+95
+00:02:41,841 --> 00:02:43,541
+which helped cause a deep recession.
+
+96
+00:02:44,191 --> 00:02:44,691
+Small,
+
+97
+00:02:44,691 --> 00:02:46,791
+early steps today are meant to
+
+98
+00:02:46,591 --> 00:02:48,831
+avoid ever needing medicine that strong
+
+99
+00:02:48,631 --> 00:02:49,151
+again.
+
+100
+00:02:50,350 --> 00:02:52,290
+At its meeting on October 28,
+
+101
+00:02:52,530 --> 00:02:53,910
+the Fed held rates steady.
+
+102
+00:02:54,550 --> 00:02:55,750
+But the vote was 10 to
+
+103
+00:02:55,550 --> 00:02:55,990
+2,
+
+104
+00:02:56,110 --> 00:02:58,290
+and both officials who disagreed wanted
+
+105
+00:02:58,090 --> 00:02:58,970
+another hike.
+
+106
+00:02:59,454 --> 00:03:00,994
+Twelve people vote on rates:
+
+107
+00:03:01,594 --> 00:03:03,594
+the seven Fed governors in Washington,
+
+108
+00:03:03,974 --> 00:03:05,394
+the president of the New York
+
+109
+00:03:05,194 --> 00:03:05,654
+Fed,
+
+110
+00:03:05,814 --> 00:03:07,414
+and four of the other regional
+
+111
+00:03:07,214 --> 00:03:08,234
+Fed presidents,
+
+112
+00:03:08,034 --> 00:03:09,334
+who take turns.
+
+113
+00:03:09,966 --> 00:03:11,706
+That shows the debate inside the
+
+114
+00:03:11,506 --> 00:03:12,406
+Fed right now.
+
+115
+00:03:12,966 --> 00:03:14,826
+Some worry inflation is getting stuck.
+
+116
+00:03:15,326 --> 00:03:17,186
+Others worry about slowing the economy
+
+117
+00:03:16,986 --> 00:03:17,826
+too much.
+
+118
+00:03:18,302 --> 00:03:18,922
+So far,
+
+119
+00:03:19,002 --> 00:03:20,662
+the job market is holding up.
+
+120
+00:03:21,122 --> 00:03:23,882
+Unemployment was 4.2% in September.
+
+121
+00:03:25,283 --> 00:03:26,583
+Before we go through your bills,
+
+122
+00:03:26,883 --> 00:03:27,983
+one important point.
+
+123
+00:03:28,523 --> 00:03:30,263
+If your mortgage or car loan
+
+124
+00:03:30,063 --> 00:03:31,203
+has a fixed rate,
+
+125
+00:03:31,403 --> 00:03:33,043
+this hike doesn't change your payment
+
+126
+00:03:32,843 --> 00:03:33,463
+at all.
+
+127
+00:03:33,918 --> 00:03:35,238
+It matters for new loans,
+
+128
+00:03:35,038 --> 00:03:37,038
+and for anything with a variable
+
+129
+00:03:36,838 --> 00:03:37,438
+rate:
+
+130
+00:03:37,878 --> 00:03:38,598
+credit cards,
+
+131
+00:03:38,838 --> 00:03:40,418
+home equity lines of credit,
+
+132
+00:03:40,558 --> 00:03:41,858
+and adjustable rate mortgages.
+
+133
+00:03:42,498 --> 00:03:43,878
+Those can go up within a
+
+134
+00:03:43,678 --> 00:03:44,398
+month or two.
+
+135
+00:03:45,617 --> 00:03:46,037
+Now,
+
+136
+00:03:45,837 --> 00:03:47,077
+what does this mean for you?
+
+137
+00:03:47,477 --> 00:03:49,057
+Let's start with the most expensive
+
+138
+00:03:48,857 --> 00:03:50,617
+debt most people have:
+
+139
+00:03:51,017 --> 00:03:51,517
+credit cards.
+
+140
+00:03:52,118 --> 00:03:54,298
+Most credit cards have variable rates
+
+141
+00:03:54,098 --> 00:03:55,578
+tied to the prime rate,
+
+142
+00:03:55,898 --> 00:03:57,678
+which moves almost one for one
+
+143
+00:03:57,478 --> 00:03:58,178
+with the Fed.
+
+144
+00:03:58,662 --> 00:04:00,782
+The prime rate is now 7%,
+
+145
+00:04:00,582 --> 00:04:02,802
+and the average interest rate on
+
+146
+00:04:02,602 --> 00:04:04,922
+credit card accounts at banks is
+
+147
+00:04:04,722 --> 00:04:06,762
+about 21.2%.
+
+148
+00:04:07,275 --> 00:04:09,555
+If you carry a $5,000 balance
+
+149
+00:04:09,355 --> 00:04:10,175
+at that rate,
+
+150
+00:04:10,495 --> 00:04:13,195
+you'd pay about $1,060 a year
+
+151
+00:04:12,995 --> 00:04:13,655
+in interest.
+
+152
+00:04:14,246 --> 00:04:16,306
+This hike itself added a quarter
+
+153
+00:04:16,106 --> 00:04:17,426
+of a percentage point.
+
+154
+00:04:17,946 --> 00:04:19,506
+On that same $5,000,
+
+155
+00:04:20,086 --> 00:04:23,186
+that's only about $12.50 more a
+
+156
+00:04:22,986 --> 00:04:23,406
+year.
+
+157
+00:04:23,986 --> 00:04:26,246
+The real problem is the 21%
+
+158
+00:04:26,046 --> 00:04:26,486
+itself.
+
+159
+00:04:27,190 --> 00:04:28,950
+That's why paying down card debt
+
+160
+00:04:28,750 --> 00:04:30,430
+is one of the best guaranteed
+
+161
+00:04:30,230 --> 00:04:31,870
+returns you can get.
+
+162
+00:04:32,450 --> 00:04:34,150
+Every dollar you pay off stops
+
+163
+00:04:33,950 --> 00:04:36,530
+costing you over 21% a year.
+
+164
+00:04:37,717 --> 00:04:39,697
+Mortgage rates don't follow the Fed
+
+165
+00:04:39,497 --> 00:04:40,157
+directly.
+
+166
+00:04:40,717 --> 00:04:42,937
+They follow what investors expect for
+
+167
+00:04:42,737 --> 00:04:44,917
+inflation and interest rates over the
+
+168
+00:04:44,717 --> 00:04:45,817
+next several years.
+
+169
+00:04:46,330 --> 00:04:47,190
+In late February,
+
+170
+00:04:47,430 --> 00:04:49,050
+the 30 year mortgage rate was
+
+171
+00:04:48,850 --> 00:04:50,770
+about 5.98%.
+
+172
+00:04:51,110 --> 00:04:53,010
+As oil and inflation jumped,
+
+173
+00:04:53,330 --> 00:04:56,210
+it climbed as high as 7.4%
+
+174
+00:04:56,010 --> 00:04:56,590
+in October.
+
+175
+00:04:57,410 --> 00:04:58,030
+This week,
+
+176
+00:04:58,210 --> 00:05:00,630
+it's about 7.24%.
+
+177
+00:05:00,959 --> 00:05:02,979
+On a $300,000 loan,
+
+178
+00:05:03,459 --> 00:05:06,459
+that's the difference between about $1,795
+
+179
+00:05:06,259 --> 00:05:10,179
+and $2,044 a month,
+
+180
+00:05:10,579 --> 00:05:14,259
+or about $2,996 more every year.
+
+181
+00:05:14,693 --> 00:05:16,673
+Higher rates also keep many homeowners
+
+182
+00:05:16,473 --> 00:05:17,533
+from selling,
+
+183
+00:05:17,333 --> 00:05:19,193
+because they don't want to give
+
+184
+00:05:18,993 --> 00:05:20,393
+up the low rate they already
+
+185
+00:05:20,193 --> 00:05:20,813
+have.
+
+186
+00:05:21,293 --> 00:05:23,053
+That means fewer homes for sale.
+
+187
+00:05:23,541 --> 00:05:25,261
+Car loans are pricier too.
+
+188
+00:05:25,761 --> 00:05:27,161
+The average rate on a four
+
+189
+00:05:26,961 --> 00:05:28,441
+year new car loan from a
+
+190
+00:05:28,241 --> 00:05:30,941
+bank is about 7.47%.
+
+191
+00:05:32,383 --> 00:05:33,783
+Higher rates do have a bright
+
+192
+00:05:33,583 --> 00:05:34,263
+side.
+
+193
+00:05:34,683 --> 00:05:35,923
+Savers can earn more,
+
+194
+00:05:36,023 --> 00:05:37,383
+but only if they go looking.
+
+195
+00:05:37,882 --> 00:05:39,162
+According to the FDIC,
+
+196
+00:05:39,302 --> 00:05:41,202
+the national average rate on savings
+
+197
+00:05:41,002 --> 00:05:44,222
+accounts is just 0.38%.
+
+198
+00:05:44,789 --> 00:05:47,529
+With inflation at 3.7%,
+
+199
+00:05:47,329 --> 00:05:50,749
+money sitting there loses about 3.3%
+
+200
+00:05:50,549 --> 00:05:52,369
+of its buying power every year.
+
+201
+00:05:52,805 --> 00:05:55,025
+Many online banks pay savings rates
+
+202
+00:05:54,825 --> 00:05:56,665
+much closer to the Fed's rate.
+
+203
+00:05:57,185 --> 00:05:58,445
+As long as the bank is
+
+204
+00:05:58,245 --> 00:05:59,245
+FDIC insured,
+
+205
+00:05:59,765 --> 00:06:01,605
+your deposits are protected up to
+
+206
+00:06:01,405 --> 00:06:03,045
+$250,000.
+
+207
+00:06:03,893 --> 00:06:06,233
+On a $10,000 emergency fund,
+
+208
+00:06:06,533 --> 00:06:10,753
+0.38% earns you about $38 a
+
+209
+00:06:10,553 --> 00:06:10,973
+year.
+
+210
+00:06:11,633 --> 00:06:14,673
+An account paying 3.5% would earn
+
+211
+00:06:14,473 --> 00:06:15,393
+about $350.
+
+212
+00:06:16,837 --> 00:06:17,937
+And if you won't need some
+
+213
+00:06:17,737 --> 00:06:18,737
+money for a while,
+
+214
+00:06:19,037 --> 00:06:20,177
+a certificate of deposit,
+
+215
+00:06:19,977 --> 00:06:21,137
+or CD,
+
+216
+00:06:20,937 --> 00:06:23,417
+can lock in today's higher rate
+
+217
+00:06:23,217 --> 00:06:24,817
+for months or even years.
+
+218
+00:06:26,083 --> 00:06:27,503
+So here's a simple checklist.
+
+219
+00:06:28,169 --> 00:06:28,609
+One:
+
+220
+00:06:28,629 --> 00:06:30,469
+pay down variable rate debt first,
+
+221
+00:06:30,809 --> 00:06:32,969
+starting with whatever charges the highest
+
+222
+00:06:32,769 --> 00:06:33,349
+rate.
+
+223
+00:06:33,838 --> 00:06:34,198
+Two:
+
+224
+00:06:34,318 --> 00:06:35,658
+if you carry a card balance,
+
+225
+00:06:35,998 --> 00:06:37,638
+call your card company and ask
+
+226
+00:06:37,438 --> 00:06:38,518
+for a lower rate.
+
+227
+00:06:38,978 --> 00:06:40,418
+It works more often than you'd
+
+228
+00:06:40,218 --> 00:06:40,578
+think.
+
+229
+00:06:41,043 --> 00:06:41,503
+Three:
+
+230
+00:06:41,583 --> 00:06:43,143
+make sure your savings are actually
+
+231
+00:06:42,943 --> 00:06:43,943
+earning something.
+
+232
+00:06:44,430 --> 00:06:44,970
+And four:
+
+233
+00:06:45,090 --> 00:06:46,510
+if you're buying a home or
+
+234
+00:06:46,310 --> 00:06:46,970
+a car,
+
+235
+00:06:47,170 --> 00:06:48,510
+compare at least three lenders.
+
+236
+00:06:49,270 --> 00:06:50,870
+A small difference in rate can
+
+237
+00:06:50,670 --> 00:06:52,350
+add up to thousands of dollars.
+
+238
+00:06:52,894 --> 00:06:53,474
+And five:
+
+239
+00:06:53,534 --> 00:06:54,134
+don't panic.
+
+240
+00:06:54,594 --> 00:06:55,754
+Rates move slowly,
+
+241
+00:06:55,554 --> 00:06:56,854
+and you have time to make
+
+242
+00:06:56,654 --> 00:06:57,174
+a plan.
+
+243
+00:06:58,450 --> 00:06:58,870
+So,
+
+244
+00:06:58,670 --> 00:07:00,330
+will the Fed raise rates again?
+
+245
+00:07:00,730 --> 00:07:01,970
+It mostly depends on oil.
+
+246
+00:07:02,455 --> 00:07:04,615
+If shipping through Hormuz recovers and
+
+247
+00:07:04,415 --> 00:07:05,695
+energy prices fall,
+
+248
+00:07:05,955 --> 00:07:07,235
+inflation could cool,
+
+249
+00:07:07,675 --> 00:07:08,835
+and the Fed may not need
+
+250
+00:07:08,635 --> 00:07:09,435
+to hike again.
+
+251
+00:07:09,895 --> 00:07:12,515
+If oil stays above $100 and
+
+252
+00:07:12,315 --> 00:07:13,935
+higher prices keep spreading,
+
+253
+00:07:14,195 --> 00:07:15,255
+more hikes are possible.
+
+254
+00:07:15,885 --> 00:07:17,825
+Watch the monthly inflation report.
+
+255
+00:07:18,505 --> 00:07:20,085
+If energy prices keep easing,
+
+256
+00:07:20,405 --> 00:07:21,805
+that's a sign the pressure is
+
+257
+00:07:21,605 --> 00:07:22,025
+fading.
+
+258
+00:07:22,599 --> 00:07:24,179
+The Fed meets again in December,
+
+259
+00:07:24,479 --> 00:07:25,579
+and we'll break it down when
+
+260
+00:07:25,379 --> 00:07:25,839
+it does.
+
+261
+00:07:27,083 --> 00:07:28,683
+So the Fed raised rates to
+
+262
+00:07:28,483 --> 00:07:30,623
+fight inflation caused by an oil
+
+263
+00:07:30,423 --> 00:07:31,063
+shock.
+
+264
+00:07:31,563 --> 00:07:32,883
+It can't fix the oil,
+
+265
+00:07:33,183 --> 00:07:34,563
+but it can make borrowing more
+
+266
+00:07:34,363 --> 00:07:35,143
+expensive,
+
+267
+00:07:35,563 --> 00:07:37,703
+and that touches almost every part
+
+268
+00:07:37,503 --> 00:07:38,823
+of your financial life.
+
+269
+00:07:39,323 --> 00:07:40,903
+Pay down expensive debt,
+
+270
+00:07:41,083 --> 00:07:42,623
+make your savings work for you,
+
+271
+00:07:42,703 --> 00:07:44,103
+and compare before you borrow.
+
+272
+00:07:44,673 --> 00:07:45,393
+Next time:
+
+273
+00:07:45,533 --> 00:07:47,133
+how banks create money out of
+
+274
+00:07:46,933 --> 00:07:47,633
+thin air.
+
+275
+00:07:48,213 --> 00:07:49,893
+Subscribe to Coin Theory so you
+
+276
+00:07:49,693 --> 00:07:50,433
+don't miss it.
+
