@@ -7,7 +7,7 @@ settings: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN. Never paste them in 
 
 Setup (about 10 minutes, free):
   1. https://console.cloud.google.com -> create a project (e.g. "coin-theory").
-  2. APIs & Services -> Library -> enable "YouTube Data API v3".
+  2. APIs & Services -> Library -> enable "YouTube Data API v3" AND "YouTube Analytics API".
   3. APIs & Services -> OAuth consent screen -> External, add your own Google account
      under "Test users".
   4. APIs & Services -> Credentials -> Create credentials -> OAuth client ID ->
@@ -22,7 +22,8 @@ import os
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.upload',
-          'https://www.googleapis.com/auth/youtube.force-ssl']  # force-ssl is needed for captions
+          'https://www.googleapis.com/auth/youtube.force-ssl',        # captions, thumbnails, video settings
+          'https://www.googleapis.com/auth/yt-analytics.readonly']    # read views, retention, CTR (read-only)
 
 here = os.path.dirname(os.path.abspath(__file__))
 flow = InstalledAppFlow.from_client_secrets_file(os.path.join(here, 'client_secret.json'), SCOPES)
