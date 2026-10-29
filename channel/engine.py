@@ -759,6 +759,11 @@ def _render_scene(si):
     dur, starts, ends, chunks, env = plan[si]
     ow, oh = (OUT_W, OUT_H) if layout == 'long' else (1080, 1920)
     path = os.path.join(build_dir, f'{layout}_{si:02d}.mp4')
+    if os.environ.get('RESUME') and os.path.exists(path):  # reuse a finished segment after an interruption
+        probe = subprocess.run(['ffprobe', '-v', 'error', '-count_packets', '-select_streams', 'v:0', '-show_entries',
+                                'stream=nb_read_packets', '-of', 'csv=p=0', path], capture_output=True, text=True)
+        if probe.stdout.strip().isdigit() and int(probe.stdout) == int(round(dur * FPS)):
+            return path
     ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24',
                            '-s', f'{ow}x{oh}', '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset',
                            'medium', '-crf', '16', '-pix_fmt', 'yuv420p', path], stdin=subprocess.PIPE)
