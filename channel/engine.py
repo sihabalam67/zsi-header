@@ -416,7 +416,9 @@ def sfx(kind):
         tt = np.arange(int(0.12 * SR)) / SR
         return np.sin(2 * np.pi * (300 + 900 * tt / 0.12) * tt) * np.exp(-tt * 30) * 0.5
     if kind == 'ding':
-        return (tone(1568, 1.2, 4, (1, 0.4, 0.2)) + tone(2093, 1.0, 5, (0.5,))) * 0.25
+        a, b = tone(1568, 1.2, 4, (1, 0.4, 0.2)), tone(2093, 1.0, 5, (0.5,))
+        a[:len(b)] += b
+        return a * 0.25
     if kind == 'whoosh':
         n = int(0.5 * SR)
         noise = rnd.standard_normal(n)
@@ -501,11 +503,22 @@ def master(voice, mus, fx, total):
     mus *= (np.minimum(1, tt / 2) * np.clip((total - tt) / 3, 0, 1))[:, None]
     out = mus * (0.22 * duck)[:, None] + v[:, None] + fx[:, None] * 0.7
     meter = pyln.Meter(SR)
-    out = pyln.normalize.loudness(out, meter.integrated_loudness(out), -14.0)
-    peak = np.max(np.abs(out))
-    if peak > 0.89:  # keep true peak under about -1 dBFS
-        out *= 0.89 / peak
+    for _ in range(3):  # normalize to YouTube's -14 LUFS, then limit peaks; repeat to settle
+        with np.errstate(all='ignore'):
+            out = pyln.normalize.loudness(out, meter.integrated_loudness(out), -14.0)
+        out = limit(out, 0.89)
     return out
+
+
+def limit(x, ceiling):
+    """Peak limiter: smooth gain reduction wherever the signal exceeds the ceiling."""
+    from scipy.ndimage import minimum_filter1d, uniform_filter1d
+    peak = np.max(np.abs(x), axis=1)
+    g = np.minimum(1.0, ceiling / np.maximum(peak, 1e-9))
+    g = minimum_filter1d(g, int(0.01 * SR))           # hold over 10 ms so the gain dips before peaks
+    g = uniform_filter1d(g, int(0.005 * SR))          # smooth the gain curve
+    g = minimum_filter1d(g, int(0.005 * SR))
+    return np.clip(x * g[:, None], -ceiling, ceiling)
 
 
 # ------------------------------------------------------------------- build --
