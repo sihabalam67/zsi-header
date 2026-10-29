@@ -26,10 +26,18 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.upload',
           'https://www.googleapis.com/auth/yt-analytics.readonly']    # read views, retention, CTR (read-only)
 
 here = os.path.dirname(os.path.abspath(__file__))
-flow = InstalledAppFlow.from_client_secrets_file(os.path.join(here, 'client_secret.json'), SCOPES)
+path = os.path.join(here, 'client_secret.json')
+if os.path.exists(path):
+    info = json.load(open(path))
+    info = info.get('installed') or info.get('web')
+else:  # no file: paste the values from Google Cloud -> Clients -> uploader
+    print('client_secret.json not found next to login.py, so paste the values instead.')
+    info = {'client_id': input('Client ID: ').strip(), 'client_secret': input('Client secret: ').strip()}
+config = {'installed': {'client_id': info['client_id'], 'client_secret': info['client_secret'],
+                        'auth_uri': 'https://accounts.google.com/o/oauth2/auth',
+                        'token_uri': 'https://oauth2.googleapis.com/token', 'redirect_uris': ['http://localhost']}}
+flow = InstalledAppFlow.from_client_config(config, SCOPES)
 creds = flow.run_local_server(port=0, access_type='offline', prompt='consent')
-info = json.load(open(os.path.join(here, 'client_secret.json')))
-info = info.get('installed') or info.get('web')
 print('\nAdd these three as secrets in the cloud environment settings (not in chat):\n')
 print('YT_CLIENT_ID     =', info['client_id'])
 print('YT_CLIENT_SECRET =', info['client_secret'])
