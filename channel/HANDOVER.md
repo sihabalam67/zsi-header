@@ -21,6 +21,13 @@ The OAuth app is "In production" (tokens don't expire weekly). The API project i
 so YouTube locks API uploads to **private**: upload private and tell the user which day to switch
 each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone verification (done).
 
+## Status (Oct 29, 2026)
+- Weeks 1 and 2 (16 videos) are uploaded and scheduled via `publishAt` (2:00 PM ET). IDs: `channel/out/video_ids.json`,
+  playlists: `channel/out/playlists.json`. See `WEEK1.md`, `WEEK2.md`, and the checklist artifact linked in WEEK2.md.
+- Week 2 episodes: `ep03_gas.py`, `ep04_fed.py` (shared art in `wk2_art.py`, audit in `wk2_audit.py`).
+- Render resumably after an interruption: `RESUME=1 python3 channel/ep0N_*.py`.
+- Next: ep05 "How banks create money out of thin air" (promised at the end of ep04).
+
 ## "upload week 1"
 1. `pip install google-api-python-client google-auth` if needed.
 2. Dry-run every manifest: `python3 youtube/upload.py channel/out/<name>.upload.json --dry-run`.

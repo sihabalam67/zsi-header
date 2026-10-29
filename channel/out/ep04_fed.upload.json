@@ -1,0 +1,31 @@
+{
+  "video": "channel/out/ep04_fed.mp4",
+  "title": "The Fed Just Raised Rates. What It Means for Your Money",
+  "description": "On September 17, 2026, the Federal Reserve raised interest rates for the first time in more than three years. Here's exactly what that means for your credit card, your mortgage, your car loan and your savings.\n\nPenny the coin explains the Fed's 2026 rate hike with real data: what the Fed actually controls, the rate rollercoaster since 2022, why an oil shock pushed the Fed to act, the split October vote, what happens to credit card rates (now over 21%), mortgages and car loans, why the average savings account still pays almost nothing, a simple rate-hike checklist, and what could happen next.\n\n0:00 Intro: the first hike since 2023\n0:23 What the Fed actually controls\n1:03 The rollercoaster since 2022\n1:34 Why raise rates now?\n2:19 Why not just keep rates low?\n2:49 A split decision\n3:24 Does this change your payment?\n3:45 Your credit card\n4:37 Mortgages and car loans\n5:31 Your savings\n6:25 Your rate-hike checklist\n6:57 What happens next?\n7:26 Recap\n\nData: Fed funds target range (DFEDTARU, DFEDTARL), bank prime loan rate (DPRIME), credit card plan rates (TERMCBCCALLNS) and 48-month new car loan rates (TERMCBAUTO48NS) from the Federal Reserve; 30-year mortgage rate (Freddie Mac, MORTGAGE30US); national savings rate (FDIC, SNDR); CPI and unemployment (BLS); retrieved from FRED, Federal Reserve Bank of St. Louis, through October 2026. October 28 vote: Federal Reserve FOMC statement, October 28, 2026. Deposit insurance: FDIC.\n\nThis video is for education only and is not financial advice.\nOriginal script, characters and animation. Narrated with an AI voice.",
+  "tags": [
+    "fed rate hike",
+    "federal reserve",
+    "interest rates",
+    "fed raises rates",
+    "fed rate hike 2026",
+    "credit card interest",
+    "mortgage rates",
+    "savings account interest",
+    "high yield savings",
+    "inflation 2026",
+    "what the fed rate hike means for you",
+    "prime rate",
+    "coin theory",
+    "economics explained",
+    "money explained",
+    "personal finance",
+    "animated explainer"
+  ],
+  "categoryId": 27,
+  "thumbnail": "channel/out/ep04_thumb_a.png",
+  "captions": "channel/out/ep04_fed.en.srt",
+  "privacy": "private",
+  "madeForKids": false,
+  "syntheticMedia": true,
+  "language": "en"
+}
