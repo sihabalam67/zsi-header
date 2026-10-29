@@ -562,16 +562,25 @@ SCENES = [
 ]
 
 
-def s_short_end(c, x):
-    t = x.t
-    specks(c, t, 13, 50)
-    penny(c, 640, 330, 90, t, 'happy', wave=True, talk=x.talk())
-    c.text(640, 560, 'Full story on Coin Theory', 40, GOLD, 900, a=fade(t, 0.3))
+def end_card(line):
+    def draw(c, x):
+        specks(c, x.t, 13, 50)
+        penny(c, 640, 330, 90, x.t, 'happy', wave=True, talk=x.talk())
+        c.text(640, 560, 'Full story on Coin Theory', 40, GOLD, 900, a=fade(x.t, 0.3))
+    return dict(draw=draw, lines=[line], tail=1.2)
 
 
-SHORT = [SCENES[0], dict(SCENES[3], chapter=None), dict(draw=s_short_end, lines=[
-    "Where does the rest of your money go? Watch the full story on Coin Theory.",
-], tail=1.2)]
+SHORTS = {
+    'ep01_short_prices': [SCENES[0], SCENES[3], end_card(
+        "Where does the rest of your money go? Watch the full story on Coin Theory.")],
+    'ep01_short_wages': [dict(SCENES[11], lines=[
+        "Your boss gives you a raise every year. So why don't you feel richer?"] + SCENES[11]['lines'][1:]),
+        end_card("Find out where that money went. Full story on Coin Theory.")],
+    'ep01_short_rule70': [dict(SCENES[12], lines=[
+        "Want to know how fast your money loses value? Use the rule of 70."] + SCENES[12]['lines'][1:] + [
+        "So if inflation runs at 4%, your money buys half as much in about 17 and a half years."]),
+        end_card("See where your money really goes. Full story on Coin Theory.")],
+}
 
 
 def check_numbers():
@@ -603,11 +612,15 @@ if __name__ == '__main__':
             n = max(1, len(sc['lines']))
             still(sc, 0.5 + 4 * n - 0.5, os.path.join(BUILD, f'still_{i:02d}.png'))
         sys.exit()
-    total, chapters = build(SCENES, os.path.join(OUT, 'ep01_inflation.mp4'), BUILD,
-                            srt_path=os.path.join(OUT, 'ep01_inflation.en.srt'))
-    with open(os.path.join(OUT, 'ep01_chapters.txt'), 'w') as f:
-        for at, name in chapters:
-            f.write(f'{fmt(at)} {name}\n')
-    print(open(os.path.join(OUT, 'ep01_chapters.txt')).read())
+    if '--shorts-only' not in sys.argv:
+        total, chapters = build(SCENES, os.path.join(OUT, 'ep01_inflation.mp4'), BUILD,
+                                srt_path=os.path.join(OUT, 'ep01_inflation.en.srt'))
+        with open(os.path.join(OUT, 'ep01_chapters.txt'), 'w') as f:
+            for at, name in chapters:
+                f.write(f'{fmt(at)} {name}\n')
+        print(open(os.path.join(OUT, 'ep01_chapters.txt')).read())
     if '--no-short' not in sys.argv:
-        build(SHORT, os.path.join(OUT, 'ep01_short.mp4'), BUILD, layout='short')
+        for name, scenes in SHORTS.items():
+            if os.path.exists(os.path.join(OUT, f'{name}.mp4')) and '--force-shorts' not in sys.argv:
+                continue
+            build(scenes, os.path.join(OUT, f'{name}.mp4'), os.path.join(BUILD, name), layout='short')
