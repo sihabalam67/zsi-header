@@ -40,6 +40,47 @@ VIDEOS = {
         tags=['housing crisis', 'why are houses so expensive', 'housing market', 'home prices', 'mortgage rates',
               'housing affordability', 'zoning', 'housing shortage', 'first time home buyer', 'real estate'],
         thumb='ep02_thumb_a.png'),
+    'ep03_gas': dict(
+        titles=['Why Is Gas So Expensive Right Now? (2026 Oil Shock Explained)',
+                'Gas Went From $2.78 to $4.50. Here\'s Why.',
+                'The Strait of Hormuz Crisis and Your Gas Bill, Explained'],
+        hook="In January, a gallon of regular gas cost about $2.78. By May it hit $4.50, and it's still around $4.27. "
+             "So where is all that money going, and when will it come down?",
+        summary="Penny the coin explains the 2026 gas price spike with real data: the Strait of Hormuz and the war "
+                "with Iran, how oil more than doubled, how a barrel becomes a gallon (and what you pay for), why "
+                "America's own oil doesn't protect you, past oil shocks since 1990, why prices rise like rockets and "
+                "fall like feathers, how diesel pushes up food and everything else, what it costs your family, and "
+                "what could bring prices down.",
+        sources="Gasoline and diesel prices (EIA: GASREGW, GASDESW), WTI crude (EIA: DCOILWTICO), CPI and energy CPI "
+                "(BLS: CPIAUCSL, CPIENGSL), retrieved from FRED, Federal Reserve Bank of St. Louis, through October "
+                "2026. Strait of Hormuz share of world oil: EIA, World Oil Transit Chokepoints. First-quarter oil "
+                "price jump and production cuts: EIA, Today in Energy (April 2026). War timeline and tanker "
+                "attacks: CNN (March 9 and October 8, 2026). Federal gas tax: 18.4 cents per gallon (US Federal "
+                "Highway Administration). US as top oil producer: EIA.",
+        tags=['gas prices', 'why is gas so expensive', 'gas prices 2026', 'oil prices', 'strait of hormuz',
+              'iran war oil', 'oil shock', 'gas prices explained', 'diesel prices', 'inflation 2026',
+              'rockets and feathers', 'cost of living'],
+        thumb='ep03_thumb_a.png'),
+    'ep04_fed': dict(
+        titles=['The Fed Just Raised Rates. What It Means for Your Money',
+                'Fed Rate Hike 2026 Explained: Credit Cards, Mortgages, Savings',
+                'Your Credit Card Now Charges 21%. Here\'s Why.'],
+        hook="On September 17, 2026, the Federal Reserve raised interest rates for the first time in more than "
+             "three years. Here's exactly what that means for your credit card, your mortgage, your car loan and "
+             "your savings.",
+        summary="Penny the coin explains the Fed's 2026 rate hike with real data: what the Fed actually controls, "
+                "the rate rollercoaster since 2022, why an oil shock pushed the Fed to act, the split October vote, "
+                "what happens to credit card rates (now over 21%), mortgages and car loans, why the average savings "
+                "account still pays almost nothing, a simple rate-hike checklist, and what could happen next.",
+        sources="Fed funds target range (DFEDTARU, DFEDTARL), bank prime loan rate (DPRIME), credit card plan rates "
+                "(TERMCBCCALLNS) and 48-month new car loan rates (TERMCBAUTO48NS) from the Federal Reserve; 30-year "
+                "mortgage rate (Freddie Mac, MORTGAGE30US); national savings rate (FDIC, SNDR); CPI and unemployment "
+                "(BLS); retrieved from FRED, Federal Reserve Bank of St. Louis, through October 2026. October 28 "
+                "vote: Federal Reserve FOMC statement, October 28, 2026. Deposit insurance: FDIC.",
+        tags=['fed rate hike', 'federal reserve', 'interest rates', 'fed raises rates', 'fed rate hike 2026',
+              'credit card interest', 'mortgage rates', 'savings account interest', 'high yield savings',
+              'inflation 2026', 'what the fed rate hike means for you', 'prime rate'],
+        thumb='ep04_thumb_a.png'),
 }
 
 SHORTS = {
@@ -49,6 +90,12 @@ SHORTS = {
     'ep02_short_price': ('A house cost $23,000 in 1970. Now? #shorts', 'ep02_housing'),
     'ep02_short_payment': ('Same house, $876 more per month #shorts', 'ep02_housing'),
     'ep02_short_supply': ('America stopped building homes #shorts', 'ep02_housing'),
+    'ep03_short_jump': ('Gas went from $2.78 to $4.50 in 4 months #shorts', 'ep03_gas'),
+    'ep03_short_barrel': ('What you really pay for in a gallon of gas #shorts', 'ep03_gas'),
+    'ep03_short_feathers': ('Why gas prices rise fast but fall slow #shorts', 'ep03_gas'),
+    'ep04_short_cards': ('Your credit card now charges over 21% #shorts', 'ep04_fed'),
+    'ep04_short_savings': ('Your savings pay 0.38%. Inflation is 3.7%. #shorts', 'ep04_fed'),
+    'ep04_short_why': ('Why the Fed raises rates when gas gets expensive #shorts', 'ep04_fed'),
 }
 
 
