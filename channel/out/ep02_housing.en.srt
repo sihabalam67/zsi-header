@@ -1,0 +1,432 @@
+1
+00:00:00,550 --> 00:00:01,510
+In 1970,
+
+2
+00:00:01,870 --> 00:00:03,630
+the typical new home in America
+
+3
+00:00:03,430 --> 00:00:05,310
+sold for about $23,000.
+
+4
+00:00:06,817 --> 00:00:07,237
+Today?
+
+5
+00:00:07,397 --> 00:00:08,617
+About $393,000.
+
+6
+00:00:10,118 --> 00:00:11,818
+Even after adjusting for inflation,
+
+7
+00:00:12,198 --> 00:00:13,938
+that's almost twice as expensive.
+
+8
+00:00:14,638 --> 00:00:15,798
+So what happened to houses?
+
+9
+00:00:19,983 --> 00:00:21,303
+The best way to measure it
+
+10
+00:00:21,103 --> 00:00:22,343
+isn't the price tag.
+
+11
+00:00:22,803 --> 00:00:24,043
+It's how many years of income
+
+12
+00:00:23,843 --> 00:00:24,863
+a home costs.
+
+13
+00:00:25,418 --> 00:00:26,378
+In 1984,
+
+14
+00:00:26,878 --> 00:00:28,818
+the typical new home cost about
+
+15
+00:00:28,618 --> 00:00:31,758
+3.6 times the typical household's yearly
+
+16
+00:00:31,558 --> 00:00:32,238
+income.
+
+17
+00:00:32,709 --> 00:00:33,409
+By 2022,
+
+18
+00:00:33,209 --> 00:00:35,109
+it was almost 6 times.
+
+19
+00:00:35,729 --> 00:00:36,089
+Today,
+
+20
+00:00:36,229 --> 00:00:38,409
+it's still around 4.7 times.
+
+21
+00:00:39,783 --> 00:00:41,403
+Reason number one is simple:
+
+22
+00:00:41,863 --> 00:00:43,623
+America stopped building enough homes.
+
+23
+00:00:44,194 --> 00:00:45,614
+In the 1970s,
+
+24
+00:00:45,614 --> 00:00:48,994
+builders started about 1.76 million homes
+
+25
+00:00:48,794 --> 00:00:49,414
+a year.
+
+26
+00:00:50,054 --> 00:00:51,714
+After the 2008 crash,
+
+27
+00:00:52,094 --> 00:00:52,714
+that collapsed,
+
+28
+00:00:53,194 --> 00:00:55,334
+and the 2010s averaged under 1
+
+29
+00:00:55,134 --> 00:00:56,054
+million a year,
+
+30
+00:00:56,334 --> 00:00:58,134
+the lowest of any decade since
+
+31
+00:00:57,934 --> 00:01:00,214
+records began in 1959.
+
+32
+00:01:00,765 --> 00:01:01,185
+Meanwhile,
+
+33
+00:01:01,365 --> 00:01:02,825
+the population kept growing.
+
+34
+00:01:03,305 --> 00:01:04,125
+Fewer new homes,
+
+35
+00:01:04,305 --> 00:01:05,005
+more people,
+
+36
+00:01:04,805 --> 00:01:05,765
+higher prices.
+
+37
+00:01:07,150 --> 00:01:08,790
+So why didn't builders just build
+
+38
+00:01:08,590 --> 00:01:09,050
+more?
+
+39
+00:01:09,510 --> 00:01:10,390
+In many places,
+
+40
+00:01:10,190 --> 00:01:11,450
+they're not allowed to.
+
+41
+00:01:11,902 --> 00:01:14,122
+Local zoning rules often ban anything
+
+42
+00:01:13,922 --> 00:01:15,882
+except single-family houses,
+
+43
+00:01:16,142 --> 00:01:17,302
+require big lots,
+
+44
+00:01:17,562 --> 00:01:19,362
+and add slow permit processes.
+
+45
+00:01:20,042 --> 00:01:21,822
+Land near good jobs is scarce,
+
+46
+00:01:22,202 --> 00:01:24,042
+and every extra rule adds cost.
+
+47
+00:01:25,383 --> 00:01:27,163
+Reason number three is the price
+
+48
+00:01:26,963 --> 00:01:27,603
+of money.
+
+49
+00:01:28,109 --> 00:01:28,969
+In 1981,
+
+50
+00:01:29,409 --> 00:01:31,609
+the 30-year mortgage rate peaked near
+
+51
+00:01:31,409 --> 00:01:33,109
+18.6%.
+
+52
+00:01:33,569 --> 00:01:35,189
+Over the next forty years,
+
+53
+00:01:35,309 --> 00:01:36,449
+rates kept falling,
+
+54
+00:01:36,949 --> 00:01:39,669
+all the way to 2.65% in
+
+55
+00:01:39,469 --> 00:01:40,729
+January 2021.
+
+56
+00:01:41,351 --> 00:01:43,411
+Cheaper loans let buyers borrow more,
+
+57
+00:01:43,571 --> 00:01:45,131
+so they could bid prices higher.
+
+58
+00:01:46,417 --> 00:01:47,857
+Then rates jumped back up.
+
+59
+00:01:48,137 --> 00:01:50,337
+Today they're around 7.3%.
+
+60
+00:01:50,955 --> 00:01:52,195
+On the typical new home,
+
+61
+00:01:52,455 --> 00:01:53,835
+with 20% down,
+
+62
+00:01:54,155 --> 00:01:56,115
+the monthly payment went from about
+
+63
+00:01:55,915 --> 00:02:01,975
+$1,285 in 2021 to about $2,161
+
+64
+00:02:01,775 --> 00:02:03,075
+today.
+
+65
+00:02:03,558 --> 00:02:05,738
+That's a jump from about 22%
+
+66
+00:02:05,538 --> 00:02:08,158
+to about 30% of a typical
+
+67
+00:02:07,958 --> 00:02:09,178
+household's income.
+
+68
+00:02:10,417 --> 00:02:11,117
+To be fair,
+
+69
+00:02:11,217 --> 00:02:12,497
+buying was never easy.
+
+70
+00:02:13,217 --> 00:02:14,097
+In 1984,
+
+71
+00:02:14,457 --> 00:02:16,317
+with rates near 14%,
+
+72
+00:02:16,117 --> 00:02:18,237
+payments took an even bigger bite,
+
+73
+00:02:18,357 --> 00:02:19,817
+about 40% of income.
+
+74
+00:02:20,395 --> 00:02:21,795
+The difference is that back then,
+
+75
+00:02:21,875 --> 00:02:23,635
+homes were cheap and loans were
+
+76
+00:02:23,435 --> 00:02:24,055
+expensive.
+
+77
+00:02:24,775 --> 00:02:25,135
+Today,
+
+78
+00:02:25,395 --> 00:02:26,455
+homes are expensive,
+
+79
+00:02:26,255 --> 00:02:28,555
+and loans are expensive too.
+
+80
+00:02:29,817 --> 00:02:31,177
+This has split the country in
+
+81
+00:02:30,977 --> 00:02:31,377
+two.
+
+82
+00:02:31,957 --> 00:02:33,397
+People who bought years ago watched
+
+83
+00:02:33,197 --> 00:02:34,945
+their home's value soar.
+
+84
+00:02:35,145 --> 00:02:36,685
+People trying to buy their first
+
+85
+00:02:36,485 --> 00:02:39,005
+home face high prices and high
+
+86
+00:02:38,805 --> 00:02:40,185
+rates at the same time.
+
+87
+00:02:41,350 --> 00:02:42,610
+So what would actually help?
+
+88
+00:02:43,130 --> 00:02:45,490
+Many economists argue the long-term answer
+
+89
+00:02:45,290 --> 00:02:45,990
+is simple:
+
+90
+00:02:46,570 --> 00:02:47,690
+build a lot more homes,
+
+91
+00:02:47,910 --> 00:02:49,270
+especially near jobs.
+
+92
+00:02:49,814 --> 00:02:51,894
+Some cities are already loosening zoning
+
+93
+00:02:51,694 --> 00:02:53,114
+to allow apartments,
+
+94
+00:02:53,434 --> 00:02:54,254
+townhouses,
+
+95
+00:02:54,474 --> 00:02:55,314
+and backyard homes.
+
+96
+00:02:55,974 --> 00:02:57,374
+Where supply grows faster,
+
+97
+00:02:57,914 --> 00:02:59,614
+prices tend to rise more slowly.
+
+98
+00:03:00,950 --> 00:03:02,990
+So houses didn't get expensive by
+
+99
+00:03:02,790 --> 00:03:03,350
+accident.
+
+100
+00:03:04,090 --> 00:03:05,010
+Too few homes,
+
+101
+00:03:05,290 --> 00:03:05,970
+strict rules,
+
+102
+00:03:06,330 --> 00:03:07,670
+and the price of money all
+
+103
+00:03:07,470 --> 00:03:08,930
+pushed in the same direction.
+
+104
+00:03:09,435 --> 00:03:10,155
+Next time:
+
+105
+00:03:10,295 --> 00:03:11,895
+how banks create money out of
+
+106
+00:03:11,695 --> 00:03:12,395
+thin air.
+
+107
+00:03:12,975 --> 00:03:14,655
+Subscribe to Coin Theory so you
+
+108
+00:03:14,455 --> 00:03:15,195
+don't miss it.
+

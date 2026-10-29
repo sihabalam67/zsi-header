@@ -1,0 +1,772 @@
+1
+00:00:00,550 --> 00:00:02,090
+Imagine it's 1970,
+
+2
+00:00:02,410 --> 00:00:04,590
+and you hide a $100 bill under
+
+3
+00:00:04,390 --> 00:00:05,010
+your mattress.
+
+4
+00:00:05,643 --> 00:00:07,083
+You forget about it for 56
+
+5
+00:00:06,883 --> 00:00:07,563
+years,
+
+6
+00:00:07,843 --> 00:00:09,043
+and find it again today.
+
+7
+00:00:09,563 --> 00:00:10,423
+It's still $100.
+
+8
+00:00:11,043 --> 00:00:13,023
+But now it only buys about
+
+9
+00:00:12,823 --> 00:00:14,703
+as much as $12 did back
+
+10
+00:00:14,503 --> 00:00:15,003
+then.
+
+11
+00:00:15,425 --> 00:00:16,885
+So where did the other $88
+
+12
+00:00:16,685 --> 00:00:17,405
+go?
+
+13
+00:00:21,550 --> 00:00:22,850
+The answer is inflation:
+
+14
+00:00:23,390 --> 00:00:23,950
+the slow,
+
+15
+00:00:24,110 --> 00:00:26,090
+steady rise of prices across the
+
+16
+00:00:25,890 --> 00:00:26,730
+whole economy.
+
+17
+00:00:27,241 --> 00:00:27,981
+To measure it,
+
+18
+00:00:27,901 --> 00:00:29,701
+the government tracks a huge basket
+
+19
+00:00:29,501 --> 00:00:30,741
+of things people buy:
+
+20
+00:00:31,341 --> 00:00:31,541
+food,
+
+21
+00:00:31,801 --> 00:00:32,201
+rent,
+
+22
+00:00:32,521 --> 00:00:32,901
+fuel,
+
+23
+00:00:33,061 --> 00:00:33,781
+clothes,
+
+24
+00:00:33,781 --> 00:00:34,421
+transport,
+
+25
+00:00:34,481 --> 00:00:35,261
+and doctor visits.
+
+26
+00:00:35,875 --> 00:00:36,535
+Every month,
+
+27
+00:00:36,375 --> 00:00:38,235
+it records the prices of about
+
+28
+00:00:38,035 --> 00:00:39,475
+80,000 items,
+
+29
+00:00:39,275 --> 00:00:41,435
+in thousands of stores,
+
+30
+00:00:41,455 --> 00:00:42,355
+rental homes,
+
+31
+00:00:42,155 --> 00:00:43,695
+and doctors' offices.
+
+32
+00:00:44,275 --> 00:00:45,075
+Put it all together,
+
+33
+00:00:44,875 --> 00:00:46,355
+and you get one number:
+
+34
+00:00:46,615 --> 00:00:47,935
+the Consumer Price Index.
+
+35
+00:00:49,317 --> 00:00:50,397
+Let's make that real.
+
+36
+00:00:50,957 --> 00:00:52,737
+Here's what some everyday things cost
+
+37
+00:00:52,537 --> 00:00:53,577
+in 1980,
+
+38
+00:00:53,937 --> 00:00:55,697
+according to government price surveys,
+
+39
+00:00:56,037 --> 00:00:57,277
+and what they cost now.
+
+40
+00:00:57,738 --> 00:00:59,138
+A pound of white bread went
+
+41
+00:00:58,938 --> 00:01:01,538
+from 51 cents to $1.83.
+
+42
+00:01:02,338 --> 00:01:03,358
+A dozen eggs,
+
+43
+00:01:03,158 --> 00:01:06,498
+from 84 cents to $2.27.
+
+44
+00:01:07,138 --> 00:01:08,158
+A pound of coffee,
+
+45
+00:01:07,958 --> 00:01:12,138
+from $3.14 to $9.33.
+
+46
+00:01:12,998 --> 00:01:13,998
+And a gallon of gas,
+
+47
+00:01:13,798 --> 00:01:18,098
+from $1.25 to $4.48.
+
+48
+00:01:18,874 --> 00:01:20,874
+Different things rise at different speeds.
+
+49
+00:01:21,354 --> 00:01:23,174
+But the direction is almost always
+
+50
+00:01:22,974 --> 00:01:23,674
+the same:
+
+51
+00:01:23,954 --> 00:01:24,334
+up.
+
+52
+00:01:25,583 --> 00:01:27,123
+Here's the full index for the
+
+53
+00:01:26,923 --> 00:01:28,403
+United States since 1950.
+
+54
+00:01:29,483 --> 00:01:30,103
+Notice something?
+
+55
+00:01:30,323 --> 00:01:31,843
+It almost never goes down.
+
+56
+00:01:32,362 --> 00:01:34,682
+Something that cost $1 in 1970
+
+57
+00:01:34,482 --> 00:01:38,182
+costs about $8.66 today.
+
+58
+00:01:38,650 --> 00:01:41,310
+That's prices rising by almost 4%
+
+59
+00:01:41,110 --> 00:01:41,630
+a year,
+
+60
+00:01:41,830 --> 00:01:42,510
+on average,
+
+61
+00:01:42,690 --> 00:01:44,010
+for more than half a century.
+
+62
+00:01:45,283 --> 00:01:46,963
+So why do prices keep climbing?
+
+63
+00:01:47,443 --> 00:01:48,443
+The simplest answer:
+
+64
+00:01:49,023 --> 00:01:50,703
+when more money chases the same
+
+65
+00:01:50,503 --> 00:01:51,443
+amount of stuff,
+
+66
+00:01:51,463 --> 00:01:52,443
+prices go up.
+
+67
+00:01:52,873 --> 00:01:55,873
+Economists call one version demand-pull inflation.
+
+68
+00:01:56,473 --> 00:01:56,913
+People,
+
+69
+00:01:57,053 --> 00:01:57,593
+businesses,
+
+70
+00:01:57,853 --> 00:01:59,473
+and governments try to spend more
+
+71
+00:01:59,273 --> 00:02:00,733
+than the economy can produce,
+
+72
+00:02:01,153 --> 00:02:02,853
+often when borrowing is cheap,
+
+73
+00:02:03,193 --> 00:02:04,513
+so sellers raise prices.
+
+74
+00:02:05,177 --> 00:02:06,757
+The other is cost-push inflation.
+
+75
+00:02:07,557 --> 00:02:09,697
+When oil spikes or factories shut
+
+76
+00:02:09,497 --> 00:02:10,137
+down,
+
+77
+00:02:10,217 --> 00:02:11,737
+it costs more to make things,
+
+78
+00:02:11,997 --> 00:02:13,717
+and those costs get passed on
+
+79
+00:02:13,517 --> 00:02:13,997
+to you.
+
+80
+00:02:15,150 --> 00:02:16,070
+Most of the time,
+
+81
+00:02:16,110 --> 00:02:17,930
+inflation is slow and quiet.
+
+82
+00:02:18,350 --> 00:02:19,070
+But sometimes,
+
+83
+00:02:18,870 --> 00:02:19,750
+it explodes.
+
+84
+00:02:20,414 --> 00:02:21,574
+In March 1980,
+
+85
+00:02:21,814 --> 00:02:24,494
+prices were rising almost 15% a
+
+86
+00:02:24,294 --> 00:02:24,714
+year.
+
+87
+00:02:25,294 --> 00:02:26,734
+And in June 2022,
+
+88
+00:02:27,114 --> 00:02:28,294
+after the pandemic,
+
+89
+00:02:28,094 --> 00:02:30,294
+inflation hit about 9%,
+
+90
+00:02:30,094 --> 00:02:32,094
+the highest in four decades.
+
+91
+00:02:33,483 --> 00:02:35,183
+When inflation gets out of hand,
+
+92
+00:02:35,323 --> 00:02:37,263
+central banks fight back with one
+
+93
+00:02:37,063 --> 00:02:37,883
+main weapon:
+
+94
+00:02:38,243 --> 00:02:38,983
+interest rates.
+
+95
+00:02:39,515 --> 00:02:41,795
+Higher rates make borrowing more expensive.
+
+96
+00:02:42,475 --> 00:02:44,555
+People and businesses borrow less and
+
+97
+00:02:44,355 --> 00:02:45,095
+spend less,
+
+98
+00:02:45,435 --> 00:02:46,655
+demand cools down,
+
+99
+00:02:46,915 --> 00:02:48,495
+and prices calm down with it.
+
+100
+00:02:49,617 --> 00:02:50,537
+In 1981,
+
+101
+00:02:51,017 --> 00:02:52,777
+to crush double-digit inflation,
+
+102
+00:02:53,377 --> 00:02:55,137
+the Federal Reserve pushed its key
+
+103
+00:02:54,937 --> 00:02:57,277
+interest rate to about 19%.
+
+104
+00:02:57,077 --> 00:02:58,357
+It worked,
+
+105
+00:02:58,657 --> 00:03:00,357
+but it also helped trigger a
+
+106
+00:03:00,157 --> 00:03:01,117
+painful recession.
+
+107
+00:03:01,750 --> 00:03:02,710
+In 2022,
+
+108
+00:03:03,070 --> 00:03:04,990
+it raised rates from almost zero
+
+109
+00:03:04,790 --> 00:03:07,030
+to over 5% in about a
+
+110
+00:03:06,830 --> 00:03:07,730
+year and a half,
+
+111
+00:03:07,930 --> 00:03:09,930
+the fastest climb in four decades.
+
+112
+00:03:11,283 --> 00:03:12,643
+So shouldn't the goal be zero
+
+113
+00:03:12,443 --> 00:03:12,943
+inflation?
+
+114
+00:03:14,023 --> 00:03:14,223
+Surprisingly,
+
+115
+00:03:14,643 --> 00:03:14,983
+no.
+
+116
+00:03:15,463 --> 00:03:17,383
+The US Federal Reserve aims for
+
+117
+00:03:17,183 --> 00:03:18,243
+about 2%.
+
+118
+00:03:18,745 --> 00:03:20,645
+Because falling prices can be even
+
+119
+00:03:20,445 --> 00:03:20,905
+worse.
+
+120
+00:03:21,525 --> 00:03:22,785
+If you expect things to be
+
+121
+00:03:22,585 --> 00:03:23,705
+cheaper next month,
+
+122
+00:03:23,765 --> 00:03:24,205
+you wait.
+
+123
+00:03:24,905 --> 00:03:25,905
+Businesses sell less,
+
+124
+00:03:26,065 --> 00:03:26,705
+cut jobs,
+
+125
+00:03:26,885 --> 00:03:28,425
+and prices fall even further.
+
+126
+00:03:29,001 --> 00:03:31,061
+A little inflation keeps money moving.
+
+127
+00:03:32,317 --> 00:03:34,337
+But inflation doesn't treat everyone the
+
+128
+00:03:34,137 --> 00:03:34,557
+same.
+
+129
+00:03:35,063 --> 00:03:36,303
+If you keep your savings in
+
+130
+00:03:36,103 --> 00:03:36,523
+cash,
+
+131
+00:03:36,843 --> 00:03:37,263
+you lose.
+
+132
+00:03:37,803 --> 00:03:39,743
+Your money quietly buys less every
+
+133
+00:03:39,543 --> 00:03:40,383
+single year.
+
+134
+00:03:40,797 --> 00:03:41,957
+If you owe money at a
+
+135
+00:03:41,757 --> 00:03:42,797
+fixed interest rate,
+
+136
+00:03:43,097 --> 00:03:44,197
+you can actually win,
+
+137
+00:03:43,997 --> 00:03:45,737
+because you pay it back with
+
+138
+00:03:45,537 --> 00:03:46,937
+dollars that are worth less.
+
+139
+00:03:47,490 --> 00:03:49,090
+And if your pay rises slower
+
+140
+00:03:48,890 --> 00:03:49,630
+than prices,
+
+141
+00:03:50,130 --> 00:03:51,210
+you're getting a pay cut,
+
+142
+00:03:51,430 --> 00:03:53,310
+even if your salary never changes.
+
+143
+00:03:54,683 --> 00:03:56,283
+And that last one matters more
+
+144
+00:03:56,083 --> 00:03:56,963
+than you might think.
+
+145
+00:03:57,430 --> 00:03:58,270
+In 1970,
+
+146
+00:03:58,650 --> 00:04:00,910
+a typical non-manager worker in America
+
+147
+00:04:00,710 --> 00:04:03,870
+earned about $3.40 an hour.
+
+148
+00:04:04,630 --> 00:04:04,830
+Today,
+
+149
+00:04:05,030 --> 00:04:07,210
+it's about $32.60.
+
+150
+00:04:07,870 --> 00:04:09,670
+That looks like a massive raise.
+
+151
+00:04:10,331 --> 00:04:11,551
+But adjust for inflation,
+
+152
+00:04:11,351 --> 00:04:13,111
+and the picture changes.
+
+153
+00:04:13,871 --> 00:04:14,951
+In today's dollars,
+
+154
+00:04:15,091 --> 00:04:17,411
+that worker's hourly pay is only
+
+155
+00:04:17,211 --> 00:04:19,371
+about 4% higher than it was
+
+156
+00:04:19,171 --> 00:04:20,331
+in 1973.
+
+157
+00:04:21,099 --> 00:04:22,519
+Most of the raise was eaten
+
+158
+00:04:22,319 --> 00:04:23,659
+by rising prices.
+
+159
+00:04:24,379 --> 00:04:26,299
+This doesn't count benefits like health
+
+160
+00:04:26,099 --> 00:04:26,619
+insurance,
+
+161
+00:04:27,059 --> 00:04:28,279
+but the lesson stands:
+
+162
+00:04:28,639 --> 00:04:30,319
+what matters isn't how much you
+
+163
+00:04:30,119 --> 00:04:30,519
+earn.
+
+164
+00:04:30,819 --> 00:04:32,119
+It's what your pay can buy.
+
+165
+00:04:33,383 --> 00:04:34,463
+Here's a handy trick.
+
+166
+00:04:35,183 --> 00:04:37,083
+Divide 70 by the inflation rate,
+
+167
+00:04:37,263 --> 00:04:38,723
+and you get roughly how many
+
+168
+00:04:38,523 --> 00:04:40,243
+years it takes for prices to
+
+169
+00:04:40,043 --> 00:04:40,423
+double.
+
+170
+00:04:40,909 --> 00:04:41,769
+At 2%,
+
+171
+00:04:41,569 --> 00:04:44,009
+prices double in about 35 years.
+
+172
+00:04:44,509 --> 00:04:45,329
+At 7%,
+
+173
+00:04:45,129 --> 00:04:46,149
+in just 10.
+
+174
+00:04:47,383 --> 00:04:49,243
+That's why many people don't leave
+
+175
+00:04:49,043 --> 00:04:51,183
+long-term savings sitting in cash.
+
+176
+00:04:51,923 --> 00:04:53,543
+They look for places where money
+
+177
+00:04:53,343 --> 00:04:54,843
+can grow at least as fast
+
+178
+00:04:54,643 --> 00:04:55,403
+as prices,
+
+179
+00:04:55,903 --> 00:04:57,923
+knowing that every option comes with
+
+180
+00:04:57,723 --> 00:04:58,443
+its own risks.
+
+181
+00:04:59,026 --> 00:05:00,966
+This channel isn't financial advice.
+
+182
+00:05:01,446 --> 00:05:02,626
+But the lesson is simple:
+
+183
+00:05:02,846 --> 00:05:04,826
+money that sits still slowly melts.
+
+184
+00:05:06,150 --> 00:05:06,550
+So,
+
+185
+00:05:06,350 --> 00:05:07,750
+where did your $100 go?
+
+186
+00:05:08,230 --> 00:05:08,630
+Nowhere.
+
+187
+00:05:08,990 --> 00:05:09,710
+It just shrank,
+
+188
+00:05:09,510 --> 00:05:10,810
+a few cents at a time.
+
+189
+00:05:11,286 --> 00:05:12,706
+If this changed how you see
+
+190
+00:05:12,506 --> 00:05:13,126
+your money,
+
+191
+00:05:13,186 --> 00:05:15,386
+subscribe to Coin Theory.
+
+192
+00:05:15,186 --> 00:05:15,866
+Next time:
+
+193
+00:05:16,026 --> 00:05:17,766
+why houses got so expensive.
+
