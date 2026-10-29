@@ -3,9 +3,12 @@
 Episodes import this module, define SCENES, and call `build(...)`.
 Everything runs locally with free tools installed by studio/setup.sh.
 """
+import difflib
+import hashlib
 import math
 import os
 import random
+import re
 import subprocess
 import sys
 from multiprocessing import Pool
@@ -86,12 +89,13 @@ def fade(t, start, dur=0.4):
 _fonts, _grad, _icons = {}, {}, {}
 
 
-def font(size, weight=700, family='Poppins'):
-    key = (size, weight, family)
+def font(size, weight=700, family='Poppins', k=None):
+    k = k or K
+    key = (size, weight, family, k)
     if key not in _fonts:
         have = sorted(int(f.rsplit('-', 1)[1][:-4]) for f in os.listdir(FONTS) if f.startswith(family + '-'))
         weight = min(have, key=lambda w: abs(w - weight))
-        _fonts[key] = ImageFont.truetype(os.path.join(FONTS, f'{family}-{weight}.ttf'), int(size * K))
+        _fonts[key] = ImageFont.truetype(os.path.join(FONTS, f'{family}-{weight}.ttf'), int(size * k))
     return _fonts[key]
 
 
@@ -105,22 +109,24 @@ def gradient(top, bottom):
     return _grad[key]
 
 
-def icon_image(name, color, size, stroke=2.0):
-    key = (name, color, int(size * K), stroke)
+def icon_image(name, color, size, stroke=2.0, k=None):
+    k = k or K
+    key = (name, color, int(size * k), stroke)
     if key not in _icons:
         import cairosvg
         from io import BytesIO
         svg = open(os.path.join(ICONS, f'{name}.svg')).read()
         hexc = '#%02x%02x%02x' % color[:3]
         svg = svg.replace('currentColor', hexc).replace('stroke-width="2"', f'stroke-width="{stroke}"')
-        png = cairosvg.svg2png(bytestring=svg.encode(), output_width=int(size * K), output_height=int(size * K))
+        png = cairosvg.svg2png(bytestring=svg.encode(), output_width=int(size * k), output_height=int(size * k))
         _icons[key] = Image.open(BytesIO(png)).convert('RGBA')
     return _icons[key]
 
 
 class Canvas:
-    def __init__(self, top=BG1, bottom=BG2):
-        self.img = gradient(top, bottom).copy()
+    def __init__(self, top=BG1, bottom=BG2, img=None, k=None):
+        self.k = k or K
+        self.img = img if img is not None else gradient(top, bottom).copy()
         self.d = ImageDraw.Draw(self.img, 'RGBA')
         self.alpha = 1.0
 
@@ -128,7 +134,8 @@ class Canvas:
         if c is None:
             return None
         base = c[3] / 255 if len(c) == 4 else 1.0
-        return (c[0], c[1], c[2], int(255 * clamp(base * a * self.alpha)))
+        al = int(255 * clamp(base * a * self.alpha))
+        return (c[0], c[1], c[2], al) if al > 0 else None
 
     def circle(self, x, y, r, fill=None, outline=None, width=0, a=1.0):
         self.ellipse(x, y, r, r, fill, outline, width, a)
@@ -136,57 +143,63 @@ class Canvas:
     def ellipse(self, x, y, rx, ry, fill=None, outline=None, width=0, a=1.0):
         if rx <= 0.2 or ry <= 0.2:
             return
-        self.d.ellipse([(x - rx) * K, (y - ry) * K, (x + rx) * K, (y + ry) * K],
-                       fill=self._c(fill, a), outline=self._c(outline, a), width=int(width * K))
+        self.d.ellipse([(x - rx) * self.k, (y - ry) * self.k, (x + rx) * self.k, (y + ry) * self.k],
+                       fill=self._c(fill, a), outline=self._c(outline, a), width=int(width * self.k))
 
     def poly(self, pts, fill=None, outline=None, width=0, a=1.0):
-        p = [(x * K, y * K) for x, y in pts]
+        p = [(x * self.k, y * self.k) for x, y in pts]
         self.d.polygon(p, fill=self._c(fill, a))
         if outline and width:
-            self.d.line(p + [p[0], p[1]], fill=self._c(outline, a), width=int(width * K), joint='curve')
+            self.d.line(p + [p[0], p[1]], fill=self._c(outline, a), width=int(width * self.k), joint='curve')
 
     def line(self, pts, fill, width, a=1.0):
         if len(pts) < 2:
             return
-        self.d.line([(x * K, y * K) for x, y in pts], fill=self._c(fill, a), width=max(1, int(width * K)),
+        if self._c(fill, a) is None:
+            return
+        self.d.line([(x * self.k, y * self.k) for x, y in pts], fill=self._c(fill, a), width=max(1, int(width * self.k)),
                     joint='curve')
 
     def rrect(self, x0, y0, x1, y1, r, fill=None, outline=None, width=0, a=1.0):
         if x1 <= x0 or y1 <= y0:
             return
         r = min(r, (x1 - x0) / 2, (y1 - y0) / 2)
-        self.d.rounded_rectangle([x0 * K, y0 * K, x1 * K, y1 * K], radius=r * K, fill=self._c(fill, a),
-                                 outline=self._c(outline, a), width=int(width * K))
+        self.d.rounded_rectangle([x0 * self.k, y0 * self.k, x1 * self.k, y1 * self.k], radius=r * self.k, fill=self._c(fill, a),
+                                 outline=self._c(outline, a), width=int(width * self.k))
 
     def arc(self, x, y, r, start, end, fill, width, a=1.0):
-        self.d.arc([(x - r) * K, (y - r) * K, (x + r) * K, (y + r) * K], start, end, fill=self._c(fill, a),
-                   width=max(1, int(width * K)))
+        if self._c(fill, a) is None:
+            return
+        self.d.arc([(x - r) * self.k, (y - r) * self.k, (x + r) * self.k, (y + r) * self.k], start, end, fill=self._c(fill, a),
+                   width=max(1, int(width * self.k)))
 
     def text(self, x, y, s, size, fill=WHITE, weight=700, anchor='mm', a=1.0, shadow=True, family='Poppins',
              stroke=0, stroke_fill=INK):
-        f = font(size, weight, family)
+        if a * self.alpha <= 0.004:
+            return
+        f = font(size, weight, family, self.k)
         if shadow:
-            self.d.text(((x + 2) * K, (y + 3) * K), s, font=f, fill=self._c((0, 0, 0, 110), a), anchor=anchor,
-                        stroke_width=int(stroke * K), stroke_fill=self._c((0, 0, 0, 110), a))
-        self.d.text((x * K, y * K), s, font=f, fill=self._c(fill, a), anchor=anchor,
-                    stroke_width=int(stroke * K), stroke_fill=self._c(stroke_fill, a))
+            self.d.text(((x + 2) * self.k, (y + 3) * self.k), s, font=f, fill=self._c((0, 0, 0, 110), a), anchor=anchor,
+                        stroke_width=int(stroke * self.k), stroke_fill=self._c((0, 0, 0, 110), a))
+        self.d.text((x * self.k, y * self.k), s, font=f, fill=self._c(fill, a), anchor=anchor,
+                    stroke_width=int(stroke * self.k), stroke_fill=self._c(stroke_fill, a))
 
     def icon(self, name, x, y, size, color=WHITE, a=1.0, stroke=2.0):
         a = clamp(a * self.alpha)
         if a <= 0 or size < 2:
             return
-        im = icon_image(name, color, size, stroke)
+        im = icon_image(name, color, size, stroke, self.k)
         if a < 1:
             im = im.copy()
             im.putalpha(im.getchannel('A').point(lambda v: int(v * a)))
-        self.img.paste(im, (int((x - size / 2) * K), int((y - size / 2) * K)), im)
+        self.img.paste(im, (int((x - size / 2) * self.k), int((y - size / 2) * self.k)), im)
 
     def frame(self):
         return self.img.resize((OUT_W, OUT_H), Image.LANCZOS)
 
 
 # ------------------------------------------------------------- characters ---
-def face(c, x, y, r, mood='happy', look=(0, 0), a=1.0, t=0.0, phase=0.0):
+def face(c, x, y, r, mood='happy', look=(0, 0), a=1.0, t=0.0, phase=0.0, talk=None):
     ex, ey, er = r * 0.33, y - r * 0.12, r * 0.17
     lw = max(1.5, r * 0.065)
     blink = math.sin(t * 1.3 + phase * 5) > 0.985
@@ -214,12 +227,12 @@ def face(c, x, y, r, mood='happy', look=(0, 0), a=1.0, t=0.0, phase=0.0):
     elif mood == 'angry':
         c.line([(x - mw, my), (x + mw, my)], INK, lw, a)
     elif mood == 'talk':
-        o = abs(math.sin(t * 11 + phase)) * 0.5 + 0.2
+        o = abs(math.sin(t * 11 + phase)) * 0.5 + 0.2 if talk is None else 0.08 + 0.85 * talk
         c.ellipse(x, my, mw * 0.55, mw * o, INK, a=a)
 
 
 def penny(c, x, y, r, t, mood='happy', look=(0, 0), a=1.0, arms=(30, 150), wave=False, bounce=True,
-          scale_y=1.0):
+          scale_y=1.0, talk=None):
     """Penny, the channel mascot: a friendly gold coin with arms and legs."""
     if r <= 1:
         return
@@ -245,7 +258,9 @@ def penny(c, x, y, r, t, mood='happy', look=(0, 0), a=1.0, arms=(30, 150), wave=
     c.ellipse(x, by, r, ry, GOLD, GOLD_D, max(2, r * 0.09), a)
     c.ellipse(x, by, r * 0.8, ry * 0.8, None, GOLD_L, max(1.5, r * 0.04), a)
     c.ellipse(x - r * 0.4, by - ry * 0.45, r * 0.16, ry * 0.1, (255, 255, 255, 120), a=a)
-    face(c, x, by + r * 0.05, r * 0.95, mood, look, a, t)
+    if talk is not None and talk > 0.05 and mood in ('happy', 'proud'):
+        mood = 'talk'
+    face(c, x, by + r * 0.05, r * 0.95, mood, look, a, t, talk=talk)
 
 
 def person(c, x, y, s, color, t=0.0, phase=0.0, mood='happy', a=1.0):
@@ -338,13 +353,131 @@ def line_chart(c, box, xs, ys, xr, yr, k, color=GOLD, a=1.0, xticks=(), yticks=(
     return px, py
 
 
+# ------------------------------------------------------------ spoken text --
+_ONES = ('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen '
+         'sixteen seventeen eighteen nineteen').split()
+_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+
+
+def int_words(n):
+    if n < 20:
+        return _ONES[n]
+    if n < 100:
+        return _TENS[n // 10] + ('-' + _ONES[n % 10] if n % 10 else '')
+    if n < 1000:
+        return _ONES[n // 100] + ' hundred' + (' ' + int_words(n % 100) if n % 100 else '')
+    for div, name in ((10 ** 9, 'billion'), (10 ** 6, 'million'), (1000, 'thousand')):
+        if n >= div:
+            return int_words(n // div) + ' ' + name + (' ' + int_words(n % div) if n % div else '')
+
+
+def year_words(n):
+    if 2000 <= n < 2010:
+        return 'two thousand' + (' ' + _ONES[n % 10] if n % 10 else '')
+    hi, lo = divmod(n, 100)
+    if lo == 0:
+        return int_words(hi) + ' hundred'
+    return int_words(hi) + ' ' + (int_words(lo) if lo >= 10 else 'oh ' + _ONES[lo])
+
+
+def num_words(s):
+    if '.' in s:
+        a, b = s.split('.')
+        return int_words(int(a or 0)) + ' point ' + ' '.join(_ONES[int(d)] for d in b)
+    return int_words(int(s))
+
+
+_TOK = re.compile(r'^([^\w$~]*)(.*?)([^\w%]*)$')
+
+
+def say(token):
+    """Spoken form of one display token: '$8.66' -> 'eight dollars and sixty-six cents', '1970' -> year."""
+    pre, core, post = _TOK.match(token).groups()
+    core = core.lstrip('~')
+    m = re.fullmatch(r'\$(\d[\d,]*)(?:\.(\d\d))?', core)
+    if m:
+        d, cents = int(m.group(1).replace(',', '')), int(m.group(2) or 0)
+        parts = []
+        if d:
+            parts.append(int_words(d) + (' dollar' if d == 1 else ' dollars'))
+        if cents:
+            parts.append(int_words(cents) + (' cent' if cents == 1 else ' cents'))
+        word = ' and '.join(parts) or 'zero dollars'
+    elif re.fullmatch(r'\d+(\.\d+)?%', core):
+        word = num_words(core[:-1]) + ' percent'
+    elif re.fullmatch(r'(1[89]|20)\d\ds', core):
+        y = year_words(int(core[:4]))
+        word = y[:-1] + 'ies' if y.endswith('y') else y + 's'
+    elif re.fullmatch(r'(1[89]|20)\d\d', core):
+        word = year_words(int(core))
+    elif re.fullmatch(r'\d[\d,]*(\.\d+)?', core):
+        word = num_words(core.replace(',', ''))
+    else:
+        word = core
+    return pre + word + post
+
+
+def parse_line(text):
+    """Display tokens with spoken forms. Write {shown|spoken} to override, e.g. {$100 bill|hundred-dollar bill}."""
+    toks = []
+    for m in re.finditer(r'\{([^}|]*)\|([^}]*)\}(\S*)|\S+', text):
+        if m.group(1) is not None:
+            toks.append((m.group(1) + m.group(3), m.group(2) + m.group(3)))
+        else:
+            toks.append((m.group(0), say(m.group(0))))
+    return toks
+
+
+def _norm(w):
+    return re.sub(r'[^a-z0-9]', '', w.lower())
+
+
+def align(tokens, heard, dur):
+    """Time each display token from Whisper's words. Words Whisper invents never match, so never show."""
+    spoken = []
+    for ti, (_, sp) in enumerate(tokens):
+        for w in sp.replace('-', ' ').split():
+            if _norm(w):
+                spoken.append((ti, _norm(w)))
+    hw = []
+    for h in heard:
+        sub = [x for x in (_norm(y) for y in say(h['w'].strip()).replace('-', ' ').split()) if x]
+        for j, x in enumerate(sub):
+            d = (h['e'] - h['s']) / len(sub)
+            hw.append((x, h['s'] + j * d, h['s'] + (j + 1) * d))
+    sm = difflib.SequenceMatcher(None, [n for _, n in spoken], [x for x, _, _ in hw], autojunk=False)
+    times = [None] * len(spoken)
+    for a, b, size in sm.get_matching_blocks():
+        for k in range(size):
+            times[a + k] = (hw[b + k][1], min(hw[b + k][2], dur))
+    i = 0
+    while i < len(times):  # interpolate runs of unmatched words between their matched neighbours
+        if times[i] is None:
+            j = i
+            while j < len(times) and times[j] is None:
+                j += 1
+            lo = times[i - 1][1] if i else 0.0
+            hi = times[j][0] if j < len(times) else dur
+            step = (hi - lo) / (j - i)
+            for k in range(i, j):
+                times[k] = (lo + (k - i) * step, lo + (k - i + 1) * step)
+            i = j
+        i += 1
+    out = []
+    for ti, (disp, _) in enumerate(tokens):
+        ts = [times[k] for k, (tj, _) in enumerate(spoken) if tj == ti]
+        if ts:
+            out.append({'w': disp, 's': min(x[0] for x in ts), 'e': max(x[1] for x in ts)})
+    coverage = sum(size for *_, size in sm.get_matching_blocks()) / max(1, len(spoken))
+    return out, coverage
+
+
 # ---------------------------------------------------------------- captions --
 def caption_chunks(words, max_words=6):
     chunks, cur = [], []
     for w in words:
         cur.append(w)
-        end_punct = w['w'].rstrip().endswith(('.', '?', '!', ','))
-        if len(cur) >= max_words or end_punct:
+        if len(cur) >= max_words or w['w'].rstrip('"\'').endswith(('.', '?', '!', ',', ':')):
             chunks.append(cur)
             cur = []
     if cur:
@@ -352,25 +485,38 @@ def caption_chunks(words, max_words=6):
     return chunks
 
 
-def draw_captions(c, t, chunks):
+def draw_captions(c, t, chunks, x=W / 2, y=H - 64, size=30, maxw=1180):
     for i, ch in enumerate(chunks):
         s = ch[0]['s'] - 0.05
-        e = chunks[i + 1][0]['s'] - 0.05 if i + 1 < len(chunks) and chunks[i + 1][0]['s'] - ch[-1]['e'] < 0.6 \
-            else ch[-1]['e'] + 0.35
+        nxt = chunks[i + 1][0]['s'] - 0.05 if i + 1 < len(chunks) else None
+        e = nxt if nxt is not None and nxt - ch[-1]['e'] < 0.6 else ch[-1]['e'] + 0.35
         if not s <= t < e:
             continue
-        f = font(30, 800)
-        parts = [w['w'].strip() for w in ch]
-        widths = [f.getlength(p + ' ') / K for p in parts]
-        total = sum(widths)
-        x = W / 2 - total / 2
-        y = H - 64
+        parts = [w['w'] for w in ch]
+        sz = size
+        while True:
+            f = font(sz, 900, k=c.k)
+            widths = [f.getlength(p + ' ') / c.k for p in parts]
+            if sum(widths) <= maxw or sz <= 14:
+                break
+            sz -= 2
+        px = x - sum(widths) / 2
         pk = ease_out(seg(t, s, s + 0.15))
         for p, wdt, w in zip(parts, widths, ch):
             col = GOLD if w['s'] <= t else WHITE
-            c.text(x, y + 6 * (1 - pk), p, 30, col, 800, anchor='lm', a=pk, shadow=False, stroke=3,
+            c.text(px, y + 6 * (1 - pk), p, sz, col, 900, anchor='lm', a=pk, shadow=False, stroke=max(2, sz // 9),
                    stroke_fill=(10, 12, 24))
-            x += wdt
+            px += wdt
+        return
+
+
+def write_srt(chunks_abs, path):
+    def ts(x):
+        ms = int(round(x * 1000))
+        return f'{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}'
+    with open(path, 'w') as f:
+        for i, ch in enumerate(chunks_abs, 1):
+            f.write(f"{i}\n{ts(ch[0]['s'])} --> {ts(ch[-1]['e'] + 0.2)}\n{' '.join(w['w'] for w in ch)}\n\n")
 
 
 # ------------------------------------------------------------------- voice --
@@ -399,7 +545,8 @@ def word_times(audio):
         _whisper = WhisperModel('base.en', device='cpu', compute_type='int8',
                                 download_root=os.path.join(MODELS, 'whisper'))
     a16 = np.interp(np.linspace(0, len(audio) - 1, int(len(audio) * 16000 / SR)), np.arange(len(audio)), audio)
-    segs, _ = _whisper.transcribe(a16.astype(np.float32), word_timestamps=True, language='en')
+    segs, _ = _whisper.transcribe(a16.astype(np.float32), word_timestamps=True, language='en',
+                                  condition_on_previous_text=False)
     return [{'w': w.word, 's': w.start, 'e': w.end} for s in segs for w in s.words]
 
 
@@ -522,97 +669,178 @@ def limit(x, ceiling):
 
 
 # ------------------------------------------------------------------- build --
+XF = 0.4  # crossfade between scenes, seconds
+
+
 class Ctx:
-    def __init__(self, t, starts, ends, dur):
-        self.t, self.L, self.E, self.dur = t, starts, ends, dur
+    def __init__(self, t, starts, ends, dur, env=None):
+        self.t, self.L, self.E, self.dur, self._env = t, starts, ends, dur, env
+
+    def talk(self):
+        """Narration loudness right now (0..1), for lip-sync."""
+        if self._env is None:
+            return None
+        i = int(self.t * FPS)
+        return float(self._env[i]) if 0 <= i < len(self._env) else 0.0
+
+
+_vig = {}
+
+
+def vignette(w, h, strength=0.24):
+    if (w, h) not in _vig:
+        yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+        r = np.sqrt(((xx - w / 2) / (w / 2)) ** 2 + ((yy - h / 2) / (h / 2)) ** 2) / math.sqrt(2)
+        _vig[w, h] = (1 - strength * r ** 2.2)[:, :, None]
+    return _vig[w, h]
+
+
+def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
+    """Draw one frame: scene -> slow camera zoom -> vignette -> captions (and vertical layout for Shorts)."""
+    from PIL import ImageFilter
+    c = Canvas(*sc.get('bg', (BG1, BG2)))
+    sc['draw'](c, Ctx(t, starts, ends, dur, env))
+    big = c.img
+    z0, z1 = sc.get('cam', (1.0, 1.045))
+    z = lerp(z0, z1, ease(t / dur)) if dur else z0
+    fx, fy = sc.get('focus', (0.5, 0.5))
+    bw, bh = big.size
+    cw, ch = bw / z, bh / z
+    x0 = clamp(fx * bw - cw / 2, 0, bw - cw)
+    y0 = clamp(fy * bh - ch / 2, 0, bh - ch)
+    box = (x0, y0, x0 + cw, y0 + ch)
+    if layout == 'long':
+        img = big.resize((OUT_W, OUT_H), Image.LANCZOS, box=box)
+        img = Image.fromarray((np.asarray(img).astype(np.float32) * vignette(OUT_W, OUT_H)).astype(np.uint8))
+        if sc.get('captions', True):
+            draw_captions(Canvas(img=img, k=OUT_W / W), t, chunks)
+        return img
+    # Shorts: 1080x1920, blurred backdrop, the scene in the middle, big captions underneath
+    main = big.resize((1080, 608), Image.LANCZOS, box=box)
+    back = big.resize((480, 270), Image.BILINEAR, box=box).filter(ImageFilter.GaussianBlur(10))
+    back = back.resize((3413, 1920), Image.BILINEAR).crop((1166, 0, 2246, 1920))
+    back = Image.fromarray((np.asarray(back).astype(np.float32) * 0.45).astype(np.uint8))
+    back.paste(main, (0, 600))
+    cv = Canvas(img=back, k=1.5)  # logical 720 x 1280
+    cv.text(360, 300, 'COIN THEORY', 40, GOLD, 900, stroke=4)
+    if sc.get('captions', True):
+        draw_captions(cv, t, chunks, x=360, y=930, size=46, maxw=660)
+    return back
 
 
 _JOB = {}  # set before the worker pool forks; scenes hold lambdas that can't be pickled
 
 
 def _render_scene(si):
-    scenes, plan, build_dir = _JOB['scenes'], _JOB['plan'], _JOB['build_dir']
+    scenes, plan, build_dir, layout = _JOB['scenes'], _JOB['plan'], _JOB['build_dir'], _JOB['layout']
     sc = scenes[si]
-    dur, starts, ends, chunks = plan[si]
-    path = os.path.join(build_dir, f'seg_{si:02d}.mp4')
+    dur, starts, ends, chunks, env = plan[si]
+    ow, oh = (OUT_W, OUT_H) if layout == 'long' else (1080, 1920)
+    path = os.path.join(build_dir, f'{layout}_{si:02d}.mp4')
     ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24',
-                           '-s', f'{OUT_W}x{OUT_H}', '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset',
-                           'medium', '-crf', '18', '-pix_fmt', 'yuv420p', path], stdin=subprocess.PIPE)
+                           '-s', f'{ow}x{oh}', '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset',
+                           'medium', '-crf', '16', '-pix_fmt', 'yuv420p', path], stdin=subprocess.PIPE)
+    first, last = si == _JOB['first'], si == _JOB['last']
     for fi in range(int(round(dur * FPS))):
         t = fi / FPS
-        c = Canvas(*sc.get('bg', (BG1, BG2)))
-        sc['draw'](c, Ctx(t, starts, ends, dur))
-        if sc.get('captions', True):
-            draw_captions(c, t, chunks)
-        arr = np.asarray(c.frame())
-        if sc.get('fade', True):
-            f = clamp(min(t / 0.3, (dur - t) / 0.3))
-            if f < 1:
-                arr = (arr.astype(np.float32) * f).astype(np.uint8)
+        arr = np.asarray(compose(sc, t, starts, ends, dur, env, chunks, layout))
+        f = min(t / 0.5 if first else 1.0, (dur - t) / 0.8 if last else 1.0)
+        if f < 1:
+            arr = (arr.astype(np.float32) * clamp(f)).astype(np.uint8)
         ff.stdin.write(arr.tobytes())
     ff.stdin.close()
     ff.wait()
     return path
 
 
-def build(scenes, out_path, build_dir, only=None):
-    """Synthesize narration, time scenes to it, render, mix and encode."""
-    os.makedirs(build_dir, exist_ok=True)
-    plan, voice_parts, fx_cues = [], [], []
-    clock = 0.0
-    print('narration + word timings...', flush=True)
+def narrate(scenes, build_dir, min_coverage=0.85):
+    """Synthesize every line (cached by text), time captions, and build lip-sync envelopes."""
+    plan, voice_parts = [], []
     for si, sc in enumerate(scenes):
-        t, starts, ends, words = sc.get('lead', 0.5), [], [], []
-        for li, text in enumerate(sc['lines']):
-            cache = os.path.join(build_dir, f'vo_{VOICE}_{si:02d}_{li}.npy')
+        t, starts, ends, words = sc.get('lead', 0.55), [], [], []
+        parts = []
+        for text in sc['lines']:
+            toks = parse_line(text)
+            spoken = ' '.join(sp for _, sp in toks)
+            key = hashlib.md5(f'{VOICE}|{spoken}'.encode()).hexdigest()[:12]
+            cache = os.path.join(build_dir, f'vo_{key}.npy')
             if os.path.exists(cache):
                 a = np.load(cache)
             else:
-                a = tts(text)
+                a = tts(spoken)
                 np.save(cache, a)
-            wt = word_times(a)
+            dur = len(a) / SR
+            timed, cov = align(toks, word_times(a), dur)
+            if cov < min_coverage:
+                print(f'  WARNING scene {si}: only {cov:.0%} of words recognised in: {text!r}', flush=True)
             starts.append(t)
-            ends.append(t + len(a) / SR)
-            words += [{'w': w['w'], 's': t + w['s'], 'e': t + w['e']} for w in wt]
-            voice_parts.append((clock + t, a))
-            t += len(a) / SR + sc.get('gap', 0.35)
-        dur = max(sc.get('min', 0), t + sc.get('tail', 0.5))
-        dur = round(dur * FPS) / FPS
-        for at, kind in sc.get('sfx', lambda L: [])(starts):
-            fx_cues.append((clock + at, kind))
-        plan.append((dur, starts, ends, caption_chunks(words)))
-        clock += dur
+            ends.append(t + dur)
+            words += [{'w': w['w'], 's': t + w['s'], 'e': t + w['e']} for w in timed]
+            parts.append((t, a))
+            t += dur + sc.get('gap', 0.4)
+        dur = round(max(sc.get('min', 0), t + sc.get('tail', 0.6)) * FPS) / FPS
+        local = np.zeros(int(dur * SR) + SR)
+        for at, a in parts:
+            place(local, a, at)
+        hop = SR // FPS
+        env = np.array([np.sqrt(np.mean(local[i:i + hop] ** 2)) for i in range(0, len(local) - hop, hop)])
+        if env.max() > 0:
+            env = np.clip(env / np.percentile(env[env > 0.005], 90), 0, 1) if (env > 0.005).any() else env
+        plan.append((dur, starts, ends, caption_chunks(words), env))
+        voice_parts.append(parts)
+    return plan, voice_parts
+
+
+def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
+    """Narrate, render scenes in parallel, crossfade them, mix audio, encode. Returns (total, chapters)."""
+    os.makedirs(build_dir, exist_ok=True)
+    print('narration + caption timing...', flush=True)
+    plan, voice_parts = narrate(scenes, build_dir)
+    starts_abs, clock = [], 0.0
+    for i, (dur, *_r) in enumerate(plan):
+        starts_abs.append(clock)
+        clock += dur - (XF if i < len(plan) - 1 else 0)
     total = clock
-    print(f'total {total:.1f}s ({total / 60:.1f} min); rendering...', flush=True)
-    _JOB.update(scenes=scenes, plan=plan, build_dir=build_dir)
+    print(f'total {total:.1f}s ({total / 60:.1f} min); rendering {layout}...', flush=True)
+    _JOB.update(scenes=scenes, plan=plan, build_dir=build_dir, layout=layout, first=0, last=len(scenes) - 1)
     jobs = [i for i in range(len(scenes)) if only is None or i in only]
     jobs.sort(key=lambda i: -plan[i][0])
     with Pool(os.cpu_count()) as pool:
         for p in pool.imap_unordered(_render_scene, jobs):
             print('  done', os.path.basename(p), flush=True)
-    n = int(total * SR) + SR
-    voice = np.zeros(n)
-    for at, a in voice_parts:
-        place(voice, a, at)
-    fx = np.zeros(n)
-    for at, kind in fx_cues:
-        place(fx, sfx(kind), at)
-    mus = music(total + 2, os.path.join(build_dir, 'music.wav'))
+    # audio
+    n = int((total + 1) * SR)
+    voice, fx = np.zeros(n), np.zeros(n)
+    for si, parts in enumerate(voice_parts):
+        for at, a in parts:
+            place(voice, a, starts_abs[si] + at)
+        for at, kind in scenes[si].get('sfx', lambda L: [])(plan[si][1]):
+            place(fx, sfx(kind), starts_abs[si] + at)
+    mus = music(total + 2, os.path.join(build_dir, f'music_{layout}.wav'))
     audio = master(voice, mus, fx, total)
-    wav = os.path.join(build_dir, 'mix.wav')
+    wav = os.path.join(build_dir, f'mix_{layout}.wav')
     sf.write(wav, audio, SR, subtype='PCM_16')
-    lst = os.path.join(build_dir, 'list.txt')
-    with open(lst, 'w') as f:
-        for i in range(len(scenes)):
-            f.write(f"file 'seg_{i:02d}.mp4'\n")
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', lst, '-i', wav,
-                    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', out_path],
-                   check=True)
-    chapters, clock = [], 0.0
-    for sc, (dur, *_rest) in zip(scenes, plan):
-        if sc.get('chapter'):
-            chapters.append((clock, sc['chapter']))
-        clock += dur
+    # video: chain crossfades between scene segments
+    inputs, filt, prev = [], [], '0:v'
+    for i in range(len(scenes)):
+        inputs += ['-i', os.path.join(build_dir, f'{layout}_{i:02d}.mp4')]
+    for i in range(1, len(scenes)):
+        trans = scenes[i].get('trans', 'fade')
+        filt.append(f'[{prev}][{i}:v]xfade=transition={trans}:duration={XF}:offset={starts_abs[i]:.4f}[v{i}]')
+        prev = f'v{i}'
+    cmd = ['ffmpeg', '-y', '-loglevel', 'error'] + inputs + ['-i', wav]
+    if filt:
+        cmd += ['-filter_complex', ';'.join(filt), '-map', f'[{prev}]']
+    else:
+        cmd += ['-map', '0:v']
+    cmd += ['-map', f'{len(scenes)}:a', '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-pix_fmt', 'yuv420p',
+            '-c:a', 'aac', '-b:a', '256k', '-t', f'{total:.3f}', '-movflags', '+faststart', out_path]
+    subprocess.run(cmd, check=True)
+    if srt_path:
+        chunks_abs = [[{'w': w['w'], 's': starts_abs[si] + w['s'], 'e': starts_abs[si] + w['e']} for w in ch]
+                      for si, pl in enumerate(plan) if scenes[si].get('captions', True) for ch in pl[3]]
+        write_srt(chunks_abs, srt_path)
+    chapters = [(starts_abs[i], sc['chapter']) for i, sc in enumerate(scenes) if sc.get('chapter')]
     print('wrote', out_path)
     return total, chapters
 
@@ -621,6 +849,5 @@ def still(scene, t, path, starts=None):
     """Render a single preview frame of one scene (no narration needed)."""
     starts = starts or [0.5 + 4 * i for i in range(len(scene['lines']))]
     ends = [s + 3.6 for s in starts]
-    c = Canvas(*scene.get('bg', (BG1, BG2)))
-    scene['draw'](c, Ctx(t, starts, ends, ends[-1] + 1 if ends else 6))
-    c.frame().save(path)
+    dur = ends[-1] + 1 if ends else 6
+    compose(dict(scene, captions=False), t, starts, ends, dur, None, [], 'long').save(path)
