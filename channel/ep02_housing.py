@@ -232,8 +232,8 @@ def s_payment(c, x):
         c.text(640, 420, '30-year mortgage rate today', 22, MUTED, 600, a=fade(t, 0.3))
         return
     span = x.E[1] - L[1]
-    for i, (label, pay, share, col, f) in enumerate((('2021', PAY_2021, SHARE_2021, MINT, 0.2),
-                                                     ('today', PAY_NOW, SHARE_NOW, CORAL, 0.55))):
+    for i, (label, pay, share, col, f) in enumerate((('2021', PAY_2021, SHARE_2021, MINT, 0.0),
+                                                     ('today', PAY_NOW, SHARE_NOW, CORAL, 0.45))):
         g = ease(seg(t, L[1] + span * f, L[1] + span * f + 1.2))
         bx = 380 + i * 520
         top = 560 - 340 * (pay / 2400) * g
@@ -293,8 +293,8 @@ def s_fix(c, x):
     c.text(640, 80, 'Build more homes where people want to live', 34, WHITE, 900, a=fade(t, 0.3))
     if t > L[1]:
         k = pop(t, L[1] + 0.5)
-        c.rrect(410, 600, 870, 650, 16, (255, 255, 255, 22), MUTED, 2, a=clamp(k))
-        c.text(640, 625, 'Education only - not financial advice', 20, WHITE, 700, a=clamp(k))
+        c.rrect(410, 115, 870, 160, 16, (255, 255, 255, 22), MUTED, 2, a=clamp(k))
+        c.text(640, 138, 'Education only - not financial advice', 20, WHITE, 700, a=clamp(k))
 
 
 def s_outro(c, x):

@@ -432,24 +432,38 @@ def _norm(w):
     return re.sub(r'[^a-z0-9]', '', w.lower())
 
 
+_CONTRACTIONS = {"they're": 'they are', "it's": 'it is', "that's": 'that is', "you're": 'you are',
+                 "don't": 'do not', "isn't": 'is not', "doesn't": 'does not', "didn't": 'did not',
+                 "shouldn't": 'should not', "can't": 'cannot', "won't": 'will not', "here's": 'here is',
+                 "let's": 'let us', "what's": 'what is', "there's": 'there is', "we'll": 'we will',
+                 "you'll": 'you will', "we're": 'we are', "i'm": 'i am'}
+
+
+def _words(text):
+    """Normalized words, with contractions expanded so "they're" matches "they are"."""
+    out = []
+    for w in text.replace('-', ' ').split():
+        key = re.sub(r"[^a-z']", '', w.lower().replace('\u2019', "'"))
+        out += [x for x in (_norm(y) for y in _CONTRACTIONS.get(key, w).split()) if x]
+    return out
+
+
 def align(tokens, heard, dur):
     """Time each display token from Whisper's words. Words Whisper invents never match, so never show."""
     spoken = []
     for ti, (_, sp) in enumerate(tokens):
-        for w in sp.replace('-', ' ').split():
-            if _norm(w):
-                spoken.append((ti, _norm(w)))
+        spoken += [(ti, w) for w in _words(sp)]
     merged = []  # Whisper sometimes splits "$1.83" into "$1" + ".83"; rejoin before matching
     for h in heard:
         w = h['w'].strip()
-        if merged and re.fullmatch(r'\.\d+[.,?!]*', w) and re.search(r'\d$', merged[-1]['w'].strip()):
+        if merged and re.fullmatch(r'([.,]\d+%?|%|-\w+)[.,?!]*', w) and re.search(r'\d$', merged[-1]['w'].strip()):
             merged[-1] = {'w': merged[-1]['w'].strip() + w, 's': merged[-1]['s'], 'e': h['e']}
         else:
             merged.append(h)
     heard = merged
     hw = []
     for h in heard:
-        sub = [x for x in (_norm(y) for y in say(h['w'].strip()).replace('-', ' ').split()) if x]
+        sub = _words(say(h['w'].strip()))
         for j, x in enumerate(sub):
             d = (h['e'] - h['s']) / len(sub)
             hw.append((x, h['s'] + j * d, h['s'] + (j + 1) * d))
