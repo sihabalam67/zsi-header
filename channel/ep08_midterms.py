@@ -98,8 +98,12 @@ def s_every(c, x):
     if k > 0:
         c.text(640, 430, f'+{AVG:.0f}%', int(110 * (0.6 + 0.4 * clamp(k))), GOLD, 900, a=clamp(k), stroke=6)
         c.text(640, 505, 'average gain in the year after', 26, WHITE, 800, a=clamp(k))
-    if t > L[2]:
+    if t > L[2] and t < L[2] + 2.6:
         chip(c, 640, 580, 'Election Day: Tuesday, November 3', CORAL, pop(t, L[2] + 0.3), 24)
+    if t >= L[2] + 2.6:  # the question, then what it means for you
+        chip(c, 640, 580, 'Will it be 19 for 19?', GOLD, pop(t, L[2] + 2.6), 28)
+    if t > L[2] + 5.3:
+        chip(c, 640, 650, 'and what it means for your money', MINT, pop(t, L[2] + 5.3), 22)
     penny(c, 1150, 560, 55, t, 'shocked' if t > L[1] else 'happy', look=(-1, 0), talk=x.talk())
 
 
@@ -107,14 +111,18 @@ def s_what(c, x):
     t, L = x.t, x.L
     specks(c, t, 82)
     c.text(640, 80, 'What is a midterm?', 40, WHITE, 900, a=fade(t, 0))
-    k = pop(t, L[0] + 1.0)
+    if t > L[0] + 1.6 and t < L[1]:
+        chip(c, 640, 160, 'every 2 years', SKY, pop(t, L[0] + 1.6), 24)
+    k = pop(t, L[0] + 3.4)
     if k > 0:
         c.icon('landmark', 330, 280, 150 * k, GOLD)
         c.text(330, 410, 'House: all 435 seats', 30, WHITE, 900, a=clamp(k))
-        c.text(950, 410, 'Senate: about 1 in 3', 30, WHITE, 900, a=fade(t, L[0] + 2.2))
-        c.icon('landmark', 950, 280, 150 * clamp(pop(t, L[0] + 2.2)), SKY)
-    if t > L[1]:
+        c.text(950, 410, 'Senate: about 1 in 3', 30, WHITE, 900, a=fade(t, L[0] + 6.6))
+        c.icon('landmark', 950, 280, 150 * clamp(pop(t, L[0] + 6.6)), SKY)
+    if t > L[1] and t < L[1] + 4.6:
         chip(c, 640, 500, "halfway through the president's term", GOLD, pop(t, L[1] + 0.3), 24)
+    if t >= L[1] + 4.6:
+        chip(c, 640, 500, "a report card on the president", GOLD, pop(t, L[1] + 4.6), 26)
     if t > L[2]:
         chip(c, 640, 570, 'Congress controls taxes and spending', MINT, pop(t, L[2] + 0.3), 24)
 
@@ -122,16 +130,35 @@ def s_what(c, x):
 def s_chart(c, x):
     t, L = x.t, x.L
     c.text(640, 60, 'S&P 500, one year after each midterm (Oct to Oct)', 28, WHITE, 800, a=fade(t, 0))
+    if t < L[1] + 0.4:  # the data source, before the bars
+        k = pop(t, L[0] + 2.4)
+        if k > 0:
+            a = clamp(k) * (1 - fade(t, L[1]))
+            c.rrect(340, 220, 940, 420, 30, (255, 255, 255, 16), GOLD, 3, a=a)
+            c.icon('trending-up', 450, 320, 100 * k, GOLD, a=a)
+            c.text(700, 290, 'S&P 500 data', 38, WHITE, 900, a=a)
+            c.text(700, 350, 'Robert Shiller, Yale', 26, MUTED, 800, a=a)
+        k = pop(t, L[0] + 5.8)
+        if k > 0:
+            chip(c, 640, 480, 'monthly, back to 1871', SKY, k * (1 - fade(t, L[1])), 24)
     bars18(c, t, L[1], max(2.0, L[3] - L[1]))
+    if t > L[5] + 4.5:  # 2022: an outlined bar, +21% so far (the data ends Sep 2023)
+        k = ease(seg(t, L[5] + 4.5, L[5] + 6.5))
+        bw = (1170 - 110) / 18
+        xr = 1170 + bw * 0.15
+        h = 370 * Y22_REBOUND / 35 * k
+        c.rrect(xr, 520 - h, xr + bw * 0.7, 520, 6, (90, 200, 255, 60), SKY, 3)
+        c.text(xr + bw * 0.35, 520 - h - 20, f'+{Y22_REBOUND:.0f}%', 18, SKY, 900, a=k)
+        c.text(xr + bw * 0.35, 542, "'22", 19, SKY, 800, shadow=False, a=k)
     yl = 520 - 370 * AVG / 35
     if t > L[4]:
         k = fade(t, L[4])
         c.line([(110, yl), (1170, yl)], (255, 255, 255, int(200 * k)), 3)
         c.text(1160, yl - 22, f'average +{AVG:.1f}%', 22, GOLD, 900, anchor='rm', a=k)
     if t > L[2]:
-        chip(c, 640, 590, f'{MAX_Y}: +{MAX_R:.0f}%   {MIN_Y}: +{MIN_R:.0f}%', GOLD, pop(t, L[2] + 0.4), 22)
+        chip(c, 400, 590, f'{MAX_Y}: +{MAX_R:.0f}%   {MIN_Y}: +{MIN_R:.0f}%', GOLD, pop(t, L[2] + 0.4), 22)
     if t > L[5]:
-        chip(c, 640, 640, f'2022: +{Y22_REBOUND:.0f}% by Sept 2023 (data ends)', SKY, pop(t, L[5] + 0.4), 22)
+        chip(c, 400, 645, f'2022: +{Y22_REBOUND:.0f}% by Sept 2023 (data ends)', SKY, pop(t, L[5] + 0.4), 22)
     source(c, t, SRC)
 
 
@@ -141,9 +168,14 @@ def s_compare(c, x):
     c.text(640, 70, 'The same 12 months: after midterms vs every other year', 28, WHITE, 800, a=fade(t, 0))
     compare_bars(c, t, (('every other year', OTHER_AVG, MUTED), ('after midterms', AVG, MINT)), L[0] + 0.5,
                  max(1.5, L[1] - L[0]), 22, lambda v: f'+{v:.1f}%', box=(250, 140, 1030, 470))
-    if t > L[1]:
-        c.text(400, 560, f'lost money: {OTHER_NEG} of {len(OTHER)} years', 26, CORAL, 900, a=fade(t, L[1] + 0.5))
-        c.text(880, 560, f'lost money: 0 of {len(MID)}', 26, MINT, 900, a=fade(t, L[1] + 1.5))
+    if t > L[1] + 4.0:
+        c.text(400, 560, f'lost money: {OTHER_NEG} of {len(OTHER)} years', 26, CORAL, 900, a=fade(t, L[1] + 4.0))
+    if t > L[2] + 2.4:
+        c.text(880, 560, f'lost money: 0 of {len(MID)}', 26, MINT, 900, a=fade(t, L[2] + 2.4))
+    k = pop(t, L[2] + 0.8)
+    if k > 0:
+        c.circle(1110, 200, 70 * k, MINT, WHITE, 4)
+        c.text(1110, 200, '3x', int(54 * clamp(k)), INK, 900, shadow=False)
     source(c, t, SRC)
 
 
@@ -156,8 +188,12 @@ def s_slump(c, x):
             c.text(640, 280, f'+{SLUMP_AVG:.1f}%', int(130 * (0.6 + 0.4 * clamp(k))), MUTED, 900, a=clamp(k),
                    stroke=6)
             c.text(640, 370, 'average, January to October of midterm years', 26, WHITE, 800, a=clamp(k))
-        if t > L[1]:
-            chip(c, 640, 470, f'stocks fell in {SLUMP_NEG} of the last {len(SLUMP)}', CORAL, pop(t, L[1] + 1.5), 26)
+        for i, r in enumerate(SLUMP):  # one dot per midterm year since 1950, red if it fell
+            kd = pop(t, L[1] + 5.0 + 0.12 * i)
+            if kd > 0:
+                c.circle(244 + i * 44, 450, 16 * kd, CORAL if r < 0 else MINT)
+        if t > L[1] + 7.6:
+            chip(c, 640, 540, f'stocks fell in {SLUMP_NEG} of the last {len(SLUMP)}', CORAL, pop(t, L[1] + 7.6), 26)
         return
     xs, ys = [p[0] for p in PATH22], [p[1] for p in PATH22]
     k = ease(seg(t, L[2], L[2] + 3.5))
@@ -208,11 +244,12 @@ def s_reasons23(c, x):
         c.circle(cx, 290, 95 * k, (255, 255, 255, 18), col, 3)
         c.icon(ic, cx, 290, 90 * k, col)
         c.text(cx, 430, lab, 28, WHITE, 900, a=clamp(k))
-    if t > L[0] and t < L[1]:
-        c.text(640, 520, 'split control = fewer big surprises', 26, MUTED, 800, a=fade(t, L[0] + 1.2))
-    if t > L[1]:
-        c.text(640, 520, 'governments push for growth before a presidential election', 26, MUTED, 800,
-               a=fade(t, L[1] + 1.2))
+    if t > L[0] + 3.0 and t < L[1]:
+        sub = 'split control = fewer big surprises' if t < L[0] + 6.4 else 'fewer surprises can be good for markets'
+        chip(c, 640, 520, sub, SKY, pop(t, L[0] + 3.0 if t < L[0] + 6.4 else L[0] + 6.4), 24)
+    if t > L[1] + 3.6:
+        sub = 'next presidential election: 2 years away' if t < L[1] + 6.6 else 'governments push for growth'
+        chip(c, 640, 520, sub, SKY, pop(t, L[1] + 3.6 if t < L[1] + 6.6 else L[1] + 6.6), 24)
     if t > L[2]:
         chip(c, 640, 600, 'explanations, not laws of nature', CORAL, pop(t, L[2] + 0.3), 24)
 
@@ -251,6 +288,9 @@ def s_risks(c, x):
         c.rrect(cx - 250, cy - 70, cx + 250, cy + 70, 22, (255, 255, 255, 16), col, 3, a=clamp(k))
         c.icon(ic, cx - 170, cy, 70 * k, col)
         c.text(cx + 40, cy, lab, 32, WHITE, 900, a=clamp(k))
+        if i == 0 and t > L[0] + 4.6:
+            c.text(cx + 40, cy + 44, 'cause: the oil shock', 20, CORAL, 800, a=fade(t, L[0] + 4.6))
+            c.icon('arrow-up', cx + 200, cy, 40 * clamp(pop(t, L[0] + 4.6)), CORAL)
     if t > L[3]:
         chip(c, 640, 590, 'some analysts: stocks already look expensive', GOLD, pop(t, L[3] + 0.3), 24)
     if t > L[4]:
@@ -263,15 +303,34 @@ def s_lessons(c, x):
     c.text(640, 70, 'What the data teaches (not advice)', 36, WHITE, 900, a=fade(t, 0))
     items = [('users', 'Both parties held\nCongress in the streak'), ('triangle-alert', 'Election bets\nare risky'),
              ('trending-up', 'Inflation, rates, jobs\nmove your money most')]
-    icon_row(c, t, items, L[1] - 0.3, max(1.5, L[3] - L[1]), y=300)
+    if t < L[1]:  # 'three useful lessons'
+        k = pop(t, L[0] + 3.6)
+        if k > 0:
+            c.text(640, 300, '3', int(200 * (0.6 + 0.4 * clamp(k))), GOLD, 900, a=clamp(k), stroke=8)
+            c.text(640, 430, 'lessons from 18 midterms', 30, WHITE, 900, a=clamp(k))
+        return
+    for i, (ic, lab) in enumerate(items):  # each lesson appears as it is spoken
+        k = pop(t, L[i + 1] + 0.3)
+        if k <= 0:
+            continue
+        cx = 90 + 1100 / 3 * (i + 0.5)
+        c.circle(cx, 300, 80 * k, (255, 255, 255, 18), GOLD, 3, a=clamp(k))
+        c.icon(ic, cx, 300, 70 * k, GOLD, a=clamp(k))
+        for j, part in enumerate(lab.split('\n')):
+            c.text(cx, 425 + j * 30, part, 22, WHITE, 800, a=clamp(k))
+    if t > L[2] + 4.2:
+        chip(c, 640, 600, f'sold in the 2022 slump = missed the +{Y22_REBOUND:.0f}%', CORAL, pop(t, L[2] + 4.2), 24)
 
 
 def s_end(c, x):
     t, L = x.t, x.L
     specks(c, t, 88)
-    if t < L[1]:
-        bars18(c, t, 0, 0, box=(200, 120, 1080, 420), labels=False, k_all=True)
-        c.text(640, 500, f'+{AVG:.0f}% vs +{OTHER_AVG:.0f}%', 54, GOLD, 900, a=fade(t, 0.5))
+    if t < L[1]:  # the recap builds with the words
+        bars18(c, t, L[0] + 0.4, 2.6, box=(200, 120, 1080, 420), labels=False)
+        if t > L[0] + 4.6:
+            c.text(640, 500, f'+{AVG:.0f}% vs +{OTHER_AVG:.0f}%', 54, GOLD, 900, a=fade(t, L[0] + 4.6))
+        if t > L[0] + 8.4:
+            chip(c, 640, 590, 'slump before the vote, rebound after', MINT, pop(t, L[0] + 8.4), 26)
         return
     k = pop(t, L[1] + 0.3)
     c.text(640, 260, '19 / 19 ?', int(150 * (0.6 + 0.4 * clamp(k))), GOLD, 900, a=clamp(k), stroke=8)
@@ -299,7 +358,8 @@ SCENES = [
         "When that happens halfway through a president's four-year term, it's called a midterm, and it's often "
         "treated as a report card on the president.",
         "And Congress controls taxes and spending, so markets pay very close attention.",
-    ], sfx=lambda L: [(L[0] + 1.0, 'pop'), (L[0] + 2.2, 'pop'), (L[1] + 0.3, 'pop'), (L[2] + 0.3, 'pop')]),
+    ], sfx=lambda L: [(L[0] + 1.6, 'pop'), (L[0] + 3.4, 'pop'), (L[0] + 6.6, 'pop'), (L[1] + 0.3, 'pop'),
+                      (L[1] + 4.6, 'pop'), (L[2] + 0.3, 'pop')]),
     dict(draw=s_chart, chapter='18 green bars', lines=[
         "Here's what the stock market actually did. We used Yale economist Robert Shiller's S&P 500 data, which "
         "goes back to 1871.",
@@ -316,14 +376,14 @@ SCENES = [
         f"In normal years, the same twelve months averaged about {OTHER_AVG:.0f}%, and the market lost money in "
         f"about one year out of three.",
         f"!After midterms? About three times the gain, and not a single losing year.",
-    ], punch=lambda L: [L[2] + 0.3], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[1] + 0.5, 'down'), (L[2] + 0.3, 'ding')]),
+    ], punch=lambda L: [L[2] + 0.3], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[1] + 4.0, 'down'), (L[2] + 0.8, 'ding'), (L[2] + 2.4, 'pop')]),
     dict(draw=s_slump, chapter='The twist: the midterm slump', lines=[
         "But here's the twist. The midterm year itself is often bad.",
         f"From January to October of midterm years, stocks averaged almost nothing, about {SLUMP_AVG:.1f}%. They "
         f"fell in {SLUMP_NEG} of the last {len(SLUMP)}.",
         f"2022 is the perfect example. By October 2022, the S&P 500 was down about {abs(Y22_SLUMP):.1f}% for the "
         "year.",
-    ], punch=lambda L: [L[0] + 2.5, L[2] + 1.5], sfx=lambda L: [(L[0] + 2.5, 'down'), (L[1] + 1.5, 'pop'),
+    ], punch=lambda L: [L[0] + 2.5, L[2] + 1.5], sfx=lambda L: [(L[0] + 2.5, 'down'), (L[1] + 5.0, 'whoosh'), (L[1] + 7.6, 'pop'),
                                                                (L[2], 'whoosh'), (L[2] + 1.5, 'down')]),
     dict(draw=s_rebound, bg_video=os.path.join(FLOW, 'clip4.mp4'), bg_speed=0.9, lead=0.3, gap=0.3, tail=0.5,
          lines=[
@@ -342,7 +402,8 @@ SCENES = [
         "Reason three: the next election. After a midterm, a presidential election is two years away, and "
         "governments have historically pushed for a strong economy heading into one.",
         "Remember, these are explanations, not laws of nature.",
-    ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[1] + 0.3, 'pop'), (L[2] + 0.3, 'down')]),
+    ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[0] + 3.0, 'pop'), (L[1] + 0.3, 'pop'), (L[1] + 3.6, 'pop'),
+                      (L[2] + 0.3, 'down')]),
     dict(draw=s_fine, chapter='The fine print', lines=[
         "Now, before anyone bets the farm on this, here's the fine print.",
         "One: eighteen is a small number. Flip a coin eighteen times and strange streaks happen.",
@@ -365,14 +426,15 @@ SCENES = [
         "Two: big moves based on election predictions are risky. Anyone who sold in the 2022 slump missed the "
         "rebound.",
         "Three: what moves your money most is what we cover here every week: inflation, interest rates, and jobs.",
-    ], sfx=lambda L: [(L[1], 'pop'), (L[2], 'pop'), (L[3], 'pop')]),
+    ], sfx=lambda L: [(L[0] + 3.6, 'pop'), (L[1] + 0.3, 'pop'), (L[2] + 0.3, 'pop'), (L[2] + 4.2, 'down'),
+                  (L[3] + 0.3, 'pop')]),
     dict(draw=s_end, chapter='Recap', lines=[
         f"Let's recap. Eighteen midterms. The market was higher a year later every time, about {AVG:.0f}% on "
         f"average, versus about {OTHER_AVG:.0f}% in other years. A slump before the vote, a rebound after.",
         "!So, will 2026 make it nineteen for nineteen? Tell me what you think in the comments, and subscribe, "
         "because a year from now, we'll come back and check.",
         "This video is for education only. It's not financial advice.",
-    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[1] + 0.3, 'ding')]),
+    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 4.6, 'pop'), (L[0] + 8.4, 'pop'), (L[1] + 0.3, 'ding')]),
 ]
 SHORTS = {}
 
