@@ -152,22 +152,23 @@ def chip(c, x, y, text, color, k, size=22, w=None):
     c.text(x, y, text, size, INK, 800, a=clamp(k), shadow=False)
 
 
-def icon_row(c, t, items, start, span, y=340, color=GOLD, size=70):
+def icon_row(c, t, items, start, span, y=340, color=GOLD, size=70, x0=90, width=1100, ring=80, label_size=22):
     """Reveal up to 4 icon+label items one after another across [start, start+span]."""
     n = len(items)
-    gapx = 1100 / n
+    gapx = width / n
+    lsize = label_size
     for i, (ic, label) in enumerate(items):
         k = pop(t, start + span * (0.05 + 0.85 * i / n))
         if k <= 0:
             continue
-        cx = 90 + gapx * (i + 0.5)
-        c.circle(cx, y, 80 * k, (255, 255, 255, 18), color, 3, a=clamp(k))
+        cx = x0 + gapx * (i + 0.5)
+        c.circle(cx, y, ring * k, (255, 255, 255, 18), color, 3, a=clamp(k))
         c.icon(ic, cx, y, size * k, color, a=clamp(k))
         for j, part in enumerate(label.split('\n')):
-            c.text(cx, y + 125 + j * 30, part, 22, WHITE, 800, a=clamp(k))
+            c.text(cx, y + ring + 45 + j * lsize * 1.36, part, lsize, WHITE, 800, a=clamp(k))
 
 
-def compare_bars(c, t, items, start, span, vmax, fmt, box=(240, 170, 1040, 530)):
+def compare_bars(c, t, items, start, span, vmax, fmt, box=(240, 170, 1040, 530), value_size=34, label_size=20):
     """items: (label, value, color). Bars grow one after another."""
     x0, y0, x1, y1 = box
     n = len(items)
@@ -181,8 +182,8 @@ def compare_bars(c, t, items, start, span, vmax, fmt, box=(240, 170, 1040, 530))
         bx = x0 + i * bw + bw * 0.2
         top = y1 - (y1 - y0) * v / vmax * g
         c.rrect(bx, top, bx + bw * 0.6, y1, 12, col)
-        c.text(bx + bw * 0.3, top - 28, fmt(v * g), 34, col, 900)
-        c.text(bx + bw * 0.3, y1 + 28, label, 20, WHITE, 800)
+        c.text(bx + bw * 0.3, top - value_size * 0.82, fmt(v * g), value_size, col, 900)
+        c.text(bx + bw * 0.3, y1 + label_size * 1.4, label, label_size, WHITE, 800)
 
 
 def end_card(line, tag='Full story on Coin Theory'):

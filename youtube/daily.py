@@ -85,8 +85,10 @@ def main():
         chunk = list(IDS.values())[i:i + 50]
         for v in yt.videos().list(part='status,statistics', id=','.join(chunk)).execute()['items']:
             status[names[v['id']]] = v
-    public = [n for n in IDS if status[n]['status']['privacyStatus'] == 'public']
-    for n in IDS:
+    for n in [n for n in IDS if n not in status]:
+        print(f'MISSING on YouTube (deleted?): {n} {IDS[n]}')
+    public = [n for n in IDS if n in status and status[n]['status']['privacyStatus'] == 'public']
+    for n in [n for n in IDS if n in status]:
         st = status[n]['status']
         print(f"{n:22s} {st['privacyStatus']:8s} {st.get('publishAt', '')[:16]:16s} "
               f"views={status[n].get('statistics', {}).get('viewCount', '0')}")

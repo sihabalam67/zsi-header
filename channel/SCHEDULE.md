@@ -7,7 +7,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Day (2 PM ET) | Type | Video | Link |
 |---|---|---|---|
 | Fri Oct 30 | Long | Why Is Gas So Expensive Right Now? | https://youtu.be/XKD-BqxeMFw |
-| Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/mAWiEs2-MP4 |
+| Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/p63_7o3ywVs |
 | Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/b5oxCLzqtSE |
 | Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/VU2R7K7vRwc |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
