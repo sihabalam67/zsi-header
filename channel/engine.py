@@ -79,6 +79,8 @@ def ease_out(x):
 
 def back_out(x):
     x = clamp(x)
+    if x <= 0:  # the formula gives 2e-16 at 0, which made `if pop(...) > 0` true before an element's start
+        return 0.0
     c = 1.70158
     return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2
 
@@ -163,13 +165,17 @@ class Canvas:
     def ellipse(self, x, y, rx, ry, fill=None, outline=None, width=0, a=1.0):
         if rx <= 0.2 or ry <= 0.2:
             return
+        f, o = self._c(fill, a), self._c(outline, a)
+        if f is None and o is None:  # PIL would fall back to drawing in white
+            return
         self.d.ellipse([(x - rx) * self.k, (y - ry) * self.k, (x + rx) * self.k, (y + ry) * self.k],
-                       fill=self._c(fill, a), outline=self._c(outline, a), width=int(width * self.k))
+                       fill=f, outline=o, width=int(width * self.k) if o else 0)
 
     def poly(self, pts, fill=None, outline=None, width=0, a=1.0):
         p = [(x * self.k, y * self.k) for x, y in pts]
-        self.d.polygon(p, fill=self._c(fill, a))
-        if outline and width:
+        if self._c(fill, a) is not None:  # a None fill makes PIL draw a white outline
+            self.d.polygon(p, fill=self._c(fill, a))
+        if outline and width and self._c(outline, a) is not None:
             self.d.line(p + [p[0], p[1]], fill=self._c(outline, a), width=int(width * self.k), joint='curve')
 
     def line(self, pts, fill, width, a=1.0):
@@ -184,8 +190,11 @@ class Canvas:
         if x1 <= x0 or y1 <= y0:
             return
         r = min(r, (x1 - x0) / 2, (y1 - y0) / 2)
-        self.d.rounded_rectangle([x0 * self.k, y0 * self.k, x1 * self.k, y1 * self.k], radius=r * self.k, fill=self._c(fill, a),
-                                 outline=self._c(outline, a), width=int(width * self.k))
+        f, o = self._c(fill, a), self._c(outline, a)
+        if f is None and o is None:  # fully transparent; PIL would otherwise draw a white outline
+            return
+        self.d.rounded_rectangle([x0 * self.k, y0 * self.k, x1 * self.k, y1 * self.k], radius=r * self.k, fill=f,
+                                 outline=o, width=int(width * self.k) if o else 0)
 
     def arc(self, x, y, r, start, end, fill, width, a=1.0):
         if self._c(fill, a) is None:
@@ -198,7 +207,9 @@ class Canvas:
         if a * self.alpha <= 0.004:
             return
         f = font(size, weight, family, self.k)
-        if shadow:
+        if self._c(fill, a) is None:
+            return
+        if shadow and self._c((0, 0, 0, 110), a) is not None:
             self.d.text(((x + 2) * self.k, (y + 3) * self.k), s, font=f, fill=self._c((0, 0, 0, 110), a), anchor=anchor,
                         stroke_width=int(stroke * self.k), stroke_fill=self._c((0, 0, 0, 110), a))
         self.d.text((x * self.k, y * self.k), s, font=f, fill=self._c(fill, a), anchor=anchor,

@@ -33,7 +33,11 @@ for t, pid in pls.items():
         inpl.setdefault(it['snippet']['resourceId']['videoId'], []).append(t)
 NY = ZoneInfo('America/New_York')
 def iso_secs(d):
-    m = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', d); h, mi, s = (int(x or 0) for x in m.groups()); return h*3600+mi*60+s
+    m = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$', d or '')
+    if not m:  # 'P0D' while YouTube is still processing a new upload
+        return None
+    h, mi, s = (int(x or 0) for x in m.groups())
+    return h * 3600 + mi * 60 + s
 rows = []
 for n, vid in ids.items():
     v = items.get(vid)
@@ -65,7 +69,10 @@ for n, vid in ids.items():
     if sn.get('defaultLanguage') != 'en' or sn.get('defaultAudioLanguage') != 'en': P(n, 'language', sn.get('defaultLanguage'), sn.get('defaultAudioLanguage'))
     th = sn.get('thumbnails', {})
     if '_short_' not in n and 'maxres' not in th: P(n, 'no maxres thumbnail (custom thumbnail may be missing)')
-    dur = iso_secs(cd['duration'])
+    dur = iso_secs(cd.get('duration'))
+    if dur is None:
+        P(n, 'still processing on YouTube (re-run qa.py in a few minutes)')
+        continue
     if '_short_' in n and dur > 180: P(n, 'Short too long', dur)
     if '_short_' not in n and dur < 480: warns.append(f'{n}: {dur}s, under 8 min (no mid-roll ads)')
     if '_short_' not in n and 'Full series:' not in desc: P(n, 'no series/playlist link in description')
