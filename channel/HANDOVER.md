@@ -26,6 +26,9 @@ each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone 
   playlists: `channel/out/playlists.json`. See `WEEK1.md`, `WEEK2.md`, and the checklist artifact linked in WEEK2.md.
 - Week 2 episodes: `ep03_gas.py`, `ep04_fed.py` (shared art in `wk2_art.py`, audit in `wk2_audit.py`).
 - Render resumably after an interruption: `RESUME=1 python3 channel/ep0N_*.py`.
+- Automation (scheduled tasks firing into the Claude session): daily 2:07 PM ET runs `youtube/daily.py`
+  (launch comments + replies; Thursdays also analytics and next week's videos), and 8:43 PM ET a reply round.
+  The API can't pin comments or set a Short's Related video; the user does those two by hand.
 - Next: ep05 "How banks create money out of thin air" (promised at the end of ep04).
 
 ## "upload week 1"
