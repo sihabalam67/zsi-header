@@ -24,10 +24,12 @@ MODELS = os.path.join(STUDIO, 'models')
 FONTS = os.path.join(STUDIO, 'assets', 'fonts')
 ICONS = os.path.join(STUDIO, 'assets', 'icons', 'lucide')
 
-# Logical canvas is 1280x720; output is 1080p, drawn at 2x and downsampled.
+# Logical canvas is 1280x720, drawn at 3840x2160 and downsampled. Long videos come out at 1440p by default: YouTube
+# tends to give 1440p uploads its sharper VP9/AV1 encode even for 1080p viewers. RES=1080 for the old output.
 W, H, FPS = 1280, 720, 30
-OUT_W, OUT_H = 1920, 1080
-K = OUT_W / W * 2
+OUT_H = int(os.environ.get('RES', '1440'))
+OUT_W = OUT_H * 16 // 9
+K = 3.0
 SR = 44100
 VOICE = os.environ.get('VOICE', 'af_heart')
 # AUDIO_STYLE=upgrade: GeneralUser GS soundfont (free incl. commercial) + Kenney CC0 interface sounds
@@ -116,10 +118,10 @@ def font(size, weight=700, family='Poppins', k=None):
     return _fonts[key]
 
 
-def gradient(top, bottom):
-    key = (top, bottom)
+def gradient(top, bottom, size=(W, H)):
+    key = (top, bottom, size)
     if key not in _grad:
-        h, w = int(H * K), int(W * K)
+        h, w = int(size[1] * K), int(size[0] * K)
         y = np.linspace(0, 1, h)[:, None, None]
         arr = np.array(top) * (1 - y) + np.array(bottom) * y
         _grad[key] = Image.fromarray(np.ascontiguousarray(np.broadcast_to(arr, (h, w, 3)).astype(np.uint8)), 'RGB')
@@ -141,9 +143,10 @@ def icon_image(name, color, size, stroke=2.0, k=None):
 
 
 class Canvas:
-    def __init__(self, top=BG1, bottom=BG2, img=None, k=None):
+    def __init__(self, top=BG1, bottom=BG2, img=None, k=None, size=(W, H)):
         self.k = k or K
-        self.img = img if img is not None else gradient(top, bottom).copy()
+        self.w, self.h = size if img is None else (img.size[0] / self.k, img.size[1] / self.k)
+        self.img = img if img is not None else gradient(top, bottom, size).copy()
         self.d = ImageDraw.Draw(self.img, 'RGBA')
         self.alpha = 1.0
 
@@ -324,17 +327,17 @@ def burst(c, x, y, k, color, n=16, radius=90, seed=0):
 def specks(c, t, seed=1, n=34, color=WHITE, amax=0.08):
     rnd = random.Random(seed)
     for _ in range(n):
-        x0, y0 = rnd.uniform(0, W), rnd.uniform(0, H)
+        x0, y0 = rnd.uniform(0, c.w), rnd.uniform(0, c.h)
         r, sp, ph, al = rnd.uniform(2, 8), rnd.uniform(4, 16), rnd.uniform(0, 6), rnd.uniform(0.3, 1)
-        y = (y0 - t * sp) % (H + 40) - 20
+        y = (y0 - t * sp) % (c.h + 40) - 20
         c.circle(x0 + math.sin(t * 0.5 + ph) * 12, y, r, color, a=amax * al)
 
 
 def title_card(c, t, start, text, sub=None, y=90):
     k = ease_out(seg(t, start, start + 0.5))
-    c.text(W / 2, y - 12 * (1 - k), text, 44, WHITE, 900, a=k)
+    c.text(c.w / 2, y - 12 * (1 - k), text, 44, WHITE, 900, a=k)
     if sub:
-        c.text(W / 2, y + 42, sub, 22, MUTED, 600, a=fade(t, start + 0.3))
+        c.text(c.w / 2, y + 42, sub, 22, MUTED, 600, a=fade(t, start + 0.3))
 
 
 def counter(value, fmt):
@@ -343,7 +346,7 @@ def counter(value, fmt):
 
 # ------------------------------------------------------------------ charts --
 def line_chart(c, box, xs, ys, xr, yr, k, color=GOLD, a=1.0, xticks=(), yticks=(), yfmt='{:.0f}',
-               head_label=None, width=5):
+               head_label=None, width=5, tick_size=19):
     """Draw axes plus a line revealed left-to-right up to fraction k of the x range."""
     x0, y0, x1, y1 = box
 
@@ -355,9 +358,9 @@ def line_chart(c, box, xs, ys, xr, yr, k, color=GOLD, a=1.0, xticks=(), yticks=(
 
     for v in yticks:
         c.line([(x0, py(v)), (x1, py(v))], (255, 255, 255, 30), 1.5, a)
-        c.text(x0 - 12, py(v), yfmt.format(v), 16, MUTED, 600, anchor='rm', a=a, shadow=False)
+        c.text(x0 - 12, py(v), yfmt.format(v), tick_size, MUTED, 600, anchor='rm', a=a, shadow=False)
     for v in xticks:
-        c.text(px(v), y1 + 22, str(v), 16, MUTED, 600, a=a, shadow=False)
+        c.text(px(v), y1 + 22, str(v), tick_size, MUTED, 600, a=a, shadow=False)
     c.line([(x0, y1), (x1, y1)], (255, 255, 255, 90), 2, a)
     xmax = lerp(xr[0], xr[1], clamp(k))
     pts = [(px(x), py(y)) for x, y in zip(xs, ys) if x <= xmax]
@@ -814,7 +817,8 @@ def vignette(w, h, strength=0.24):
 def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
     """Draw one frame: scene -> slow camera zoom -> vignette -> captions (and vertical layout for Shorts)."""
     from PIL import ImageFilter
-    c = Canvas(*sc.get('bg', (BG1, BG2)))
+    vertical = sc.get('vertical', False)  # drawn natively for Shorts on a 720 x 1280 canvas
+    c = Canvas(*sc.get('bg', (BG1, BG2)), size=(720, 1280) if vertical else (W, H))
     sc['draw'](c, Ctx(t, starts, ends, dur, env))
     big = c.img
     z0, z1 = sc.get('cam', (1.0, 1.045))
@@ -825,23 +829,64 @@ def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
     x0 = clamp(fx * bw - cw / 2, 0, bw - cw)
     y0 = clamp(fy * bh - ch / 2, 0, bh - ch)
     box = (x0, y0, x0 + cw, y0 + ch)
+    if vertical:
+        assert layout != 'long', 'vertical scenes are for Shorts only'
+        img = big.resize((1080, 1920), Image.LANCZOS, box=box)
+        img = Image.fromarray((np.asarray(img).astype(np.float32) * vignette(1080, 1920)).astype(np.uint8))
+        cv = Canvas(img=img, k=1.5)  # logical 720 x 1280; keep the bottom ~20% clear for YouTube's own overlay
+        cv.text(360, 120, 'COIN THEORY', 30, GOLD, 900, stroke=4)
+        if sc.get('captions', True):
+            draw_captions(cv, t, chunks, x=360, y=sc.get('cap_y', 960), size=48, maxw=640)
+        return img
     if layout == 'long':
         img = big.resize((OUT_W, OUT_H), Image.LANCZOS, box=box)
         img = Image.fromarray((np.asarray(img).astype(np.float32) * vignette(OUT_W, OUT_H)).astype(np.uint8))
         if sc.get('captions', True):
             draw_captions(Canvas(img=img, k=OUT_W / W), t, chunks)
         return img
-    # Shorts: 1080x1920, blurred backdrop, the scene in the middle, big captions underneath
-    main = big.resize((1080, 608), Image.LANCZOS, box=box)
+    # Shorts: 1080x1920. The scene's content box (found once per scene by content_box) is enlarged to fill the
+    # middle of the phone screen, over a blurred copy of the scene; big captions sit below it.
+    cx0, cy0, cx1, cy1 = sc.get('_crop', (0, 0, 1, 1))
+    cw, ch = (cx1 - cx0) * bw / z, (cy1 - cy0) * bh / z
+    mx, my = lerp(cx0, cx1, fx) * bw, lerp(cy0, cy1, fy) * bh
+    x0 = clamp(mx - cw / 2, cx0 * bw, cx1 * bw - cw)
+    y0 = clamp(my - ch / 2, cy0 * bh, cy1 * bh - ch)
+    s_ = min(SHORT_BOX[0] / cw, SHORT_BOX[1] / ch)
+    mw, mh = int(cw * s_), int(ch * s_)
+    main = big.resize((mw, mh), Image.LANCZOS, box=(x0, y0, x0 + cw, y0 + ch))
     back = big.resize((480, 270), Image.BILINEAR, box=box).filter(ImageFilter.GaussianBlur(10))
     back = back.resize((3413, 1920), Image.BILINEAR).crop((1166, 0, 2246, 1920))
     back = Image.fromarray((np.asarray(back).astype(np.float32) * 0.45).astype(np.uint8))
-    back.paste(main, (0, 600))
+    back.paste(main, ((1080 - mw) // 2, SHORT_MID - mh // 2))
     cv = Canvas(img=back, k=1.5)  # logical 720 x 1280
-    cv.text(360, 300, 'COIN THEORY', 40, GOLD, 900, stroke=4)
+    cv.text(360, 150, 'COIN THEORY', 34, GOLD, 900, stroke=4)
     if sc.get('captions', True):
-        draw_captions(cv, t, chunks, x=360, y=930, size=46, maxw=660)
+        draw_captions(cv, t, chunks, x=360, y=960, size=46, maxw=660)
     return back
+
+
+SHORT_BOX, SHORT_MID = (1080, 1040), 820  # room for the scene on a Shorts frame, and its vertical center (px)
+
+
+def content_box(sc, starts, ends, dur, env, pad=0.05):
+    """Fractional box around everything a scene draws (union over its run), so Shorts can enlarge just that."""
+    blank = np.asarray(Canvas(*sc.get('bg', (BG1, BG2))).img.reduce(8)).astype(np.int16)
+    hits = None
+    for f in (0.35, 0.6, 0.85, 0.99):
+        c = Canvas(*sc.get('bg', (BG1, BG2)))
+        sc['draw'](c, Ctx(f * dur, starts, ends, dur, env))
+        d = np.abs(np.asarray(c.img.reduce(8)).astype(np.int16) - blank).max(axis=2) > 48
+        hits = d if hits is None else hits | d
+    rows, cols = np.where(hits.any(axis=1))[0], np.where(hits.any(axis=0))[0]
+    if not len(rows):
+        return (0, 0, 1, 1)
+    h, w = hits.shape
+    x0, x1, y0, y1 = cols[0] / w - pad, (cols[-1] + 1) / w + pad, rows[0] / h - pad, (rows[-1] + 1) / h + pad
+    # keep at least a third of the frame each way so a lone small element isn't blown up into mush
+    bw_, bh_ = min(1, max(x1 - x0, 0.34)), min(1, max(y1 - y0, 0.34))
+    x0 = clamp((x0 + x1 - bw_) / 2, 0, 1 - bw_)
+    y0 = clamp((y0 + y1 - bh_) / 2, 0, 1 - bh_)
+    return (x0, y0, x0 + bw_, y0 + bh_)
 
 
 _JOB = {}  # set before the worker pool forks; scenes hold lambdas that can't be pickled
@@ -853,6 +898,8 @@ def _render_scene(si):
     dur, starts, ends, chunks, env = plan[si]
     ow, oh = (OUT_W, OUT_H) if layout == 'long' else (1080, 1920)
     path = os.path.join(build_dir, f'{layout}_{si:02d}.mp4')
+    if layout != 'long' and '_crop' not in sc and not sc.get('vertical'):
+        sc['_crop'] = content_box(sc, starts, ends, dur, env)
     if os.environ.get('RESUME') and os.path.exists(path):  # reuse a finished segment after an interruption
         probe = subprocess.run(['ffprobe', '-v', 'error', '-count_packets', '-select_streams', 'v:0', '-show_entries',
                                 'stream=nb_read_packets', '-of', 'csv=p=0', path], capture_output=True, text=True)
@@ -968,9 +1015,12 @@ def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
     return total, chapters
 
 
-def still(scene, t, path, starts=None):
-    """Render a single preview frame of one scene (no narration needed)."""
+def still(scene, t, path, starts=None, layout='long'):
+    """Render a single preview frame of one scene (no narration needed); layout='short' previews the Shorts frame."""
     starts = starts or [0.5 + 4 * i for i in range(len(scene['lines']))]
     ends = [s + 3.6 for s in starts]
     dur = ends[-1] + 1 if ends else 6
-    compose(dict(scene, captions=False), t, starts, ends, dur, None, [], 'long').save(path)
+    sc = dict(scene, captions=False)
+    if layout != 'long' and not sc.get('vertical'):
+        sc['_crop'] = content_box(sc, starts, ends, dur, None)
+    compose(sc, t, starts, ends, dur, None, [], layout).save(path)

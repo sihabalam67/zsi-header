@@ -34,6 +34,13 @@ so YouTube locks API uploads to **private**; scheduled `publishAt` still makes t
 - `youtube/daily.py` lists every viewer message still unanswered (top-level, replies under our launch comments, and
   follow-ups in threads we already answered), plus comments YouTube held for review (tell the user; the API can't
   heart or approve). `--reply THREAD TEXT --for CID` @mentions that viewer so they get notified.
+- Video upgrades (Oct 30): long videos render at 1440p by default (`RES=1080` for the old size) so YouTube serves
+  its sharper VP9/AV1 encode; chart tick labels are 19 (was 16) for phone readability (`tick_size=`).
+- Shorts must be drawn natively vertical from week 3 on: give each Short scene `vertical=True` and draw on a
+  720 x 1280 canvas (`c.w`, `c.h`): content between y=180 and y=900, captions sit at y=960 (`cap_y=`), keep the
+  bottom ~20% empty (YouTube's overlay), text 28+ and chart ticks `tick_size=24`. Reuse the long video's data and
+  helpers (gas_pump, line_chart, chip...) at a bigger scale. Preview with `still(scene, t, path, layout='short')`.
+  Old-style 16:9 scenes in a Short still work: the engine now finds their content and enlarges it (content_box).
 - Audio master: limiter ceiling 0.80 (-1.9 dBFS) so the AAC true peak stays under 0 dB (Gas renders peaked +0.2).
 - `youtube/stats.py` adds traffic sources and countries; impressions/CTR are Studio-only (not in the API).
 - Weeks 1 and 2 (16 videos) are uploaded and scheduled via `publishAt` (2:00 PM ET). IDs: `channel/out/video_ids.json`,
