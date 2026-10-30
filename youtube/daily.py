@@ -3,6 +3,7 @@
 
     python3 youtube/daily.py                 # check launches, post due comments, list unanswered viewer comments
     python3 youtube/daily.py --reply ID TEXT # reply (as the channel) to the comment thread ID
+    python3 youtube/daily.py --reply ID TEXT --for CID  # same, answering viewer reply CID inside that thread
 
 Long videos get the question from channel/out/launch_comments.json; each Short gets a link to its long video.
 YouTube's API can't pin comments or set a Short's "Related video", so those stay manual. Comments can only be
@@ -42,9 +43,15 @@ def main():
     yt = client()
     channel = yt.channels().list(part='id', mine=True).execute()['items'][0]['id']
     if sys.argv[1:2] == ['--reply']:
-        thread, text = sys.argv[2], ' '.join(sys.argv[3:])
+        args = sys.argv[2:]
+        target = None
+        if '--for' in args:
+            i = args.index('--for')
+            target = args[i + 1]
+            del args[i:i + 2]
+        thread, text = args[0], ' '.join(args[1:])
         r = yt.comments().insert(part='snippet', body={'snippet': {'parentId': thread, 'textOriginal': text}}).execute()
-        LOG['replied'].append(thread)
+        LOG['replied'].append(target or thread)
         save()
         print('replied', r['id'])
         return
@@ -79,7 +86,19 @@ def main():
             continue
         for th in threads:
             top = th['snippet']['topLevelComment']['snippet']
-            if top.get('authorChannelId', {}).get('value') == channel or th['id'] in LOG['replied']:
+            if top.get('authorChannelId', {}).get('value') == channel:
+                # our launch comment: viewers answer it with replies, so list theirs that we haven't answered
+                if not th['snippet'].get('totalReplyCount'):
+                    continue
+                reps = yt.comments().list(part='snippet', parentId=th['id'], maxResults=100).execute()['items']
+                for rp in reps:
+                    sn = rp['snippet']
+                    if sn.get('authorChannelId', {}).get('value') == channel or rp['id'] in LOG['replied']:
+                        continue
+                    print(f"  [{n}] thread={th['id']} --for {rp['id']} by {sn.get('authorDisplayName')}: "
+                          f"{sn.get('textOriginal')[:300]}")
+                continue
+            if th['id'] in LOG['replied']:
                 continue
             print(f"  [{n}] thread={th['id']} by {top.get('authorDisplayName')}: {top.get('textOriginal')[:300]}")
 

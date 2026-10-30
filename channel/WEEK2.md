@@ -1,3 +1,5 @@
+> **Superseded:** see SCHEDULE.md for the current dates and order.
+
 # Coin Theory: week 2 (Nov 6-12, 2026)
 
 All 8 videos are uploaded and **scheduled** (private until 2:00 PM New York time on their day).

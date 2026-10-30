@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Read-only channel report: per-video views, watch time, average view %, and subscribers gained.
+"""Read-only channel report: per-video views, watch time, average view %, subscribers gained, traffic
+sources and top countries.
 
     python3 youtube/stats.py [days]     # default: last 28 days
 Uses the same YT_* environment secrets as upload.py.
@@ -30,6 +31,14 @@ def main(days=28):
     print(f"{'views':>8} {'minutes':>8} {'avg %':>6} {'subs':>5}  title")
     for vid, views, mins, avg, subs in rows:
         print(f'{views:>8} {mins:>8} {avg:>5.0f}% {subs:>5}  {titles.get(vid, vid)}')
+    # Where views come from and who watches (impressions/CTR are Studio-only, not in the API)
+    for dim, label in (('insightTrafficSourceType', 'Traffic sources'), ('country', 'Top countries')):
+        r = ya.reports().query(ids='channel==MINE', startDate=str(start), endDate=str(end),
+                               metrics='views,estimatedMinutesWatched', dimensions=dim, sort='-views',
+                               maxResults=10).execute().get('rows', [])
+        print(f'\n{label}:')
+        for key, views, mins in r:
+            print(f'{views:>8} views {mins:>8} min  {key}')
 
 
 if __name__ == '__main__':

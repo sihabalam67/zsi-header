@@ -11,7 +11,7 @@ COMMON_TAGS = ['coin theory', 'economics explained', 'money explained', 'persona
 
 VIDEOS = {
     'ep01_inflation': dict(
-        titles=['Where Did Your $100 Go? (Inflation Explained)', 'Your $100 Is Now Worth $12. Here\'s Why.',
+        titles=['Your $100 Is Now Worth $12. Here\'s Where It Went (Inflation Explained)', 'Where Did Your $100 Go? (Inflation Explained)',
                 'Why Your Money Slowly Melts: Inflation Explained With Real Data'],
         hook="In 1970, $100 under a mattress would buy only about $12 worth of stuff today. So where did the other "
              "$88 go?",
@@ -26,7 +26,7 @@ VIDEOS = {
               'real wages', 'deflation', 'cost of living'],
         thumb='ep01_thumb_a.png'),
     'ep02_housing': dict(
-        titles=['Why Houses Got So Expensive', 'Houses Cost $23,000 in 1970. Now $393,000. What Happened?',
+        titles=['A House Cost $23,000 in 1970. Now It\'s $393,000. Why?', 'Why Houses Got So Expensive',
                 'Why Can\'t Anyone Afford a House? (Explained With Real Data)'],
         hook="In 1970, the typical new American home sold for about $23,000. Today it's about $393,000, almost twice "
              "as expensive even after inflation.",

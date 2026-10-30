@@ -21,7 +21,10 @@ The OAuth app is "In production" (tokens don't expire weekly). The API project i
 so YouTube locks API uploads to **private**: upload private and tell the user which day to switch
 each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone verification (done).
 
-## Status (Oct 29, 2026)
+## Status (Oct 30, 2026)
+- Current schedule: channel/SCHEDULE.md (19 videos, Oct 30 to Nov 12). ep05_jobs is the Microsoft buyouts bonus.
+- `youtube/daily.py` also lists viewer replies under our launch comments (answer with `--reply THREAD --for CID`).
+- `youtube/stats.py` adds traffic sources and countries; impressions/CTR are Studio-only (not in the API).
 - Weeks 1 and 2 (16 videos) are uploaded and scheduled via `publishAt` (2:00 PM ET). IDs: `channel/out/video_ids.json`,
   playlists: `channel/out/playlists.json`. See `WEEK1.md`, `WEEK2.md`, and the checklist artifact linked in WEEK2.md.
 - Week 2 episodes: `ep03_gas.py`, `ep04_fed.py` (shared art in `wk2_art.py`, audit in `wk2_audit.py`).

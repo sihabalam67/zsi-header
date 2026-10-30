@@ -1,3 +1,5 @@
+> **Superseded:** see SCHEDULE.md for the current dates and order.
+
 # Coin Theory: week 1 launch plan
 
 Everything below is already made, in `channel/out/`. Each video has an upload kit
