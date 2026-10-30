@@ -6,7 +6,11 @@
 plan.json maps each kit name (channel/out/<name>.upload.json) to its launch day, plus playlist info:
     {"videos": {"ep06_banks": "2026-11-13", "ep06_short_x": "2026-11-13", ...},
      "playlists": {"ep06": ["Banking, Explained", "How money is created ..."]},
-     "launch_questions": {"ep06_banks": "Question to post as the launch comment"}}
+     "launch_questions": {"ep06_banks": "Question to post as the launch comment"},
+     "links": {"ep06_banks": ["Previous episode", "ep05_jobs"]}}
+
+"links" (optional) adds a "<label>: <title> <link>" line to a long video's description; the target can be any video in
+video_ids.json. Every long video also gets a "Full series: <playlist link>" line.
 
 Every video goes public at 2:00 PM New York time on its day (daylight saving handled). Shorts get a "Watch the full
 video" link to their episode's long video in the description. IDs go to channel/out/video_ids.json, playlists to
@@ -33,9 +37,38 @@ def publish_at(day):
     return local.astimezone(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
+def is_short(name):
+    return '_short_' in name
+
+
+def duration(path):
+    import subprocess
+    return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
+                                          '-of', 'csv=p=0', path]))
+
+
 def long_of(name, names):
     ep = name.split('_')[0]
     return next(n for n in names if n.startswith(ep + '_') and '_short_' not in n)
+
+
+def link_up(yt, plan, ep, ids, playlist_id, longs):
+    """Append the episode links and the series playlist to each long video's description (once)."""
+    for name in longs:
+        sn = yt.videos().list(part='snippet', id=ids[name]).execute()['items'][0]['snippet']
+        if 'Full series:' in sn['description']:
+            continue
+        add = '\n'
+        if name in plan.get('links', {}):
+            label, target = plan['links'][name]
+            t = yt.videos().list(part='snippet', id=ids[target]).execute()['items'][0]['snippet']['title']
+            add += f"\n{label}: {t} https://youtu.be/{ids[target]}"
+        add += f"\nFull series: https://www.youtube.com/playlist?list={playlist_id}"
+        sn['description'] += add
+        yt.videos().update(part='snippet', body={'id': ids[name], 'snippet': {
+            k: sn[k] for k in ('title', 'description', 'tags', 'categoryId', 'defaultLanguage', 'defaultAudioLanguage')
+            if k in sn}}).execute()
+        print('  linked', name)
 
 
 def main():
@@ -51,6 +84,11 @@ def main():
         errs = validate(m)
         if errs:
             sys.exit(f'{name}: {errs}')
+        secs = duration(m['video'])
+        if not is_short(name) and secs < 480:
+            print(f'  WARNING: {name} is {secs / 60:.1f} min; mid-roll ads need 8:00+ (fine only if the material is done)')
+        if is_short(name) and secs > 180:
+            sys.exit(f'{name}: {secs:.0f}s is too long for a Short (3 min max)')
         print(f"{name}: {m['title']} -> {m['publishAt']}" + (' (already uploaded)' if name in ids else ''))
         if dry or name in ids:
             continue
@@ -87,6 +125,7 @@ def main():
                     print('  playlist retry:', str(e)[-80:])
                     time.sleep(8 * (attempt + 1))
         print('playlist', title, pls[title])
+        link_up(yt, plan, ep, ids, pls[title], [n for n in order if n.startswith(ep + '_') and not is_short(n)])
     q = json.load(open(f'{OUT}/launch_comments.json'))
     q.update(plan.get('launch_questions', {}))
     json.dump(q, open(f'{OUT}/launch_comments.json', 'w'), indent=1)

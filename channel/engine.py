@@ -769,7 +769,7 @@ def master(voice, mus, fx, total):
     for _ in range(3):  # normalize to YouTube's -14 LUFS, then limit peaks; repeat to settle
         with np.errstate(all='ignore'):
             out = pyln.normalize.loudness(out, meter.integrated_loudness(out), -14.0)
-        out = limit(out, 0.89)
+        out = limit(out, 0.80)  # -1.9 dBFS: AAC encoding adds ~1 dB of overshoot, keep true peak under 0 dB
     return out
 
 

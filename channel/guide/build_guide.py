@@ -113,14 +113,17 @@ def launch_day(ep, when, prefix):
             f'{ui("Content")}.',
             f'{b(lt)} and {b(title(first_short))} should say {b("Public")} in the Visibility column. If it still '
             f'says Scheduled, wait 5 minutes and refresh the page.']), clock='2:05 PM'),
-        step(f'{prefix}2', 'Post and pin a question in the comments', ol([
-            f'Open the video: <a href="{yt(long_n)}" target="_blank" rel="noopener">{yt(long_n)}</a>',
-            f'Scroll down under the video to {b("Comments")}. Click {ui("Add a comment…")}',
-            'At 2:07 PM I post this question as a comment for you:' + copyline(f'q{ep}', QUESTIONS[ep]),
-            f'Refresh the page after 2:10 PM. Find that comment, click the three dots <b>⋮</b> on its right → '
-            f'{ui("Pin")} → {ui("Pin")} again to confirm.']), clock='2:10 PM',
-            sub='I post the comment automatically. YouTube does not let apps pin, so the pin click is yours.'),
-        step(f'{prefix}3', f'Link the Shorts to the long video', ol([
+        step(f'{prefix}2', 'Pin my question comment', ol([
+            'At 2:07 PM I post this question on the video for you (don\'t post it yourself, or it shows twice):'
+            + copyline(f'q{ep}', QUESTIONS[ep]),
+            f'After 2:10 PM, open the video: <a href="{yt(long_n)}" target="_blank" rel="noopener">{yt(long_n)}</a> '
+            f'and scroll down to {b("Comments")}. On the phone app, tap the comments box under the video.',
+            f'Find that comment, click the three dots <b>⋮</b> on its right → {ui("Pin")} → {ui("Pin")} again to '
+            'confirm.']), clock='2:10 PM',
+            sub='YouTube does not let apps pin comments, so this one click is yours.'),
+        step(f'{prefix}3', f'(Optional) Link the Shorts to the long video', ol([
+            f'Only if you see {ui("Related video")}; YouTube is still rolling it out. Each Short\'s description '
+            'already links to the full video, so skipping this is fine.',
             f'Studio → {ui("Content")} → {ui("Shorts")} tab.',
             f'Move your mouse over {b(title(SHORTS_OF[ep][0]))} and click the <b>pencil</b> icon '
             f'({ui("Details")}).',
@@ -130,17 +133,21 @@ def launch_day(ep, when, prefix):
             'Do the same for ' + ' and '.join(b(title(n)) for n in SHORTS_OF[ep][1:]) +
             '. They are still Scheduled; you can still change them.']), clock='2:10 PM',
             sub='This adds a tappable link on each Short that sends viewers to the full video.'),
-        step(f'{prefix}4', 'Reply to comments', f'<p>Open the video. Click the <b>heart</b> under each comment and '
-             f'reply to a few. Replying in the first few hours helps the most.</p>', clock='evening, 5 min'),
+        step(f'{prefix}4', '(Optional) Heart comments', f'<p>I reply to comments for you at 2:07 PM and 8:43 PM. '
+             f'Apps can\'t give hearts, so if you have a minute, open Studio → {ui("Comments")} and tap the '
+             f'<b>heart</b> on good ones. Please don\'t reply to the same comments yourself; it would show two '
+             f'answers.</p>', clock='evening, 2 min'),
     ]
     return day(when, '2:05 PM', 'about 15 min', f'{lt} goes live', steps,
                'At <b>2:00 PM</b> the video goes public by itself. You don\'t need to do anything at 2:00.')
 
 
 def check_day(n, when, sid):
-    return day(when, '2:05 PM', '5 min', None, [step(sid, 'Check the Short is live and reply to comments', ol([
-        f'Studio → {ui("Content")} → {ui("Shorts")}. {b(title(n))} should say {b("Public")}.',
-        f'On the left menu, click {ui("Comments")}. Heart and reply to new comments on any video.']))])
+    return day(when, '2:05 PM', '2 min, optional', None, [step(sid, '(Optional) Peek at today\'s Short', ol([
+        f'Studio → {ui("Content")} → {ui("Shorts")}. {b(title(n))} should say {b("Public")}. I check this too '
+        'and message you if it isn\'t.',
+        f'Comment replies are automatic. If you like, tap the <b>heart</b> on good comments in '
+        f'{ui("Comments")}.']))])
 
 
 def analytics_day(when, eps, sid):
@@ -272,7 +279,7 @@ def main():
     done = [
         'Uploaded all 19 videos (5 long, 14 Shorts) with English captions and thumbnail A. Weekly analytics are pulled automatically, so no screenshots needed.',
         'Scheduled every video to go public at <b>2:00 PM New York time</b> on its day.',
-        'Made 4 playlists (Inflation, Housing, Gas prices, Interest rates) and added each video.',
+        'Made 5 playlists (Inflation, Housing, Gas prices, Interest rates, Jobs) and added each video, with "next episode" and series links in the descriptions.',
         'Added a "Watch the full video" link to every Short\'s description.',
         'Put every reminder below into your <b>Google Calendar</b>, with a link to this page.',
         'Posts launch comments and replies to viewers automatically every day. Made week 2 on the two most-searched money stories right now: the 2026 gas price spike and the Fed\'s '
@@ -286,7 +293,7 @@ def main():
   <div class="progress"><div class="bar"><i id="bar"></i></div><span id="count">0 / 0</span></div>
 </header>
 <section class="panel"><h2>Already done for you</h2><ul class="donelist">{"".join(f"<li>{d}</li>" for d in done)}</ul>
-<p class="if">What's left below is only what YouTube doesn't let apps do: thumbnail tests, end screens, pinned comments, Short-to-video links, and analytics screenshots.</p></section>
+<p class="if">What's left below is only what YouTube doesn't let apps do: thumbnail tests, end screens and pinning a comment. Everything else is optional.</p></section>
 <div class="note"><strong>Before you start</strong><p>Use a <b>computer</b> (laptop or desktop) with Chrome. The YouTube phone app can't add end screens or test thumbnails. If a button has a slightly different name than here, click the closest match.</p></div>
 <section class="panel"><h2>Your 19 videos</h2><div class="tablebox"><table><thead><tr><th>Goes public</th><th>Video</th><th>Link</th></tr></thead><tbody>{video_rows()}</tbody></table></div></section>
 {setup_section()}

@@ -44,6 +44,9 @@ def validate(m):
     for key in ('video', 'thumbnail', 'captions'):
         if m.get(key) and not os.path.exists(path(m[key])):
             errors.append(f'{key} file not found: {m[key]}')
+    for key in ('title', 'description'):
+        if '<' in m.get(key, '') or '>' in m.get(key, ''):
+            errors.append(f'{key} contains < or > (YouTube rejects them)')
     if len(m.get('title', '')) > 100:
         errors.append('title over 100 characters')
     if len(m.get('description', '').encode()) > 5000:

@@ -26,7 +26,7 @@ LOG = json.load(open(LOG_PATH)) if os.path.exists(LOG_PATH) else {'commented': {
 
 def long_of(name):
     ep = name.split('_')[0]
-    return next(n for n in IDS if n.startswith(ep) and '_short_' not in n)
+    return next(n for n in IDS if n.startswith(ep + '_') and '_short_' not in n)
 
 
 def save():
@@ -39,6 +39,26 @@ def post(yt, channel, vid, text):
     return r['id']
 
 
+def author(c):
+    return c['snippet'].get('authorChannelId', {}).get('value')
+
+
+def text(c):
+    sn = c['snippet']
+    return sn.get('textOriginal') or sn.get('textDisplay') or ''
+
+
+def all_threads(yt, vid, **kw):
+    items, token = [], None
+    while True:
+        r = yt.commentThreads().list(part='snippet', videoId=vid, maxResults=100, textFormat='plainText',
+                                     pageToken=token, **kw).execute()
+        items += r.get('items', [])
+        token = r.get('nextPageToken')
+        if not token:
+            return items
+
+
 def main():
     yt = client()
     channel = yt.channels().list(part='id', mine=True).execute()['items'][0]['id']
@@ -49,8 +69,12 @@ def main():
             i = args.index('--for')
             target = args[i + 1]
             del args[i:i + 2]
-        thread, text = args[0], ' '.join(args[1:])
-        r = yt.comments().insert(part='snippet', body={'snippet': {'parentId': thread, 'textOriginal': text}}).execute()
+        thread, msg = args[0], ' '.join(args[1:])
+        if target:  # @mention the viewer so YouTube notifies them of the answer
+            who = yt.comments().list(part='snippet', id=target).execute()['items'][0]['snippet']['authorDisplayName']
+            if who and not msg.startswith(who):
+                msg = f'{who} {msg}'
+        r = yt.comments().insert(part='snippet', body={'snippet': {'parentId': thread, 'textOriginal': msg}}).execute()
         LOG['replied'].append(target or thread)
         save()
         print('replied', r['id'])
@@ -70,43 +94,51 @@ def main():
         if n in LOG['commented']:
             continue
         if n in QUESTIONS:
-            text = QUESTIONS[n]
+            msg = QUESTIONS[n]
         elif '_short_' in n:
-            text = f"Watch the full video here: https://youtu.be/{IDS[long_of(n)]}"
+            msg = f"Watch the full video here: https://youtu.be/{IDS[long_of(n)]}"
         else:  # a long video without a written question still gets a real conversation starter
-            text = "What surprised you most in this video? Tell me in the comments, I read every one."
+            msg = "What surprised you most in this video? Tell me in the comments, I read every one."
             print(f'NOTE: no launch question for {n}; add one to channel/out/launch_comments.json')
         try:
-            LOG['commented'][n] = post(yt, channel, IDS[n], text)
+            LOG['commented'][n] = post(yt, channel, IDS[n], msg)
             save()
-            print(f'POSTED launch comment on {n}: {text}')
+            print(f'POSTED launch comment on {n}: {msg}')
         except Exception as e:
             print(f'could not comment on {n}: {str(e)[:200]}')
     print('\nUNANSWERED VIEWER COMMENTS')
+    held = []
     for n in public:
         try:
-            threads = yt.commentThreads().list(part='snippet', videoId=IDS[n], maxResults=50,
-                                               order='time').execute().get('items', [])
+            threads = all_threads(yt, IDS[n])
+            held += [(n, th) for th in all_threads(yt, IDS[n], moderationStatus='heldForReview')]
         except Exception as e:
             print(f'  ({n}: {str(e)[:120]})')
             continue
         for th in threads:
-            top = th['snippet']['topLevelComment']['snippet']
-            if top.get('authorChannelId', {}).get('value') == channel:
-                # our launch comment: viewers answer it with replies, so list theirs that we haven't answered
-                if not th['snippet'].get('totalReplyCount'):
+            # a viewer message needs an answer unless we logged a reply to it or the channel spoke after it
+            msgs = [th['snippet']['topLevelComment']]
+            if th['snippet'].get('totalReplyCount'):
+                msgs += yt.comments().list(part='snippet', parentId=th['id'], maxResults=100,
+                                           textFormat='plainText').execute()['items']
+            msgs.sort(key=lambda c: c['snippet']['publishedAt'])
+            ours = [c for c in msgs if author(c) == channel]
+            for c in msgs:
+                if author(c) == channel or c['id'] in LOG['replied']:
                     continue
-                reps = yt.comments().list(part='snippet', parentId=th['id'], maxResults=100).execute()['items']
-                for rp in reps:
-                    sn = rp['snippet']
-                    if sn.get('authorChannelId', {}).get('value') == channel or rp['id'] in LOG['replied']:
-                        continue
-                    print(f"  [{n}] thread={th['id']} --for {rp['id']} by {sn.get('authorDisplayName')}: "
-                          f"{sn.get('textOriginal')[:300]}")
-                continue
-            if th['id'] in LOG['replied']:
-                continue
-            print(f"  [{n}] thread={th['id']} by {top.get('authorDisplayName')}: {top.get('textOriginal')[:300]}")
+                name, at = c['snippet'].get('authorDisplayName', ''), c['snippet']['publishedAt']
+                # answered by hand in Studio: a later channel reply that @mentions them, or any channel reply to
+                # a viewer's own top-level comment
+                later = [o for o in ours if o['snippet']['publishedAt'] > at]
+                if any(name and name in text(o) for o in later) or (c['id'] == th['id'] and later):
+                    continue
+                where = f"thread={th['id']}" + ('' if c['id'] == th['id'] else f" --for {c['id']}")
+                print(f"  [{n}] {where} by {c['snippet'].get('authorDisplayName')}: {text(c)[:300]}")
+    if held:
+        print('\nHELD FOR REVIEW (YouTube hid these; approve or remove them in Studio > Comments > Held for review)')
+        for n, th in held:
+            c = th['snippet']['topLevelComment']
+            print(f"  [{n}] by {c['snippet'].get('authorDisplayName')}: {text(c)[:200]}")
 
 
 if __name__ == '__main__':

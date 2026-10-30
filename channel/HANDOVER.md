@@ -18,8 +18,8 @@ Read this first when the user says "upload week 1", "week 2", "set up weekly aut
 The user stored `YT_CLIENT_ID`, `YT_CLIENT_SECRET` and `YT_REFRESH_TOKEN` as environment variables.
 Never print, log, commit or echo their values. Check that they exist with `[ -n "$YT_REFRESH_TOKEN" ]`.
 The OAuth app is "In production" (tokens don't expire weekly). The API project is not yet audited,
-so YouTube locks API uploads to **private**: upload private and tell the user which day to switch
-each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone verification (done).
+so YouTube locks API uploads to **private**; scheduled `publishAt` still makes them public on their day
+(verified on all 19 videos). Custom thumbnails need the channel's phone verification (done).
 
 ## Status (Oct 30, 2026)
 - New .mp4 renders are git-ignored (GitHub rejects files >100 MB); the uploaded copies on YouTube are the archive.
@@ -27,10 +27,14 @@ each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone 
   `check_numbers()` -> `--stills` and look at them -> render -> `python3 channel/wk2_audit.py epNN_*` (Whisper and
   loudness; the build also warns if any line fell back to the backup voice) -> thumbnails (`thumb_epNN.py`) ->
   kit entries in `make_kits.py` -> `python3 youtube/publish_batch.py plan.json` (uploads, 2 PM New York with DST,
-  playlists, Short links, launch questions) -> `python3 channel/guide/build_guide.py` and publish its HTML with
+  playlists, Short links, launch questions, "links" + "Full series" lines on long videos; warns under 8:00) ->
+  `python3 youtube/qa.py` (read-only live check of every video vs kit and SCHEDULE.md; must say NO PROBLEMS) -> `python3 channel/guide/build_guide.py` and publish its HTML with
   `url=https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp` (same page) -> calendar reminders -> update SCHEDULE.md.
 - Current schedule: channel/SCHEDULE.md (19 videos, Oct 30 to Nov 12). ep05_jobs is the Microsoft buyouts bonus.
-- `youtube/daily.py` also lists viewer replies under our launch comments (answer with `--reply THREAD --for CID`).
+- `youtube/daily.py` lists every viewer message still unanswered (top-level, replies under our launch comments, and
+  follow-ups in threads we already answered), plus comments YouTube held for review (tell the user; the API can't
+  heart or approve). `--reply THREAD TEXT --for CID` @mentions that viewer so they get notified.
+- Audio master: limiter ceiling 0.80 (-1.9 dBFS) so the AAC true peak stays under 0 dB (Gas renders peaked +0.2).
 - `youtube/stats.py` adds traffic sources and countries; impressions/CTR are Studio-only (not in the API).
 - Weeks 1 and 2 (16 videos) are uploaded and scheduled via `publishAt` (2:00 PM ET). IDs: `channel/out/video_ids.json`,
   playlists: `channel/out/playlists.json`. See `WEEK1.md`, `WEEK2.md`, and the checklist artifact linked in WEEK2.md.
@@ -40,7 +44,7 @@ each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone 
   (launch comments + replies; Thursdays also analytics and next week's videos), and 8:43 PM ET a reply round.
   The API can't pin comments or set a Short's Related video; the user does those two by hand.
 - Launch order changed Oct 29 after `youtube/trends.py` showed gas prices far ahead in demand: Gas (Oct 30),
-  Fed (Nov 2), Housing (Nov 6), Inflation (Nov 9). Run trends.py on Thursdays to pick topics.
+  Fed (Nov 2), Jobs (Nov 5), Inflation (Nov 6), Housing (Nov 9). Run trends.py on Thursdays to pick topics.
 - From week 3 on, new videos use the upgraded defaults: Chatterbox voice (Whisper-checked per line, falls back
   to Kokoro) and AUDIO_STYLE=upgrade (GeneralUser GS soundfont + Kenney CC0 effects). Weeks 1-2 were
   made with VOICE_ENGINE=kokoro AUDIO_STYLE=classic; use those to re-render them identically.
