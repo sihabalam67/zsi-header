@@ -72,7 +72,10 @@ def main():
             except Exception as e:
                 print('  playlist retry:', str(e)[-80:])
                 time.sleep(8 * (attempt + 1))
-        yt.playlistItems().delete(id=where[1]).execute()  # else a "[Deleted video]" entry stays behind
+        try:  # else a "[Deleted video]" entry stays behind; finish() double-checks via ensure_playlist
+            yt.playlistItems().delete(id=where[1]).execute()
+        except Exception as e:
+            print('  old playlist entry not removed yet:', str(e)[-80:])
     finish(yt, name, old, new, pend, pend_path, m['publishAt'])
 
 
@@ -88,7 +91,10 @@ def ensure_playlist(yt, old, new):
                 'playlistId': pid, 'position': olds[0]['snippet']['position'],
                 'resourceId': {'kind': 'youtube#video', 'videoId': new}}}).execute()
         for i in olds:
-            yt.playlistItems().delete(id=i['id']).execute()
+            try:
+                yt.playlistItems().delete(id=i['id']).execute()
+            except Exception as e:  # already gone (the playlist list can lag a few seconds)
+                print('  playlist entry already gone:', str(e)[-60:])
 
 
 def finish(yt, name, old, new, pend, pend_path, publish_at=None):
