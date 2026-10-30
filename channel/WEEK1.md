@@ -6,6 +6,10 @@ Everything below is already made, in `channel/out/`. Each video has an upload ki
 Post at **2:00 pm US Eastern** (the target audience is US/UK). Shorts go out at the same time on
 their own days, so each long video gets a few days of traffic from its Shorts.
 
+> **Rescheduled:** the launch moved up to **Fri Oct 30**. Each row below now goes live 3 days earlier
+> (Mon -> Fri Oct 30, Tue -> Sat Oct 31, Wed -> Sun Nov 1, Thu -> Mon Nov 2, Fri -> Tue Nov 3, Sat -> Wed Nov 4;
+> analytics screenshots Thu Nov 5). All videos are already scheduled in YouTube.
+
 | Day | Upload | File |
 |---|---|---|
 | Mon | **Long: Where did your $100 go?** (7 min) | `ep01_inflation.mp4` |
