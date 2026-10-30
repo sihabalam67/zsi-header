@@ -9,7 +9,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Fri Oct 30 | Short | 11:30 AM news: $6.3B stolen from Binance in 20 minutes | https://youtu.be/ZpEzShWdGN0 |
 | Fri Oct 30 | Long | Why Is Gas So Expensive Right Now? | https://youtu.be/XKD-BqxeMFw |
 | Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/MjxRVxEpatA |
-| Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/bU2w3avQnjo |
+| Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/TACYizpUx1Y |
 | Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/I-DdB1ONp_s |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
 | Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/s7X20UjfknI |
