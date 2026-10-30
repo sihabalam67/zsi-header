@@ -23,7 +23,7 @@ from engine import build, still  # noqa: E402
 
 EPN = NAME.split('_')[0]
 E = importlib.import_module({'ep01': 'ep01_inflation', 'ep02': 'ep02_housing', 'ep03': 'ep03_gas',
-                             'ep04': 'ep04_fed', 'ep05': 'ep05_jobs'}[EPN])
+                             'ep04': 'ep04_fed', 'ep05': 'ep05_jobs', 'ep08': 'ep08_midterms'}[EPN])
 
 
 def big(c, text, y, size, color, k=1.0, sub=None):
@@ -595,7 +595,74 @@ def supply_draw(c, x):
              label_size=28)
 
 
+# --------------------------------------------------------- ep08: midterms --
+def mid_cover(c, t):
+    big(c, '18 / 18', 300, 150, GOLD, 1, None)
+    c.text(360, 400, 'stocks a year after every midterm', 30, WHITE, 900)
+    E.bars18(c, 99, 0, 0, box=(60, 470, 660, 820), labels=False, k_all=True)
+    c.text(360, 870, 'since 1950', 30, MINT, 900)
+
+
+def mid_a(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 90, 50)
+    if t < L[1]:
+        mid_cover(c, t)
+        return
+    if t < L[2]:
+        c.text(360, 230, 'One year after each midterm', 32, WHITE, 900)
+        E.bars18(c, t, L[1] + 0.2, max(1.5, L[2] - L[1] - 0.5), box=(60, 330, 660, 760), labels=False)
+        chip(c, 360, 850, '18 up, 0 down', MINT, pop(t, L[1] + 2.0), 32)
+        return
+    two_bars(c, t, L[2] + 0.2, ('other years', E.OTHER_AVG, MUTED), ('after midterms', E.AVG, MINT),
+             lambda v: f'+{v:.0f}%', 22, 'Average 12-month gain')
+
+
+def mid_b(c, x):
+    t, L = x.t, x.L
+    k = pop(t, 0.4)
+    if k > 0:
+        c.text(360, 260, f'2022: {E.Y22_SLUMP:.1f}%', 64, CORAL, 900, a=clamp(k), stroke=6)
+    k2 = pop(t, 2.2)
+    if k2 > 0:
+        c.text(360, 360, f'then +{E.Y22_REBOUND:.0f}%', 80, MINT, 900, a=clamp(k2), stroke=6)
+
+
+def mid_c(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 91, 50)
+    if t < L[1]:
+        c.icon('check', 360, 400, 200, MUTED, a=fade(t, L[0]))
+        c.text(360, 640, 'The uncertainty ends', 46, GOLD, 900, a=fade(t, L[0] + 0.5))
+        return
+    if t < x.dur - 0.9:
+        c.icon('coins', 360, 380, 180, GOLD, a=fade(t, L[1]))
+        c.text(360, 600, 'small sample', 40, WHITE, 900, a=fade(t, L[1] + 0.3))
+        c.text(360, 660, "history isn't a promise", 34, CORAL, 900, a=fade(t, L[1] + 1.5))
+        big(c, '19 / 19 ?', 820, 100, GOLD, pop(t, L[1] + 3.0), None)
+        return
+    mid_cover(c, t)
+
+
 SHORTS2 = {
+    'ep08_short_midterms': lambda: [
+        dict(draw=mid_a, vertical=True, lead=0.1, gap=0.25, tail=0.3, lines=[
+            "!Eighteen out of eighteen.",
+            "Since 1950, the stock market went up in the year after every single midterm election.",
+            f"On average, about {E.AVG:.0f}%. In normal years? About {E.OTHER_AVG:.0f}%.",
+        ], punch=lambda L: [0.05, L[1] + 2.0], sfx=lambda L: [(0.0, 'ding'), (L[1] + 0.2, 'whoosh'),
+                                                              (L[1] + 2.0, 'ding'), (L[2] + 0.2, 'pop')]),
+        dict(draw=mid_b, vertical=True, bg_video=os.path.join(E.FLOW, 'clip1.mp4'), bg_speed=0.9, lead=0.2,
+             gap=0.25, tail=0.3, lines=[
+                 f"!Even in 2022, when stocks were down {abs(E.Y22_SLUMP):.1f}% before the vote, they came roaring "
+                 "back.",
+             ], punch=lambda L: [0.4, 2.2], sfx=lambda L: [(0.4, 'down'), (2.2, 'ding')]),
+        dict(draw=mid_c, vertical=True, lead=0.2, gap=0.25, tail=0.9, lines=[
+            "Why? Analysts say the biggest reason is simple: the uncertainty ends.",
+            "But eighteen is a small sample, and history isn't a promise. So will 2026 make it nineteen for "
+            "nineteen? Right now, it's",
+        ], punch=lambda L: [L[1] + 3.0], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[1] + 3.0, 'ding')]),
+    ],
     'ep05_short_layoffs': lambda: [dict(
         draw=layoffs_draw, vertical=True, lead=0.1, gap=0.25, tail=0.9, lines=[
             "!Everyone says layoffs are surging. The official count says they're lower than before the pandemic.",
@@ -809,6 +876,9 @@ def check(name):
     if name == 'ep02_short_supply':
         d = dict(E.DECADES)
         assert d[2010] < 1000 and d[2010] == min(d.values()) and 'lowest of any decade' in script
+    if name == 'ep08_short_midterms':
+        assert len(E.MID) == 18 and round(E.AVG) == 18 and round(E.OTHER_AVG) == 6
+        assert round(E.Y22_SLUMP, 1) == -18.5 and 'Right now' in script
     if name == 'ep04_short_cards':
         assert round(E.CC_NOW / E.P_NOW) == 3 and 'about three times' in script and E.QUARTER == 12.5
         assert f'${round(E.CC_COST, -1):,.0f}' in script
