@@ -22,7 +22,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Sun Nov 8 | Short | The rule of 70 | https://youtu.be/MzOaGLhnDjE |
 | Mon Nov 9 | Long | A House Cost $23,000 in 1970 | https://youtu.be/Ln54Ec_mjq8 |
 | Mon Nov 9 | Short | A house cost $23,000 in 1970 | https://youtu.be/j8slElCKR2Q |
-| Tue Nov 10 | Short | Same house, $876 more per month | https://youtu.be/1Sr09tfCcAc |
+| Tue Nov 10 | Short | Same house, $876 more per month | https://youtu.be/HHTk9JDRKGs |
 | Wed Nov 11 | Short | America stopped building homes | https://youtu.be/fbW-rmBQqPk |
 | Thu Nov 12 | Short | Nobody is hiring | https://youtu.be/-hCnCEqJiBI |
 
