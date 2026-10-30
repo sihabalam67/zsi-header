@@ -31,6 +31,9 @@ each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone 
   The API can't pin comments or set a Short's Related video; the user does those two by hand.
 - Launch order changed Oct 29 after `youtube/trends.py` showed gas prices far ahead in demand: Gas (Oct 30),
   Fed (Nov 2), Housing (Nov 6), Inflation (Nov 9). Run trends.py on Thursdays to pick topics.
+- From week 3 on, new videos use the upgraded defaults: Chatterbox voice (Whisper-checked per line, falls back
+  to Kokoro) and AUDIO_STYLE=upgrade (GeneralUser GS soundfont + Kenney CC0 effects). Weeks 1-2 were
+  made with VOICE_ENGINE=kokoro AUDIO_STYLE=classic; use those to re-render them identically.
 - Next: ep05 "How banks create money out of thin air" (promised at the end of ep04).
 
 ## "upload week 1"

@@ -31,7 +31,10 @@ K = OUT_W / W * 2
 SR = 44100
 VOICE = os.environ.get('VOICE', 'af_heart')
 # AUDIO_STYLE=upgrade: GeneralUser GS soundfont (free incl. commercial) + Kenney CC0 interface sounds
-AUDIO_STYLE = os.environ.get('AUDIO_STYLE', 'classic')
+AUDIO_STYLE = os.environ.get('AUDIO_STYLE', 'upgrade')  # 'classic' = weeks 1-2 sound
+# VOICE_ENGINE=chatterbox: expressive MIT-licensed voice; each line is checked with Whisper, retried, then Kokoro
+VOICE_ENGINE = os.environ.get('VOICE_ENGINE', 'chatterbox')  # 'kokoro' = weeks 1-2 voice
+VOICELAB_PY = os.environ.get('VOICELAB_PY', '/home/user/voicelab/venv/bin/python')
 KENNEY = os.path.join(STUDIO, 'assets', 'audio', 'kenney')
 KENNEY_SFX = {'pop': 'drop_002', 'ding': 'confirmation_002', 'down': 'minimize_005', 'tick': 'tick_002'}
 
@@ -560,6 +563,58 @@ def tts(text):
     return np.interp(np.linspace(0, len(s) - 1, n), np.arange(len(s)), s).astype(np.float32)
 
 
+_cb = None
+
+
+def tts_chatterbox(text, seed=0):
+    """One line through the persistent Chatterbox worker; returns float32 audio at SR, or None on failure."""
+    global _cb
+    import json
+    import tempfile
+    if _cb is None:
+        _cb = subprocess.Popen([VOICELAB_PY, os.path.join(STUDIO, 'chatterbox_worker.py')], stdin=subprocess.PIPE,
+                               stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        while True:
+            line = _cb.stdout.readline()
+            if not line or line.startswith('{"ready"'):
+                break
+    out = tempfile.mktemp(suffix='.wav')
+    _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out}) + '\n')
+    _cb.stdin.flush()
+    line = _cb.stdout.readline()
+    while line and not line.startswith('{'):
+        line = _cb.stdout.readline()
+    if not line or not json.loads(line).get('ok'):
+        return None
+    a, sr = sf.read(out, always_2d=True)
+    os.remove(out)
+    a = a.mean(axis=1)
+    n = int(len(a) * SR / sr)
+    a = np.interp(np.linspace(0, len(a) - 1, n), np.arange(len(a)), a)
+    peak = np.abs(a).max()
+    return (a / peak * 0.9 if peak > 0 else a).astype(np.float32)
+
+
+def speak(toks, min_coverage=0.9):
+    """Narrate one line: Chatterbox when enabled (Whisper-checked, up to 3 tries), else or failing that Kokoro."""
+    spoken = ' '.join(sp for _, sp in toks)
+    if VOICE_ENGINE == 'chatterbox' and os.path.exists(VOICELAB_PY):
+        best = None
+        for attempt in range(3):
+            a = tts_chatterbox(spoken, seed=attempt)
+            if a is None:
+                break
+            cov = align(toks, word_times(a), len(a) / SR)[1]
+            if best is None or cov > best[1]:
+                best = (a, cov)
+            if cov >= min_coverage:
+                return a
+        if best is not None and best[1] >= 0.85:
+            return best[0]
+        print(f'  chatterbox unclear, using Kokoro for: {spoken[:60]!r}', flush=True)
+    return tts(spoken)
+
+
 _whisper = None
 
 
@@ -802,12 +857,13 @@ def narrate(scenes, build_dir, min_coverage=0.85):
         for text in sc['lines']:
             toks = parse_line(text)
             spoken = ' '.join(sp for _, sp in toks)
-            key = hashlib.md5(f'{VOICE}|{spoken}'.encode()).hexdigest()[:12]
+            vid = VOICE if VOICE_ENGINE == 'kokoro' else f'{VOICE_ENGINE}'
+            key = hashlib.md5(f'{vid}|{spoken}'.encode()).hexdigest()[:12]
             cache = os.path.join(build_dir, f'vo_{key}.npy')
             if os.path.exists(cache):
                 a = np.load(cache)
             else:
-                a = tts(spoken)
+                a = speak(toks)
                 np.save(cache, a)
             dur = len(a) / SR
             timed, cov = align(toks, word_times(a), dur)

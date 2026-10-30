@@ -43,6 +43,15 @@ if [ ! -f "$MODELS/GeneralUser-GS.sf2" ]; then
   cp "$tmp/gu/GeneralUser-GS.sf2" "$MODELS/"; rm -rf "$tmp"
 fi
 
+echo "== expressive voice (Chatterbox, MIT) in its own venv"
+VL=/home/user/voicelab
+if [ ! -x "$VL/venv/bin/python" ] || ! "$VL/venv/bin/python" -c "import chatterbox" 2>/dev/null; then
+  mkdir -p "$VL" && python3 -m venv "$VL/venv"
+  "$VL/venv/bin/pip" -q install --upgrade pip
+  "$VL/venv/bin/pip" -q install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+  "$VL/venv/bin/pip" -q install chatterbox-tts
+fi
+
 echo "== speech recognition model"
 python3 -c "from faster_whisper import WhisperModel; WhisperModel('base.en', device='cpu', compute_type='int8', download_root='$MODELS/whisper')" 2>&1 | grep -v HF_TOKEN || true
 
