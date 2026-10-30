@@ -29,6 +29,8 @@ each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone 
 - Automation (scheduled tasks firing into the Claude session): daily 2:07 PM ET runs `youtube/daily.py`
   (launch comments + replies; Thursdays also analytics and next week's videos), and 8:43 PM ET a reply round.
   The API can't pin comments or set a Short's Related video; the user does those two by hand.
+- Launch order changed Oct 29 after `youtube/trends.py` showed gas prices far ahead in demand: Gas (Oct 30),
+  Fed (Nov 2), Housing (Nov 6), Inflation (Nov 9). Run trends.py on Thursdays to pick topics.
 - Next: ep05 "How banks create money out of thin air" (promised at the end of ep04).
 
 ## "upload week 1"
