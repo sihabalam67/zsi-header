@@ -1,8 +1,8 @@
 # Upload kit: ep02_housing
 
 **Title options** (1 is the default):
-1. Why Houses Got So Expensive
-2. Houses Cost $23,000 in 1970. Now $393,000. What Happened?
+1. A House Cost $23,000 in 1970. Now It's $393,000. Why?
+2. Why Houses Got So Expensive
 3. Why Can't Anyone Afford a House? (Explained With Real Data)
 
 **Thumbnails:** ep02_thumb_a.png (default), ep02_thumb_b.png. Use Studio's "Test & compare".

@@ -1,0 +1,61 @@
+<div class="toast" id="toast" role="status">Copied</div>
+
+<script>
+const KITS = __KITS__;
+const RAW = "__RAW__";
+const FILES = __FILES__;
+const KEY = "cointheory-week1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+const boxes = [...document.querySelectorAll('.step input[type=checkbox]')];
+function render() {
+  let n = 0;
+  boxes.forEach(b => { b.checked = !!state[b.id]; b.closest('.step').classList.toggle('is-done', b.checked); if (b.checked) n++; });
+  const core = boxes.filter(b => !b.id.startsWith('b'));
+  const coreDone = core.filter(b => b.checked).length;
+  document.getElementById('count').textContent = coreDone + ' / ' + core.length;
+  document.getElementById('bar').style.width = (100 * coreDone / core.length) + '%';
+}
+boxes.forEach(b => b.addEventListener('change', () => {
+  state[b.id] = b.checked;
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  render();
+}));
+const toast = document.getElementById('toast');
+function copy(text) {
+  const done = () => { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1200); };
+  try {
+    navigator.clipboard.writeText(text).then(done, () => fallback(text, done));
+  } catch (e) { fallback(text, done); }
+}
+function fallback(text, done) {
+  const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done(); } catch (e) {}
+  t.remove();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-copy]'); if (b) copy(document.getElementById(b.dataset.copy).textContent);
+  const k = e.target.closest('[data-kit]'); if (k) copy(KITS[+k.dataset.kit][k.dataset.field]);
+});
+const tbody = document.getElementById('files');
+FILES.forEach(([f, what]) => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = '<td><a target="_blank" rel="noopener"></a></td><td></td>';
+  tr.querySelector('a').href = RAW + '/' + f; tr.querySelector('a').textContent = f;
+  tr.children[1].textContent = what;
+  tbody.appendChild(tr);
+});
+const kits = document.getElementById('kits');
+KITS.forEach((k, i) => {
+  const d = document.createElement('div'); d.className = 'kit';
+  d.innerHTML = '<div class="row"><span class="eyebrow"></span></div><h3></h3>' +
+    '<div class="row"><button class="btn" data-kit="'+i+'" data-field="title">Copy title</button>' +
+    '<button class="btn" data-kit="'+i+'" data-field="description">Copy description</button>' +
+    '<button class="btn" data-kit="'+i+'" data-field="tags">Copy tags</button></div><pre></pre>';
+  d.querySelector('.eyebrow').textContent = k.when + ' · ' + k.file;
+  d.querySelector('h3').textContent = k.title;
+  d.querySelector('pre').textContent = k.description;
+  kits.appendChild(d);
+});
+render();
+</script>

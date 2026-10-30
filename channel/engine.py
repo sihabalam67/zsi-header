@@ -35,6 +35,16 @@ AUDIO_STYLE = os.environ.get('AUDIO_STYLE', 'upgrade')  # 'classic' = weeks 1-2 
 # VOICE_ENGINE=chatterbox: expressive MIT-licensed voice; each line is checked with Whisper, retried, then Kokoro
 VOICE_ENGINE = os.environ.get('VOICE_ENGINE', 'chatterbox')  # 'kokoro' = weeks 1-2 voice
 VOICELAB_PY = os.environ.get('VOICELAB_PY', '/home/user/voicelab/venv/bin/python')
+CB_EXAG, CB_CFG = 0.5, 0.3                         # calmer, slower delivery than Chatterbox's defaults
+CB_TEMPO = float(os.environ.get('CB_TEMPO', '0.92'))  # ease to explainer pace (~170 words a minute)
+FALLBACKS = []  # lines that could not be voiced by Chatterbox (reported by build so mixed voices never go unnoticed)
+
+
+def voice_id():
+    """Cache key prefix: changes whenever the voice or its settings change."""
+    if VOICE_ENGINE == 'kokoro':
+        return VOICE
+    return f'chatterbox-{CB_EXAG}-{CB_CFG}-{CB_TEMPO}'
 KENNEY = os.path.join(STUDIO, 'assets', 'audio', 'kenney')
 KENNEY_SFX = {'pop': 'drop_002', 'ding': 'confirmation_002', 'down': 'minimize_005', 'tick': 'tick_002'}
 
@@ -566,30 +576,40 @@ def tts(text):
 _cb = None
 
 
-def tts_chatterbox(text, seed=0):
-    """One line through the persistent Chatterbox worker; returns float32 audio at SR, or None on failure."""
+def _cb_start():
     global _cb
+    _cb = subprocess.Popen([VOICELAB_PY, os.path.join(STUDIO, 'chatterbox_worker.py')], stdin=subprocess.PIPE,
+                           stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+    while True:
+        line = _cb.stdout.readline()
+        if not line or line.startswith('{"ready"'):
+            return bool(line)
+
+
+def tts_chatterbox(text, seed=0, _retry=True):
+    """One line through the persistent Chatterbox worker; returns float32 audio at SR, or None on failure.
+    A crashed worker is restarted once, so one bad line can't silently switch the rest of a video to Kokoro."""
     import json
     import tempfile
-    if _cb is None:
-        _cb = subprocess.Popen([VOICELAB_PY, os.path.join(STUDIO, 'chatterbox_worker.py')], stdin=subprocess.PIPE,
-                               stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
-        while True:
-            line = _cb.stdout.readline()
-            if not line or line.startswith('{"ready"'):
-                break
-    out = tempfile.mktemp(suffix='.wav')
-    _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out, 'exaggeration': 0.5, 'cfg': 0.3}) + '\n')
-    _cb.stdin.flush()
-    line = _cb.stdout.readline()
-    while line and not line.startswith('{'):
-        line = _cb.stdout.readline()
-    if not line or not json.loads(line).get('ok'):
+    if (_cb is None or _cb.poll() is not None) and not _cb_start():
         return None
-    tempo = float(os.environ.get('CB_TEMPO', '0.92'))  # Chatterbox talks fast; ease to explainer pace (~170 wpm)
-    if abs(tempo - 1) > 0.01:
+    out = tempfile.mktemp(suffix='.wav')
+    try:
+        _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out, 'exaggeration': CB_EXAG,
+                                    'cfg': CB_CFG}) + '\n')
+        _cb.stdin.flush()
+        line = _cb.stdout.readline()
+        while line and not line.startswith('{'):
+            line = _cb.stdout.readline()
+    except (BrokenPipeError, OSError):
+        line = ''
+    if not line:  # worker died mid-line
+        return tts_chatterbox(text, seed, _retry=False) if _retry and _cb_start() else None
+    if not json.loads(line).get('ok'):
+        return None
+    if abs(CB_TEMPO - 1) > 0.01:
         slow = out.replace('.wav', '_t.wav')
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out, '-filter:a', f'atempo={tempo}', slow], check=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out, '-filter:a', f'atempo={CB_TEMPO}', slow], check=True)
         os.replace(slow, out)
     a, sr = sf.read(out, always_2d=True)
     os.remove(out)
@@ -601,11 +621,11 @@ def tts_chatterbox(text, seed=0):
 
 
 def speak(toks, min_coverage=0.9):
-    """Narrate one line: Chatterbox when enabled (Whisper-checked, up to 3 tries), else or failing that Kokoro."""
+    """Narrate one line: Chatterbox when enabled (Whisper-checked, up to 5 tries), else or failing that Kokoro."""
     spoken = ' '.join(sp for _, sp in toks)
     if VOICE_ENGINE == 'chatterbox' and os.path.exists(VOICELAB_PY):
         best = None
-        for attempt in range(3):
+        for attempt in range(5):
             a = tts_chatterbox(spoken, seed=attempt)
             if a is None:
                 break
@@ -614,9 +634,10 @@ def speak(toks, min_coverage=0.9):
                 best = (a, cov)
             if cov >= min_coverage:
                 return a
-        if best is not None and best[1] >= 0.85:
+        if best is not None and best[1] >= 0.8:
             return best[0]
-        print(f'  chatterbox unclear, using Kokoro for: {spoken[:60]!r}', flush=True)
+        FALLBACKS.append(spoken)
+        print(f'  WARNING chatterbox failed, using Kokoro (mixed voices!) for: {spoken[:60]!r}', flush=True)
     return tts(spoken)
 
 
@@ -862,8 +883,7 @@ def narrate(scenes, build_dir, min_coverage=0.85):
         for text in sc['lines']:
             toks = parse_line(text)
             spoken = ' '.join(sp for _, sp in toks)
-            vid = VOICE if VOICE_ENGINE == 'kokoro' else f'{VOICE_ENGINE}'
-            key = hashlib.md5(f'{vid}|{spoken}'.encode()).hexdigest()[:12]
+            key = hashlib.md5(f'{voice_id()}|{spoken}'.encode()).hexdigest()[:12]
             cache = os.path.join(build_dir, f'vo_{key}.npy')
             if os.path.exists(cache):
                 a = np.load(cache)
@@ -943,6 +963,8 @@ def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
         write_srt(chunks_abs, srt_path)
     chapters = [(starts_abs[i], sc['chapter']) for i, sc in enumerate(scenes) if sc.get('chapter')]
     print('wrote', out_path)
+    if FALLBACKS:
+        print(f'WARNING: {len(FALLBACKS)} line(s) used the backup voice; re-render them before uploading:', FALLBACKS)
     return total, chapters
 
 

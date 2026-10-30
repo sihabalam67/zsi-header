@@ -69,7 +69,13 @@ def main():
     for n in public:
         if n in LOG['commented']:
             continue
-        text = QUESTIONS.get(n) or f"Watch the full video here: https://youtu.be/{IDS[long_of(n)]}"
+        if n in QUESTIONS:
+            text = QUESTIONS[n]
+        elif '_short_' in n:
+            text = f"Watch the full video here: https://youtu.be/{IDS[long_of(n)]}"
+        else:  # a long video without a written question still gets a real conversation starter
+            text = "What surprised you most in this video? Tell me in the comments, I read every one."
+            print(f'NOTE: no launch question for {n}; add one to channel/out/launch_comments.json')
         try:
             LOG['commented'][n] = post(yt, channel, IDS[n], text)
             save()

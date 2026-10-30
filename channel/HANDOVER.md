@@ -23,6 +23,12 @@ each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone 
 
 ## Status (Oct 30, 2026)
 - New .mp4 renders are git-ignored (GitHub rejects files >100 MB); the uploaded copies on YouTube are the archive.
+- Weekly toolchain (in order): `python3 channel/fetch_data.py <FRED IDs>` -> write `channel/epNN_*.py` with
+  `check_numbers()` -> `--stills` and look at them -> render -> `python3 channel/wk2_audit.py epNN_*` (Whisper and
+  loudness; the build also warns if any line fell back to the backup voice) -> thumbnails (`thumb_epNN.py`) ->
+  kit entries in `make_kits.py` -> `python3 youtube/publish_batch.py plan.json` (uploads, 2 PM New York with DST,
+  playlists, Short links, launch questions) -> `python3 channel/guide/build_guide.py` and publish its HTML with
+  `url=https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp` (same page) -> calendar reminders -> update SCHEDULE.md.
 - Current schedule: channel/SCHEDULE.md (19 videos, Oct 30 to Nov 12). ep05_jobs is the Microsoft buyouts bonus.
 - `youtube/daily.py` also lists viewer replies under our launch comments (answer with `--reply THREAD --for CID`).
 - `youtube/stats.py` adds traffic sources and countries; impressions/CTR are Studio-only (not in the API).

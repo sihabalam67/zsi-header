@@ -25,8 +25,7 @@ def audit(mod_name):
         for text in sc['lines']:
             toks = engine.parse_line(text)
             spoken = ' '.join(sp for _, sp in toks)
-            vid = engine.VOICE if engine.VOICE_ENGINE == 'kokoro' else engine.VOICE_ENGINE
-            key = hashlib.md5(f'{vid}|{spoken}'.encode()).hexdigest()[:12]
+            key = hashlib.md5(f'{engine.voice_id()}|{spoken}'.encode()).hexdigest()[:12]
             a = np.load(os.path.join(HERE, 'build', ep, f'vo_{key}.npy'))
             _, cov = engine.align(toks, engine.word_times(a), len(a) / engine.SR)
             total, n = total + cov, n + 1

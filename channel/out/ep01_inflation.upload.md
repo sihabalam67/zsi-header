@@ -1,8 +1,8 @@
 # Upload kit: ep01_inflation
 
 **Title options** (1 is the default):
-1. Where Did Your $100 Go? (Inflation Explained)
-2. Your $100 Is Now Worth $12. Here's Why.
+1. Your $100 Is Now Worth $12. Here's Where It Went (Inflation Explained)
+2. Where Did Your $100 Go? (Inflation Explained)
 3. Why Your Money Slowly Melts: Inflation Explained With Real Data
 
 **Thumbnails:** ep01_thumb_a.png (default), ep01_thumb_b.png. Use Studio's "Test & compare".

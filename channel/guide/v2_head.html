@@ -1,0 +1,80 @@
+<title>Coin Theory Launch Week</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one narrow reading column; each day is a band with a time rail, steps are tickable rows */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --fg:#1b2129; --muted:#5b6574; --line:#dde1e7;
+  --brass:#8a5d00; --brass-soft:#f6ecd6; --done:#2f7d4f; --warn-bg:#fff4e0; --warn-fg:#7a4a00; --red:#c4302b;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Source Sans 3",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11151b; --surface:#191e26; --fg:#e7eaef; --muted:#9aa4b2; --line:#2b323d;
+  --brass:#e2b453; --brass-soft:#2c2416; --done:#5cc48a; --warn-bg:#2e2412; --warn-fg:#f1c27a; --red:#ff6b62; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151b; --surface:#191e26; --fg:#e7eaef; --muted:#9aa4b2; --line:#2b323d;
+  --brass:#e2b453; --brass-soft:#2c2416; --done:#5cc48a; --warn-bg:#2e2412; --warn-fg:#f1c27a; --red:#ff6b62; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:17px/1.55 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(30px,6vw,44px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:24px;font-weight:800}
+h3{font-size:18px;font-weight:600}
+p{margin:0}
+a{color:var(--brass);font-weight:600}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--brass);outline-offset:2px;border-radius:4px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:62ch}
+header{display:flex;flex-direction:column;gap:12px}
+.progress{display:flex;align-items:center;gap:12px;font:500 14px var(--mono);color:var(--muted)}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--done);transition:width .3s}
+.note{background:var(--warn-bg);color:var(--warn-fg);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.note strong{color:inherit}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.t{font-family:var(--mono);font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.day{display:grid;grid-template-columns:118px 1fr;gap:18px;padding-top:22px;border-top:2px solid var(--line)}
+.when{display:flex;flex-direction:column;gap:4px}
+.when .d{font:800 22px/1.1 var(--display)}
+.when .t{font:500 14px var(--mono);color:var(--brass)}
+.when .len{font-size:14px;color:var(--muted)}
+.body{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (max-width:600px){.day{grid-template-columns:1fr;gap:8px}.when{flex-direction:row;flex-wrap:wrap;gap:4px 12px;align-items:baseline}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step.is-done{opacity:.6}
+.step-h{display:flex;gap:12px;align-items:flex-start}
+.step-h input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--done);flex:none;cursor:pointer}
+.step-h label{cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.step-h .clock{font:500 13px var(--mono);color:var(--brass)}
+ol.do{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px}
+ol.do li::marker{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.btn{font:600 14px var(--body);background:var(--brass-soft);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--brass)}
+.ui{font-weight:700;background:var(--brass-soft);padding:0 5px;border-radius:4px;white-space:nowrap}
+.copyline{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:10px 12px}
+.copyline span{flex:1;min-width:0}
+.if{border-left:3px solid var(--line);padding-left:12px;color:var(--muted);font-size:15px}
+.if b{color:var(--fg)}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.thumbs figure{margin:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.thumbs img{border-radius:8px;border:1px solid var(--line);width:100%;max-width:100%;aspect-ratio:16/9;object-fit:cover}
+@media (max-width:480px){.thumbs{grid-template-columns:1fr}}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+details>summary{cursor:pointer;font:600 18px var(--display)}
+details[open]>summary{margin-bottom:12px}
+.kit{display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+.kit pre{white-space:pre-wrap;word-break:break-word;font:14px/1.45 var(--body);margin:0;max-height:9em;overflow:auto;background:var(--bg);padding:8px 10px;border-radius:6px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
