@@ -1,0 +1,748 @@
+1
+00:00:00,300 --> 00:00:01,600
+Eighteen out of eighteen.
+
+2
+00:00:02,155 --> 00:00:03,275
+Since 1950,
+
+3
+00:00:03,535 --> 00:00:05,495
+there have been eighteen midterm elections
+
+4
+00:00:05,295 --> 00:00:06,215
+we can measure.
+
+5
+00:00:06,015 --> 00:00:07,935
+In the year after every single
+
+6
+00:00:07,735 --> 00:00:08,235
+one,
+
+7
+00:00:08,455 --> 00:00:09,575
+the stock market went up.
+
+8
+00:00:10,517 --> 00:00:11,877
+Not most of the time.
+
+9
+00:00:11,977 --> 00:00:12,817
+Every time.
+
+10
+00:00:13,386 --> 00:00:14,146
+On average,
+
+11
+00:00:14,266 --> 00:00:16,226
+the market gained about 18% in
+
+12
+00:00:16,026 --> 00:00:16,886
+those twelve months.
+
+13
+00:00:17,502 --> 00:00:18,522
+And on Tuesday,
+
+14
+00:00:18,742 --> 00:00:19,782
+America votes again.
+
+15
+00:00:20,282 --> 00:00:21,522
+So does the streak continue?
+
+16
+00:00:21,842 --> 00:00:23,482
+And what does it actually mean
+
+17
+00:00:23,282 --> 00:00:24,042
+for your money?
+
+18
+00:00:24,302 --> 00:00:25,502
+Let's look at the data.
+
+19
+00:00:26,850 --> 00:00:27,390
+First,
+
+20
+00:00:27,490 --> 00:00:28,210
+what is a midterm?
+
+21
+00:00:28,810 --> 00:00:29,550
+Every two years,
+
+22
+00:00:29,650 --> 00:00:32,270
+Americans vote for all 435 seats
+
+23
+00:00:32,070 --> 00:00:33,210
+in the House of Representatives,
+
+24
+00:00:33,010 --> 00:00:34,730
+and about a third of the
+
+25
+00:00:34,530 --> 00:00:34,930
+Senate.
+
+26
+00:00:35,844 --> 00:00:37,844
+When that happens halfway through a
+
+27
+00:00:37,644 --> 00:00:39,104
+president's four-year term,
+
+28
+00:00:39,364 --> 00:00:40,864
+it's called a midterm,
+
+29
+00:00:40,664 --> 00:00:42,044
+and it's often treated as a
+
+30
+00:00:41,844 --> 00:00:43,244
+report card on the president.
+
+31
+00:00:43,883 --> 00:00:46,703
+And Congress controls taxes and spending,
+
+32
+00:00:46,923 --> 00:00:48,883
+so markets pay very close attention.
+
+33
+00:00:50,417 --> 00:00:52,137
+Here's what the stock market actually
+
+34
+00:00:51,937 --> 00:00:52,437
+did.
+
+35
+00:00:52,937 --> 00:00:55,027
+We used Yale economist Robert Shiller's
+
+36
+00:00:54,827 --> 00:00:56,417
+S&P 500 data,
+
+37
+00:00:56,717 --> 00:00:58,517
+which goes back to 1871.
+
+38
+00:00:59,358 --> 00:01:01,138
+For every midterm since 1950,
+
+39
+00:01:01,378 --> 00:01:02,458
+we measured from October,
+
+40
+00:01:02,258 --> 00:01:03,538
+right before the vote,
+
+41
+00:01:03,338 --> 00:01:05,018
+to October one year later.
+
+42
+00:01:05,616 --> 00:01:06,816
+After 1954,
+
+43
+00:01:07,256 --> 00:01:09,076
+stocks rose 31%.
+
+44
+00:01:08,876 --> 00:01:10,156
+After 2010,
+
+45
+00:01:09,956 --> 00:01:11,276
+the weakest year,
+
+46
+00:01:11,336 --> 00:01:12,556
+still up 3%.
+
+47
+00:01:12,964 --> 00:01:13,864
+Eighteen elections.
+
+48
+00:01:14,084 --> 00:01:15,224
+Eighteen green bars.
+
+49
+00:01:15,687 --> 00:01:17,767
+The average gain was about 18%.
+
+50
+00:01:18,379 --> 00:01:19,299
+And 2022,
+
+51
+00:01:19,399 --> 00:01:21,019
+the most recent midterm?
+
+52
+00:01:21,579 --> 00:01:23,479
+Our data ends in late 2023,
+
+53
+00:01:23,639 --> 00:01:25,479
+but by September 2023,
+
+54
+00:01:25,579 --> 00:01:27,279
+the market was already up about
+
+55
+00:01:27,079 --> 00:01:29,459
+21% from October 2022.
+
+56
+00:01:30,917 --> 00:01:31,917
+Is that unusual?
+
+57
+00:01:32,297 --> 00:01:33,917
+Compare it with every other year
+
+58
+00:01:33,717 --> 00:01:34,837
+since 1950.
+
+59
+00:01:35,510 --> 00:01:36,530
+In normal years,
+
+60
+00:01:36,610 --> 00:01:38,330
+the same twelve months averaged about
+
+61
+00:01:38,130 --> 00:01:38,990
+6%,
+
+62
+00:01:38,790 --> 00:01:40,790
+and the market lost money in
+
+63
+00:01:40,590 --> 00:01:42,010
+about one year out of three.
+
+64
+00:01:42,668 --> 00:01:43,468
+After midterms?
+
+65
+00:01:43,668 --> 00:01:45,008
+About three times the gain,
+
+66
+00:01:44,808 --> 00:01:46,828
+and not a single losing year.
+
+67
+00:01:48,017 --> 00:01:48,957
+But here's the twist.
+
+68
+00:01:49,377 --> 00:01:51,217
+The midterm year itself is often
+
+69
+00:01:51,017 --> 00:01:51,617
+bad.
+
+70
+00:01:52,192 --> 00:01:54,432
+From January to October of midterm
+
+71
+00:01:54,232 --> 00:01:54,892
+years,
+
+72
+00:01:55,112 --> 00:01:56,932
+stocks averaged almost nothing,
+
+73
+00:01:57,072 --> 00:01:58,672
+about 0.3%.
+
+74
+00:01:59,032 --> 00:02:00,632
+They fell in 9 of the
+
+75
+00:02:00,432 --> 00:02:01,392
+last 19.
+
+76
+00:02:02,141 --> 00:02:04,281
+2022 is the perfect example.
+
+77
+00:02:04,841 --> 00:02:06,021
+By October 2022,
+
+78
+00:02:06,021 --> 00:02:08,301
+the S&P 500 was down about
+
+79
+00:02:08,101 --> 00:02:10,121
+18.5% for the year.
+
+80
+00:02:11,200 --> 00:02:12,700
+Then the votes were counted,
+
+81
+00:02:12,500 --> 00:02:14,260
+and stocks climbed right back.
+
+82
+00:02:14,882 --> 00:02:16,382
+Slump before the vote.
+
+83
+00:02:16,562 --> 00:02:17,722
+Rebound after.
+
+84
+00:02:18,633 --> 00:02:20,233
+So why does this happen?
+
+85
+00:02:20,553 --> 00:02:21,593
+Nobody knows for sure,
+
+86
+00:02:21,753 --> 00:02:23,473
+but analysts point to three main
+
+87
+00:02:23,273 --> 00:02:23,873
+reasons.
+
+88
+00:02:24,570 --> 00:02:25,390
+Reason one:
+
+89
+00:02:25,430 --> 00:02:26,270
+uncertainty ends.
+
+90
+00:02:26,870 --> 00:02:27,810
+Markets hate not knowing.
+
+91
+00:02:28,070 --> 00:02:28,830
+Before an election,
+
+92
+00:02:28,930 --> 00:02:30,510
+nobody knows who will control Congress.
+
+93
+00:02:30,850 --> 00:02:31,930
+Once the votes are counted,
+
+94
+00:02:32,010 --> 00:02:32,690
+the fog lifts,
+
+95
+00:02:32,770 --> 00:02:34,030
+even if people don't like the
+
+96
+00:02:33,830 --> 00:02:34,290
+result.
+
+97
+00:02:35,450 --> 00:02:36,270
+Reason two:
+
+98
+00:02:36,290 --> 00:02:36,790
+gridlock.
+
+99
+00:02:37,250 --> 00:02:39,210
+Midterms often split control of government,
+
+100
+00:02:39,270 --> 00:02:40,870
+so big surprises get harder to
+
+101
+00:02:40,670 --> 00:02:41,070
+pass.
+
+102
+00:02:41,430 --> 00:02:42,070
+For markets,
+
+103
+00:02:42,130 --> 00:02:43,530
+fewer surprises can be a good
+
+104
+00:02:43,330 --> 00:02:43,770
+thing.
+
+105
+00:02:44,314 --> 00:02:45,094
+Reason three:
+
+106
+00:02:45,354 --> 00:02:46,074
+the next election.
+
+107
+00:02:46,834 --> 00:02:47,434
+After a midterm,
+
+108
+00:02:47,634 --> 00:02:49,414
+a presidential election is two years
+
+109
+00:02:49,214 --> 00:02:49,714
+away,
+
+110
+00:02:49,834 --> 00:02:51,734
+and governments have historically pushed for
+
+111
+00:02:51,534 --> 00:02:53,314
+a strong economy heading into one.
+
+112
+00:02:53,923 --> 00:02:54,563
+Remember,
+
+113
+00:02:54,863 --> 00:02:56,003
+these are explanations,
+
+114
+00:02:56,463 --> 00:02:57,803
+not laws of nature.
+
+115
+00:02:59,217 --> 00:02:59,737
+Now,
+
+116
+00:02:59,817 --> 00:03:01,397
+before anyone bets the farm on
+
+117
+00:03:01,197 --> 00:03:01,557
+this,
+
+118
+00:03:01,737 --> 00:03:02,877
+here's the fine print.
+
+119
+00:03:03,603 --> 00:03:04,063
+One:
+
+120
+00:03:04,123 --> 00:03:05,583
+eighteen is a small number.
+
+121
+00:03:06,003 --> 00:03:07,703
+Flip a coin eighteen times and
+
+122
+00:03:07,503 --> 00:03:08,763
+strange streaks happen.
+
+123
+00:03:09,387 --> 00:03:09,907
+Two:
+
+124
+00:03:10,187 --> 00:03:12,187
+the exact numbers depend on how
+
+125
+00:03:11,987 --> 00:03:12,627
+you measure.
+
+126
+00:03:13,427 --> 00:03:15,067
+Measure November to November instead,
+
+127
+00:03:15,307 --> 00:03:17,627
+and 1986 comes out roughly flat.
+
+128
+00:03:18,335 --> 00:03:18,755
+Three:
+
+129
+00:03:19,015 --> 00:03:20,275
+these are prices only.
+
+130
+00:03:20,595 --> 00:03:21,995
+Dividends would add a bit more
+
+131
+00:03:21,795 --> 00:03:22,435
+on top.
+
+132
+00:03:23,817 --> 00:03:26,037
+And 2026 has real risks of
+
+133
+00:03:25,837 --> 00:03:26,437
+its own.
+
+134
+00:03:26,597 --> 00:03:29,037
+Inflation is 3.7% and rising,
+
+135
+00:03:29,217 --> 00:03:30,717
+mostly because of the oil shock
+
+136
+00:03:30,517 --> 00:03:31,777
+after the war with Iran.
+
+137
+00:03:32,427 --> 00:03:34,147
+The Fed just raised interest rates
+
+138
+00:03:33,947 --> 00:03:36,087
+for the first time since 2023.
+
+139
+00:03:36,728 --> 00:03:39,848
+Gas is still around $4.27 a
+
+140
+00:03:39,648 --> 00:03:40,288
+gallon.
+
+141
+00:03:40,548 --> 00:03:42,128
+And crypto just had the biggest
+
+142
+00:03:41,928 --> 00:03:42,948
+hack in history.
+
+143
+00:03:43,539 --> 00:03:45,999
+Some analysts also warn that stocks
+
+144
+00:03:45,799 --> 00:03:48,239
+already look expensive compared with company
+
+145
+00:03:48,039 --> 00:03:48,659
+profits.
+
+146
+00:03:49,354 --> 00:03:51,034
+History says the odds have been
+
+147
+00:03:50,834 --> 00:03:51,354
+good.
+
+148
+00:03:51,554 --> 00:03:52,934
+History doesn't promise anything.
+
+149
+00:03:54,417 --> 00:03:56,037
+So what does this mean for
+
+150
+00:03:55,837 --> 00:03:56,197
+you?
+
+151
+00:03:56,457 --> 00:03:57,877
+We don't give financial advice,
+
+152
+00:03:57,997 --> 00:03:59,457
+but the data teaches three useful
+
+153
+00:03:59,257 --> 00:03:59,877
+lessons.
+
+154
+00:04:00,807 --> 00:04:01,267
+One:
+
+155
+00:04:01,407 --> 00:04:03,347
+both parties have controlled Congress during
+
+156
+00:04:03,147 --> 00:04:03,827
+this streak.
+
+157
+00:04:04,247 --> 00:04:05,827
+The pattern was never about who
+
+158
+00:04:05,627 --> 00:04:06,147
+won.
+
+159
+00:04:06,834 --> 00:04:07,354
+Two:
+
+160
+00:04:07,574 --> 00:04:09,374
+big moves based on election predictions
+
+161
+00:04:09,174 --> 00:04:10,214
+are risky.
+
+162
+00:04:10,574 --> 00:04:12,334
+Anyone who sold in the 2022
+
+163
+00:04:12,134 --> 00:04:13,754
+slump missed the rebound.
+
+164
+00:04:14,443 --> 00:04:14,923
+Three:
+
+165
+00:04:15,083 --> 00:04:16,563
+what moves your money most is
+
+166
+00:04:16,363 --> 00:04:17,963
+what we cover here every week:
+
+167
+00:04:18,083 --> 00:04:18,543
+inflation,
+
+168
+00:04:18,883 --> 00:04:19,583
+interest rates,
+
+169
+00:04:19,683 --> 00:04:20,183
+and jobs.
+
+170
+00:04:21,617 --> 00:04:22,477
+Let's recap.
+
+171
+00:04:23,357 --> 00:04:24,077
+Eighteen midterms.
+
+172
+00:04:24,657 --> 00:04:26,117
+The market was higher a year
+
+173
+00:04:25,917 --> 00:04:27,057
+later every time,
+
+174
+00:04:27,057 --> 00:04:28,517
+about 18% on average,
+
+175
+00:04:28,317 --> 00:04:30,437
+versus about 6% in other years.
+
+176
+00:04:30,897 --> 00:04:32,097
+A slump before the vote,
+
+177
+00:04:31,897 --> 00:04:33,117
+a rebound after.
+
+178
+00:04:33,706 --> 00:04:34,146
+So,
+
+179
+00:04:34,206 --> 00:04:36,126
+will 2026 make it nineteen for
+
+180
+00:04:35,926 --> 00:04:36,306
+nineteen?
+
+181
+00:04:36,666 --> 00:04:37,526
+Tell me what you think in
+
+182
+00:04:37,326 --> 00:04:37,906
+the comments,
+
+183
+00:04:37,706 --> 00:04:38,566
+and subscribe,
+
+184
+00:04:38,886 --> 00:04:40,146
+because a year from now,
+
+185
+00:04:40,146 --> 00:04:41,286
+we'll come back and check.
+
+186
+00:04:41,779 --> 00:04:43,879
+This video is for education only.
+
+187
+00:04:44,339 --> 00:04:45,639
+It's not financial advice.
+
