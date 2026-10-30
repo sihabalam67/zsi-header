@@ -37,6 +37,12 @@ for v in en_US-norman-medium en_US-joe-medium; do
   [ -f "$MODELS/$v.onnx" ] || python3 -m piper.download_voices --download-dir "$MODELS" "$v"
 done
 
+echo "== music soundfont (GeneralUser GS, free incl. commercial use)"
+if [ ! -f "$MODELS/GeneralUser-GS.sf2" ]; then
+  tmp=$(mktemp -d); git clone -q --depth 1 https://github.com/mrbumpy409/GeneralUser-GS "$tmp/gu"
+  cp "$tmp/gu/GeneralUser-GS.sf2" "$MODELS/"; rm -rf "$tmp"
+fi
+
 echo "== speech recognition model"
 python3 -c "from faster_whisper import WhisperModel; WhisperModel('base.en', device='cpu', compute_type='int8', download_root='$MODELS/whisper')" 2>&1 | grep -v HF_TOKEN || true
 

@@ -30,6 +30,10 @@ OUT_W, OUT_H = 1920, 1080
 K = OUT_W / W * 2
 SR = 44100
 VOICE = os.environ.get('VOICE', 'af_heart')
+# AUDIO_STYLE=upgrade: GeneralUser GS soundfont (free incl. commercial) + Kenney CC0 interface sounds
+AUDIO_STYLE = os.environ.get('AUDIO_STYLE', 'classic')
+KENNEY = os.path.join(STUDIO, 'assets', 'audio', 'kenney')
+KENNEY_SFX = {'pop': 'drop_002', 'ding': 'confirmation_002', 'down': 'minimize_005', 'tick': 'tick_002'}
 
 # ---------------------------------------------------------------- palette ---
 BG1, BG2 = (14, 22, 40), (30, 42, 78)
@@ -580,6 +584,12 @@ def tone(f, dur, decay=6.0, harmonics=(1, 0.3, 0.1)):
 
 
 def sfx(kind):
+    if AUDIO_STYLE == 'upgrade' and kind in KENNEY_SFX:
+        a, sr = sf.read(os.path.join(KENNEY, KENNEY_SFX[kind] + '.ogg'), always_2d=True)
+        a = a.mean(axis=1)
+        if sr != SR:
+            a = np.interp(np.arange(int(len(a) * SR / sr)) * sr / SR, np.arange(len(a)), a)
+        return a / (np.abs(a).max() + 1e-9) * 0.45
     rnd = np.random.default_rng(len(kind))
     if kind == 'pop':
         tt = np.arange(int(0.12 * SR)) / SR
@@ -640,8 +650,11 @@ def music(total, path, tempo=86, seed=3):
     pm.instruments += [piano, pad, bass, drums]
     mid = path.replace('.wav', '.mid')
     pm.write(mid)
-    subprocess.run(['fluidsynth', '-ni', '-g', '0.5', '-F', path, '-r', str(SR),
-                    '/usr/share/sounds/sf2/FluidR3_GM.sf2', mid], check=True, capture_output=True)
+    font = os.path.join(MODELS, 'GeneralUser-GS.sf2')
+    if AUDIO_STYLE != 'upgrade' or not os.path.exists(font):
+        font = '/usr/share/sounds/sf2/FluidR3_GM.sf2'
+    subprocess.run(['fluidsynth', '-ni', '-g', '0.5', '-F', path, '-r', str(SR), font, mid], check=True,
+                   capture_output=True)
     m, _ = sf.read(path, always_2d=True)
     return m[:, :2]
 
