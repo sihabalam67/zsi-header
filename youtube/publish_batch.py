@@ -33,7 +33,10 @@ NY = ZoneInfo('America/New_York')
 
 
 def publish_at(day):
-    local = dt.datetime.combine(dt.date.fromisoformat(day), dt.time(14, 0), tzinfo=NY)
+    """'YYYY-MM-DD' goes live at 2:00 PM New York; 'YYYY-MM-DDTHH:MM' at that New York time (breaking news)."""
+    d, _, hm = day.partition('T')
+    t = dt.time.fromisoformat(hm) if hm else dt.time(14, 0)
+    local = dt.datetime.combine(dt.date.fromisoformat(d), t, tzinfo=NY)
     return local.astimezone(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
@@ -52,7 +55,7 @@ def probe(path):
 
 def long_of(name, names):
     ep = name.split('_')[0]
-    return next(n for n in names if n.startswith(ep + '_') and '_short_' not in n)
+    return next((n for n in names if n.startswith(ep + '_') and '_short_' not in n), None)
 
 
 def link_up(yt, plan, ep, ids, playlist_id, longs):
@@ -101,10 +104,11 @@ def main():
             continue
         if '_short_' in name:
             parent = long_of(name, list(ids) + list(videos))
-            if parent not in ids:
+            if parent and parent not in ids:
                 sys.exit(f'{name}: upload its long video {parent} first')
-            m['description'] = m['description'].replace(
-                'Full video on the Coin Theory channel.', f'Watch the full video: https://youtu.be/{ids[parent]}')
+            if parent:  # a standalone (news) Short keeps its own description
+                m['description'] = m['description'].replace(
+                    'Full video on the Coin Theory channel.', f'Watch the full video: https://youtu.be/{ids[parent]}')
         ids[name] = upload(m)
         json.dump(ids, open(f'{OUT}/video_ids.json', 'w'), indent=1)
     if dry:

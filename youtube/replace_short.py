@@ -42,9 +42,10 @@ def main():
     m['publishAt'] = st['publishAt']
     if '_short_' in name:
         ep = name.split('_')[0]
-        parent = next(n for n in ids if n.startswith(ep + '_') and '_short_' not in n)
-        m['description'] = m['description'].replace(
-            'Full video on the Coin Theory channel.', f'Watch the full video: https://youtu.be/{ids[parent]}')
+        parent = next((n for n in ids if n.startswith(ep + '_') and '_short_' not in n), None)
+        if parent:
+            m['description'] = m['description'].replace(
+                'Full video on the Coin Theory channel.', f'Watch the full video: https://youtu.be/{ids[parent]}')
     errs = validate(m)
     if errs:
         sys.exit(f'{name}: {errs}')

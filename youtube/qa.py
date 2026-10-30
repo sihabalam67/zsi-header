@@ -49,9 +49,9 @@ for n, vid in ids.items():
     if not pa: P(n, 'no publishAt')
     else:
         local = dt.datetime.fromisoformat(pa.replace('Z', '+00:00')).astimezone(NY)
-        if (local.hour, local.minute) != (14, 0): P(n, 'publish not 2PM ET', local)
+        if (local.hour, local.minute) != (14, 0) and not kit.get('news'): P(n, 'publish not 2PM ET', local)
         want = sched.get(vid)
-        if want and local.strftime('%a %b ') + str(local.day) != want: P(n, 'schedule mismatch', local.date(), 'vs SCHEDULE.md', want)
+        if want and local.strftime('%a %b ') + str(local.day) != want.split(',')[0]: P(n, 'schedule mismatch', local.date(), 'vs SCHEDULE.md', want)
         if not want: P(n, 'not in SCHEDULE.md')
     if st.get('madeForKids') or st.get('selfDeclaredMadeForKids'): P(n, 'made for kids!')
     if st.get('uploadStatus') != 'processed': P(n, 'uploadStatus', st.get('uploadStatus'))
@@ -60,8 +60,9 @@ for n, vid in ids.items():
     if sn['title'] != kit['title']: P(n, 'TITLE differs:\n   live:', sn['title'], '\n   kit: ', kit['title'])
     desc = sn['description']
     if '_short_' in n:
-        parent = next(k for k in ids if k.startswith(n.split('_')[0] + '_') and '_short_' not in k)
-        if f'https://youtu.be/{ids[parent]}' not in desc: P(n, 'Short missing full-video link')
+        parent = next((k for k in ids if k.startswith(n.split('_')[0] + '_') and '_short_' not in k), None)
+        if parent and f'https://youtu.be/{ids[parent]}' not in desc: P(n, 'Short missing full-video link')
+        if not parent and desc != kit['description']: P(n, 'DESCRIPTION differs from kit')
     elif re.sub(r'\n\n(?:[^\n]+: [^\n]*https://youtu\.be/\S+\n)?Full series: \S+$', '', desc) != kit['description']:
         P(n, 'DESCRIPTION differs from kit')
     if set(sn.get('tags', [])) != set(kit.get('tags', [])): P(n, 'tags differ')

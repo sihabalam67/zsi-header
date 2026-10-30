@@ -26,7 +26,7 @@ LOG = json.load(open(LOG_PATH)) if os.path.exists(LOG_PATH) else {'commented': {
 
 def long_of(name):
     ep = name.split('_')[0]
-    return next(n for n in IDS if n.startswith(ep + '_') and '_short_' not in n)
+    return next((n for n in IDS if n.startswith(ep + '_') and '_short_' not in n), None)  # None: standalone Short
 
 
 def save():
@@ -97,7 +97,7 @@ def main():
             continue
         if n in QUESTIONS:
             msg = QUESTIONS[n]
-        elif '_short_' in n:
+        elif '_short_' in n and long_of(n):
             msg = f"Watch the full video here: https://youtu.be/{IDS[long_of(n)]}"
         else:  # a long video without a written question still gets a real conversation starter
             msg = "What surprised you most in this video? Tell me in the comments, I read every one."
