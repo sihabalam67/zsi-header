@@ -76,7 +76,24 @@ def main():
     finish(yt, name, old, new, pend, pend_path, m['publishAt'])
 
 
+def ensure_playlist(yt, old, new):
+    """Put `new` where `old` sits in its playlist (if it isn't there yet) and drop old's entry."""
+    for pid in json.load(open(f'{OUT}/playlists.json')).values():
+        items = yt.playlistItems().list(part='snippet', playlistId=pid, maxResults=50).execute()['items']
+        olds = [i for i in items if i['snippet']['resourceId']['videoId'] == old]
+        if not olds:
+            continue
+        if not any(i['snippet']['resourceId']['videoId'] == new for i in items):
+            yt.playlistItems().insert(part='snippet', body={'snippet': {
+                'playlistId': pid, 'position': olds[0]['snippet']['position'],
+                'resourceId': {'kind': 'youtube#video', 'videoId': new}}}).execute()
+        for i in olds:
+            yt.playlistItems().delete(id=i['id']).execute()
+
+
 def finish(yt, name, old, new, pend, pend_path, publish_at=None):
+    if yt.videos().list(part='id', id=old).execute()['items']:
+        ensure_playlist(yt, old, new)  # a run cut short (quota, crash) may have skipped the playlist step
     for attempt in range(6):
         time.sleep(5)
         got = yt.videos().list(part='status', id=new).execute()['items']
