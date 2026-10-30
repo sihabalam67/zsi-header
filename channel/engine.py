@@ -838,17 +838,30 @@ _clip_frames = {}
 
 def clip_frame(path, t, speed=1.0):
     """Frame of a video clip at time t (s), for scenes with 'bg_video'; holds the last frame after the clip ends.
-    Frames are extracted once (at FPS) into the clip's cache folder next to the file."""
-    if path not in _clip_frames:
-        d = os.path.splitext(path)[0] + '_frames'
-        if not os.path.isdir(d) or not os.listdir(d):
-            os.makedirs(d, exist_ok=True)
-            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', path, '-vf', f'fps={FPS}',
-                            os.path.join(d, 'f_%05d.png')], check=True)
-        _clip_frames[path] = sorted(os.path.join(d, f) for f in os.listdir(d) if f.endswith('.png'))
-    frames = _clip_frames[path]
+    `path` may be a list of clips played back to back (e.g. Flow clips chained with Extend). Frames are extracted
+    once (at FPS) into a cache folder next to each file."""
+    key = tuple(path) if isinstance(path, (list, tuple)) else (path,)
+    if key not in _clip_frames:
+        frames = []
+        for p in key:
+            d = os.path.splitext(p)[0] + '_frames'
+            if not os.path.isdir(d) or not os.listdir(d):
+                os.makedirs(d, exist_ok=True)
+                subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', p, '-vf', f'fps={FPS}',
+                                os.path.join(d, 'f_%05d.png')], check=True)
+            frames += sorted(os.path.join(d, f) for f in os.listdir(d) if f.endswith('.png'))
+        _clip_frames[key] = frames
+    frames = _clip_frames[key]
     i = min(int(t * speed * FPS), len(frames) - 1)
     return Image.open(frames[i]).convert('RGB')
+
+
+def cover(im, w, h):
+    """Scale and centre-crop an image to fill w x h (a 16:9 clip in a 9:16 Short keeps its middle, never stretches)."""
+    s = max(w / im.size[0], h / im.size[1])
+    cw, ch = w / s, h / s
+    x0, y0 = (im.size[0] - cw) / 2, (im.size[1] - ch) / 2
+    return im.resize((w, h), Image.LANCZOS, box=(x0, y0, x0 + cw, y0 + ch))
 
 
 def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
@@ -857,8 +870,7 @@ def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
     vertical = sc.get('vertical', False)  # drawn natively for Shorts on a 720 x 1280 canvas
     size = (720, 1280) if vertical else (W, H)
     if sc.get('bg_video'):  # a video clip (e.g. made in Google Flow) under the scene's drawings
-        bgimg = clip_frame(sc['bg_video'], t, sc.get('bg_speed', 1.0)).resize(
-            (int(size[0] * K), int(size[1] * K)), Image.LANCZOS)
+        bgimg = cover(clip_frame(sc['bg_video'], t, sc.get('bg_speed', 1.0)), int(size[0] * K), int(size[1] * K))
         c = Canvas(img=bgimg, k=K)
     else:
         c = Canvas(*sc.get('bg', (BG1, BG2)), size=size)

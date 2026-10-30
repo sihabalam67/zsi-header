@@ -59,6 +59,26 @@ so YouTube locks API uploads to **private**; scheduled `publishAt` still makes t
   made with VOICE_ENGINE=kokoro AUDIO_STYLE=classic; use those to re-render them identically.
 - Next: ep05 "How banks create money out of thin air" (promised at the end of ep04).
 
+## Monetization first (owner's #1 priority, Oct 30)
+- Goal: YouTube Partner Program as fast as possible: 1,000 subscribers + 4,000 public watch hours in 12 months
+  (long videos only; Shorts don't count toward hours), or 1,000 subscribers + 10M Shorts views in 90 days. Check
+  YouTube's current numbers each month (a higher hours bar has been reported for 2027).
+- So: long videos 10-15 min with high retention earn the hours; daily Shorts earn subscribers and feed the long
+  videos (pinned "watch the full video" comment). Weekly report tracks: subs, public watch hours (12-month
+  running), Shorts views (90 days), retention, CTR, and what to change.
+- Every video: 10/10 rules (hook at 0 s, pace checker, punches, loops in Shorts), 2+ thumbnails tested, honest
+  titles (no misleading claims: YouTube punishes them and viewers leave).
+
+## Owner's Google Flow (images + 1-10 s clips) — see channel/FLOW_GUIDE.md
+- For each long video, first send the owner ONE brief: 2 thumbnail image prompts (two scenarios) + 1-3 clip
+  prompts (hook always; Extend chains for big moments; Ingredients with assets/brand/penny_ref.png when Penny
+  appears). Write it to channel/briefs/epNN.md too. Owner sends files in chat; save to channel/assets/flow/epNN_*,
+  log in assets/photos/SOURCES.md, use via thumbkit.Thumb.photo and scenes with bg_video/bg_speed.
+- Never block a launch on Flow: if assets aren't there a day before, use own animation + public-domain photos
+  (youtube/commons.py, PD/CC0 only).
+- Standalone 10/10 Shorts live in channel/shorts_v2.py (render queue channel/v2_all.sh, swaps via
+  youtube/auto_swap.py --v2). New Shorts are written there, never cut from long videos.
+
 ## "upload week 1"
 1. `pip install google-api-python-client google-auth` if needed.
 2. Dry-run every manifest: `python3 youtube/upload.py channel/out/<name>.upload.json --dry-run`.
