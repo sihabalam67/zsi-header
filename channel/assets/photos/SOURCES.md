@@ -1,0 +1,1 @@
+- fed_eccles.jpg: https://commons.wikimedia.org/wiki/File%3AEccles_Building_%2826088200676%29.jpg (Public domain)

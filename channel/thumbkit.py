@@ -48,6 +48,31 @@ class Thumb:
             img = Image.composite(Image.new('RGB', (TW, TH), (255, 255, 255)), img, ray)
         self.img = img.convert('RGBA')
 
+    @classmethod
+    def photo(cls, path, focus=(0.5, 0.5), zoom=1.0, saturation=1.35, contrast=1.15, vignette=0.55, tint=None):
+        """A real (public domain / CC0) photo as the background: cropped to 16:9 around `focus`, made punchier,
+        with a dark vignette so text and characters pop. Log the source in channel/assets/photos/SOURCES.md."""
+        from PIL import ImageEnhance
+        import numpy as np
+        im = Image.open(path).convert('RGB')
+        w, h = im.size
+        cw = min(w, h * 16 / 9) / zoom
+        ch = cw * 9 / 16
+        x0 = min(max(focus[0] * w - cw / 2, 0), w - cw)
+        y0 = min(max(focus[1] * h - ch / 2, 0), h - ch)
+        im = im.resize((TW, TH), Image.LANCZOS, box=(x0, y0, x0 + cw, y0 + ch))
+        im = ImageEnhance.Color(im).enhance(saturation)
+        im = ImageEnhance.Contrast(im).enhance(contrast)
+        if tint:
+            im = Image.blend(im, Image.new('RGB', im.size, hexrgb(tint) if isinstance(tint, str) else tint), 0.18)
+        yy, xx = np.mgrid[0:TH // 8, 0:TW // 8].astype('float32')
+        r = np.sqrt(((xx * 8 - TW / 2) / (TW / 2)) ** 2 + ((yy * 8 - TH / 2) / (TH / 2)) ** 2) / math.sqrt(2)
+        v = Image.fromarray((np.clip(1 - vignette * r ** 1.6, 0, 1) * 255).astype('uint8'), 'L').resize((TW, TH))
+        im = Image.composite(im, Image.new('RGB', im.size, (0, 0, 0)), v)
+        th = cls.__new__(cls)
+        th.img = im.convert('RGBA')
+        return th
+
     def layer(self, draw, outline=10, outline_color=(255, 255, 255), glow=None, glow_size=40, shadow=True,
               tilt=0, pivot=None):
         """Draw `draw(canvas)` on its own transparent layer (logical 1280x720 coordinates), then add effects."""
