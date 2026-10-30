@@ -38,6 +38,7 @@ AUDIO_STYLE = os.environ.get('AUDIO_STYLE', 'upgrade')  # 'classic' = weeks 1-2 
 VOICE_ENGINE = os.environ.get('VOICE_ENGINE', 'chatterbox')  # 'kokoro' = weeks 1-2 voice
 VOICELAB_PY = os.environ.get('VOICELAB_PY', '/home/user/voicelab/venv/bin/python')
 CB_EXAG, CB_CFG = 0.5, 0.3                         # calmer, slower delivery than Chatterbox's defaults
+CB_DRAMA = 0.8  # lines written with a leading '!' (hooks, big reveals) get a more expressive read
 CB_TEMPO = float(os.environ.get('CB_TEMPO', '0.92'))  # ease to explainer pace (~170 words a minute)
 FALLBACKS = []  # lines that could not be voiced by Chatterbox (reported by build so mixed voices never go unnoticed)
 
@@ -607,7 +608,7 @@ def _cb_start():
             return bool(line)
 
 
-def tts_chatterbox(text, seed=0, _retry=True):
+def tts_chatterbox(text, seed=0, _retry=True, exag=None):
     """One line through the persistent Chatterbox worker; returns float32 audio at SR, or None on failure.
     A crashed worker is restarted once, so one bad line can't silently switch the rest of a video to Kokoro."""
     import json
@@ -616,7 +617,7 @@ def tts_chatterbox(text, seed=0, _retry=True):
         return None
     out = tempfile.mktemp(suffix='.wav')
     try:
-        _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out, 'exaggeration': CB_EXAG,
+        _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out, 'exaggeration': exag or CB_EXAG,
                                     'cfg': CB_CFG}) + '\n')
         _cb.stdin.flush()
         line = _cb.stdout.readline()
@@ -625,7 +626,7 @@ def tts_chatterbox(text, seed=0, _retry=True):
     except (BrokenPipeError, OSError):
         line = ''
     if not line:  # worker died mid-line
-        return tts_chatterbox(text, seed, _retry=False) if _retry and _cb_start() else None
+        return tts_chatterbox(text, seed, _retry=False, exag=exag) if _retry and _cb_start() else None
     if not json.loads(line).get('ok'):
         return None
     if abs(CB_TEMPO - 1) > 0.01:
@@ -641,13 +642,13 @@ def tts_chatterbox(text, seed=0, _retry=True):
     return (a / peak * 0.9 if peak > 0 else a).astype(np.float32)
 
 
-def speak(toks, min_coverage=0.9):
+def speak(toks, min_coverage=0.9, exag=None):
     """Narrate one line: Chatterbox when enabled (Whisper-checked, up to 5 tries), else or failing that Kokoro."""
     spoken = ' '.join(sp for _, sp in toks)
     if VOICE_ENGINE == 'chatterbox' and os.path.exists(VOICELAB_PY):
         best = None
         for attempt in range(5):
-            a = tts_chatterbox(spoken, seed=attempt)
+            a = tts_chatterbox(spoken, seed=attempt, exag=exag)
             if a is None:
                 break
             cov = align(toks, word_times(a), len(a) / SR)[1]
@@ -772,7 +773,7 @@ def place(buf, clip, at):
         buf[i0:i1] += clip[:i1 - i0]
 
 
-def master(voice, mus, fx, total):
+def master(voice, mus, fx, total, fade=(2.0, 3.0)):
     import pyloudnorm as pyln
     n = int(total * SR)
     voice = np.pad(voice, (0, max(0, n - len(voice))))[:n]
@@ -784,7 +785,7 @@ def master(voice, mus, fx, total):
     duck = 1 - 0.6 * np.clip(env * 3, 0, 1)
     tt = np.arange(n) / SR
     mus = mus / max(1e-6, np.max(np.abs(mus)))
-    mus *= (np.minimum(1, tt / 2) * np.clip((total - tt) / 3, 0, 1))[:, None]
+    mus *= (np.minimum(1, tt / fade[0]) * np.clip((total - tt) / fade[1], 0, 1))[:, None]
     out = mus * (0.22 * duck)[:, None] + v[:, None] + fx[:, None] * 0.7
     meter = pyln.Meter(SR)
     for _ in range(3):  # normalize to YouTube's -14 LUFS, then limit peaks; repeat to settle
@@ -841,6 +842,9 @@ def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
     big = c.img
     z0, z1 = sc.get('cam', (1.0, 1.045))
     z = lerp(z0, z1, ease(t / dur)) if dur else z0
+    for p in sc.get('punch', lambda L: [])(starts):  # quick zoom-in on a reveal: in over 0.12 s, out over 0.7 s
+        if p <= t < p + 0.82:
+            z *= 1 + 0.07 * (ease((t - p) / 0.12) if t < p + 0.12 else 1 - ease((t - p - 0.12) / 0.7))
     fx, fy = sc.get('focus', (0.5, 0.5))
     bw, bh = big.size
     cw, ch = bw / z, bh / z
@@ -947,15 +951,17 @@ def narrate(scenes, build_dir, min_coverage=0.85):
         t, starts, ends, words = sc.get('lead', 0.55), [], [], []
         parts = []
         for text in sc['lines']:
+            drama = text.startswith('!')
+            text = text.lstrip('!').lstrip()
             toks = parse_line(text)
             spoken = ' '.join(sp for _, sp in toks)
-            key = hashlib.md5(f'{voice_id()}|{spoken}'.encode()).hexdigest()[:12]
+            key = hashlib.md5(f'{voice_id()}|{spoken}'.encode() + (b'|drama' if drama else b'')).hexdigest()[:12]
             cache = os.path.join(build_dir, f'vo_{key}.npy')
             if os.path.exists(cache):
                 a = np.load(cache)
             else:
                 n_fb = len(FALLBACKS)
-                a = speak(toks)
+                a = speak(toks, exag=CB_DRAMA if drama else None)
                 if len(FALLBACKS) == n_fb:  # never cache backup-voice audio under the main voice's key
                     np.save(cache, a)
             dur = len(a) / SR
@@ -980,8 +986,10 @@ def narrate(scenes, build_dir, min_coverage=0.85):
     return plan, voice_parts
 
 
-def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
-    """Narrate, render scenes in parallel, crossfade them, mix audio, encode. Returns (total, chapters)."""
+def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None, loop=False):
+    """Narrate, render scenes in parallel, crossfade them, mix audio, encode. Returns (total, chapters).
+    loop=True (Shorts written to loop): no fade from/to black and no long music fades, so the end runs straight
+    into the start."""
     os.makedirs(build_dir, exist_ok=True)
     print('narration + caption timing...', flush=True)
     plan, voice_parts = narrate(scenes, build_dir)
@@ -991,7 +999,9 @@ def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
         clock += dur - (XF if i < len(plan) - 1 else 0)
     total = clock
     print(f'total {total:.1f}s ({total / 60:.1f} min); rendering {layout}...', flush=True)
-    _JOB.update(scenes=scenes, plan=plan, build_dir=build_dir, layout=layout, first=0, last=len(scenes) - 1)
+    pace_report(scenes, plan, layout)
+    _JOB.update(scenes=scenes, plan=plan, build_dir=build_dir, layout=layout, first=-1 if loop else 0,
+                last=-1 if loop else len(scenes) - 1)
     jobs = [i for i in range(len(scenes)) if only is None or i in only]
     jobs.sort(key=lambda i: -plan[i][0])
     with Pool(os.cpu_count()) as pool:
@@ -1006,7 +1016,7 @@ def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
         for at, kind in scenes[si].get('sfx', lambda L: [])(plan[si][1]):
             place(fx, sfx(kind), starts_abs[si] + at)
     mus = music(total + 2, os.path.join(build_dir, f'music_{layout}.wav'))
-    audio = master(voice, mus, fx, total)
+    audio = master(voice, mus, fx, total, fade=(0.03, 0.03) if loop else (2.0, 3.0))
     wav = os.path.join(build_dir, f'mix_{layout}.wav')
     sf.write(wav, audio, SR, subtype='PCM_16')
     # video: chain crossfades between scene segments
@@ -1034,6 +1044,31 @@ def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
     if FALLBACKS:
         print(f'WARNING: {len(FALLBACKS)} line(s) used the backup voice; re-render them before uploading:', FALLBACKS)
     return total, chapters
+
+
+PACE_LIMIT = {'long': 6.0, 'short': 4.0}  # longest stretch (s) a scene may sit without a visible change
+
+
+def pace_report(scenes, plan, layout):
+    """Warn about stretches where nothing on screen changes for longer than PACE_LIMIT (a likely swipe-away)."""
+    lim, issues = PACE_LIMIT['long' if layout == 'long' else 'short'], []
+    for si, sc in enumerate(scenes):
+        dur, starts, ends, _, _ = plan[si]
+        prev, last_change = None, 0.0
+        for k in range(int(dur / 0.5) + 1):
+            t = min(k * 0.5, dur - 0.01)
+            c = Canvas(*sc.get('bg', (BG1, BG2)), size=(720, 1280) if sc.get('vertical') else (W, H))
+            sc['draw'](c, Ctx(t, starts, ends, dur, None))
+            cur = np.asarray(c.img.reduce(8)).astype(np.int16)
+            if prev is not None and (np.abs(cur - prev).max(axis=2) > 30).mean() > 0.002:
+                last_change = t
+            elif t - last_change > lim:
+                issues.append((si, last_change, t))
+                last_change = t  # report each stretch once
+            prev = cur
+    for si, a, b in issues:
+        print(f'  PACE WARNING scene {si}: nothing changes from {a:.1f}s to {b:.1f}s (limit {lim:.0f}s)', flush=True)
+    return issues
 
 
 def previews(scenes, shorts, folder):

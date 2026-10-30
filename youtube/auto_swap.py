@@ -3,7 +3,9 @@ import json, os, re, subprocess, sys, time, datetime as dt
 from zoneinfo import ZoneInfo
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 QA = os.path.join(ROOT, 'channel', 'build', 'vshorts')
-LOG, OUT = f'{QA}/render_all.log', f'{QA}/auto_swap.log'
+V2 = '--v2' in sys.argv  # standalone Shorts from channel/shorts_v2.py: new lengths, own logs
+LOG = f'{QA}/render_v2.log' if V2 else f'{QA}/render_all.log'
+OUT = f'{QA}/auto_swap_v2.log' if V2 else f'{QA}/auto_swap.log'
 sys.path.insert(0, f'{ROOT}/youtube')
 os.chdir(ROOT)
 from upload import client
@@ -28,7 +30,11 @@ def check(name):
     if (w, h) != (1080, 1920): errs.append(f'size {w}x{h}')
     if abs(lufs + 14) > 1: errs.append(f'loudness {lufs}')
     if peak > 0: errs.append(f'peak {peak}')
-    if abs(secs - old) > 1.5: errs.append(f'length {secs:.1f}s vs scheduled {old}s')
+    if not V2 and abs(secs - old) > 1.5: errs.append(f'length {secs:.1f}s vs scheduled {old}s')
+    if V2 and not 20 <= secs <= 60: errs.append(f'length {secs:.1f}s outside 20-60 s')
+    rlog = f'{QA}/r2_{name}.log'
+    if V2 and os.path.exists(rlog) and re.search(r'backup voice|PACE WARNING|WARNING chatterbox', open(rlog).read()):
+        errs.append('render warnings (backup voice or pace); see ' + rlog)
     return errs, f'{w}x{h} {secs:.1f}s {lufs} LUFS peak {peak}'
 while True:
     lines = open(LOG).read().split('\n') if os.path.exists(LOG) else []
@@ -43,12 +49,12 @@ while True:
         tail = (r.stdout + r.stderr).strip().splitlines()[-1:] or ['']
         if r.returncode == 0:
             log(f'SWAPPED {name} {info} | {tail[0]}'); done.add(name)
-            sw = f'{ROOT}/channel/out/vshorts_swapped.json'
+            sw = f'{ROOT}/channel/out/vshorts_swapped{"_v2" if V2 else ""}.json'
             d = json.load(open(sw)) if os.path.exists(sw) else []
             json.dump(sorted(set(d) | {name}), open(sw, 'w'), indent=1)
             subprocess.run(['git', 'add', 'channel/out/video_ids.json', 'channel/SCHEDULE.md', 'channel/out/replaced.json',
-                            'channel/out/vshorts_swapped.json'], cwd=ROOT)
-            msg = (f'Swap in vertical {name}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n'
+                            sw], cwd=ROOT)
+            msg = (f'Swap in {"standalone 10/10" if V2 else "vertical"} {name}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n'
                    'Claude-Session: https://claude.ai/code/session_01KPBsdzhy6yaFbGMrWeQjjn')
             subprocess.run(['git', 'commit', '-qm', msg], cwd=ROOT)
             for _ in range(4):
