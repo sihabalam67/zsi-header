@@ -636,10 +636,16 @@ def mid_c(c, x):
         c.text(360, 640, 'The uncertainty ends', 46, GOLD, 900, a=fade(t, L[0] + 0.5))
         return
     if t < x.dur - 0.9:
-        c.icon('coins', 360, 380, 180, GOLD, a=fade(t, L[1]))
-        c.text(360, 600, 'small sample', 40, WHITE, 900, a=fade(t, L[1] + 0.3))
-        c.text(360, 660, "history isn't a promise", 34, CORAL, 900, a=fade(t, L[1] + 1.5))
-        big(c, '19 / 19 ?', 820, 100, GOLD, pop(t, L[1] + 3.0), None)
+        c.text(360, 220, 'small sample', 40, WHITE, 900, a=fade(t, L[1] + 0.3))
+        c.text(360, 275, "history isn't a promise", 34, CORAL, 900, a=fade(t, L[1] + 1.5))
+        E.bars18(c, t, L[1], 1.6, box=(40, 360, 600, 720), labels=False)
+        k = pop(t, L[1] + 3.0)
+        if k > 0:  # the 19th bar: 2026, still a question, pulsing
+            pulse = 0.55 + 0.45 * abs(math.sin((t - L[1]) * 3.2))
+            h = 360 * 18.4 / 35 * clamp(k)
+            c.rrect(612, 720 - h, 676, 720, 8, (255, 214, 64, int(90 * pulse)), GOLD, 4, a=clamp(k))
+            c.text(644, 720 - h - 40, '?', 54, GOLD, 900, a=clamp(k))
+        big(c, '19 / 19 ?', 840, 100 + 8 * math.sin(t * 5), GOLD, pop(t, L[1] + 3.0), None)
         return
     mid_cover(c, t)
 
