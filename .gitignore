@@ -2,4 +2,4 @@ __pycache__/
 # rendered videos live on YouTube; large files break GitHub pushes (>100 MB)
 channel/out/*.mp4
 channel/guide/coin-theory-checklist.html
-channel/assets/flow/*_frames/
+channel/assets/flow/**/*_frames/
