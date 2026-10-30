@@ -493,8 +493,15 @@ def align(tokens, heard, dur):
             merged.append(h)
     heard = merged
     hw = []
-    for h in heard:
-        sub = _words(say(h['w'].strip()))
+    for i, h in enumerate(heard):
+        w = h['w'].strip()
+        m = re.fullmatch(r'\$(\d[\d,]*(?:\.\d+)?)', w.rstrip('.,?!'))
+        nxt = heard[i + 1]['w'].strip().lower().rstrip('.,?!') if i + 1 < len(heard) else ''
+        if m and nxt in ('thousand', 'million', 'billion', 'trillion'):
+            sub = _words(num_words(m.group(1).replace(',', '')))  # "$6.3" + "billion" -> "six point three"...
+            heard[i + 1] = dict(heard[i + 1], w=heard[i + 1]['w'] + ' dollars')  # ...+ "billion dollars"
+        else:
+            sub = _words(say(w))
         for j, x in enumerate(sub):
             d = (h['e'] - h['s']) / len(sub)
             hw.append((x, h['s'] + j * d, h['s'] + (j + 1) * d))
@@ -947,8 +954,10 @@ def narrate(scenes, build_dir, min_coverage=0.85):
             if os.path.exists(cache):
                 a = np.load(cache)
             else:
+                n_fb = len(FALLBACKS)
                 a = speak(toks)
-                np.save(cache, a)
+                if len(FALLBACKS) == n_fb:  # never cache backup-voice audio under the main voice's key
+                    np.save(cache, a)
             dur = len(a) / SR
             timed, cov = align(toks, word_times(a), dur)
             if cov < min_coverage:

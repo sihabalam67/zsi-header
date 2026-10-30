@@ -6,6 +6,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 
 | Day (2 PM ET) | Type | Video | Link |
 |---|---|---|---|
+| Fri Oct 30 | Short | 11:30 AM news: $6.3B stolen from Binance in 20 minutes | https://youtu.be/ZpEzShWdGN0 |
 | Fri Oct 30 | Long | Why Is Gas So Expensive Right Now? | https://youtu.be/XKD-BqxeMFw |
 | Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/MjxRVxEpatA |
 | Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/bU2w3avQnjo |
