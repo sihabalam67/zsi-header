@@ -45,6 +45,11 @@ def main():
             age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(
                 v['snippet']['publishedAt'].replace('Z', '+00:00'))).total_seconds() / 86400
             views = int(v['statistics'].get('viewCount', 0))
+            t = v['snippet']['title']
+            if '--en' in sys.argv and (re.search(r'[^\x00-\x7F\u2018-\u201f\u2026\u2013\u2014\U0001F000-\U0001FFFF\u2600-\u27BF\uFE0F]', t)
+                                       or re.search(r'₹|\blakh|\bcrore|\bindia|\bsbi\b|\brupee', t, re.I)
+                                       or v['snippet'].get('defaultAudioLanguage', 'en')[:2] not in ('en', '')):
+                continue
             rows.append(dict(topic=q, title=v['snippet']['title'], channel=v['snippet']['channelTitle'],
                              vpd=views / max(age, 0.5), views=views, secs=iso_seconds(v['contentDetails']['duration']),
                              likes=int(v['statistics'].get('likeCount', 0)),
