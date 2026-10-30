@@ -579,13 +579,18 @@ def tts_chatterbox(text, seed=0):
             if not line or line.startswith('{"ready"'):
                 break
     out = tempfile.mktemp(suffix='.wav')
-    _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out}) + '\n')
+    _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out, 'exaggeration': 0.5, 'cfg': 0.3}) + '\n')
     _cb.stdin.flush()
     line = _cb.stdout.readline()
     while line and not line.startswith('{'):
         line = _cb.stdout.readline()
     if not line or not json.loads(line).get('ok'):
         return None
+    tempo = float(os.environ.get('CB_TEMPO', '0.92'))  # Chatterbox talks fast; ease to explainer pace (~170 wpm)
+    if abs(tempo - 1) > 0.01:
+        slow = out.replace('.wav', '_t.wav')
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out, '-filter:a', f'atempo={tempo}', slow], check=True)
+        os.replace(slow, out)
     a, sr = sf.read(out, always_2d=True)
     os.remove(out)
     a = a.mean(axis=1)

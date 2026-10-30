@@ -81,6 +81,25 @@ VIDEOS = {
               'credit card interest', 'mortgage rates', 'savings account interest', 'high yield savings',
               'inflation 2026', 'what the fed rate hike means for you', 'prime rate'],
         thumb='ep04_thumb_a.png'),
+    'ep05_jobs': dict(
+        titles=['Microsoft Just Offered 60,000 Buyouts. Are Layoffs Really Rising?',
+                'Nobody\'s Getting Fired. Nobody\'s Getting Hired. (2026 Job Market)',
+                '60,000 Buyouts at Microsoft: What the Job Data Really Says'],
+        hook="Microsoft just offered buyouts to about 60,000 employees, roughly a quarter of its workforce. So are "
+             "layoffs really surging? The government's own data tells a very different story.",
+        summary="Penny the coin breaks down the job market with official data: what a buyout is (and why so few "
+                "people take one), whether layoffs are really rising, weekly jobless claims, how we got here, the "
+                "real problem (hiring has slowed way down), the great stay, tech jobs and AI, which industry is "
+                "still hiring, two numbers to watch for a recession, and what it all means for you.",
+        sources="Layoffs and discharges, quits, job openings and hires rate (BLS JOLTS: JTSLDL, JTSQUL, JTSJOL, "
+                "JTSHIR); initial jobless claims (US Dept. of Labor: ICSA); payrolls by industry (BLS: PAYEMS, "
+                "CES6562000001, MANEMP, USINFO); unemployment (BLS: UNRATE, UNEMPLOY, UEMPMEAN); Sahm rule "
+                "recession indicator (SAHMREALTIME); Fed funds target (DFEDTARU); retrieved from FRED, Federal "
+                "Reserve Bank of St. Louis, through October 2026. Microsoft buyouts: CNBC, TechCrunch, Deadline and "
+                "Fortune reports, October 26-28, 2026.",
+        tags=['microsoft layoffs', 'microsoft buyouts', 'layoffs 2026', 'job market 2026', 'are layoffs rising',
+              'hiring freeze', 'jobs report', 'unemployment', 'ai jobs', 'tech layoffs', 'sahm rule', 'recession'],
+        thumb='ep05_thumb_a.png'),
 }
 
 SHORTS = {
@@ -96,6 +115,8 @@ SHORTS = {
     'ep04_short_cards': ('Your credit card now charges over 21% #shorts', 'ep04_fed'),
     'ep04_short_savings': ('Your savings pay 0.38%. Inflation is 3.7%. #shorts', 'ep04_fed'),
     'ep04_short_why': ('Why the Fed raises rates when gas gets expensive #shorts', 'ep04_fed'),
+    'ep05_short_layoffs': ('Layoffs are LOWER than in 2019. Here is the proof #shorts', 'ep05_jobs'),
+    'ep05_short_hiring': ('The job market\'s real problem: nobody is hiring #shorts', 'ep05_jobs'),
 }
 
 
