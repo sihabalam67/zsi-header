@@ -1,1 +1,3 @@
 __pycache__/
+# rendered videos live on YouTube; large files break GitHub pushes (>100 MB)
+channel/out/*.mp4

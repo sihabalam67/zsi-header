@@ -22,6 +22,7 @@ so YouTube locks API uploads to **private**: upload private and tell the user wh
 each video to Public (see WEEK1.md). Custom thumbnails need the channel's phone verification (done).
 
 ## Status (Oct 30, 2026)
+- New .mp4 renders are git-ignored (GitHub rejects files >100 MB); the uploaded copies on YouTube are the archive.
 - Current schedule: channel/SCHEDULE.md (19 videos, Oct 30 to Nov 12). ep05_jobs is the Microsoft buyouts bonus.
 - `youtube/daily.py` also lists viewer replies under our launch comments (answer with `--reply THREAD --for CID`).
 - `youtube/stats.py` adds traffic sources and countries; impressions/CTR are Studio-only (not in the API).
