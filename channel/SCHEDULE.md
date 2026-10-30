@@ -11,7 +11,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/bU2w3avQnjo |
 | Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/I-DdB1ONp_s |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
-| Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/yrhAiR11zwo |
+| Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/s7X20UjfknI |
 | Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/mjMUIiJjaeM |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/c-KDrOUhzwM |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
