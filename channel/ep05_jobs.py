@@ -487,10 +487,7 @@ if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
     check_numbers()
     if '--stills' in sys.argv:
-        os.makedirs(BUILD, exist_ok=True)
-        for i, sc in enumerate(SCENES):
-            n = max(1, len(sc['lines']))
-            still(sc, 0.5 + 4 * n + 1, os.path.join(BUILD, f'still_{i:02d}.png'))
+        previews(SCENES, SHORTS, os.path.join(BUILD, 'previews'))
         sys.exit()
     if '--shorts-only' not in sys.argv:
         total, chapters = build(SCENES, os.path.join(OUT, 'ep05_jobs.mp4'), BUILD,

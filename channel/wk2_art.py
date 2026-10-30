@@ -186,11 +186,17 @@ def compare_bars(c, t, items, start, span, vmax, fmt, box=(240, 170, 1040, 530))
 
 
 def end_card(line, tag='Full story on Coin Theory'):
+    """Closing Shorts scene: Penny waves and points viewers to the full video (drawn vertically)."""
     def draw(c, x):
-        specks(c, x.t, 30, 50)
-        penny(c, 640, 330, 90, x.t, 'happy', wave=True, talk=x.talk())
-        c.text(640, 560, tag, 40, GOLD, 900, a=fade(x.t, 0.3))
-    return dict(draw=draw, lines=[line], tail=1.2)
+        specks(c, x.t, 30, 70)
+        penny(c, 360, 520, 130, x.t, 'happy', wave=True, talk=x.talk())
+        c.text(360, 790, tag, 42, GOLD, 900, a=fade(x.t, 0.3))
+    return dict(draw=draw, lines=[line], tail=1.2, vertical=True)
+
+
+def source_v(c, t, text):
+    """Source line for a vertical Shorts scene, just above the captions."""
+    c.text(c.w - 40, 900, 'Source: ' + text, 16, MUTED, 400, anchor='rm', a=fade(t, 1), shadow=False)
 
 
 def fmt_time(sec):

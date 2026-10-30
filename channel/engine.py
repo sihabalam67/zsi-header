@@ -834,7 +834,7 @@ def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
         img = big.resize((1080, 1920), Image.LANCZOS, box=box)
         img = Image.fromarray((np.asarray(img).astype(np.float32) * vignette(1080, 1920)).astype(np.uint8))
         cv = Canvas(img=img, k=1.5)  # logical 720 x 1280; keep the bottom ~20% clear for YouTube's own overlay
-        cv.text(360, 120, 'COIN THEORY', 30, GOLD, 900, stroke=4)
+        cv.text(360, 130, 'COIN THEORY', 32, GOLD, 900, stroke=4)
         if sc.get('captions', True):
             draw_captions(cv, t, chunks, x=360, y=sc.get('cap_y', 960), size=48, maxw=640)
         return img
@@ -859,7 +859,7 @@ def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
     back = Image.fromarray((np.asarray(back).astype(np.float32) * 0.45).astype(np.uint8))
     back.paste(main, ((1080 - mw) // 2, SHORT_MID - mh // 2))
     cv = Canvas(img=back, k=1.5)  # logical 720 x 1280
-    cv.text(360, 150, 'COIN THEORY', 34, GOLD, 900, stroke=4)
+    cv.text(360, 130, 'COIN THEORY', 32, GOLD, 900, stroke=4)
     if sc.get('captions', True):
         draw_captions(cv, t, chunks, x=360, y=960, size=46, maxw=660)
     return back
@@ -898,7 +898,8 @@ def _render_scene(si):
     dur, starts, ends, chunks, env = plan[si]
     ow, oh = (OUT_W, OUT_H) if layout == 'long' else (1080, 1920)
     path = os.path.join(build_dir, f'{layout}_{si:02d}.mp4')
-    if layout != 'long' and '_crop' not in sc and not sc.get('vertical'):
+    if layout != 'long' and not sc.get('vertical') and '_crop' not in sc:
+        print(f'  note: Shorts scene {si} is 16:9 (enlarged automatically); a vertical=True scene fills the screen')
         sc['_crop'] = content_box(sc, starts, ends, dur, env)
     if os.environ.get('RESUME') and os.path.exists(path):  # reuse a finished segment after an interruption
         probe = subprocess.run(['ffprobe', '-v', 'error', '-count_packets', '-select_streams', 'v:0', '-show_entries',
@@ -1013,6 +1014,19 @@ def build(scenes, out_path, build_dir, layout='long', only=None, srt_path=None):
     if FALLBACKS:
         print(f'WARNING: {len(FALLBACKS)} line(s) used the backup voice; re-render them before uploading:', FALLBACKS)
     return total, chapters
+
+
+def previews(scenes, shorts, folder):
+    """Stills for checking a build before rendering: the end of every long scene, and every Shorts scene as it will
+    look on a phone (vertical scenes full screen, old 16:9 scenes enlarged). Look at all of them."""
+    os.makedirs(folder, exist_ok=True)
+    for i, sc in enumerate(scenes):
+        if not sc.get('vertical'):
+            still(sc, 0.5 + 4 * max(1, len(sc['lines'])) + 1, os.path.join(folder, f'still_{i:02d}.png'))
+    for name, scs in shorts.items():
+        for i, sc in enumerate(scs):
+            still(sc, 0.5 + 4 * max(1, len(sc['lines'])) - 0.6, os.path.join(folder, f'{name}_{i}.png'), layout='short')
+    print('previews in', folder)
 
 
 def still(scene, t, path, starts=None, layout='long'):

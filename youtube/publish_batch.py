@@ -41,10 +41,13 @@ def is_short(name):
     return '_short_' in name
 
 
-def duration(path):
+def probe(path):
+    """(seconds, width, height) of a video file."""
     import subprocess
-    return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
-                                          '-of', 'csv=p=0', path]))
+    out = subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries',
+                                   'stream=width,height:format=duration', '-of', 'json', path])
+    j = json.loads(out)
+    return float(j['format']['duration']), j['streams'][0]['width'], j['streams'][0]['height']
 
 
 def long_of(name, names):
@@ -84,7 +87,11 @@ def main():
         errs = validate(m)
         if errs:
             sys.exit(f'{name}: {errs}')
-        secs = duration(m['video'])
+        secs, w, h = probe(m['video'])
+        if is_short(name) and (w, h) != (1080, 1920):
+            sys.exit(f'{name}: Shorts must be 1080x1920, got {w}x{h}')
+        if not is_short(name) and h < 1440:
+            print(f'  WARNING: {name} is {w}x{h}; render at 1440p (engine default) for YouTube\'s sharper encode')
         if not is_short(name) and secs < 480:
             print(f'  WARNING: {name} is {secs / 60:.1f} min; mid-roll ads need 8:00+ (fine only if the material is done)')
         if is_short(name) and secs > 180:

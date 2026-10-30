@@ -24,10 +24,12 @@ so YouTube locks API uploads to **private**; scheduled `publishAt` still makes t
 ## Status (Oct 30, 2026)
 - New .mp4 renders are git-ignored (GitHub rejects files >100 MB); the uploaded copies on YouTube are the archive.
 - Weekly toolchain (in order): `python3 channel/fetch_data.py <FRED IDs>` -> write `channel/epNN_*.py` with
-  `check_numbers()` -> `--stills` and look at them -> render -> `python3 channel/wk2_audit.py epNN_*` (Whisper and
+  `check_numbers()` and native vertical Shorts scenes (`vertical=True`, see below) -> `--stills` (calls
+  `engine.previews`: long stills plus every Shorts scene as a phone frame) and look at all of them -> render (1440p) -> `python3 channel/wk2_audit.py epNN_*` (Whisper and
   loudness; the build also warns if any line fell back to the backup voice) -> thumbnails (`thumb_epNN.py`) ->
   kit entries in `make_kits.py` -> `python3 youtube/publish_batch.py plan.json` (uploads, 2 PM New York with DST,
-  playlists, Short links, launch questions, "links" + "Full series" lines on long videos; warns under 8:00) ->
+  playlists, Short links, launch questions, "links" + "Full series" lines on long videos; warns under 8:00 or
+  below 1440p, refuses Shorts that aren't 1080x1920 or run over 3 min) ->
   `python3 youtube/qa.py` (read-only live check of every video vs kit and SCHEDULE.md; must say NO PROBLEMS) -> `python3 channel/guide/build_guide.py` and publish its HTML with
   `url=https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp` (same page) -> calendar reminders -> update SCHEDULE.md.
 - Current schedule: channel/SCHEDULE.md (19 videos, Oct 30 to Nov 12). ep05_jobs is the Microsoft buyouts bonus.
@@ -39,7 +41,7 @@ so YouTube locks API uploads to **private**; scheduled `publishAt` still makes t
 - Shorts must be drawn natively vertical from week 3 on: give each Short scene `vertical=True` and draw on a
   720 x 1280 canvas (`c.w`, `c.h`): content between y=180 and y=900, captions sit at y=960 (`cap_y=`), keep the
   bottom ~20% empty (YouTube's overlay), text 28+ and chart ticks `tick_size=24`. Reuse the long video's data and
-  helpers (gas_pump, line_chart, chip...) at a bigger scale. Preview with `still(scene, t, path, layout='short')`.
+  helpers (gas_pump, line_chart, chip, `source_v`...) at a bigger scale; `end_card` is already vertical. Preview with `still(scene, t, path, layout='short')`.
   Old-style 16:9 scenes in a Short still work: the engine now finds their content and enlarges it (content_box).
 - Audio master: limiter ceiling 0.80 (-1.9 dBFS) so the AAC true peak stays under 0 dB (Gas renders peaked +0.2).
 - `youtube/stats.py` adds traffic sources and countries; impressions/CTR are Studio-only (not in the API).
