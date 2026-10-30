@@ -833,11 +833,35 @@ def vignette(w, h, strength=0.24):
     return _vig[w, h]
 
 
+_clip_frames = {}
+
+
+def clip_frame(path, t, speed=1.0):
+    """Frame of a video clip at time t (s), for scenes with 'bg_video'; holds the last frame after the clip ends.
+    Frames are extracted once (at FPS) into the clip's cache folder next to the file."""
+    if path not in _clip_frames:
+        d = os.path.splitext(path)[0] + '_frames'
+        if not os.path.isdir(d) or not os.listdir(d):
+            os.makedirs(d, exist_ok=True)
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', path, '-vf', f'fps={FPS}',
+                            os.path.join(d, 'f_%05d.png')], check=True)
+        _clip_frames[path] = sorted(os.path.join(d, f) for f in os.listdir(d) if f.endswith('.png'))
+    frames = _clip_frames[path]
+    i = min(int(t * speed * FPS), len(frames) - 1)
+    return Image.open(frames[i]).convert('RGB')
+
+
 def compose(sc, t, starts, ends, dur, env, chunks, layout='long'):
     """Draw one frame: scene -> slow camera zoom -> vignette -> captions (and vertical layout for Shorts)."""
     from PIL import ImageFilter
     vertical = sc.get('vertical', False)  # drawn natively for Shorts on a 720 x 1280 canvas
-    c = Canvas(*sc.get('bg', (BG1, BG2)), size=(720, 1280) if vertical else (W, H))
+    size = (720, 1280) if vertical else (W, H)
+    if sc.get('bg_video'):  # a video clip (e.g. made in Google Flow) under the scene's drawings
+        bgimg = clip_frame(sc['bg_video'], t, sc.get('bg_speed', 1.0)).resize(
+            (int(size[0] * K), int(size[1] * K)), Image.LANCZOS)
+        c = Canvas(img=bgimg, k=K)
+    else:
+        c = Canvas(*sc.get('bg', (BG1, BG2)), size=size)
     sc['draw'](c, Ctx(t, starts, ends, dur, env))
     big = c.img
     z0, z1 = sc.get('cam', (1.0, 1.045))
@@ -1053,6 +1077,8 @@ def pace_report(scenes, plan, layout):
     """Warn about stretches where nothing on screen changes for longer than PACE_LIMIT (a likely swipe-away)."""
     lim, issues = PACE_LIMIT['long' if layout == 'long' else 'short'], []
     for si, sc in enumerate(scenes):
+        if sc.get('bg_video'):  # the clip itself is the motion
+            continue
         dur, starts, ends, _, _ = plan[si]
         prev, last_change = None, 0.0
         for k in range(int(dur / 0.5) + 1):

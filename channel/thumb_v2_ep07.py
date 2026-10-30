@@ -33,8 +33,31 @@ def variant_b():
     return th
 
 
+def variant_c():
+    """Fictional shocked person (Flow image); his face fills the left, the number fills the right."""
+    th = Thumb.photo(os.path.join(HERE, 'assets', 'flow', 'binance_shock.jpg'), focus=(0.3, 0.45), zoom=1.05,
+                     saturation=1.1, contrast=1.08, vignette=0.3, tint='#ff2a2a')
+    th.text(935, 170, f'${F["amount_bn"]} BILLION', 100, color=(255, 214, 64), stroke=12, glow=(255, 110, 30))
+    th.text(935, 295, 'STOLEN', 130, color=(255, 60, 50), stroke=13, glow=(255, 40, 30), tilt=-4)
+    th.text(935, 430, f'IN {F["minutes"]} MINUTES', 76, color=WHITE, stroke=10)
+    return th
+
+
+def variant_d():
+    """The empty, cracked crypto safe (Flow image) with the number in the dark space on the right."""
+    th = Thumb.photo(os.path.join(HERE, 'assets', 'flow', 'binance_safe.jpg'), focus=(0.5, 0.5), zoom=1.0,
+                     saturation=1.2, contrast=1.12, vignette=0.25)
+    th.text(940, 190, f'${F["amount_bn"]}B', 210, color=(255, 214, 64), stroke=15, glow=(255, 110, 30))
+    th.text(940, 360, 'EMPTIED', 120, color=WHITE, stroke=13, tilt=-3)
+    th.layer(lambda c: penny(c, 1110, 590, 105, 0.0, 'shocked', look=(-1, -0.2), bounce=False, arms=(200, -20)),
+             outline=9, glow=(255, 240, 160))
+    return th
+
+
 if __name__ == '__main__':
     paths = [variant_a().save(os.path.join(OUT, 'ep07_thumb_a.png')),
-             variant_b().save(os.path.join(OUT, 'ep07_thumb_b.png'))]
+             variant_b().save(os.path.join(OUT, 'ep07_thumb_b.png')),
+             variant_c().save(os.path.join(OUT, 'ep07_thumb_c.png')),
+             variant_d().save(os.path.join(OUT, 'ep07_thumb_d.png'))]
     squint(paths, '/tmp/claude-0/-home-user-zsi-header/135a45f0-ab71-57a7-80ce-da145bb199c8/scratchpad/qa/sv/thumb_ep07.png')
     print('ok')
