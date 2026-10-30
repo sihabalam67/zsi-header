@@ -1,0 +1,31 @@
+{
+  "video": "channel/out/ep05_jobs.mp4",
+  "title": "Microsoft Just Offered 60,000 Buyouts. Are Layoffs Really Rising?",
+  "description": "Microsoft just offered buyouts to about 60,000 employees, roughly a quarter of its workforce. So are layoffs really surging? The government's own data tells a very different story.\n\nPenny the coin breaks down the job market with official data: what a buyout is (and why so few people take one), whether layoffs are really rising, weekly jobless claims, how we got here, the real problem (hiring has slowed way down), the great stay, tech jobs and AI, which industry is still hiring, two numbers to watch for a recession, and what it all means for you.\n\n0:00 Intro: 60,000 buyouts\n0:30 Buyout vs layoff\n1:27 Are layoffs really rising?\n2:05 The weekly warning sign\n2:35 How we got here\n3:05 The real problem: hiring\n3:51 The great stay\n4:13 Tech jobs and AI\n4:54 Who is still hiring?\n5:31 Two numbers to watch\n6:02 What this means for you\n6:46 Recap\n\nData: Layoffs and discharges, quits, job openings and hires rate (BLS JOLTS: JTSLDL, JTSQUL, JTSJOL, JTSHIR); initial jobless claims (US Dept. of Labor: ICSA); payrolls by industry (BLS: PAYEMS, CES6562000001, MANEMP, USINFO); unemployment (BLS: UNRATE, UNEMPLOY, UEMPMEAN); Sahm rule recession indicator (SAHMREALTIME); Fed funds target (DFEDTARU); retrieved from FRED, Federal Reserve Bank of St. Louis, through October 2026. Microsoft buyouts: CNBC, TechCrunch, Deadline and Fortune reports, October 26-28, 2026.\n\nThis video is for education only and is not financial advice.\nOriginal script, characters and animation. Narrated with an AI voice.",
+  "tags": [
+    "microsoft layoffs",
+    "microsoft buyouts",
+    "layoffs 2026",
+    "job market 2026",
+    "are layoffs rising",
+    "hiring freeze",
+    "jobs report",
+    "unemployment",
+    "ai jobs",
+    "tech layoffs",
+    "sahm rule",
+    "recession",
+    "coin theory",
+    "economics explained",
+    "money explained",
+    "personal finance",
+    "animated explainer"
+  ],
+  "categoryId": 27,
+  "thumbnail": "channel/out/ep05_thumb_a.png",
+  "captions": "channel/out/ep05_jobs.en.srt",
+  "privacy": "private",
+  "madeForKids": false,
+  "syntheticMedia": true,
+  "language": "en"
+}
