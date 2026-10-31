@@ -15,7 +15,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Mon Nov 2 | Long | 9 AM: Stocks Rose 18 Times Out of 18 After Midterms | https://youtu.be/37Aow08f8zk |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
 | Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/GHrGTVgqwq4 |
-| Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/4a7lLb7__8E |
+| Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/fVMEKaBZjZU |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
 | Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/hLGGsfnokXE |
