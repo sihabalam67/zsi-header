@@ -149,6 +149,10 @@ def feathers_draw(c, x):
         compare_bars(c, t, (('oil, per gallon', E.UP_CRUDE, SKY), ('pump price', E.UP_GAS, CORAL)), L[1] + 0.8,
                      max(1.2, L[2] - L[1]), 2.0, lambda v: f'+${v:.2f}', box=(70, 330, 650, 800), value_size=60,
                      label_size=30)
+        if t > L[2] + 0.4:
+            chip(c, 360, 925, 'pump price rose MORE than oil', CORAL, pop(t, L[2] + 0.4), 28)
+        if t > L[2] + 2.4:
+            big(c, f'+${E.UP_GAS - E.UP_CRUDE:.2f} extra a gallon', 1005, 46, GOLD, pop(t, L[2] + 2.4), None)
         return
     if t < L[5]:
         c.text(360, 215, 'On the way DOWN (spring to July)', 32, MINT, 900)
@@ -181,9 +185,15 @@ def feathers_draw(c, x):
 
 
 # ------------------------------------------------------------- ep04: the Fed --
-def cards_cover(c, t):
-    card(c, 360, 380, 1.5, color=SKY)
-    big(c, f'${round(E.CC_COST, -1):,.0f}', 690, 110, CORAL, 1, None)
+def seam(t, dur):
+    """0 at the first and last frame (so the loop seam matches), 1 in between."""
+    return clamp(t / 0.5) * clamp((dur - t) / 0.5) if dur else 0
+
+
+def cards_cover(c, t, dur=None):
+    e = seam(t, dur)
+    card(c, 360, 380 + 10 * e * math.sin(t * 4), 1.5, color=SKY)
+    big(c, f'${round(E.CC_COST, -1):,.0f}', 690 + 9 * e * math.sin(t * 5 + 1), 110, CORAL, 1, None)
     c.text(360, 770, 'a year in interest', 34, WHITE, 900)
     c.text(360, 820, 'on a $5,000 card balance', 28, MUTED, 800, shadow=False)
 
@@ -192,7 +202,7 @@ def cards_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 56, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        cards_cover(c, t)
+        cards_cover(c, t, x.dur)
         return
     if t < L[2]:
         dial(c, 360, 560, 220, E.CC_NOW, 30, '', a=fade(t, L[1]), color=CORAL)
@@ -209,6 +219,7 @@ def cards_draw(c, x):
         big(c, '+0.25%', 470, 110, GOLD, pop(t, L[3] + 0.3), None)
         c.text(360, 610, 'on a $5,000 balance:', 30, WHITE, 800, a=fade(t, L[3] + 1.5))
         big(c, f'+${E.QUARTER:.2f} a year', 740, 70, MINT, pop(t, L[3] + 2.4), None)
+        chip(c, 360, 860, f'about ${E.QUARTER / 12:.0f} a month', MINT, pop(t, L[3] + 4.5), 30)
         return
     if t < L[5]:
         c.icon('flame', 360, 380, 200, CORAL, a=fade(t, L[4]), stroke=2.5)
@@ -223,21 +234,23 @@ def cards_draw(c, x):
         c.circle(160 + i * 80, 780 - 60 * k * (i % 2), 22, GOLD, GOLD_D, 2, a=1 - k * 0.5)
 
 
-def savings_cover(c, t):
+def savings_cover(c, t, dur=None):
+    e = seam(t, dur)
     dial(c, 190, 470, 140, E.S_NOW, 5, '', color=MINT)
     dial(c, 530, 470, 140, E.CPI_NOW, 5, '', color=CORAL)
     c.text(190, 610, E.pct(E.S_NOW), 64, MINT, 900, stroke=4)
     c.text(190, 670, 'your savings', 28, WHITE, 800)
-    c.text(530, 610, f'{E.CPI_NOW:.1f}%', 64, CORAL, 900, stroke=4)
+    c.text(530, 610 + 9 * e * math.sin(t * 5), f'{E.CPI_NOW:.1f}%', int(64 * (1 + 0.08 * e * abs(math.sin(t * 4)))),
+           CORAL, 900, stroke=4)
     c.text(530, 670, 'prices', 28, WHITE, 800)
-    c.text(360, 220, 'Who wins?', 44, GOLD, 900)
+    c.text(360, 220 + 8 * e * math.sin(t * 4 + 2), 'Who wins?', 44, GOLD, 900)
 
 
 def savings_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 58, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        savings_cover(c, t)
+        savings_cover(c, t, x.dur)
         return
     if t < L[2]:
         c.icon('piggy-bank', 360, 430, 230, MINT, a=fade(t, L[1]))
@@ -256,11 +269,18 @@ def savings_draw(c, x):
                      max(1.2, L[4] - L[3]), 400, lambda v: f'${v:.0f}', box=(80, 300, 640, 800), value_size=64,
                      label_size=32)
         c.text(360, 880, 'per year', 30, MUTED, 800, shadow=False)
+        if t > L[4] + 0.6:
+            chip(c, 360, 960, f'about {E.EF_ALT / E.EF_NOW:.0f}x more', MINT, pop(t, L[4] + 0.6), 30)
         return
-    c.icon('shield-check', 360, 420, 200, MINT, a=fade(t, L[5]))
-    c.text(360, 620, 'FDIC insurance covers', 34, WHITE, 900, a=fade(t, L[5] + 0.5))
-    big(c, '$250,000', 720, 80, MINT, pop(t, L[5] + 1.5), None)
-    c.text(360, 800, 'per depositor, per bank', 28, MUTED, 800, a=fade(t, L[5] + 1.5), shadow=False)
+    if t < L[5] + 4.0:  # 'many online banks pay rates much closer to the Fed's'
+        c.icon('landmark', 360, 430, 200, SKY, a=fade(t, L[5]))
+        c.text(360, 640, 'many online banks', 36, WHITE, 900, a=fade(t, L[5] + 0.3))
+        c.text(360, 700, "pay much closer to the Fed's rate", 30, SKY, 800, a=fade(t, L[5] + 1.2))
+        return
+    c.icon('shield-check', 360, 420, 200, MINT, a=fade(t, L[5] + 4.0))
+    c.text(360, 620, 'FDIC insurance covers', 34, WHITE, 900, a=fade(t, L[5] + 4.0))
+    big(c, '$250,000', 720, 80, MINT, pop(t, L[5] + 5.0), None)
+    c.text(360, 800, 'per depositor, per bank', 28, MUTED, 800, a=fade(t, L[5] + 5.0), shadow=False)
 
 
 def why_cover(c, t):
@@ -804,9 +824,9 @@ SHORTS2 = {
             "Many online banks pay rates much closer to the Fed's, and FDIC insurance covers deposits up to "
             "$250,000 per bank.",
         ],
-        punch=lambda L: [0.05, L[2] + 1.0, L[4] + 0.3, L[5] + 1.5],
+        punch=lambda L: [0.05, L[2] + 1.0, L[4] + 0.3, L[5] + 5.0],
         sfx=lambda L: [(0.0, 'pop'), (L[1] + 0.5, 'ding'), (L[2] + 1.0, 'down'), (L[3] + 0.5, 'pop'),
-                       (L[4] + 0.3, 'ding'), (L[5] + 1.5, 'pop')],
+                       (L[4] + 0.3, 'ding'), (L[4] + 0.6, 'pop'), (L[5], 'whoosh'), (L[5] + 5.0, 'pop')],
     )],
     'ep04_short_why': lambda: [dict(
         draw=why_draw, vertical=True, lead=0.1, gap=0.25, tail=0.9, lines=[

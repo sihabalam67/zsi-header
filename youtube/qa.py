@@ -44,9 +44,11 @@ for n, vid in ids.items():
     if not v: P(n, 'NOT FOUND on YouTube'); continue
     kit = json.load(open(f'{OUT}/{n}.upload.json'))
     sn, st, cd = v['snippet'], v['status'], v['contentDetails']
-    if st['privacyStatus'] != 'private': P(n, 'privacy', st['privacyStatus'])
     pa = st.get('publishAt')
-    if not pa: P(n, 'no publishAt')
+    if st['privacyStatus'] == 'public' and not pa:
+        pass  # already launched: the schedule checks no longer apply
+    elif st['privacyStatus'] != 'private': P(n, 'privacy', st['privacyStatus'])
+    elif not pa: P(n, 'no publishAt')
     else:
         local = dt.datetime.fromisoformat(pa.replace('Z', '+00:00')).astimezone(NY)
         if (local.hour, local.minute) != (14, 0) and not kit.get('news'): P(n, 'publish not 2PM ET', local)
