@@ -335,7 +335,7 @@ def s_end(c, x):
     k = pop(t, L[1] + 0.3)
     c.text(640, 260, '19 / 19 ?', int(150 * (0.6 + 0.4 * clamp(k))), GOLD, 900, a=clamp(k), stroke=8)
     c.text(640, 380, 'Tell me in the comments', 34, WHITE, 900, a=fade(t, L[1] + 1.0))
-    penny(c, 640, 560, 70, t, 'happy', wave=True, talk=x.talk())
+    penny(c, 640, 525, 60, t, 'happy', wave=True, talk=x.talk())
 
 
 B18 = 'eighteen'
