@@ -11,6 +11,8 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/MjxRVxEpatA |
 | Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/TACYizpUx1Y |
 | Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/cpktInwXifE |
+| Sun Nov 1 | Short | 5 PM: 18 out of 18, stocks after midterms | https://youtu.be/OWoLbsjk_lI |
+| Mon Nov 2 | Long | 9 AM: Stocks Rose 18 Times Out of 18 After Midterms | https://youtu.be/37Aow08f8zk |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
 | Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/xYn1GpcB4RI |
 | Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/MuhDNm7T0to |

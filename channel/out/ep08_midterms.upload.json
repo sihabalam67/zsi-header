@@ -1,0 +1,33 @@
+{
+ "video": "channel/out/ep08_midterms.mp4",
+ "title": "Stocks Rose 18 Times Out of 18 After Midterms. Will 2026 Break the Streak?",
+ "description": "Since 1950, the S&P 500 has been higher one year after every single midterm election: 18 out of 18. The average gain was about 18%, roughly three times a normal year. But the midterm year itself is often bad: in 2022, stocks were down 18.5% by October, then climbed about 21% after the vote.\n\nSo will 2026 make it 19 for 19? We look at the data, the three main explanations, the fine print, and why 2026 is different.\n\n0:00 Intro: 18 out of 18\n0:26 What is a midterm?\n0:49 18 green bars\n1:30 Normal years vs midterm years\n1:47 The twist: the midterm slump\n2:18 Why it happens\n2:58 The fine print\n3:23 Why 2026 is different\n3:53 What it means for you\n4:21 Recap\n\nData: S&P 500 monthly prices from Robert Shiller's dataset (Yale University, ie_data), price only, monthly averages, through September 2023. Window: October of each midterm year to October one year later, 1950-2018 (18 midterms). 2022 is measured to September 2023, where the dataset ends. 'No losing year after a midterm since 1950' is also reported by Capital Group and BNY. 2026 context: inflation (BLS CPI, September 2026), gas (EIA weekly retail price), Fed rate decision (Federal Reserve), Binance hack (Binance, TRM Labs, Chainalysis), from our earlier sourced episodes.\n\nThis video is for education only and is not financial advice. Past performance does not guarantee future results.\nOriginal script and animation. Some background clips were made with AI (Google Flow). Narrated with an AI voice.",
+ "tags": [
+  "midterm elections",
+  "midterms 2026",
+  "stock market midterms",
+  "stocks after midterms",
+  "midterm election stock market",
+  "election stock market",
+  "s&p 500",
+  "stock market 2026",
+  "presidential cycle",
+  "midterm slump",
+  "election day 2026",
+  "stock market history",
+  "investing",
+  "coin theory",
+  "economics explained",
+  "money explained",
+  "personal finance",
+  "animated explainer"
+ ],
+ "categoryId": 27,
+ "thumbnail": "channel/out/ep08_thumb_a.png",
+ "captions": "channel/out/ep08_midterms.en.srt",
+ "privacy": "private",
+ "madeForKids": false,
+ "syntheticMedia": true,
+ "language": "en",
+ "news": true
+}

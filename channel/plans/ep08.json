@@ -1,0 +1,21 @@
+{
+ "videos": {
+  "ep08_midterms": "2026-11-02T09:00",
+  "ep08_short_midterms": "2026-11-01T17:00"
+ },
+ "playlists": {
+  "ep08": [
+   "Stock Market, Explained",
+   "How the stock market really works, with real data: elections, crashes, records."
+  ]
+ },
+ "launch_questions": {
+  "ep08_midterms": "Will 2026 make it 19 for 19? Yes or no, and why?"
+ },
+ "links": {
+  "ep08_midterms": [
+   "Why 2026 is different: the Fed",
+   "ep04_fed"
+  ]
+ }
+}
