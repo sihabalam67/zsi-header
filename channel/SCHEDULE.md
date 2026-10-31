@@ -21,7 +21,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/qt7pVq-UGSw |
 | Fri Nov 6 | Long | Your $100 Is Now Worth $12 (Inflation) | https://youtu.be/9MxTKS-nKNc |
 | Fri Nov 6 | Short | Bread, eggs, coffee, gas | https://youtu.be/2DMQp9G858Y |
-| Sat Nov 7 | Short | Why your raise doesn't feel like one | https://youtu.be/wLQSciT_G7Q |
+| Sat Nov 7 | Short | Why your raise doesn't feel like one | https://youtu.be/HytfwVVKYkM |
 | Sun Nov 8 | Short | The rule of 70 | https://youtu.be/MzOaGLhnDjE |
 | Mon Nov 9 | Long | A House Cost $23,000 in 1970 | https://youtu.be/Ln54Ec_mjq8 |
 | Mon Nov 9 | Short | A house cost $23,000 in 1970 | https://youtu.be/j8slElCKR2Q |
