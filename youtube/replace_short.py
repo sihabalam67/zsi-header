@@ -32,9 +32,11 @@ def main():
         finish(yt, name, pend[name], ids[name], pend, pend_path)
         return
     items = yt.videos().list(part='status', id=old).execute()['items']
-    if not items:
-        sys.exit(f'{name}: old video {old} not found on YouTube')
-    st = items[0]['status']
+    at = next((x.split('=', 1)[1] for x in sys.argv if x.startswith('--at=')), None)
+    if not items and not at:
+        sys.exit(f'{name}: old video {old} not found on YouTube (YouTube drops uploads that fail processing); '
+                 're-run with --at=YYYY-MM-DDTHH:MM:SSZ, its old publishAt, to upload into the same slot')
+    st = items[0]['status'] if items else {'privacyStatus': 'private', 'publishAt': at}
     if st['privacyStatus'] != 'private' or not st.get('publishAt'):
         sys.exit(f'{name}: {old} is {st["privacyStatus"]} (publishAt {st.get("publishAt")}); only scheduled videos '
                  'can be swapped')

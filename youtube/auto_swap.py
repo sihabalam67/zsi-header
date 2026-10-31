@@ -16,6 +16,20 @@ def live_secs(vid):
     d = client().videos().list(part='contentDetails', id=vid).execute()['items'][0]['contentDetails']['duration']
     m = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', d)
     return sum(int(x or 0) * k for x, k in zip(m.groups(), (3600, 60, 1)))
+def rendering(name):
+    import fcntl
+    lp = f'{ROOT}/channel/build/vshorts/{name}.lock'
+    if not os.path.exists(lp):
+        return False
+    with open(lp) as f:
+        try:
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            fcntl.flock(f, fcntl.LOCK_UN)
+            return False
+        except BlockingIOError:
+            return True
+
+
 def check(name):
     p = f'{ROOT}/channel/out/{name}.mp4'
     j = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries',
@@ -23,7 +37,10 @@ def check(name):
     w, h, secs = j['streams'][0]['width'], j['streams'][0]['height'], float(j['format']['duration'])
     lo = subprocess.run(['ffmpeg', '-nostats', '-i', p, '-af', 'ebur128=peak=true', '-f', 'null', '-'],
                         capture_output=True, text=True).stderr
-    lufs = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', lo)[-1]); peak = float(re.findall(r'Peak:\s+(-?[\d.]+) dBFS', lo)[-1])
+    li, pk = re.findall(r'I:\s+(-?[\d.]+) LUFS', lo), re.findall(r'Peak:\s+(-?[\d.]+) dBFS', lo)
+    if not li or not pk:  # unreadable, e.g. still being written
+        return ['file unreadable (still rendering?)'], f'{w}x{h} {secs:.1f}s'
+    lufs, peak = float(li[-1]), float(pk[-1])
     ids = json.load(open(f'{ROOT}/channel/out/video_ids.json'))
     old = live_secs(ids[name])
     errs = []
@@ -42,6 +59,7 @@ while True:
         if not l.startswith('OK '): continue
         name = l.split()[1]
         if name in done: continue
+        if rendering(name): continue  # being re-rendered right now; check it once the lock is free
         errs, info = check(name)
         if errs:
             log(f'HELD {name}: {errs} ({info})'); done.add(name); continue

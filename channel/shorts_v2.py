@@ -369,9 +369,10 @@ def layoffs_draw(c, x):
     big(c, 'HIRING', 740, 96, GOLD, pop(t, L[5] + 1.6), None)
 
 
-def hiring_cover(c, t):
+def hiring_cover(c, t, dur=None):
+    e = seam(t, dur)
     c.icon('clock', 360, 400, 200, CORAL, stroke=2.2)
-    big(c, f'{E.W_NOW:.0f} weeks', 650, 100, CORAL, 1, None)
+    big(c, f'{E.W_NOW:.0f} weeks', 650 + 9 * e * math.sin(t * 5), 100, CORAL, 1, None)
     c.text(360, 760, 'to find a new job, on average', 32, WHITE, 900)
 
 
@@ -379,7 +380,7 @@ def hiring_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 62, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        hiring_cover(c, t)
+        hiring_cover(c, t, x.dur)
         return
     if t < L[2]:
         two_bars(c, t, L[1] + 0.3, ('March 2022', E.O_PEAK / 1000, GOLD), ('now', E.O_NOW / 1000, CORAL),
@@ -450,11 +451,12 @@ def prices_draw(c, x):
             return
 
 
-def wages_cover(c, t):
+def wages_cover(c, t, dur=None):
+    e = seam(t, dur)
     c.text(360, 230, 'Average hourly pay', 36, WHITE, 900)
     c.text(360, 350, f'1970: ${E.WAGE_1970:.2f}', 60, MUTED, 900)
     c.icon('arrow-down', 360, 450, 60, MUTED, stroke=2.5)
-    big(c, f'now: ${E.WAGE.iloc[-1]:.2f}', 580, 90, MINT, 1, None)
+    big(c, f'now: ${E.WAGE.iloc[-1]:.2f}', 580 + 9 * e * math.sin(t * 5), 90, MINT, 1, None)
     c.text(360, 720, "So why don't you feel richer?", 34, GOLD, 900)
 
 
@@ -462,7 +464,7 @@ def wages_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 12, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        wages_cover(c, t)
+        wages_cover(c, t, x.dur)
         return
     if t < L[2]:
         headline(c, t, L[1], 'trending-up', MINT, f'x{E.WAGE.iloc[-1] / E.WAGE_1970:.1f}', 'on paper')
@@ -481,9 +483,10 @@ def wages_draw(c, x):
     c.text(360, 760, "It's what it can buy.", 40, GOLD, 900, a=fade(t, L[4] + 2.0))
 
 
-def rule70_cover(c, t):
+def rule70_cover(c, t, dur=None):
+    e = seam(t, dur)
     c.rrect(40, 300, 680, 520, 30, (255, 255, 255, 20), GOLD, 4)
-    big(c, '70 ÷ inflation', 390, 72, GOLD, 1, None)
+    big(c, '70 ÷ inflation', 390 + 9 * e * math.sin(t * 5), 72, GOLD, 1, None)
     c.text(360, 470, '= years for prices to double', 34, WHITE, 900)
     c.text(360, 640, 'The 2-second money trick', 36, MUTED, 900)
 
@@ -492,7 +495,7 @@ def rule70_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 7, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        rule70_cover(c, t)
+        rule70_cover(c, t, x.dur)
         return
     c.text(360, 220, '70 ÷ inflation = years to double', 30, GOLD, 900)
     rows = [(2, 35, MINT, L[1] + 0.3), (4, 17.5, GOLD, L[2] + 0.3), (7, 10, CORAL, L[3] + 0.3)]
@@ -507,21 +510,27 @@ def rule70_draw(c, x):
         c.text(170, y + 66, f'{n:.1f} years' if yrs % 1 else f'{round(n)} years', 34, WHITE, 900, anchor='lm')
     if t > L[4]:
         chip(c, 360, 900, f'US since 1970: almost 4% a year', GOLD, pop(t, L[4] + 0.3), 28)
+    if t > L[4] + 1.2:  # point at the 4% row while the average is spoken, then pulse it
+        k = clamp(pop(t, L[4] + 1.2))
+        c.rrect(50, 500, 690, 640, 22, None, GOLD, int(3 + 3 * abs(math.sin((t - L[4]) * 3.5))), a=k)
+    if t > L[4] + 3.6:
+        c.text(360, 990, 'now do the math on your money', 30, WHITE, 900, a=fade(t, L[4] + 3.6))
 
 
 # ------------------------------------------------------------ ep02: housing --
-def price_cover(c, t):
+def price_cover(c, t, dur=None):
+    e = seam(t, dur)
     E.house(c, 360, 640, 2.0)
     c.ellipse(360, 648, 230, 16, (0, 0, 0, 60))
     c.text(360, 230, f'1970: ${E.P1970:,.0f}', 56, MINT, 900, stroke=4)
-    big(c, f'now: ${E.P_NOW:,.0f}', 780, 80, CORAL, 1, None)
+    big(c, f'now: ${E.P_NOW:,.0f}', 780 + 9 * e * math.sin(t * 5), 80, CORAL, 1, None)
 
 
 def price_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 21, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        price_cover(c, t)
+        price_cover(c, t, x.dur)
         return
     if t < L[2]:
         headline(c, t, L[1], 'house', GOLD, f'x{E.P_NOW / E.P1970_REAL:.1f}', 'even after inflation')
@@ -546,10 +555,11 @@ def price_draw(c, x):
         c.text(bx, 840, lab, 30, WHITE, 900)
 
 
-def payment_cover(c, t):
+def payment_cover(c, t, dur=None):
+    e = seam(t, dur)
     E.house(c, 360, 560, 1.7)
     c.text(360, 230, 'Same house', 44, WHITE, 900)
-    big(c, f'+${round(E.PAY_NOW) - round(E.PAY_2021):,}', 720, 120, CORAL, 1, None)
+    big(c, f'+${round(E.PAY_NOW) - round(E.PAY_2021):,}', 720 + 9 * e * math.sin(t * 5), 120, CORAL, 1, None)
     c.text(360, 820, 'more every month', 36, WHITE, 900)
 
 
@@ -557,7 +567,7 @@ def payment_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 25, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        payment_cover(c, t)
+        payment_cover(c, t, x.dur)
         return
     if t < L[2]:
         headline(c, t, L[1], 'percent', MINT, f'{E.RA[2021]:.1f}%', '30-year mortgage rate, 2021')
