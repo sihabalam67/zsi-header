@@ -10,7 +10,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Fri Oct 30 | Long | Why Is Gas So Expensive Right Now? | https://youtu.be/XKD-BqxeMFw |
 | Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/MjxRVxEpatA |
 | Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/TACYizpUx1Y |
-| Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/I-DdB1ONp_s |
+| Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/N4Kq1cpdLt4 |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
 | Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/s7X20UjfknI |
 | Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/IkNm6m8vUUs |
