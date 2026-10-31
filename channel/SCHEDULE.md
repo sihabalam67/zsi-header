@@ -18,7 +18,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/fVMEKaBZjZU |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
-| Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/hLGGsfnokXE |
+| Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/qt7pVq-UGSw |
 | Fri Nov 6 | Long | Your $100 Is Now Worth $12 (Inflation) | https://youtu.be/9MxTKS-nKNc |
 | Fri Nov 6 | Short | Bread, eggs, coffee, gas | https://youtu.be/2DMQp9G858Y |
 | Sat Nov 7 | Short | Why your raise doesn't feel like one | https://youtu.be/wLQSciT_G7Q |
