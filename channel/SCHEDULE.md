@@ -10,12 +10,12 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Fri Oct 30 | Long | Why Is Gas So Expensive Right Now? | https://youtu.be/XKD-BqxeMFw |
 | Fri Oct 30 | Short | Gas $2.78 to $4.50 | https://youtu.be/MjxRVxEpatA |
 | Sat Oct 31 | Short | What you pay for in a gallon | https://youtu.be/TACYizpUx1Y |
-| Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/h0_Mcpq-aeY |
+| Sun Nov 1 | Short | Rockets and feathers | https://youtu.be/JgJh7mGkisA |
 | Sun Nov 1 | Short | 5 PM: 18 out of 18, stocks after midterms | https://youtu.be/OWoLbsjk_lI |
 | Mon Nov 2 | Long | 9 AM: Stocks Rose 18 Times Out of 18 After Midterms | https://youtu.be/37Aow08f8zk |
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
-| Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/xYn1GpcB4RI |
-| Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/QCOIq2swjNU |
+| Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/GHrGTVgqwq4 |
+| Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/4a7lLb7__8E |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
 | Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/hLGGsfnokXE |
