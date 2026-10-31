@@ -55,6 +55,13 @@ def validate(m):
         errors.append('tags over 500 characters total')
     if m.get('thumbnail') and os.path.getsize(path(m['thumbnail'])) > 2 * 1024 * 1024:
         errors.append('thumbnail over 2 MB')
+    if m.get('video') and os.path.exists(path(m['video'])):
+        # a fully decoded check: two renders writing one file at once leave a damaged mp4 YouTube never processes
+        import subprocess
+        r = subprocess.run(['ffmpeg', '-v', 'error', '-i', path(m['video']), '-f', 'null', '-'],
+                           capture_output=True, text=True)
+        if r.returncode or r.stderr.strip():
+            errors.append(f'video file is damaged ({len(r.stderr.splitlines())} decode errors); re-render it')
     return errors
 
 

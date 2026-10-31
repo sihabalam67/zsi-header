@@ -333,20 +333,24 @@ def why_draw(c, x):
 
 
 # --------------------------------------------------------------- ep05: jobs --
-def layoffs_cover(c, t):
+def layoffs_cover(c, t, dur=None):
+    e = seam(t, dur)
+    c.icon('arrow-down', 610, 300 + 14 * e * math.sin(t * 5), 70 * e, MINT, a=e, stroke=2.5)
     two_bars(c, 99, 0, ('2019 average', E.L19 / 1000, MUTED), ('August 2026', E.L_NOW / 1000, MINT),
              lambda v: f'{v:.2f}M', 2.4, 'Layoffs per month, US', bottom=740)
-    chip(c, 360, 880, 'LOWER than before COVID', MINT, 1, 32)
+    chip(c, 360, 880 + 6 * e * math.sin(t * 4), 'LOWER than before COVID', MINT, 1, 32)
 
 
 def layoffs_draw(c, x):
     t, L = x.t, x.L
     specks(c, t, 61, 50)
     if t < L[1] or t >= x.dur - 0.9:
-        layoffs_cover(c, t)
+        layoffs_cover(c, t, x.dur)
         return
     if t < L[2]:
         headline(c, t, L[1], 'user-minus', CORAL, f'{E.L_NOW / 1000:.2f}M', 'laid off or discharged in August')
+        if t > L[1] + 2.6:
+            chip(c, 360, 940, 'official count: BLS (JOLTS)', SKY, pop(t, L[1] + 2.6), 26)
         return
     if t < L[3]:
         two_bars(c, t, L[2] + 0.3, ('2019 average', E.L19 / 1000, MUTED), ('August 2026', E.L_NOW / 1000, MINT),
@@ -918,6 +922,13 @@ def check(name):
 
 
 if __name__ == '__main__':
+    import fcntl  # one render per Short at a time: two writers to one mp4 leave a damaged file
+    os.makedirs(os.path.join(HERE, 'build', 'vshorts'), exist_ok=True)
+    _lock = open(os.path.join(HERE, 'build', 'vshorts', NAME + '.lock'), 'w')
+    try:
+        fcntl.flock(_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        sys.exit(f'{NAME} is already rendering in another process')
     check(NAME)
     scenes = SHORTS2[NAME]()
     if '--stills' in sys.argv:
