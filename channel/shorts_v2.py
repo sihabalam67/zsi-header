@@ -574,6 +574,8 @@ def payment_draw(c, x):
         return
     if t < L[3]:
         headline(c, t, L[2], 'house', MINT, f'${E.PAY_2021:,.0f}', 'a month, 2021', 'median new home, 20% down')
+        if t > L[2] + 2.6:
+            chip(c, 360, 960, f'30-year loan at {E.RA[2021]:.1f}%', MINT, pop(t, L[2] + 2.6), 28)
         return
     if t < L[4]:
         two_bars(c, t, L[3] + 0.3, ('2021', E.PAY_2021, MINT), ('today', E.PAY_NOW, CORAL), lambda v: f'${v:,.0f}',
