@@ -614,6 +614,8 @@ def supply_draw(c, x):
         return
     if t < L[3]:
         supply_bars(c, t, L[1] + 0.2, t > L[2] + 0.5)
+        if t > L[2] + 4.0:
+            chip(c, 360, 960, 'the lowest of any decade', CORAL, pop(t, L[2] + 4.0), 30)
         return
     if t < L[5]:
         c.icon('users', 220, 450, 170, GOLD, a=fade(t, L[3]))
