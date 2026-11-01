@@ -57,7 +57,7 @@ def s_record(c, x):
     c.text(640, 60, 'The biggest crypto thefts ever (US$, at the time)', 30, WHITE, 900, a=fade(t, 0))
     vmax, x0, x1 = 6.6, 330, 1150
     for i, (name, yr, v) in enumerate(LF['record']):
-        at = L[0] + 0.6 + i * 1.3 if i < 4 else L[1] + 0.3
+        at = L[0] + (2.8, 6.0, 7.2, 11.0)[i] if i < 4 else L[1] + 0.3  # each lands as it is named
         if t < at:
             continue
         g = ease(seg(t, at, at + 0.9 if i < 4 else at + 2.2))
@@ -74,6 +74,12 @@ def s_record(c, x):
     if t > L[3]:
         chip(c, 420, 640, f'more than North Korea stole in all of 2025 (${LF["nk_2025_bn"]:.2f}B)', SKY,
              pop(t, L[3] + 0.5), 22)
+    k = pop(t, L[3] + 5.0)
+    if k > 0:
+        c.circle(1080, 200, 62 * k, CORAL, WHITE, 4)
+        c.text(1080, 200, f'{F["amount_bn"] / LF["nk_2025_bn"]:.0f}x', int(44 * clamp(k)), WHITE, 900, shadow=False)
+        c.text(1080, 290, "North Korea's", 20, WHITE, 900, a=clamp(k))
+        c.text(1080, 316, 'whole 2025 haul', 20, WHITE, 900, a=clamp(k))
     source(c, t, 'Decrypt, Benzinga, FBI, Chainalysis, Binance')
 
 
@@ -89,6 +95,10 @@ def s_exchange(c, x):
         c.icon('arrow-right', 300, 300, 60 * k, MUTED)
         c.icon('building-2', 440, 300, 130 * k, GOLD)
         c.text(440, 400, 'the exchange', 24, GOLD, 900, a=clamp(k))
+    k = pop(t, L[0] + 5.0)
+    if k > 0:
+        c.icon('key', 520, 230, 50 * k, GOLD)
+        c.text(300, 470, 'it holds the keys, not you', 24, MUTED, 800, a=clamp(k))
     k = pop(t, L[1] + 0.4)
     if k > 0:  # cold
         c.rrect(640, 150, 1180, 300, 24, (255, 255, 255, 16), SKY, 3, a=clamp(k))
@@ -127,6 +137,9 @@ def s_how(c, x):
             c.text(cx, 400 + j * 34, part, 26, WHITE, 900, a=clamp(k))
         if i < 2:
             c.icon('arrow-right', cx + 205, 260, 54 * clamp(pop(t, steps[i + 1][3] - 0.3)), MUTED)
+    if L[0] + 7.4 < t < L[2]:
+        c.text(640, 540, "a service container = a piece of the exchange's internal systems", 24, MUTED, 800,
+               a=fade(t, L[0] + 7.4))
     if t > L[2]:
         chip(c, 640, 540, 'Co-CEO Richard Teng: "more complex" than one engineer', GOLD, pop(t, L[2] + 0.4), 24)
     if t > L[2] + 4.0:
@@ -199,6 +212,8 @@ def s_launder(c, x):
         c.icon('snowflake', 355, 250, 110 * k, SKY)
         c.text(355, 370, 'Stablecoins (USDT, USDC)', 28, WHITE, 900, a=clamp(k))
         c.text(355, 410, 'the issuer can freeze them', 24, SKY, 800, a=clamp(k))
+        if t > L[2] + 4.6:
+            chip(c, 355, 450, 'run by companies: Tether, Circle', SKY, pop(t, L[2] + 4.6), 20)
     k = pop(t, L[3] + 0.3)
     if k > 0:
         c.rrect(680, 150, 1170, 470, 26, (255, 255, 255, 14), CORAL, 3, a=clamp(k))
@@ -219,7 +234,7 @@ def s_who(c, x):
         k = pop(t, L[0] + 2.0)
         if k > 0:
             c.text(860, 230, 'NORTH KOREA', int(70 * (0.6 + 0.4 * clamp(k))), CORAL, 900, a=clamp(k), stroke=5)
-            c.text(860, 310, 'a group known as TraderTraitor', 28, WHITE, 900, a=clamp(k))
+            c.text(860, 310, 'a group known as TraderTraitor', 28, WHITE, 900, a=fade(t, L[0] + 5.4))
         if t > L[1]:
             chip(c, 640, 500, 'same playbook as Bybit (2025) and KelpDAO (April 2026)', GOLD, pop(t, L[1] + 0.5),
                  24)
@@ -233,7 +248,11 @@ def s_who(c, x):
     if k > 0:
         c.text(400, 260, f'${LF["nk_2025_bn"]:.2f}B', int(110 * (0.6 + 0.4 * clamp(k))), CORAL, 900, a=clamp(k),
                stroke=6)
-        c.text(400, 350, 'stolen in 2025, a record', 28, WHITE, 900, a=clamp(k))
+        c.text(400, 350, 'stolen in 2025', 28, WHITE, 900, a=clamp(k))
+        kr = pop(t, L[2] + 6.0)
+        if kr > 0:
+            c.rrect(300, 170, 500, 214, 10, None, GOLD, 4, a=clamp(kr))
+            c.text(400, 192, 'RECORD', 26, GOLD, 900, a=clamp(kr), shadow=False)
     k = pop(t, L[3] + 0.4)
     if k > 0:
         c.text(900, 260, f'{LF["nk_share_2025"]}%', int(110 * (0.6 + 0.4 * clamp(k))), GOLD, 900, a=clamp(k),
@@ -268,6 +287,10 @@ def s_pays(c, x):
         pct = LF['covered_sat'] + (LF['covered_sun'] - LF['covered_sat']) * ease(seg(t, L[3] + 0.3, L[3] + 1.5))
         c.rrect(x0, y0, x0 + (x1 - x0) * pct / 100 * g, y0 + 56, 18, MINT)
         c.text(640, y0 + 28, f'{pct * g:.0f}% covered', 30, INK, 900, shadow=False)
+        if t > L[4] + 4.4:  # the part still being bought back
+            pa = 0.5 + 0.5 * abs(math.sin((t - L[4]) * 3))
+            c.rrect(x0 + (x1 - x0) * LF['covered_sun'] / 100, y0, x1, y0 + 56, 18, (248, 113, 113, int(200 * pa)))
+            c.text(x1 + 10, y0 + 28, f'{100 - LF["covered_sun"]}% left', 22, CORAL, 900, anchor='lm')
         day = 'Saturday' if t < L[3] + 0.3 else 'Sunday'
         c.text(640, y0 + 92, day, 24, MUTED, 800)
     if t > L[4]:
@@ -376,8 +399,8 @@ SCENES = [
         f"That's roughly four times the old record.",
         f"It's even more than North Korea stole in all of 2025, which was already a record at about "
         f"{LF['nk_2025_bn']:.2f} billion dollars.",
-    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 0.6, 'pop'), (L[0] + 1.9, 'pop'), (L[0] + 3.2, 'pop'),
-                                                    (L[0] + 4.5, 'pop'), (L[1] + 0.3, 'ding'), (L[2] + 0.4, 'pop'),
+    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 2.8, 'pop'), (L[0] + 6.0, 'pop'), (L[0] + 7.2, 'pop'),
+                                                    (L[0] + 11.0, 'pop'), (L[1] + 0.3, 'ding'), (L[2] + 0.4, 'pop'),
                                                     (L[3] + 0.5, 'pop')]),
     dict(draw=s_exchange, chapter='Hot wallets vs cold storage', lines=[
         "To understand how it happened, you need to know where an exchange keeps your crypto. When you buy on an "
