@@ -1,0 +1,20 @@
+{
+ "videos": {
+  "ep07_binance_long": "2026-11-04"
+ },
+ "playlists": {
+  "ep07": [
+   "Crypto, Explained",
+   "Crypto news and how it really works, with confirmed facts."
+  ]
+ },
+ "launch_questions": {
+  "ep07_binance_long": "Would you keep your crypto on an exchange after this? Why or why not?"
+ },
+ "links": {
+  "ep07_binance_long": [
+   "The 1-minute version",
+   "ep07_short_hack"
+  ]
+ }
+}

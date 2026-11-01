@@ -1,0 +1,808 @@
+1
+00:00:00,300 --> 00:00:01,640
+$6.3 billion.
+
+2
+00:00:01,440 --> 00:00:02,440
+Gone,
+
+3
+00:00:02,240 --> 00:00:03,520
+in about 20 minutes.
+
+4
+00:00:04,053 --> 00:00:05,713
+This is the biggest crypto theft
+
+5
+00:00:05,513 --> 00:00:06,253
+in history.
+
+6
+00:00:06,813 --> 00:00:08,313
+Here's exactly how it happened,
+
+7
+00:00:08,593 --> 00:00:09,233
+who did it,
+
+8
+00:00:09,333 --> 00:00:10,693
+and what it means for anyone
+
+9
+00:00:10,493 --> 00:00:12,013
+who keeps money on an exchange.
+
+10
+00:00:13,450 --> 00:00:14,130
+First,
+
+11
+00:00:14,330 --> 00:00:15,090
+how big is this?
+
+12
+00:00:15,490 --> 00:00:17,170
+Here are the biggest crypto thefts
+
+13
+00:00:16,970 --> 00:00:17,510
+ever.
+
+14
+00:00:17,310 --> 00:00:18,230
+Mt.
+
+15
+00:00:18,030 --> 00:00:19,270
+Gox in 2014,
+
+16
+00:00:19,070 --> 00:00:20,970
+about 460 million dollars.
+
+17
+00:00:21,750 --> 00:00:23,130
+Poly Network and Ronin,
+
+18
+00:00:22,930 --> 00:00:24,870
+a little over 600 million each.
+
+19
+00:00:24,670 --> 00:00:26,550
+Bybit in 2025,
+
+20
+00:00:26,830 --> 00:00:28,090
+about 1.5 billion.
+
+21
+00:00:28,927 --> 00:00:29,687
+And Binance:
+
+22
+00:00:29,487 --> 00:00:31,487
+about $6.3 billion.
+
+23
+00:00:32,431 --> 00:00:34,391
+That's roughly four times the old
+
+24
+00:00:34,191 --> 00:00:34,711
+record.
+
+25
+00:00:35,337 --> 00:00:36,957
+It's even more than North Korea
+
+26
+00:00:36,757 --> 00:00:38,577
+stole in all of 2025,
+
+27
+00:00:39,197 --> 00:00:40,897
+which was already a record at
+
+28
+00:00:40,697 --> 00:00:43,077
+about 2.02 billion dollars.
+
+29
+00:00:44,517 --> 00:00:45,997
+To understand how it happened,
+
+30
+00:00:46,317 --> 00:00:47,297
+you need to know where an
+
+31
+00:00:47,097 --> 00:00:48,357
+exchange keeps your crypto.
+
+32
+00:00:48,977 --> 00:00:50,017
+When you buy on an exchange,
+
+33
+00:00:50,217 --> 00:00:51,617
+the coins usually sit in wallets
+
+34
+00:00:51,417 --> 00:00:52,497
+the exchange controls,
+
+35
+00:00:52,817 --> 00:00:53,417
+not you.
+
+36
+00:00:54,125 --> 00:00:55,325
+Most of it is kept in
+
+37
+00:00:55,125 --> 00:00:55,925
+cold storage:
+
+38
+00:00:56,065 --> 00:00:56,545
+offline,
+
+39
+00:00:56,765 --> 00:00:57,665
+much harder to reach.
+
+40
+00:00:58,428 --> 00:00:59,788
+But some has to stay online,
+
+41
+00:01:00,068 --> 00:01:01,268
+in so-called hot wallets,
+
+42
+00:01:01,428 --> 00:01:02,748
+so the exchange can pay out
+
+43
+00:01:02,548 --> 00:01:03,388
+withdrawals quickly.
+
+44
+00:01:04,121 --> 00:01:04,761
+This time,
+
+45
+00:01:04,821 --> 00:01:06,101
+it was the hot wallets that
+
+46
+00:01:05,901 --> 00:01:06,441
+were drained.
+
+47
+00:01:06,921 --> 00:01:08,301
+That's where the attackers aimed.
+
+48
+00:01:09,717 --> 00:01:10,957
+So how did they get in?
+
+49
+00:01:11,477 --> 00:01:13,337
+Binance's first findings point to one
+
+50
+00:01:13,137 --> 00:01:14,137
+engineer's laptop.
+
+51
+00:01:14,817 --> 00:01:15,937
+Hackers compromised it,
+
+52
+00:01:15,737 --> 00:01:17,117
+and that gave them access to
+
+53
+00:01:16,917 --> 00:01:17,837
+a service container,
+
+54
+00:01:18,137 --> 00:01:19,557
+a piece of the exchange's internal
+
+55
+00:01:19,357 --> 00:01:20,017
+systems.
+
+56
+00:01:20,844 --> 00:01:22,424
+Binance says it has found no
+
+57
+00:01:22,224 --> 00:01:23,784
+evidence that its private keys,
+
+58
+00:01:23,904 --> 00:01:25,584
+the master passwords to its wallets,
+
+59
+00:01:25,784 --> 00:01:26,204
+leaked.
+
+60
+00:01:26,890 --> 00:01:28,510
+But Binance's co-CEO,
+
+61
+00:01:28,790 --> 00:01:29,890
+Richard Teng,
+
+62
+00:01:29,690 --> 00:01:31,090
+has said the attack was more
+
+63
+00:01:30,890 --> 00:01:32,650
+complex than one engineer's access.
+
+64
+00:01:33,150 --> 00:01:34,690
+The full incident report is still
+
+65
+00:01:34,490 --> 00:01:35,050
+to come.
+
+66
+00:01:36,517 --> 00:01:37,777
+What we do know is that
+
+67
+00:01:37,577 --> 00:01:38,317
+this was planned.
+
+68
+00:01:38,997 --> 00:01:41,157
+Blockchain investigators at TRM Labs found
+
+69
+00:01:40,957 --> 00:01:42,697
+the staging started well before the
+
+70
+00:01:42,497 --> 00:01:42,897
+theft.
+
+71
+00:01:43,509 --> 00:01:45,109
+Then it all happened at once.
+
+72
+00:01:45,409 --> 00:01:46,329
+In TRM's words:
+
+73
+00:01:46,469 --> 00:01:47,869
+signatures obtained in advance,
+
+74
+00:01:47,669 --> 00:01:49,669
+then executed in one burst.
+
+75
+00:01:50,292 --> 00:01:51,852
+The money moved across about 10
+
+76
+00:01:51,652 --> 00:01:52,552
+different blockchains,
+
+77
+00:01:52,572 --> 00:01:53,552
+and most of it was gone
+
+78
+00:01:53,352 --> 00:01:54,512
+in about 20 minutes.
+
+79
+00:01:55,883 --> 00:01:57,543
+Step two for any thief is
+
+80
+00:01:57,343 --> 00:01:58,163
+hiding the money.
+
+81
+00:01:58,583 --> 00:02:00,343
+The stolen coins included all kinds
+
+82
+00:02:00,143 --> 00:02:00,723
+of tokens.
+
+83
+00:02:01,670 --> 00:02:02,850
+According to the FBI,
+
+84
+00:02:03,230 --> 00:02:04,590
+the hackers have been converting them
+
+85
+00:02:04,390 --> 00:02:05,490
+mostly into Ethereum,
+
+86
+00:02:05,990 --> 00:02:07,610
+and it expects more laundering steps
+
+87
+00:02:07,410 --> 00:02:08,110
+to follow.
+
+88
+00:02:08,660 --> 00:02:10,060
+Here's why that matters.
+
+89
+00:02:10,720 --> 00:02:11,920
+Some crypto can be frozen.
+
+90
+00:02:12,460 --> 00:02:14,880
+Stablecoins like Tether and USDC are
+
+91
+00:02:14,680 --> 00:02:16,180
+run by companies that can block
+
+92
+00:02:15,980 --> 00:02:16,860
+stolen coins.
+
+93
+00:02:17,737 --> 00:02:19,997
+Bitcoin and Ethereum have no company
+
+94
+00:02:19,797 --> 00:02:20,517
+in charge.
+
+95
+00:02:20,777 --> 00:02:21,977
+No one can freeze them.
+
+96
+00:02:22,511 --> 00:02:23,211
+So far,
+
+97
+00:02:23,231 --> 00:02:25,411
+Binance says about $3 billion has been
+
+98
+00:02:25,211 --> 00:02:27,151
+frozen with help from partners including
+
+99
+00:02:26,951 --> 00:02:28,131
+Tether and Circle.
+
+100
+00:02:29,550 --> 00:02:30,330
+Who did it?
+
+101
+00:02:30,850 --> 00:02:32,350
+On October 31st,
+
+102
+00:02:32,290 --> 00:02:34,150
+the FBI said North Korea was
+
+103
+00:02:33,950 --> 00:02:34,550
+responsible,
+
+104
+00:02:34,910 --> 00:02:36,570
+naming a hacking group known as
+
+105
+00:02:36,370 --> 00:02:37,826
+TraderTraitor.
+
+106
+00:02:38,026 --> 00:02:40,306
+Investigators say the attack follows the
+
+107
+00:02:40,106 --> 00:02:41,786
+same playbook as the Bybit hack
+
+108
+00:02:41,586 --> 00:02:44,446
+in 2025 and the KelpDAO hack
+
+109
+00:02:44,246 --> 00:02:45,086
+this April,
+
+110
+00:02:44,886 --> 00:02:46,706
+right down to how the attackers
+
+111
+00:02:46,506 --> 00:02:47,606
+funded their wallets.
+
+112
+00:02:48,458 --> 00:02:49,518
+And this is a pattern.
+
+113
+00:02:50,198 --> 00:02:51,718
+According to Chainalysis,
+
+114
+00:02:51,518 --> 00:02:54,118
+North Korea-linked hackers stole about 2.02
+
+115
+00:02:53,918 --> 00:02:56,338
+billion dollars in crypto in 2025,
+
+116
+00:02:56,138 --> 00:02:57,098
+a record.
+
+117
+00:02:57,932 --> 00:02:59,872
+That was about 59% of all
+
+118
+00:02:59,672 --> 00:03:01,612
+the crypto stolen worldwide that year.
+
+119
+00:03:02,107 --> 00:03:04,347
+United Nations experts have said this
+
+120
+00:03:04,147 --> 00:03:06,127
+stolen money helps fund the country's
+
+121
+00:03:05,927 --> 00:03:06,787
+weapons programs.
+
+122
+00:03:08,350 --> 00:03:09,270
+So who pays?
+
+123
+00:03:09,790 --> 00:03:11,310
+Binance says it will absorb the
+
+124
+00:03:11,110 --> 00:03:11,730
+losses,
+
+125
+00:03:11,890 --> 00:03:12,670
+not its customers.
+
+126
+00:03:13,606 --> 00:03:15,486
+It's using its emergency fund for
+
+127
+00:03:15,286 --> 00:03:15,786
+users,
+
+128
+00:03:16,206 --> 00:03:17,406
+called SAFU,
+
+129
+00:03:17,586 --> 00:03:19,286
+part of its futures insurance fund,
+
+130
+00:03:19,486 --> 00:03:20,906
+and money from its own treasury.
+
+131
+00:03:21,689 --> 00:03:22,549
+On Saturday,
+
+132
+00:03:22,709 --> 00:03:24,749
+Binance said about 90% of the
+
+133
+00:03:24,549 --> 00:03:26,029
+affected assets were covered.
+
+134
+00:03:26,631 --> 00:03:27,171
+By Sunday,
+
+135
+00:03:27,291 --> 00:03:28,871
+it said 95%.
+
+136
+00:03:29,484 --> 00:03:30,624
+The 10 biggest coins,
+
+137
+00:03:30,644 --> 00:03:32,024
+including bitcoin and ether,
+
+138
+00:03:32,084 --> 00:03:32,844
+are fully backed,
+
+139
+00:03:32,924 --> 00:03:33,384
+it says.
+
+140
+00:03:33,904 --> 00:03:35,684
+The rest are smaller tokens it's
+
+141
+00:03:35,484 --> 00:03:36,304
+still buying back.
+
+142
+00:03:37,750 --> 00:03:38,850
+Right after the hack,
+
+143
+00:03:39,170 --> 00:03:41,310
+Binance paused deposits and withdrawals.
+
+144
+00:03:42,178 --> 00:03:42,978
+On Sunday,
+
+145
+00:03:42,918 --> 00:03:43,998
+November 1st,
+
+146
+00:03:44,158 --> 00:03:45,978
+withdrawals started coming back in phases:
+
+147
+00:03:46,618 --> 00:03:47,718
+first the Bitcoin network,
+
+148
+00:03:48,178 --> 00:03:50,378
+then Ethereum and BNB Smart Chain.
+
+149
+00:03:51,048 --> 00:03:52,248
+Binance warned of delays,
+
+150
+00:03:52,048 --> 00:03:53,888
+and says a fuller incident report
+
+151
+00:03:53,688 --> 00:03:55,568
+will follow once its investigation is
+
+152
+00:03:55,368 --> 00:03:55,808
+done.
+
+153
+00:03:57,050 --> 00:03:58,570
+The news hit the whole market.
+
+154
+00:03:58,910 --> 00:03:59,730
+The night of the hack,
+
+155
+00:03:59,850 --> 00:04:02,370
+bitcoin briefly fell below $77,000.
+
+156
+00:04:03,238 --> 00:04:04,118
+It was a scare,
+
+157
+00:04:04,378 --> 00:04:05,078
+not a collapse,
+
+158
+00:04:05,558 --> 00:04:07,138
+but it shows how much of
+
+159
+00:04:06,938 --> 00:04:09,158
+crypto runs through a single exchange.
+
+160
+00:04:10,717 --> 00:04:12,317
+So what does this mean for
+
+161
+00:04:12,117 --> 00:04:12,517
+you?
+
+162
+00:04:12,677 --> 00:04:14,017
+We don't give financial advice,
+
+163
+00:04:14,337 --> 00:04:15,977
+but this hack teaches four things.
+
+164
+00:04:16,672 --> 00:04:17,252
+One:
+
+165
+00:04:17,432 --> 00:04:18,812
+when your crypto sits on an
+
+166
+00:04:18,612 --> 00:04:18,992
+exchange,
+
+167
+00:04:19,672 --> 00:04:20,872
+the exchange holds the keys.
+
+168
+00:04:21,552 --> 00:04:22,652
+You're trusting its security.
+
+169
+00:04:23,455 --> 00:04:23,935
+Two:
+
+170
+00:04:23,735 --> 00:04:25,975
+an exchange's reserves and insurance funds
+
+171
+00:04:25,775 --> 00:04:26,395
+matter.
+
+172
+00:04:26,695 --> 00:04:28,315
+They're why Binance customers may not
+
+173
+00:04:28,115 --> 00:04:29,175
+lose money this time.
+
+174
+00:04:29,756 --> 00:04:30,236
+Three:
+
+175
+00:04:30,416 --> 00:04:31,596
+after every big hack,
+
+176
+00:04:31,756 --> 00:04:33,596
+scammers pretend to be support staff.
+
+177
+00:04:33,856 --> 00:04:35,456
+Real support will never ask for
+
+178
+00:04:35,256 --> 00:04:37,196
+your password or your recovery phrase.
+
+179
+00:04:37,797 --> 00:04:38,217
+Four:
+
+180
+00:04:38,497 --> 00:04:40,097
+holding crypto yourself removes the exchange
+
+181
+00:04:39,897 --> 00:04:40,597
+risk,
+
+182
+00:04:40,697 --> 00:04:41,837
+but if you lose your own
+
+183
+00:04:41,637 --> 00:04:42,077
+keys,
+
+184
+00:04:42,257 --> 00:04:43,297
+nobody can get them back.
+
+185
+00:04:44,750 --> 00:04:45,570
+Let's recap.
+
+186
+00:04:46,170 --> 00:04:47,430
+About $6.3 billion,
+
+187
+00:04:47,910 --> 00:04:49,690
+the biggest crypto theft ever,
+
+188
+00:04:49,790 --> 00:04:51,510
+taken in one planned burst of
+
+189
+00:04:51,310 --> 00:04:52,270
+about 20 minutes.
+
+190
+00:04:52,770 --> 00:04:54,490
+The FBI says North Korea did
+
+191
+00:04:54,290 --> 00:04:54,670
+it.
+
+192
+00:04:54,850 --> 00:04:56,270
+And Binance says it has covered
+
+193
+00:04:56,070 --> 00:04:57,730
+95% so far,
+
+194
+00:04:57,530 --> 00:04:58,650
+with its own money.
+
+195
+00:04:59,126 --> 00:05:00,386
+Would you keep your crypto on
+
+196
+00:05:00,186 --> 00:05:01,346
+an exchange after this?
+
+197
+00:05:01,566 --> 00:05:02,506
+Tell me in the comments,
+
+198
+00:05:02,306 --> 00:05:04,006
+and subscribe so you don't miss
+
+199
+00:05:03,806 --> 00:05:05,266
+the full incident report when it
+
+200
+00:05:05,066 --> 00:05:05,686
+comes out.
+
+201
+00:05:06,284 --> 00:05:08,384
+This video is for education only.
+
+202
+00:05:08,844 --> 00:05:10,144
+It's not financial advice.
+

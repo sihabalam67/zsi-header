@@ -1,0 +1,32 @@
+{
+ "video": "channel/out/ep07_binance_long.mp4",
+ "title": "$6.3 Billion Stolen in 20 Minutes: How the Biggest Crypto Hack Ever Happened",
+ "description": "On October 29, 2026, hackers drained about $6.3 billion from Binance, the world's biggest crypto exchange, in about 20 minutes. It's the largest crypto theft ever recorded, roughly four times the old record. Here's how it happened, who the FBI says did it, who pays for it, and what it means for anyone who keeps money on an exchange.\n\nWhat we know (as of November 1, 2026):\n- Binance's first findings: a compromised engineer's laptop gave access to a service container; Binance says it found no evidence its private keys leaked; its co-CEO says the attack was more complex\n- TRM Labs: staging began well before the theft; signatures obtained in advance, executed in one burst\n- FBI (Oct 31): North Korea is responsible (a group known as TraderTraitor); funds are being converted mostly into Ethereum\n- About $3 billion frozen with partners including Tether and Circle (Binance)\n- Binance says it will absorb the losses (SAFU fund, futures insurance fund, treasury): about 90% covered Saturday, 95% Sunday\n- Withdrawals resumed in phases on November 1\n\nDetails may still change; Binance says a full incident report will follow.\n\n0:00 Intro: $6.3 billion in 20 minutes\n0:12 How big is this?\n0:43 Hot wallets vs cold storage\n1:09 How they got in\n1:35 Planned in advance\n1:55 Hiding the money\n2:29 Who did it: North Korea\n3:07 Who pays for it?\n3:37 Can people withdraw?\n3:56 What it did to bitcoin\n4:10 What it means for you\n4:44 Recap\n\nSources: Binance statements; FBI statement (Oct 31, 2026); TRM Labs; Chainalysis Crypto Crime report (Dec 2025); UN Panel of Experts; CNBC (Oct 31 / Nov 1, 2026); TechCrunch (Nov 1, 2026); NBC News; Bloomberg; CoinDesk; The Block; Decrypt and Benzinga (largest crypto hacks); FBI PSA I-022625-PSA (Bybit, 2025).\n\nThis video is for education only and is not financial advice.\nOriginal script and animation. The opening clip was made with AI (Google Flow). Narrated with an AI voice.",
+ "tags": [
+  "binance hack",
+  "binance",
+  "biggest crypto hack",
+  "crypto hack",
+  "binance hacked",
+  "north korea hackers",
+  "tradertraitor",
+  "fbi binance",
+  "crypto news",
+  "bitcoin",
+  "hot wallet",
+  "cold storage",
+  "safu fund",
+  "is binance safe",
+  "crypto exchange",
+  "coin theory",
+  "money explained",
+  "animated explainer"
+ ],
+ "categoryId": 27,
+ "thumbnail": "channel/out/ep07_thumb_c.png",
+ "captions": "channel/out/ep07_binance_long.en.srt",
+ "privacy": "private",
+ "madeForKids": false,
+ "syntheticMedia": true,
+ "language": "en"
+}
