@@ -47,8 +47,8 @@ def search(q, min_w=1600, n=40):
 
 
 def get(title, dest):
-    r = api(action='query', titles=title, prop='imageinfo', iiprop='url|extmetadata', iiurlwidth=2560)
-    ii = next(iter(r['query']['pages'].values()))['imageinfo'][0]  # thumburl: a 2560 px rendition, as Commons asks
+    r = api(action='query', titles=title, prop='imageinfo', iiprop='url|extmetadata', iiurlwidth=1920)
+    ii = next(iter(r['query']['pages'].values()))['imageinfo'][0]  # thumburl: a standard 1920 px rendition (Commons rate-limits non-standard sizes)
     lic = ii['extmetadata'].get('LicenseShortName', {}).get('value', '')
     assert FREE.match(lic.strip()), f'not public domain / CC0: {lic}'
     os.makedirs(os.path.dirname(dest), exist_ok=True)
