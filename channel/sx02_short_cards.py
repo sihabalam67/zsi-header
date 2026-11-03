@@ -39,8 +39,8 @@ def none(c, x):
     pass
 
 
-def s_statement(c, x):  # phone with the card statement, then the minimum-payment formula
-    i, u = beat(x, 2)
+def s_statement(c, x):  # phone with the card statement and its minimum-payment warning
+    i, u = beat(x, len(x.L))
     c.rrect(0, 0, 720, 1280, 0, (14, 18, 30))
 
     def screen(cv, x0, y0, x1, y1):
@@ -82,40 +82,63 @@ def s_totals(c, x):  # paper cutouts: total interest, then the last line
     fx.checklist_pop(c, u, ['Same card', 'Same $5,000', 'Different payment'], 0.55, 'THE ONLY DIFFERENCE')
 
 
+HOOK2 = os.path.join(GEN, 'card_hook2.mp4')
+
+
+def hook_frame(cv):
+    """Frame 0 of the hook clip, so the last frame of the Short loops straight into the first."""
+    from engine import clip_frame, cover
+    cv.img.paste(cover(clip_frame(HOOK2, 0), cv.img.size[0], cv.img.size[1]))
+
+
+def s_end(c, x):  # totals on paper, then the comment question, then glass breaks back into the hook
+    i, u = beat(x, 2)
+    if i == 0:
+        return fx.paper_cutout(c, u, [('MINIMUM ONLY', 34), (f'${M.MIN["interest"]:,.0f}', 56), ('in interest', 30)],
+                               [('$200 A MONTH', 34), (f'${M.FIX["interest"]:,.0f}', 56), ('in interest', 30)], 'VS')
+
+    def question(cv):
+        cv.rrect(0, 0, 720, 1280, 0, (14, 18, 30))
+        pulse = 1 + 0.06 * math.sin(u * 6)
+        fx.title(cv, 'HOW LONG\nWOULD YOURS\nTAKE?', 360, int(104 * pulse), GOLD, 1)
+        cv.icon('message-circle', 360, 760 + 10 * math.sin(u * 4), 120, WHITE, stroke=2.5)
+        cv.text(360, 880, 'tell me in the comments', 34, WHITE, 900)
+    brk = x.dur - x.L[1] - 0.95
+    if u < brk:
+        return question(c)
+    fx.frame_break(c, u - brk + 0.5, x.t, question, hook_frame)  # shatter at the end, landing on frame 0
+
+
 S = dict(vertical=True, lead=0.1, gap=0.15, captions=True, cap_y=1060)
 SCENES = [
-    dict(S, draw=none, bg_video=HOOK, bg_speed=0.62, cam=(1.0, 1.04), lines=[
-        f"!If you only pay the minimum on a five thousand dollar credit card, it takes about {round(YRS_MIN)} years "
-        "to pay off.",
-    ], punch=lambda L: [62 / 30 / 0.62], sfx=lambda L: [(0.0, 'whoosh'), (62 / 30 / 0.62, 'down')]),
+    dict(S, draw=none, bg_video=HOOK2, bg_speed=1.0, lead=0.05, lines=[
+        f"!Paying only the minimum on a five thousand dollar credit card? That's {round(YRS_MIN)} years.",
+    ], punch=lambda L: [5 / 30], sfx=lambda L: [(5 / 30, 'down'), (16 / 30, 'pop')]),
     dict(S, draw=s_statement, lines=[
-        "Your statement even warns you. By law, it has to show how long minimum payments take.",
-        "That's because the minimum is often just the interest, plus one percent of the balance.",
-    ], sfx=lambda L: [(L[0] + 0.2, 'whoosh'), (L[0] + 1.2, 'down'), (L[1] + 0.6, 'pop'), (L[1] + 1.5, 'pop')]),
-    dict(S, draw=none, bg_video=SPLIT, bg_speed=0.75, cap_y=1150, lines=[
-        f"At about {round(APR)} percent, your first {PAY:.0f} dollar payment? {INT:.0f} dollars is interest. "
-        f"Only {PAY - INT:.0f} dollars pays down what you owe.",
-    ], sfx=lambda L: [(18 / 30 / 0.75, 'pop'), (44 / 30 / 0.75, 'pop'), (74 / 30 / 0.75, 'down')]),
+        "Your statement even warns you, because the minimum is mostly interest.",
+    ], sfx=lambda L: [(L[0] + 0.2, 'whoosh'), (L[0] + 1.2, 'down'), (L[0] + 2.6, 'pop')]),
+    dict(S, draw=none, bg_video=SPLIT, bg_speed=1.0, cap_y=1150, lines=[
+        f"Your first payment is about {PAY:.0f} dollars. {INT:.0f} of it is interest. Only {PAY - INT:.0f} pays "
+        "down the debt.",
+    ], sfx=lambda L: [(18 / 30, 'pop'), (44 / 30, 'pop'), (74 / 30, 'down')]),
     dict(S, draw=none, bg_video=RACE, bg_speed=1.5, cap_y=1150, tail=0.9, lines=[  # 19 YEARS lands on "The minimum? 19"
-        f"!Now pay two hundred a month instead. It's gone in under three years. The minimum? {round(YRS_MIN)}.",
+        f"!Pay two hundred a month instead: gone in under three years. The minimum? {round(YRS_MIN)}.",
     ], sfx=lambda L: [(2.3 / 1.5, 'ding'), (6.4 / 1.5, 'down')]),
-    dict(S, draw=s_totals, tail=0.4, lines=[
-        f"Total interest paying the minimum: ${M.MIN['interest']:,.0f}. Paying two hundred a month: "
-        f"${M.FIX['interest']:,.0f}.",
-        "Same card. Same debt. The only difference is the payment.",
-    ], sfx=lambda L: [(L[0] + 0.1, 'pop'), (L[0] + 0.7, 'pop'), (L[1] + 0.2, 'ding'), (L[1] + 0.75, 'ding'),
-                      (L[1] + 1.3, 'ding')]),
+    dict(S, draw=s_end, tail=1.0, cam=(1.0, 1.0), lines=[  # no camera drift: its last frame must equal frame 0
+        f"That's ${M.MIN['interest']:,.0f} in interest, versus ${M.FIX['interest']:,.0f}.",
+        "So how long would your card take? Tell me in the comments.",
+    ], sfx=lambda L: [(L[0] + 0.1, 'pop'), (L[0] + 0.7, 'pop'), (L[1] + 0.1, 'whoosh')]),
 ]
 
 
 def check_numbers():
     script = ' '.join(l for sc in SCENES for l in sc['lines'])
-    assert abs(M.APR - 0.2119) < 1e-6 and round(APR) == 21 and '21 percent' in script
+    assert abs(M.APR - 0.2119) < 1e-6 and round(APR) == 21
     assert round(YRS_MIN) == 19 and '19 years' in script and YRS_FIX < 3 and 'under three years' in script
-    assert round(PAY) == 138 and round(INT) == 88 and round(PAY - INT) == 50 and '138 dollar' in script
+    assert round(PAY) == 138 and round(INT) == 88 and round(PAY - INT) == 50 and 'about 138 dollars' in script
     assert round(M.MIN['interest']) == 7782 and round(M.FIX['interest']) == 1655
     assert '$7,782' in script and '$1,655' in script
-    for p in (HOOK, SPLIT, RACE):
+    for p in (HOOK2, SPLIT, RACE):
         assert os.path.exists(p), p
     print(f'numbers check: OK  min {M.MIN["months"]} mo / ${M.MIN["interest"]:,.0f}; $200 {M.FIX["months"]} mo / '
           f'${M.FIX["interest"]:,.0f}; first payment ${PAY:.2f} (${INT:.2f} interest)')
