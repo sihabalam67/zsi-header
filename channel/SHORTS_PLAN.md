@@ -6,12 +6,17 @@ Owner's rule (Nov 2, 2026): every day two Shorts. Every new Short is built like 
 `check_numbers()` from data or a cited source; no PACE WARNINGs; loop=True; 35-59 s; look at the stills before
 rendering and at frames after. Name files `sxNN_short_<topic>.py`, kits `sxNN_short_<topic>`, plan
 `channel/plans/sxNN.json` with playlist "Money Basics, Explained", time `"YYYY-MM-DDT17:00"` and `"news": true`.
+Advanced build (from sx02): Remotion pieces live in /home/user/video-tools/remotion/coin-video/src (CardTrap.tsx is the
+example: springs, 3D, film grain, local fonts), Manim scenes in channel/manim (payoff_race.py: Text-only labels, no
+LaTeX), rendered silent into channel/assets/gen/sxNN and used as bg_video scenes; check that each clip's key moment
+fits inside its scene (bg_speed), add `eq=saturation=1.35`, and run kinocut `kino video-quality-check` (saturation
+always flags on our dark design; everything else must pass). Run third-party tools via /home/user/video-tools/safe.
 If a topic's facts can't be confirmed, skip it and take the next one. Breaking money news beats the list.
 
 | Day | Status | Topic | Key facts to confirm |
 |---|---|---|---|
 | Tue Nov 3 | live 5 PM | sx01 compound interest: start at 25 vs 35 | math (done) |
-| Wed Nov 4 | to build | sx02 the credit card minimum-payment trap | $5,000 at the average card rate (ep04 CC_NOW 21.19%), minimum = interest + 1% of balance ($25 floor; CFPB describes this common formula): about 19 years and $7,782 interest vs $200/month: under 3 years, $1,655 |
+| Wed Nov 4 | live 5 PM | sx02 the credit card minimum-payment trap | $5,000 at the average card rate (ep04 CC_NOW 21.19%), minimum = interest + 1% of balance ($25 floor; CFPB describes this common formula): about 19 years and $7,782 interest vs $200/month: under 3 years, $1,655 |
 | Thu Nov 5 | live 5 PM | ep06 banks create money | done |
 | Fri Nov 6 | to build | sx03 what $100 from 1970 buys today | CPIAUCSL in channel/data |
 | Sat Nov 7 | to build | sx04 are you middle class? the real median income | MEHOINUSA646N in channel/data; Pew's middle-income definition (2/3 to 2x median) |

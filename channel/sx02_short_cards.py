@@ -96,9 +96,9 @@ SCENES = [
         f"At about {round(APR)} percent, your first {PAY:.0f} dollar payment? {INT:.0f} dollars is interest. "
         f"Only {PAY - INT:.0f} dollars pays down what you owe.",
     ], sfx=lambda L: [(18 / 30 / 0.75, 'pop'), (44 / 30 / 0.75, 'pop'), (74 / 30 / 0.75, 'down')]),
-    dict(S, draw=none, bg_video=RACE, bg_speed=0.95, cap_y=1150, lines=[
+    dict(S, draw=none, bg_video=RACE, bg_speed=1.5, cap_y=1150, tail=0.9, lines=[  # 19 YEARS lands on "The minimum? 19"
         f"!Now pay two hundred a month instead. It's gone in under three years. The minimum? {round(YRS_MIN)}.",
-    ], sfx=lambda L: [(2.3 / 0.95, 'ding'), (6.0 / 0.95, 'down')]),
+    ], sfx=lambda L: [(2.3 / 1.5, 'ding'), (6.4 / 1.5, 'down')]),
     dict(S, draw=s_totals, tail=0.4, lines=[
         f"Total interest paying the minimum: ${M.MIN['interest']:,.0f}. Paying two hundred a month: "
         f"${M.FIX['interest']:,.0f}.",
