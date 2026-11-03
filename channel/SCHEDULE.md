@@ -25,6 +25,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Thu Nov 5 | Short | 5 PM: Banks create money out of thin air (18-effect Short) | https://youtu.be/PYoQ_INlBVA |
 | Fri Nov 6 | Long | Your $100 Is Now Worth $12 (Inflation) | https://youtu.be/9MxTKS-nKNc |
 | Fri Nov 6 | Short | Bread, eggs, coffee, gas | https://youtu.be/2DMQp9G858Y |
+| Fri Nov 6 | Short | 5 PM: $100 in 1962 = $1,112 today (real 1962 footage) | https://youtu.be/DR4BlaygCIg |
 | Sat Nov 7 | Short | Why your raise doesn't feel like one | https://youtu.be/HytfwVVKYkM |
 | Sun Nov 8 | Short | The rule of 70 | https://youtu.be/fMeYsQObg9I |
 | Mon Nov 9 | Long | A House Cost $23,000 in 1970 | https://youtu.be/Ln54Ec_mjq8 |

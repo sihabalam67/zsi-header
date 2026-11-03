@@ -11,6 +11,9 @@ example: springs, 3D, film grain, local fonts), Manim scenes in channel/manim (p
 LaTeX), rendered silent into channel/assets/gen/sxNN and used as bg_video scenes; check that each clip's key moment
 fits inside its scene (bg_speed), add `eq=saturation=1.35`, and run kinocut `kino video-quality-check` (saturation
 always flags on our dark design; everything else must pass). Run third-party tools via /home/user/video-tools/safe.
+Real footage (from sx03): public domain only: US government films or Prelinger Archives (archive.org advancedsearch,
+check creator + licenseurl in /metadata; uploaders' PD marks on movies/TV are often wrong); no logos; show it with
+fx.archival (framed panel + REAL FOOTAGE stamp); log it in assets/photos/SOURCES.md; footage files are git-ignored.
 10/10 rules (owner, Nov 3; sx02 v2 is the reference):
 1. Payoff first: the shocking number is on screen AND spoken in the first 0.5 s (no build-up, no intro).
 2. Under 35 s when possible; every beat earns its place; no scene longer than ~7 s; nothing static > 4 s.
@@ -31,7 +34,7 @@ If a topic's facts can't be confirmed, skip it and take the next one. Breaking m
 | Tue Nov 3 | live 5 PM | sx01 compound interest: start at 25 vs 35 | math (done) |
 | Wed Nov 4 | live 5 PM | sx02 the credit card minimum-payment trap | $5,000 at the average card rate (ep04 CC_NOW 21.19%), minimum = interest + 1% of balance ($25 floor; a formula many card agreements use, no CFPB source found): about 19 years and $7,782 interest vs $200/month: under 3 years, $1,655 |
 | Thu Nov 5 | live 5 PM | ep06 banks create money | done |
-| Fri Nov 6 | to build | sx03 what $100 from 1970 buys today | CPIAUCSL in channel/data |
+| Fri Nov 6 | live 5 PM | sx03 $100 in 1962 = $1,112 (real public-domain 1962 footage) | done |
 | Sat Nov 7 | to build | sx04 are you middle class? the real median income | MEHOINUSA646N in channel/data; Pew's middle-income definition (2/3 to 2x median) |
 | Sun Nov 8 | to build | sx05 $5 a day: what it becomes | math: 10, 20, 30 years at an example rate; say "example, not a promise" |
 | Mon Nov 9 | to build | sx06 why your paycheck shrinks: where taxes go | IRS / SSA 2026 rates (FICA 7.65%) |
