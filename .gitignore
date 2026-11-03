@@ -6,3 +6,4 @@ channel/assets/flow/**/*_frames/
 channel/assets/gen/**/*_frames/
 channel/assets/footage/
 channel/assets/thumbsrc/
+channel/out/thumbs/*_sheet.png
