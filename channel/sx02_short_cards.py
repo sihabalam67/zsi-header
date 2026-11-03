@@ -62,6 +62,10 @@ def s_statement(c, x):  # phone with the card statement, then the minimum-paymen
     lift = fx.ease_out(fx.clamp(u / 0.5)) if i == 0 else 1
     s = 1.15
     fx.phone(c, 360, fx.lerp(1500, 620, lift), s, screen)
+    if i == 0 and u > 2.6:  # a bouncing arrow points at the warning while it's read
+        k = fx.pop(u, 2.6, 0.3)
+        bob = 14 * math.sin((u - 2.6) * 7)
+        c.icon('arrow-left', 640 + bob, 640, 90 * fx.clamp(k), CORAL, stroke=3)
     if i == 1:  # the formula pops in under the shrunken phone
         for j, (txt, col) in enumerate(((f'INTEREST (${INT:.0f})', CORAL), ('+ 1% OF BALANCE ($50)', MINT))):
             k = fx.pop(u, 0.6 + j * 0.9, 0.35)
@@ -96,8 +100,8 @@ SCENES = [
         f"!Now pay two hundred a month instead. It's gone in under three years. The minimum? {round(YRS_MIN)}.",
     ], sfx=lambda L: [(2.3 / 0.95, 'ding'), (6.0 / 0.95, 'down')]),
     dict(S, draw=s_totals, tail=0.4, lines=[
-        f"Total interest: about {M.MIN['interest'] / 1000:.1f} thousand dollars, versus about "
-        f"{M.FIX['interest'] / 1000:.1f} thousand.",
+        f"Total interest paying the minimum: ${M.MIN['interest']:,.0f}. Paying two hundred a month: "
+        f"${M.FIX['interest']:,.0f}.",
         "Same card. Same debt. The only difference is the payment.",
     ], sfx=lambda L: [(L[0] + 0.1, 'pop'), (L[0] + 0.7, 'pop'), (L[1] + 0.2, 'ding'), (L[1] + 0.75, 'ding'),
                       (L[1] + 1.3, 'ding')]),
@@ -110,7 +114,7 @@ def check_numbers():
     assert round(YRS_MIN) == 19 and '19 years' in script and YRS_FIX < 3 and 'under three years' in script
     assert round(PAY) == 138 and round(INT) == 88 and round(PAY - INT) == 50 and '138 dollar' in script
     assert round(M.MIN['interest']) == 7782 and round(M.FIX['interest']) == 1655
-    assert 'about 7.8 thousand' in script and 'about 1.7 thousand' in script
+    assert '$7,782' in script and '$1,655' in script
     for p in (HOOK, SPLIT, RACE):
         assert os.path.exists(p), p
     print(f'numbers check: OK  min {M.MIN["months"]} mo / ${M.MIN["interest"]:,.0f}; $200 {M.FIX["months"]} mo / '
