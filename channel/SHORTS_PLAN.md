@@ -1,0 +1,22 @@
+# 5 PM Shorts plan (2 Shorts a day: the 2 PM schedule + one new fx-style Short at 5 PM ET)
+
+Owner's rule (Nov 2, 2026): every day two Shorts. Every new Short is built like `channel/ep06_short_banks.py`
+(the owner loved it): the `channel/fx.py` motion effects, one per beat; real public-domain photos via
+`youtube/commons.py`; made-up apps, chats, headlines and magazines only; every number recomputed in
+`check_numbers()` from data or a cited source; no PACE WARNINGs; loop=True; 35-59 s; look at the stills before
+rendering and at frames after. Name files `sxNN_short_<topic>.py`, kits `sxNN_short_<topic>`, plan
+`channel/plans/sxNN.json` with playlist "Money Basics, Explained", time `"YYYY-MM-DDT17:00"` and `"news": true`.
+If a topic's facts can't be confirmed, skip it and take the next one. Breaking money news beats the list.
+
+| Day | Status | Topic | Key facts to confirm |
+|---|---|---|---|
+| Tue Nov 3 | live 5 PM | sx01 compound interest: start at 25 vs 35 | math (done) |
+| Wed Nov 4 | to build | sx02 the credit card minimum-payment trap | $5,000 at the average card rate (ep04 CC_NOW 21.19%), minimum = interest + 1% of balance ($25 floor; CFPB describes this common formula): about 19 years and $7,782 interest vs $200/month: under 3 years, $1,655 |
+| Thu Nov 5 | live 5 PM | ep06 banks create money | done |
+| Fri Nov 6 | to build | sx03 what $100 from 1970 buys today | CPIAUCSL in channel/data |
+| Sat Nov 7 | to build | sx04 are you middle class? the real median income | MEHOINUSA646N in channel/data; Pew's middle-income definition (2/3 to 2x median) |
+| Sun Nov 8 | to build | sx05 $5 a day: what it becomes | math: 10, 20, 30 years at an example rate; say "example, not a promise" |
+| Mon Nov 9 | to build | sx06 why your paycheck shrinks: where taxes go | IRS / SSA 2026 rates (FICA 7.65%) |
+| Tue Nov 10 | to build | sx07 the 50/30/20 budget in 40 seconds | median income example |
+| Wed Nov 11 | to build | sx08 how a credit score is calculated | FICO's published weights (35/30/15/10/10) |
+| Thu Nov 12 | to build | sx09 inflation: why prices never go back down | CPI data |
