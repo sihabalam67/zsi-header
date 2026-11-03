@@ -16,6 +16,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Mon Nov 2 | Long | The Fed Just Raised Rates | https://youtu.be/JlrNu4toOc8 |
 | Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/GHrGTVgqwq4 |
 | Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/fVMEKaBZjZU |
+| Tue Nov 3 | Short | 5 PM: Same $200 a month, double the money (compound interest) | https://youtu.be/-PHcrZzxjjw |
 | Wed Nov 4 | Long | $6.3 Billion Stolen in 20 Minutes (Binance hack) | https://youtu.be/fB_1VJsUvT4 |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
