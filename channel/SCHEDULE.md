@@ -19,7 +19,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Tue Nov 3 | Short | 5 PM: Same $200 a month, double the money (compound interest) | https://youtu.be/-PHcrZzxjjw |
 | Wed Nov 4 | Long | $6.3 Billion Stolen in 20 Minutes (Binance hack) | https://youtu.be/fB_1VJsUvT4 |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
-| Wed Nov 4 | Short | 5 PM: Pay the minimum on $5,000? 19 years (Remotion + Manim) | https://youtu.be/sxuXopNERUg |
+| Wed Nov 4 | Short | 5 PM: Pay the minimum on $5,000? 19 years (Remotion + Manim) | https://youtu.be/2jLvEzKL9QE |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
 | Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/qt7pVq-UGSw |
 | Thu Nov 5 | Short | 5 PM: Banks create money out of thin air (18-effect Short) | https://youtu.be/PYoQ_INlBVA |
