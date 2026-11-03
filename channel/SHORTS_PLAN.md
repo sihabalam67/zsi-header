@@ -19,6 +19,11 @@ always flags on our dark design; everything else must pass). Run third-party too
 5. Seamless loop: the last frame is frame 0 of the hook (fx.frame_break into the hook's first frame, end-scene
    cam=(1.0, 1.0)), so replays count.
 6. Bright, high-contrast palette; grade eq=saturation=1.35; captions clear of every graphic.
+7. No scene over ~6 s; speed up a clip (bg_speed) instead of letting a slow chart hold the screen.
+8. Small on-screen text (phone screens, documents) gets a push-in (fx.zoom_canvas) so it reads on a phone.
+9. Sound design: 'hit' (bass hit) on every big number reveal, 'riser' 1 s before the biggest one, pops for items.
+10. The comment question has an instant answer (yes/no or a choice), shown as tappable-looking chips.
+11. Owner's own voice would beat the AI voice; if they send a voice-over, build around it.
 If a topic's facts can't be confirmed, skip it and take the next one. Breaking money news beats the list.
 
 | Day | Status | Topic | Key facts to confirm |
