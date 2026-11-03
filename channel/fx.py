@@ -458,13 +458,13 @@ def orbit(c, u, center_text, center_sub, n=9):
 
 
 # --------------------------------------------------------- 12 growth curve --
-def growth_curve(c, u, xs, ys, label_end, label_start, dur=2.6, ttl='US money supply'):
+def growth_curve(c, u, xs, ys, label_end, label_start, dur=2.6, ttl='US money supply', xticks=range(1960, 2030, 20)):
     """The line draws itself with a glowing head; the end value pops at the top."""
     c.rrect(0, 0, VW, VH, 0, (14, 18, 30))
     k = ease(clamp(u / dur))
     c.text(360, 230, ttl, 40, WHITE, 900, a=fade(u, 0))
     px, py = line_chart(c, (70, 330, 650, 900), xs, ys, (xs[0], xs[-1]), (0, max(ys) * 1.08), k, MINT,
-                        xticks=range(1960, 2030, 20), yticks=(), a=1)
+                        xticks=xticks, yticks=(), a=1)
     i = max(1, int(k * (len(xs) - 1)))
     hx, hy = px(xs[i]), py(ys[i])
     c.circle(hx, hy, 22, MINT + (70,))
