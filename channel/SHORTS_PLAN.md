@@ -11,6 +11,14 @@ example: springs, 3D, film grain, local fonts), Manim scenes in channel/manim (p
 LaTeX), rendered silent into channel/assets/gen/sxNN and used as bg_video scenes; check that each clip's key moment
 fits inside its scene (bg_speed), add `eq=saturation=1.35`, and run kinocut `kino video-quality-check` (saturation
 always flags on our dark design; everything else must pass). Run third-party tools via /home/user/video-tools/safe.
+10/10 rules (owner, Nov 3; sx02 v2 is the reference):
+1. Payoff first: the shocking number is on screen AND spoken in the first 0.5 s (no build-up, no intro).
+2. Under 35 s when possible; every beat earns its place; no scene longer than ~7 s; nothing static > 4 s.
+3. One number per beat, shown big; the explanation never outruns the visuals.
+4. End on a comment question tied to the viewer ("How long would yours take?").
+5. Seamless loop: the last frame is frame 0 of the hook (fx.frame_break into the hook's first frame, end-scene
+   cam=(1.0, 1.0)), so replays count.
+6. Bright, high-contrast palette; grade eq=saturation=1.35; captions clear of every graphic.
 If a topic's facts can't be confirmed, skip it and take the next one. Breaking money news beats the list.
 
 | Day | Status | Topic | Key facts to confirm |
