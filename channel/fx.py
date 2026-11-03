@@ -244,7 +244,7 @@ def chat_takeover(c, u, msgs, step=0.55):
     msgs: list of (text, side) with side 'l' (them) or 'r' (us)."""
     c.rrect(0, 0, VW, VH, 0, (236, 238, 243))
     shown = [m for i, m in enumerate(msgs) if u >= i * step]
-    y = 1080
+    y = 950  # stack sits above the captions
     for i in range(len(shown) - 1, -1, -1):
         text, side = shown[i]
         age = u - i * step
@@ -267,7 +267,7 @@ def chat_takeover(c, u, msgs, step=0.55):
     nxt = len(shown)
     if nxt < len(msgs):  # typing dots
         for d in range(3):
-            c.circle(80 + d * 28, 1110, 9 + 3 * abs(math.sin(u * 8 + d)), (150, 150, 160))
+            c.circle(80 + d * 28, 985, 9 + 3 * abs(math.sin(u * 8 + d)), (150, 150, 160))
 
 
 # ----------------------------------------------------------- 6 green screen --
@@ -354,11 +354,11 @@ def paper_cutout(c, u, left, right, mid='=', bg=PAPER):
     kl, kr = ease_out(clamp(u / 0.45)), ease_out(clamp((u - 0.6) / 0.45))
     a = shadowed(_paper('L' + left[0][0], 300, 300, CORAL, left), 10, (6, 10), 0.4)
     b = shadowed(_paper('R' + right[0][0], 300, 300, MINT, right), 10, (6, 10), 0.4)
-    place(c, a, lerp(-200, 360, kl), 470, 1, rnd.uniform(-3, 3) - 4 * (1 - kl))
-    place(c, b, lerp(920, 360, kr), 860, 1, rnd.uniform(-3, 3) + 4 * (1 - kr))
+    place(c, a, lerp(-200, 360, kl), 400, 1, rnd.uniform(-3, 3) - 4 * (1 - kl))
+    place(c, b, lerp(920, 360, kr), 780, 1, rnd.uniform(-3, 3) + 4 * (1 - kr))
     k = pop(u, 1.2)
     if k > 0:
-        c.text(360, 666, mid, int(110 * clamp(k)), INK, 400, family='Anton', shadow=False)
+        c.text(360, 590, mid, int(110 * clamp(k)), INK, 400, family='Anton', shadow=False)
 
 
 # --------------------------------------------------------- 9 magazine cover --
@@ -386,7 +386,7 @@ def magazine_cover(c, u, img, mast, quote, attrib, focus=(0.5, 0.5)):
             cv.text(40, 290, 'REPORT', 22, WHITE, 900, anchor='lm')
             _cache[key] = img_
         return _cache[key]
-    place(c, shadowed(cover_spr(), 26, (10, 24), 0.7), 360, 640, lerp(1.3, 0.92, k), lerp(-12, -3, k))
+    place(c, shadowed(cover_spr(), 26, (10, 24), 0.7), 360, 590, lerp(1.2, 0.8, k), lerp(-12, -3, k))
 
 
 # ----------------------------------------------------------- 10 liquid glass --
