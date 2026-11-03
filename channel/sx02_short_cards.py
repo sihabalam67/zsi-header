@@ -62,10 +62,9 @@ def s_statement(c, x):  # phone with the card statement and its minimum-payment 
     lift = fx.ease_out(fx.clamp(u / 0.5)) if i == 0 else 1
     s = 1.15
     fx.phone(c, 360, fx.lerp(1500, 620, lift), s, screen)
-    if i == 0 and u > 2.6:  # a bouncing arrow points at the warning while it's read
-        k = fx.pop(u, 2.6, 0.3)
-        bob = 14 * math.sin((u - 2.6) * 7)
-        c.icon('arrow-left', 640 + bob, 640, 90 * fx.clamp(k), CORAL, stroke=3)
+    if i == 0 and u > 1.6:  # push in on the warning box so its text is readable on a phone
+        z = fx.lerp(1.0, 1.75, fx.ease(fx.clamp((u - 1.6) / 0.7))) + 0.04 * max(0.0, u - 2.3)
+        fx.zoom_canvas(c, z, 360, 655)  # header goes off the top, clear of the logo
     if i == 1:  # the formula pops in under the shrunken phone
         for j, (txt, col) in enumerate(((f'INTEREST (${INT:.0f})', CORAL), ('+ 1% OF BALANCE ($50)', MINT))):
             k = fx.pop(u, 0.6 + j * 0.9, 0.35)
@@ -100,9 +99,13 @@ def s_end(c, x):  # totals on paper, then the comment question, then glass break
     def question(cv):
         cv.rrect(0, 0, 720, 1280, 0, (14, 18, 30))
         pulse = 1 + 0.06 * math.sin(u * 6)
-        fx.title(cv, 'HOW LONG\nWOULD YOURS\nTAKE?', 360, int(104 * pulse), GOLD, 1)
-        cv.icon('message-circle', 360, 760 + 10 * math.sin(u * 4), 120, WHITE, stroke=2.5)
-        cv.text(360, 880, 'tell me in the comments', 34, WHITE, 900)
+        fx.title(cv, 'EVER PAID\nONLY THE\nMINIMUM?', 330, int(104 * pulse), GOLD, 1)
+        for j, (lab, col) in enumerate((('YES', CORAL), ('NO', MINT))):  # easy yes/no answer = more comments
+            k = fx.clamp(fx.pop(u, 0.4 + j * 0.25, 0.3))
+            bx = 230 + j * 260
+            cv.rrect(bx - 105, 700 - 52 * k, bx + 105, 700 + 52 * k, 26, col)
+            cv.text(bx, 700, lab, int(64 * k) + 1, INK, 400, family='Anton', shadow=False)
+        cv.text(360, 830 + 8 * math.sin(u * 4), 'comment below', 34, WHITE, 900)
     brk = x.dur - x.L[1] - 0.95
     if u < brk:
         return question(c)
@@ -113,21 +116,21 @@ S = dict(vertical=True, lead=0.1, gap=0.15, captions=True, cap_y=1060)
 SCENES = [
     dict(S, draw=none, bg_video=HOOK2, bg_speed=1.0, lead=0.05, lines=[
         f"!Paying only the minimum on a five thousand dollar credit card? That's {round(YRS_MIN)} years.",
-    ], punch=lambda L: [5 / 30], sfx=lambda L: [(5 / 30, 'down'), (16 / 30, 'pop')]),
+    ], punch=lambda L: [5 / 30], sfx=lambda L: [(5 / 30, 'hit'), (16 / 30, 'pop')]),
     dict(S, draw=s_statement, lines=[
         "Your statement even warns you, because the minimum is mostly interest.",
-    ], sfx=lambda L: [(L[0] + 0.2, 'whoosh'), (L[0] + 1.2, 'down'), (L[0] + 2.6, 'pop')]),
-    dict(S, draw=none, bg_video=SPLIT, bg_speed=1.0, cap_y=1150, lines=[
-        f"Your first payment is about {PAY:.0f} dollars. {INT:.0f} of it is interest. Only {PAY - INT:.0f} pays "
-        "down the debt.",
-    ], sfx=lambda L: [(18 / 30, 'pop'), (44 / 30, 'pop'), (74 / 30, 'down')]),
+    ], sfx=lambda L: [(L[0] + 0.2, 'whoosh'), (L[0] + 1.2, 'down'), (L[0] + 1.6, 'whoosh')]),
+    dict(S, draw=none, bg_video=SPLIT, bg_speed=1.3, cap_y=1150, lines=[
+        f"Your first payment is about {PAY:.0f} dollars. {INT:.0f} of it is interest.",
+    ], sfx=lambda L: [(18 / 39, 'pop'), (44 / 39, 'pop'), (74 / 39, 'hit')]),
     dict(S, draw=none, bg_video=RACE, bg_speed=1.5, cap_y=1150, tail=0.9, lines=[  # 19 YEARS lands on "The minimum? 19"
         f"!Pay two hundred a month instead: gone in under three years. The minimum? {round(YRS_MIN)}.",
-    ], sfx=lambda L: [(2.3 / 1.5, 'ding'), (6.4 / 1.5, 'down')]),
+    ], sfx=lambda L: [(2.3 / 1.5, 'ding'), (6.4 / 1.5 - 1.0, 'riser'), (6.4 / 1.5, 'hit')]),
     dict(S, draw=s_end, tail=1.0, cam=(1.0, 1.0), lines=[  # no camera drift: its last frame must equal frame 0
         f"That's ${M.MIN['interest']:,.0f} in interest, versus ${M.FIX['interest']:,.0f}.",
-        "So how long would your card take? Tell me in the comments.",
-    ], sfx=lambda L: [(L[0] + 0.1, 'pop'), (L[0] + 0.7, 'pop'), (L[1] + 0.1, 'whoosh')]),
+        "Have you ever paid only the minimum? Yes or no, in the comments.",
+    ], sfx=lambda L: [(L[0] + 0.1, 'pop'), (L[0] + 0.7, 'hit'), (L[1] + 0.1, 'whoosh'), (L[1] + 0.5, 'pop'),
+                      (L[1] + 0.75, 'pop')]),
 ]
 
 
@@ -135,7 +138,7 @@ def check_numbers():
     script = ' '.join(l for sc in SCENES for l in sc['lines'])
     assert abs(M.APR - 0.2119) < 1e-6 and round(APR) == 21
     assert round(YRS_MIN) == 19 and '19 years' in script and YRS_FIX < 3 and 'under three years' in script
-    assert round(PAY) == 138 and round(INT) == 88 and round(PAY - INT) == 50 and 'about 138 dollars' in script
+    assert round(PAY) == 138 and round(INT) == 88 and round(PAY - INT) == 50 and 'about 138 dollars' in script and 'Yes or no' in script
     assert round(M.MIN['interest']) == 7782 and round(M.FIX['interest']) == 1655
     assert '$7,782' in script and '$1,655' in script
     for p in (HOOK2, SPLIT, RACE):

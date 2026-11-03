@@ -713,6 +713,21 @@ def sfx(kind):
         return np.sin(2 * np.pi * (600 - 400 * tt / 0.6) * tt) * np.exp(-tt * 4) * 0.25
     if kind == 'tick':
         return tone(2400, 0.05, 80, (1,)) * 0.2
+    if kind == 'hit':  # cinematic bass hit for big reveals: falling sub thump + short noise crack
+        tt = np.arange(int(0.9 * SR)) / SR
+        f = 45 + 50 * np.exp(-tt * 18)
+        body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 4.5)
+        crack = rnd.standard_normal(len(tt)) * np.exp(-tt * 60)
+        crack = np.convolve(crack, np.ones(6) / 6, 'same')
+        return np.tanh((body * 0.9 + crack * 0.5) * 1.6) * 0.5
+    if kind == 'riser':  # 1 s build-up into a reveal: rising tone + brightening noise, cut off at the peak
+        n = int(1.0 * SR)
+        tt = np.arange(n) / SR
+        sweep = np.sin(2 * np.pi * np.cumsum(220 + 900 * tt ** 2) / SR)
+        noise = rnd.standard_normal(n)
+        k = np.clip(int(40 * (1 - tt[-1])) + 1, 1, 40)
+        noise = noise - np.convolve(noise, np.ones(20) / 20, 'same')
+        return (sweep * 0.5 + noise * 0.35) * (tt / tt[-1]) ** 2 * 0.22
     raise ValueError(kind)
 
 
