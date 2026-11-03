@@ -601,3 +601,39 @@ def frame_break(c, u, t_abs, before, after):
         if v < 0.35:
             c.line([(360, 640), (360 + math.cos(a) * 500, 640 + math.sin(a) * 500)], (255, 255, 255, int(255 * (1 - v / 0.35))), 4)
     c.rrect(0, 0, VW, VH, 0, (255, 255, 255, int(200 * (1 - clamp(v / 0.15)))))
+
+
+# ------------------------------------------------------- 19 archival frame --
+def archival(c, path, t, speed=1.0, y=560, width=680, tilt=-2.0, stamp='REAL FOOTAGE', grain=True):
+    """Real (public domain) footage shown as a framed film panel over a blurred copy of itself, with grain and a
+    'REAL FOOTAGE' stamp: low-resolution archival clips look intentional instead of blurry when cropped to 9:16."""
+    from engine import clip_frame
+    fr = clip_frame(path, t, speed)
+    W_, H_ = c.img.size
+    bg = fr.resize((W_ // 12, H_ // 12), Image.BILINEAR, box=_cover_box(fr.size, W_ / H_))
+    bg = bg.filter(ImageFilter.GaussianBlur(3)).resize((W_, H_), Image.BILINEAR)
+    c.img.paste(ImageEnhance.Brightness(bg).enhance(0.45))
+    h = width * fr.size[1] / fr.size[0]
+    panel = Image.new('RGBA', (int((width + 24) * c.k), int((h + 24) * c.k)), (245, 240, 228, 255))
+    panel.paste(ImageEnhance.Color(fr).enhance(1.15).resize((int(width * c.k), int(h * c.k)), Image.BICUBIC),
+                (int(12 * c.k), int(12 * c.k)))
+    if grain:
+        rnd = np.random.default_rng(int(t * 24))
+        n = (rnd.standard_normal((panel.size[1] // 3, panel.size[0] // 3)) * 18).clip(-40, 40)
+        nimg = Image.fromarray((128 + n).astype('uint8'), 'L').resize(panel.size)
+        panel = Image.composite(panel, Image.blend(panel.convert('RGB'), Image.merge('RGB', [nimg] * 3), 0.12)
+                                .convert('RGBA'), Image.new('L', panel.size, 160))
+    c.rrect(360 - width / 2 - 4, y - h / 2 + 6, 360 + width / 2 + 20, y + h / 2 + 30, 8, (0, 0, 0, 120))  # shadow
+    place(c, panel, 360, y, 1.0, tilt)  # (no shadowed(): its cache is keyed by id and the panel changes every frame)
+    if stamp:
+        c.rrect(360 - 150, y - h / 2 - 58, 360 + 150, y - h / 2 - 12, 10, CORAL)
+        c.text(360, y - h / 2 - 35, stamp, 26, WHITE, 900, shadow=False)
+
+
+def _cover_box(size, aspect):
+    w, h = size
+    if w / h > aspect:
+        cw = h * aspect
+        return ((w - cw) / 2, 0, (w + cw) / 2, h)
+    ch = w / aspect
+    return (0, (h - ch) / 2, w, (h + ch) / 2)

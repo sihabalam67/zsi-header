@@ -6,3 +6,5 @@
 - vault.png: https://commons.wikimedia.org/wiki/File%3APorta_caveau_banca_-_Bank_vault_door_-_1967.png (Public domain)
 - bank.jpg: https://commons.wikimedia.org/wiki/File%3AStone_columns_of_the_National_Bank_and_Bank_of_New_South_Wales_%28Former%29_buildings_in_Oamaru.jpg (Public domain)
 - houses.jpg: https://commons.wikimedia.org/wiki/File%3AAerial_view_of_residential_area_in_Grenada_North%2C_Wellington%2C_New_Zealand.jpg (CC0)
+- footage/sx03 (coins, shoppers, mall, kids): "American Thrift (Part II)", Jam Handy Organization, 1962, Prelinger Archives, https://archive.org/details/American1962_2 (Public Domain). Downloaded in full to channel/assets/footage/sx03/thrift_1962.mp4 (git-ignored); segments coins 624-645 s, shoppers 324-337 s, mall 307.2-314 s, kids 182-190 s.
+- footage/sx03 usda_meat_1971.mp4: "The Quality of the Meat You Buy", U.S. Department of Agriculture, c1971, https://archive.org/details/QualityOfMeatYouBuy (US government work, public domain).
