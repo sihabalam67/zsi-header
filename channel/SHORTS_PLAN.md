@@ -11,6 +11,10 @@ example: springs, 3D, film grain, local fonts), Manim scenes in channel/manim (p
 LaTeX), rendered silent into channel/assets/gen/sxNN and used as bg_video scenes; check that each clip's key moment
 fits inside its scene (bg_speed), add `eq=saturation=1.35`, and run kinocut `kino video-quality-check` (saturation
 always flags on our dark design; everything else must pass). Run third-party tools via /home/user/video-tools/safe.
+Canva (owner OK'd, Nov 3; sx04 is the example): make the thumbnail FIRST with Canva create-design (YouTube Thumbnail,
+brief with the exact text), export PNG 1280x720, add Penny with thumbkit, squint-test; reuse its image as the
+Short's opening so thumbnail and video match; set it via the kit's "thumbnail". Canva's stock library can't be
+searched through the API; if the owner fills a "Coin Theory B-roll" design, export its pages as MP4.
 Real footage (from sx03): public domain only: US government films or Prelinger Archives (archive.org advancedsearch,
 check creator + licenseurl in /metadata; uploaders' PD marks on movies/TV are often wrong); no logos; show it with
 fx.archival (framed panel + REAL FOOTAGE stamp); log it in assets/photos/SOURCES.md; footage files are git-ignored.
@@ -35,7 +39,7 @@ If a topic's facts can't be confirmed, skip it and take the next one. Breaking m
 | Wed Nov 4 | live 5 PM | sx02 the credit card minimum-payment trap | $5,000 at the average card rate (ep04 CC_NOW 21.19%), minimum = interest + 1% of balance ($25 floor; a formula many card agreements use, no CFPB source found): about 19 years and $7,782 interest vs $200/month: under 3 years, $1,655 |
 | Thu Nov 5 | live 5 PM | ep06 banks create money | done |
 | Fri Nov 6 | live 5 PM | sx03 $100 in 1962 = $1,112 (real public-domain 1962 footage) | done |
-| Sat Nov 7 | to build | sx04 are you middle class? the real median income | MEHOINUSA646N in channel/data; Pew's middle-income definition (2/3 to 2x median) |
+| Sat Nov 7 | live 5 PM | sx04 are you middle class? (Pew 52%, $56,600-$169,800; Census median $87,460) | MEHOINUSA646N in channel/data; Pew's middle-income definition (2/3 to 2x median) |
 | Sun Nov 8 | to build | sx05 $5 a day: what it becomes | math: 10, 20, 30 years at an example rate; say "example, not a promise" |
 | Mon Nov 9 | to build | sx06 why your paycheck shrinks: where taxes go | IRS / SSA 2026 rates (FICA 7.65%) |
 | Tue Nov 10 | to build | sx07 the 50/30/20 budget in 40 seconds | median income example |
