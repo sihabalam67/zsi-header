@@ -20,6 +20,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
 | Thu Nov 5 | Long | Microsoft Just Offered 60,000 Buyouts | https://youtu.be/oviirBN2INI |
 | Thu Nov 5 | Short | Layoffs are lower than in 2019 | https://youtu.be/qt7pVq-UGSw |
+| Thu Nov 5 | Short | 5 PM: Banks create money out of thin air (18-effect Short) | https://youtu.be/PYoQ_INlBVA |
 | Fri Nov 6 | Long | Your $100 Is Now Worth $12 (Inflation) | https://youtu.be/9MxTKS-nKNc |
 | Fri Nov 6 | Short | Bread, eggs, coffee, gas | https://youtu.be/2DMQp9G858Y |
 | Sat Nov 7 | Short | Why your raise doesn't feel like one | https://youtu.be/HytfwVVKYkM |

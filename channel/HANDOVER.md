@@ -95,3 +95,11 @@ so YouTube locks API uploads to **private**; scheduled `publishAt` still makes t
 - Audit narration with Whisper (`align()` coverage >= 0.95, or explain each gap); check frames and
   loudness before delivering.
 - Long videos should aim for 8-10 minutes from episode 3 on (mid-roll ads).
+
+## Shorts standard from Nov 2026: the big-channel motion style
+Every new standalone Short uses the motion-graphics library `channel/fx.py` (18 effects: snap zoom, headline storm,
+zoom through cut, phone mockup, chat takeover, green screen, digital zoom, paper cutout, magazine cover, liquid glass,
+orbit, growth curve, frame escape, checklist pop, checklist tally, b-roll overlay, zoom portal, frame break), one effect
+per narration beat, with real public-domain photos (youtube/commons.py, standard 1920 px renditions) or the owner's
+Flow clips. Template and reference: `channel/ep06_short_banks.py` (the owner loved it). Made-up apps, chats,
+headlines and magazines only; no real brands, outlets or people. Captions sit at y 1060, so keep effects above ~980.
