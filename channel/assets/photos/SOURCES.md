@@ -14,3 +14,7 @@ Design "Coin Theory B-roll - Horizontal" (DAHZ1DzZH1Y), pages 1-3, silent, in as
 - cash_count_suit.mp4 (13.7 s): hands in a suit counting $100 bills
 - cash_count_hands.mp4 (18.1 s): hands fanning $100 bills, red/blue background
 - cash_stack_calculator.mp4 (7.9 s): stacks of cash, calculator and notebook on a desk
+
+## Canva stock video for sx05 (owner's Canva Team account, Canva Content License), exported Nov 3, 2026
+Design "B-roll sx05 5 dollars a day - Vertical" (DAHZ12vJvkk), 12 pages, filled by ChatGPT agent for the owner;
+export in assets/footage/sx05/all.mp4 (139.8 s, 1080x1920, no audio).
