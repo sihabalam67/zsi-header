@@ -8,3 +8,9 @@
 - houses.jpg: https://commons.wikimedia.org/wiki/File%3AAerial_view_of_residential_area_in_Grenada_North%2C_Wellington%2C_New_Zealand.jpg (CC0)
 - footage/sx03 (coins, shoppers, mall, kids): "American Thrift (Part II)", Jam Handy Organization, 1962, Prelinger Archives, https://archive.org/details/American1962_2 (Public Domain). Downloaded in full to channel/assets/footage/sx03/thrift_1962.mp4 (git-ignored); segments coins 624-645 s, shoppers 324-337 s, mall 307.2-314 s, kids 182-190 s.
 - footage/sx03 usda_meat_1971.mp4: "The Quality of the Meat You Buy", U.S. Department of Agriculture, c1971, https://archive.org/details/QualityOfMeatYouBuy (US government work, public domain).
+
+## Canva stock video (owner's Canva Team account, Canva Content License), exported Nov 3, 2026
+Design "Coin Theory B-roll - Horizontal" (DAHZ1DzZH1Y), pages 1-3, silent, in assets/footage/canva_h/:
+- cash_count_suit.mp4 (13.7 s): hands in a suit counting $100 bills
+- cash_count_hands.mp4 (18.1 s): hands fanning $100 bills, red/blue background
+- cash_stack_calculator.mp4 (7.9 s): stacks of cash, calculator and notebook on a desk
