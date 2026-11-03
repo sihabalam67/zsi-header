@@ -339,9 +339,11 @@ def _paper(key, w, h, color, lines, ink=(30, 30, 35)):
             pts.append((w / 2 + max(-1, min(1, math.cos(a) * 1.6)) * rx, h / 2 + max(-1, min(1, math.sin(a) * 1.6)) * ry))
         cv.poly([(x + 6, y + 6) for x, y in pts], (255, 255, 255))
         cv.poly(pts, color)
-        for j, (txt, size) in enumerate(lines):
-            cv.text(w / 2, h / 2 - (len(lines) - 1) * size * 0.6 + j * size * 1.2, txt, size, ink, 400,
-                    family='Anton', shadow=False)
+        total = sum(sz * 1.18 for _, sz in lines)  # stack lines by their own heights, centred on the card
+        y = h / 2 - total / 2
+        for txt, size in lines:
+            cv.text(w / 2, y + size * 0.59, txt, size, ink, 400, family='Anton', shadow=False)
+            y += size * 1.18
     return sprite(('paper', key), w, h, draw)
 
 
