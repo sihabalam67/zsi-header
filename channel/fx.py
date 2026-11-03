@@ -608,6 +608,7 @@ def archival(c, path, t, speed=1.0, y=560, width=680, tilt=-2.0, stamp='REAL FOO
     """Real (public domain) footage shown as a framed film panel over a blurred copy of itself, with grain and a
     'REAL FOOTAGE' stamp: low-resolution archival clips look intentional instead of blurry when cropped to 9:16."""
     from engine import clip_frame
+    t = max(0.0, t)  # scenes ask for times before their first line starts
     fr = clip_frame(path, t, speed)
     W_, H_ = c.img.size
     bg = fr.resize((W_ // 12, H_ // 12), Image.BILINEAR, box=_cover_box(fr.size, W_ / H_))
