@@ -17,6 +17,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Mon Nov 2 | Short | Your card charges over 21% | https://youtu.be/GHrGTVgqwq4 |
 | Tue Nov 3 | Short | Savings 0.38% vs inflation 3.7% | https://youtu.be/fVMEKaBZjZU |
 | Tue Nov 3 | Short | 5 PM: Same $200 a month, double the money (compound interest) | https://youtu.be/-PHcrZzxjjw |
+| Wed Nov 4 | Short | 9 AM: Stocks after every midterm since 1950: 19 for 19 (news extra) | https://youtu.be/6KHLsBlJJvo |
 | Wed Nov 4 | Long | $6.3 Billion Stolen in 20 Minutes (Binance hack) | https://youtu.be/fB_1VJsUvT4 |
 | Wed Nov 4 | Short | Why the Fed raises rates when gas rises | https://youtu.be/a0UkyNzRszQ |
 | Wed Nov 4 | Short | 5 PM: Pay the minimum on $5,000? 19 years (Remotion + Manim) | https://youtu.be/qB4_NTxUJ7s |
