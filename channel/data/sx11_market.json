@@ -1,0 +1,20 @@
+{
+ "dow": {
+  "close_nov3": 51786.72,
+  "close_nov4": 53286.79,
+  "points": 1500.07,
+  "pct": 2.9,
+  "best_since": "2025-04-09",
+  "market_state": null,
+  "fetched": "2026-11-04T17:17:36+00:00"
+ },
+ "sp500": {
+  "close_nov3": 7568.92,
+  "close_nov4": 7698.36,
+  "points": 129.44,
+  "pct": 1.71,
+  "best_since": "2026-08-04",
+  "market_state": null,
+  "fetched": "2026-11-04T17:17:36+00:00"
+ }
+}
