@@ -375,3 +375,26 @@ Source: https://trustmrr.com/api/ai/discovery → `fastestGrowingStartups` (25).
 - Channels (TrustMRR): Instagram, Reddit, TikTok
 - Founder X followers: 0
 
+### Checker notes 2026-11-04 (TEST)
+Re-opened all 9 in-range .md pages around 09:00 UTC; every 30-day figure matched the Revenue table. All 9 sites opened (HTTP 200).
+**Killed:**
+- 3 Anonymous startups (stealth-company-41, hugo-mobile-app-04, anonymous-startup-80).
+- bytemail: $23,817 is over the $20k cap.
+- BasinCheck: $2.98 in the Revenue table; the $2,226 snapshot is stale because the key expired.
+- Qoest: $771, and stale since March because the key expired.
+- 10 others under $1k: Deepnia, Workel, CossyVita, Skillmaxing, Kiiwi, 2FA Authenticator, VinoVeo, WRTune, FormBeep, slidelabs.
+
+**Scores** (paid days / growth / fit with code+design+content / demand / sell alone):
+- lumabar 5/3/5/3/5 = **21**. 22 paid days; $1,228 in Oct, then $1,309 in the first 3 days of Nov. A desktop app I could build. $5.99 one-time, sold through Reddit.
+- Scalereach.ai 4/4/3/4/4 = **19**. 17 paid days; $847 in Oct, then $1,022 in Nov. 91 subscriptions. Video infrastructure is heavy, and the category is crowded.
+- DevOps Daily 1/4/4/3/2 = 14. Steady $3–5.5k a month since May, but it arrives in single big payments (sponsorship-shaped), and that needs sales.
+- Bidder iQ 2/2/3/3/4 = 14. Lumpy months; needs auction data.
+- Printotr Aı 2/1/4/3/4 = 14. 68% came on one day ($800).
+- Prospo 1/1/4/3/3 = 12. $4,800 came on one day (100%), likely one deal.
+- ECOMSTATEMENT 2/1/3/2/3 = 11. Flat $64 a month, then three ~$1k days.
+- Intentsly 1/1/3/3/2 = 10. $7,291 on one day (99%), after months at $97.
+- Next Level Builders 1/1/2/3/2 = 9. 93% on one day; depends on the founder's 3.5k-follower audience.
+
+**WHY THIS COULD FAIL**
+- **lumabar:** only 2 months old. Nov 3 alone was $858 (about 140 sales), probably one Reddit post going viral, and that may not repeat. The current price is a 63%-off launch price. Free rivals exist (TaskbarX, Seelen UI), and Microsoft could ship the features itself.
+- **Scalereach.ai:** competes with big, well-funded tools like Opus Clip. Video processing costs eat the margin. GetApp and Capterra show 0 real user reviews, so the demand evidence is the category's, not this product's.
