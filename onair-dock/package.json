@@ -1,0 +1,54 @@
+{
+  "name": "onair-dock",
+  "productName": "OnAir Dock",
+  "version": "0.1.0",
+  "description": "A live dock for streamers on Windows: OBS scenes, live status, now playing, run-of-show and system stats in one bar.",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.js test/*.test.mjs",
+    "license:init": "node tools/license.js init",
+    "license:issue": "node tools/license.js issue",
+    "check-release": "node tools/check-release.js",
+    "dist": "npm run check-release && electron-builder --win nsis --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8",
+    "ws": "8.18.0"
+  },
+  "build": {
+    "appId": "com.onairdock.app",
+    "productName": "OnAir Dock",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "src/media.ps1"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true
+    },
+    "publish": null
+  }
+}

@@ -1,0 +1,43 @@
+:root {
+  --bg: #14141b;
+  --card: #1c1c26;
+  --line: #2a2a38;
+  --text: #f2f2f7;
+  --muted: #9a9aae;
+  --accent: #7c5cff;
+  --ok: #2ee6a6;
+  --bad: #ff5c7a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 20px; background: var(--bg); color: var(--text); font: 14px/1.45 "Segoe UI Variable", "Segoe UI", system-ui, sans-serif; }
+header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 14px; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+.brand-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.plan { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #2a2a38; color: var(--muted); }
+.plan.pro { background: var(--accent); color: #fff; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+.card.pro { border-color: rgba(124, 92, 255, .5); }
+.card.pro.hidden { display: none; }
+.muted { color: var(--muted); }
+p { margin: 0 0 10px; }
+label { display: block; color: var(--muted); font-size: 12px; margin: 8px 0 4px; }
+label.check { display: flex; align-items: center; gap: 8px; color: var(--text); font-size: 14px; }
+input[type=text], input[type=password], input[type=number], select, textarea {
+  width: 100%; margin-top: 4px; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid var(--line); background: #12121a; color: var(--text); font: inherit;
+}
+textarea { resize: vertical; }
+.row { display: flex; gap: 8px; align-items: center; }
+.row input { margin-top: 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid3 { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 10px; }
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
+button { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: #2a2a38; color: var(--text); font: inherit; cursor: pointer; white-space: nowrap; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.pro-chip { font-size: 9px; font-weight: 700; letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 0 4px; }
+.msg { min-height: 1.4em; margin: 8px 0 0; }
+.msg.ok { color: var(--ok); }
+.msg.bad { color: var(--bad); }
+footer { display: flex; align-items: center; gap: 12px; position: sticky; bottom: 0; padding: 12px 0 0; background: var(--bg); }

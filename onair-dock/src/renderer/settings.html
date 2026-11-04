@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src ws://*:*" />
+  <title>OnAir Dock Settings</title>
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <header>
+    <span class="brand-dot"></span>
+    <h1>OnAir Dock</h1>
+    <span id="plan" class="plan">Free</span>
+    <span id="version" class="muted"></span>
+  </header>
+
+  <section id="pro-box" class="card pro">
+    <h2>Unlock Pro</h2>
+    <p class="muted">OBS scene switching and live status, now playing with media controls, and the BRB break screen. One payment, yours forever.</p>
+    <div class="row">
+      <button id="buy" class="primary">Buy Pro</button>
+    </div>
+    <label for="license">Already bought? Paste your license key</label>
+    <div class="row">
+      <input id="license" type="text" placeholder="eyJ…" spellcheck="false" autocomplete="off" />
+      <button id="activate">Activate</button>
+    </div>
+    <p id="license-msg" class="msg" role="status"></p>
+  </section>
+
+  <section class="card">
+    <h2>Dock</h2>
+    <div class="grid2">
+      <label>Position
+        <select id="position">
+          <option value="top">Top of screen</option>
+          <option value="bottom">Bottom of screen</option>
+        </select>
+      </label>
+      <label>Height (px)
+        <input id="height" type="number" min="36" max="72" step="2" />
+      </label>
+    </div>
+    <label class="check"><input id="launchAtLogin" type="checkbox" /> Start OnAir Dock when Windows starts</label>
+  </section>
+
+  <section class="card">
+    <h2>Widgets</h2>
+    <div id="widgets" class="checks"></div>
+  </section>
+
+  <section class="card">
+    <h2>OBS connection <span class="pro-chip">PRO</span></h2>
+    <p class="muted">In OBS: <b>Tools → WebSocket Server Settings</b>, tick “Enable WebSocket server”, then copy the port and password here.</p>
+    <div class="grid3">
+      <label>Host <input id="obs-host" type="text" spellcheck="false" /></label>
+      <label>Port <input id="obs-port" type="number" min="1" max="65535" /></label>
+      <label>Password <input id="obs-password" type="password" autocomplete="off" /></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Run of show</h2>
+    <p class="muted">One segment per line. Tick them off from the dock during your stream.</p>
+    <textarea id="ros" rows="6" spellcheck="false"></textarea>
+    <label>Break length (minutes) <span class="pro-chip">PRO</span>
+      <input id="breakMinutes" type="number" min="1" max="120" />
+    </label>
+  </section>
+
+  <footer>
+    <button id="save" class="primary">Save</button>
+    <span id="saved" class="muted" role="status"></span>
+  </footer>
+
+  <script type="module" src="settings.mjs"></script>
+</body>
+</html>

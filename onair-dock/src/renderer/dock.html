@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src ws://127.0.0.1:* ws://localhost:* ws://*:*" />
+  <title>OnAir Dock</title>
+  <link rel="stylesheet" href="dock.css" />
+</head>
+<body>
+  <main id="bar" class="bar">
+    <section class="group left">
+      <div class="brand" title="OnAir Dock"><span class="brand-dot"></span></div>
+
+      <div class="widget obs" data-widget="obs">
+        <span class="badge off" id="obs-live">OFFLINE</span>
+        <span class="badge rec hidden" id="obs-rec">REC</span>
+        <div class="scenes" id="obs-scenes"></div>
+        <span class="muted small" id="obs-status">OBS not connected</span>
+      </div>
+    </section>
+
+    <section class="group center">
+      <div class="widget now-playing" data-widget="nowPlaying">
+        <span class="note" aria-hidden="true">♪</span>
+        <div class="track"><span id="np-title" class="title">Nothing playing</span><span id="np-artist" class="muted"></span></div>
+        <button class="icon-btn" id="np-prev" title="Previous">⏮</button>
+        <button class="icon-btn" id="np-toggle" title="Play / pause">⏯</button>
+        <button class="icon-btn" id="np-next" title="Next">⏭</button>
+      </div>
+    </section>
+
+    <section class="group right">
+      <div class="widget run-of-show" data-widget="runOfShow">
+        <span class="muted small">NEXT</span>
+        <span id="ros-item" class="ros-item">—</span>
+        <span id="ros-progress" class="muted small"></span>
+        <button class="icon-btn" id="ros-done" title="Mark done">✓</button>
+        <button class="icon-btn" id="ros-reset" title="Start over">↺</button>
+      </div>
+
+      <div class="widget stream-timer" data-widget="streamTimer">
+        <button class="icon-btn" id="st-toggle" title="Start / stop stream timer">▶</button>
+        <span id="st-time" class="mono">0:00</span>
+      </div>
+
+      <div class="widget break-timer" data-widget="breakTimer">
+        <button class="pill" id="brb-btn" title="Start a break countdown">BRB</button>
+      </div>
+
+      <div class="widget system" data-widget="system">
+        <span class="stat"><span class="muted small">CPU</span> <span id="cpu" class="mono">–</span></span>
+        <span class="stat"><span class="muted small">RAM</span> <span id="ram" class="mono">–</span></span>
+      </div>
+
+      <div class="widget clock" data-widget="clock"><span id="clock" class="mono strong">--:--</span></div>
+
+      <button class="icon-btn gear" id="open-settings" title="Settings">⚙</button>
+    </section>
+
+    <div id="break-overlay" class="break-overlay hidden">
+      <span class="small">ON A BREAK · BACK IN</span>
+      <span id="brb-time" class="mono big">5:00</span>
+      <button class="pill" id="brb-end">I'm back</button>
+    </div>
+  </main>
+  <script type="module" src="dock.mjs"></script>
+</body>
+</html>
