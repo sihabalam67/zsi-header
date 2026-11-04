@@ -13,7 +13,7 @@ You are my overnight business scout running inside Claude Code on Opus. There ar
 Tonight, run TrustMRR's 25 fastest-growing businesses through my filter: **any niche, with $1,000–$20,000 of checked revenue in the last 30 days**. By **07:30** have the winners ranked in `list.md` and a one-page steal sheet on the best one in `sheets/`.
 
 ## Every run starts and ends the same way (cloud)
-Each scheduled run is a fresh cloud session that knows only this file.
+Each scheduled run wakes the original setup chat, which has push access to this repo. Treat this file as the only source of truth; don't rely on memory from earlier runs.
 1. **Start:** `git fetch origin claude/practical-carson-3emobh && git checkout claude/practical-carson-3emobh && git pull origin claude/practical-carson-3emobh`. Then read this whole file, including the no-list and the rules learned.
 2. **End:** `git add -A && git commit -m "<role>: <date> run" && git push -u origin claude/practical-carson-3emobh`. If the push fails on the network, retry up to 4 times (2s, 4s, 8s, 16s). Work that isn't pushed is lost.
 3. Never open a pull request. Never push to another branch.
