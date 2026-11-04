@@ -111,14 +111,14 @@ def s_cost(c, x):  # the price tag of the election, then per person
     k = ease(fx.clamp((u - 0.1) / 1.2))
     fx.title(c, f'${SPEND_B * k:.1f}B', 400, 170, GOLD, 1, stroke=8)
     for i in range(int(12 * k)):  # a growing stack of bills
-        bill(c, 360 + (i % 2) * 14 - 7, 770 - i * 12, 280, '100')
+        bill(c, 360 + (i % 2) * 14 - 7, 680 - i * 10, 260, '100')
     kp = fx.pop(u, 4.4, 0.35)
     if kp > 0:
-        c.rrect(110, 860, 610, 1000, 34, MINT, a=fx.clamp(kp))
-        c.text(360, 900, f'ABOUT ${PER:.0f}', 64, INK, 400, family='Anton', a=fx.clamp(kp), shadow=False)
-        c.text(360, 960, 'for every person in America', 28, INK, 800, a=fx.clamp(kp), shadow=False)
-    c.text(360, 1030, 'projection: OpenSecrets', 24, MUTED, 800, a=fade(u, 0.5))
-    fx.zoom_canvas(c, 1.01 + 0.012 * max(0.0, u), 360, 560)  # slow push so it never sits still
+        c.rrect(110, 790, 610, 920, 34, MINT, a=fx.clamp(kp))
+        c.text(360, 830, f'ABOUT ${PER:.0f}', 64, INK, 400, family='Anton', a=fx.clamp(kp), shadow=False)
+        c.text(360, 888, 'for every person in America', 28, INK, 800, a=fx.clamp(kp), shadow=False)
+    c.text(360, 280, 'projection: OpenSecrets', 24, MUTED, 800, a=fade(u, 0.5))
+    fx.zoom_canvas(c, 1.01 + 0.006 * max(0.0, u), 360, 420)  # slow push so it never sits still
 
 
 def hook_frame(cv):

@@ -21,7 +21,7 @@ CHOICE = {
     'ep03_short_jump': 'a', 'ep04_short_cards': 'c', 'ep04_short_savings': 'c', 'ep04_short_why': 'a',
     'ep05_short_hiring': 'c', 'ep05_short_layoffs': 'a', 'ep06_short_banks': 'a', 'ep07_short_hack': 'a',
     'ep08_short_midterms': 'a', 'sx01_short_compound': 'c', 'sx02_short_cards': 'c', 'sx03_short_1962': 'a',
-    'sx04_short_middle': 'b', 'sx10_short_midterm_stocks': 'a',
+    'sx04_short_middle': 'b', 'sx10_short_midterm_stocks': 'a', 'sx11_short_election_rally': 'a',
     'ep01_inflation': 'a', 'ep02_housing': 'a', 'ep03_gas': 'a', 'ep04_fed': 'a', 'ep05_jobs': 'a',
     'ep07_binance_long': 'a', 'ep08_midterms': 'a',
 }

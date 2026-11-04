@@ -50,6 +50,7 @@ SPEC = {
     'sx03_short_1962': (1, '$1,112', '1962', 'YOUR $100\nTODAY?', YEL, 'shoppers1962', 0),
     'sx04_short_middle': (1, '52%', 'MIDDLE\nCLASS?', 'ARE\nYOU?', YEL, None, 0),
     'sx10_short_midterm_stocks': (1, '19 / 19', 'NEVER\nDOWN', '20 FOR\n20?', GRN, 'cashsuit', 1),
+    'sx11_short_election_rally': (1, '+1,570\nDOW', 'BEST DAY\nIN 19 MONTHS', 'WHY DID\nSTOCKS JUMP?', GRN, 'cashhands', 1),
     'ep01_inflation': (0, '$100\nNOW $12', 'WHERE\nIT WENT', 'YOUR\n$100?', YEL, None, 0),
     'ep02_housing': (0, '$23K\nNOW $393K', 'PRICED\nOUT', 'WILL YOU\nEVER BUY?', YEL, None, 0),
     'ep03_gas': (0, '$4.50', 'OIL\nSHOCK', 'WHY SO\nHIGH?', RED, None, 1),
