@@ -1,26 +1,34 @@
-# Morning brief (TEST, 2026-11-04; tonight's run replaces this)
+# Morning brief: Thursday 2026-11-05
 
 ## The night in 3 lines
-1. 25 fastest-growing businesses scanned; all 25 pages opened. 3 were anonymous, 1 was over the cap, 2 had stale numbers (expired keys) and 10 were under $1k, so 9 were left.
-2. Of those 9, 6 got most of their month on 1–2 days. Only 2 got paid on most days, and both are STEAL-READY.
-3. Steal sheet written for **lumabar**: `sheets/2026-11-04-lumabar.md`
+1. Scanned 25 businesses; all pages opened. 14 were killed (3 anonymous, 1 over $20k, 3 expired payment keys, 7 under $1k), leaving 11.
+2. 8 of the 11 got most of their month from 1–2 big payments. Only **lumabar** is STEAL-READY, for the second night running.
+3. Steal sheet: `sheets/2026-11-05-lumabar.md`
 
 ## Winners
-**1. lumabar: 21/25 STEAL-READY**: $2,519 in 30 days, 22/30 paid days (Polar). A $5.99 Windows dock app.
-WHY THIS COULD FAIL: only 2 months old. One day ($858) looks like a viral post. Launch-discount price. Free rivals, and Microsoft could copy it.
+**1. lumabar: 22/25 STEAL-READY**: $2,806 in 30 days, paid on 22/30 days (Polar). A $5.99 Windows dock. November is already bigger than October after 4 days.
+WHY THIS COULD FAIL: 2 months old. One $858 day looks viral. Launch-discount price. Free rivals, and Microsoft could copy it.
 
-**2. Scalereach.ai: 19/25 STEAL-READY**: $1,837 in 30 days, 17/30 paid days (Dodo Payments). AI long-video-to-shorts clipper, 91 subscriptions, climbing ($847 in Oct, then $1,022 in 3 days of Nov).
-WHY THIS COULD FAIL: crowded market (Opus Clip and others). Video processing costs eat the margin. No real user reviews yet.
+**2. INXANITY Labs: 14/25**: $1,450 in 30 days, paid on 17/30 days (Whop). A browser-game catalog plus a $19.99/mo mod launcher.
+WHY THIS COULD FAIL: built on decompiled games and mods, so one copyright takedown could end it. Daily sales fell from about $280 to about $20.
 
-Next, all under 18: DevOps Daily 14, Bidder iQ 14, Printotr Aı 14, Prospo 12, ECOMSTATEMENT 11, Intentsly 10, Next Level Builders 9. These are mostly one-big-payment months. Full list in `list.md`.
+**3–5. DevOps Daily, Bidder iQ, Printotr Aı: 14/25 each**: $3,628 / $2,040 / $1,183, paid on 5, 8 and 5 days. Mostly one or two big payments.
+WHY THIS COULD FAIL: their months rest on single big payments, which may be one customer each.
+
+**Fake numbers caught:**
+- Peeklens shows $12,500 from 2 payments, and its site is medcytes.com, so the name doesn't match.
+- Intentsly's web claim of "$203k MRR" vs. one $7,291 payment in the data.
+- BasinCheck, Qoest and Skillmaxing have expired payment keys.
+
+**Watch list:** ClipUtils (paid 26/30 days, $409) and Vedic Astro Lab (paid 28/30 days, $174). Both sell almost daily but are still under $1k.
 
 ## Steal sheet in 5 lines
-- What: a live dock that replaces the Windows taskbar strip with widgets. $5.99 one-time, paid via Polar.
-- Proof: 22 of 30 days paid; founder has only 35 X followers, so growth isn't audience-driven.
-- Demand: category-level ("Microsoft won't give users what they want"); thin for this product specifically.
-- My twists: niche docks (streamer or trader), sell with screen-recording Shorts and TikToks, free tier plus paid widget packs.
-- Biggest risk: one viral day inflating the month, and the one-time price.
+- lumabar: a $5.99 one-time Windows dock sold through Polar, with a 14-day refund.
+- Proof: paid on 22/30 days, climbing, and the founder has 35 X followers.
+- New: it also sells to indie founders (Stripe/Polar revenue widgets).
+- Your twist is already built: **OnAir Dock** for streamers (`onair-dock/`).
+- Biggest risk: one viral day inflating the month, and the launch price.
 
 ## Waiting for your answer
-- Do you want lumabar or Scalereach? Or say "no to X because Y" and I'll add it to the no-list.
-- Should the weekly run stay at 08:47 on Mondays, or move to exactly 09:00?
+- OnAir Dock: run Parts 1–2 of the launch steps on your Windows PC and send me a screenshot.
+- Any "no to X because Y" for the no-list? (INXANITY Labs is a candidate because of the copyright risk.)
