@@ -727,3 +727,30 @@ Source: https://trustmrr.com/api/ai/discovery → `fastestGrowingStartups` (25).
 - Channels (TrustMRR): empty
 - Founder X followers: 1
 
+
+
+### Checker notes 2026-11-05
+Re-opened all 11 in-range .md pages around 03:00 ET; every 30-day figure matched the Scout run, and all 11 sites opened (HTTP 200).
+**Killed (14):**
+- 3 Anonymous startups (stealth-company-41, hugo-mobile-app-04, anonymous-startup-80).
+- bytemail: $24,595 is over the $20k cap.
+- BasinCheck ($2.98), Qoest ($771, stale since March) and Skillmaxing ($456): expired payment keys, and out of range anyway.
+- Under $1k: ClipUtils ($409), Deepnia ($725), Vedic Astro Lab ($174), Workel ($99), Kiiwi ($511), 2FA Authenticator ($299), VinoVeo ($68).
+- Watch list: ClipUtils (26/30 paid days) and Vedic Astro Lab (28/30) are paid almost daily but are still small. If they cross $1k, they're strong candidates.
+
+**Scores** (paid days / growth / fit with code+design+content / demand / sell alone):
+- lumabar 5/4/5/3/5 = **22 STEAL-READY**. Up from 21: November is already $1,596 after 4 days, more than all of October ($1,228).
+- INXANITY Labs 4/2/2/3/3 = 14. 17 paid days, but daily sales fell from $200–286 (Oct 9–11) to about $20 a day since mid-October. The founder's "~$150/day in ads" claim is not checked revenue and isn't counted.
+- DevOps Daily 1/4/4/3/2 = 14. Unchanged. 96% came on one day (sponsorship-shaped).
+- Bidder iQ 2/2/3/3/4 = 14. 8 paid days now.
+- Printotr Aı 2/1/4/3/4 = 14. 68% came on one $800 day.
+- Prospo 1/1/4/3/3 = 12. One $4,800 payment.
+- ECOMSTATEMENT 2/1/3/2/3 = 11.
+- Intentsly 1/1/3/3/2 = 10. One $7,291 payment. A web listing claims "$203k MRR", which contradicts the Revenue table and is ignored.
+- Next Level Builders 1/1/2/3/2 = 9. 84% came on Nov 1 ($2,292). It depends on the founder's 3.5k X followers and on coaching.
+- 1418 Technologies 1/3/2/2/1 = 9. A steady ~$2k a month since July looks like one client retainer for ML services: consulting, not a product.
+- Peeklens 1/1/1/2/1 = 6. Two payments ($5,000 and $7,500) for B2B medical writing. The site is medcytes.com, not "Peeklens", so the name and the site don't match.
+
+**WHY THIS COULD FAIL**
+- **lumabar:** only 2 months old. Nov 3 alone was $858, probably one viral post. The current price is a launch discount. Free rivals exist (TaskbarX, Seelen UI), and Microsoft could ship the features itself.
+- **INXANITY Labs:** the catalog is built on decompiled browser games and game mods, so one copyright takedown could end it. Sales are already fading after the launch week.
