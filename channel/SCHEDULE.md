@@ -28,6 +28,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Fri Nov 6 | Long | Your $100 Is Now Worth $12 (Inflation) | https://youtu.be/9MxTKS-nKNc |
 | Fri Nov 6 | Short | Bread, eggs, coffee, gas | https://youtu.be/2DMQp9G858Y |
 | Fri Nov 6 | Short | 5 PM: $100 in 1962 = $1,112 today (real 1962 footage) | https://youtu.be/DR4BlaygCIg |
+| Fri Nov 6 | Short | 7 PM: Same $100, 4 friends: $660 or owes $144 (remake of a viral parable, honest version) | https://youtu.be/bzb-kXopa04 |
 | Sat Nov 7 | Short | Why your raise doesn't feel like one | https://youtu.be/HytfwVVKYkM |
 | Sat Nov 7 | Short | 5 PM: Only 52% are middle class. Are you? (Canva thumbnail) | https://youtu.be/-XalGfTOk08 |
 | Sun Nov 8 | Short | The rule of 70 | https://youtu.be/fMeYsQObg9I |

@@ -51,7 +51,7 @@ for n, vid in ids.items():
     elif not pa: P(n, 'no publishAt')
     else:
         local = dt.datetime.fromisoformat(pa.replace('Z', '+00:00')).astimezone(NY)
-        if (local.hour, local.minute) != (14, 0) and not kit.get('news'): P(n, 'publish not 2PM ET', local)
+        if (local.hour, local.minute) != (14, 0) and not kit.get('news') and not kit.get('custom_time'): P(n, 'publish not 2PM ET', local)
         want = sched.get(vid)
         if want and local.strftime('%a %b ') + str(local.day) != want.split(',')[0]: P(n, 'schedule mismatch', local.date(), 'vs SCHEDULE.md', want)
         if not want: P(n, 'not in SCHEDULE.md')
