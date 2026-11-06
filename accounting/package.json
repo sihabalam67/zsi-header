@@ -1,0 +1,20 @@
+{
+  "name": "zsi-books",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Double-entry accounting for Zsi.AI (New York, USD)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/smoke.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^4.22.3",
+    "multer": "^2.5.0",
+    "yazl": "^3.3.1"
+  }
+}
