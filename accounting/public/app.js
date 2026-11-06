@@ -106,7 +106,7 @@ window.addEventListener('hashchange', () => render());
 
 async function boot() {
   const st = await api('GET', '/api/state');
-  S.user = st.user; S.settings = st.settings || {};
+  S.user = st.user; S.settings = st.settings || {}; S.storage = st.storage;
   if (!st.setup) return setupPage();
   if (!S.user) return loginPage();
   await loadRefs();
@@ -221,6 +221,7 @@ async function dashboard(main) {
     <div class="kpi"><div class="l">Clients owe you</div><div class="v">${money(d.ar)}</div><div class="s ${d.overdue ? 'bad' : ''}">${d.overdue ? money(d.overdue) + ' overdue' : 'nothing overdue'}</div></div>
     <div class="kpi"><div class="l">Taxes held / owed</div><div class="v">${money(d.taxes_owed)}</div><div class="s">payroll & sales tax liabilities</div></div>
   </div>
+  ${S.storage === 'missing' ? '<div class="note" style="margin-top:14px">Receipt storage isn’t connected yet, so attachments can’t be saved. Owner: in Vercel open this project → Storage → Create → Blob (private) → Connect.</div>' : ''}
   ${d.missing_receipts ? `<div class="note" style="margin-top:14px">${d.missing_receipts} expense(s) this year have no receipt attached. <a href="#/report/missing_receipts">Fix them</a> so your accountant has proof.</div>` : ''}
   ${canWrite() ? `<div class="card" style="margin-top:14px"><h2>What happened?</h2><div class="actions">
     <a href="#/new/expense">Paid a bill / expense<span>rent, hosting, software…</span></a>
@@ -372,11 +373,29 @@ async function newTx(main, parts) {
     }, e.submitter);
   };
 }
+// Phone photos can be 5–12 MB; the online server accepts up to ~4 MB per request.
+// Large images are resized in the browser (still perfectly readable) before upload.
+async function shrinkImage(f) {
+  if (!/^image\/(jpeg|png|webp|heic|heif)/.test(f.type) || f.size < 1.5e6) return f;
+  try {
+    const bmp = await createImageBitmap(f);
+    const scale = Math.min(1, 2200 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.82));
+    return blob ? new File([blob], f.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : f;
+  } catch { return f; }
+}
 async function uploadFiles(entryId, input) {
   if (!input || !input.files.length) return;
-  const fd = new FormData();
-  [...input.files].forEach(f => fd.append('files', f));
-  await api('POST', `/api/entries/${entryId}/attachments`, fd);
+  for (const raw of input.files) {          // one request per file keeps each under the size limit
+    const f = await shrinkImage(raw);
+    if (f.size > 4e6) throw new Error(`"${raw.name}" is larger than 4 MB. Please compress it (or export a smaller PDF) and attach it again from the entry page.`);
+    const fd = new FormData();
+    fd.append('files', f);
+    await api('POST', `/api/entries/${entryId}/attachments`, fd);
+  }
 }
 
 // ---------- transactions ----------
@@ -808,7 +827,7 @@ async function settings(main) {
   <div>
     <div class="card"><h2>Close the books</h2><p class="muted">After the accountant files, lock the period. Nobody can add, change or void anything dated on or before this date.</p>
       <form id="lf" class="row"><input type="date" name="lock_date" value="${esc(s.lock_date || '')}" style="width:auto" ${dis}>${owner ? '<button>Set lock date</button>' : ''}</form></div>
-    ${owner ? `<div class="card"><h2>Backup</h2><p class="muted">Download the complete database (one file). Keep a copy somewhere safe every month.</p><a class="btn" href="/api/export/backup">Download backup</a></div>` : ''}
+    ${owner ? `<div class="card"><h2>Backup</h2><p class="muted">Download every table as spreadsheet files (ZIP). Receipts are included in the accountant package. Keep a copy somewhere safe every month.</p><a class="btn" href="/api/export/backup">Download backup</a></div>` : ''}
     <div class="card"><h2>My password</h2><form id="pw"><div class="grid g2"><div class="field"><label>Current</label><input type="password" name="current" required></div>
       <div class="field"><label>New (8+)</label><input type="password" name="password" minlength="8" required></div></div><button>Change password</button></form></div>
   </div></div>

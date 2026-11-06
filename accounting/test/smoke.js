@@ -5,6 +5,7 @@ const path = require('path');
 const assert = require('assert');
 
 process.env.DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), 'zsibooks-'));
+if (!process.env.DATABASE_URL) process.env.PGLITE_MEMORY = '1';
 const app = require('../server');
 
 (async () => {

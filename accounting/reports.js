@@ -2,14 +2,14 @@
 // and the accountant package all render from the same data.
 const { db, getSetting } = require('./db');
 
-const T = 'text', M = 'money', D = 'date', N = 'num';
+const T = 'text', M = 'money', D = 'date';
 const col = (label, type = T) => ({ label, type });
 const row = (cells, style, link) => ({ cells, style: style || null, link: link || null });
 const credNormal = t => t === 'liability' || t === 'equity' || t === 'income';
 const today = () => new Date().toISOString().slice(0, 10);
 
-function fiscalYearStart(dateStr) {
-  const m = Number(getSetting('fiscal_start_month', '1'));
+async function fiscalYearStart(dateStr) {
+  const m = Number(await getSetting('fiscal_start_month', '1'));
   const d = new Date(dateStr + 'T00:00:00Z');
   let y = d.getUTCFullYear();
   if (d.getUTCMonth() + 1 < m) y--;
@@ -19,28 +19,27 @@ function dayBefore(s) {
   const d = new Date(s + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() - 1);
   return d.toISOString().slice(0, 10);
 }
-function range(q) {
+async function range(q) {
   const to = q.to || today();
-  const from = q.from || fiscalYearStart(to);
+  const from = q.from || await fiscalYearStart(to);
   return { from, to };
 }
 
 // Sum of (debit - credit) per account between dates (inclusive). from=null → from the beginning.
-function sums(from, to, extraWhere = '', params = []) {
-  const rows = db.prepare(`SELECT l.account_id id, SUM(l.debit) dr, SUM(l.credit) cr FROM lines l JOIN entries e ON e.id=l.entry_id
-     WHERE e.date <= ? ${from ? 'AND e.date >= ?' : ''} ${extraWhere} GROUP BY l.account_id`)
-    .all(...[to, ...(from ? [from] : []), ...params]);
+async function sums(from, to) {
+  const rows = await db.all(`SELECT l.account_id id, SUM(l.debit) dr, SUM(l.credit) cr FROM lines l JOIN entries e ON e.id=l.entry_id
+     WHERE e.date <= ? ${from ? 'AND e.date >= ?' : ''} GROUP BY l.account_id`, ...[to, ...(from ? [from] : [])]);
   const m = new Map();
   rows.forEach(r => m.set(r.id, { dr: r.dr, cr: r.cr, net: r.dr - r.cr }));
   return m;
 }
-const accounts = () => db.prepare('SELECT * FROM accounts ORDER BY code').all();
+const accounts = () => db.all('SELECT * FROM accounts ORDER BY code');
 const natural = (a, s) => s ? (credNormal(a.type) ? -s.net : s.net) : 0;
 
-function netIncome(from, to) {
-  const s = sums(from, to);
+async function netIncome(from, to) {
+  const s = await sums(from, to);
   let ni = 0;
-  for (const a of accounts()) {
+  for (const a of await accounts()) {
     const v = s.get(a.id);
     if (!v) continue;
     if (a.type === 'income') ni += -v.net;
@@ -51,15 +50,15 @@ function netIncome(from, to) {
 
 const R = {};
 
-R.pnl = q => {
-  const { from, to } = range(q);
-  const s = sums(from, to);
+R.pnl = async q => {
+  const { from, to } = await range(q);
+  const s = await sums(from, to);
+  const accs = await accounts();
   const rows = [];
-  let inc = 0, exp = 0;
   const section = (type, label) => {
     rows.push(row([label, null], 'header'));
     let t = 0;
-    for (const a of accounts().filter(a => a.type === type)) {
+    for (const a of accs.filter(a => a.type === type)) {
       const v = natural(a, s.get(a.id));
       if (!v) continue;
       t += v;
@@ -68,21 +67,22 @@ R.pnl = q => {
     rows.push(row([`Total ${label}`, t], 'total'));
     return t;
   };
-  inc = section('income', 'Income');
-  exp = section('expense', 'Expenses');
+  const inc = section('income', 'Income');
+  const exp = section('expense', 'Expenses');
   rows.push(row(['NET INCOME (PROFIT / LOSS)', inc - exp], 'grand'));
   return { title: 'Profit & Loss', subtitle: `${from} to ${to}`, columns: [col('Account'), col('Amount', M)], rows };
 };
 
-R.balance_sheet = q => {
+R.balance_sheet = async q => {
   const to = q.to || today();
-  const fy = fiscalYearStart(to);
-  const s = sums(null, to);
+  const fy = await fiscalYearStart(to);
+  const s = await sums(null, to);
+  const accs = await accounts();
   const rows = [];
   const sec = (type, label) => {
     rows.push(row([label, null], 'header'));
     let t = 0;
-    for (const a of accounts().filter(a => a.type === type)) {
+    for (const a of accs.filter(a => a.type === type)) {
       const v = natural(a, s.get(a.id));
       if (!v) continue;
       t += v;
@@ -95,8 +95,8 @@ R.balance_sheet = q => {
   const liab = sec('liability', 'Liabilities');
   rows.push(row(['Total Liabilities', liab], 'total'));
   let eq = sec('equity', 'Equity');
-  const prior = netIncome(null, dayBefore(fy));
-  const cur = netIncome(fy, to);
+  const prior = await netIncome(null, dayBefore(fy));
+  const cur = await netIncome(fy, to);
   if (prior) rows.push(row(['Retained Earnings (prior years’ net income)', prior]));
   rows.push(row([`Net Income – current fiscal year (since ${fy})`, cur]));
   eq += prior + cur;
@@ -106,12 +106,12 @@ R.balance_sheet = q => {
   return { title: 'Balance Sheet', subtitle: `As of ${to}`, columns: [col('Account'), col('Amount', M)], rows, notes };
 };
 
-R.trial_balance = q => {
+R.trial_balance = async q => {
   const to = q.to || today();
-  const s = sums(null, to);
+  const s = await sums(null, to);
   const rows = [];
   let dr = 0, cr = 0;
-  for (const a of accounts()) {
+  for (const a of await accounts()) {
     const v = s.get(a.id);
     if (!v || !v.net) continue;
     const d = v.net > 0 ? v.net : null, c = v.net < 0 ? -v.net : null;
@@ -126,23 +126,26 @@ R.trial_balance = q => {
   };
 };
 
-R.general_ledger = q => {
-  const { from, to } = range(q);
-  const accs = q.account_id ? accounts().filter(a => a.id === Number(q.account_id)) : accounts();
-  const before = sums(null, dayBefore(from));
-  const rows = [];
-  const stmt = db.prepare(`SELECT l.*, e.date, e.kind, e.memo emo, e.reference, e.voided, c.name cname,
+R.general_ledger = async q => {
+  const { from, to } = await range(q);
+  const all = await accounts();
+  const accs = q.account_id ? all.filter(a => a.id === Number(q.account_id)) : all;
+  const before = await sums(null, dayBefore(from));
+  const lines = await db.all(`SELECT l.*, e.date, e.kind, e.memo emo, e.reference, e.voided, c.name cname,
       (SELECT COUNT(*) FROM attachments x WHERE x.entry_id=e.id) att
     FROM lines l JOIN entries e ON e.id=l.entry_id LEFT JOIN contacts c ON c.id=e.contact_id
-    WHERE l.account_id=? AND e.date BETWEEN ? AND ? ORDER BY e.date, e.id, l.id`);
+    WHERE e.date BETWEEN ? AND ? ${q.account_id ? 'AND l.account_id=?' : ''} ORDER BY e.date, e.id, l.id`, from, to, ...(q.account_id ? [Number(q.account_id)] : []));
+  const byAcc = new Map();
+  lines.forEach(l => { if (!byAcc.has(l.account_id)) byAcc.set(l.account_id, []); byAcc.get(l.account_id).push(l); });
+  const rows = [];
   for (const a of accs) {
-    const lines = stmt.all(a.id, from, to);
+    const ls = byAcc.get(a.id) || [];
     const open = natural(a, before.get(a.id));
-    if (!lines.length && !open && !q.account_id) continue;
+    if (!ls.length && !open && !q.account_id) continue;
     rows.push(row([`${a.code} · ${a.name}`, '', '', '', '', null, null, null, ''], 'header'));
     rows.push(row([from, '', '', 'Opening balance', '', null, null, open, '']));
     let bal = open;
-    for (const l of lines) {
+    for (const l of ls) {
       bal += credNormal(a.type) ? l.credit - l.debit : l.debit - l.credit;
       rows.push(row([l.date, `#${l.entry_id}`, l.kind + (l.voided ? ' (voided)' : ''), l.cname || '', [l.emo, l.memo].filter(Boolean).join(' — '),
         l.debit || null, l.credit || null, bal, l.att ? '📎' : ''], null, `#/entry/${l.entry_id}`));
@@ -155,27 +158,31 @@ R.general_ledger = q => {
   };
 };
 
-R.journal = q => {
-  const { from, to } = range(q);
-  const entries = db.prepare(`SELECT e.*, c.name cname, (SELECT COUNT(*) FROM attachments x WHERE x.entry_id=e.id) att
-    FROM entries e LEFT JOIN contacts c ON c.id=e.contact_id WHERE e.date BETWEEN ? AND ? ORDER BY e.date, e.id`).all(from, to);
-  const ls = db.prepare(`SELECT l.*, a.code, a.name FROM lines l JOIN accounts a ON a.id=l.account_id WHERE entry_id=? ORDER BY l.id`);
+R.journal = async q => {
+  const { from, to } = await range(q);
+  const entries = await db.all(`SELECT e.*, c.name cname, (SELECT COUNT(*) FROM attachments x WHERE x.entry_id=e.id) att
+    FROM entries e LEFT JOIN contacts c ON c.id=e.contact_id WHERE e.date BETWEEN ? AND ? ORDER BY e.date, e.id`, from, to);
+  const lines = await db.all(`SELECT l.*, a.code, a.name FROM lines l JOIN accounts a ON a.id=l.account_id JOIN entries e ON e.id=l.entry_id
+    WHERE e.date BETWEEN ? AND ? ORDER BY l.id`, from, to);
+  const byE = new Map();
+  lines.forEach(l => { if (!byE.has(l.entry_id)) byE.set(l.entry_id, []); byE.get(l.entry_id).push(l); });
   const rows = [];
   for (const e of entries) {
     rows.push(row([e.date, `#${e.id}`, e.kind + (e.voided ? ' (voided)' : ''), e.cname || '', [e.memo, e.reference && `Ref ${e.reference}`].filter(Boolean).join(' · '), null, null, e.att ? `📎 ${e.att}` : ''], 'header', `#/entry/${e.id}`));
-    for (const l of ls.all(e.id)) rows.push(row(['', '', '', `${l.code} · ${l.name}`, l.memo || '', l.debit || null, l.credit || null, '']));
+    for (const l of byE.get(e.id) || []) rows.push(row(['', '', '', `${l.code} · ${l.name}`, l.memo || '', l.debit || null, l.credit || null, '']));
   }
   return { title: 'Journal (all transactions)', subtitle: `${from} to ${to}`, columns: [col('Date', D), col('Entry'), col('Type'), col('Name / Account'), col('Memo'), col('Debit', M), col('Credit', M), col('Receipts')], rows };
 };
 
-R.cash_flow = q => {
-  const { from, to } = range(q);
-  const accs = new Map(accounts().map(a => [a.id, a]));
-  const pay = new Set([...accs.values()].filter(a => a.is_payment).map(a => a.id));
-  const lines = db.prepare(`SELECT l.* FROM lines l JOIN entries e ON e.id=l.entry_id WHERE e.date BETWEEN ? AND ?`).all(from, to);
+R.cash_flow = async q => {
+  const { from, to } = await range(q);
+  const accs = new Map((await accounts()).map(a => [a.id, a]));
+  const pay = [...accs.values()].filter(a => a.is_payment);
+  const paySet = new Set(pay.map(a => a.id));
+  const lines = await db.all(`SELECT l.* FROM lines l JOIN entries e ON e.id=l.entry_id WHERE e.date BETWEEN ? AND ?`, from, to);
   const by = new Map();
   for (const l of lines) {
-    if (pay.has(l.account_id)) continue;
+    if (paySet.has(l.account_id)) continue;
     by.set(l.account_id, (by.get(l.account_id) || 0) + l.credit - l.debit); // cash effect of the counterpart
   }
   const groups = { Operating: [], Investing: [], Financing: [] };
@@ -185,8 +192,9 @@ R.cash_flow = q => {
     const g = a.subtype === 'fixed_asset' ? 'Investing' : (a.type === 'equity' || a.subtype === 'loan') ? 'Financing' : 'Operating';
     groups[g].push([a, v]);
   }
-  const cashAt = d => { const s = sums(null, d); let t = 0; pay.forEach(id => { const a = accs.get(id); if (a.type === 'asset') t += (s.get(id) || { net: 0 }).net; }); return t; };
-  const cardDebt = d => { const s = sums(null, d); let t = 0; pay.forEach(id => { const a = accs.get(id); if (a.type !== 'asset') t += -(s.get(id) || { net: 0 }).net; }); return t; };
+  const before = await sums(null, dayBefore(from));
+  // bank & cash minus credit-card debt
+  const open = pay.reduce((t, a) => t + (before.get(a.id) || { net: 0 }).net, 0);
   const rows = [];
   let total = 0;
   for (const [g, items] of Object.entries(groups)) {
@@ -196,24 +204,24 @@ R.cash_flow = q => {
     rows.push(row([`Net cash from ${g.toLowerCase()} activities`, t], 'total'));
     total += t;
   }
-  const open = cashAt(dayBefore(from)) - cardDebt(dayBefore(from));
   rows.push(row(['Net change in cash (bank & cash, net of credit cards)', total], 'grand'));
   rows.push(row(['Opening cash, net of card balances', open]));
   rows.push(row(['Closing cash, net of card balances', open + total], 'total'));
   return { title: 'Cash Flow Statement', subtitle: `${from} to ${to}`, columns: [col('Item'), col('Amount', M)], rows };
 };
 
-R.owner_equity = q => {
-  const { from, to } = range(q);
-  const owners = db.prepare(`SELECT * FROM contacts WHERE type='owner' ORDER BY id`).all();
-  const before = sums(null, dayBefore(from));
-  const during = sums(from, to);
-  const ni = netIncome(from, to);
+R.owner_equity = async q => {
+  const { from, to } = await range(q);
+  const owners = await db.all(`SELECT * FROM contacts WHERE type='owner' ORDER BY id`);
+  const ownerAccts = await db.all(`SELECT id, owner_contact_id, subtype FROM accounts WHERE subtype IN ('capital','draws')`);
+  const before = await sums(null, dayBefore(from));
+  const during = await sums(from, to);
+  const ni = await netIncome(from, to);
   const rows = [];
   const tot = [0, 0, 0, 0, 0];
   for (const o of owners) {
-    const cap = db.prepare(`SELECT id FROM accounts WHERE owner_contact_id=? AND subtype='capital'`).get(o.id);
-    const drw = db.prepare(`SELECT id FROM accounts WHERE owner_contact_id=? AND subtype='draws'`).get(o.id);
+    const cap = ownerAccts.find(a => a.owner_contact_id === o.id && a.subtype === 'capital');
+    const drw = ownerAccts.find(a => a.owner_contact_id === o.id && a.subtype === 'draws');
     const g = (m, a) => a && m.get(a.id) ? -m.get(a.id).net : 0;
     const open = g(before, cap) + g(before, drw);
     const contrib = g(during, cap);
@@ -232,20 +240,20 @@ R.owner_equity = q => {
   };
 };
 
-R.owner_activity = q => {
-  const { from, to } = range(q);
-  const rows = db.prepare(`SELECT e.id, e.date, e.kind, e.memo, e.voided, c.name, SUM(l.credit - l.debit) amt
+R.owner_activity = async q => {
+  const { from, to } = await range(q);
+  const rows = (await db.all(`SELECT e.id, e.date, e.kind, e.memo, e.voided, c.name, SUM(l.credit - l.debit) amt
     FROM entries e JOIN lines l ON l.entry_id=e.id JOIN accounts a ON a.id=l.account_id LEFT JOIN contacts c ON c.id=a.owner_contact_id
-    WHERE a.subtype IN ('capital','draws') AND e.date BETWEEN ? AND ? GROUP BY e.id, c.name ORDER BY e.date, e.id`).all(from, to)
+    WHERE a.subtype IN ('capital','draws') AND e.date BETWEEN ? AND ? GROUP BY e.id, c.name ORDER BY e.date, e.id`, from, to))
     .map(r => row([r.date, `#${r.id}`, r.name, r.kind + (r.voided ? ' (voided)' : ''), r.memo || '', r.amt > 0 ? r.amt : null, r.amt < 0 ? -r.amt : null], null, `#/entry/${r.id}`));
   return { title: 'Owner Contributions & Draws (detail)', subtitle: `${from} to ${to}`, columns: [col('Date', D), col('Entry'), col('Owner'), col('Type'), col('Memo'), col('Money in', M), col('Money out', M)], rows };
 };
 
-R.tax_categories = q => {
-  const { from, to } = range(q);
-  const s = sums(from, to);
+R.tax_categories = async q => {
+  const { from, to } = await range(q);
+  const s = await sums(from, to);
   const groups = new Map();
-  for (const a of accounts().filter(a => a.type === 'income' || a.type === 'expense')) {
+  for (const a of (await accounts()).filter(a => a.type === 'income' || a.type === 'expense')) {
     const v = natural(a, s.get(a.id));
     if (!v) continue;
     const k = `${a.type === 'income' ? '1' : '2'}|${a.tax_category || 'Uncategorized'}`;
@@ -266,32 +274,32 @@ R.tax_categories = q => {
 
 const PAYCOLS = ['gross', 'fed_wh', 'ss_ee', 'med_ee', 'state_wh', 'city_wh', 'sdi_pfl', 'other_ded', 'net', 'ss_er', 'med_er', 'futa', 'suta'];
 const PAYLABELS = ['Gross wages', 'Federal WH', 'Soc. Sec. (EE)', 'Medicare (EE)', 'NY State WH', 'NYC WH', 'NY SDI/PFL', 'Other ded.', 'Net pay', 'Soc. Sec. (ER)', 'Medicare (ER)', 'FUTA', 'NY SUI'];
-R.payroll_summary = q => {
-  const { from, to } = range(q);
+R.payroll_summary = async q => {
+  const { from, to } = await range(q);
   const sumsql = PAYCOLS.map(c => `SUM(p.${c}) ${c}`).join(',');
   const rows = [];
   rows.push(row(['By employee', ...PAYCOLS.map(() => null)], 'header'));
-  const emp = db.prepare(`SELECT c.name, COUNT(*) n, ${sumsql} FROM payroll_items p JOIN entries e ON e.id=p.entry_id JOIN contacts c ON c.id=p.employee_id
-    WHERE e.voided=0 AND p.pay_date BETWEEN ? AND ? GROUP BY c.id ORDER BY c.name`).all(from, to);
+  const emp = await db.all(`SELECT c.name, COUNT(*) n, ${sumsql} FROM payroll_items p JOIN entries e ON e.id=p.entry_id JOIN contacts c ON c.id=p.employee_id
+    WHERE e.voided=0 AND p.pay_date BETWEEN ? AND ? GROUP BY c.id ORDER BY c.name`, from, to);
   emp.forEach(r => rows.push(row([`${r.name} (${r.n} pay runs)`, ...PAYCOLS.map(c => r[c])])));
   rows.push(row(['By calendar quarter (for Form 941 / NYS-45)', ...PAYCOLS.map(() => null)], 'header'));
-  const qs = db.prepare(`SELECT substr(p.pay_date,1,4) || '-Q' || ((CAST(substr(p.pay_date,6,2) AS INTEGER)+2)/3) qtr, ${sumsql}
-    FROM payroll_items p JOIN entries e ON e.id=p.entry_id WHERE e.voided=0 AND p.pay_date BETWEEN ? AND ? GROUP BY qtr ORDER BY qtr`).all(from, to);
+  const qs = await db.all(`SELECT substr(p.pay_date,1,4) || '-Q' || ((CAST(substr(p.pay_date,6,2) AS INTEGER)+2)/3) qtr, ${sumsql}
+    FROM payroll_items p JOIN entries e ON e.id=p.entry_id WHERE e.voided=0 AND p.pay_date BETWEEN ? AND ? GROUP BY qtr ORDER BY qtr`, from, to);
   qs.forEach(r => rows.push(row([r.qtr, ...PAYCOLS.map(c => r[c])])));
-  const t = db.prepare(`SELECT ${sumsql} FROM payroll_items p JOIN entries e ON e.id=p.entry_id WHERE e.voided=0 AND p.pay_date BETWEEN ? AND ?`).get(from, to);
+  const t = await db.get(`SELECT ${sumsql} FROM payroll_items p JOIN entries e ON e.id=p.entry_id WHERE e.voided=0 AND p.pay_date BETWEEN ? AND ?`, from, to);
   rows.push(row(['TOTAL', ...PAYCOLS.map(c => t[c] || 0)], 'grand'));
   return { title: 'Payroll Summary', subtitle: `${from} to ${to}`, columns: [col('Employee / Period'), ...PAYLABELS.map(l => col(l, M))], rows,
     notes: ['EE = withheld from employee; ER = paid by the company. Use with your payroll provider’s W-2 / 941 / 940 / NYS-45 filings.'] };
 };
 
-R.contractors_1099 = q => {
-  const { from, to } = range(q);
-  const threshold = Math.round(Number(getSetting('threshold_1099', '2000')) * 100);
-  const vs = db.prepare(`SELECT c.*,
+R.contractors_1099 = async q => {
+  const { from, to } = await range(q);
+  const threshold = Math.round(Number(await getSetting('threshold_1099', '2000')) * 100);
+  const vs = await db.all(`SELECT c.*,
       SUM(CASE WHEN a.subtype='card' THEN l.credit - l.debit ELSE 0 END) card,
-      SUM(CASE WHEN a.subtype<>'card' OR a.subtype IS NULL THEN l.credit - l.debit ELSE 0 END) bank
+      SUM(CASE WHEN a.subtype IS NULL OR a.subtype<>'card' THEN l.credit - l.debit ELSE 0 END) bank
     FROM contacts c JOIN entries e ON e.contact_id=c.id JOIN lines l ON l.entry_id=e.id JOIN accounts a ON a.id=l.account_id
-    WHERE c.type='vendor' AND a.is_payment=1 AND e.date BETWEEN ? AND ? GROUP BY c.id ORDER BY c.is_1099 DESC, c.name`).all(from, to);
+    WHERE c.type='vendor' AND a.is_payment=1 AND e.date BETWEEN ? AND ? GROUP BY c.id ORDER BY c.is_1099 DESC, c.name`, from, to);
   const rows = vs.filter(v => v.card || v.bank).map(v => row([v.name, v.tax_id || (v.is_1099 ? '⚠ missing W-9' : ''), v.address || '', v.is_1099 ? 'Yes' : 'No', v.bank, v.card, v.bank + v.card,
     v.is_1099 && v.bank >= threshold ? 'YES – file 1099-NEC' : '']));
   return { title: 'Vendor Payments & 1099 Report', subtitle: `${from} to ${to}`,
@@ -299,14 +307,15 @@ R.contractors_1099 = q => {
     notes: [`Threshold set in Settings: $${threshold / 100}. Card payments are excluded (reported on 1099-K by the card processor). Confirm the threshold for the tax year with your accountant.`] };
 };
 
-R.ar_aging = q => {
+R.ar_aging = async q => {
   const to = q.to || today();
-  const invs = db.prepare(`SELECT i.*, c.name FROM invoices i JOIN contacts c ON c.id=i.client_id WHERE i.voided=0 AND i.date<=? ORDER BY i.due_date`).all(to);
-  const paidBy = db.prepare(`SELECT COALESCE(SUM(p.amount),0) s FROM invoice_payments p JOIN entries e ON e.id=p.entry_id WHERE p.invoice_id=? AND e.voided=0 AND e.date<=?`);
+  const invs = await db.all(`SELECT i.*, c.name,
+      (SELECT COALESCE(SUM(p.amount),0) FROM invoice_payments p JOIN entries e ON e.id=p.entry_id WHERE p.invoice_id=i.id AND e.voided=0 AND e.date<=?) paid
+    FROM invoices i JOIN contacts c ON c.id=i.client_id WHERE i.voided=0 AND i.date<=? ORDER BY i.due_date`, to, to);
   const rows = [];
   const tot = [0, 0, 0, 0, 0, 0];
   for (const i of invs) {
-    const bal = i.total - paidBy.get(i.id, to).s;
+    const bal = i.total - i.paid;
     if (bal <= 0) continue;
     const days = Math.floor((Date.parse(to) - Date.parse(i.due_date)) / 864e5);
     const b = days <= 0 ? 0 : days <= 30 ? 1 : days <= 60 ? 2 : days <= 90 ? 3 : 4;
@@ -320,17 +329,17 @@ R.ar_aging = q => {
     columns: [col('Client'), col('Invoice'), col('Date', D), col('Due', D), col('Current', M), col('1–30 days', M), col('31–60', M), col('61–90', M), col('90+', M), col('Balance', M)], rows };
 };
 
-function byContact(q, type, title) {
-  const { from, to } = range(q);
+async function byContact(q, type, title) {
+  const { from, to } = await range(q);
   const sign = type === 'income' ? '(l.credit - l.debit)' : '(l.debit - l.credit)';
-  const rs = db.prepare(`SELECT COALESCE(c.name,'(no name)') name, a.code, a.name aname, SUM(${sign}) amt
+  const rs = await db.all(`SELECT COALESCE(c.name,'(no name)') cname, a.code, a.name aname, SUM(${sign}) amt
     FROM lines l JOIN entries e ON e.id=l.entry_id JOIN accounts a ON a.id=l.account_id LEFT JOIN contacts c ON c.id=e.contact_id
-    WHERE a.type=? AND e.date BETWEEN ? AND ? GROUP BY c.id, a.id HAVING amt<>0 ORDER BY name, a.code`).all(type, from, to);
+    WHERE a.type=? AND e.date BETWEEN ? AND ? GROUP BY c.id, c.name, a.id, a.code, a.name HAVING SUM(${sign})<>0 ORDER BY cname, a.code`, type, from, to);
   const rows = [];
   let cur = null, sub = 0, grand = 0;
   const flush = () => { if (cur !== null) rows.push(row([`Total ${cur}`, '', sub], 'total')); };
   for (const r of rs) {
-    if (r.name !== cur) { flush(); cur = r.name; sub = 0; rows.push(row([r.name, '', null], 'header')); }
+    if (r.cname !== cur) { flush(); cur = r.cname; sub = 0; rows.push(row([r.cname, '', null], 'header')); }
     sub += r.amt; grand += r.amt;
     rows.push(row(['', `${r.code} · ${r.aname}`, r.amt]));
   }
@@ -341,11 +350,11 @@ function byContact(q, type, title) {
 R.income_by_client = q => byContact(q, 'income', 'Income by Client');
 R.expenses_by_vendor = q => byContact(q, 'expense', 'Expenses by Vendor');
 
-R.sales_tax = q => {
-  const { from, to } = range(q);
-  const rs = db.prepare(`SELECT substr(e.date,1,7) m, SUM(l.credit) collected, SUM(l.debit) paid
-    FROM lines l JOIN entries e ON e.id=l.entry_id JOIN accounts a ON a.id=l.account_id WHERE a.subtype='sales_tax' AND e.date BETWEEN ? AND ? GROUP BY m ORDER BY m`).all(from, to);
-  const taxable = db.prepare(`SELECT substr(date,1,7) m, SUM(subtotal) s FROM invoices WHERE voided=0 AND tax>0 AND date BETWEEN ? AND ? GROUP BY m`).all(from, to);
+R.sales_tax = async q => {
+  const { from, to } = await range(q);
+  const rs = await db.all(`SELECT substr(e.date,1,7) m, SUM(l.credit) collected, SUM(l.debit) paid
+    FROM lines l JOIN entries e ON e.id=l.entry_id JOIN accounts a ON a.id=l.account_id WHERE a.subtype='sales_tax' AND e.date BETWEEN ? AND ? GROUP BY m ORDER BY m`, from, to);
+  const taxable = await db.all(`SELECT substr(date,1,7) m, SUM(subtotal) s FROM invoices WHERE voided=0 AND tax>0 AND date BETWEEN ? AND ? GROUP BY m`, from, to);
   const tm = new Map(taxable.map(t => [t.m, t.s]));
   const rows = rs.map(r => row([r.m, tm.get(r.m) || 0, r.collected, r.paid]));
   const t = rs.reduce((a, r) => [a[0] + (tm.get(r.m) || 0), a[1] + r.collected, a[2] + r.paid], [0, 0, 0]);
@@ -354,35 +363,35 @@ R.sales_tax = q => {
     notes: ['NY quarterly sales tax periods run Mar–May, Jun–Aug, Sep–Nov, Dec–Feb. Whether your services are taxable in NY (e.g. software vs. consulting) is for your accountant to confirm.'] };
 };
 
-R.missing_receipts = q => {
-  const { from, to } = range(q);
-  const rs = db.prepare(`SELECT e.id, e.date, e.kind, e.memo, c.name, (SELECT SUM(debit) FROM lines WHERE entry_id=e.id) amt FROM entries e LEFT JOIN contacts c ON c.id=e.contact_id
+R.missing_receipts = async q => {
+  const { from, to } = await range(q);
+  const rs = await db.all(`SELECT e.id, e.date, e.kind, e.memo, c.name, (SELECT SUM(debit) FROM lines WHERE entry_id=e.id) amt FROM entries e LEFT JOIN contacts c ON c.id=e.contact_id
     WHERE e.kind IN ('expense','import','payroll') AND e.voided=0 AND e.date BETWEEN ? AND ?
     AND NOT EXISTS (SELECT 1 FROM attachments a WHERE a.entry_id=e.id)
     AND (e.kind<>'import' OR EXISTS (SELECT 1 FROM lines l JOIN accounts a ON a.id=l.account_id WHERE l.entry_id=e.id AND a.type='expense'))
-    ORDER BY e.date`).all(from, to);
+    ORDER BY e.date`, from, to);
   return { title: 'Transactions Missing a Receipt', subtitle: `${from} to ${to}`, columns: [col('Date', D), col('Entry'), col('Type'), col('Payee'), col('Memo'), col('Amount', M)],
     rows: rs.map(r => row([r.date, `#${r.id}`, r.kind, r.name || '', r.memo || '', r.amt], null, `#/entry/${r.id}`)),
     notes: ['Attach a receipt or bill to each of these so the accountant has proof of every expense.'] };
 };
 
-R.reconciliations = () => {
-  const rs = db.prepare(`SELECT r.*, a.name aname, u.name uname FROM reconciliations r JOIN accounts a ON a.id=r.account_id LEFT JOIN users u ON u.id=r.user_id ORDER BY r.statement_date DESC`).all();
-  return { title: 'Bank Reconciliations', subtitle: 'History', columns: [col('Account'), col('Statement date', D), col('Statement balance', M), col('Cleared in books', M), col('Difference', M), col('By'), col('Done at')],
+R.reconciliations = async () => {
+  const rs = await db.all(`SELECT r.*, a.name aname, u.name uname FROM reconciliations r JOIN accounts a ON a.id=r.account_id LEFT JOIN users u ON u.id=r.user_id ORDER BY r.statement_date DESC`);
+  return { title: 'Bank Reconciliations', subtitle: 'History', columns: [col('Account'), col('Statement date', D), col('Statement balance', M), col('Cleared in books', M), col('Difference', M), col('By'), col('Done at (UTC)')],
     rows: rs.map(r => row([r.aname, r.statement_date, r.statement_balance, r.cleared_balance, r.statement_balance - r.cleared_balance, r.uname || '', r.created_at])) };
 };
 
-R.audit_log = q => {
-  const { from, to } = range(q);
-  const rs = db.prepare(`SELECT a.*, u.name FROM audit a LEFT JOIN users u ON u.id=a.user_id WHERE date(a.at) BETWEEN ? AND ? ORDER BY a.id DESC LIMIT 5000`).all(from, to);
+R.audit_log = async q => {
+  const { from, to } = await range(q);
+  const rs = await db.all(`SELECT a.*, u.name FROM audit a LEFT JOIN users u ON u.id=a.user_id WHERE substr(a.at,1,10) BETWEEN ? AND ? ORDER BY a.id DESC LIMIT 5000`, from, to);
   return { title: 'Audit Log', subtitle: `${from} to ${to}`, columns: [col('When (UTC)'), col('User'), col('Action'), col('Detail')],
     rows: rs.map(r => row([r.at, r.name || '', r.action, r.detail || ''])) };
 };
 
-R.chart_of_accounts = () => {
-  const s = sums(null, today());
+R.chart_of_accounts = async () => {
+  const s = await sums(null, today());
   return { title: 'Chart of Accounts', subtitle: `Balances as of ${today()}`, columns: [col('Code'), col('Name'), col('Type'), col('Subtype'), col('Tax category'), col('Active'), col('Balance', M)],
-    rows: accounts().map(a => row([a.code, a.name, a.type, a.subtype || '', a.tax_category || '', a.active ? 'Yes' : 'No', natural(a, s.get(a.id))])) };
+    rows: (await accounts()).map(a => row([a.code, a.name, a.type, a.subtype || '', a.tax_category || '', a.active ? 'Yes' : 'No', natural(a, s.get(a.id))])) };
 };
 
 const CATALOG = [
@@ -407,8 +416,8 @@ const CATALOG = [
   ['audit_log', 'Audit Log', 'Who did what, and when.'],
 ];
 
-function run(name, q) {
-  if (!R[name]) return null;
+async function run(name, q) {
+  if (!Object.prototype.hasOwnProperty.call(R, name)) return null;
   return R[name](q || {});
 }
 

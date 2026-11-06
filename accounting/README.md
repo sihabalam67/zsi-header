@@ -2,7 +2,7 @@
 
 Double-entry bookkeeping for a two-owner New York company, in USD. It's built so your tax preparer gets everything from one download and doesn't have to ask you questions.
 
-## Run it
+## Run it on your computer
 
 ```bash
 cd accounting
@@ -11,22 +11,26 @@ npm start            # http://localhost:3000
 npm test             # end-to-end accounting checks
 ```
 
-The first time you open it, a setup screen asks for the company name, both owners, profit shares and your login.
+You don't need to install a database. Locally the app uses a built-in Postgres (PGlite) that stores its data in `accounting/data/`. The first time you open it, a setup screen asks for the company name, both owners, profit shares and your login.
 
-Everything is stored in `accounting/data/`:
+## Run it online for free (Vercel + Neon + Vercel Blob)
 
-- `books.db` is the whole ledger in one SQLite file.
-- `uploads/` holds the receipts you attach.
+| Piece | What it stores | Free tier |
+|---|---|---|
+| Vercel (Hobby) | The app itself (`api/index.js`, `public/`) | Free |
+| Neon Postgres | The ledger: every account, entry and invoice | Free (0.5 GB is years of bookkeeping) |
+| Vercel Blob (private) | Receipt photos and PDFs | Free tier |
 
-Back up that folder. You can also go to Settings → Download backup.
+1. Create a Vercel project from this repo with **Root Directory = `accounting`**. `vercel.json` already sets everything else.
+2. Add the database. In the Vercel project go to **Storage → Create Database → Neon (Free) → Connect to project**. This sets `DATABASE_URL`.
+3. Add receipt storage. Go to **Storage → Create → Blob**, choose access **Private**, and connect it to the project. This sets `BLOB_READ_WRITE_TOKEN`.
+4. Redeploy, open the site, and complete the one-time setup.
 
-### Put it online for both owners
+Notes:
 
-Use any host that gives you a **persistent disk**. Render, Railway and Fly.io work, and so does a $5 VPS. Vercel and Netlify serverless don't keep files, so they won't work.
-
-1. Set the start command to `npm start` and the root folder to `accounting/`.
-2. Set `DATA_DIR` to the mounted disk path, for example `/data`.
-3. Serve it over HTTPS and set `COOKIE_SECURE=1`.
+- Vercel's Hobby plan is officially for personal, non-commercial use. If Vercel ever asks you to upgrade, the same code runs unchanged on Pro or on any Node host with a `DATABASE_URL`.
+- Uploads are limited to about 4 MB each online. Large phone photos are shrunk automatically before upload.
+- Settings → Download backup gives you every table as CSV. Neon also keeps its own restore history.
 
 ## How each situation is recorded
 

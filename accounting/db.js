@@ -1,56 +1,59 @@
-// Database: schema, seed chart of accounts, and low-level helpers.
+// Database: Postgres everywhere.
+//  - Online (Vercel): DATABASE_URL / POSTGRES_URL from a free Neon database.
+//  - On your own computer: an embedded Postgres (PGlite) stored in ./data/pg – nothing to install.
 // All money is stored as integer cents to avoid floating-point errors.
-const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const { AsyncLocalStorage } = require('async_hooks');
 
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
-fs.mkdirSync(path.join(DATA_DIR, 'uploads'), { recursive: true });
+const DB_URL = process.env.DATABASE_URL || process.env.POSTGRES_URL || '';
+const ON_VERCEL = !!process.env.VERCEL;
+const als = new AsyncLocalStorage();
 
-const db = new Database(path.join(DATA_DIR, 'books.db'));
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+class NotConfigured extends Error {}
 
-db.exec(`
+const NOW = `(to_char(now() AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI:SS'))`;
+const SCHEMA = `
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT);
 
 CREATE TABLE IF NOT EXISTS users (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+  email TEXT NOT NULL UNIQUE,
   pass_hash TEXT NOT NULL,
   role TEXT NOT NULL CHECK (role IN ('owner','staff','accountant')),
   active INTEGER NOT NULL DEFAULT 1,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 
 CREATE TABLE IF NOT EXISTS sessions (
   token TEXT PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users(id),
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 
 CREATE TABLE IF NOT EXISTS contacts (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   type TEXT NOT NULL CHECK (type IN ('client','vendor','employee','owner')),
   name TEXT NOT NULL,
   email TEXT, phone TEXT, address TEXT,
-  tax_id TEXT,                 -- EIN / SSN last 4 / W-9 info
+  tax_id TEXT,
   is_1099 INTEGER NOT NULL DEFAULT 0,
-  profit_share REAL,           -- owners only, percent
+  profit_share DOUBLE PRECISION,
   notes TEXT,
   active INTEGER NOT NULL DEFAULT 1,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 
 CREATE TABLE IF NOT EXISTS accounts (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   code TEXT NOT NULL UNIQUE,
   name TEXT NOT NULL,
   type TEXT NOT NULL CHECK (type IN ('asset','liability','equity','income','expense')),
-  subtype TEXT,                -- bank, card, receivable, fixed_asset, payroll_liability, sales_tax, loan, capital, draws, retained ...
-  tax_category TEXT,           -- label for the tax preparer
-  is_payment INTEGER NOT NULL DEFAULT 0, -- money moves in/out of it (bank, cash, credit card)
+  subtype TEXT,
+  tax_category TEXT,
+  is_payment INTEGER NOT NULL DEFAULT 0,
   owner_contact_id INTEGER REFERENCES contacts(id),
   system INTEGER NOT NULL DEFAULT 0,
   active INTEGER NOT NULL DEFAULT 1,
@@ -58,27 +61,27 @@ CREATE TABLE IF NOT EXISTS accounts (
 );
 
 CREATE TABLE IF NOT EXISTS entries (
-  id INTEGER PRIMARY KEY,
-  date TEXT NOT NULL,          -- YYYY-MM-DD
-  kind TEXT NOT NULL,          -- expense, income, owner_contribution, owner_draw, transfer, payroll, journal, invoice, invoice_payment, import, void
+  id SERIAL PRIMARY KEY,
+  date TEXT NOT NULL,
+  kind TEXT NOT NULL,
   memo TEXT,
-  reference TEXT,              -- check #, bill #, invoice #
+  reference TEXT,
   contact_id INTEGER REFERENCES contacts(id),
   voided INTEGER NOT NULL DEFAULT 0,
   void_of INTEGER REFERENCES entries(id),
   import_hash TEXT,
   created_by INTEGER REFERENCES users(id),
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 CREATE INDEX IF NOT EXISTS idx_entries_date ON entries(date);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_entries_import ON entries(import_hash) WHERE import_hash IS NOT NULL;
 
 CREATE TABLE IF NOT EXISTS lines (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   entry_id INTEGER NOT NULL REFERENCES entries(id),
   account_id INTEGER NOT NULL REFERENCES accounts(id),
-  debit INTEGER NOT NULL DEFAULT 0,
-  credit INTEGER NOT NULL DEFAULT 0,
+  debit BIGINT NOT NULL DEFAULT 0,
+  credit BIGINT NOT NULL DEFAULT 0,
   memo TEXT,
   cleared INTEGER NOT NULL DEFAULT 0,
   CHECK (debit >= 0 AND credit >= 0 AND NOT (debit > 0 AND credit > 0))
@@ -87,87 +90,91 @@ CREATE INDEX IF NOT EXISTS idx_lines_entry ON lines(entry_id);
 CREATE INDEX IF NOT EXISTS idx_lines_account ON lines(account_id);
 
 CREATE TABLE IF NOT EXISTS attachments (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   entry_id INTEGER NOT NULL REFERENCES entries(id),
   filename TEXT NOT NULL,
   stored TEXT NOT NULL,
+  storage TEXT NOT NULL DEFAULT 'disk',
   mime TEXT, size INTEGER,
   uploaded_by INTEGER REFERENCES users(id),
-  uploaded_at TEXT NOT NULL DEFAULT (datetime('now'))
+  uploaded_at TEXT NOT NULL DEFAULT ${NOW}
 );
 
 CREATE TABLE IF NOT EXISTS invoices (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   number TEXT NOT NULL UNIQUE,
   client_id INTEGER NOT NULL REFERENCES contacts(id),
   date TEXT NOT NULL,
   due_date TEXT NOT NULL,
   memo TEXT,
-  subtotal INTEGER NOT NULL,
-  tax_rate REAL NOT NULL DEFAULT 0,
-  tax INTEGER NOT NULL DEFAULT 0,
-  total INTEGER NOT NULL,
+  subtotal BIGINT NOT NULL,
+  tax_rate DOUBLE PRECISION NOT NULL DEFAULT 0,
+  tax BIGINT NOT NULL DEFAULT 0,
+  total BIGINT NOT NULL,
   income_account_id INTEGER NOT NULL REFERENCES accounts(id),
   entry_id INTEGER REFERENCES entries(id),
   voided INTEGER NOT NULL DEFAULT 0,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 
 CREATE TABLE IF NOT EXISTS invoice_items (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   invoice_id INTEGER NOT NULL REFERENCES invoices(id),
   description TEXT NOT NULL,
-  qty REAL NOT NULL,
-  unit_price INTEGER NOT NULL,
-  amount INTEGER NOT NULL
+  qty DOUBLE PRECISION NOT NULL,
+  unit_price BIGINT NOT NULL,
+  amount BIGINT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS invoice_payments (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   invoice_id INTEGER NOT NULL REFERENCES invoices(id),
   entry_id INTEGER NOT NULL REFERENCES entries(id),
-  amount INTEGER NOT NULL
+  amount BIGINT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS payroll_items (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   entry_id INTEGER NOT NULL REFERENCES entries(id),
   employee_id INTEGER NOT NULL REFERENCES contacts(id),
   pay_date TEXT NOT NULL,
   period_start TEXT, period_end TEXT,
-  gross INTEGER NOT NULL,
-  fed_wh INTEGER NOT NULL DEFAULT 0,
-  ss_ee INTEGER NOT NULL DEFAULT 0,
-  med_ee INTEGER NOT NULL DEFAULT 0,
-  state_wh INTEGER NOT NULL DEFAULT 0,
-  city_wh INTEGER NOT NULL DEFAULT 0,
-  sdi_pfl INTEGER NOT NULL DEFAULT 0,
-  other_ded INTEGER NOT NULL DEFAULT 0,
-  net INTEGER NOT NULL,
-  ss_er INTEGER NOT NULL DEFAULT 0,
-  med_er INTEGER NOT NULL DEFAULT 0,
-  futa INTEGER NOT NULL DEFAULT 0,
-  suta INTEGER NOT NULL DEFAULT 0
+  gross BIGINT NOT NULL,
+  fed_wh BIGINT NOT NULL DEFAULT 0,
+  ss_ee BIGINT NOT NULL DEFAULT 0,
+  med_ee BIGINT NOT NULL DEFAULT 0,
+  state_wh BIGINT NOT NULL DEFAULT 0,
+  city_wh BIGINT NOT NULL DEFAULT 0,
+  sdi_pfl BIGINT NOT NULL DEFAULT 0,
+  other_ded BIGINT NOT NULL DEFAULT 0,
+  net BIGINT NOT NULL,
+  ss_er BIGINT NOT NULL DEFAULT 0,
+  med_er BIGINT NOT NULL DEFAULT 0,
+  futa BIGINT NOT NULL DEFAULT 0,
+  suta BIGINT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS reconciliations (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   account_id INTEGER NOT NULL REFERENCES accounts(id),
   statement_date TEXT NOT NULL,
-  statement_balance INTEGER NOT NULL,
-  cleared_balance INTEGER NOT NULL,
+  statement_balance BIGINT NOT NULL,
+  cleared_balance BIGINT NOT NULL,
   user_id INTEGER REFERENCES users(id),
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 
+CREATE TABLE IF NOT EXISTS login_attempts (key TEXT NOT NULL, at TEXT NOT NULL DEFAULT ${NOW});
+CREATE INDEX IF NOT EXISTS idx_login_attempts ON login_attempts(key, at);
+
 CREATE TABLE IF NOT EXISTS audit (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   action TEXT NOT NULL,
   detail TEXT,
-  at TEXT NOT NULL DEFAULT (datetime('now'))
+  at TEXT NOT NULL DEFAULT ${NOW}
 );
-`);
+`;
 
 // ---------- Chart of accounts (New York / US small business) ----------
 // [code, name, type, subtype, tax_category, is_payment]
@@ -218,45 +225,126 @@ const SEED_ACCOUNTS = [
   ['5990', 'Other Expenses', 'expense', null, 'Other deductions', 0],
 ];
 
-function seedAccounts() {
-  const n = db.prepare('SELECT COUNT(*) c FROM accounts').get().c;
-  if (n) return;
-  const ins = db.prepare(`INSERT INTO accounts (code,name,type,subtype,tax_category,is_payment,system)
-    VALUES (?,?,?,?,?,?,1)`);
-  db.transaction(() => SEED_ACCOUNTS.forEach(a => ins.run(...a)))();
+// Postgres returns BIGINT / NUMERIC (e.g. SUM of cents) as strings. Money here is always whole cents,
+// so convert those columns to plain numbers for every query, whichever driver is used.
+function numify(r) {
+  const num = (r.fields || []).filter(f => f.dataTypeID === 20 || f.dataTypeID === 1700).map(f => f.name);
+  if (num.length) for (const row of r.rows) for (const k of num) if (row[k] != null) row[k] = Number(row[k]);
+  return { rows: r.rows, rowCount: r.rowCount ?? r.affectedRows };
 }
-seedAccounts();
+
+// ---------- driver ----------
+// Both drivers expose: exec(sql, params) -> { rows, rowCount }, and transaction(fn(execFn)).
+let ready = null;
+function connect() {
+  if (ready) return ready;
+  ready = (async () => {
+    let drv;
+    if (DB_URL) {
+      const pg = require('pg');
+      const pool = new pg.Pool({ connectionString: DB_URL, max: 3, idleTimeoutMillis: 10000 });
+      drv = {
+        exec: (sql, p) => pool.query(sql, p).then(numify),
+        async transaction(fn) {
+          const c = await pool.connect();
+          try {
+            await c.query('BEGIN');
+            const out = await fn((sql, p) => c.query(sql, p).then(numify));
+            await c.query('COMMIT');
+            return out;
+          } catch (e) {
+            await c.query('ROLLBACK').catch(() => {});
+            throw e;
+          } finally { c.release(); }
+        },
+      };
+      await drv.transaction(async x => {
+        await x('SELECT pg_advisory_xact_lock(4242001)'); // avoid concurrent schema creation on cold starts
+        await x(SCHEMA);
+      });
+    } else {
+      if (ON_VERCEL) throw new NotConfigured('Database not connected. In Vercel: Storage → Create Database → Neon (free) → connect it to this project, then redeploy.');
+      const { PGlite } = require('@electric-sql/pglite');
+      const dir = process.env.PGLITE_MEMORY ? undefined : path.join(DATA_DIR, 'pg');
+      if (dir) fs.mkdirSync(dir, { recursive: true });
+      const pgl = new PGlite(dir);
+      let chain = Promise.resolve();
+      // PGlite is single-connection: serialize transactions so they can't interleave.
+      const serial = fn => { const p = chain.then(fn, fn); chain = p.catch(() => {}); return p; };
+      drv = {
+        exec: (sql, p) => pgl.query(sql, p).then(numify),
+        transaction: fn => serial(() => pgl.transaction(tx => fn((sql, p) => tx.query(sql, p).then(numify)))),
+      };
+      await pgl.exec(SCHEMA);
+      drv.serial = serial;
+    }
+    const n = (await drv.exec('SELECT COUNT(*) c FROM accounts')).rows[0].c;
+    if (!n) {
+      await drv.transaction(async x => {
+        for (const a of SEED_ACCOUNTS)
+          await x(`INSERT INTO accounts (code,name,type,subtype,tax_category,is_payment,system) VALUES ($1,$2,$3,$4,$5,$6,1) ON CONFLICT (code) DO NOTHING`, a);
+      });
+    }
+    return drv;
+  })();
+  ready.catch(() => { ready = null; });
+  return ready;
+}
+
+// Convert "?" placeholders to $1, $2 ...
+const toPg = sql => { let i = 0; return sql.replace(/\?/g, () => `$${++i}`); };
+
+async function exec(sql, params = []) {
+  const inTx = als.getStore();
+  if (inTx) return inTx(toPg(sql), params);
+  const drv = await connect();
+  if (drv.serial) return drv.serial(() => drv.exec(toPg(sql), params));
+  return drv.exec(toPg(sql), params);
+}
+
+const db = {
+  all: async (sql, ...p) => (await exec(sql, p)).rows,
+  get: async (sql, ...p) => (await exec(sql, p)).rows[0],
+  run: async (sql, ...p) => exec(sql, p),
+  // INSERT ... returns the new id
+  insert: async (sql, ...p) => (await exec(sql + ' RETURNING id', p)).rows[0].id,
+  // Everything awaited inside fn runs in one database transaction.
+  async tx(fn) {
+    if (als.getStore()) return fn();
+    const drv = await connect();
+    return drv.transaction(x => als.run(x, fn));
+  },
+  ready: connect,
+};
 
 // ---------- helpers ----------
-const getSetting = (k, def = null) => {
-  const r = db.prepare('SELECT value FROM settings WHERE key=?').get(k);
+const getSetting = async (k, def = null) => {
+  const r = await db.get('SELECT value FROM settings WHERE key=?', k);
   return r ? r.value : def;
 };
 const setSetting = (k, v) =>
-  db.prepare('INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value').run(k, v == null ? null : String(v));
+  db.run('INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value', k, v == null ? null : String(v));
 
-const accountByCode = code => {
-  const a = db.prepare('SELECT * FROM accounts WHERE code=?').get(code);
+const accountByCode = async code => {
+  const a = await db.get('SELECT * FROM accounts WHERE code=?', code);
   if (!a) throw new Error(`Account ${code} is missing from the chart of accounts`);
   return a;
 };
 
 // Owners get their own Capital and Draws equity accounts so each owner's
 // money in / money out is tracked separately (needed for K-1 capital accounts).
-function createOwnerAccounts(contact) {
-  const next = base => {
-    const r = db.prepare(`SELECT MAX(CAST(code AS INTEGER)) m FROM accounts WHERE CAST(code AS INTEGER) BETWEEN ? AND ?`).get(base, base + 389);
+async function createOwnerAccounts(contact) {
+  const next = async base => {
+    const r = await db.get(`SELECT MAX(CAST(code AS INTEGER)) m FROM accounts WHERE code ~ '^[0-9]+$' AND CAST(code AS INTEGER) BETWEEN ? AND ?`, base, base + 389);
     return String((r.m || base) + 10);
   };
-  const ins = db.prepare(`INSERT INTO accounts (code,name,type,subtype,owner_contact_id,system,tax_category)
-    VALUES (?,?,'equity',?,?,1,?)`);
-  ins.run(next(3000), `Owner Capital – ${contact.name}`, 'capital', contact.id, 'Owner capital contributions');
-  ins.run(next(3500), `Owner Draws – ${contact.name}`, 'draws', contact.id, 'Owner distributions / draws');
+  const sql = `INSERT INTO accounts (code,name,type,subtype,owner_contact_id,system,tax_category) VALUES (?,?,'equity',?,?,1,?)`;
+  await db.run(sql, await next(3000), `Owner Capital – ${contact.name}`, 'capital', contact.id, 'Owner capital contributions');
+  await db.run(sql, await next(3500), `Owner Draws – ${contact.name}`, 'draws', contact.id, 'Owner distributions / draws');
 }
 
 function audit(userId, action, detail) {
-  db.prepare('INSERT INTO audit(user_id,action,detail) VALUES(?,?,?)')
-    .run(userId || null, action, detail ? JSON.stringify(detail) : null);
+  return db.run('INSERT INTO audit(user_id,action,detail) VALUES(?,?,?)', userId || null, action, detail ? JSON.stringify(detail) : null);
 }
 
-module.exports = { db, DATA_DIR, getSetting, setSetting, accountByCode, createOwnerAccounts, audit };
+module.exports = { db, DATA_DIR, ON_VERCEL, NotConfigured, getSetting, setSetting, accountByCode, createOwnerAccounts, audit };
