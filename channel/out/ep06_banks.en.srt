@@ -355,826 +355,1002 @@ it pays savers,
 and the rest is profit.
 
 90
-00:02:07,717 --> 00:02:09,757
-So money is always being born
+00:02:07,717 --> 00:02:09,057
+And that interest adds up.
 
 91
-00:02:09,557 --> 00:02:10,297
-and destroyed.
+00:02:09,177 --> 00:02:10,097
+In late October,
 
 92
-00:02:10,777 --> 00:02:11,897
-New loans create it.
+00:02:10,277 --> 00:02:12,197
+the average 30-year mortgage rate was
 
 93
-00:02:12,257 --> 00:02:13,417
-Repayments erase it.
+00:02:11,997 --> 00:02:13,477
+about 7.3 percent.
 
 94
-00:02:14,750 --> 00:02:16,530
-So where does physical cash come
+00:02:14,188 --> 00:02:15,048
+At that rate,
 
 95
-00:02:16,330 --> 00:02:16,730
-in?
+00:02:15,208 --> 00:02:17,608
+Maya's 300,000 dollar loan costs about
 
 96
-00:02:17,290 --> 00:02:17,890
-In the US,
+00:02:17,408 --> 00:02:19,468
+2,061 dollars a month.
 
 97
-00:02:17,950 --> 00:02:19,270
-paper money is printed by the
+00:02:20,068 --> 00:02:20,868
+Over thirty years,
 
 98
-00:02:19,070 --> 00:02:19,510
-Treasury,
+00:02:20,748 --> 00:02:23,055
+she pays back about 742 thousand
 
 99
-00:02:19,310 --> 00:02:21,370
-and the Federal Reserve hands it
+00:02:22,855 --> 00:02:23,308
+dollars,
 
 100
-00:02:21,170 --> 00:02:21,830
-out to banks.
+00:02:23,108 --> 00:02:25,928
+and about 442 thousand of that
 
 101
-00:02:22,575 --> 00:02:24,275
-But cash only reaches you when
+00:02:25,728 --> 00:02:26,328
+is interest.
 
 102
-00:02:24,075 --> 00:02:25,035
-you take it out of your
+00:02:27,099 --> 00:02:27,719
+Meanwhile,
 
 103
-00:02:24,835 --> 00:02:25,275
-account.
+00:02:27,939 --> 00:02:29,599
+the average savings account pays about
 
 104
-00:02:25,895 --> 00:02:27,355
-Withdraw a hundred dollars from an
+00:02:29,399 --> 00:02:31,299
+0.38 percent a year.
 
 105
-00:02:27,155 --> 00:02:27,575
-ATM,
+00:02:31,719 --> 00:02:32,279
+That gap,
 
 106
-00:02:27,375 --> 00:02:29,535
-and your bank balance drops by
+00:02:32,079 --> 00:02:34,319
+between what banks charge borrowers and
 
 107
-00:02:29,335 --> 00:02:29,815
-a hundred.
+00:02:34,119 --> 00:02:35,119
+what they pay savers,
 
 108
-00:02:30,566 --> 00:02:32,406
-No new money was created.
+00:02:34,919 --> 00:02:36,339
+is a big part of how
 
 109
-00:02:32,766 --> 00:02:33,906
-It just changed form:
+00:02:36,139 --> 00:02:37,059
+banks make money.
 
 110
-00:02:33,706 --> 00:02:35,266
-from a number on a screen
+00:02:38,383 --> 00:02:40,423
+So money is always being born
 
 111
-00:02:35,066 --> 00:02:36,606
-to paper in your hand.
+00:02:40,223 --> 00:02:40,963
+and destroyed.
 
 112
-00:02:38,150 --> 00:02:39,710
-So how much money is out
+00:02:41,443 --> 00:02:42,563
+New loans create it.
 
 113
-00:02:39,510 --> 00:02:39,910
-there?
+00:02:42,923 --> 00:02:44,083
+Repayments erase it.
 
 114
-00:02:40,290 --> 00:02:40,970
-In the US,
+00:02:45,417 --> 00:02:47,197
+So where does physical cash come
 
 115
-00:02:41,110 --> 00:02:43,410
-the broad measure is called M2:
+00:02:46,997 --> 00:02:47,397
+in?
 
 116
-00:02:43,210 --> 00:02:43,530
-cash,
-
-117
-00:02:43,730 --> 00:02:45,350
-plus checking and savings accounts,
-
-118
-00:02:45,470 --> 00:02:46,850
-plus a few similar accounts.
-
-119
-00:02:47,624 --> 00:02:49,364
-In September 2026,
-
-120
-00:02:49,564 --> 00:02:52,424
-M2 was about 23.4 trillion dollars.
-
-121
-00:02:53,532 --> 00:02:54,992
-Physical cash in circulation?
-
-122
-00:02:55,312 --> 00:02:56,652
-About 2.5 trillion.
-
-123
-00:02:56,832 --> 00:02:58,052
-That's the one dollar in ten.
-
-124
-00:02:58,570 --> 00:02:59,810
-In 1960,
-
-125
-00:02:59,970 --> 00:03:02,690
-M2 was about 304 billion dollars.
-
-126
-00:03:03,510 --> 00:03:04,050
-Today,
-
-127
-00:03:04,210 --> 00:03:05,950
-it's more than seventy times bigger.
-
-128
-00:03:06,648 --> 00:03:08,368
-The economy and prices grew a
-
-129
-00:03:08,168 --> 00:03:09,688
-lot over those decades too.
-
-130
-00:03:10,048 --> 00:03:11,348
-But most of that money was
-
-131
-00:03:11,148 --> 00:03:13,168
-created the same way Maya's was:
-
-132
-00:03:12,968 --> 00:03:14,408
-by banks making loans.
-
-133
-00:03:15,917 --> 00:03:16,597
-Right now,
-
-134
-00:03:16,397 --> 00:03:19,297
-US commercial banks hold about 19.8
-
-135
-00:03:19,097 --> 00:03:20,597
-trillion dollars of deposits,
-
-136
-00:03:20,397 --> 00:03:23,517
-and about 14.2 trillion dollars of
-
-137
-00:03:23,317 --> 00:03:23,777
-loans.
-
-138
-00:03:24,347 --> 00:03:25,687
-Most of the rest of what
-
-139
-00:03:25,487 --> 00:03:27,147
-they own is government bonds,
-
-140
-00:03:27,387 --> 00:03:28,127
-other securities,
-
-141
-00:03:28,347 --> 00:03:29,587
-and reserves at the Fed.
-
-142
-00:03:30,950 --> 00:03:32,650
-So if banks can type money
-
-143
-00:03:32,450 --> 00:03:33,230
-into existence,
-
-144
-00:03:33,910 --> 00:03:35,610
-why don't they create infinite amounts?
-
-145
-00:03:36,425 --> 00:03:37,925
-You might think it's the reserve
-
-146
-00:03:37,725 --> 00:03:38,425
-requirement:
-
-147
-00:03:38,685 --> 00:03:40,285
-the rule that banks must keep
-
-148
-00:03:40,085 --> 00:03:41,605
-a slice of their deposits at
-
-149
-00:03:41,405 --> 00:03:42,185
-the central bank.
-
-150
-00:03:42,715 --> 00:03:43,615
+00:02:47,957 --> 00:02:48,557
 In the US,
 
+117
+00:02:48,617 --> 00:02:49,937
+paper money is printed by the
+
+118
+00:02:49,737 --> 00:02:50,177
+Treasury,
+
+119
+00:02:49,977 --> 00:02:52,037
+and the Federal Reserve hands it
+
+120
+00:02:51,837 --> 00:02:52,497
+out to banks.
+
+121
+00:02:53,241 --> 00:02:54,941
+But cash only reaches you when
+
+122
+00:02:54,741 --> 00:02:55,701
+you take it out of your
+
+123
+00:02:55,501 --> 00:02:55,941
+account.
+
+124
+00:02:56,561 --> 00:02:58,021
+Withdraw a hundred dollars from an
+
+125
+00:02:57,821 --> 00:02:58,241
+ATM,
+
+126
+00:02:58,041 --> 00:03:00,201
+and your bank balance drops by
+
+127
+00:03:00,001 --> 00:03:00,481
+a hundred.
+
+128
+00:03:01,233 --> 00:03:03,073
+No new money was created.
+
+129
+00:03:03,433 --> 00:03:04,573
+It just changed form:
+
+130
+00:03:04,373 --> 00:03:05,933
+from a number on a screen
+
+131
+00:03:05,733 --> 00:03:07,273
+to paper in your hand.
+
+132
+00:03:08,817 --> 00:03:10,377
+So how much money is out
+
+133
+00:03:10,177 --> 00:03:10,577
+there?
+
+134
+00:03:10,957 --> 00:03:11,637
+In the US,
+
+135
+00:03:11,777 --> 00:03:14,077
+the broad measure is called M2:
+
+136
+00:03:13,877 --> 00:03:14,197
+cash,
+
+137
+00:03:14,397 --> 00:03:16,017
+plus checking and savings accounts,
+
+138
+00:03:16,137 --> 00:03:17,517
+plus a few similar accounts.
+
+139
+00:03:18,291 --> 00:03:20,031
+In September 2026,
+
+140
+00:03:20,231 --> 00:03:23,091
+M2 was about 23.4 trillion dollars.
+
+141
+00:03:24,199 --> 00:03:25,659
+Physical cash in circulation?
+
+142
+00:03:25,979 --> 00:03:27,319
+About 2.5 trillion.
+
+143
+00:03:27,499 --> 00:03:28,719
+That's the one dollar in ten.
+
+144
+00:03:29,236 --> 00:03:30,476
+In 1960,
+
+145
+00:03:30,636 --> 00:03:33,356
+M2 was about 304 billion dollars.
+
+146
+00:03:34,176 --> 00:03:34,716
+Today,
+
+147
+00:03:34,876 --> 00:03:36,616
+it's more than seventy times bigger.
+
+148
+00:03:37,315 --> 00:03:39,035
+The economy and prices grew a
+
+149
+00:03:38,835 --> 00:03:40,355
+lot over those decades too.
+
+150
+00:03:40,715 --> 00:03:42,015
+But most of that money was
+
 151
-00:03:43,415 --> 00:03:45,415
-that requirement has been zero since
+00:03:41,815 --> 00:03:43,835
+created the same way Maya's was:
 
 152
-00:03:45,215 --> 00:03:46,175
-March 2020.
+00:03:43,635 --> 00:03:45,075
+by banks making loans.
 
 153
-00:03:46,874 --> 00:03:48,824
-Banks still hold about 3 trillion
+00:03:46,583 --> 00:03:47,263
+Right now,
 
 154
-00:03:48,624 --> 00:03:50,274
-dollars of reserves anyway,
+00:03:47,063 --> 00:03:49,963
+US commercial banks hold about 19.8
 
 155
-00:03:50,834 --> 00:03:52,394
-because they need cash on hand
+00:03:49,763 --> 00:03:51,263
+trillion dollars of deposits,
 
 156
-00:03:52,194 --> 00:03:53,794
-to pay each other and their
+00:03:51,063 --> 00:03:54,183
+and about 14.2 trillion dollars of
 
 157
-00:03:53,594 --> 00:03:54,094
-customers.
+00:03:53,983 --> 00:03:54,443
+loans.
 
 158
-00:03:54,674 --> 00:03:56,734
-So the requirement isn't what holds
+00:03:55,014 --> 00:03:56,354
+Most of the rest of what
 
 159
-00:03:56,534 --> 00:03:57,234
-them back.
+00:03:56,154 --> 00:03:57,814
+they own is government bonds,
 
 160
-00:03:58,583 --> 00:03:59,823
-The real limits are different.
+00:03:58,054 --> 00:03:58,794
+other securities,
 
 161
-00:03:59,623 --> 00:04:00,663
-Limit one:
+00:03:59,014 --> 00:04:00,254
+and reserves at the Fed.
 
 162
-00:04:00,903 --> 00:04:01,283
-borrowers.
+00:04:01,617 --> 00:04:03,317
+So if banks can type money
 
 163
-00:04:01,963 --> 00:04:03,263
-A bank needs people it trusts
+00:04:03,117 --> 00:04:03,897
+into existence,
 
 164
-00:04:03,063 --> 00:04:04,163
-to pay it back.
+00:04:04,577 --> 00:04:06,277
+why don't they create infinite amounts?
 
 165
-00:04:04,383 --> 00:04:05,583
-When a borrower can't pay,
+00:04:07,091 --> 00:04:08,591
+You might think it's the reserve
 
 166
-00:04:05,703 --> 00:04:06,803
-the bank takes the loss.
+00:04:08,391 --> 00:04:09,091
+requirement:
 
 167
-00:04:07,545 --> 00:04:08,265
-Limit two:
+00:04:09,351 --> 00:04:10,951
+the rule that banks must keep
 
 168
-00:04:08,325 --> 00:04:08,745
-capital.
+00:04:10,751 --> 00:04:12,271
+a slice of their deposits at
 
 169
-00:04:09,285 --> 00:04:10,985
-Regulators make banks fund part of
+00:04:12,071 --> 00:04:12,851
+the central bank.
 
 170
-00:04:10,785 --> 00:04:12,265
-their loans with their own money,
+00:04:13,381 --> 00:04:14,281
+In the US,
 
 171
-00:04:12,365 --> 00:04:13,385
-the shareholders' money,
+00:04:14,081 --> 00:04:16,081
+that requirement has been zero since
 
 172
-00:04:13,345 --> 00:04:14,725
-as a cushion against losses.
+00:04:15,881 --> 00:04:16,841
+March 2020.
 
 173
-00:04:15,546 --> 00:04:16,426
-Limit three:
+00:04:17,540 --> 00:04:19,490
+Banks still hold about 3 trillion
 
 174
-00:04:16,546 --> 00:04:17,226
-interest rates.
+00:04:19,290 --> 00:04:20,940
+dollars of reserves anyway,
 
 175
-00:04:17,726 --> 00:04:19,266
-The Federal Reserve sets the rate
+00:04:21,500 --> 00:04:23,060
+because they need cash on hand
 
 176
-00:04:19,066 --> 00:04:20,546
-that ripples through every loan.
+00:04:22,860 --> 00:04:24,460
+to pay each other and their
 
 177
-00:04:20,926 --> 00:04:21,846
-When rates go up,
+00:04:24,260 --> 00:04:24,760
+customers.
 
 178
-00:04:22,126 --> 00:04:22,906
-borrowing gets expensive,
+00:04:25,340 --> 00:04:27,400
+So the requirement isn't what holds
 
 179
-00:04:23,306 --> 00:04:24,226
-fewer people borrow,
+00:04:27,200 --> 00:04:27,900
+them back.
 
 180
-00:04:24,346 --> 00:04:25,806
-and less new money gets created.
+00:04:29,250 --> 00:04:30,490
+The real limits are different.
 
 181
-00:04:26,589 --> 00:04:27,809
-And limit four:
+00:04:30,290 --> 00:04:31,330
+Limit one:
 
 182
-00:04:27,609 --> 00:04:28,449
-confidence.
+00:04:31,570 --> 00:04:31,950
+borrowers.
 
 183
-00:04:29,109 --> 00:04:30,489
-Your deposit is a promise.
+00:04:32,630 --> 00:04:33,930
+A bank needs people it trusts
 
 184
-00:04:31,089 --> 00:04:32,529
-If too many people want that
+00:04:33,730 --> 00:04:34,830
+to pay it back.
 
 185
-00:04:32,329 --> 00:04:33,469
-promise paid at once,
+00:04:35,050 --> 00:04:36,250
+When a borrower can't pay,
 
 186
-00:04:33,829 --> 00:04:35,169
-a bank can run out of
+00:04:36,370 --> 00:04:37,470
+the bank takes the loss.
 
 187
-00:04:34,969 --> 00:04:35,409
-cash.
+00:04:38,212 --> 00:04:38,932
+Limit two:
 
 188
-00:04:36,850 --> 00:04:38,510
-That's exactly what happened to Silicon
+00:04:38,992 --> 00:04:39,412
+capital.
 
 189
-00:04:38,310 --> 00:04:40,610
-Valley Bank in March 2023.
+00:04:39,952 --> 00:04:41,652
+Regulators make banks fund part of
 
 190
-00:04:41,192 --> 00:04:42,232
-On March 9,
+00:04:41,452 --> 00:04:42,932
+their loans with their own money,
 
 191
-00:04:42,252 --> 00:04:43,792
-customers tried to pull out 42
+00:04:43,032 --> 00:04:44,052
+the shareholders' money,
 
 192
-00:04:43,592 --> 00:04:45,652
-billion dollars in a single day,
+00:04:44,012 --> 00:04:45,392
+as a cushion against losses.
 
 193
-00:04:45,852 --> 00:04:47,492
-according to the Federal Reserve's own
+00:04:46,213 --> 00:04:47,093
+Limit three:
 
 194
-00:04:47,292 --> 00:04:47,752
-review.
+00:04:47,213 --> 00:04:47,893
+interest rates.
 
 195
-00:04:48,372 --> 00:04:49,092
-The next day,
+00:04:48,393 --> 00:04:49,933
+The Federal Reserve sets the rate
 
 196
-00:04:49,092 --> 00:04:50,192
-the bank was shut down.
+00:04:49,733 --> 00:04:51,213
+that ripples through every loan.
 
 197
-00:04:51,417 --> 00:04:52,837
-That's why the US has deposit
+00:04:51,593 --> 00:04:52,513
+When rates go up,
 
 198
-00:04:52,637 --> 00:04:53,397
-insurance.
+00:04:52,793 --> 00:04:53,573
+borrowing gets expensive,
 
 199
-00:04:53,997 --> 00:04:56,573
-The FDIC covers up to 250,000
+00:04:53,973 --> 00:04:54,893
+fewer people borrow,
 
 200
-00:04:56,373 --> 00:04:57,937
-dollars per depositor,
+00:04:55,013 --> 00:04:56,473
+and less new money gets created.
 
 201
-00:04:57,737 --> 00:04:58,437
-per bank,
+00:04:57,256 --> 00:04:58,476
+And limit four:
 
 202
-00:04:58,237 --> 00:05:00,177
-for each type of account ownership.
+00:04:58,276 --> 00:04:59,116
+confidence.
 
 203
-00:05:00,837 --> 00:05:02,917
-Most people's money sits well under
+00:04:59,776 --> 00:05:01,156
+Your deposit is a promise.
 
 204
-00:05:02,717 --> 00:05:03,337
-that limit.
+00:05:01,756 --> 00:05:03,196
+If too many people want that
 
 205
-00:05:03,617 --> 00:05:05,017
-But it's worth knowing the rule.
+00:05:02,996 --> 00:05:04,136
+promise paid at once,
 
 206
-00:05:06,317 --> 00:05:08,077
-So where does the Federal Reserve
+00:05:04,496 --> 00:05:05,836
+a bank can run out of
 
 207
-00:05:07,877 --> 00:05:08,597
-come in?
+00:05:05,636 --> 00:05:06,076
+cash.
 
 208
-00:05:09,037 --> 00:05:10,517
-The Fed creates a different kind
+00:05:07,517 --> 00:05:09,177
+That's exactly what happened to Silicon
 
 209
-00:05:10,317 --> 00:05:10,977
-of money:
+00:05:08,977 --> 00:05:11,277
+Valley Bank in March 2023.
 
 210
-00:05:11,097 --> 00:05:11,457
-reserves,
+00:05:11,859 --> 00:05:12,979
+The bank had put a lot
 
 211
-00:05:11,977 --> 00:05:13,197
-the money banks use to pay
+00:05:12,779 --> 00:05:14,539
+of its customers' money into long-term
 
 212
-00:05:12,997 --> 00:05:13,637
-each other.
+00:05:14,339 --> 00:05:14,759
+bonds.
 
 213
-00:05:14,321 --> 00:05:15,381
-In March 2020,
+00:05:15,179 --> 00:05:16,199
+When interest rates jumped,
 
 214
-00:05:15,241 --> 00:05:16,681
-as the pandemic hit,
+00:05:16,319 --> 00:05:17,459
+those bonds lost value,
 
 215
-00:05:16,821 --> 00:05:18,321
-the Fed's balance sheet was about
+00:05:17,539 --> 00:05:18,519
+and when customers heard,
 
 216
-00:05:18,121 --> 00:05:19,981
-4.2 trillion dollars.
+00:05:18,639 --> 00:05:19,639
+they rushed to get their money
 
 217
-00:05:20,361 --> 00:05:21,361
-By April 2022,
+00:05:19,439 --> 00:05:19,919
+out.
 
 218
-00:05:21,501 --> 00:05:22,841
-it had more than doubled,
+00:05:20,468 --> 00:05:21,508
+On March 9,
 
 219
-00:05:22,641 --> 00:05:24,121
-to almost 9 trillion.
+00:05:21,528 --> 00:05:23,068
+customers tried to pull out 42
 
 220
-00:05:24,773 --> 00:05:25,913
-At the same time,
+00:05:22,868 --> 00:05:24,928
+billion dollars in a single day,
 
 221
-00:05:25,993 --> 00:05:27,393
-the government sent out stimulus,
+00:05:25,128 --> 00:05:26,768
+according to the Federal Reserve's own
 
 222
-00:05:27,673 --> 00:05:28,653
-banks kept lending,
+00:05:26,568 --> 00:05:27,028
+review.
 
 223
-00:05:28,853 --> 00:05:30,073
-and deposits poured in.
+00:05:27,648 --> 00:05:28,368
+The next day,
 
 224
-00:05:31,283 --> 00:05:33,623
-From February 2020 to March 2022,
+00:05:28,368 --> 00:05:29,468
+the bank was shut down.
 
 225
-00:05:33,643 --> 00:05:36,023
-M2 jumped about 41 percent,
+00:05:30,683 --> 00:05:32,103
+That's why the US has deposit
 
 226
-00:05:35,823 --> 00:05:38,963
-from 15.5 to 21.8 trillion dollars.
+00:05:31,903 --> 00:05:32,663
+insurance.
 
 227
-00:05:39,634 --> 00:05:40,974
-In February 2021,
+00:05:33,263 --> 00:05:35,839
+The FDIC covers up to 250,000
 
 228
-00:05:41,314 --> 00:05:43,314
-it was growing almost 27 percent
+00:05:35,639 --> 00:05:37,203
+dollars per depositor,
 
 229
-00:05:43,114 --> 00:05:43,674
-a year:
+00:05:37,003 --> 00:05:37,703
+per bank,
 
 230
-00:05:43,974 --> 00:05:45,494
-the fastest pace in data going
+00:05:37,503 --> 00:05:39,443
+for each type of account ownership.
 
 231
-00:05:45,294 --> 00:05:46,494
-back to 1960.
+00:05:40,104 --> 00:05:42,184
+Most people's money sits well under
 
 232
-00:05:47,244 --> 00:05:48,504
-And what came next?
+00:05:41,984 --> 00:05:42,604
+that limit.
 
 233
-00:05:48,844 --> 00:05:50,744
-Inflation hit about 9 percent in
+00:05:42,884 --> 00:05:44,284
+But it's worth knowing the rule.
 
 234
-00:05:50,544 --> 00:05:51,664
-June 2022,
+00:05:45,583 --> 00:05:47,283
+So where does the Federal Reserve
 
 235
-00:05:51,924 --> 00:05:53,624
-the highest in about four decades.
+00:05:47,083 --> 00:05:47,843
+come in?
 
 236
-00:05:54,315 --> 00:05:56,215
-Economists still argue about how much
+00:05:48,283 --> 00:05:49,903
+The Fed creates a different kind
 
 237
-00:05:56,015 --> 00:05:57,035
-of that was the money,
+00:05:49,703 --> 00:05:50,323
+of money:
 
 238
-00:05:56,835 --> 00:05:58,655
-and how much was supply chains
+00:05:50,603 --> 00:05:50,803
+reserves,
 
 239
-00:05:58,455 --> 00:05:59,075
-and energy.
+00:05:51,443 --> 00:05:52,763
+the money banks use to pay
 
 240
-00:05:59,575 --> 00:06:00,815
-But the timing is hard to
+00:05:52,563 --> 00:05:53,143
+each other.
 
 241
-00:06:00,615 --> 00:06:01,155
-ignore.
+00:05:53,623 --> 00:05:55,303
+It mostly does this by buying
 
 242
-00:06:02,583 --> 00:06:03,403
-Since then,
+00:05:55,103 --> 00:05:56,843
+government bonds and mortgage bonds,
 
 243
-00:06:03,643 --> 00:06:04,823
-the Fed has shrunk its balance
+00:05:56,643 --> 00:05:58,583
+and paying for them with brand-new
 
 244
-00:06:04,623 --> 00:06:06,763
-sheet to about 6.7 trillion dollars,
+00:05:58,383 --> 00:05:58,883
+reserves.
 
 245
-00:06:07,343 --> 00:06:09,753
-and M2 is about 23.4 trillion.
+00:05:59,543 --> 00:06:01,403
+That's called quantitative easing.
 
 246
-00:06:10,535 --> 00:06:12,715
-And inflation today is about 4
+00:06:01,929 --> 00:06:02,989
+In March 2020,
 
 247
-00:06:12,515 --> 00:06:13,015
-percent.
+00:06:02,849 --> 00:06:04,289
+as the pandemic hit,
 
 248
-00:06:14,383 --> 00:06:15,963
-So what does all this mean
+00:06:04,429 --> 00:06:05,929
+the Fed's balance sheet was about
 
 249
-00:06:15,763 --> 00:06:16,343
-for you?
+00:06:05,729 --> 00:06:07,589
+4.2 trillion dollars.
 
 250
-00:06:16,903 --> 00:06:17,283
-Three things.
+00:06:07,969 --> 00:06:08,969
+By April 2022,
 
 251
-00:06:17,843 --> 00:06:19,143
-This isn't financial advice,
+00:06:09,109 --> 00:06:10,449
+it had more than doubled,
 
 252
-00:06:19,263 --> 00:06:20,483
-just how the system works.
+00:06:10,249 --> 00:06:11,729
+to almost 9 trillion.
 
 253
-00:06:21,380 --> 00:06:21,840
-One:
+00:06:12,381 --> 00:06:13,521
+At the same time,
 
 254
-00:06:22,020 --> 00:06:23,300
-the money in your bank account
+00:06:13,601 --> 00:06:15,001
+the government sent out stimulus,
 
 255
-00:06:23,100 --> 00:06:24,400
-is a promise from your bank,
+00:06:15,281 --> 00:06:16,261
+banks kept lending,
 
 256
-00:06:24,200 --> 00:06:26,840
-insured up to 250,000 dollars.
+00:06:16,461 --> 00:06:17,681
+and deposits poured in.
 
 257
-00:06:27,240 --> 00:06:28,360
-That's why the limit matters.
+00:06:18,917 --> 00:06:21,257
+From February 2020 to March 2022,
 
 258
-00:06:29,293 --> 00:06:29,793
-Two:
+00:06:21,277 --> 00:06:23,657
+M2 jumped about 41 percent,
 
 259
-00:06:29,933 --> 00:06:30,653
-when you borrow,
+00:06:23,457 --> 00:06:26,597
+from 15.5 to 21.8 trillion dollars.
 
 260
-00:06:30,933 --> 00:06:32,773
-you're not borrowing someone else's savings.
+00:06:27,267 --> 00:06:28,607
+In February 2021,
 
 261
-00:06:33,273 --> 00:06:34,393
-You're creating new money,
+00:06:28,947 --> 00:06:30,947
+it was growing almost 27 percent
 
 262
-00:06:34,473 --> 00:06:35,853
-and the interest you pay is
+00:06:30,747 --> 00:06:31,307
+a year:
 
 263
-00:06:35,653 --> 00:06:36,993
-how the bank earns from it.
+00:06:31,607 --> 00:06:33,127
+the fastest pace in data going
 
 264
-00:06:37,501 --> 00:06:37,961
-Three:
+00:06:32,927 --> 00:06:34,127
+back to 1960.
 
 265
-00:06:38,241 --> 00:06:40,001
-when new money is created faster
+00:06:34,877 --> 00:06:36,137
+And what came next?
 
 266
-00:06:39,801 --> 00:06:41,301
-than the economy grows,
+00:06:36,477 --> 00:06:38,377
+Inflation hit about 9 percent in
 
 267
-00:06:41,621 --> 00:06:42,641
-prices can rise,
+00:06:38,177 --> 00:06:39,297
+June 2022,
 
 268
-00:06:42,441 --> 00:06:44,861
-and cash sitting still slowly loses
+00:06:39,557 --> 00:06:41,257
+the highest in about four decades.
 
 269
-00:06:44,661 --> 00:06:45,281
-value.
+00:06:41,948 --> 00:06:43,848
+Economists still argue about how much
 
 270
-00:06:45,921 --> 00:06:47,941
-Our inflation video shows exactly how
+00:06:43,648 --> 00:06:44,668
+of that was the money,
 
 271
-00:06:47,741 --> 00:06:48,161
-much.
+00:06:44,468 --> 00:06:46,288
+and how much was supply chains
 
 272
-00:06:49,550 --> 00:06:50,370
-Let's recap.
+00:06:46,088 --> 00:06:46,708
+and energy.
 
 273
-00:06:50,730 --> 00:06:52,530
-Only about one dollar in ten
+00:06:47,208 --> 00:06:48,448
+But the timing is hard to
 
 274
-00:06:52,330 --> 00:06:53,030
-is cash.
+00:06:48,248 --> 00:06:48,788
+ignore.
 
 275
-00:06:53,850 --> 00:06:55,670
-Banks create most money by making
+00:06:50,217 --> 00:06:51,037
+Since then,
 
 276
-00:06:55,470 --> 00:06:56,010
-loans,
+00:06:51,277 --> 00:06:52,457
+the Fed has shrunk its balance
 
 277
-00:06:55,810 --> 00:06:57,670
-and repayments destroy it.
+00:06:52,257 --> 00:06:54,397
+sheet to about 6.7 trillion dollars,
 
 278
-00:06:58,110 --> 00:06:59,790
-The reserve requirement is zero,
+00:06:54,977 --> 00:06:57,387
+and M2 is about 23.4 trillion.
 
 279
-00:06:59,930 --> 00:07:01,570
-so what really limits banks is
+00:06:58,168 --> 00:06:59,948
+And something rare happened as interest
 
 280
-00:07:01,370 --> 00:07:01,910
-borrowers,
+00:06:59,748 --> 00:07:00,528
+rates rose.
 
 281
-00:07:02,330 --> 00:07:02,710
-capital,
+00:07:00,928 --> 00:07:03,468
+From December 2022 to early 2024,
 
 282
-00:07:03,030 --> 00:07:03,710
-interest rates,
+00:07:03,708 --> 00:07:05,108
+M2 was smaller than a year
 
 283
-00:07:03,510 --> 00:07:04,270
-and trust.
+00:07:04,908 --> 00:07:05,368
+before:
 
 284
-00:07:04,925 --> 00:07:05,905
-So here's my question:
+00:07:05,888 --> 00:07:07,228
+the first yearly drops in data
 
 285
-00:07:06,065 --> 00:07:07,105
-did you know banks create money
+00:07:07,028 --> 00:07:08,408
+going back to 1960.
 
 286
-00:07:06,905 --> 00:07:07,585
-when they lend?
+00:07:09,008 --> 00:07:09,748
+Fewer new loans,
 
 287
-00:07:07,965 --> 00:07:08,565
-Yes or no,
+00:07:09,948 --> 00:07:10,708
+more repayments,
 
 288
-00:07:08,625 --> 00:07:09,445
-tell me in the comments.
+00:07:10,508 --> 00:07:12,388
+so money was destroyed faster than
 
 289
-00:07:09,245 --> 00:07:10,205
-And subscribe,
+00:07:12,188 --> 00:07:12,848
+it was created.
 
 290
-00:07:10,005 --> 00:07:11,605
-because on Monday we look at
+00:07:13,545 --> 00:07:15,725
+And inflation today is about 4
 
 291
-00:07:11,405 --> 00:07:11,805
-gold:
+00:07:15,525 --> 00:07:16,025
+percent.
 
 292
-00:07:11,605 --> 00:07:13,465
-down 23 percent from its record.
+00:07:17,417 --> 00:07:18,997
+So what does all this mean
 
 293
-00:07:13,585 --> 00:07:14,045
-What happened?
+00:07:18,797 --> 00:07:19,377
+for you?
 
 294
-00:07:14,649 --> 00:07:16,749
-This video is for education only.
+00:07:19,937 --> 00:07:20,317
+Three things.
 
 295
-00:07:17,209 --> 00:07:18,509
+00:07:20,877 --> 00:07:22,177
+This isn't financial advice,
+
+296
+00:07:22,297 --> 00:07:23,517
+just how the system works.
+
+297
+00:07:24,413 --> 00:07:24,873
+One:
+
+298
+00:07:25,053 --> 00:07:26,333
+the money in your bank account
+
+299
+00:07:26,133 --> 00:07:27,433
+is a promise from your bank,
+
+300
+00:07:27,233 --> 00:07:29,873
+insured up to 250,000 dollars.
+
+301
+00:07:30,273 --> 00:07:31,393
+That's why the limit matters.
+
+302
+00:07:32,326 --> 00:07:32,826
+Two:
+
+303
+00:07:32,966 --> 00:07:33,686
+when you borrow,
+
+304
+00:07:33,966 --> 00:07:35,806
+you're not borrowing someone else's savings.
+
+305
+00:07:36,306 --> 00:07:37,426
+You're creating new money,
+
+306
+00:07:37,506 --> 00:07:38,886
+and the interest you pay is
+
+307
+00:07:38,686 --> 00:07:40,026
+how the bank earns from it.
+
+308
+00:07:40,534 --> 00:07:40,994
+Three:
+
+309
+00:07:41,274 --> 00:07:43,034
+when new money is created faster
+
+310
+00:07:42,834 --> 00:07:44,334
+than the economy grows,
+
+311
+00:07:44,654 --> 00:07:45,674
+prices can rise,
+
+312
+00:07:45,474 --> 00:07:47,894
+and cash sitting still slowly loses
+
+313
+00:07:47,694 --> 00:07:48,314
+value.
+
+314
+00:07:48,954 --> 00:07:50,974
+Our inflation video shows exactly how
+
+315
+00:07:50,774 --> 00:07:51,194
+much.
+
+316
+00:07:52,583 --> 00:07:53,403
+Let's recap.
+
+317
+00:07:53,763 --> 00:07:55,563
+Only about one dollar in ten
+
+318
+00:07:55,363 --> 00:07:56,063
+is cash.
+
+319
+00:07:56,883 --> 00:07:58,703
+Banks create most money by making
+
+320
+00:07:58,503 --> 00:07:59,043
+loans,
+
+321
+00:07:58,843 --> 00:08:00,703
+and repayments destroy it.
+
+322
+00:08:01,143 --> 00:08:02,823
+The reserve requirement is zero,
+
+323
+00:08:02,963 --> 00:08:04,603
+so what really limits banks is
+
+324
+00:08:04,403 --> 00:08:04,943
+borrowers,
+
+325
+00:08:05,363 --> 00:08:05,743
+capital,
+
+326
+00:08:06,063 --> 00:08:06,743
+interest rates,
+
+327
+00:08:06,543 --> 00:08:07,303
+and trust.
+
+328
+00:08:07,958 --> 00:08:08,938
+So here's my question:
+
+329
+00:08:09,098 --> 00:08:10,138
+did you know banks create money
+
+330
+00:08:09,938 --> 00:08:10,618
+when they lend?
+
+331
+00:08:10,998 --> 00:08:11,598
+Yes or no,
+
+332
+00:08:11,658 --> 00:08:12,478
+tell me in the comments.
+
+333
+00:08:12,278 --> 00:08:13,238
+And subscribe,
+
+334
+00:08:13,038 --> 00:08:14,638
+because on Monday we look at
+
+335
+00:08:14,438 --> 00:08:14,838
+gold:
+
+336
+00:08:14,638 --> 00:08:16,498
+down 23 percent from its record.
+
+337
+00:08:16,618 --> 00:08:17,078
+What happened?
+
+338
+00:08:17,683 --> 00:08:19,783
+This video is for education only.
+
+339
+00:08:20,243 --> 00:08:21,543
 It's not financial advice.
 

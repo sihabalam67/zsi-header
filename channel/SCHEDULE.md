@@ -38,6 +38,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Tue Nov 10 | Short | Same house, $876 more per month | https://youtu.be/rIS1CBTvCBo |
 | Wed Nov 11 | Short | America stopped building homes | https://youtu.be/Ik86OxsBMKA |
 | Thu Nov 12 | Short | Nobody is hiring | https://youtu.be/re9qUtJMMdA |
+| Fri Nov 13 | Long | 2 PM: Only 1 dollar in 10 is cash. How banks create money (8.4 min) | https://youtu.be/ixGj1vl5eQE |
 
 Next: week 3 (Fri Nov 13 to Wed Nov 18) is made automatically on Thu Nov 5: ep06 "How banks create money out of
 thin air" plus one trending topic. WEEK1.md and WEEK2.md are the original plans and are out of date.

@@ -415,6 +415,8 @@ def s_atm(c, x):
         kk = pop(t, L[2] + 0.4)
         c.rrect(330, 585 - 30, 950, 585 + 30, 20, GOLD, a=clamp(kk))
         c.text(640, 585, 'same money, new form', 32, INK, 900, a=clamp(kk), shadow=False)
+        pulse(c, t, (320, 545, 960, 625), GOLD, 24)
+
 
 
 def s_books(c, x):
@@ -483,6 +485,7 @@ def s_limits(c, x):
     c.text(640, 420, 'US reserve requirement since March 2020', 30, WHITE, 900, a=fade(t, L[2] + 1.4))
     if len(L) > 3 and t > L[3]:
         chip(c, 640, 520, f'reserves banks hold anyway: about ${RES_NOW:.1f} trillion', MINT, pop(t, L[3] + 1.6), 26)
+        pulse(c, t, (250, 488, 1030, 552), MINT, 30, on=t > L[3] + 1.9)
     source(c, t, 'Federal Reserve, effective March 26, 2020; FRED: TOTRESNS')
 
 
@@ -663,9 +666,10 @@ def s_recap(c, x):
     specks(c, t, 77)
     if t < L[1]:
         head(c, t, 'Recap')
-        rows = [('1 dollar in 10 is cash', 0.3), ('banks create money by lending', 2.4),
-                ('repayments destroy it', 4.6), ('reserve requirement: 0%', 6.4),
-                ('limits: borrowers, capital, rates, trust', 8.4)]
+        sp = max(2.0, (L[1] - L[0] - 1.5) / 5)
+        rows = [('1 dollar in 10 is cash', 0.3), ('banks create money by lending', 0.3 + sp),
+                ('repayments destroy it', 0.3 + 2 * sp), ('reserve requirement: 0%', 0.3 + 3 * sp),
+                ('limits: borrowers, capital, rates, trust', 0.3 + 4 * sp)]
         for j, (txt, at) in enumerate(rows):
             k = pop(t, L[0] + at)
             if k <= 0:
@@ -673,6 +677,8 @@ def s_recap(c, x):
             c.circle(300, 150 + j * 85, 22 * clamp(k), MINT)
             c.icon('check', 300, 150 + j * 85, 26 * clamp(k), INK, stroke=3)
             c.text(340, 150 + j * 85, txt, 32, WHITE, 900, anchor='lm', a=clamp(k))
+            if j == 4 or t < L[0] + rows[j + 1][1]:
+                pulse(c, t, (270, 150 + j * 85 - 36, 1010, 150 + j * 85 + 36), MINT, 30)
         return
     k = pop(t, L[1] + 0.3)
     c.text(640, 200, 'Did you know banks', 50, WHITE, 900, a=clamp(k))
@@ -860,7 +866,7 @@ SCENES = [
         "comments. And subscribe, because on Monday we look at gold: down 23 percent from its record. What "
         "happened?",
         "This video is for education only. It's not financial advice.",
-    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 0.3 + 2.0 * j, 'pop') for j in range(5)]
+    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 0.3 + max(2.0, (L[1] - L[0] - 1.5) / 5) * j, 'pop') for j in range(5)]
         + [(L[1] + 0.3, 'ding'), (L[1] + 1.2, 'pop'), (L[1] + 1.4, 'pop'), (L[1] + 5.0, 'pop')]),
 ]
 SHORTS = {}
@@ -900,7 +906,8 @@ if __name__ == '__main__':
     if '--stills' in sys.argv:
         previews(SCENES, SHORTS, os.path.join(BUILD, 'previews'))
         sys.exit()
-    total, chapters = build(SCENES, os.path.join(OUT, 'ep06_banks.mp4'), BUILD,
+    only = [int(a) for a in sys.argv[sys.argv.index('--only') + 1].split(',')] if '--only' in sys.argv else None
+    total, chapters = build(SCENES, os.path.join(OUT, 'ep06_banks.mp4'), BUILD, only=only,
                             srt_path=os.path.join(OUT, 'ep06_banks.en.srt'))
     with open(os.path.join(OUT, 'ep06_chapters.txt'), 'w') as f:
         for at, name in chapters:

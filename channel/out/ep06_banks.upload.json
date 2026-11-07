@@ -1,0 +1,33 @@
+{
+ "video": "channel/out/ep06_banks.mp4",
+ "title": "Only 1 Dollar in 10 Is Cash. How Banks Create Money Out of Thin Air",
+ "description": "Only about 1 dollar in 10 in America is physical cash: $2.5 trillion of currency out of $23.4 trillion in M2 (September 2026). Most of the rest was created by banks when they made loans. A loan doesn't lend out someone else's savings: it creates a brand-new deposit, and paying the loan back destroys that money. The Bank of England explained this in 2014.\n\nWe follow a $300,000 mortgage through a bank's books, show where cash fits in, why the US reserve requirement has been 0% since March 2020, what really limits banks (borrowers, capital, interest rates and confidence), what happened at Silicon Valley Bank, and how the 2020 money flood (M2 up about 40%, the Fed's balance sheet from $4.2 trillion to almost $9 trillion) came before 9% inflation.\n\n0:00 Intro: 1 dollar in 10\n0:27 The textbook story\n0:59 How a loan creates money\n1:47 Paying it back destroys money\n2:44 Where cash fits in\n3:08 How much money is there?\n4:01 What stops banks?\n5:06 When the promise breaks\n5:45 The Fed and the 2020 money flood\n7:16 What it means for you\n7:52 Recap\n\nSources: Bank of England, \"Money creation in the modern economy\", Quarterly Bulletin 2014 Q1 (McLeay, Radia and Thomas). Federal Reserve: reserve requirement ratios set to 0% effective March 26, 2020; \"Review of the Federal Reserve's Supervision and Regulation of Silicon Valley Bank\" (April 2023): $42 billion withdrawn on March 9, 2023. FDIC: deposit insurance up to $250,000 per depositor, per insured bank, for each account ownership category. FRED (Federal Reserve Bank of St. Louis): M2SL, WCURCIR (currency in circulation), WALCL (Fed total assets), TOTRESNS (reserves), DPSACBW027SBOG (commercial bank deposits), TOTLL (loans and leases), CPIAUCSL (CPI, 12-month change), MORTGAGE30US (Freddie Mac 30-year fixed, Oct 22, 2026: 7.32%), SNDR (FDIC national savings rate, Oct 2026: 0.38%). Mortgage example: $300,000, 30 years, fixed 7.32%, about $2,061 a month, about $742,000 paid in total; taxes and insurance not included.\n\nWatch the Short: Banks create money out of thin air https://youtu.be/PYoQ_INlBVA\nInflation explained: https://youtu.be/9MxTKS-nKNc\n\nThis video is for education only and is not financial advice.\nOriginal script and animation; public domain photos (Wikimedia Commons). Narrated with an AI voice.",
+ "tags": [
+  "how banks create money",
+  "money creation",
+  "where does money come from",
+  "fractional reserve banking",
+  "money multiplier",
+  "bank of england money creation",
+  "m2 money supply",
+  "reserve requirement",
+  "silicon valley bank",
+  "fdic insurance",
+  "quantitative easing",
+  "federal reserve",
+  "inflation",
+  "banking explained",
+  "coin theory",
+  "economics explained",
+  "money explained",
+  "personal finance",
+  "animated explainer"
+ ],
+ "categoryId": 27,
+ "thumbnail": "channel/out/thumbs/ep06_banks_a.jpg",
+ "captions": "channel/out/ep06_banks.en.srt",
+ "privacy": "private",
+ "madeForKids": false,
+ "syntheticMedia": false,
+ "language": "en"
+}

@@ -1,0 +1,20 @@
+{
+ "videos": {
+  "ep06_banks": "2026-11-13T14:00"
+ },
+ "playlists": {
+  "ep06": [
+   "Banking, Explained",
+   "How banks and money really work, with official data."
+  ]
+ },
+ "launch_questions": {
+  "ep06_banks": "Did you know banks create money when they lend? Yes or no?"
+ },
+ "links": {
+  "ep06_banks": [
+   "Why money loses value: inflation",
+   "ep01_inflation"
+  ]
+ }
+}
