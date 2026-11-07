@@ -51,6 +51,8 @@ SPEC = {
     'sx04_short_middle': (1, '52%', 'MIDDLE\nCLASS?', 'ARE\nYOU?', YEL, None, 0),
     'sx10_short_midterm_stocks': (1, '19 / 19', 'NEVER\nDOWN', '20 FOR\n20?', GRN, 'cashsuit', 1),
     'sx11_short_election_rally': (1, '+1,570\nDOW', 'BEST DAY\nIN 19 MONTHS', 'WHY DID\nSTOCKS JUMP?', GRN, 'cashhands', 1),
+    'sx05_short_five_a_day': (1, '$5 A DAY\n= $186K', '30 YEARS\nLATER', 'WOULD\nYOU?', GRN, None, 0,
+                              ('footage/sx05/rolljar_end.jpg', 'footage/sx05/piggy_s.jpg', 'footage/sx05/coffee_s.jpg')),
     'sx12_short_hens': (1, '$100 OR\n$660?', 'SAME $100\n4 FRIENDS', 'WHICH ONE\nARE YOU?', GRN, 'hens_board', 0),
     'ep01_inflation': (0, '$100\nNOW $12', 'WHERE\nIT WENT', 'YOUR\n$100?', YEL, None, 0),
     'ep02_housing': (0, '$23K\nNOW $393K', 'PRICED\nOUT', 'WILL YOU\nEVER BUY?', YEL, None, 0),

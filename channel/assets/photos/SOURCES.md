@@ -18,3 +18,5 @@ Design "Coin Theory B-roll - Horizontal" (DAHZ1DzZH1Y), pages 1-3, silent, in as
 ## Canva stock video for sx05 (owner's Canva Team account, Canva Content License), exported Nov 3, 2026
 Design "B-roll sx05 5 dollars a day - Vertical" (DAHZ12vJvkk), 12 pages, filled by ChatGPT agent for the owner;
 export in assets/footage/sx05/all.mp4 (139.8 s, 1080x1920, no audio).
+Used in sx05_short_five_a_day (Nov 7): cut into coffee/coins/piggy/calendar/plant/rolljar/phone.mp4 (+ stills
+rolljar_end, coins_s, piggy_s, coffee_s.jpg for the hook and thumbnails).
