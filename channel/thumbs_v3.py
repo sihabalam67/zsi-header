@@ -62,6 +62,8 @@ SPEC = {
                           ('flow/binance_shock.jpg', 'flow/binance_vault.jpg', 'flow/binance_safe.jpg')),
     'ep08_midterms': (0, '18 / 18', 'NEVER\nFAILED', 'WILL 2026\nBREAK IT?', GRN, None, 1,
                       ('flow/ep08/img6.jpg', 'flow/ep08/img3.jpg', 'flow/ep08/img1.jpg')),
+    'ep06_banks': (0, 'ONLY 1 IN 10\nIS CASH', 'MONEY FROM\nTHIN AIR', 'WHO MADE\nYOUR MONEY?', GRN, None, 0,
+                   ('thumbsrc/ep06_cash_us.jpg', 'photos/ep06s/vault.png', 'photos/ep06s/bank.jpg')),
     'ep05_jobs': (0, '60,000\nBUYOUTS', 'LAYOFFS?', 'IS YOUR\nJOB SAFE?', YEL, None, 1),
 }
 
@@ -122,9 +124,9 @@ def block(th, txt, cx, cy, maxw, size, color, stroke=16, tilt=0, glow=None):
         return sz
     sizes = [fit(ln) for ln in lines]
     y = cy - sum(s * 0.95 for s in sizes) / 2 + sizes[0] * 0.48
-    for ln, s in zip(lines, sizes):
+    for i, (ln, s) in enumerate(zip(lines, sizes)):
         th.text(cx, y, ln, s, color=color, stroke=stroke, stroke_color=(0, 0, 0), tilt=tilt, glow=glow)
-        y += s * 0.95
+        y += (s + sizes[min(i + 1, len(sizes) - 1)]) / 2 * 0.95  # space by both lines, so a bigger next line never overlaps
 
 
 def alert_bar(th, LW, LH, vertical):
