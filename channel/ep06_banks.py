@@ -36,6 +36,8 @@ CPI = series('CPIAUCSL')
 DEP = series('DPSACBW027SBOG')            # $ billions
 LNS = series('TOTLL')                     # $ billions
 RES = series('TOTRESNS')                  # $ billions, reserves of depository institutions
+MORT = series('MORTGAGE30US')             # %, Freddie Mac weekly average 30-year fixed
+SAVE = series('SNDR')                     # %, FDIC national savings rate
 
 M2_NOW, M2_DATE = M2.iloc[-1] / 1000, M2.index[-1]          # $ trillions
 CASH_NOW = CUR.iloc[-1] / 1e6                                 # $ trillions
@@ -55,6 +57,14 @@ INFL_PEAK, INFL_PEAK_DATE = INFL['2021':'2023'].max(), INFL['2021':'2023'].idxma
 INFL_PREV = INFL[(INFL >= INFL_PEAK) & (INFL.index < '2021')].index[-1]   # last time it was this high
 INFL_NOW = INFL.iloc[-1]
 LOAN = 300000
+MORT_NOW, MORT_DATE, SAVE_NOW, SAVE_DATE = MORT.iloc[-1], MORT.index[-1], SAVE.iloc[-1], SAVE.index[-1]
+_r = MORT_NOW / 100 / 12
+PAY = LOAN * _r / (1 - (1 + _r) ** -360)
+TOTAL = PAY * 360
+INTEREST = TOTAL - LOAN
+NEG = (M2.pct_change(12) * 100)
+NEG = NEG[NEG < 0]
+M2_LOW, M2_LOW_DATE = M2['2023':'2024'].min() / 1000, M2['2023':'2024'].idxmin()
 DEP_NOW, LNS_NOW, RES_NOW = DEP.iloc[-1] / 1000, LNS.iloc[-1] / 1000, RES.iloc[-1] / 1000
 BOE = 'Bank of England, "Money creation in the modern economy" (2014)'
 
@@ -117,6 +127,12 @@ def tacct(c, t, x0, y0, w, rows, k=1.0, title=None):
         n[side] += 1
         c.text(cx, cy, label, 20, WHITE, 800, a=clamp(kk) * a)
         c.text(cx, cy + 36, val, int(34 * (0.7 + 0.3 * clamp(kk))), col, 900, a=clamp(kk) * a)
+
+
+def pulse(c, t, box, col, r=20, on=True):
+    """A breathing outline that keeps attention on the element being talked about."""
+    if on:
+        c.rrect(*box, r, None, col, 5, a=0.3 + 0.7 * (0.5 + 0.5 * math.sin(t * 5)))
 
 
 def typed(text, t, at, speed=14):
@@ -222,6 +238,9 @@ def s_textbook(c, x):
         c.rrect(0, 0, W, H, 0, (8, 12, 24, int(150 * fade(t, L[2]))))
         c.text(640, 250, BOE.split(',')[0], 34, WHITE, 900, a=fade(t, L[2] + 0.2))
         c.text(640, 300, '"Money creation in the modern economy", 2014', 24, SKY, 800, a=fade(t, L[2] + 0.4))
+        pulse(c, t, (300, 215, 980, 330), SKY, on=t < L[3])
+        if L[2] + 3.0 < t < L[3]:
+            chip(c, 640, 400, 'in practice: a different story', GOLD, pop(t, L[2] + 3.0), 26)
     if t > L[3]:
         k = pop(t, L[3] + 0.3, 0.3)
         s = lerp(1.8, 1.0, clamp(k))
@@ -272,6 +291,8 @@ def s_type(c, x):
     rows = [(L[1] + 1.0, 'L', 'Loan to Maya', f'+${LOAN:,}', MINT),
             (L[1] + 5.2, 'R', "Maya's deposit", f'+${LOAN:,}', CORAL)]
     tacct(c, t, 140, 120, 640, rows, pop(t, L[1] + 0.2), "MAYA'S BANK: THE BOOKS")
+    if L[1] + 1.0 < t < L[2]:
+        pulse(c, t, (150, 235, 455, 335) if t < L[1] + 5.2 else (465, 235, 770, 335), MINT if t < L[1] + 5.2 else CORAL)
     phone_app(c, 1030, 300, 1.05, t, f'${LOAN:,}' if t > L[1] + 5.2 else '$0', clamp(pop(t, L[1] + 0.4)))
     if t > L[2]:
         kk = pop(t, L[2] + 0.4)
@@ -319,6 +340,39 @@ def s_destroy(c, x):
         c.text(460, 515, 'interest = the bank\'s income', 32, INK, 900, a=clamp(kk), shadow=False)
         for j, lab in enumerate(('salaries', 'savers', 'profit')):
             chip(c, 1030, 450 + j * 55, lab, SKY, pop(t, L[2] + 2.0 + j * 0.6), 22)
+
+
+def s_spread(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 80)
+    if t < L[1]:
+        head(c, t, 'What banks charge vs what they pay')
+        compare_bars(c, t, [('30-year mortgage', MORT_NOW, CORAL), ('Savings account', SAVE_NOW, MINT)], L[0] + 0.5,
+                     2.0, 8, lambda v: f'{v:.2f}%', box=(380, 150, 900, 470), value_size=40, label_size=24)
+        source(c, t, f'Freddie Mac 30-year rate ({MORT_DATE:%b %d}); FDIC national savings rate ({SAVE_DATE:%b %Y})')
+        if t > L[0] + 3.5:
+            pulse(c, t, (380, 140, 640, 480), CORAL)
+        return
+    if t < L[2]:
+        head(c, t, f"Maya's ${LOAN:,} loan at {MORT_NOW:.2f}%")
+        k = pop(t, L[1] + 0.3)
+        c.text(640, 190, f'${PAY:,.0f} a month', int(70 * (0.7 + 0.3 * clamp(k))), GOLD, 900, a=clamp(k), stroke=5)
+        g = ease(clamp((t - L[1] - 3.0) / 1.5))
+        if g > 0:
+            c.rrect(140, 300, 140 + 1000 * LOAN / TOTAL * g, 380, 12, MINT)
+            c.rrect(140 + 1000 * LOAN / TOTAL * g, 300, 140 + 1000 * g, 380, 12, CORAL)
+            c.text(140 + 500 * LOAN / TOTAL, 410, f'loan ${LOAN:,}', 24, MINT, 900, a=g)
+            c.text(140 + 1000 * LOAN / TOTAL + 500 * INTEREST / TOTAL, 410, f'interest ${INTEREST:,.0f}', 24, CORAL,
+                   900, a=g)
+        if t > L[1] + 4.6:
+            c.text(640, 500, f'total paid: ${TOTAL:,.0f}', 44, WHITE, 900, a=fade(t, L[1] + 4.6))
+            pulse(c, t, (130, 290, 1150, 390), CORAL, 16)
+        return
+    head(c, t, 'The gap is how banks earn')
+    k = pop(t, L[2] + 0.3)
+    c.text(640, 250, f'{MORT_NOW:.2f}%  vs  {SAVE_NOW:.2f}%', int(70 * (0.7 + 0.3 * clamp(k))), GOLD, 900, a=clamp(k))
+    chip(c, 640, 380, 'charge borrowers more, pay savers less', MINT, pop(t, L[2] + 3.0), 26)
+    pulse(c, t, (300, 190, 980, 310), GOLD)
 
 
 def s_cycle(c, x):
@@ -396,6 +450,7 @@ def s_m2(c, x):
         c.text(210, 300, f'Cash: {tn(CASH_NOW)}', 26, WHITE, 900, anchor='lm', a=fade(t, L[2] + 1.8))
         if t > L[2] + 3.2:
             c.text(640, 520, f'{SHARE:.1%} is cash. About 1 dollar in 10.', 38, GOLD, 900, a=fade(t, L[2] + 3.2))
+            pulse(c, t, (190, 320, 200 + 880 * SHARE + 12, 440), GOLD, 16)
         source(c, t, 'FRED: M2SL, WCURCIR')
         return
     k = clamp((t - L[3] - 0.3) / 5.0)
@@ -445,6 +500,8 @@ def s_four(c, x):
         on = L[i] <= t < (L[i + 1] if i + 1 < len(L) else 1e9)
         col = GOLD if on else MUTED
         c.circle(cx, 250, 90 * clamp(k), (255, 255, 255, 30 if on else 12), col, 4 if on else 2)
+        if on:
+            c.circle(cx, 250, 100 + 8 * math.sin(t * 5), None, GOLD, 3, a=0.4 + 0.4 * math.sin(t * 5))
         c.icon(ic, cx, 250, 85 * clamp(k), col)
         for j, part in enumerate(lab.split('\n')):
             c.text(cx, 385 + j * 32, part, 26, WHITE if on else MUTED, 900, a=clamp(k))
@@ -464,18 +521,22 @@ def s_svb(c, x):
     specks(c, t, 71)
     head(c, t, 'When the promise breaks: March 2023')
     bank(c, 640, 470, 1.3, 1.0, 'A BANK')
-    n = int(clamp((t - L[0] - 0.5) / 4.0) * 16)
+    n = int(clamp((t - L[0] - 0.5) / 12.0) * 16)
     for j in range(n):  # a growing crowd
         px = 140 + (j % 8) * 30 if j % 2 == 0 else 1140 - (j % 8) * 30
         person(c, px, 560 + (j // 8) * 10, 0.55, (SKY, MINT, CORAL, CREAM)[j % 4], t, j, 'sad')
-    if t > L[1]:
-        v = 42 * ease(clamp((t - L[1] - 1.0) / 1.5))
-        kk = pop(t, L[1] + 1.0)
+    if L[1] < t < L[2]:
+        chip(c, 1040, 160, 'long-term bonds', SKY, pop(t, L[1] + 0.8), 24)
+        chip(c, 1040, 230, 'rates jumped: bonds lost value', CORAL, pop(t, L[1] + 3.6), 22)
+    if t > L[2]:
+        v = 42 * ease(clamp((t - L[2] - 1.0) / 1.5))
+        kk = pop(t, L[2] + 1.0)
         c.rrect(860, 110, 1220, 250, 20, (20, 26, 42, 235), CORAL, 4, a=clamp(kk))
         c.text(1040, 165, f'${v:.0f} billion', 50, CORAL, 900, a=clamp(kk))
         c.text(1040, 220, 'pulled in one day: March 9', 22, WHITE, 800, a=clamp(kk))
-    if t > L[1] + 6.0:
-        k = pop(t, L[1] + 6.0, 0.3)
+        pulse(c, t, (850, 100, 1230, 260), CORAL)
+    if t > L[2] + 6.0:
+        k = pop(t, L[2] + 6.0, 0.3)
         s = lerp(1.7, 1.0, clamp(k))
         c.rrect(640 - 210 * s, 300 - 40 * s, 640 + 210 * s, 300 + 40 * s, 12, CORAL, a=clamp(k))
         c.text(640, 300, 'CLOSED: MARCH 10', int(40 * s), WHITE, 900, a=clamp(k), shadow=False)
@@ -502,7 +563,11 @@ def s_fed(c, x):
     head(c, t, "The Federal Reserve's balance sheet")
     if t < L[1]:
         fed_building(c, 640, 470, 1.2, clamp(pop(t, L[0] + 0.3)))
-        chip(c, 640, 540, 'reserves: the money banks use to pay each other', SKY, pop(t, L[0] + 3.4), 24)
+        if t < L[0] + 7.5:
+            chip(c, 640, 540, 'reserves: the money banks use to pay each other', SKY, pop(t, L[0] + 3.4), 24)
+        else:
+            chip(c, 640, 540, 'quantitative easing: buy bonds, pay with new reserves', GOLD, pop(t, L[0] + 7.5), 24)
+            pulse(c, t, (250, 505, 1030, 575), GOLD, 30)
         return
     k = clamp((t - L[1] - 0.3) / 6.0)
     px, py = line_chart(c, (150, 130, 1150, 520), FX_, FY_, (2019, 2027), (0, 10), k, MINT,
@@ -555,7 +620,7 @@ def s_now(c, x):
     head(c, t, 'Where things stand now')
     for j, (lab, val, col, at) in enumerate((('Fed balance sheet', tn(FED_NOW), MINT, 0.6),
                                             ('M2', tn(M2_NOW), GOLD, 2.4),
-                                            ('Inflation', f'{INFL_NOW:.0f}%', CORAL, L[1] - L[0] + 0.4))):
+                                            ('Inflation', f'{INFL_NOW:.0f}%', CORAL, L[2] - L[0] + 0.4))):
         k = pop(t, L[0] + at)
         if k <= 0:
             continue
@@ -563,6 +628,9 @@ def s_now(c, x):
         c.rrect(cx - 170, 180, cx + 170, 420, 24, (20, 26, 42), col, 3, a=clamp(k))
         c.text(cx, 240, lab, 26, WHITE, 900, a=clamp(k))
         c.text(cx, 330, val, int(42 * (0.7 + 0.3 * clamp(k))), col, 900, a=clamp(k))
+    if L[1] < t < L[2]:
+        chip(c, 640, 500, f'2023: M2 shrank, first yearly drops since 1960', GOLD, pop(t, L[1] + 0.8), 26)
+        pulse(c, t, (470, 180, 810, 420), GOLD, 24)
     source(c, t, 'FRED: WALCL, M2SL, CPIAUCSL')
 
 
@@ -578,6 +646,8 @@ def s_you(c, x):
             continue
         cx = 230 + i * 410
         c.circle(cx, 240, 85 * clamp(k), (255, 255, 255, 20), GOLD, 3)
+        if L[i + 1] <= t < (L[i + 2] if i + 2 < len(L) else 1e9):
+            c.circle(cx, 240, 96 + 8 * math.sin(t * 5), None, GOLD, 3, a=0.4 + 0.4 * math.sin(t * 5))
         c.icon(ic, cx, 240, 80 * clamp(k), GOLD)
         for j, part in enumerate(lab.split('\n')):
             c.text(cx, 370 + j * 32, part, 24, WHITE, 800, a=clamp(k))
@@ -608,7 +678,7 @@ def s_recap(c, x):
     c.text(640, 200, 'Did you know banks', 50, WHITE, 900, a=clamp(k))
     c.text(640, 265, 'create money when they lend?', 50, GOLD, 900, a=clamp(k))
     for j, (lab, col) in enumerate((('YES', MINT), ('NO', CORAL))):
-        kk = pop(t, L[1] + 1.2 + 0.2 * j)
+        kk = pop(t, L[1] + 1.2 + 0.2 * j) * (1 + 0.06 * math.sin(t * 5 + j * 3) if t > L[1] + 2 else 1)
         cx = 520 + j * 240
         c.rrect(cx - 95, 360 - 45 * clamp(kk), cx + 95, 360 + 45 * clamp(kk), 22, col, a=clamp(kk))
         c.text(cx, 360, lab, int(46 * clamp(kk)) + 1, INK, 900, a=clamp(kk), shadow=False)
@@ -666,6 +736,17 @@ SCENES = [
         "profit.",
     ], sfx=lambda L: [(L[0] + 1.5, 'down'), (L[1] + 0.8, 'riser'), (L[2] + 0.3, 'pop'), (L[2] + 2.0, 'pop'),
                       (L[2] + 2.6, 'pop'), (L[2] + 3.2, 'pop')]),
+    dict(draw=s_spread, lines=[
+        f"And that interest adds up. In late October, the average 30-year mortgage rate was about "
+        f"{MORT_NOW:.1f} percent.",
+        f"At that rate, Maya's {LOAN:,} dollar loan costs about {PAY:,.0f} dollars a month. Over thirty years, she "
+        f"pays back about {round(TOTAL / 1000)} thousand dollars, and about {round(INTEREST / 1000)} thousand of "
+        "that is interest.",
+        f"Meanwhile, the average savings account pays about {SAVE_NOW:.2f} percent a year. That gap, between what "
+        "banks charge borrowers and what they pay savers, is a big part of how banks make money.",
+    ], punch=lambda L: [L[1] + 4.6], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[0] + 1.5, 'pop'), (L[1] + 0.3, 'hit'),
+                                                    (L[1] + 3.0, 'whoosh'), (L[1] + 4.6, 'ding'), (L[2] + 0.3, 'pop'),
+                                                    (L[2] + 3.0, 'pop')]),
     dict(draw=s_cycle, lines=[
         "So money is always being born and destroyed. New loans create it. Repayments erase it.",
     ], sfx=lambda L: [(L[0] + 0.8, 'pop'), (L[0] + 2.4, 'pop')]),
@@ -717,10 +798,13 @@ SCENES = [
                                                                (L[2] + 2.8, 'pop'), (L[3] + 1.6, 'pop')]),
     dict(draw=s_svb, chapter='When the promise breaks', lines=[
         "That's exactly what happened to Silicon Valley Bank in March 2023.",
+        "The bank had put a lot of its customers' money into long-term bonds. When interest rates jumped, those "
+        "bonds lost value, and when customers heard, they rushed to get their money out.",
         "On March 9, customers tried to pull out 42 billion dollars in a single day, according to the Federal "
         "Reserve's own review. The next day, the bank was shut down.",
-    ], punch=lambda L: [L[1] + 1.0, L[1] + 6.0], sfx=lambda L: [(L[0] + 0.5, 'riser'), (L[1] + 1.0, 'hit'),
-                                                               (L[1] + 6.0, 'down')]),
+    ], punch=lambda L: [L[2] + 1.0, L[2] + 6.0], sfx=lambda L: [(L[0] + 0.5, 'riser'), (L[1] + 0.8, 'pop'),
+                                                               (L[1] + 3.6, 'down'), (L[2] + 1.0, 'hit'),
+                                                               (L[2] + 6.0, 'down')]),
     dict(draw=s_fdic, lines=[
         "That's why the US has deposit insurance. The FDIC covers up to 250,000 dollars per depositor, per bank, "
         "for each type of account ownership.",
@@ -729,7 +813,8 @@ SCENES = [
                       (L[0] + 5.6, 'pop'), (L[1] + 0.5, 'pop')]),
     dict(draw=s_fed, chapter='The Fed and the 2020 money flood', lines=[
         "So where does the Federal Reserve come in? The Fed creates a different kind of money: reserves, the money "
-        "banks use to pay each other.",
+        "banks use to pay each other. It mostly does this by buying government bonds and mortgage bonds, and paying "
+        "for them with brand-new reserves. That's called quantitative easing.",
         f"In March 2020, as the pandemic hit, the Fed's balance sheet was about {FED_MAR20:.1f} trillion dollars. "
         "By April 2022, it had more than doubled, to almost 9 trillion.",
         "At the same time, the government sent out stimulus, banks kept lending, and deposits poured in.",
@@ -751,8 +836,11 @@ SCENES = [
     dict(draw=s_now, lines=[
         f"Since then, the Fed has shrunk its balance sheet to about {FED_NOW:.1f} trillion dollars, and M2 is "
         f"about {M2_NOW:.1f} trillion.",
+        "And something rare happened as interest rates rose. From December 2022 to early 2024, M2 was smaller "
+        "than a year before: the first yearly drops in data going back to 1960. Fewer new loans, more "
+        "repayments, so money was destroyed faster than it was created.",
         f"And inflation today is about {INFL_NOW:.0f} percent.",
-    ], sfx=lambda L: [(L[0] + 0.6, 'pop'), (L[0] + 2.4, 'pop'), (L[1] + 0.4, 'pop')]),
+    ], sfx=lambda L: [(L[0] + 0.6, 'pop'), (L[0] + 2.4, 'pop'), (L[1] + 0.8, 'down'), (L[2] + 0.4, 'pop')]),
     dict(draw=s_you, chapter='What it means for you', lines=[
         "So what does all this mean for you? Three things. This isn't financial advice, just how the system "
         "works.",
@@ -789,6 +877,10 @@ def check_numbers():
     assert round(FED_MAR20, 1) == 4.2 and 8.9 < FED_PEAK < 9.0 and FED_PEAK_DATE.strftime('%Y-%m') == '2022-04'
     assert FED_PEAK / FED_MAR20 > 2 and 'more than doubled, to almost 9 trillion' in script
     assert round(FED_NOW, 1) == 6.7 and round(INFL_NOW) == 4
+    assert round(MORT_NOW, 2) == 7.32 and round(SAVE_NOW, 2) == 0.38 and round(PAY) == 2061, (MORT_NOW, PAY)
+    assert round(TOTAL / 1000) == 742 and round(INTEREST / 1000) == 442, (TOTAL, INTEREST)
+    assert NEG.index[0].strftime('%Y-%m') == '2022-12' and NEG.index[-1].strftime('%Y-%m') == '2024-02'
+    assert 'back to 1960' in script and 'From December 2022 to early 2024' in script
     assert round(DEP_NOW, 1) == 19.8 and round(LNS_NOW, 1) == 14.2 and round(RES_NOW) == 3 and round(RES_NOW, 1) == 3.0
     assert INFL_PEAK_DATE.strftime('%Y-%m') == '2022-06' and round(INFL_PEAK) == 9
     assert INFL_PREV.year == 1981 and 'about four decades' in script, INFL_PREV
