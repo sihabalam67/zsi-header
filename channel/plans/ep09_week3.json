@@ -1,0 +1,30 @@
+{
+ "videos": {
+  "ep09_gold": "2026-11-16T14:00",
+  "ep06_short_cash": "2026-11-13T14:00",
+  "ep06_short_zero": "2026-11-14T14:00",
+  "ep06_short_svb": "2026-11-15T14:00",
+  "ep09_short_crash": "2026-11-16T14:00",
+  "ep09_short_knox": "2026-11-17T14:00",
+  "ep09_short_buyers": "2026-11-18T14:00"
+ },
+ "playlists": {
+  "ep09": [
+   "Gold & Commodities, Explained",
+   "Gold, silver, oil and the forces that move them, with real data."
+  ],
+  "ep06": [
+   "Banking, Explained",
+   "How banks and money really work, with official data."
+  ]
+ },
+ "launch_questions": {
+  "ep09_gold": "Is gold still a safe haven? Yes or no, and why?"
+ },
+ "links": {
+  "ep09_gold": [
+   "How banks create money",
+   "ep06_banks"
+  ]
+ }
+}

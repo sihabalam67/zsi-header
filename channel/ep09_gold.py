@@ -233,7 +233,7 @@ def s_crash(c, x):
         if t > L[2] + 3.5:
             chip(c, 640, 600, 'analysts: a speculative run-up, the news was the trigger', GOLD, pop(t, L[2] + 3.5), 22)
     if len(L) > 3 and t > L[3]:
-        c.rrect(0, 0, W, H, 0, (8, 12, 24, int(170 * fade(t, L[3]))))
+        c.rrect(0, 0, W, H, 0, (8, 12, 24, int(250 * fade(t, L[3]))))
         k = pop(t, L[3] + 0.4, 0.3)
         c.text(640, 260, f'SILVER: {SI_CRASH:.0f}%', int(100 * (0.6 + 0.4 * clamp(k))), CORAL, 900, a=clamp(k),
                stroke=6)
