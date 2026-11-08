@@ -42,7 +42,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Fri Nov 13 | Long | 2 PM: Only 1 dollar in 10 is cash. How banks create money (8.4 min) | https://youtu.be/ixGj1vl5eQE |
 | Fri Nov 13 | Short | 2 PM: Only 10.6% of US money is actual cash | https://youtu.be/YtyT1DkCz3s |
 | Sat Nov 14 | Short | 2 PM: Banks must keep 0% of your deposits | https://youtu.be/f8wuovndCRA |
-| Sun Nov 15 | Short | 2 PM: $42 billion pulled from one bank in one day | https://youtu.be/u8m5o0A1LNk |
+| Sun Nov 15 | Short | 2 PM: $42 billion pulled from one bank in one day | https://youtu.be/S5UXJlc0HlY |
 | Mon Nov 16 | Long | 2 PM: Gold fell 23% from its record. What happened? (8.1 min) | https://youtu.be/oJBE1INlmzA |
 | Mon Nov 16 | Short | 2 PM: Gold fell 10.8% in one day | https://youtu.be/CU7Lt5mhKsk |
 | Tue Nov 17 | Short | 2 PM: America's gold on the books at $42.22 an ounce | https://youtu.be/pNM3tFW7_pM |
