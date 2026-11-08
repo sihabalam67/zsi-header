@@ -169,6 +169,7 @@ def s_decade(c, x):
     if len(L) > 2 and t > L[2]:
         c.rrect(300, 560, 740, 620, 30, MINT, a=fade(t, L[2]))
         c.text(520, 590, f'2025 alone: +{Y2025:.0f}%', 32, INK, 900, a=fade(t, L[2]), shadow=False)
+        pulse(c, t, (290, 550, 750, 630), MINT, 30)
     source(c, t, SRC)
 
 
@@ -248,6 +249,8 @@ def s_crash(c, x):
             c.text(900, 285, 'of gold at the record', 24, WHITE, 800, a=fade(t, L[4] + 3.0))
         chip(c, 900, 380, 'traders put down only a fraction', SKY, pop(t, L[4] + 6.0), 24)
         chip(c, 900, 460, 'fast drops force selling', CORAL, pop(t, L[4] + 9.0), 24)
+        if t > L[4] + 9.0:
+            pulse(c, t, (720, 425, 1080, 495), CORAL, 30)
     source(c, t, SRC)
 
 
@@ -273,6 +276,7 @@ def s_slide(c, x):
                    a=fade(t, L[1] + 3.0))
         if t > L[1] + 4.5:
             c.text(1100, 160, f'{RY_NOW:.1f}%', 60, SKY, 900, anchor='rm', a=fade(t, L[1] + 4.5), stroke=4)
+            pulse(c, t, (960, 115, 1130, 205), SKY, 20, on=t < L[2])
         if L[2] < t < L[2] + 4.6:
             chip(c, 640, 590, 'bonds pay more than inflation; gold pays nothing', GOLD, pop(t, L[2] + 0.4), 24)
         if t >= L[2] + 4.6:
@@ -302,6 +306,11 @@ def s_slide(c, x):
         c.text(890, 220, 'SEPTEMBER: HIKE', 32, CORAL, 900, a=clamp(k2))
         c.text(890, 300, f'{FEDL.iloc[-1]:.2f}% to {FEDU.iloc[-1]:.2f}%', 30, WHITE, 900, a=clamp(k2))
         c.text(890, 350, f'first since {PREV_HIKE:%B %Y}', 22, MUTED, 800, a=clamp(k2))
+        if t > L[4] + 5.0:
+            pulse(c, t, (660, 160, 1120, 410), CORAL, 28)
+        if t > L[4] + 8.0:
+            chip(c, 640, 480, f'inflation back near {INFL:.0f}%, oil shock after the war with Iran', GOLD,
+                 pop(t, L[4] + 8.0), 22)
         source(c, t, 'Federal Reserve; FRED: DFEDTARU')
         return
     k = clamp((t - L[5] - 0.2) / 2.5)
@@ -329,6 +338,9 @@ def s_buyers(c, x):
         gold_bar(c, 640, 380, 300 * (0.6 + 0.4 * clamp(k)), clamp(k), shine=t * 0.4)
         c.text(640, 470, 'Not everyone stopped buying', 34, WHITE, 900, a=fade(t, L[0] + 0.6))
     for j, (lab, v, note, col, at) in enumerate(rows):
+        nxt = rows[j + 1][4] if j + 1 < len(rows) else (L[4] if len(L) > 4 else 1e9)
+        if at <= t < nxt:
+            pulse(c, t, (130, 150 + j * 105 - 42, 1150, 150 + j * 105 + 62), col, 18)
         g = ease(seg(t, at, at + 0.9))
         if g <= 0:
             continue
@@ -340,8 +352,10 @@ def s_buyers(c, x):
     if len(L) > 4 and t > L[4]:
         if t < L[4] + 4.5:
             chip(c, 640, 590, f'Q3 average price: {usd(WGC["avg"])} an ounce', GOLD, pop(t, L[4] + 0.6), 26)
+            pulse(c, t, (330, 555, 950, 625), GOLD, 30, on=t > L[4] + 1.0)
         else:
             chip(c, 540, 590, f'mines: a record {WGC["mine"]:,} tonnes for a third quarter', SKY, pop(t, L[4] + 4.5), 24)
+            pulse(c, t, (200, 555, 880, 625), SKY, 30)
     if L[1] + 4.5 < t < L[2]:
         chip(c, 900, 620, f'year to date: {WGC["ytd"]}t (+{WGC["ytd_yoy"]}%)', MINT, pop(t, L[1] + 4.5), 20)
     source(c, t, 'World Gold Council, Gold Demand Trends Q3 2026')
@@ -429,6 +443,9 @@ def s_vs(c, x):
     rows = [('since Jan 29', DROP, SP_REC, L[0] + 0.8), ('12 months', Y1, SP_1Y, L[0] + 4.0),
             ('10 years', (TIMES - 1) * 100, (SP_10 - 1) * 100, L[1] + 0.6)]
     for j, (lab, gv, sv, at) in enumerate(rows):
+        nxt = rows[j + 1][3] if j + 1 < len(rows) else (L[2] if len(L) > 2 else 1e9)
+        if at <= t < nxt:
+            pulse(c, t, (150, 180 + j * 140 - 55, 1160, 180 + j * 140 + 55), GOLD, 18)
         g = ease(seg(t, at, at + 0.9))
         if g <= 0:
             continue
@@ -458,6 +475,7 @@ def s_knox(c, x):
     if t > L[0] + 1.6:
         c.text(950, 180, f'{US_OZ / 1e6:.0f} million oz', 50, GOLDC, 900, a=fade(t, L[0] + 1.6), stroke=4)
         c.text(950, 235, f'Fort Knox: {KNOX_OZ / 1e6:.0f} million', 24, WHITE, 800, a=fade(t, L[0] + 3.4))
+        pulse(c, t, (730, 140, 1170, 260), GOLD, 20, on=len(L) < 2 or t < L[1])
     if len(L) > 1 and t > L[1]:
         c.rrect(730, 290, 1170, 380, 18, (20, 26, 42), SKY, 3, a=fade(t, L[1]))
         c.text(950, 320, 'on the books: $42.22 / oz', 24, SKY, 900, a=fade(t, L[1]))
@@ -486,7 +504,8 @@ def s_next(c, x):
             chip(c, 950, 210 + j * 80, lab, CORAL, pop(t, L[2] + at), 26)
     if t < L[1] if len(L) > 1 else True:
         k = pop(t, L[0] + 0.6)
-        c.icon('scale', 640, 330, 160 * clamp(k), GOLD)
+        c.icon('scale', 640, 330 + 10 * math.sin(t * 3), 160 * clamp(k), GOLD)
+        c.circle(640, 330, 120 + 10 * math.sin(t * 5), None, GOLD, 3, a=0.3 + 0.4 * (0.5 + 0.5 * math.sin(t * 5)))
 
 
 def s_haven(c, x):
@@ -508,10 +527,15 @@ def s_haven(c, x):
         c.rrect(cx - 170, 170, cx + 170, 410, 24, (20, 26, 42), col, 3, a=clamp(k))
         c.text(cx, 230, lab, 28, WHITE, 900, a=clamp(k))
         c.text(cx, 320, val, int(70 * (0.7 + 0.3 * clamp(k))), col, 900, a=clamp(k))
+        nxt = cards[j + 1][3] if j + 1 < len(cards) else (L[2] - L[1] if len(L) > 2 else 1e9)
+        if at + L[1] <= t < nxt + L[1]:
+            pulse(c, t, (cx - 182, 158, cx + 182, 422), col, 28)
     if t > L[2]:
         for j, (lab, col) in enumerate((('can hedge a falling dollar', MINT), ('can swing wildly', CORAL),
                                         ('pays no interest', SKY))):
             chip(c, 240 + j * 400, 490, lab, col, pop(t, L[2] + 0.6 + 1.6 * j), 22)
+            if L[2] + 0.6 + 1.6 * j <= t < (L[2] + 2.2 + 1.6 * j if j < 2 else (L[3] if len(L) > 3 else 1e9)):
+                pulse(c, t, (240 + j * 400 - 175, 460, 240 + j * 400 + 175, 520), col, 30)
     if len(L) > 3 and t > L[3]:
         chip(c, 540, 580, f'inflation about {INFL:.0f}%: a {Y1:.0f}% gain lost value', GOLD, pop(t, L[3] + 0.6), 24)
     source(c, t, f'{SRC}; FRED: CPIAUCSL')

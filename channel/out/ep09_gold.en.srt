@@ -1,0 +1,1304 @@
+1
+00:00:00,150 --> 00:00:02,230
+Gold just fell 23 percent from
+
+2
+00:00:02,030 --> 00:00:03,050
+its all-time high.
+
+3
+00:00:03,480 --> 00:00:04,720
+On January 29,
+
+4
+00:00:04,880 --> 00:00:06,640
+gold futures closed at a record
+
+5
+00:00:06,440 --> 00:00:08,980
+5,318 dollars an ounce.
+
+6
+00:00:09,580 --> 00:00:10,520
+On November 6,
+
+7
+00:00:10,720 --> 00:00:12,388
+they closed at 4,075.
+
+8
+00:00:13,375 --> 00:00:14,395
+So what happened?
+
+9
+00:00:14,555 --> 00:00:15,875
+And is gold still the safe
+
+10
+00:00:15,675 --> 00:00:17,295
+haven everyone says it is?
+
+11
+00:00:17,475 --> 00:00:18,535
+Let's look at the data.
+
+12
+00:00:19,783 --> 00:00:21,003
+In the next few minutes:
+
+13
+00:00:21,163 --> 00:00:22,043
+why gold soared,
+
+14
+00:00:22,303 --> 00:00:23,003
+the day it crashed,
+
+15
+00:00:23,263 --> 00:00:24,103
+who is still buying,
+
+16
+00:00:24,323 --> 00:00:25,843
+and whether gold is still a
+
+17
+00:00:25,643 --> 00:00:26,363
+safe haven.
+
+18
+00:00:27,917 --> 00:00:28,417
+First,
+
+19
+00:00:28,497 --> 00:00:29,337
+what are we measuring?
+
+20
+00:00:30,037 --> 00:00:31,697
+Gold is priced per troy ounce,
+
+21
+00:00:31,497 --> 00:00:32,537
+about 31 grams.
+
+22
+00:00:33,057 --> 00:00:34,337
+The price on the news usually
+
+23
+00:00:34,137 --> 00:00:35,897
+comes from gold futures traded in
+
+24
+00:00:35,697 --> 00:00:36,277
+New York,
+
+25
+00:00:36,077 --> 00:00:37,217
+on the COMEX exchange.
+
+26
+00:00:37,988 --> 00:00:40,048
+Gold doesn't pay interest or dividends.
+
+27
+00:00:40,788 --> 00:00:42,288
+Its price comes from who wants
+
+28
+00:00:42,088 --> 00:00:42,548
+it:
+
+29
+00:00:42,648 --> 00:00:43,508
+jewelry makers,
+
+30
+00:00:43,648 --> 00:00:44,048
+investors,
+
+31
+00:00:44,508 --> 00:00:45,048
+central banks,
+
+32
+00:00:45,148 --> 00:00:46,348
+and even tech companies.
+
+33
+00:00:47,155 --> 00:00:48,095
+In the third quarter,
+
+34
+00:00:48,135 --> 00:00:50,455
+electronics alone used 72 tonnes of
+
+35
+00:00:50,255 --> 00:00:50,675
+gold,
+
+36
+00:00:50,915 --> 00:00:52,735
+helped by AI-related manufacturing,
+
+37
+00:00:52,935 --> 00:00:54,415
+according to the World Gold Council.
+
+38
+00:00:55,750 --> 00:00:57,070
+Here's a fun one.
+
+39
+00:00:57,510 --> 00:00:57,890
+The U.S.
+
+40
+00:00:57,690 --> 00:01:00,890
+government owns about 261 million ounces
+
+41
+00:01:00,690 --> 00:01:01,250
+of gold,
+
+42
+00:01:01,450 --> 00:01:02,310
+more than half of it,
+
+43
+00:01:02,450 --> 00:01:04,810
+about 147 million ounces,
+
+44
+00:01:04,610 --> 00:01:05,490
+in Fort Knox,
+
+45
+00:01:05,850 --> 00:01:06,050
+Kentucky.
+
+46
+00:01:06,648 --> 00:01:07,788
+On the government's books,
+
+47
+00:01:07,908 --> 00:01:09,568
+it's still valued at just 42
+
+48
+00:01:09,368 --> 00:01:11,328
+dollars and 22 cents an ounce:
+
+49
+00:01:11,388 --> 00:01:12,488
+about 11 billion dollars.
+
+50
+00:01:13,643 --> 00:01:15,083
+At the November 6 price,
+
+51
+00:01:15,263 --> 00:01:17,963
+it's worth about 1.07 trillion dollars.
+
+52
+00:01:19,950 --> 00:01:20,590
+First,
+
+53
+00:01:20,570 --> 00:01:21,290
+some perspective.
+
+54
+00:01:21,810 --> 00:01:22,910
+In November 2016,
+
+55
+00:01:23,190 --> 00:01:24,690
+an ounce of gold cost about
+
+56
+00:01:24,490 --> 00:01:25,870
+1,273 dollars.
+
+57
+00:01:27,110 --> 00:01:28,430
+Even after the drop,
+
+58
+00:01:28,410 --> 00:01:29,790
+it's more than three times that.
+
+59
+00:01:30,383 --> 00:01:32,423
+Gold first closed above 2,000 dollars
+
+60
+00:01:32,223 --> 00:01:33,783
+in August 2020.
+
+61
+00:01:34,303 --> 00:01:36,503
+Above 3,000 in March 2025.
+
+62
+00:01:37,123 --> 00:01:38,883
+Above 4,000 that October.
+
+63
+00:01:39,323 --> 00:01:42,143
+And above 5,000 in January 2026.
+
+64
+00:01:42,803 --> 00:01:44,363
+In 2025 alone,
+
+65
+00:01:44,763 --> 00:01:46,823
+gold gained about 64 percent,
+
+66
+00:01:46,863 --> 00:01:48,283
+its best year in data going
+
+67
+00:01:48,083 --> 00:01:49,023
+back to 2000,
+
+68
+00:01:49,363 --> 00:01:51,463
+with 55 record closes along the
+
+69
+00:01:51,263 --> 00:01:51,683
+way.
+
+70
+00:01:53,017 --> 00:01:53,537
+Why?
+
+71
+00:01:54,217 --> 00:01:55,637
+Analysts point to a few big
+
+72
+00:01:55,437 --> 00:01:55,877
+forces.
+
+73
+00:01:56,457 --> 00:01:57,077
+Force one:
+
+74
+00:01:56,877 --> 00:01:57,917
+central banks.
+
+75
+00:01:58,457 --> 00:02:00,137
+Countries have been buying gold for
+
+76
+00:01:59,937 --> 00:02:00,537
+their reserves,
+
+77
+00:02:00,337 --> 00:02:02,817
+to diversify away from other assets.
+
+78
+00:02:03,622 --> 00:02:04,322
+Force two:
+
+79
+00:02:04,122 --> 00:02:05,022
+interest rates.
+
+80
+00:02:05,442 --> 00:02:06,862
+The Fed cut rates 3 times
+
+81
+00:02:06,662 --> 00:02:07,562
+in 2025.
+
+82
+00:02:08,202 --> 00:02:09,142
+Gold pays no interest,
+
+83
+00:02:09,262 --> 00:02:10,102
+so when rates fall,
+
+84
+00:02:10,282 --> 00:02:11,802
+holding gold costs you less in
+
+85
+00:02:11,602 --> 00:02:12,222
+missed interest.
+
+86
+00:02:12,824 --> 00:02:13,604
+Force three:
+
+87
+00:02:13,644 --> 00:02:14,624
+a weaker dollar.
+
+88
+00:02:15,204 --> 00:02:16,304
+Gold is priced in dollars,
+
+89
+00:02:16,104 --> 00:02:18,184
+and in 2025 the dollar fell
+
+90
+00:02:17,984 --> 00:02:20,364
+about 7.5 percent against a broad
+
+91
+00:02:20,164 --> 00:02:21,084
+basket of currencies.
+
+92
+00:02:22,082 --> 00:02:23,462
+Add worries about wars,
+
+93
+00:02:23,582 --> 00:02:24,502
+tariffs and inflation,
+
+94
+00:02:25,022 --> 00:02:25,802
+and by January,
+
+95
+00:02:25,602 --> 00:02:26,902
+gold was in a frenzy.
+
+96
+00:02:28,350 --> 00:02:30,110
+Then came January 30.
+
+97
+00:02:30,726 --> 00:02:31,486
+That day,
+
+98
+00:02:31,566 --> 00:02:33,666
+President Trump named Kevin Warsh as
+
+99
+00:02:33,466 --> 00:02:34,886
+his pick to lead the Federal
+
+100
+00:02:34,686 --> 00:02:35,286
+Reserve.
+
+101
+00:02:35,646 --> 00:02:36,626
+The dollar rose,
+
+102
+00:02:36,426 --> 00:02:38,966
+and gold futures fell 10.8 percent
+
+103
+00:02:38,766 --> 00:02:39,826
+in a single day.
+
+104
+00:02:40,420 --> 00:02:42,180
+It was gold's worst day in
+
+105
+00:02:41,980 --> 00:02:43,240
+our ten years of data.
+
+106
+00:02:43,820 --> 00:02:45,420
+Many analysts said the run-up had
+
+107
+00:02:45,220 --> 00:02:46,100
+become speculative,
+
+108
+00:02:45,900 --> 00:02:47,620
+and the news was simply the
+
+109
+00:02:47,420 --> 00:02:47,760
+trigger.
+
+110
+00:02:48,361 --> 00:02:49,821
+Silver had it even worse.
+
+111
+00:02:50,461 --> 00:02:52,401
+Silver futures fell 31 percent that
+
+112
+00:02:52,201 --> 00:02:52,921
+same day,
+
+113
+00:02:53,001 --> 00:02:54,954
+and today silver is about 55
+
+114
+00:02:54,754 --> 00:02:56,001
+percent below its record.
+
+115
+00:02:56,532 --> 00:02:57,872
+Part of the reason is how
+
+116
+00:02:57,672 --> 00:02:58,532
+futures work.
+
+117
+00:02:59,172 --> 00:03:01,172
+One COMEX gold contract is 100
+
+118
+00:03:00,972 --> 00:03:01,712
+ounces:
+
+119
+00:03:01,912 --> 00:03:04,272
+about 532 thousand dollars of gold
+
+120
+00:03:04,072 --> 00:03:04,792
+at the record.
+
+121
+00:03:05,072 --> 00:03:06,592
+But traders only put down a
+
+122
+00:03:06,392 --> 00:03:07,292
+fraction of that.
+
+123
+00:03:07,612 --> 00:03:08,972
+When prices fall fast,
+
+124
+00:03:09,092 --> 00:03:10,132
+many are forced to sell,
+
+125
+00:03:09,932 --> 00:03:11,772
+and that pushes prices down even
+
+126
+00:03:11,572 --> 00:03:12,112
+faster.
+
+127
+00:03:13,817 --> 00:03:15,437
+Gold bounced back for a while.
+
+128
+00:03:15,657 --> 00:03:16,897
+But since then,
+
+129
+00:03:16,977 --> 00:03:18,637
+three things have kept pushing it
+
+130
+00:03:18,437 --> 00:03:18,877
+down.
+
+131
+00:03:19,384 --> 00:03:19,924
+One:
+
+132
+00:03:20,064 --> 00:03:21,104
+real interest rates.
+
+133
+00:03:21,664 --> 00:03:23,364
+That's what safe government bonds pay
+
+134
+00:03:23,164 --> 00:03:24,044
+after inflation.
+
+135
+00:03:24,764 --> 00:03:25,944
+On January 29,
+
+136
+00:03:26,144 --> 00:03:28,964
+the ten-year real yield was 1.89
+
+137
+00:03:28,764 --> 00:03:29,284
+percent.
+
+138
+00:03:29,084 --> 00:03:30,924
+Now it's about 2.6.
+
+139
+00:03:31,604 --> 00:03:33,384
+When safe bonds pay more than
+
+140
+00:03:33,184 --> 00:03:33,684
+inflation,
+
+141
+00:03:34,304 --> 00:03:34,664
+gold,
+
+142
+00:03:34,884 --> 00:03:35,824
+which pays nothing,
+
+143
+00:03:35,904 --> 00:03:37,204
+looks less attractive.
+
+144
+00:03:37,844 --> 00:03:40,264
+Ten thousand dollars in inflation-protected Treasury
+
+145
+00:03:40,064 --> 00:03:42,284
+bonds would earn about 260 dollars
+
+146
+00:03:42,084 --> 00:03:43,944
+a year above inflation.
+
+147
+00:03:44,584 --> 00:03:46,324
+Ten thousand dollars of gold earns
+
+148
+00:03:46,124 --> 00:03:48,204
+nothing; it only pays if the
+
+149
+00:03:48,004 --> 00:03:49,004
+price goes up.
+
+150
+00:03:49,546 --> 00:03:50,066
+Two:
+
+151
+00:03:50,206 --> 00:03:51,326
+the dollar got stronger.
+
+152
+00:03:51,866 --> 00:03:52,526
+Since the record,
+
+153
+00:03:52,646 --> 00:03:54,226
+the broad dollar index is up
+
+154
+00:03:54,026 --> 00:03:55,486
+about 3.6 percent.
+
+155
+00:03:56,367 --> 00:03:56,827
+Three:
+
+156
+00:03:57,067 --> 00:03:57,447
+the Fed.
+
+157
+00:03:58,027 --> 00:03:58,447
+In March,
+
+158
+00:03:58,487 --> 00:03:59,367
+it held rates steady,
+
+159
+00:03:59,167 --> 00:04:01,147
+and gold fell almost 6 percent
+
+160
+00:04:00,947 --> 00:04:01,747
+the next day.
+
+161
+00:04:02,067 --> 00:04:02,767
+In September,
+
+162
+00:04:02,887 --> 00:04:04,107
+it raised rates for the first
+
+163
+00:04:03,907 --> 00:04:05,507
+time since 2023,
+
+164
+00:04:05,667 --> 00:04:07,587
+fighting inflation that had climbed back
+
+165
+00:04:07,387 --> 00:04:08,647
+to about 4 percent,
+
+166
+00:04:08,447 --> 00:04:10,347
+partly because of the oil shock
+
+167
+00:04:10,147 --> 00:04:11,287
+after the war with Iran.
+
+168
+00:04:12,182 --> 00:04:13,242
+By October 30,
+
+169
+00:04:13,422 --> 00:04:15,402
+gold was down about 27 percent
+
+170
+00:04:15,202 --> 00:04:16,082
+from its record.
+
+171
+00:04:17,350 --> 00:04:18,570
+Has this happened before?
+
+172
+00:04:19,170 --> 00:04:19,370
+Yes.
+
+173
+00:04:19,830 --> 00:04:20,930
+In August 2011,
+
+174
+00:04:21,050 --> 00:04:24,156
+gold's monthly close hit about 1,828
+
+175
+00:04:23,956 --> 00:04:24,370
+dollars.
+
+176
+00:04:25,466 --> 00:04:26,786
+Over the next four years,
+
+177
+00:04:26,906 --> 00:04:28,086
+it fell 42 percent,
+
+178
+00:04:27,886 --> 00:04:30,606
+to about 1,060 dollars in December
+
+179
+00:04:30,406 --> 00:04:31,346
+2015.
+
+180
+00:04:32,073 --> 00:04:33,733
+It took until July 2020,
+
+181
+00:04:33,533 --> 00:04:35,613
+almost nine years after that peak,
+
+182
+00:04:35,413 --> 00:04:37,053
+for gold to get back to
+
+183
+00:04:36,853 --> 00:04:38,033
+its 2011 high.
+
+184
+00:04:38,632 --> 00:04:39,972
+That doesn't mean it will happen
+
+185
+00:04:39,772 --> 00:04:40,212
+again.
+
+186
+00:04:40,612 --> 00:04:42,032
+But it shows how long a
+
+187
+00:04:41,832 --> 00:04:43,012
+gold slump can last.
+
+188
+00:04:44,483 --> 00:04:45,723
+But here's the twist.
+
+189
+00:04:46,203 --> 00:04:47,683
+Not everyone stopped buying.
+
+190
+00:04:48,348 --> 00:04:49,388
+In the third quarter,
+
+191
+00:04:49,588 --> 00:04:52,148
+central banks added 321 tonnes of
+
+192
+00:04:51,948 --> 00:04:52,368
+gold,
+
+193
+00:04:52,668 --> 00:04:54,328
+up 42 percent from a year
+
+194
+00:04:54,128 --> 00:04:54,748
+earlier,
+
+195
+00:04:54,828 --> 00:04:56,328
+according to the World Gold Council.
+
+196
+00:04:56,808 --> 00:04:57,748
+So far this year,
+
+197
+00:04:57,748 --> 00:05:00,008
+they've bought 675 tonnes,
+
+198
+00:04:59,808 --> 00:05:01,368
+6 percent more than last year.
+
+199
+00:05:02,173 --> 00:05:05,233
+Gold funds took in 211 tonnes,
+
+200
+00:05:05,033 --> 00:05:06,333
+and their total holdings hit a
+
+201
+00:05:06,133 --> 00:05:09,173
+record 4,256 tonnes.
+
+202
+00:05:08,973 --> 00:05:10,933
+These funds let regular investors own
+
+203
+00:05:10,733 --> 00:05:12,533
+gold without storing a single bar.
+
+204
+00:05:13,087 --> 00:05:13,947
+So who stopped?
+
+205
+00:05:14,567 --> 00:05:14,987
+Regular buyers.
+
+206
+00:05:15,587 --> 00:05:17,207
+Jewelry demand fell 17 percent,
+
+207
+00:05:17,007 --> 00:05:18,487
+the weakest third quarter in the
+
+208
+00:05:18,287 --> 00:05:19,067
+council's data.
+
+209
+00:05:19,387 --> 00:05:21,007
+Gold bars and coins fell 19
+
+210
+00:05:20,807 --> 00:05:21,327
+percent,
+
+211
+00:05:21,127 --> 00:05:22,827
+with China the one big exception,
+
+212
+00:05:23,087 --> 00:05:23,567
+up 7 percent.
+
+213
+00:05:24,475 --> 00:05:25,635
+Even after the drop,
+
+214
+00:05:25,675 --> 00:05:28,715
+gold averaged 4,262 dollars an ounce
+
+215
+00:05:28,515 --> 00:05:29,395
+in the third quarter.
+
+216
+00:05:29,995 --> 00:05:30,835
+For most people,
+
+217
+00:05:30,795 --> 00:05:31,975
+that's still very expensive.
+
+218
+00:05:32,655 --> 00:05:33,915
+And mines dug up a record
+
+219
+00:05:33,715 --> 00:05:36,395
+1,071 tonnes for a third quarter.
+
+220
+00:05:37,850 --> 00:05:39,150
+How does that compare with stocks?
+
+221
+00:05:39,730 --> 00:05:40,870
+Since January 29,
+
+222
+00:05:41,030 --> 00:05:42,690
+the S&P 500 is up about
+
+223
+00:05:42,490 --> 00:05:43,310
+6 percent.
+
+224
+00:05:43,470 --> 00:05:44,770
+Over the last twelve months,
+
+225
+00:05:44,830 --> 00:05:45,810
+about 10 percent.
+
+226
+00:05:46,456 --> 00:05:47,576
+Over ten years,
+
+227
+00:05:47,696 --> 00:05:48,656
+both roughly tripled.
+
+228
+00:05:49,476 --> 00:05:49,676
+Gold,
+
+229
+00:05:49,716 --> 00:05:51,096
+about 3.2 times.
+
+230
+00:05:51,616 --> 00:05:52,536
+The S&P 500,
+
+231
+00:05:52,776 --> 00:05:54,416
+about 3.5 times,
+
+232
+00:05:54,276 --> 00:05:55,436
+counting prices only.
+
+233
+00:05:56,096 --> 00:05:57,576
+That's about 12 percent a year
+
+234
+00:05:57,376 --> 00:05:57,956
+for gold,
+
+235
+00:05:57,756 --> 00:05:59,116
+and 13 for stocks.
+
+236
+00:05:59,975 --> 00:06:01,655
+And stocks paid dividends on top.
+
+237
+00:06:01,995 --> 00:06:03,635
+Gold never pays anything while you
+
+238
+00:06:03,435 --> 00:06:04,035
+hold it.
+
+239
+00:06:05,317 --> 00:06:06,857
+So is gold still a safe
+
+240
+00:06:06,657 --> 00:06:07,117
+haven?
+
+241
+00:06:07,397 --> 00:06:08,437
+It depends what you mean.
+
+242
+00:06:08,959 --> 00:06:10,099
+Over ten years,
+
+243
+00:06:09,899 --> 00:06:11,139
+gold has more than tripled.
+
+244
+00:06:11,619 --> 00:06:12,659
+Over the last twelve months,
+
+245
+00:06:12,459 --> 00:06:14,219
+it's up only about 2 percent.
+
+246
+00:06:14,019 --> 00:06:15,179
+And since January,
+
+247
+00:06:14,979 --> 00:06:16,599
+it's down almost a quarter.
+
+248
+00:06:17,319 --> 00:06:18,579
+Anyone who bought one ounce at
+
+249
+00:06:18,379 --> 00:06:20,336
+the record is down about 1,243
+
+250
+00:06:20,136 --> 00:06:20,459
+dollars.
+
+251
+00:06:22,173 --> 00:06:24,273
+Gold's big strength is that it
+
+252
+00:06:24,073 --> 00:06:25,173
+isn't anyone's debt:
+
+253
+00:06:25,453 --> 00:06:27,013
+no company or government has to
+
+254
+00:06:26,813 --> 00:06:27,473
+pay it back,
+
+255
+00:06:27,813 --> 00:06:28,813
+and it can help when the
+
+256
+00:06:28,613 --> 00:06:29,353
+dollar falls.
+
+257
+00:06:29,913 --> 00:06:31,053
+But it can swing wildly,
+
+258
+00:06:31,373 --> 00:06:32,733
+and it pays no interest or
+
+259
+00:06:32,533 --> 00:06:33,033
+dividends.
+
+260
+00:06:33,858 --> 00:06:36,338
+And with inflation at about 4
+
+261
+00:06:36,138 --> 00:06:36,798
+percent,
+
+262
+00:06:36,598 --> 00:06:38,598
+that 2 percent gain over a
+
+263
+00:06:38,398 --> 00:06:40,038
+year actually lost value.
+
+264
+00:06:41,350 --> 00:06:42,690
+So what could turn gold around?
+
+265
+00:06:43,150 --> 00:06:43,750
+Nobody knows,
+
+266
+00:06:43,550 --> 00:06:44,890
+and we don't make predictions.
+
+267
+00:06:45,690 --> 00:06:46,870
+But the same forces that pushed
+
+268
+00:06:46,670 --> 00:06:48,170
+it down can work in reverse.
+
+269
+00:06:49,002 --> 00:06:50,442
+If real interest rates fall,
+
+270
+00:06:50,682 --> 00:06:51,702
+if the dollar weakens,
+
+271
+00:06:51,502 --> 00:06:53,122
+or if the Fed starts cutting
+
+272
+00:06:52,922 --> 00:06:53,662
+again,
+
+273
+00:06:53,802 --> 00:06:54,842
+gold could get support.
+
+274
+00:06:55,342 --> 00:06:57,122
+And central banks are still buying.
+
+275
+00:06:57,743 --> 00:06:59,283
+And if rates and the dollar
+
+276
+00:06:59,083 --> 00:06:59,863
+keep rising,
+
+277
+00:07:00,063 --> 00:07:01,243
+the pressure could continue.
+
+278
+00:07:02,650 --> 00:07:04,070
+We don't give financial advice,
+
+279
+00:07:04,210 --> 00:07:05,730
+but the data teaches three lessons.
+
+280
+00:07:06,547 --> 00:07:07,007
+One:
+
+281
+00:07:07,047 --> 00:07:08,487
+a safe haven doesn't mean a
+
+282
+00:07:08,287 --> 00:07:09,067
+safe price.
+
+283
+00:07:09,287 --> 00:07:11,207
+Gold fell almost 11 percent in
+
+284
+00:07:11,007 --> 00:07:11,627
+one day,
+
+285
+00:07:11,427 --> 00:07:12,567
+and silver 31.
+
+286
+00:07:13,283 --> 00:07:13,823
+Two:
+
+287
+00:07:13,983 --> 00:07:15,743
+watch real interest rates and the
+
+288
+00:07:15,543 --> 00:07:16,003
+dollar.
+
+289
+00:07:16,263 --> 00:07:16,823
+This year,
+
+290
+00:07:16,783 --> 00:07:17,523
+when they went up,
+
+291
+00:07:17,523 --> 00:07:18,263
+gold went down.
+
+292
+00:07:18,843 --> 00:07:19,303
+Three:
+
+293
+00:07:19,483 --> 00:07:21,703
+when something rises 64 percent in
+
+294
+00:07:21,503 --> 00:07:22,003
+a year,
+
+295
+00:07:22,183 --> 00:07:23,363
+the ride down can be fast
+
+296
+00:07:23,163 --> 00:07:23,643
+too.
+
+297
+00:07:23,983 --> 00:07:24,943
+And after 2011,
+
+298
+00:07:25,183 --> 00:07:26,323
+the wait to get back took
+
+299
+00:07:26,123 --> 00:07:27,143
+almost nine years.
+
+300
+00:07:27,523 --> 00:07:28,303
+If you own gold,
+
+301
+00:07:28,543 --> 00:07:29,463
+know why you own it.
+
+302
+00:07:30,550 --> 00:07:31,390
+Let's recap.
+
+303
+00:07:32,110 --> 00:07:34,150
+Gold hit a record 5,318 dollars
+
+304
+00:07:33,950 --> 00:07:35,830
+in January,
+
+305
+00:07:36,110 --> 00:07:37,890
+then fell 23 percent.
+
+306
+00:07:37,970 --> 00:07:39,450
+The crash day came with a
+
+307
+00:07:39,250 --> 00:07:40,930
+new pick for Fed chair.
+
+308
+00:07:40,730 --> 00:07:41,510
+Since then,
+
+309
+00:07:41,570 --> 00:07:42,610
+higher real rates,
+
+310
+00:07:42,650 --> 00:07:44,130
+a stronger dollar and a Fed
+
+311
+00:07:43,930 --> 00:07:45,150
+hike pushed it lower,
+
+312
+00:07:45,470 --> 00:07:46,970
+while central banks kept buying.
+
+313
+00:07:47,470 --> 00:07:48,390
+Over ten years,
+
+314
+00:07:48,190 --> 00:07:49,810
+gold still more than tripled,
+
+315
+00:07:49,990 --> 00:07:51,290
+but it pays nothing while you
+
+316
+00:07:51,090 --> 00:07:51,490
+wait,
+
+317
+00:07:51,630 --> 00:07:53,130
+and slumps can last for years.
+
+318
+00:07:53,882 --> 00:07:54,762
+So here's my question:
+
+319
+00:07:54,902 --> 00:07:56,242
+is gold still a safe haven?
+
+320
+00:07:56,562 --> 00:07:57,282
+Yes or no,
+
+321
+00:07:57,302 --> 00:07:58,182
+tell me in the comments.
+
+322
+00:07:58,442 --> 00:07:59,282
+And if you missed it,
+
+323
+00:07:59,282 --> 00:08:00,702
+watch our video on how banks
+
+324
+00:08:00,502 --> 00:08:02,262
+create money out of thin air.
+
+325
+00:08:02,706 --> 00:08:04,806
+This video is for education only.
+
+326
+00:08:05,266 --> 00:08:06,566
+It's not financial advice.
+
