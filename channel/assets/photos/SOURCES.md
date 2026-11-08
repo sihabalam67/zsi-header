@@ -20,3 +20,6 @@ Design "B-roll sx05 5 dollars a day - Vertical" (DAHZ12vJvkk), 12 pages, filled 
 export in assets/footage/sx05/all.mp4 (139.8 s, 1080x1920, no audio).
 Used in sx05_short_five_a_day (Nov 7): cut into coffee/coins/piggy/calendar/plant/rolljar/phone.mp4 (+ stills
 rolljar_end, coins_s, piggy_s, coffee_s.jpg for the hook and thumbnails).
+- bars.jpg: https://commons.wikimedia.org/wiki/File%3AGold_bullion_bars.jpg (CC0)
+- bullion.jpg: https://commons.wikimedia.org/wiki/File%3AGold_bullion_1.jpg (Public domain)
+- vault.jpg: https://commons.wikimedia.org/wiki/File%3AGold_Vault%2C_U._S._Depository%2C_Fort_Knox%2C_Ky_%2878762%29.jpg (Public domain)

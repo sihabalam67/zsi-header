@@ -66,6 +66,8 @@ SPEC = {
                       ('flow/ep08/img6.jpg', 'flow/ep08/img3.jpg', 'flow/ep08/img1.jpg')),
     'ep06_banks': (0, 'ONLY 1 IN 10\nIS CASH', 'MONEY FROM\nTHIN AIR', 'WHO MADE\nYOUR MONEY?', GRN, None, 0,
                    ('thumbsrc/ep06_cash_us.jpg', 'photos/ep06s/vault.png', 'photos/ep06s/bank.jpg')),
+    'ep09_gold': (0, 'GOLD\n-23%', 'WHAT\nHAPPENED?', 'IS GOLD\nSTILL SAFE?', RED, None, 0,
+                  ('photos/ep09/bars.jpg', 'photos/ep09/bullion.jpg', 'photos/ep09/vault.jpg')),
     'ep05_jobs': (0, '60,000\nBUYOUTS', 'LAYOFFS?', 'IS YOUR\nJOB SAFE?', YEL, None, 1),
 }
 

@@ -23,7 +23,8 @@ from engine import build, still  # noqa: E402
 
 EPN = NAME.split('_')[0]
 E = importlib.import_module({'ep01': 'ep01_inflation', 'ep02': 'ep02_housing', 'ep03': 'ep03_gas',
-                             'ep04': 'ep04_fed', 'ep05': 'ep05_jobs', 'ep08': 'ep08_midterms'}[EPN])
+                             'ep04': 'ep04_fed', 'ep05': 'ep05_jobs', 'ep06': 'ep06_banks', 'ep08': 'ep08_midterms',
+                             'ep09': 'ep09_gold'}[EPN])
 
 
 def big(c, text, y, size, color, k=1.0, sub=None):
@@ -688,6 +689,164 @@ def mid_c(c, x):
     mid_cover(c, t)
 
 
+# ------------------------------------------------- ep06 + ep09 (week 3, Nov 13-18) --
+def fit(text, size, maxw=640, weight=900):
+    while size > 20 and font(size, weight, k=1).getlength(text) > maxw:
+        size -= 3
+    return size
+
+
+def headline_fit(c, t, at, icon, color, value, caption, sub=None, icon_size=200):
+    """headline(), with the number and captions shrunk to fit the phone width."""
+    if icon:
+        c.icon(icon, 360, 400, icon_size, color, a=fade(t, at), stroke=2.2)
+    k = pop(t, at + 0.4)
+    if k > 0:
+        sz = fit(value, 110)
+        c.text(360, 650, value, int(sz * (0.6 + 0.4 * clamp(k))), color, 900, a=clamp(k), stroke=4)
+    c.text(360, 760, caption, fit(caption, 32), WHITE, 900, a=fade(t, at + 0.6))
+    if sub:
+        c.text(360, 810, sub, fit(sub, 26, weight=800), MUTED, 800, a=fade(t, at + 0.9), shadow=False)
+def yes_no(c, t, at, q, a='YES', b='NO'):
+    c.text(360, 380, q, 44, GOLD, 900, a=fade(t, at))
+    for j, (lab, col) in enumerate(((a, MINT), (b, CORAL))):
+        k = clamp(pop(t, at + 0.4 + 0.2 * j)) * (1 + 0.05 * math.sin(t * 5 + j * 3))
+        w = max(200, len(lab) * 26 + 60)
+        bx = 210 + j * 300
+        c.rrect(bx - w / 2, 560 - 55 * k, bx + w / 2, 560 + 55 * k, 30, col)
+        c.text(bx, 560, lab, int(44 * k) + 1, INK, 900, shadow=False)
+    c.text(360, 720, 'tell me in the comments', 30, WHITE, 900, a=fade(t, at + 0.8))
+
+
+def cover_num(c, t, dur, top, num, sub, col):
+    e = seam(t, dur)
+    c.text(360, 260, top, fit(top, 40), WHITE, 900)
+    c.text(360, 520 + 9 * e * math.sin(t * 5), num, fit(num, 150), col, 900, stroke=5)
+    c.text(360, 700, sub, fit(sub, 38), WHITE, 900)
+
+
+def cash_cover(c, t, dur=None):
+    cover_num(c, t, dur, 'Of all US money', f'{E.SHARE * 100:.1f}%', 'is actual cash', GOLD)
+
+
+def cash_draw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 21, 50)
+    if t < L[1] or t >= x.dur - 0.9:
+        return cash_cover(c, t, x.dur)
+    if t < L[2]:
+        return two_bars(c, t, L[1] + 0.2, ('Money supply (M2)', E.M2_NOW, MINT), ('Cash', E.CASH_NOW, GOLD),
+                        lambda v: f'${v:.1f}T', 25, title=f'{E.M2_DATE:%B %Y}')
+    if t < L[3]:
+        c.icon('smartphone', 360, 430, 230, SKY, a=fade(t, L[2]))
+        return c.text(360, 680, 'The rest: numbers in accounts', 36, WHITE, 900, a=fade(t, L[2] + 0.3))
+    if t < L[4]:
+        return headline_fit(c, t, L[3], 'landmark', GOLD, 'LOANS', 'created by banks', 'Bank of England, 2014')
+    yes_no(c, t, L[4], 'Did you know?')
+
+
+def zero_cover(c, t, dur=None):
+    cover_num(c, t, dur, 'Required bank reserves', '0%', 'since March 2020', CORAL)
+
+
+def zero_draw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 22, 50)
+    if t < L[1] or t >= x.dur - 0.9:
+        return zero_cover(c, t, x.dur)
+    if t < L[2]:
+        return headline_fit(c, t, L[1], 'calendar', SKY, 'MARCH 26, 2020', 'reserve requirement cut to zero', 'Federal Reserve')
+    if t < L[3]:
+        return headline_fit(c, t, L[2], 'vault', MINT, f'${E.RES_NOW:.1f} TRILLION', 'held in reserves anyway', 'FRED: TOTRESNS')
+    if t < L[4]:
+        c.text(360, 260, 'What really limits banks', 38, WHITE, 900, a=fade(t, L[3]))
+        for i, (ic, lab) in enumerate((('user-check', 'borrowers'), ('shield', 'capital'), ('percent', 'interest rates'),
+                                       ('handshake', 'trust'))):
+            k = pop(t, L[3] + 0.8 + 0.7 * i)
+            if k > 0:
+                y = 380 + i * 130
+                c.icon(ic, 200, y, 80 * clamp(k), GOLD)
+                c.text(270, y, lab, 44, WHITE, 900, anchor='lm', a=clamp(k))
+        return
+    yes_no(c, t, L[4], 'Did you know it was 0%?')
+
+
+def svb_cover(c, t, dur=None):
+    cover_num(c, t, dur, 'Pulled from one bank', '$42 BILLION', 'in a single day', CORAL)
+
+
+def svb_draw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 23, 50)
+    if t < L[1] or t >= x.dur - 0.9:
+        return svb_cover(c, t, x.dur)
+    if t < L[2]:
+        return headline_fit(c, t, L[1], 'landmark', SKY, 'MARCH 9, 2023', 'Silicon Valley Bank', 'Federal Reserve review, April 2023')
+    if t < L[3]:
+        return headline_fit(c, t, L[2], 'lock', CORAL, 'CLOSED', 'the very next day')
+    if t < L[4]:
+        headline_fit(c, t, L[3], 'shield-check', MINT, '$250,000', 'FDIC insurance limit')
+        c.text(360, 860, 'per depositor · per bank · per ownership type', fit('per depositor · per bank · per ownership type', 26), SKY, 900, a=fade(t, L[3] + 2.0))
+        return
+    yes_no(c, t, L[4], 'Did you know the limit?')
+
+
+def crash_cover(c, t, dur=None):
+    cover_num(c, t, dur, 'Gold in ONE day', f'{E.CRASH:.1f}%', 'January 30, 2026', CORAL)
+
+
+def crash_draw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 24, 50)
+    if t < L[1] or t >= x.dur - 0.9:
+        return crash_cover(c, t, x.dur)
+    if t < L[2]:
+        return headline_fit(c, t, L[1], 'trending-up', GOLD, f'${E.REC:,.0f}', 'record close the day before', 'COMEX gold futures, per ounce')
+    if t < L[3]:
+        return headline_fit(c, t, L[2], 'landmark', SKY, 'NEW FED CHAIR PICK', 'Kevin Warsh named, dollar rose')
+    if t < L[4]:
+        return headline_fit(c, t, L[3], 'trending-down', CORAL, f'SILVER {E.SI_CRASH:.0f}%', 'the same day')
+    yes_no(c, t, L[4], 'Still a safe haven?')
+
+
+def knox_cover(c, t, dur=None):
+    cover_num(c, t, dur, "America's gold, on the books", '$42.22', 'an ounce', GOLD)
+
+
+def knox_draw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 25, 50)
+    if t < L[1] or t >= x.dur - 0.9:
+        return knox_cover(c, t, x.dur)
+    if t < L[2]:
+        return headline_fit(c, t, L[1], 'vault', GOLD, f'{E.US_OZ / 1e6:.0f} MILLION OZ', 'owned by the US government',
+                        f'Fort Knox: {E.KNOX_OZ / 1e6:.0f} million')
+    if t < L[3]:
+        return headline_fit(c, t, L[2], 'book-open', SKY, f'${E.US_BOOK / 1e9:.0f} BILLION', 'at the book price')
+    if t < L[4]:
+        return headline_fit(c, t, L[3], 'trending-up', MINT, f'${E.US_VALUE / 1e12:.2f} TRILLION', 'at the Nov 6 market price')
+    yes_no(c, t, L[4], 'Did you know?')
+
+
+def buyers_cover(c, t, dur=None):
+    cover_num(c, t, dur, 'Gold down 23%. Central banks bought', f'{E.WGC["cb"]} TONNES', 'in just 3 months', MINT)
+
+
+def buyers_draw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 26, 50)
+    if t < L[1] or t >= x.dur - 0.9:
+        return buyers_cover(c, t, x.dur)
+    if t < L[2]:
+        return headline_fit(c, t, L[1], 'landmark', MINT, f'+{E.WGC["cb_yoy"]}%', 'central bank buying vs a year ago',
+                        'World Gold Council, Q3 2026')
+    if t < L[3]:
+        return headline_fit(c, t, L[2], 'gem', CORAL, f'{E.WGC["jew_yoy"]}%', 'jewelry: weakest Q3 on record')
+    if t < L[4]:
+        return headline_fit(c, t, L[3], 'coins', CORAL, f'{E.WGC["bar_yoy"]}%', 'gold bars and coins')
+    yes_no(c, t, L[4], 'Who is right?', 'BANKS', 'SHOPPERS')
+
+
 SHORTS2 = {
     'ep08_short_midterms': lambda: [
         dict(draw=mid_a, vertical=True, lead=0.1, gap=0.25, tail=0.3, lines=[
@@ -896,6 +1055,63 @@ SHORTS2 = {
 }
 
 
+def _v(draw, lines, punch, sfx):
+    return lambda: [dict(draw=draw, vertical=True, lead=0.1, gap=0.25, tail=0.9, lines=lines(), punch=punch, sfx=sfx)]
+
+
+SHORTS2.update({
+    'ep06_short_cash': _v(cash_draw, lambda: [
+        "!Only about one in ten US dollars is actual cash.",
+        f"Out of {E.M2_NOW:.1f} trillion dollars in the money supply, cash is about {E.CASH_NOW:.1f} trillion.",
+        "The rest is just numbers in bank accounts.",
+        "!And most of those numbers were created by banks, when they made loans.",
+        "Did you know? Yes or no?",
+    ], lambda L: [0.05, L[3] + 0.4], lambda L: [(0.0, 'hit'), (L[1] + 0.2, 'pop'), (L[2], 'whoosh'), (L[3] + 0.4, 'ding'),
+                                                (L[4] + 0.4, 'pop')]),
+    'ep06_short_zero': _v(zero_draw, lambda: [
+        "!Banks have to keep zero percent of your deposits in reserve.",
+        "That's been the rule in America since March 2020.",
+        f"Yet banks still hold about {E.RES_NOW:.0f} trillion dollars in reserves anyway.",
+        "Because what really limits banks is borrowers, capital, interest rates, and trust.",
+        "Did you know it was zero? Yes or no?",
+    ], lambda L: [0.05, L[2] + 0.4], lambda L: [(0.0, 'hit'), (L[1] + 0.4, 'pop'), (L[2] + 0.4, 'ding')]
+        + [(L[3] + 0.8 + 0.7 * i, 'pop') for i in range(4)] + [(L[4] + 0.4, 'pop')]),
+    'ep06_short_svb': _v(svb_draw, lambda: [
+        "!42 billion dollars, pulled from one bank in a single day.",
+        "That was Silicon Valley Bank, on March 9, 2023.",
+        "!The next day, it was shut down.",
+        "That's why the FDIC insures deposits up to 250,000 dollars, per depositor, per bank, per ownership type.",
+        "Did you know the limit? Yes or no?",
+    ], lambda L: [0.05, L[2] + 0.4], lambda L: [(0.0, 'hit'), (L[1] + 0.4, 'pop'), (L[2] + 0.4, 'down'),
+                                                (L[3] + 0.4, 'ding'), (L[4] + 0.4, 'pop')]),
+    'ep09_short_crash': _v(crash_draw, lambda: [
+        f"!Gold fell {abs(E.CRASH):.1f} percent in a single day.",
+        f"It was January 30, 2026, right after a record close of {E.REC:,.0f} dollars an ounce.",
+        "That day, Kevin Warsh was named as the pick for Fed chair, and the dollar rose.",
+        f"!Silver did even worse: down {abs(E.SI_CRASH):.0f} percent.",
+        "Is gold still a safe haven? Yes or no?",
+    ], lambda L: [0.05, L[3] + 0.4], lambda L: [(0.0, 'hit'), (L[1] + 0.4, 'pop'), (L[2] + 0.4, 'pop'),
+                                                (L[3] + 0.4, 'down'), (L[4] + 0.4, 'pop')]),
+    'ep09_short_knox': _v(knox_draw, lambda: [
+        "!America's gold is still on the books at just 42 dollars and 22 cents an ounce.",
+        f"The US government owns about {E.US_OZ / 1e6:.0f} million ounces.",
+        f"At that old book price, it's worth about {E.US_BOOK / 1e9:.0f} billion dollars.",
+        f"!At the November 6 market price? About {E.US_VALUE / 1e12:.2f} trillion.",
+        "Did you know? Yes or no?",
+    ], lambda L: [0.05, L[3] + 0.4], lambda L: [(0.0, 'hit'), (L[1] + 0.4, 'pop'), (L[2] + 0.4, 'pop'),
+                                                (L[3] + 0.4, 'ding'), (L[4] + 0.4, 'pop')]),
+    'ep09_short_buyers': _v(buyers_draw, lambda: [
+        f"!Gold is down {abs(E.DROP):.0f} percent from its record, but central banks just bought {E.WGC['cb']} tonnes "
+        "in three months.",
+        f"That's {E.WGC['cb_yoy']} percent more than a year earlier.",
+        f"Jewelry demand fell {abs(E.WGC['jew_yoy'])} percent, the weakest third quarter on record.",
+        f"Gold bars and coins fell {abs(E.WGC['bar_yoy'])} percent.",
+        "Who's right, the central banks or the shoppers?",
+    ], lambda L: [0.05, L[1] + 0.4], lambda L: [(0.0, 'hit'), (L[1] + 0.4, 'ding'), (L[2] + 0.4, 'down'),
+                                                (L[3] + 0.4, 'down'), (L[4] + 0.4, 'pop')]),
+})
+
+
 def check(name):
     """The episode's own number checks, plus the script's numbers against its data."""
     E.check_numbers()
@@ -930,6 +1146,18 @@ def check(name):
         assert abs(E.CPI_NOW - E.S_NOW - E.REAL_LOSS) < 0.05 and E.EF_NOW == 38 and E.EF_ALT == 350
     if name == 'ep04_short_why':
         assert E.CPI_NOW / 2 > 1.8 and 'almost double' in script and f'{E.CPI_FEB:.1f}%' == '2.4%'
+    if name == 'ep06_short_cash':
+        assert 0.1 < E.SHARE < 0.11 and 'one in ten' in script and '23.4 trillion' in script and '2.5 trillion' in script
+    if name == 'ep06_short_zero':
+        assert round(E.RES_NOW) == 3 and 'since March 2020' in script and '3 trillion' in script
+    if name == 'ep06_short_svb':
+        assert '42 billion' in script and 'March 9, 2023' in script and '250,000' in script
+    if name == 'ep09_short_crash':
+        assert round(E.CRASH, 1) == -10.8 and '10.8 percent' in script and '5,318' in script and round(E.SI_CRASH) == -31
+    if name == 'ep09_short_knox':
+        assert round(E.US_OZ / 1e6) == 261 and round(E.US_BOOK / 1e9) == 11 and '1.07 trillion' in script
+    if name == 'ep09_short_buyers':
+        assert '321 tonnes' in script and '42 percent' in script and '17 percent' in script and '19 percent' in script
     if name == 'ep03_short_feathers':
         assert E.UP_GAS > E.UP_CRUDE and E.DN_GAS < E.DN_CRUDE and 'rose even more' in script
         assert f'{round(E.DN_GAS * 100)} cents' in script and E.money(E.UP_GAS) in script
