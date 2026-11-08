@@ -704,6 +704,10 @@ def headline_fit(c, t, at, icon, color, value, caption, sub=None, icon_size=200)
     if k > 0:
         sz = fit(value, 110)
         c.text(360, 650, value, int(sz * (0.6 + 0.4 * clamp(k))), color, 900, a=clamp(k), stroke=4)
+        if t > at + 1.6:  # keep the eye on the number while it is explained
+            w = font(sz, 900, k=1).getlength(value) / 2 + 30
+            c.rrect(360 - w, 650 - sz * 0.62, 360 + w, 650 + sz * 0.62, 26, None, color, 5,
+                    a=0.3 + 0.7 * (0.5 + 0.5 * math.sin(t * 5)))
     c.text(360, 760, caption, fit(caption, 32), WHITE, 900, a=fade(t, at + 0.6))
     if sub:
         c.text(360, 810, sub, fit(sub, 26, weight=800), MUTED, 800, a=fade(t, at + 0.9), shadow=False)
