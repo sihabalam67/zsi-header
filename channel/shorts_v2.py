@@ -790,10 +790,9 @@ def svb_draw(c, x):
         return headline_fit(c, t, L[2], 'lock', CORAL, 'CLOSED', 'the very next day')
     if t < L[4]:
         headline_fit(c, t, L[3], 'shield-check', MINT, '$250,000', 'FDIC insurance limit')
-        for j, (lab, at) in enumerate((('per depositor', 2.8), ('per bank', 3.6), ('per ownership type', 4.4))):
-            chip(c, 360, 830 + j * 62, lab, SKY, pop(t, L[3] + at), 24)
-        if t > L[3] + 4.6:
-            c.rrect(150, 590, 570, 710, 30, None, MINT, 5, a=0.3 + 0.7 * (0.5 + 0.5 * math.sin(t * 5)))
+        for (lab, at, cx, cy) in (('per depositor', 2.8, 240, 832), ('per bank', 3.6, 500, 832),
+                                  ('per ownership type', 4.4, 360, 892)):
+            chip(c, cx, cy, lab, SKY, pop(t, L[3] + at), 24)
         return
     yes_no(c, t, L[4], 'Did you know the limit?')
 
