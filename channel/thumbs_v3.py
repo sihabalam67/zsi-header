@@ -53,6 +53,8 @@ SPEC = {
     'sx11_short_election_rally': (1, '+1,570\nDOW', 'BEST DAY\nIN 19 MONTHS', 'WHY DID\nSTOCKS JUMP?', GRN, 'cashhands', 1),
     'sx05_short_five_a_day': (1, '$5 A DAY\n= $186K', '30 YEARS\nLATER', 'WOULD\nYOU?', GRN, None, 0,
                               ('footage/sx05/rolljar_end.jpg', 'footage/sx05/piggy_s.jpg', 'footage/sx05/coffee_s.jpg')),
+    'sx06_short_paycheck': (1, 'YOU KEEP\n$53,948', 'WHERE IT\nGOES', 'WHERE DID\nYOUR PAY GO?', GRN, None, 0,
+                            ('thumbsrc/ep06_cash_us.jpg', 'photos/ep06s/bank.jpg', 'photos/ep06s/houses.jpg')),
     'sx12_short_hens': (1, '$100 OR\n$660?', 'SAME $100\n4 FRIENDS', 'WHICH ONE\nARE YOU?', GRN, 'hens_board', 0),
     'ep01_inflation': (0, '$100\nNOW $12', 'WHERE\nIT WENT', 'YOUR\n$100?', YEL, None, 0),
     'ep02_housing': (0, '$23K\nNOW $393K', 'PRICED\nOUT', 'WILL YOU\nEVER BUY?', YEL, None, 0),

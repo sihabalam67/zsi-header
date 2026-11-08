@@ -45,7 +45,7 @@ If a topic's facts can't be confirmed, skip it and take the next one. Breaking m
 | Sat Nov 7 | live 5 PM | sx04 are you middle class? (Pew 52%, $56,600-$169,800; Census median $87,460) | MEHOINUSA646N in channel/data; Pew's middle-income definition (2/3 to 2x median) |
 | Wed Nov 4 | live 9 AM (extra) | sx10 stocks after every midterm since 1950: 19/19, avg +15.1% (S&P 500 daily closes, data/SP500_midterms.csv) | done |
 | Sun Nov 8 | live 5 PM | sx05 $5 a day: $152/mo, put in $54,750, about $185,537 at an example 7% (10y $26K, 20y $79K, 40y $399K); owner's Canva sx05 clips | done |
-| Mon Nov 9 | to build | sx06 why your paycheck shrinks: where taxes go | IRS / SSA 2026 rates (FICA 7.65%) |
+| Mon Nov 9 | live 5 PM | sx06 paycheck: BLS median $1,239/wk = $64,428; IRS 2026 brackets (single, $16,100 std): tax $5,551 = 8.6% in the 12% bracket; FICA 7.65% + employer 7.65% ($4,929); keep $53,948 | done |
 | Tue Nov 10 | to build | sx07 the 50/30/20 budget in 40 seconds | median income example |
 | Wed Nov 11 | to build | sx08 how a credit score is calculated | FICO's published weights (35/30/15/10/10) |
 | Thu Nov 12 | to build | sx09 inflation: why prices never go back down | CPI data |

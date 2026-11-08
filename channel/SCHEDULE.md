@@ -35,6 +35,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Sun Nov 8 | Short | 5 PM: $5 a day for 30 years = about $186K (Canva B-roll) | https://youtu.be/k7jpTsa9tz0 |
 | Mon Nov 9 | Long | A House Cost $23,000 in 1970 | https://youtu.be/Ln54Ec_mjq8 |
 | Mon Nov 9 | Short | A house cost $23,000 in 1970 | https://youtu.be/XeRFCvpQ8Pg |
+| Mon Nov 9 | Short | 5 PM: $64,428 salary, you keep $53,948 (paycheck taxes) | https://youtu.be/TnZZtcMKRww |
 | Tue Nov 10 | Short | Same house, $876 more per month | https://youtu.be/rIS1CBTvCBo |
 | Wed Nov 11 | Short | America stopped building homes | https://youtu.be/Ik86OxsBMKA |
 | Thu Nov 12 | Short | Nobody is hiring | https://youtu.be/re9qUtJMMdA |
