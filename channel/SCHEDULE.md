@@ -44,9 +44,9 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Sat Nov 14 | Short | 2 PM: Banks must keep 0% of your deposits | https://youtu.be/f8wuovndCRA |
 | Sun Nov 15 | Short | 2 PM: $42 billion pulled from one bank in one day | https://youtu.be/u8m5o0A1LNk |
 | Mon Nov 16 | Long | 2 PM: Gold fell 23% from its record. What happened? (8.1 min) | https://youtu.be/oJBE1INlmzA |
-| Mon Nov 16 | Short | 2 PM: Gold fell 10.8% in one day | (uploading) |
-| Tue Nov 17 | Short | 2 PM: America's gold on the books at $42.22 an ounce | (uploading) |
-| Wed Nov 18 | Short | 2 PM: Central banks bought 321 tonnes | (uploading) |
+| Mon Nov 16 | Short | 2 PM: Gold fell 10.8% in one day | https://youtu.be/CU7Lt5mhKsk |
+| Tue Nov 17 | Short | 2 PM: America's gold on the books at $42.22 an ounce | https://youtu.be/pNM3tFW7_pM |
+| Wed Nov 18 | Short | 2 PM: Central banks bought 321 tonnes | https://youtu.be/N7KNTf9Xa-0 |
 
 Next: week 3 (Fri Nov 13 to Wed Nov 18) is made automatically on Thu Nov 5: ep06 "How banks create money out of
 thin air" plus one trending topic. WEEK1.md and WEEK2.md are the original plans and are out of date.
