@@ -166,7 +166,7 @@ SCENES = [
         f"{round(FV / 1000)} thousand dollars. An example, not a promise.",
     ], sfx=lambda L: [(L[0] + 0.6, 'tick'), (L[0] + 2.6, 'ding'), (L[0] + 2.8, 'pop')]),
     dict(S, draw=s_end, tail=1.0, cam=(1.0, 1.0), lines=[
-        "So, could you live on the 50 30 20 rule? Yes or no?",
+        "So, could you live on this budget? Yes or no?",
     ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[0] + 0.5, 'pop')]),
 ]
 
