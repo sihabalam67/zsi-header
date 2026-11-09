@@ -3,6 +3,12 @@
 One line each: name | site | TrustMRR link | 30-day revenue | checked via | channels or "empty" | date | score/25 | paid days
 Newest date on top.
 
+## 2026-11-09 (weekly): no new winners
+All 10 in-range businesses are already listed below. The three closest new ones, all under $1k:
+ClipUtils | https://cliputils.com/ | https://trustmrr.com/startup/cliputils | $603 | checked via Dodo Payments (https://trustmrr.com/startup/cliputils.md) | empty | 2026-11-09 | missed: under $1k | paid days 30/30
+Morphy | https://www.appmorphy.com/ | https://trustmrr.com/startup/morphy | $950 | checked via Stripe (https://trustmrr.com/startup/morphy.md) | empty | 2026-11-09 | missed: under $1k, fading after launch | paid days 23/30
+Deepnia | https://deepnia.com/ | https://trustmrr.com/startup/deepnia | $893 | checked via Whop (https://trustmrr.com/startup/deepnia.md) | empty | 2026-11-09 | missed: under $1k | paid days 20/30
+
 ## 2026-11-05
 lumabar | https://lumabar.xyz/ | https://trustmrr.com/startup/lumabar | $2,806 | checked via Polar (https://trustmrr.com/startup/lumabar.md) | Reddit (TrustMRR) | 2026-11-05 | 22/25 STEAL-READY | paid days 22/30
 INXANITY Labs | https://inxanitylabs.com/ | https://trustmrr.com/startup/inxanity-labs | $1,450 | checked via Whop (https://trustmrr.com/startup/inxanity-labs.md) | TikTok, X / Twitter, Instagram, SEO (TrustMRR) | 2026-11-05 | 14/25 | paid days 17/30
