@@ -67,6 +67,8 @@ SPEC = {
                         ('photos/ep09/vault.jpg', 'photos/ep09/bars.jpg', 'photos/ep09/bullion.jpg')),
     'ep09_short_buyers': (1, '321\nTONNES', 'WHO IS\nBUYING?', 'WHO IS\nRIGHT?', GRN, None, 0,
                           ('photos/ep09/bullion.jpg', 'photos/ep09/bars.jpg', 'photos/ep09/vault.jpg')),
+    'sx07_short_budget': (1, 'SAVE\n$899?', '50/30/20', 'COULD\nYOU?', GRN, None, 0,
+                          ('thumbsrc/ep06_cash_us.jpg', 'photos/ep06s/houses.jpg', 'photos/ep06s/bank.jpg')),
     'sx12_short_hens': (1, '$100 OR\n$660?', 'SAME $100\n4 FRIENDS', 'WHICH ONE\nARE YOU?', GRN, 'hens_board', 0),
     'ep01_inflation': (0, '$100\nNOW $12', 'WHERE\nIT WENT', 'YOUR\n$100?', YEL, None, 0),
     'ep02_housing': (0, '$23K\nNOW $393K', 'PRICED\nOUT', 'WILL YOU\nEVER BUY?', YEL, None, 0),

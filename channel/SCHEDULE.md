@@ -37,6 +37,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Mon Nov 9 | Short | A house cost $23,000 in 1970 | https://youtu.be/XeRFCvpQ8Pg |
 | Mon Nov 9 | Short | 5 PM: $64,428 salary, you keep $53,948 (paycheck taxes) | https://youtu.be/TnZZtcMKRww |
 | Tue Nov 10 | Short | Same house, $876 more per month | https://youtu.be/rIS1CBTvCBo |
+| Tue Nov 10 | Short | 5 PM: The 50/30/20 rule says save $899 a month | https://youtu.be/ibct0rkUuAM |
 | Wed Nov 11 | Short | America stopped building homes | https://youtu.be/Ik86OxsBMKA |
 | Thu Nov 12 | Short | Nobody is hiring | https://youtu.be/re9qUtJMMdA |
 | Fri Nov 13 | Long | 2 PM: Only 1 dollar in 10 is cash. How banks create money (8.4 min) | https://youtu.be/ixGj1vl5eQE |
