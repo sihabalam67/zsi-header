@@ -1,0 +1,30 @@
+{
+ "name": "ep01_sample",
+ "level": "A2",
+ "title": "My First Day at Work in a New Country",
+ "voice": "af_heart",
+ "speed": 0.82,
+ "chapters": [
+  {
+   "title": "Chapter 1: The First Morning",
+   "image": "english/art/ep01_ch1.png",
+   "paragraphs": [
+    ["My name is Maya.", "I am twenty-seven years old.", "Three weeks ago, I moved to a new country.", "I came here alone, with one big suitcase and a small dream."],
+    ["Today is my first day at work.", "I have a job in a small café near the train station.", "I am happy, but I am also very nervous."],
+    ["My English is not perfect.", "I can read well, but speaking is hard for me.", "Last night, I wrote ten useful sentences in my notebook."],
+    ["At six thirty, I walk to the café.", "The street is quiet and cold.", "I stop in front of the door and take a deep breath.", "\"You can do this, Maya,\" I say to myself.", "Then I open the door."]
+   ]
+  }
+ ],
+ "words": [
+  ["suitcase", "a big bag for travel"],
+  ["nervous", "a little afraid before something new"],
+  ["useful", "helpful; good to know"],
+  ["take a deep breath", "breathe in slowly to feel calm"]
+ ],
+ "quiz": {
+  "q": "Where is Maya's new job?",
+  "options": ["In a train station", "In a small café", "In a school"],
+  "answer": 1
+ }
+}

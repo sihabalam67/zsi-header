@@ -7,3 +7,5 @@ channel/assets/gen/**/*_frames/
 channel/assets/footage/
 channel/assets/thumbsrc/
 channel/out/thumbs/*_sheet.png
+english/build/
+english/out/
