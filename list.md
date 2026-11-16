@@ -3,6 +3,14 @@
 One line each: name | site | TrustMRR link | 30-day revenue | checked via | channels or "empty" | date | score/25 | paid days
 Newest date on top.
 
+## 2026-11-16 (weekly)
+Chart Scanner AI | https://chartscannerai.com/ | https://trustmrr.com/startup/chart-scanner-ai | $3,588 | checked via RevenueCat (https://trustmrr.com/startup/chart-scanner-ai.md) | TikTok (TrustMRR) | 2026-11-16 | 20/25 STEAL-READY | paid days 30/30
+TapNoise | https://tapnoise.com/ | https://trustmrr.com/startup/tapnoise | $1,330 | checked via Dodo Payments (https://trustmrr.com/startup/tapnoise.md) | Blog, SEO, X / Twitter (TrustMRR) | 2026-11-16 | 20/25 STEAL-READY | paid days 29/30
+Reception | https://reception.sh/ | https://trustmrr.com/startup/reception | $2,895 | checked via Stripe (https://trustmrr.com/startup/reception.md) | empty | 2026-11-16 | 14/25 | paid days 14/30
+Mafia IA Premium | https://mafiaia.com/ | https://trustmrr.com/startup/mafia-ia-premium-acceso-de-por-vida | $8,529 | checked via Creem (https://trustmrr.com/startup/mafia-ia-premium-acceso-de-por-vida.md) | Newsletter, Instagram, LinkedIn, Facebook, Threads, YouTube (TrustMRR) | 2026-11-16 | 13/25 | paid days 17/30
+pawr | https://pawr.link/ | https://trustmrr.com/startup/pawr | $2,484 | checked via Stripe (https://trustmrr.com/startup/pawr.md) | empty | 2026-11-16 | 12/25 | paid days 4/30
+TrustQR | https://trustqr.org/ | https://trustmrr.com/startup/trustqr | $1,470 | checked via Stripe (https://trustmrr.com/startup/trustqr.md) | SEO, LinkedIn (TrustMRR) | 2026-11-16 | 8/25 | paid days 5/30
+
 ## 2026-11-09 (weekly): no new winners
 All 10 in-range businesses are already listed below. The three closest new ones, all under $1k:
 ClipUtils | https://cliputils.com/ | https://trustmrr.com/startup/cliputils | $603 | checked via Dodo Payments (https://trustmrr.com/startup/cliputils.md) | empty | 2026-11-09 | missed: under $1k | paid days 30/30

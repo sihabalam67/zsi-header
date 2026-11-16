@@ -1098,3 +1098,354 @@ Source: https://trustmrr.com/api/ai/discovery → `fastestGrowingStartups` (25).
 **Updates on already-listed winners** (not re-added):
 - **lumabar**: $4,506 in 30 days (up from $2,806), paid **26/30** days. The biggest day is now only 19% of the month, and November is $3,303 after 9 days. Still the #1 pick and getting stronger.
 - **Scalereach.ai**: $2,943 (up from $1,837), paid 19/30 days. November is $2,155 after 9 days. Climbing.
+
+## 2026-11-16 run (weekly)
+Source: https://trustmrr.com/api/ai/discovery → `fastestGrowingStartups` (25). All 25 .md pages opened (HTTP 200) on 2026-11-16 ~08:50 ET. New since 2026-11-09: antwork, arazio, chart-scanner-ai, formbold, hothelia, mafia-ia-premium-acceso-de-por-vida, naughty, pawr, reception, scribekit, startup-11350e2a5296, tapnoise, trustqr, useless-ads. Gone: 1418-technologies-llc, anonymous-startup-80, autodm, basincheck, bidder-iq, devops-daily, drafterplus, hugo-mobile-app-04, morphy, peeklens, skillmaxing, slidelabs-net, swarmpane, taskdesk.
+
+### Mafia IA Premium — Acceso de por vida (`mafia-ia-premium-acceso-de-por-vida`)
+- TrustMRR: https://trustmrr.com/startup/mafia-ia-premium-acceso-de-por-vida · md: https://trustmrr.com/startup/mafia-ia-premium-acceso-de-por-vida.md
+- Site: https://mafiaia.com/ | stealthMode: false
+- Payment provider: Creem (API key) | last synced 2026-11-16T12:42:03.077Z
+- Revenue section: 24 hours $0.00 / 7 days $164 / 30 days $8,529 / 3 months $8,530 / 12 months $8,531 / All time $8,531
+- Snapshot line: $8,529
+- Daily (last 30): paid days 17/30 · biggest day $3,195.00 on 2026-10-23 = 37% of daily total
+- Monthly timeline: 2026-08 $0.93 · 2026-10 $7,142 · 2026-11 $1,388
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): €149 one-time payment for lifetime access; includes future updates. Some prompts are free.
+- Channels (TrustMRR): Newsletter, Instagram, LinkedIn, Facebook, Threads, YouTube
+- Founder X followers: 3,782
+
+### Prospo (`prospo`)
+- TrustMRR: https://trustmrr.com/startup/prospo · md: https://trustmrr.com/startup/prospo.md
+- Site: https://prospo.io/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-15T17:41:55.077Z
+- Revenue section: 24 hours $0.00 / 7 days $0.00 / 30 days $9,601 / 3 months $9,605 / 12 months $9,605 / All time $9,605
+- Snapshot line: $9,601
+- Daily (last 30): paid days 3/30 · biggest day $4,800.00 on 2026-10-26 = 50% of daily total
+- Monthly timeline: 2026-10 $4,805 · 2026-11 $4,800
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): Starter $29/mo, Pro $99/mo, Agency $199/mo. 7-day free trial, no card required.
+- Channels (TrustMRR): SEO, LinkedIn, Instagram, X / Twitter, Product Hunt
+- Founder X followers: 29
+
+### Anonymous startup (`stealth-company-41`)
+- TrustMRR: https://trustmrr.com/startup/stealth-company-41 · md: https://trustmrr.com/startup/stealth-company-41.md
+- Site: none listed | stealthMode: true
+- Payment provider: Stripe (API key) | last synced 2026-11-16T11:18:54.833Z
+- Revenue section: 24 hours $0.00 / 7 days $504 / 30 days $2,504 / 3 months $2,512 / 12 months $2,516 / All time $2,516
+- Snapshot line: $2,504
+- Daily (last 30): paid days 3/30 · biggest day $2,000.00 on 2026-10-27 = 80% of daily total
+- Monthly timeline: 2026-08 $4.00 · 2026-09 $4.00 · 2026-10 $2,004 · 2026-11 $504
+- MRR / active subscriptions: $504 / 3
+- Pricing (founder text): not shown
+- Channels (TrustMRR): empty
+- Founder X followers: 532
+
+### TrustQR (`trustqr`)
+- TrustMRR: https://trustmrr.com/startup/trustqr · md: https://trustmrr.com/startup/trustqr.md
+- Site: https://trustqr.org/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T10:27:45.568Z
+- Revenue section: 24 hours $0.00 / 7 days $600 / 30 days $1,470 / 3 months $1,474 / 12 months $1,997 / All time $2,636
+- Snapshot line: $1,470
+- Daily (last 30): paid days 5/30 · biggest day $600.00 on 2026-11-09 = 41% of daily total
+- Monthly timeline: 2026-07 $3.00 · 2026-08 $1.00 · 2026-10 $873 · 2026-11 $600
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): Explore Transparent Pricing
+- Channels (TrustMRR): SEO, LinkedIn
+- Founder X followers: 0
+
+### Deepnia (`deepnia`)
+- TrustMRR: https://trustmrr.com/startup/deepnia · md: https://trustmrr.com/startup/deepnia.md
+- Site: https://deepnia.com/ | stealthMode: false
+- Payment provider: Whop (API key) | last synced 2026-11-16T12:31:02.948Z
+- Revenue section: 24 hours $0.00 / 7 days $85.50 / 30 days $979 / 3 months $981 / 12 months $981 / All time $981
+- Snapshot line: $979
+- Daily (last 30): paid days 26/30 · biggest day $322.00 on 2026-10-28 = 33% of daily total
+- Monthly timeline: 2026-09 $2.00 · 2026-10 $580 · 2026-11 $399
+- MRR / active subscriptions: $492 / 43
+- Pricing (founder text): Credits: 10 credits for $3.50, 50 credits for $10.80, 100 credits for $17.00, 500 credits for $71.00; Pro and Business subscriptions available.
+- Channels (TrustMRR): empty
+- Founder X followers: 4,808
+
+### Chart Scanner AI (`chart-scanner-ai`)
+- TrustMRR: https://trustmrr.com/startup/chart-scanner-ai · md: https://trustmrr.com/startup/chart-scanner-ai.md
+- Site: https://chartscannerai.com/ | stealthMode: false
+- Payment provider: RevenueCat (API key) | last synced 2026-11-16T06:49:29.861Z
+- Revenue section: 24 hours $8.04 / 7 days $839 / 30 days $3,588 / 3 months $3,595 / 12 months $3,595 / All time $3,595
+- Snapshot line: $3,588
+- Daily (last 30): paid days 30/30 · biggest day $252.00 on 2026-10-24 = 7% of daily total
+- Monthly timeline: 2026-09 $0.00 · 2026-10 $1,826 · 2026-11 $1,770
+- MRR / active subscriptions: $2,981 / 114
+- Pricing (founder text): $7.99 weekly / $44.99 6 months
+- Channels (TrustMRR): TikTok
+- Founder X followers: 0
+
+### pawr (`pawr`)
+- TrustMRR: https://trustmrr.com/startup/pawr · md: https://trustmrr.com/startup/pawr.md
+- Site: https://pawr.link/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T10:12:44.517Z
+- Revenue section: 24 hours $0.00 / 7 days $2,400 / 30 days $2,484 / 3 months $2,496 / 12 months $2,632 / All time $3,429
+- Snapshot line: $2,484
+- Daily (last 30): paid days 4/30 · biggest day $2,400.00 on 2026-11-13 = 97% of daily total
+- Monthly timeline: 2026-08 $6.00 · 2026-09 $6.00 · 2026-10 $54.00 · 2026-11 $2,436
+- MRR / active subscriptions: $40.00 / 6
+- Pricing (founder text): $6/mo, $4/mo when paid yearly
+- Channels (TrustMRR): empty
+- Founder X followers: 1,872
+
+### lumabar (`lumabar`)
+- TrustMRR: https://trustmrr.com/startup/lumabar · md: https://trustmrr.com/startup/lumabar.md
+- Site: https://lumabar.xyz/ | stealthMode: false
+- Payment provider: Polar (API key) | last synced 2026-11-16T06:10:27.763Z
+- Revenue section: 24 hours $3,465 / 7 days $7,520 / 30 days $12,015 / 3 months $12,051 / 12 months $12,051 / All time $12,051
+- Snapshot line: $12,015
+- Daily (last 30): paid days 30/30 · biggest day $3,919.00 on 2026-11-15 = 33% of daily total
+- Monthly timeline: 2026-09 $0.00 · 2026-10 $1,228 · 2026-11 $10,823
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): $5.99 one-time (no subscription)
+- Channels (TrustMRR): Reddit
+- Founder X followers: 87
+
+### Free Contact Form to Email API for Modern Websites (`formbold`)
+- TrustMRR: https://trustmrr.com/startup/formbold · md: https://trustmrr.com/startup/formbold.md
+- Site: https://formbold.com/ | stealthMode: false
+- Payment provider: Paddle (API key) | last synced 2026-11-16T12:28:04.588Z
+- Revenue section: 24 hours $6.00 / 7 days $44.70 / 30 days $666 / 3 months $668 / 12 months $668 / All time $668
+- Snapshot line: $666
+- Daily (last 30): paid days 22/30 · biggest day $206.00 on 2026-10-30 = 31% of daily total
+- Monthly timeline: 2026-10 $572 · 2026-11 $95.70
+- MRR / active subscriptions: $656 / 93
+- Pricing (founder text): Free, Starter, Premium, Business plan
+- Channels (TrustMRR): empty
+- Founder X followers: 3,744
+
+### Next Level Builders (`next-level-builders`)
+- TrustMRR: https://trustmrr.com/startup/next-level-builders · md: https://trustmrr.com/startup/next-level-builders.md
+- Site: https://nextlevelbuilder.io/ | stealthMode: false
+- Payment provider: Polar (API key) | last synced 2026-11-16T08:25:58.809Z
+- Revenue section: 24 hours $0.00 / 7 days $257 / 30 days $2,988 / 3 months $3,329 / 12 months $8,904 / All time $17,835
+- Snapshot line: $2,988
+- Daily (last 30): paid days 5/30 · biggest day $2,292.00 on 2026-11-01 = 77% of daily total
+- Monthly timeline: 2026-08 $479 · 2026-09 $9.00 · 2026-10 $181 · 2026-11 $2,816
+- MRR / active subscriptions: $718 / 29
+- Pricing (founder text): Premium: $39/month billed annually at $468/year, VIP: $79/month billed annually at $948/year
+- Channels (TrustMRR): empty
+- Founder X followers: 3,494
+
+### TapNoise (`tapnoise`)
+- TrustMRR: https://trustmrr.com/startup/tapnoise · md: https://trustmrr.com/startup/tapnoise.md
+- Site: https://tapnoise.com/ | stealthMode: false
+- Payment provider: Dodo Payments (API key) | last synced 2026-11-16T12:27:32.166Z
+- Revenue section: 24 hours $11.98 / 7 days $117 / 30 days $1,330 / 3 months $1,335 / 12 months $1,335 / All time $1,335
+- Snapshot line: $1,330
+- Daily (last 30): paid days 29/30 · biggest day $291.00 on 2026-10-19 = 22% of daily total
+- Monthly timeline: 2026-10 $998 · 2026-11 $337
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): One-time: Solo $14.99/1 Mac; Duo $20.99/2 Macs + tax. Limited launch from $5.99/$7.99. All updates included. No trial. 7-day refunds.
+- Channels (TrustMRR): Blog, SEO, X / Twitter
+- Founder X followers: 665
+
+### Antwork (`antwork`)
+- TrustMRR: https://trustmrr.com/startup/antwork · md: https://trustmrr.com/startup/antwork.md
+- Site: https://antwork.io/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T09:31:08.657Z
+- Revenue section: 24 hours $0.00 / 7 days $285 / 30 days $852 / 3 months $858 / 12 months $858 / All time $858
+- Snapshot line: $852
+- Daily (last 30): paid days 10/30 · biggest day $223.00 on 2026-11-04 = 26% of daily total
+- Monthly timeline: 2026-10 $24.20 · 2026-11 $834
+- MRR / active subscriptions: $245 / 13
+- Pricing (founder text): Free: 2 accounts, 10 posts/mo. Pro $19 (5 accounts), Business $29 (10), Scale $39 (30), Agency $89 (100). Unlimited posts on paid plans, 7-day trial.
+- Channels (TrustMRR): empty
+- Founder X followers: 13
+
+### Reception (`reception`)
+- TrustMRR: https://trustmrr.com/startup/reception · md: https://trustmrr.com/startup/reception.md
+- Site: https://reception.sh/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T12:28:04.770Z
+- Revenue section: 24 hours $0.00 / 7 days $0.00 / 30 days $2,895 / 3 months $2,920 / 12 months $2,920 / All time $2,920
+- Snapshot line: $2,895
+- Daily (last 30): paid days 14/30 · biggest day $950.00 on 2026-10-29 = 33% of daily total
+- Monthly timeline: 2026-10 $2,716 · 2026-11 $204
+- MRR / active subscriptions: $1,017 / 44
+- Pricing (founder text): $25 per month
+- Channels (TrustMRR): empty
+- Founder X followers: 19,057
+
+### StoryStitch (`storystitch`)
+- TrustMRR: https://trustmrr.com/startup/storystitch · md: https://trustmrr.com/startup/storystitch.md
+- Site: https://storystitch.ai/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-15T17:04:17.481Z
+- Revenue section: 24 hours $0.00 / 7 days $140 / 30 days $140 / 3 months $141 / 12 months $141 / All time $141
+- Snapshot line: $140
+- Daily (last 30): paid days 2/30 · biggest day $114.00 on 2026-11-09 = 81% of daily total
+- Monthly timeline: 2026-10 $1.32 · 2026-11 $140
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): Free preview; £14.99 one-time per book (Production Unlock + ebook); Creator Studio £19/mo; Studio Pro £49/mo; audiobook and print quoted at checkout
+- Channels (TrustMRR): X / Twitter, Instagram
+- Founder X followers: 0
+
+### ScribeKit (`scribekit`)
+- TrustMRR: https://trustmrr.com/startup/scribekit · md: https://trustmrr.com/startup/scribekit.md
+- Site: https://www.trulyoffline.app/scribekit | stealthMode: false
+- Payment provider: RevenueCat (API key) | last synced 2026-11-16T12:22:59.364Z
+- Revenue section: 24 hours $0.00 / 7 days $99.77 / 30 days $195 / 3 months $197 / 12 months $197 / All time $197
+- Snapshot line: $195
+- Daily (last 30): paid days 14/30 · biggest day $44.64 on 2026-10-22 = 23% of daily total
+- Monthly timeline: 2026-08 $0.00 · 2026-09 $0.00 · 2026-10 $65.13 · 2026-11 $132
+- MRR / active subscriptions: $29.37 / 17
+- Pricing (founder text): Free; Pro $1.99/month, $9.99/year (7-day trial) or $19.99 lifetime
+- Channels (TrustMRR): App store optimization, Instagram, Threads, X / Twitter, YouTube, Forums, Hacker News, Word of mouth
+- Founder X followers: 4
+
+### Anonymous startup (`startup-11350e2a5296`)
+- TrustMRR: https://trustmrr.com/startup/startup-11350e2a5296 · md: https://trustmrr.com/startup/startup-11350e2a5296.md
+- Site: none listed | stealthMode: true
+- Payment provider: Shopify (OAuth connection) | last synced 2026-11-16T07:50:32.127Z
+- Revenue section: 24 hours $89.15 / 7 days $1,715 / 30 days $4,654 / 3 months $4,706 / 12 months $4,706 / All time $4,706
+- Snapshot line: $4,654
+- Daily (last 30): paid days 27/30 · biggest day $384.00 on 2026-11-11 = 8% of daily total
+- Monthly timeline: 2026-10 $1,984 · 2026-11 $2,721
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): not shown
+- Channels (TrustMRR): empty
+- Founder X followers: 0
+
+### Qoest (`qoest`)
+- TrustMRR: https://trustmrr.com/startup/qoest · md: https://trustmrr.com/startup/qoest.md
+- Site: https://qoest.lemonsqueezy.com/ | stealthMode: false
+- Payment provider: Lemon Squeezy (API key) | last synced 2026-03-19T21:12:53.542Z | **Primary payment provider API credential: Lemon Squeezy API key expired; expiration time unavailable**
+- Revenue section: 24 hours $0.00 / 7 days $0.00 / 30 days $771 / 3 months $0.00 / 12 months $1,710 / All time $3,520
+- Snapshot line: $771 **STALE:** last synced 2026-03-19 and the key has expired, so this figure is from March
+- Daily (last 30): paid days 0/30
+- Monthly timeline: 2025-12 $309 · 2026-01 $321 · 2026-02 $337 · 2026-03 $434
+- MRR / active subscriptions: $4,274 / 20
+- Pricing (founder text): $1.00 - $1,499.00
+- Channels (TrustMRR): empty
+- Founder X followers: 395
+
+### Intentsly (`intentsly`)
+- TrustMRR: https://trustmrr.com/startup/intentsly · md: https://trustmrr.com/startup/intentsly.md
+- Site: https://intentsly.com/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T09:49:10.928Z
+- Revenue section: 24 hours $0.00 / 7 days $0.00 / 30 days $7,388 / 3 months $7,582 / 12 months $7,936 / All time $11,091
+- Snapshot line: $7,388
+- Daily (last 30): paid days 2/30 · biggest day $7,291.00 on 2026-10-19 = 99% of daily total
+- Monthly timeline: 2026-07 $97.00 · 2026-08 $97.00 · 2026-09 $97.00 · 2026-10 $7,388
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): $97/mo
+- Channels (TrustMRR): empty
+- Founder X followers: 2,188
+
+### Hothelia (`hothelia`)
+- TrustMRR: https://trustmrr.com/startup/hothelia · md: https://trustmrr.com/startup/hothelia.md
+- Site: https://hothelia.com/ | stealthMode: false
+- Payment provider: Polar (API key) | last synced 2026-11-16T11:54:28.470Z
+- Revenue section: 24 hours $0.00 / 7 days $71.00 / 30 days $71.00 / 3 months $72.00 / 12 months $72.00 / All time $72.00
+- Snapshot line: $71.00
+- Daily (last 30): paid days 1/30 · biggest day $71.00 on 2026-11-09 = 100% of daily total
+- Monthly timeline: 2026-10 $1.00 · 2026-11 $71.00
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): Plan Flex: $69/mo, Plan Basic: $99/mo, Plan Pro: $149/mo, Plan Enterprise: 8% commission
+- Channels (TrustMRR): empty
+- Founder X followers: 0
+
+### Useless Ads (`useless-ads`)
+- TrustMRR: https://trustmrr.com/startup/useless-ads · md: https://trustmrr.com/startup/useless-ads.md
+- Site: https://uselessads.site/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T06:27:29.840Z
+- Revenue section: 24 hours $0.00 / 7 days $3.96 / 30 days $91.54 / 3 months $93.02 / 12 months $93.02 / All time $93.02
+- Snapshot line: $91.54
+- Daily (last 30): paid days 13/30 · biggest day $46.16 on 2026-11-05 = 50% of daily total
+- Monthly timeline: 2026-10 $25.80 · 2026-11 $67.22
+- MRR / active subscriptions: $17.16 / 4
+- Pricing (founder text): $0.99/week per ad. Optional logo +$0.49 and bold stroke +$0.49 one-time.
+- Channels (TrustMRR): X / Twitter, LinkedIn, Reddit, Cold DM
+- Founder X followers: 818
+
+### Arazio For Mac (`arazio`)
+- TrustMRR: https://trustmrr.com/startup/arazio · md: https://trustmrr.com/startup/arazio.md
+- Site: https://arazioformac.com/ | stealthMode: false
+- Payment provider: Dodo Payments (API key) | last synced 2026-11-16T11:48:57.924Z
+- Revenue section: 24 hours $19.18 / 7 days $19.18 / 30 days $164 / 3 months $180 / 12 months $180 / All time $180
+- Snapshot line: $164
+- Daily (last 30): paid days 9/30 · biggest day $51.29 on 2026-10-18 = 31% of daily total
+- Monthly timeline: 2026-09 $13.49 · 2026-10 $133 · 2026-11 $34.17
+- MRR / active subscriptions: $0.00 / 0
+- Pricing (founder text): 10$ lifetime , pricing varies for each country based on PPP
+- Channels (TrustMRR): empty
+- Founder X followers: 30
+
+### ClipUtils (`cliputils`)
+- TrustMRR: https://trustmrr.com/startup/cliputils · md: https://trustmrr.com/startup/cliputils.md
+- Site: https://cliputils.com/ | stealthMode: false
+- Payment provider: Dodo Payments (API key) | last synced 2026-11-15T18:39:35.737Z
+- Revenue section: 24 hours $34.43 / 7 days $271 / 30 days $855 / 3 months $869 / 12 months $869 / All time $869
+- Snapshot line: $855
+- Daily (last 30): paid days 30/30 · biggest day $98.89 on 2026-10-21 = 12% of daily total
+- Monthly timeline: 2026-10 $394 · 2026-11 $475
+- MRR / active subscriptions: $399 / 67
+- Pricing (founder text): Freemium business model. Free online tools with opportunities for monetization through premium subscriptions, sponsored placements and advertising.
+- Channels (TrustMRR): SEO, Content marketing
+- Founder X followers: 7,801
+
+### WeNaughty (`naughty`)
+- TrustMRR: https://trustmrr.com/startup/naughty · md: https://trustmrr.com/startup/naughty.md
+- Site: https://apps.apple.com/us/app/dirty-truth-or-dare-wenaughty/id6817063947?uo=4 | stealthMode: false
+- Payment provider: RevenueCat (API key) | last synced 2026-11-16T12:27:03.808Z
+- Revenue section: 24 hours $8.20 / 7 days $183 / 30 days $531 / 3 months $539 / 12 months $539 / All time $539
+- Snapshot line: $531
+- Daily (last 30): paid days 28/30 · biggest day $55.26 on 2026-11-15 = 10% of daily total
+- Monthly timeline: 2026-08 $0.00 · 2026-09 $0.00 · 2026-10 $153 · 2026-11 $386
+- MRR / active subscriptions: $412 / 33
+- Pricing (founder text): Free; VIP Weekly $3.99, VIP Annual $29.99, VIP Monthly $6.99
+- Channels (TrustMRR): empty
+- Founder X followers: 8,117
+
+### Scalereach.ai (`scalereach`)
+- TrustMRR: https://trustmrr.com/startup/scalereach · md: https://trustmrr.com/startup/scalereach.md
+- Site: https://scalereach.ai/ | stealthMode: false
+- Payment provider: Dodo Payments (API key) | last synced 2026-11-16T06:40:02.284Z
+- Revenue section: 24 hours $1,567 / 7 days $3,697 / 30 days $6,585 / 3 months $6,714 / 12 months $6,880 / All time $6,880
+- Snapshot line: $6,585
+- Daily (last 30): paid days 24/30 · biggest day $1,855.00 on 2026-11-15 = 28% of daily total
+- Monthly timeline: 2026-08 $12.00 · 2026-09 $14.69 · 2026-10 $847 · 2026-11 $5,852
+- MRR / active subscriptions: $2,988 / 175
+- Pricing (founder text): Pro $18/mo or $12.50/mo annual (400 min/mo), Agency $99/mo or $49/mo annual (5,000 min/mo)
+- Channels (TrustMRR): Instagram, Reddit, TikTok
+- Founder X followers: 0
+
+### ECOMSTATEMENT.COM (`ecomstatement-com`)
+- TrustMRR: https://trustmrr.com/startup/ecomstatement-com · md: https://trustmrr.com/startup/ecomstatement-com.md
+- Site: https://ecomstatement.com/ | stealthMode: false
+- Payment provider: Stripe (API key) | last synced 2026-11-16T08:55:33.157Z
+- Revenue section: 24 hours $0.00 / 7 days $162 / 30 days $3,574 / 3 months $3,703 / 12 months $4,154 / All time $4,154
+- Snapshot line: $3,574
+- Daily (last 30): paid days 8/30 · biggest day $1,120.00 on 2026-10-24 = 31% of daily total
+- Monthly timeline: 2026-08 $64.38 · 2026-09 $64.38 · 2026-10 $3,304 · 2026-11 $271
+- MRR / active subscriptions: $1,131 / 2
+- Pricing (founder text): Free trial, Small: $29/month, Starter: $49/month, Unlimited: $99/month, with yearly options available.
+- Channels (TrustMRR): empty
+- Founder X followers: 175
+
+### Checker notes 2026-11-16 (weekly)
+Re-opened the 6 new in-range .md pages; all 30-day figures matched, and all 6 sites opened (HTTP 200).
+**New survivors (not in list.md before):** Chart Scanner AI, TapNoise, Reception, Mafia IA Premium, pawr, TrustQR.
+**Already listed, not re-added:** lumabar, Scalereach.ai, Prospo, Next Level Builders, Intentsly, ECOMSTATEMENT.
+**Killed:**
+- 2 Anonymous startups (stealth-company-41; startup-11350e2a5296 at $4,654 with 27 paid days, but anonymous means out).
+- Qoest: expired key, stale since March.
+- Under $1k: Deepnia ($979, 26 paid days, almost there), ClipUtils ($855, 30/30), FormBold, Antwork, StoryStitch, ScribeKit, Hothelia, Useless Ads, Arazio, WeNaughty.
+
+**Scores** (paid days / growth / fit with code+design+content / demand / sell alone):
+- **Chart Scanner AI** 5/4/4/3/4 = **20 STEAL-READY**. Paid **30/30** days, biggest day only 7% of the month. 114 active subscriptions, $2,981 MRR. Oct $1,826; Nov $1,770 by the 16th. An iOS app: screenshot a chart and get an AI Long/Hold/Short reading. Founder has 0 X followers; channel is TikTok. Demand is scored 3 because the App Store shows only 1 rating, though dozens of copycat "chart AI" apps show the category sells.
+- **TapNoise** 5/2/5/3/5 = **20 STEAL-READY**. Paid 29/30 days. A Mac menu-bar app for keyboard sounds plus "agent done" chimes for Claude Code and Codex. But Oct $998, then only $337 by Nov 16, so it's slowing. Tie with Chart Scanner: ranked second because Chart Scanner is steady **and** climbing, while TapNoise is steady but fading.
+- Reception 3/2/4/3/2 = 14. In-app review and upsell SDK, $25/mo, 44 subscriptions. Oct $2,716, then $204 in November. The founder has 19,057 X followers, so growth likely rides the audience.
+- Mafia IA Premium 4/1/4/2/2 = 13. A Spanish €149 lifetime AI-prompt and tool pack. Oct $7,142, then fading ($1,388 in November). Founder newsletter plus 3.8k X followers.
+- pawr 1/1/4/3/3 = 12. A link-in-bio page at $6/mo; 97% of the month is one $2,400 day.
+- TrustQR 2/1/2/2/1 = 8. B2B anti-counterfeit QR tags: physical product and sales-led.
+
+**Updates on listed winners:** lumabar now **$12,015** in 30 days ($3,465 in the last 24h alone). Scalereach.ai **$6,585**. Both are still climbing fast.
+
+**WHY THIS COULD FAIL**
+- **Chart Scanner AI:** trading apps live close to "financial advice", so regulators or App Store review could hit it. The category is flooded with near-identical apps. $7.99/week subscriptions churn fast and usually need paid TikTok or Meta ads. Only 1 public rating, so buyer love is unproven.
+- **TapNoise:** sales are already halving month over month. Free rivals exist (Klack-style apps, KeyBell, Tacque), and novelty apps fade.
