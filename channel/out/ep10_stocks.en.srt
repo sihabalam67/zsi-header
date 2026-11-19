@@ -339,850 +339,950 @@ fell back below it today,
 for the first time since June.
 
 86
-00:02:05,417 --> 00:02:06,197
-In dollars:
+00:02:04,679 --> 00:02:06,859
+For the S&P 500 to officially
 
 87
-00:02:06,337 --> 00:02:08,237
-10,000 dollars put into an S&P
+00:02:06,659 --> 00:02:07,759
+enter a correction,
 
 88
-00:02:08,037 --> 00:02:10,217
-500 fund at the October 6
+00:02:08,139 --> 00:02:09,319
+it would have to close below
 
 89
-00:02:10,017 --> 00:02:12,697
-record is worth about 9,178 dollars
+00:02:09,119 --> 00:02:10,719
+about 7,037.
 
 90
-00:02:12,497 --> 00:02:13,617
-today.
+00:02:11,179 --> 00:02:13,779
+Today it closed at 7,176.
 
 91
-00:02:14,445 --> 00:02:16,325
-But 10,000 dollars put in ten
+00:02:15,417 --> 00:02:16,197
+In dollars:
 
 92
-00:02:16,125 --> 00:02:16,865
-years ago,
+00:02:16,337 --> 00:02:18,237
+10,000 dollars put into an S&P
 
 93
-00:02:17,085 --> 00:02:18,165
-in November 2016,
+00:02:18,037 --> 00:02:20,217
+500 fund at the October 6
 
 94
-00:02:18,525 --> 00:02:21,605
-is worth about 32,888 dollars today,
+00:02:20,017 --> 00:02:22,697
+record is worth about 9,178 dollars
 
 95
-00:02:21,945 --> 00:02:23,085
-even after this drop.
+00:02:22,497 --> 00:02:23,617
+today.
 
 96
-00:02:23,765 --> 00:02:25,185
-Both numbers count prices only,
+00:02:24,445 --> 00:02:26,325
+But 10,000 dollars put in ten
 
 97
-00:02:25,365 --> 00:02:26,045
-not dividends.
+00:02:26,125 --> 00:02:26,865
+years ago,
 
 98
-00:02:27,003 --> 00:02:27,823
-Same index,
+00:02:27,085 --> 00:02:28,165
+in November 2016,
 
 99
-00:02:27,983 --> 00:02:28,843
-very different feelings.
+00:02:28,525 --> 00:02:31,605
+is worth about 32,888 dollars today,
 
 100
-00:02:29,403 --> 00:02:30,783
-What matters most is how long
+00:02:31,945 --> 00:02:33,085
+even after this drop.
 
 101
-00:02:30,583 --> 00:02:31,123
-you hold,
+00:02:33,765 --> 00:02:35,185
+Both numbers count prices only,
 
 102
-00:02:31,303 --> 00:02:32,303
-not the week you're in.
+00:02:35,365 --> 00:02:36,045
+not dividends.
 
 103
-00:02:33,550 --> 00:02:34,870
-So why are stocks falling?
+00:02:37,003 --> 00:02:37,823
+Same index,
 
 104
-00:02:35,470 --> 00:02:35,950
-Reason one:
+00:02:37,983 --> 00:02:38,843
+very different feelings.
 
 105
-00:02:36,090 --> 00:02:36,750
-interest rates.
+00:02:39,403 --> 00:02:40,783
+What matters most is how long
 
 106
-00:02:37,370 --> 00:02:38,650
-The 10-year Treasury yield,
+00:02:40,583 --> 00:02:41,123
+you hold,
 
 107
-00:02:38,830 --> 00:02:39,730
-what the U.S.
+00:02:41,303 --> 00:02:42,303
+not the week you're in.
 
 108
-00:02:39,530 --> 00:02:40,770
-government pays to borrow for ten
+00:02:43,550 --> 00:02:44,870
+So why are stocks falling?
 
 109
-00:02:40,570 --> 00:02:41,010
-years,
+00:02:45,470 --> 00:02:45,950
+Reason one:
 
 110
-00:02:41,030 --> 00:02:42,450
-is at 5.07 percent.
+00:02:46,090 --> 00:02:46,750
+interest rates.
 
 111
-00:02:43,331 --> 00:02:44,251
-A year ago,
+00:02:47,370 --> 00:02:48,650
+The 10-year Treasury yield,
 
 112
-00:02:44,331 --> 00:02:45,771
-it was 4.12 percent.
+00:02:48,830 --> 00:02:49,730
+what the U.S.
 
 113
-00:02:46,458 --> 00:02:47,818
-Think about it from an investor's
+00:02:49,530 --> 00:02:50,770
+government pays to borrow for ten
 
 114
-00:02:47,618 --> 00:02:48,058
-side.
+00:02:50,570 --> 00:02:51,010
+years,
 
 115
-00:02:48,198 --> 00:02:49,878
-A government bond now pays over
+00:02:51,030 --> 00:02:52,450
+is at 5.07 percent.
 
 116
-00:02:49,678 --> 00:02:50,818
-5 percent a year,
+00:02:53,331 --> 00:02:54,251
+A year ago,
 
 117
-00:02:50,618 --> 00:02:51,918
-with almost no risk.
+00:02:54,331 --> 00:02:55,771
+it was 4.12 percent.
 
 118
-00:02:51,958 --> 00:02:53,438
-A stock promises nothing.
+00:02:56,458 --> 00:02:57,818
+Think about it from an investor's
 
 119
-00:02:53,618 --> 00:02:55,038
-So when safe bonds pay this
+00:02:57,618 --> 00:02:58,058
+side.
 
 120
-00:02:54,838 --> 00:02:55,278
-much,
+00:02:58,198 --> 00:02:59,878
+A government bond now pays over
 
 121
-00:02:55,118 --> 00:02:56,238
-stocks have to compete,
+00:02:59,678 --> 00:03:00,818
+5 percent a year,
 
 122
-00:02:56,038 --> 00:02:57,738
-and investors pay less for them.
+00:03:00,618 --> 00:03:01,918
+with almost no risk.
 
 123
-00:02:58,950 --> 00:02:59,770
-Reason two:
+00:03:01,958 --> 00:03:03,438
+A stock promises nothing.
 
 124
-00:02:59,870 --> 00:03:00,310
-inflation.
+00:03:03,618 --> 00:03:05,038
+So when safe bonds pay this
 
 125
-00:03:01,010 --> 00:03:03,210
-Prices rose 4.1 percent in the
+00:03:04,838 --> 00:03:05,278
+much,
 
 126
-00:03:03,010 --> 00:03:03,970
-year to October,
+00:03:05,118 --> 00:03:06,238
+stocks have to compete,
 
 127
-00:03:04,210 --> 00:03:05,990
-according to the Consumer Price Index.
+00:03:06,038 --> 00:03:07,738
+and investors pay less for them.
 
 128
-00:03:06,804 --> 00:03:07,644
-To fight it,
+00:03:08,950 --> 00:03:09,770
+Reason two:
 
 129
-00:03:07,664 --> 00:03:09,464
-the Federal Reserve raised its interest
+00:03:09,870 --> 00:03:10,310
+inflation.
 
 130
-00:03:09,264 --> 00:03:10,744
-rate on September 17,
+00:03:11,010 --> 00:03:13,210
+Prices rose 4.1 percent in the
 
 131
-00:03:11,224 --> 00:03:13,384
-its first hike since 2023,
+00:03:13,010 --> 00:03:13,970
+year to October,
 
 132
-00:03:13,684 --> 00:03:17,424
-back to 3.75 to 4.00 percent.
+00:03:14,210 --> 00:03:15,990
+according to the Consumer Price Index.
 
 133
-00:03:17,800 --> 00:03:19,860
-Higher rates make borrowing more expensive
+00:03:16,804 --> 00:03:17,644
+To fight it,
 
 134
-00:03:19,660 --> 00:03:21,020
-for companies and families.
+00:03:17,664 --> 00:03:19,464
+the Federal Reserve raised its interest
 
 135
-00:03:21,580 --> 00:03:23,180
-That can slow spending and profits,
+00:03:19,264 --> 00:03:20,744
+rate on September 17,
 
 136
-00:03:22,980 --> 00:03:24,860
-and stock prices follow profits.
+00:03:21,224 --> 00:03:23,384
+its first hike since 2023,
 
 137
-00:03:26,450 --> 00:03:27,290
-Reason three:
+00:03:23,684 --> 00:03:27,424
+back to 3.75 to 4.00 percent.
 
 138
-00:03:27,410 --> 00:03:28,870
-the stocks that rose the most
+00:03:27,800 --> 00:03:29,860
+Higher rates make borrowing more expensive
 
 139
-00:03:28,670 --> 00:03:29,850
-are falling the most.
+00:03:29,660 --> 00:03:31,020
+for companies and families.
 
 140
-00:03:30,470 --> 00:03:32,070
-Look at the tech-heavy Nasdaq against
+00:03:31,580 --> 00:03:33,180
+That can slow spending and profits,
 
 141
-00:03:31,870 --> 00:03:32,850
-the Dow this year.
+00:03:32,980 --> 00:03:34,860
+and stock prices follow profits.
 
 142
-00:03:33,451 --> 00:03:34,891
-The Nasdaq ran up faster,
+00:03:35,707 --> 00:03:36,947
+It's already hitting wallets.
 
 143
-00:03:35,011 --> 00:03:36,631
-and since its October record it
+00:03:37,607 --> 00:03:39,447
+The average 30-year mortgage rate is
 
 144
-00:03:36,431 --> 00:03:38,531
-has fallen 13.5 percent.
+00:03:39,247 --> 00:03:40,827
+7.28 percent,
 
 145
-00:03:38,331 --> 00:03:40,131
-When investors take profits,
+00:03:40,627 --> 00:03:42,747
+up from 6.24 a year ago,
 
 146
-00:03:40,311 --> 00:03:42,091
-the biggest winners usually drop first,
+00:03:42,727 --> 00:03:43,707
+according to Freddie Mac.
 
 147
-00:03:42,211 --> 00:03:42,911
-and fastest.
+00:03:44,087 --> 00:03:44,887
+And the prime rate,
 
 148
-00:03:44,550 --> 00:03:45,750
-Now the big question.
+00:03:44,907 --> 00:03:46,187
+the base for most credit card
 
 149
-00:03:46,410 --> 00:03:47,490
-Does a drop like this turn
+00:03:45,987 --> 00:03:46,487
+rates,
 
 150
-00:03:47,290 --> 00:03:48,010
-into a crash?
+00:03:46,527 --> 00:03:47,627
+is 7 percent.
 
 151
-00:03:48,550 --> 00:03:50,170
-We looked at every S&P 500
+00:03:48,750 --> 00:03:49,590
+Reason three:
 
 152
-00:03:49,970 --> 00:03:51,730
-decline since 1950.
+00:03:49,710 --> 00:03:51,170
+the stocks that rose the most
 
 153
-00:03:52,510 --> 00:03:53,290
-37 times,
+00:03:50,970 --> 00:03:52,150
+are falling the most.
 
 154
-00:03:53,290 --> 00:03:55,030
-the index fell 8 percent or
+00:03:52,770 --> 00:03:54,370
+Look at the tech-heavy Nasdaq against
 
 155
-00:03:54,830 --> 00:03:55,770
-more from a record.
+00:03:54,170 --> 00:03:55,150
+the Dow this year.
 
 156
-00:03:56,462 --> 00:03:58,382
-26 of those kept going to
+00:03:55,751 --> 00:03:57,191
+The Nasdaq ran up faster,
 
 157
-00:03:58,182 --> 00:03:59,342
-10 percent or more.
+00:03:57,311 --> 00:03:58,931
+and since its October record it
 
 158
-00:03:59,838 --> 00:04:01,218
-And 11 became bear markets,
+00:03:58,731 --> 00:04:00,831
+has fallen 13.5 percent.
 
 159
-00:04:01,318 --> 00:04:02,558
-with drops of 20 percent or
+00:04:00,631 --> 00:04:02,431
+When investors take profits,
 
 160
-00:04:02,358 --> 00:04:02,758
-more.
+00:04:02,611 --> 00:04:04,391
+the biggest winners usually drop first,
 
 161
-00:04:03,214 --> 00:04:04,854
-So roughly 7 out of 10
+00:04:04,511 --> 00:04:05,211
+and fastest.
 
 162
-00:04:04,654 --> 00:04:06,634
-drops that reached 8 percent never
+00:04:06,090 --> 00:04:07,350
+At its peak this year,
 
 163
-00:04:06,434 --> 00:04:07,514
-became bear markets.
+00:04:07,490 --> 00:04:10,110
+the Nasdaq was up 18.7 percent.
 
 164
-00:04:08,174 --> 00:04:09,674
-But about 3 in 10 did,
+00:04:09,910 --> 00:04:12,730
+Now it's up just 2.7 percent
 
 165
-00:04:09,834 --> 00:04:11,794
-so nobody can promise this one
+00:04:12,530 --> 00:04:13,410
+for 2026.
 
 166
-00:04:11,594 --> 00:04:12,374
-stops here.
+00:04:14,190 --> 00:04:15,430
+The Dow was up as much
 
 167
-00:04:13,683 --> 00:04:15,243
-Let's look at the two most
+00:04:15,230 --> 00:04:16,770
+as 13.1 percent,
 
 168
-00:04:15,043 --> 00:04:16,083
-recent big drops.
+00:04:16,570 --> 00:04:18,600
+and now it's up 2.2.
 
 169
-00:04:16,663 --> 00:04:17,263
-In 2020,
+00:04:19,850 --> 00:04:21,050
+Now the big question.
 
 170
-00:04:17,063 --> 00:04:18,443
-when the pandemic hit,
+00:04:21,710 --> 00:04:22,790
+Does a drop like this turn
 
 171
-00:04:18,463 --> 00:04:20,723
-the S&P 500 fell 34 percent
+00:04:22,590 --> 00:04:23,310
+into a crash?
 
 172
-00:04:20,523 --> 00:04:21,483
-in about a month,
+00:04:23,850 --> 00:04:25,470
+We looked at every S&P 500
 
 173
-00:04:21,283 --> 00:04:23,123
-to a low on March 23.
+00:04:25,270 --> 00:04:27,030
+decline since 1950.
 
 174
-00:04:23,763 --> 00:04:24,903
-It was back at a record
+00:04:27,810 --> 00:04:28,590
+37 times,
 
 175
-00:04:24,703 --> 00:04:25,763
-by August 18,
+00:04:28,590 --> 00:04:30,330
+the index fell 8 percent or
 
 176
-00:04:25,563 --> 00:04:27,643
-and the year ended 16 percent
+00:04:30,130 --> 00:04:31,070
+more from a record.
 
 177
-00:04:27,443 --> 00:04:27,843
-higher.
+00:04:31,762 --> 00:04:33,682
+26 of those kept going to
 
 178
-00:04:28,503 --> 00:04:29,943
-2022 was different.
+00:04:33,482 --> 00:04:34,642
+10 percent or more.
 
 179
-00:04:30,243 --> 00:04:32,023
-Inflation and rate hikes pushed the
+00:04:35,138 --> 00:04:36,518
+And 11 became bear markets,
 
 180
-00:04:31,823 --> 00:04:34,043
-index down 25 percent by October.
+00:04:36,618 --> 00:04:37,858
+with drops of 20 percent or
 
 181
-00:04:34,423 --> 00:04:35,583
-It didn't reach a new record
+00:04:37,658 --> 00:04:38,058
+more.
 
 182
-00:04:35,383 --> 00:04:37,083
-until January 2024,
+00:04:38,514 --> 00:04:40,154
+So roughly 7 out of 10
 
 183
-00:04:36,883 --> 00:04:38,123
-more than a year later.
+00:04:39,954 --> 00:04:41,934
+drops that reached 8 percent never
 
 184
-00:04:38,714 --> 00:04:39,814
-For a typical correction,
+00:04:41,734 --> 00:04:42,814
+became bear markets.
 
 185
-00:04:39,614 --> 00:04:41,614
-between 10 and 20 percent,
+00:04:43,474 --> 00:04:44,974
+But about 3 in 10 did,
 
 186
-00:04:41,414 --> 00:04:43,594
-the S&P 500 took about 7
+00:04:45,134 --> 00:04:47,094
+so nobody can promise this one
 
 187
-00:04:43,394 --> 00:04:44,674
-months to get from its old
+00:04:46,894 --> 00:04:47,674
+stops here.
 
 188
-00:04:44,474 --> 00:04:45,954
-record back to a new one.
+00:04:48,983 --> 00:04:50,543
+Let's look at the two most
 
 189
-00:04:46,154 --> 00:04:47,274
-Some drops heal fast.
+00:04:50,343 --> 00:04:51,383
+recent big drops.
 
 190
-00:04:47,454 --> 00:04:48,314
-Some take years.
+00:04:51,963 --> 00:04:52,563
+In 2020,
 
 191
-00:04:49,817 --> 00:04:51,037
-What about losing streaks?
+00:04:52,363 --> 00:04:53,743
+when the pandemic hit,
 
 192
-00:04:51,397 --> 00:04:52,337
-Since 1950,
+00:04:53,763 --> 00:04:56,023
+the S&P 500 fell 34 percent
 
 193
-00:04:52,437 --> 00:04:54,477
-the S&P 500 has had 116
+00:04:55,823 --> 00:04:56,783
+in about a month,
 
 194
-00:04:54,277 --> 00:04:56,337
-six-day losing streaks.
+00:04:56,583 --> 00:04:58,423
+to a low on March 23.
 
 195
-00:04:56,877 --> 00:04:58,277
-The last one before this week
+00:04:59,063 --> 00:05:00,203
+It was back at a record
 
 196
-00:04:58,077 --> 00:04:59,577
-was in April 2024.
+00:05:00,003 --> 00:05:01,063
+by August 18,
 
 197
-00:05:00,332 --> 00:05:01,512
-A year after those streaks,
+00:05:00,863 --> 00:05:02,943
+and the year ended 16 percent
 
 198
-00:05:01,632 --> 00:05:03,472
-stocks were higher 91 times out
+00:05:02,743 --> 00:05:03,143
+higher.
 
 199
-00:05:03,272 --> 00:05:04,552
-of 116.
+00:05:03,803 --> 00:05:05,243
+2022 was different.
 
 200
-00:05:05,281 --> 00:05:06,861
-The median gain over that year
+00:05:05,543 --> 00:05:07,323
+Inflation and rate hikes pushed the
 
 201
-00:05:06,661 --> 00:05:08,221
-was about 13 percent,
+00:05:07,123 --> 00:05:09,343
+index down 25 percent by October.
 
 202
-00:05:08,021 --> 00:05:09,321
-not counting dividends.
+00:05:09,723 --> 00:05:10,883
+It didn't reach a new record
 
 203
-00:05:10,319 --> 00:05:11,499
-But 25 times,
+00:05:10,683 --> 00:05:12,383
+until January 2024,
 
 204
-00:05:11,719 --> 00:05:13,119
-stocks were still lower a year
+00:05:12,183 --> 00:05:13,423
+more than a year later.
 
 205
-00:05:12,919 --> 00:05:13,419
-later.
+00:05:14,014 --> 00:05:15,114
+For a typical correction,
 
 206
-00:05:13,859 --> 00:05:15,199
-Streaks tell you how people feel.
+00:05:14,914 --> 00:05:16,914
+between 10 and 20 percent,
 
 207
-00:05:15,399 --> 00:05:16,599
-They don't predict the future.
+00:05:16,714 --> 00:05:18,894
+the S&P 500 took about 7
 
 208
-00:05:17,130 --> 00:05:19,750
-That April 2024 streak ended with
+00:05:18,694 --> 00:05:19,974
+months to get from its old
 
 209
-00:05:19,550 --> 00:05:22,870
-the S&P 500 near 4,967.
+00:05:19,774 --> 00:05:21,254
+record back to a new one.
 
 210
-00:05:22,670 --> 00:05:24,330
-A year later,
+00:05:21,454 --> 00:05:22,574
+Some drops heal fast.
 
 211
-00:05:24,130 --> 00:05:25,870
-it was about 8 percent higher.
+00:05:22,754 --> 00:05:23,614
+Some take years.
 
 212
-00:05:27,183 --> 00:05:29,243
-Here's something most people don't know.
+00:05:25,117 --> 00:05:26,337
+What about losing streaks?
 
 213
-00:05:29,783 --> 00:05:31,703
-Big drops happen almost every year,
-
-214
-00:05:31,723 --> 00:05:32,683
-even in good years.
-
-215
-00:05:33,023 --> 00:05:34,683
-The red bars show each year's
-
-216
-00:05:34,483 --> 00:05:35,183
-worst drop.
-
-217
-00:05:35,603 --> 00:05:37,083
-The green bars show where the
-
-218
-00:05:36,883 --> 00:05:37,543
-year ended.
-
-219
-00:05:38,141 --> 00:05:39,301
+00:05:26,697 --> 00:05:27,637
 Since 1950,
 
+214
+00:05:27,737 --> 00:05:29,777
+the S&P 500 has had 116
+
+215
+00:05:29,577 --> 00:05:31,637
+six-day losing streaks.
+
+216
+00:05:32,177 --> 00:05:33,577
+The last one before this week
+
+217
+00:05:33,377 --> 00:05:34,877
+was in April 2024.
+
+218
+00:05:35,632 --> 00:05:36,812
+A year after those streaks,
+
+219
+00:05:36,932 --> 00:05:38,772
+stocks were higher 91 times out
+
 220
-00:05:39,561 --> 00:05:40,981
-the typical year had a drop
+00:05:38,572 --> 00:05:39,852
+of 116.
 
 221
-00:05:40,781 --> 00:05:42,561
-of about 10 percent along the
+00:05:40,581 --> 00:05:42,161
+The median gain over that year
 
 222
-00:05:42,361 --> 00:05:42,781
-way.
+00:05:41,961 --> 00:05:43,521
+was about 13 percent,
 
 223
-00:05:43,312 --> 00:05:43,812
-And yet,
+00:05:43,321 --> 00:05:44,621
+not counting dividends.
 
 224
-00:05:43,612 --> 00:05:46,212
-55 of the last 75 full
+00:05:45,619 --> 00:05:46,799
+But 25 times,
 
 225
-00:05:46,012 --> 00:05:47,292
-years ended higher.
+00:05:47,019 --> 00:05:48,419
+stocks were still lower a year
 
 226
-00:05:48,683 --> 00:05:49,663
-One more pattern.
+00:05:48,219 --> 00:05:48,719
+later.
 
 227
-00:05:50,123 --> 00:05:51,443
-Of the 10 best days for
+00:05:49,159 --> 00:05:50,499
+Streaks tell you how people feel.
 
 228
-00:05:51,243 --> 00:05:53,503
-the S&P 500 since 1950,
+00:05:50,699 --> 00:05:51,899
+They don't predict the future.
 
 229
-00:05:53,583 --> 00:05:55,203
-8 came within two weeks of
+00:05:52,430 --> 00:05:55,050
+That April 2024 streak ended with
 
 230
-00:05:55,003 --> 00:05:56,543
-one of the 20 worst days.
+00:05:54,850 --> 00:05:58,170
+the S&P 500 near 4,967.
 
 231
-00:05:57,240 --> 00:05:58,220
-The best day of all,
+00:05:57,970 --> 00:05:59,630
+A year later,
 
 232
-00:05:58,320 --> 00:05:59,980
-a 11.6 percent gain,
+00:05:59,430 --> 00:06:01,170
+it was about 8 percent higher.
 
 233
-00:06:00,240 --> 00:06:01,900
-came in October 2008,
+00:06:02,483 --> 00:06:04,543
+Here's something most people don't know.
 
 234
-00:06:02,200 --> 00:06:03,440
-right in the middle of the
+00:06:05,083 --> 00:06:07,003
+Big drops happen almost every year,
 
 235
-00:06:03,240 --> 00:06:04,180
-financial crisis.
+00:06:07,023 --> 00:06:07,983
+even in good years.
 
 236
-00:06:04,883 --> 00:06:06,443
-That's why selling in a panic
+00:06:08,323 --> 00:06:09,983
+The red bars show each year's
 
 237
-00:06:06,243 --> 00:06:07,143
-can be costly:
+00:06:09,783 --> 00:06:10,483
+worst drop.
 
 238
-00:06:07,403 --> 00:06:09,043
-the rebound often comes when things
+00:06:10,903 --> 00:06:12,383
+The green bars show where the
 
 239
-00:06:08,843 --> 00:06:09,423
-look worst.
+00:06:12,183 --> 00:06:12,843
+year ended.
 
 240
-00:06:10,850 --> 00:06:12,610
-So what decides where stocks go
+00:06:13,441 --> 00:06:14,601
+Since 1950,
 
 241
-00:06:12,410 --> 00:06:13,030
-from here?
+00:06:14,861 --> 00:06:16,281
+the typical year had a drop
 
 242
-00:06:13,350 --> 00:06:14,730
-Here are four things to watch.
+00:06:16,081 --> 00:06:17,861
+of about 10 percent along the
 
 243
-00:06:15,350 --> 00:06:15,550
-First,
+00:06:17,661 --> 00:06:18,081
+way.
 
 244
-00:06:15,550 --> 00:06:17,010
-the 10-year Treasury yield.
+00:06:18,612 --> 00:06:19,112
+And yet,
 
 245
-00:06:17,310 --> 00:06:18,760
-If it keeps climbing past 5
+00:06:18,912 --> 00:06:21,512
+55 of the last 75 full
 
 246
-00:06:18,560 --> 00:06:19,150
-percent,
+00:06:21,312 --> 00:06:22,592
+years ended higher.
 
 247
-00:06:18,950 --> 00:06:20,390
-stocks face more pressure.
+00:06:23,983 --> 00:06:24,963
+One more pattern.
 
 248
-00:06:20,730 --> 00:06:21,350
-If it falls,
+00:06:25,423 --> 00:06:26,743
+Of the 10 best days for
 
 249
-00:06:21,530 --> 00:06:22,130
-they get relief.
+00:06:26,543 --> 00:06:28,803
+the S&P 500 since 1950,
 
 250
-00:06:22,809 --> 00:06:23,429
-Second,
+00:06:28,883 --> 00:06:30,503
+8 came within two weeks of
 
 251
-00:06:23,569 --> 00:06:24,929
-the next inflation reports.
+00:06:30,303 --> 00:06:31,843
+one of the 20 worst days.
 
 252
-00:06:25,569 --> 00:06:25,829
-Third,
+00:06:32,540 --> 00:06:33,520
+The best day of all,
 
 253
-00:06:26,029 --> 00:06:27,909
-the Federal Reserve's meeting in December,
+00:06:33,620 --> 00:06:35,280
+a 11.6 percent gain,
 
 254
-00:06:27,709 --> 00:06:29,649
-where it decides whether to raise
+00:06:35,540 --> 00:06:37,200
+came in October 2008,
 
 255
-00:06:29,449 --> 00:06:30,289
-rates again.
+00:06:37,500 --> 00:06:38,740
+right in the middle of the
 
 256
-00:06:30,889 --> 00:06:31,449
-And fourth,
+00:06:38,540 --> 00:06:39,480
+financial crisis.
 
 257
-00:06:31,689 --> 00:06:33,189
-jobs and company profits:
+00:06:40,183 --> 00:06:41,743
+That's why selling in a panic
 
 258
-00:06:33,429 --> 00:06:34,729
-as long as people are working
+00:06:41,543 --> 00:06:42,443
+can be costly:
 
 259
-00:06:34,529 --> 00:06:35,809
-and companies are earning,
+00:06:42,703 --> 00:06:44,343
+the rebound often comes when things
 
 260
-00:06:36,149 --> 00:06:37,609
-a drop is less likely to
+00:06:44,143 --> 00:06:44,723
+look worst.
 
 261
-00:06:37,409 --> 00:06:38,469
-turn into a recession.
+00:06:46,150 --> 00:06:47,910
+So what decides where stocks go
 
 262
-00:06:39,950 --> 00:06:41,350
-So what does this mean for
+00:06:47,710 --> 00:06:48,330
+from here?
 
 263
-00:06:41,150 --> 00:06:41,490
-you?
+00:06:48,650 --> 00:06:50,030
+Here are four things to watch.
 
 264
-00:06:41,950 --> 00:06:43,710
-Here's what most financial educators point
+00:06:50,650 --> 00:06:50,850
+First,
 
 265
-00:06:43,510 --> 00:06:43,990
-to.
+00:06:50,850 --> 00:06:52,310
+the 10-year Treasury yield.
 
 266
-00:06:44,290 --> 00:06:45,430
-Money you'll need in the next
+00:06:52,610 --> 00:06:54,060
+If it keeps climbing past 5
 
 267
-00:06:45,230 --> 00:06:47,090
-few years usually doesn't belong in
+00:06:53,860 --> 00:06:54,450
+percent,
 
 268
-00:06:46,890 --> 00:06:47,290
-stocks,
+00:06:54,250 --> 00:06:55,690
+stocks face more pressure.
 
 269
-00:06:47,090 --> 00:06:48,670
-because a drop like this can
+00:06:56,030 --> 00:06:56,650
+If it falls,
 
 270
-00:06:48,470 --> 00:06:49,670
-come at the wrong moment.
+00:06:56,830 --> 00:06:57,430
+they get relief.
 
 271
-00:06:50,254 --> 00:06:51,454
-For long-term money,
+00:06:58,109 --> 00:06:58,729
+Second,
 
 272
-00:06:51,434 --> 00:06:53,014
-time has mattered more than timing.
+00:06:58,869 --> 00:07:00,229
+the next inflation reports.
 
 273
-00:06:53,554 --> 00:06:55,754
-Spreading money across many investments limits
+00:07:00,869 --> 00:07:01,129
+Third,
 
 274
-00:06:55,554 --> 00:06:57,114
-the damage from any one of
+00:07:01,329 --> 00:07:03,209
+the Federal Reserve's meeting in December,
 
 275
-00:06:56,914 --> 00:06:57,254
-them.
+00:07:03,009 --> 00:07:04,949
+where it decides whether to raise
 
 276
-00:06:57,494 --> 00:06:59,314
-And an emergency fund means you
+00:07:04,749 --> 00:07:05,589
+rates again.
 
 277
-00:06:59,114 --> 00:07:00,374
-never have to sell at the
+00:07:06,189 --> 00:07:06,749
+And fourth,
 
 278
-00:07:00,174 --> 00:07:00,694
-bottom.
+00:07:06,989 --> 00:07:08,489
+jobs and company profits:
 
 279
-00:07:02,083 --> 00:07:02,903
-Let's recap.
+00:07:08,729 --> 00:07:10,029
+as long as people are working
 
 280
-00:07:03,443 --> 00:07:05,363
-The S&P 500 fell 6 days
+00:07:09,829 --> 00:07:11,109
+and companies are earning,
 
 281
-00:07:05,163 --> 00:07:06,383
-in a row and is 8
+00:07:11,449 --> 00:07:12,909
+a drop is less likely to
 
 282
-00:07:06,183 --> 00:07:07,383
-percent below its record.
+00:07:12,709 --> 00:07:13,769
+turn into a recession.
 
 283
-00:07:07,883 --> 00:07:09,123
-The Nasdaq is in a correction.
+00:07:15,250 --> 00:07:16,650
+So what does this mean for
 
 284
-00:07:09,703 --> 00:07:11,443
-Bonds pay 5.1 percent,
+00:07:16,450 --> 00:07:16,790
+you?
 
 285
-00:07:11,243 --> 00:07:13,303
-inflation is 4.1 percent,
+00:07:17,250 --> 00:07:19,010
+Here's what most financial educators point
 
 286
-00:07:13,103 --> 00:07:14,643
-and the Fed is raising rates.
+00:07:18,810 --> 00:07:19,290
+to.
 
 287
-00:07:15,343 --> 00:07:16,863
-History says most drops like this
+00:07:19,590 --> 00:07:20,730
+Money you'll need in the next
 
 288
-00:07:16,663 --> 00:07:17,663
-don't become crashes,
+00:07:20,530 --> 00:07:22,390
+few years usually doesn't belong in
 
 289
-00:07:18,003 --> 00:07:18,783
-but some do.
+00:07:22,190 --> 00:07:22,590
+stocks,
 
 290
-00:07:19,502 --> 00:07:20,742
-So what do you think:
+00:07:22,390 --> 00:07:23,970
+because a drop like this can
 
 291
-00:07:20,842 --> 00:07:21,702
-is a crash coming?
+00:07:23,770 --> 00:07:24,970
+come at the wrong moment.
 
 292
-00:07:21,842 --> 00:07:22,462
-Yes or no,
+00:07:25,554 --> 00:07:26,754
+For long-term money,
 
 293
-00:07:22,502 --> 00:07:23,442
-tell me in the comments.
+00:07:26,734 --> 00:07:28,314
+time has mattered more than timing.
 
 294
-00:07:23,242 --> 00:07:25,082
-And subscribe so you don't miss
+00:07:28,854 --> 00:07:31,054
+Spreading money across many investments limits
 
 295
-00:07:24,882 --> 00:07:25,822
-tomorrow's update.
+00:07:30,854 --> 00:07:32,414
+the damage from any one of
 
 296
-00:07:26,494 --> 00:07:28,594
-This video is for education only.
+00:07:32,214 --> 00:07:32,554
+them.
 
 297
-00:07:29,054 --> 00:07:30,354
+00:07:32,794 --> 00:07:34,614
+And an emergency fund means you
+
+298
+00:07:34,414 --> 00:07:35,674
+never have to sell at the
+
+299
+00:07:35,474 --> 00:07:35,994
+bottom.
+
+300
+00:07:36,641 --> 00:07:38,241
+And if you invest every month,
+
+301
+00:07:38,041 --> 00:07:39,821
+through a 401(k) for example,
+
+302
+00:07:40,261 --> 00:07:42,521
+lower prices mean each contribution buys
+
+303
+00:07:42,321 --> 00:07:43,041
+more shares.
+
+304
+00:07:44,617 --> 00:07:45,437
+Let's recap.
+
+305
+00:07:45,977 --> 00:07:47,897
+The S&P 500 fell 6 days
+
+306
+00:07:47,697 --> 00:07:48,917
+in a row and is 8
+
+307
+00:07:48,717 --> 00:07:49,917
+percent below its record.
+
+308
+00:07:50,417 --> 00:07:51,657
+The Nasdaq is in a correction.
+
+309
+00:07:52,237 --> 00:07:53,977
+Bonds pay 5.1 percent,
+
+310
+00:07:53,777 --> 00:07:55,837
+inflation is 4.1 percent,
+
+311
+00:07:55,637 --> 00:07:57,177
+and the Fed is raising rates.
+
+312
+00:07:57,877 --> 00:07:59,397
+History says most drops like this
+
+313
+00:07:59,197 --> 00:08:00,197
+don't become crashes,
+
+314
+00:08:00,537 --> 00:08:01,317
+but some do.
+
+315
+00:08:02,036 --> 00:08:03,276
+So what do you think:
+
+316
+00:08:03,376 --> 00:08:04,236
+is a crash coming?
+
+317
+00:08:04,376 --> 00:08:04,996
+Yes or no,
+
+318
+00:08:05,036 --> 00:08:05,976
+tell me in the comments.
+
+319
+00:08:05,776 --> 00:08:07,616
+And subscribe so you don't miss
+
+320
+00:08:07,416 --> 00:08:08,356
+tomorrow's update.
+
+321
+00:08:09,027 --> 00:08:11,127
+This video is for education only.
+
+322
+00:08:11,587 --> 00:08:12,887
 It's not financial advice.
 
