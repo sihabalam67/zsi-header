@@ -105,6 +105,24 @@ CPI = series('CPIAUCSL')
 INFL = (CPI.iloc[-1] / CPI.iloc[-13] - 1) * 100
 HIKE = FEDU[FEDU.diff() > 0].index[-1]
 
+K_REC = 10000 * SP_NOW / SP_REC
+_d10 = SPX[:TODAY - pd.Timedelta(days=3653)]
+K_10Y, D_10Y = 10000 * SP_NOW / _d10.iloc[-1], _d10.index[-1]
+_i6 = HS.index.get_loc(LAST6)
+LAST6_CLOSE, LAST6_1Y = HS.iloc[_i6], (HS.iloc[_i6 + 252] / HS.iloc[_i6] - 1) * 100
+
+
+def episode(peak_before, year):
+    pk = SPX[:peak_before].max()
+    lo = SPX[str(year)].idxmin()
+    rec = SPX[(SPX.index > lo) & (SPX >= pk)].index[0]
+    yr = (SPX[str(year)].iloc[-1] / SPX[:f'{year - 1}-12-31'].iloc[-1] - 1) * 100
+    return (SPX[lo] / pk - 1) * 100, lo, rec, yr
+
+
+C20, C20_LOW, C20_REC, C20_YR = episode('2020-02-19', 2020)
+C22, C22_LOW, C22_REC, C22_YR = episode('2022-01-03', 2022)
+
 SRC = 'Yahoo Finance daily closes: S&P 500, Dow Jones, Nasdaq Composite'
 
 
@@ -274,7 +292,7 @@ def s_tech(c, x):
     if t > L[0] + 4.3:
         c.text(1000, py(n.max()) - 10, 'Nasdaq (tech-heavy)', 22, CORAL, 900, a=fade(t, L[0] + 4.3))
         c.text(1000, py(d.iloc[-1]) + 40, 'Dow', 22, GOLD, 900, a=fade(t, L[0] + 4.3))
-    c.text(640, 528, '2026, start of year = 100', 18, MUTED, 700, a=fade(t, 0.5))
+    c.text(640, 518, '2026, start of year = 100', 18, MUTED, 700, a=fade(t, 0.5))
     if t > L[1]:
         chip(c, 640, 556, f'Nasdaq: {NDQ_DD:.1f}% from its Oct 6 record', CORAL, pop(t, L[1] + 0.3), 24)
     source(c, t, SRC)
@@ -378,6 +396,78 @@ def s_you(c, x):
     c.text(640, 570, 'Education only, not financial advice', 18, MUTED, 700, a=fade(t, 1))
 
 
+def s_index(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 114)
+    head(c, t, 'What these indexes are')
+    cards = [('S&P 500', '500 of the biggest\nU.S. companies', GOLD), ('Dow Jones', '30 big, well-known\ncompanies', SKY),
+             ('Nasdaq', 'thousands of stocks,\nheavy in tech', CORAL)]
+    for i, (n, d, col) in enumerate(cards):
+        k = pop(t, L[0] + 0.4 + 1.8 * i)
+        if k <= 0:
+            continue
+        cx = 260 + i * 380
+        c.rrect(cx - 160, 170, cx + 160, 420, 26, (255, 255, 255, 18), col, 4, a=clamp(k))
+        c.text(cx, 230, n, 38, col, 900, a=clamp(k))
+        for j, part in enumerate(d.split('\n')):
+            c.text(cx, 310 + j * 38, part, 26, WHITE, 800, a=clamp(k))
+    if len(L) > 1 and t > L[1]:
+        c.icon('wallet', 330, 520, 60, GOLD, a=fade(t, L[1] + 0.3))
+        chip(c, 720, 520, 'in a 401(k) or index fund? you likely own these', GOLD, pop(t, L[1] + 0.3), 22)
+
+
+def s_dollars(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 115)
+    head(c, t, '$10,000 in an S&P 500 fund (prices only)')
+    k = pop(t, L[0] + 0.3)
+    if k > 0:
+        c.rrect(140, 150, 620, 470, 26, (255, 255, 255, 16), CORAL, 4, a=clamp(k))
+        c.text(380, 205, f'bought at the record ({SP_REC_D:%b %d})', 24, WHITE, 800, a=clamp(k))
+        c.text(380, 320, f'${K_REC:,.0f}', 84, CORAL, 900, a=clamp(k), stroke=5)
+        c.text(380, 410, 'today', 26, MUTED, 800, a=clamp(k))
+    if t > L[1]:
+        kk = pop(t, L[1] + 0.3)
+        c.rrect(660, 150, 1140, 470, 26, (255, 255, 255, 16), MINT, 4, a=clamp(kk))
+        c.text(900, 205, f'bought 10 years ago ({D_10Y:%b %Y})', 24, WHITE, 800, a=clamp(kk))
+        c.text(900, 320, f'${K_10Y:,.0f}', 84, MINT, 900, a=clamp(kk), stroke=5)
+        c.text(900, 410, 'today, even after this drop', 26, MUTED, 800, a=clamp(kk))
+    if len(L) > 2 and t > L[2]:
+        chip(c, 640, 540, 'the starting point matters less, the longer you hold', SKY, pop(t, L[2] + 0.3), 24)
+    source(c, t, SRC)
+
+
+def s_past(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 116)
+    head(c, t, 'Two recent drops, and how long they lasted')
+    rows = [('2020', C20, C20_LOW, C20_REC, C20_YR, SKY), ('2022', C22, C22_LOW, C22_REC, C22_YR, CORAL)]
+    for i, (y, dd, lo, rec, yr, col) in enumerate(rows):
+        k = pop(t, L[i] + 0.3)
+        if k <= 0:
+            continue
+        yy = 190 + i * 190
+        c.rrect(140, yy - 70, 1140, yy + 80, 24, (255, 255, 255, 16), col, 4, a=clamp(k))
+        c.text(230, yy, y, 56, col, 900, a=clamp(k))
+        c.text(360, yy - 30, f'fell {abs(dd):.0f}% (low {lo:%b %d})', 30, WHITE, 900, anchor='lm', a=clamp(k))
+        c.text(360, yy + 15, f'new record: {rec:%b %Y}', 28, MINT if (rec - lo).days < 365 else GOLD, 900,
+               anchor='lm', a=clamp(k))
+        c.text(360, yy + 52, f'the year ended {yr:+.0f}%', 22, MUTED, 800, anchor='lm', a=clamp(k))
+    if len(L) > 2 and t > L[2]:
+        chip(c, 640, 560, f'typical 10-20% correction since 1950: ~{CORR_DAYS / 30.4:.0f} months back to a record', GOLD,
+             pop(t, L[2] + 0.3), 22)
+    source(c, t, 'Yahoo Finance: S&P 500 daily closes; our calculation')
+
+
+def s_watch(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 117)
+    head(c, t, 'What to watch next')
+    items = [('landmark', '10-year\nTreasury yield'), ('shopping-cart', 'Inflation\nreports'),
+             ('percent', 'The Fed in\nDecember'), ('briefcase', 'Jobs and\nprofits')]
+    icon_row(c, t, items, L[0] + 0.2, max(4.0, (L[-1] - L[0]) * 0.85), y=300, color=SKY)
+
+
 def s_recap(c, x):
     t, L = x.t, x.L
     specks(c, t, 113)
@@ -422,6 +512,12 @@ SCENES = [
         f"{LAST7.index[0].day}, it was worth about {10000 * (1 + ST_PCT / 100):,.0f} dollars at today's close.",
     ], sfx=lambda L: [(L[0] + 0.3 + i / 1.4, 'down') for i in range(1, 7)] + [(L[1] + 0.3, 'pop'), (L[2] + 0.3, 'hit'),
                                                                               (L[3] + 0.3, 'ding')]),
+    dict(draw=s_index, chapter='What the indexes are', lines=[
+        "Quick refresher. The S&P 500 tracks 500 of the biggest U.S. companies. The Dow tracks just 30 big, "
+        "well-known ones. And the Nasdaq Composite holds thousands of stocks, with a lot of tech.",
+        "If you have a 401(k) or an index fund, there's a good chance you own a slice of these companies. So when "
+        "the indexes fall, your balance usually falls with them.",
+    ], sfx=lambda L: [(L[0] + 0.4, 'pop'), (L[0] + 2.2, 'pop'), (L[0] + 4.0, 'pop'), (L[1] + 0.3, 'ding')]),
     dict(draw=s_terms, chapter='Pullback, correction, bear market', lines=[
         "Here's how far each of the big three indexes is below its record high.",
         "Wall Street has names for these drops. Down 10 percent from a record is called a correction. Down 20 "
@@ -433,6 +529,13 @@ SCENES = [
     ], punch=lambda L: [L[2] + 0.3], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[0] + 1.5, 'pop'), (L[0] + 2.7, 'pop'),
                                                     (L[1] + 0.5, 'whoosh'), (L[1] + 3.0, 'whoosh'), (L[2] + 0.3, 'hit'),
                                                     (L[3] + 0.3, 'pop')]),
+    dict(draw=s_dollars, chapter='What it means in dollars', lines=[
+        f"In dollars: 10,000 dollars put into an S&P 500 fund at the October 6 record is worth about "
+        f"{K_REC:,.0f} dollars today.",
+        f"But 10,000 dollars put in ten years ago, in {D_10Y:%B %Y}, is worth about {K_10Y:,.0f} dollars today, "
+        "even after this drop. Both numbers count prices only, not dividends.",
+        "Same index, very different feelings. What matters most is how long you hold, not the week you're in.",
+    ], sfx=lambda L: [(L[0] + 0.3, 'down'), (L[1] + 0.3, 'ding'), (L[2] + 0.3, 'pop')]),
     dict(draw=s_yields, chapter='Why: bonds pay 5%', lines=[
         f"So why are stocks falling? Reason one: interest rates. The 10-year Treasury yield, what the U.S. "
         f"government pays to borrow for ten years, is at {Y_NOW:.2f} percent.",
@@ -465,6 +568,15 @@ SCENES = [
         "nobody can promise this one stops here.",
     ], punch=lambda L: [L[2] + 0.4], sfx=lambda L: [(L[0] + 0.4, 'pop'), (L[1] + 0.4, 'pop'), (L[2] + 0.4, 'hit'),
                                                     (L[3] + 0.3, 'ding')]),
+    dict(draw=s_past, chapter='Two recent drops', lines=[
+        f"Let's look at the two most recent big drops. In 2020, when the pandemic hit, the S&P 500 fell "
+        f"{abs(C20):.0f} percent in about a month, to a low on {C20_LOW:%B} {C20_LOW.day}. It was back at a record "
+        f"by {C20_REC:%B} {C20_REC.day}, and the year ended {C20_YR:.0f} percent higher.",
+        f"2022 was different. Inflation and rate hikes pushed the index down {abs(C22):.0f} percent by "
+        f"{C22_LOW:%B}. It didn't reach a new record until {C22_REC:%B %Y}, more than a year later.",
+        f"For a typical correction, between 10 and 20 percent, the S&P 500 took about {CORR_DAYS / 30.4:.0f} months "
+        "to get from its old record back to a new one. Some drops heal fast. Some take years.",
+    ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[1] + 0.3, 'pop'), (L[2] + 0.3, 'ding')]),
     dict(draw=s_streaks, chapter='After 6-day losing streaks', lines=[
         f"What about losing streaks? Since 1950, the S&P 500 has had {N6} six-day losing streaks. The last one "
         f"before this week was in {LAST6:%B %Y}.",
@@ -472,6 +584,8 @@ SCENES = [
         f"The median gain over that year was about {MED6:.0f} percent, not counting dividends.",
         f"But {len(F12) - UP6} times, stocks were still lower a year later. Streaks tell you how people feel. They "
         "don't predict the future.",
+        f"That {LAST6:%B %Y} streak ended with the S&P 500 near {LAST6_CLOSE:,.0f}. A year later, it was about "
+        f"{LAST6_1Y:.0f} percent higher.",
     ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[1] + 0.3, 'hit'), (L[2] + 0.3, 'ding'),
                                                     (L[3] + 0.3, 'down')]),
     dict(draw=s_normal, chapter='Drops are normal', lines=[
@@ -488,6 +602,13 @@ SCENES = [
         "That's why selling in a panic can be costly: the rebound often comes when things look worst.",
     ], sfx=lambda L: [(L[0] + 0.3, 'hit'), (L[1] + 0.4, 'pop'), (L[1] + 1.2, 'pop'), (L[1] + 2.0, 'pop'),
                       (L[1] + 2.8, 'pop'), (L[2] + 0.3, 'pop')]),
+    dict(draw=s_watch, chapter='What to watch next', lines=[
+        "So what decides where stocks go from here? Here are four things to watch. First, the 10-year Treasury "
+        "yield. If it keeps climbing past 5 percent, stocks face more pressure. If it falls, they get relief.",
+        "Second, the next inflation reports. Third, the Federal Reserve's meeting in December, where it decides "
+        "whether to raise rates again. And fourth, jobs and company profits: as long as people are working and "
+        "companies are earning, a drop is less likely to turn into a recession.",
+    ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[1] + 0.3, 'pop'), (L[1] + 3.0, 'pop'), (L[1] + 6.0, 'pop')]),
     dict(draw=s_you, chapter='What it means for you', lines=[
         "So what does this mean for you? Here's what most financial educators point to. Money you'll need in the "
         "next few years usually doesn't belong in stocks, because a drop like this can come at the wrong moment.",
@@ -516,6 +637,9 @@ def check_numbers():
     assert N8 > N10 > N20 and 0.6 < 1 - N20 / N8 < 0.8, (N8, N10, N20)
     assert HIKE.strftime('%Y-%m-%d') == '2026-09-17' and FEDU[:HIKE - pd.Timedelta(days=1)][FEDU.diff() > 0].index[-1].year == 2023
     assert Y_NOW > 5 and 3.8 < INFL < 4.4 and NEAR >= 7
+    assert round(K_REC) == 9178 and round(K_10Y) == 32888 and round(LAST6_CLOSE) == 4967 and round(LAST6_1Y) == 8
+    assert (round(C20, 1), C20_LOW.strftime('%Y-%m-%d'), C20_REC.strftime('%Y-%m-%d'), round(C20_YR)) == (-33.9, '2020-03-23', '2020-08-18', 16)
+    assert (round(C22, 1), C22_LOW.strftime('%Y-%m-%d'), C22_REC.strftime('%Y-%m-%d')) == (-25.4, '2022-10-12', '2024-01-19')
     for s in ('not financial advice', 'correction', 'bear market', 'Consumer Price Index', 'since 1950'):
         assert s in script, s
     print(f'numbers check: OK  S&P {SP_NOW:,.2f} ({SP_DAY:+.2f}% today, streak {STREAK}, {ST_PCT:.2f}%), '
