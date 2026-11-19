@@ -83,6 +83,8 @@ SPEC = {
     'ep09_gold': (0, 'GOLD\n-23%', 'WHAT\nHAPPENED?', 'IS GOLD\nSTILL SAFE?', RED, None, 0,
                   ('photos/ep09/bars.jpg', 'photos/ep09/bullion.jpg', 'photos/ep09/vault.jpg')),
     'ep05_jobs': (0, '60,000\nBUYOUTS', 'LAYOFFS?', 'IS YOUR\nJOB SAFE?', YEL, None, 1),
+    'ep10_stocks': (0, '6 DAYS\nDOWN', 'CRASH\nCOMING?', 'NASDAQ\n-13%', RED, None, 1,
+                    ('thumbsrc/ep10_red.jpg', 'thumbsrc/ep10_red2.jpg', 'thumbsrc/ep10_red.jpg')),
 }
 
 

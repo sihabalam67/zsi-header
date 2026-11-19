@@ -1,5 +1,9 @@
 # Reset plan (Nov 10, 2026). Goal: YouTube monetization as fast as possible
 
+> **Update Nov 19, 2026:** the owner handed the channel over fully. Coin Theory now makes one same-day long video
+> about the day's biggest money story, every day; see channel/DAILY_PRODUCTION.md, which replaces the "2 long
+> videos a week" rule below.
+
 Owner's decision (Nov 10): run two channels. Coin Theory gets one more month with a fixed, smaller scope; a new
 English-learning story channel gets most of the production time. This file replaces the "2 Shorts every day" rule
 and the weekly "2 long + 6 Shorts" batch in HANDOVER.md and SHORTS_PLAN.md.
