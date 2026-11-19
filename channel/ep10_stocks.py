@@ -121,6 +121,16 @@ def episode(peak_before, year):
 
 
 C20, C20_LOW, C20_REC, C20_YR = episode('2020-02-19', 2020)
+MORT = series('MORTGAGE30US')
+MORT_NOW, MORT_1Y = MORT.iloc[-1], MORT[:MORT.index[-1] - pd.Timedelta(days=365)].iloc[-1]
+PRIME = series('DPRIME').iloc[-1]
+CORR_LINE = SP_REC * 0.9
+_nb, _db = NDQ[:'2025-12-31'].iloc[-1], DOW[:'2025-12-31'].iloc[-1]
+NDQ_PEAK_YTD, NDQ_YTD = (NDQ['2026'].max() / _nb - 1) * 100, (NDQ_NOW / _nb - 1) * 100
+DOW_PEAK_YTD, DOW_YTD = (DOW['2026'].max() / _db - 1) * 100, (DOW_NOW / _db - 1) * 100
+TICK = (f'S&P 500  {SP_NOW:,.2f}  {SP_DAY:+.2f}%     DOW  {DOW_NOW:,.2f}     NASDAQ  {NDQ_NOW:,.2f}     '
+        f'10-YR YIELD  {Y_NOW:.2f}%     FED RATE  {FEDL.iloc[-1]:.2f}-{FEDU.iloc[-1]:.2f}%     CPI  {INFL:.1f}%     ')
+
 C22, C22_LOW, C22_REC, C22_YR = episode('2022-01-03', 2022)
 
 SRC = 'Yahoo Finance daily closes: S&P 500, Dow Jones, Nasdaq Composite'
@@ -224,6 +234,10 @@ def s_terms(c, x):
         chip(c, 1040, 300, 'Nasdaq: in correction', CORAL, pop(t, L[2] + 0.3), 24)
     if len(L) > 3 and t > L[3]:
         chip(c, 1040, 450, 'Dow: below 50,000', GOLD, pop(t, L[3] + 0.3), 24)
+    if len(L) > 4 and t > L[4]:
+        y = 520 - 370 * 10 / 25
+        chip(c, 420, 125, f'correction line: S&P below {CORR_LINE:,.0f}', GOLD, pop(t, L[4] + 0.3), 22)
+        pulse(c, t, (200, y - 12, 830, y + 12), GOLD, 8)
     source(c, t, SRC + ' (records: S&P and Nasdaq Oct 6, Dow Aug 5, 2026)')
 
 
@@ -275,7 +289,17 @@ def s_fed(c, x):
             chip(c, hx - 80, py(4.0) - 60, f'hike: {HIKE:%b %d}', CORAL, pop(t, L[1] + 3.8), 20)
     if len(L) > 2 and t > L[2]:
         chip(c, 640, 560, 'higher rates = costlier borrowing for companies and families', SKY, pop(t, L[2] + 0.3), 22)
-    source(c, t, 'FRED: CPIAUCSL, DFEDTARU')
+    if len(L) > 3 and t > L[3]:
+        c.rrect(0, 0, W, H, 0, (10, 14, 26, int(240 * fade(t, L[3]))))
+        kk = pop(t, L[3] + 0.3)
+        c.icon('house', 360, 260, 120 * clamp(kk), GOLD, a=clamp(kk))
+        c.text(360, 380, f'{MORT_NOW:.2f}%', 64, GOLD, 900, a=clamp(kk), stroke=4)
+        c.text(360, 440, f'30-yr mortgage (a year ago: {MORT_1Y:.2f}%)', 22, WHITE, 800, a=clamp(kk))
+        if t > L[3] + 5.0:
+            c.icon('credit-card', 920, 260, 120, CORAL, a=fade(t, L[3] + 5.0))
+            c.text(920, 380, f'{PRIME:.2f}%', 64, CORAL, 900, a=fade(t, L[3] + 5.0), stroke=4)
+            c.text(920, 440, 'prime rate', 22, WHITE, 800, a=fade(t, L[3] + 5.0))
+    source(c, t, 'FRED: CPIAUCSL, DFEDTARU, MORTGAGE30US (Freddie Mac), DPRIME')
 
 
 def s_tech(c, x):
@@ -294,7 +318,10 @@ def s_tech(c, x):
         c.text(1000, py(d.iloc[-1]) + 40, 'Dow', 22, GOLD, 900, a=fade(t, L[0] + 4.3))
     c.text(640, 518, '2026, start of year = 100', 18, MUTED, 700, a=fade(t, 0.5))
     if t > L[1]:
-        chip(c, 640, 556, f'Nasdaq: {NDQ_DD:.1f}% from its Oct 6 record', CORAL, pop(t, L[1] + 0.3), 24)
+        if len(L) < 3 or t < L[2]:
+            chip(c, 640, 556, f'Nasdaq: {NDQ_DD:.1f}% from its Oct 6 record', CORAL, pop(t, L[1] + 0.3), 24)
+    if len(L) > 2 and t > L[2]:
+        chip(c, 640, 556, f'2026: Nasdaq peak +{NDQ_PEAK_YTD:.0f}%, now +{NDQ_YTD:.1f}%', CORAL, pop(t, L[2] + 0.3), 24)
     source(c, t, SRC)
 
 
@@ -487,6 +514,19 @@ def s_recap(c, x):
         chip(c, 640, 600, 'Is a crash coming? Yes or no: tell us in the comments', GOLD, pop(t, L[1] + 0.3), 24)
 
 
+def ticker(draw):
+    """A scrolling market ticker along the top: keeps the frame alive while a chart is being explained."""
+    def wrapped(c, x):
+        draw(c, x)
+        c.rrect(0, 0, W, 40, 0, (8, 10, 20, 210))
+        sz = 15
+        w = len(TICK) * sz * 0.62
+        off = (x.t * 45) % w
+        for k in range(3):
+            c.text(-off + k * w, 28, TICK, sz, GOLD, 800, anchor='lm', shadow=False)
+    return wrapped
+
+
 SCENES = [
     dict(draw=s_hook, chapter=f'Intro: {STREAK} days down', lead=0.15, gap=0.3, lines=[
         f"!The S&P 500 just fell {STREAK} days in a row.",
@@ -526,6 +566,8 @@ SCENES = [
         "a correction.",
         f"The S&P 500 isn't there yet. And the Dow, which first closed above 50,000 in February, fell back below "
         f"it today, for the first time since {DOW_BELOW_SINCE:%B}.",
+        f"For the S&P 500 to officially enter a correction, it would have to close below about {CORR_LINE:,.0f}. "
+        f"Today it closed at {SP_NOW:,.0f}.",
     ], punch=lambda L: [L[2] + 0.3], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[0] + 1.5, 'pop'), (L[0] + 2.7, 'pop'),
                                                     (L[1] + 0.5, 'whoosh'), (L[1] + 3.0, 'whoosh'), (L[2] + 0.3, 'hit'),
                                                     (L[3] + 0.3, 'pop')]),
@@ -552,12 +594,17 @@ SCENES = [
         f"2023, back to {FEDL.iloc[-1]:.2f} to {FEDU.iloc[-1]:.2f} percent.",
         "Higher rates make borrowing more expensive for companies and families. That can slow spending and "
         "profits, and stock prices follow profits.",
+        f"It's already hitting wallets. The average 30-year mortgage rate is {MORT_NOW:.2f} percent, up from "
+        f"{MORT_1Y:.2f} a year ago, according to Freddie Mac. And the prime rate, the base for most credit card "
+        f"rates, is {PRIME:.0f} percent.",
     ], sfx=lambda L: [(L[0] + 0.3, 'hit'), (L[1] + 0.3, 'whoosh'), (L[1] + 3.8, 'pop'), (L[2] + 0.3, 'pop')]),
     dict(draw=s_tech, chapter='Why: the winners fell hardest', lines=[
         "Reason three: the stocks that rose the most are falling the most. Look at the tech-heavy Nasdaq against "
         "the Dow this year.",
         f"The Nasdaq ran up faster, and since its October record it has fallen {abs(NDQ_DD):.1f} percent. When "
         "investors take profits, the biggest winners usually drop first, and fastest.",
+        f"At its peak this year, the Nasdaq was up {NDQ_PEAK_YTD:.1f} percent. Now it's up just {NDQ_YTD:.1f} percent "
+        f"for 2026. The Dow was up as much as {DOW_PEAK_YTD:.1f} percent, and now it's up {DOW_YTD:.1f}.",
     ], sfx=lambda L: [(L[0] + 0.3, 'whoosh'), (L[1] + 0.3, 'down')]),
     dict(draw=s_history, chapter='What history says', lines=[
         f"Now the big question. Does a drop like this turn into a crash? We looked at every S&P 500 decline since "
@@ -614,6 +661,8 @@ SCENES = [
         "next few years usually doesn't belong in stocks, because a drop like this can come at the wrong moment.",
         "For long-term money, time has mattered more than timing. Spreading money across many investments limits "
         "the damage from any one of them. And an emergency fund means you never have to sell at the bottom.",
+        "And if you invest every month, through a 401(k) for example, lower prices mean each contribution buys "
+        "more shares.",
     ], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[0] + 3.0, 'pop'), (L[1] + 0.3, 'pop'), (L[1] + 4.0, 'pop')]),
     dict(draw=s_recap, chapter='Recap', lines=[
         f"Let's recap. The S&P 500 fell {STREAK} days in a row and is {abs(SP_DD):.0f} percent below its record. "
@@ -625,6 +674,8 @@ SCENES = [
     ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 0.3 + 2.5 * j, 'pop') for j in range(5)]
         + [(L[1] + 0.3, 'ding')]),
 ]
+for _sc in SCENES:
+    _sc['draw'] = ticker(_sc['draw'])
 SHORTS = {}
 
 
@@ -637,6 +688,8 @@ def check_numbers():
     assert N8 > N10 > N20 and 0.6 < 1 - N20 / N8 < 0.8, (N8, N10, N20)
     assert HIKE.strftime('%Y-%m-%d') == '2026-09-17' and FEDU[:HIKE - pd.Timedelta(days=1)][FEDU.diff() > 0].index[-1].year == 2023
     assert Y_NOW > 5 and 3.8 < INFL < 4.4 and NEAR >= 7
+    assert round(MORT_NOW, 2) == 7.28 and round(MORT_1Y, 2) == 6.24 and PRIME == 7.0 and round(CORR_LINE) == 7037
+    assert round(NDQ_PEAK_YTD, 1) == 18.7 and round(NDQ_YTD, 1) == 2.7 and round(DOW_PEAK_YTD, 1) == 13.1 and round(DOW_YTD, 1) == 2.2
     assert round(K_REC) == 9178 and round(K_10Y) == 32888 and round(LAST6_CLOSE) == 4967 and round(LAST6_1Y) == 8
     assert (round(C20, 1), C20_LOW.strftime('%Y-%m-%d'), C20_REC.strftime('%Y-%m-%d'), round(C20_YR)) == (-33.9, '2020-03-23', '2020-08-18', 16)
     assert (round(C22, 1), C22_LOW.strftime('%Y-%m-%d'), C22_REC.strftime('%Y-%m-%d')) == (-25.4, '2022-10-12', '2024-01-19')
