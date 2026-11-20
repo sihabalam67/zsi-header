@@ -102,6 +102,20 @@ for key, d in (('2008', '2008-09-15'), ('2020', '2020-02-27'), ('2024', '2024-08
 _runs = (VIX >= 30).groupby(((VIX >= 30) != (VIX >= 30).shift()).cumsum()).sum()
 RUN_MED = float(_runs[_runs > 0].median())
 
+_j = pd.concat([VIX.pct_change(), SPX.pct_change()], axis=1, keys=['v', 'g'], sort=True).dropna()['1990-01-03':]
+SEESAW = (_j[_j.g < 0].v > 0).mean() * 100
+_sr = SPX['1990':].pct_change()
+_vprev = VIX.shift(1).reindex(_sr.index)
+BEST20 = int(sum(_vprev[d] >= 30 for d in _sr.nlargest(20).index))
+WORST20 = int(sum(_vprev[d] >= 30 for d in _sr.nsmallest(20).index))
+MOVE_HI = _sr.abs()[_vprev >= 30].mean() * 100
+MOVE_LO = _sr.abs()[_vprev < 15].mean() * 100
+MAR = pd.Timestamp('2026-03-27')
+MAR_PEAK = VIX['2026-03-01':'2026-04-30'].max()
+MAR_CALM = calm_days(MAR)
+SP_LOW26, SP_LOW26_D = SPX['2026'].min(), SPX['2026'].idxmin()
+MAR_RUN = (SP_REC / SP_LOW26 - 1) * 100
+EX18, EX22 = calm_days(pd.Timestamp('2018-02-05')), calm_days(pd.Timestamp('2022-09-26'))
 Y10 = series('DGS10')
 Y_NOW = Y10.iloc[-1]
 CPI = series('CPIAUCSL')
@@ -182,15 +196,17 @@ def s_what(c, x):
     items = [('activity', 'Expected swings\nnext 30 days'), ('chart-candlestick', 'Read from S&P 500\noptions prices'),
              ('triangle-alert', 'Higher number =\nmore fear')]
     icon_row(c, t, items, L[0] + 0.2, max(4.0, (L[1] - L[0]) * 0.9), y=270, color=SKY)
-    if len(L) > 1 and t > L[1]:
-        c.rrect(0, 0, W, H, 0, (10, 14, 26, int(240 * fade(t, L[1]))))
-        kk = pop(t, L[1] + 0.3)
+    if len(L) > 1 and L[1] < t < (L[2] if len(L) > 2 else 1e9):
+        chip(c, 640, 520, 'introduced by Cboe in 1993; values back to 1990', MUTED, pop(t, L[1] + 0.3), 22)
+    if len(L) > 2 and t > L[2]:
+        c.rrect(0, 0, W, H, 0, (10, 14, 26, int(240 * fade(t, L[2]))))
+        kk = pop(t, L[2] + 0.3)
         c.text(640, 210, f'VIX {V_NOW:.0f}', 70, CORAL, 900, a=clamp(kk), stroke=5)
         c.text(640, 300, f'= the market expects swings of about {MOVE_1M:.1f}%', 32, WHITE, 900, a=clamp(kk))
         c.text(640, 345, 'up or down, over the next month (rule of thumb)', 24, MUTED, 800, a=clamp(kk))
-        if len(L) > 2 and t > L[2]:
+        if len(L) > 3 and t > L[3]:
             v0 = V_AT_REC / math.sqrt(12)
-            chip(c, 640, 440, f'at the October record: VIX {V_AT_REC:.0f} = about {v0:.1f}%', MINT, pop(t, L[2] + 0.3), 24)
+            chip(c, 640, 440, f'at the October record: VIX {V_AT_REC:.0f} = about {v0:.1f}%', MINT, pop(t, L[3] + 0.3), 24)
     source(c, t, 'Cboe; rule of thumb: VIX / square root of 12')
 
 
@@ -276,7 +292,7 @@ def s_history(c, x):
             yy = (230, 440, 180, 490)[i]
             if kk > 0:
                 c.line([(xx, 330), (xx, yy + (20 if yy < 330 else -20))], (255, 255, 255, 120), 2, a=clamp(kk))
-                chip(c, min(max(xx, 150), 1130), yy, lab, SKY, kk, 18)
+                chip(c, min(max(xx, 150), 1060), yy, lab, SKY, kk, 18)
     if len(L) > 2 and t > L[2]:
         chip(c, 640, 540, f'the VIX usually stays above 30 for only about {RUN_MED:.0f} days at a time',
              MINT, pop(t, L[2] + 0.3), 22)
@@ -324,6 +340,83 @@ def s_cases(c, x):
     c.text(1135, 125, '1 year later', 16, MUTED, 800, anchor='rm', a=fade(t, 0.5), shadow=False)
     c.text(840, 125, 'trading days until VIX < 20', 16, MUTED, 800, anchor='lm', a=fade(t, 0.5), shadow=False)
     source(c, t, SRC + '; our calculation')
+
+
+def s_money(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 133)
+    head(c, t, f'What a {MOVE_1M:.1f}% swing means in dollars')
+    for i, (amt, col) in enumerate(((10000, GOLD), (100000, SKY))):
+        k = pop(t, L[0] + 0.3 + 2.5 * i)
+        if k <= 0:
+            continue
+        cx = 360 + i * 560
+        c.rrect(cx - 230, 140, cx + 230, 400, 26, (255, 255, 255, 16), col, 4, a=clamp(k))
+        c.text(cx, 190, f'${amt:,} invested', 28, WHITE, 900, a=clamp(k))
+        c.text(cx, 280, f'+/- ${amt * MOVE_1M / 100:,.0f}', 58, col, 900, a=clamp(k), stroke=4)
+        c.text(cx, 360, 'a typical month at this VIX', 22, MUTED, 800, a=clamp(k))
+    if len(L) > 1 and t > L[1]:
+        kk = pop(t, L[1] + 0.3)
+        c.text(640, 470, f'average daily S&P 500 move: {MOVE_HI:.2f}% when VIX was 30+', 26, CORAL, 900, a=clamp(kk))
+        c.text(640, 515, f'vs {MOVE_LO:.2f}% when it was under 15', 26, MINT, 900, a=clamp(kk))
+        pulse(c, t, (250, 440, 1030, 545), CORAL, 20)
+    source(c, t, SRC + '; our calculation')
+
+
+def s_seesaw(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 134)
+    head(c, t, 'The VIX and stocks move like a seesaw')
+    ang = 0.18 * math.sin(clamp((t - L[0] - 0.3) / 2.0) * math.pi / 2) * (1 + 0.15 * math.sin(t * 2))
+    cx, cy = 640, 380
+    dx, dy = 360 * math.cos(ang), 360 * math.sin(ang)
+    c.poly([(cx - 40, cy + 70), (cx + 40, cy + 70), (cx, cy)], MUTED)
+    c.line([(cx - dx, cy - dy), (cx + dx, cy + dy)], WHITE, 10)
+    c.text(cx - dx, cy - dy - 50, 'VIX', 40, CORAL, 900)
+    c.text(cx + dx, cy + dy - 50, 'S&P 500', 40, GOLD, 900)
+    if len(L) > 1 and t > L[1]:
+        chip(c, 640, 540, f'on {SEESAW:.0f}% of S&P 500 down days since 1990, the VIX rose', CORAL, pop(t, L[1] + 0.3), 24)
+    source(c, t, SRC + '; our calculation')
+
+
+def s_march(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 135)
+    head(c, t, 'This already happened once this year')
+    s = SPX['2026-01-01':]
+    xs = [(d - pd.Timestamp('2026-01-01')).days for d in s.index]
+    k = clamp((t - L[0] - 0.3) / 4.0) if t < L[2] else 1.0
+    px, py = line_chart(c, (150, 130, 1120, 520), xs, list(s.values), (0, xs[-1] + 4), (6000, 8000), k, GOLD,
+                        yticks=(6000, 7000, 8000), yfmt='{:,.0f}')
+    lx = px((SP_LOW26_D - pd.Timestamp('2026-01-01')).days)
+    if t > L[0] + 2.0:
+        chip(c, lx + 60, py(SP_LOW26) + 45, f'Mar 30 low: {SP_LOW26:,.0f}  (VIX {MAR_PEAK:.0f})', CORAL,
+             pop(t, L[0] + 2.0), 20)
+    if len(L) > 1 and t > L[1]:
+        chip(c, lx + 120, 200, f'VIX below 20 again in {MAR_CALM} trading days', MINT, pop(t, L[1] + 0.3), 20)
+    if len(L) > 2 and t > L[2]:
+        rx = px((SP_REC_D - pd.Timestamp('2026-01-01')).days)
+        chip(c, rx - 120, py(SP_REC) - 35, f'+{MAR_RUN:.0f}% to the Oct 6 record', MINT, pop(t, L[2] + 0.3), 22)
+    source(c, t, SRC)
+
+
+def s_bestdays(c, x):
+    t, L = x.t, x.L
+    specks(c, t, 136)
+    head(c, t, 'Big days happen when fear is high (S&P 500, since 1990)')
+    for i, (n, lab, col) in enumerate(((BEST20, 'of the 20 best days', MINT), (WORST20, 'of the 20 worst days', CORAL))):
+        k = pop(t, L[min(i, len(L) - 1)] + 0.3)
+        if k <= 0:
+            continue
+        y = 200 + i * 170
+        for j in range(20):
+            kk = pop(t, L[min(i, len(L) - 1)] + 0.3 + 0.08 * j)
+            col_j = col if j < n else (90, 100, 120)
+            c.rrect(150 + j * 50, y - 30, 190 + j * 50, y + 30, 8, col_j, a=clamp(kk))
+        c.text(150, y + 62, f'{n} {lab} came when the VIX was 30 or higher', 26, WHITE, 900, anchor='lm', a=clamp(k))
+    if len(L) > 2 and t > L[2]:
+        chip(c, 640, 555, 'missing the scary weeks can mean missing the best days', SKY, pop(t, L[2] + 0.3), 24)
+    source(c, t, SRC + '; VIX on the previous close; our calculation')
 
 
 def s_watch(c, x):
@@ -390,12 +483,22 @@ SCENES = [
         "500 is expected to swing over the next 30 days, based on the prices people pay for S&P 500 options, "
         "which work like insurance against big moves. When investors get nervous, they pay more for that "
         "insurance, and the VIX goes up.",
+        "Cboe introduced the VIX in 1993, and it has calculated values back to 1990, which is why our history "
+        "starts there.",
         f"!Here's a simple way to read it. Divide the VIX by about three and a half. A VIX of {V_NOW:.0f} means the "
         f"market expects the S&P 500 to swing about {MOVE_1M:.1f} percent, up or down, over the next month.",
         f"Back at the October record, the VIX was {V_AT_REC:.0f}, which meant expected swings of only about "
         f"{V_AT_REC / math.sqrt(12):.1f} percent.",
-    ], punch=lambda L: [L[1] + 0.3], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[0] + 3.0, 'pop'), (L[0] + 5.5, 'pop'),
-                                                    (L[1] + 0.3, 'hit'), (L[2] + 0.3, 'ding')]),
+    ], punch=lambda L: [L[2] + 0.3], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[0] + 3.0, 'pop'), (L[0] + 5.5, 'pop'),
+                                                    (L[1] + 0.3, 'pop'), (L[2] + 0.3, 'hit'), (L[3] + 0.3, 'ding')]),
+    dict(draw=s_money, chapter='What it means in dollars', lines=[
+        f"Let's put that in dollars. If you have 10,000 dollars in an S&P 500 index fund, a {MOVE_1M:.1f} percent "
+        f"swing is about {100 * MOVE_1M:,.0f} dollars in a month, up or down. With 100,000 dollars in a 401(k), "
+        f"it's about {1000 * MOVE_1M:,.0f} dollars.",
+        f"And the daily moves get bigger too. Since 1990, when the VIX was 30 or higher, the S&P 500 moved about "
+        f"{MOVE_HI:.1f} percent on an average day. When the VIX was under 15, it moved about {MOVE_LO:.1f} "
+        "percent. That's more than four times calmer.",
+    ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[0] + 2.8, 'pop'), (L[1] + 0.3, 'hit')]),
     dict(draw=s_scale, chapter='How high is 30?', lines=[
         f"So how high is {V_NOW:.0f}? On a typical day since 1990, the VIX has been around {V_MED:.0f}.",
         f"It has closed at 30 or higher on only about {SHARE30:.0f} percent of trading days.",
@@ -409,6 +512,12 @@ SCENES = [
         + (f"That's its highest close since {HIGHEST_SINCE:%B %Y}." if HIGHEST_SINCE is not None else
            "That's a new high for this year."),
     ], sfx=lambda L: [(L[0] + 0.3, 'whoosh'), (L[1] + 0.3, 'down'), (L[2] + 0.3, 'hit')]),
+    dict(draw=s_seesaw, chapter='A seesaw', lines=[
+        "Here's the pattern to remember: the VIX and the stock market usually move like a seesaw. When stocks "
+        "fall, fear goes up. When stocks rise, fear goes down.",
+        f"Since 1990, on {SEESAW:.0f} percent of the days the S&P 500 fell, the VIX rose. That's why people call "
+        "it the fear index.",
+    ], sfx=lambda L: [(L[0] + 0.3, 'whoosh'), (L[1] + 0.3, 'pop')]),
     dict(draw=s_why, chapter='Why investors are nervous', lines=[
         f"Why are investors so nervous? Start with the losing streak itself: {STREAK} down days in a row make "
         "people want insurance.",
@@ -447,7 +556,23 @@ SCENES = [
         f"{EX['2024']['calm']} trading days.",
         f"And April 2025, the tariff shock: a peak of {EX['2025']['peak']:.0f}, calm again in {EX['2025']['calm']} "
         f"trading days, and stocks up {EX['2025']['r12']:.0f} percent a year later.",
+        f"Most spikes faded fast. In February 2018, the VIX was back below 20 in {EX18} trading days. The slow ones, "
+        f"like September 2022, took {EX22}.",
     ], sfx=lambda L: [(L[i] + 0.3, 'pop') for i in range(4)]),
+    dict(draw=s_march, chapter='It already happened this year', lines=[
+        f"And here's something many people already forgot. This happened once before this year. On March 27, the "
+        f"VIX closed at {MAR_PEAK:.0f}, and the S&P 500 hit its 2026 low of {SP_LOW26:,.0f} on March 30.",
+        f"The fear faded fast. The VIX was back below 20 within {MAR_CALM} trading days.",
+        f"!From that March low, the S&P 500 climbed {MAR_RUN:.0f} percent to its record in October. Anyone who sold "
+        "at the bottom in March missed that.",
+    ], punch=lambda L: [L[2] + 0.3], sfx=lambda L: [(L[0] + 0.3, 'whoosh'), (L[0] + 2.0, 'down'), (L[1] + 0.3, 'pop'),
+                                                    (L[2] + 0.3, 'ding')]),
+    dict(draw=s_bestdays, chapter='Best and worst days', lines=[
+        f"One more pattern. Of the 20 best days for the S&P 500 since 1990, {BEST20} came when the VIX was already "
+        "at 30 or higher.",
+        f"And of the 20 worst days, {WORST20} did too. The biggest days, good and bad, cluster in fearful markets.",
+        "So if fear makes you sell, you risk being out of the market on exactly the days that tend to matter most.",
+    ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[1] + 0.3, 'down'), (L[2] + 0.3, 'ding')]),
     dict(draw=s_watch, chapter='What to watch next', lines=[
         "So what should you watch from here? First, the VIX itself. When fear fades, it usually drops back below "
         "20. Second, the 10-year Treasury yield: if it keeps rising, pressure on stocks stays.",
@@ -485,6 +610,9 @@ def check_numbers():
     assert round(V_MAX, 2) == 82.69 and V_MAX_D.strftime('%Y-%m-%d') == '2020-03-16' and round(V08) == 81
     assert 6 < SHARE30 < 10 and 16 < V_MED < 19
     assert len(PAST) == 22 and len(F12) == 21 and UP12 == 14 and len(F1) == 22 and UP1 == 15, (len(PAST), UP12, UP1)
+    assert round(SEESAW) == 77 and BEST20 == 19 and WORST20 == 17 and round(MOVE_HI, 2) == 1.86 and round(MOVE_LO, 2) == 0.42
+    assert round(MAR_PEAK) == 31 and MAR_CALM == 8 and SP_LOW26_D.strftime('%Y-%m-%d') == '2026-03-30' and round(MAR_RUN) == 23
+    assert EX18 == 7 and EX22 == 47
     assert round(EX['2008']['r12']) == -12 and EX['2008']['calm'] == 321 and round(EX['2008']['peak']) == 81
     assert round(EX['2020']['r12']) == 28 and round(EX['2020']['peak']) == 83
     assert EX['2024']['calm'] == 6 and round(EX['2024']['peak']) == 39 and round(EX['2024']['r12']) == 22
