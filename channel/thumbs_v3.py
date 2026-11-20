@@ -85,6 +85,8 @@ SPEC = {
     'ep05_jobs': (0, '60,000\nBUYOUTS', 'LAYOFFS?', 'IS YOUR\nJOB SAFE?', YEL, None, 1),
     'ep10_stocks': (0, '6 DAYS\nDOWN', 'CRASH\nCOMING?', 'NASDAQ\n-13%', RED, None, 1,
                     ('thumbsrc/ep10_red.jpg', 'thumbsrc/ep10_red2.jpg', 'thumbsrc/ep10_red.jpg')),
+    'ep11_vix': (0, 'FEAR\nINDEX 30', 'WHAT\nNEXT?', 'FEAR\nDOUBLED', RED, None, 1,
+                 ('thumbsrc/ep11_vix.jpg', 'thumbsrc/ep11_vix.jpg', 'thumbsrc/ep11_vix.jpg')),
 }
 
 
