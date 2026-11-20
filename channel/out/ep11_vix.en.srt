@@ -1,0 +1,888 @@
+1
+00:00:00,150 --> 00:00:02,270
+Wall Street's fear index just doubled.
+
+2
+00:00:02,747 --> 00:00:04,487
+The VIX was at 15 on
+
+3
+00:00:04,287 --> 00:00:05,187
+October 6,
+
+4
+00:00:05,247 --> 00:00:07,167
+the day the S&P 500 hit
+
+5
+00:00:06,967 --> 00:00:07,547
+its record.
+
+6
+00:00:08,107 --> 00:00:09,847
+Today it closed at 30.1.
+
+7
+00:00:10,342 --> 00:00:12,242
+So what happens after fear spikes
+
+8
+00:00:12,042 --> 00:00:12,762
+like this?
+
+9
+00:00:13,122 --> 00:00:14,162
+Here's the short answer.
+
+10
+00:00:14,822 --> 00:00:15,742
+Since 1990,
+
+11
+00:00:15,842 --> 00:00:17,262
+the VIX has jumped above 30
+
+12
+00:00:17,062 --> 00:00:18,582
+for the first time in months
+
+13
+00:00:18,682 --> 00:00:19,602
+22 times.
+
+14
+00:00:20,062 --> 00:00:20,822
+A year later,
+
+15
+00:00:20,782 --> 00:00:23,202
+the S&P 500 was higher 14
+
+16
+00:00:23,002 --> 00:00:24,142
+times out of 21.
+
+17
+00:00:24,836 --> 00:00:25,836
+But not every time.
+
+18
+00:00:26,416 --> 00:00:26,936
+7 times,
+
+19
+00:00:27,096 --> 00:00:28,556
+stocks were still lower a year
+
+20
+00:00:28,356 --> 00:00:28,856
+later,
+
+21
+00:00:29,096 --> 00:00:30,596
+and one of those was 2008.
+
+22
+00:00:31,950 --> 00:00:32,950
+In this video:
+
+23
+00:00:33,130 --> 00:00:34,950
+what the fear index actually measures,
+
+24
+00:00:35,270 --> 00:00:36,290
+why it just jumped,
+
+25
+00:00:36,690 --> 00:00:38,690
+every past spike above 30 and
+
+26
+00:00:38,490 --> 00:00:39,410
+what happened next,
+
+27
+00:00:39,750 --> 00:00:40,870
+and what it means for your
+
+28
+00:00:40,670 --> 00:00:41,130
+money.
+
+29
+00:00:41,650 --> 00:00:42,650
+If you want the money news
+
+30
+00:00:42,450 --> 00:00:43,970
+explained like this every day,
+
+31
+00:00:44,050 --> 00:00:44,590
+subscribe.
+
+32
+00:00:46,083 --> 00:00:46,703
+First,
+
+33
+00:00:47,003 --> 00:00:47,883
+what is the VIX?
+
+34
+00:00:48,423 --> 00:00:49,523
+It's run by Cboe,
+
+35
+00:00:49,783 --> 00:00:51,363
+the options exchange in Chicago.
+
+36
+00:00:52,043 --> 00:00:53,643
+It measures how much the S&P
+
+37
+00:00:53,443 --> 00:00:55,543
+500 is expected to swing over
+
+38
+00:00:55,343 --> 00:00:56,423
+the next 30 days,
+
+39
+00:00:56,783 --> 00:00:58,363
+based on the prices people pay
+
+40
+00:00:58,163 --> 00:00:59,943
+for S&P 500 options,
+
+41
+00:01:00,223 --> 00:01:02,143
+which work like insurance against big
+
+42
+00:01:01,943 --> 00:01:02,403
+moves.
+
+43
+00:01:02,983 --> 00:01:04,363
+When investors get nervous,
+
+44
+00:01:04,543 --> 00:01:05,803
+they pay more for that insurance,
+
+45
+00:01:05,603 --> 00:01:07,063
+and the VIX goes up.
+
+46
+00:01:07,643 --> 00:01:08,743
+Here's a simple way to read
+
+47
+00:01:08,543 --> 00:01:08,903
+it.
+
+48
+00:01:09,243 --> 00:01:10,390
+Divide the VIX by about three
+
+49
+00:01:10,190 --> 00:01:11,103
+and a half.
+
+50
+00:01:10,903 --> 00:01:12,243
+A VIX of 30 means the
+
+51
+00:01:12,043 --> 00:01:14,043
+market expects the S&P 500 to
+
+52
+00:01:13,843 --> 00:01:15,423
+swing about 8.7 percent,
+
+53
+00:01:15,223 --> 00:01:16,203
+up or down,
+
+54
+00:01:16,003 --> 00:01:16,983
+over the next month.
+
+55
+00:01:17,454 --> 00:01:19,254
+Back at the October record,
+
+56
+00:01:19,314 --> 00:01:20,434
+the VIX was 15,
+
+57
+00:01:20,614 --> 00:01:22,474
+which meant expected swings of only
+
+58
+00:01:22,274 --> 00:01:23,754
+about 4.3 percent.
+
+59
+00:01:25,217 --> 00:01:26,777
+So how high is 30?
+
+60
+00:01:27,057 --> 00:01:29,037
+On a typical day since 1990,
+
+61
+00:01:29,277 --> 00:01:30,717
+the VIX has been around 18.
+
+62
+00:01:31,506 --> 00:01:32,826
+It has closed at 30 or
+
+63
+00:01:32,626 --> 00:01:34,426
+higher on only about 8 percent
+
+64
+00:01:34,226 --> 00:01:35,026
+of trading days.
+
+65
+00:01:35,622 --> 00:01:37,522
+In the 2008 financial crisis,
+
+66
+00:01:37,582 --> 00:01:38,542
+it peaked at 81.
+
+67
+00:01:39,230 --> 00:01:41,350
+And the all-time record is 83,
+
+68
+00:01:41,150 --> 00:01:42,830
+set in March 2020,
+
+69
+00:01:42,630 --> 00:01:44,290
+when the pandemic hit.
+
+70
+00:01:45,617 --> 00:01:46,357
+Here's what changed.
+
+71
+00:01:46,757 --> 00:01:47,197
+On top,
+
+72
+00:01:47,317 --> 00:01:49,197
+the S&P 500 since August.
+
+73
+00:01:49,337 --> 00:01:50,057
+On the bottom,
+
+74
+00:01:50,217 --> 00:01:50,677
+the VIX.
+
+75
+00:01:51,384 --> 00:01:53,364
+The S&P 500 has now fallen
+
+76
+00:01:53,164 --> 00:01:54,464
+7 days in a row.
+
+77
+00:01:54,904 --> 00:01:56,964
+It's now 9.4 percent below its
+
+78
+00:01:56,764 --> 00:01:57,984
+October 6 record,
+
+79
+00:01:57,964 --> 00:01:59,304
+close to the 10 percent line
+
+80
+00:01:59,424 --> 00:02:00,584
+Wall Street calls a correction.
+
+81
+00:02:01,244 --> 00:02:03,364
+Today it closed at 7,083.
+
+82
+00:02:04,272 --> 00:02:06,092
+Meanwhile the VIX went from 15
+
+83
+00:02:05,892 --> 00:02:06,872
+to 30.
+
+84
+00:02:07,132 --> 00:02:08,612
+That's its highest close since March
+
+85
+00:02:08,412 --> 00:02:09,412
+2026.
+
+86
+00:02:10,983 --> 00:02:13,003
+Why are investors so nervous?
+
+87
+00:02:13,603 --> 00:02:14,963
+Start with the losing streak itself:
+
+88
+00:02:15,603 --> 00:02:16,743
+7 down days in a row
+
+89
+00:02:16,543 --> 00:02:17,923
+make people want insurance.
+
+90
+00:02:18,707 --> 00:02:20,547
+Then there's the sell-off in tech
+
+91
+00:02:20,347 --> 00:02:21,147
+and chip stocks.
+
+92
+00:02:21,767 --> 00:02:23,667
+The Nasdaq is now 15 percent
+
+93
+00:02:23,467 --> 00:02:24,467
+below its record.
+
+94
+00:02:25,127 --> 00:02:26,367
+Interest rates are high:
+
+95
+00:02:26,607 --> 00:02:28,207
+the 10-year Treasury yield is about
+
+96
+00:02:28,007 --> 00:02:29,347
+5.1 percent,
+
+97
+00:02:29,687 --> 00:02:31,627
+so safe bonds pay well and
+
+98
+00:02:31,427 --> 00:02:32,527
+stocks have to compete.
+
+99
+00:02:33,342 --> 00:02:35,772
+And inflation is running at 4.1
+
+100
+00:02:35,572 --> 00:02:36,042
+percent,
+
+101
+00:02:35,842 --> 00:02:37,682
+which makes more rate hikes from
+
+102
+00:02:37,482 --> 00:02:38,982
+the Federal Reserve more likely.
+
+103
+00:02:40,317 --> 00:02:41,557
+Now let's look at history.
+
+104
+00:02:42,277 --> 00:02:43,437
+Each dot is a time the
+
+105
+00:02:43,237 --> 00:02:45,017
+VIX closed above 30 for the
+
+106
+00:02:44,817 --> 00:02:46,257
+first time in at least three
+
+107
+00:02:46,057 --> 00:02:46,497
+months.
+
+108
+00:02:46,997 --> 00:02:47,817
+Since 1990,
+
+109
+00:02:48,237 --> 00:02:49,537
+there have been 22 of them,
+
+110
+00:02:49,577 --> 00:02:50,297
+plus today.
+
+111
+00:02:51,152 --> 00:02:52,192
+Some you'll recognize:
+
+112
+00:02:51,992 --> 00:02:54,072
+the collapse of Lehman Brothers in
+
+113
+00:02:53,872 --> 00:02:55,192
+September 2008,
+
+114
+00:02:55,372 --> 00:02:57,232
+the pandemic in February 2020,
+
+115
+00:02:57,772 --> 00:02:59,352
+the scare of August 2024,
+
+116
+00:02:59,972 --> 00:03:01,372
+and the tariff shock of April
+
+117
+00:03:01,172 --> 00:03:02,132
+2025.
+
+118
+00:03:02,974 --> 00:03:04,554
+Here's the thing most people don't
+
+119
+00:03:04,354 --> 00:03:04,714
+know.
+
+120
+00:03:05,054 --> 00:03:06,274
+Once the VIX goes above 30,
+
+121
+00:03:06,414 --> 00:03:07,814
+it usually doesn't stay there long.
+
+122
+00:03:08,094 --> 00:03:09,894
+The typical stretch lasted only about
+
+123
+00:03:09,694 --> 00:03:10,674
+2 trading days.
+
+124
+00:03:12,217 --> 00:03:13,997
+So what did stocks do next?
+
+125
+00:03:14,537 --> 00:03:16,237
+One month after those first spikes
+
+126
+00:03:16,037 --> 00:03:16,957
+above 30,
+
+127
+00:03:17,257 --> 00:03:19,517
+the S&P 500 was higher 15
+
+128
+00:03:19,317 --> 00:03:20,497
+times out of 22.
+
+129
+00:03:21,302 --> 00:03:22,182
+One year later,
+
+130
+00:03:22,222 --> 00:03:23,602
+it was higher 14 times out
+
+131
+00:03:23,402 --> 00:03:23,922
+of 21,
+
+132
+00:03:24,162 --> 00:03:25,422
+with a median gain of about
+
+133
+00:03:25,222 --> 00:03:26,282
+15 percent,
+
+134
+00:03:26,082 --> 00:03:27,102
+not counting dividends.
+
+135
+00:03:27,939 --> 00:03:29,079
+But look at the worst case.
+
+136
+00:03:29,359 --> 00:03:30,819
+After the VIX passed 30 in
+
+137
+00:03:30,619 --> 00:03:31,859
+September 2008,
+
+138
+00:03:32,019 --> 00:03:33,839
+the S&P 500 was still 12
+
+139
+00:03:33,639 --> 00:03:35,039
+percent lower a year later.
+
+140
+00:03:35,179 --> 00:03:36,119
+Fear can be right.
+
+141
+00:03:37,517 --> 00:03:39,197
+Let's compare four big ones.
+
+142
+00:03:39,757 --> 00:03:40,677
+September 2008:
+
+143
+00:03:40,977 --> 00:03:42,217
+the VIX peaked at 81,
+
+144
+00:03:42,017 --> 00:03:44,577
+and it took 321 trading days
+
+145
+00:03:44,377 --> 00:03:45,777
+to fall back below 20.
+
+146
+00:03:46,397 --> 00:03:48,097
+Stocks were 12 percent lower a
+
+147
+00:03:47,897 --> 00:03:48,597
+year later.
+
+148
+00:03:49,167 --> 00:03:50,347
+February 2020:
+
+149
+00:03:50,787 --> 00:03:51,927
+the VIX hit its record,
+
+150
+00:03:51,727 --> 00:03:52,427
+83.
+
+151
+00:03:53,027 --> 00:03:54,027
+But a year later,
+
+152
+00:03:53,947 --> 00:03:55,667
+stocks were 28 percent higher.
+
+153
+00:03:56,292 --> 00:03:57,312
+August 2024:
+
+154
+00:03:57,592 --> 00:03:58,352
+a short scare.
+
+155
+00:03:58,632 --> 00:04:00,292
+The VIX peaked at 39 and
+
+156
+00:04:00,092 --> 00:04:01,752
+was back below 20 within 6
+
+157
+00:04:01,552 --> 00:04:02,332
+trading days.
+
+158
+00:04:03,024 --> 00:04:04,304
+And April 2025,
+
+159
+00:04:05,004 --> 00:04:05,804
+the tariff shock:
+
+160
+00:04:06,004 --> 00:04:07,044
+a peak of 52,
+
+161
+00:04:07,324 --> 00:04:09,444
+calm again in 26 trading days,
+
+162
+00:04:09,244 --> 00:04:11,404
+and stocks up 23 percent a
+
+163
+00:04:11,204 --> 00:04:11,904
+year later.
+
+164
+00:04:13,250 --> 00:04:14,590
+So what should you watch from
+
+165
+00:04:14,390 --> 00:04:14,750
+here?
+
+166
+00:04:15,210 --> 00:04:15,410
+First,
+
+167
+00:04:15,390 --> 00:04:16,250
+the VIX itself.
+
+168
+00:04:16,710 --> 00:04:17,450
+When fear fades,
+
+169
+00:04:17,550 --> 00:04:19,170
+it usually drops back below 20.
+
+170
+00:04:19,930 --> 00:04:20,130
+Second,
+
+171
+00:04:20,250 --> 00:04:21,490
+the 10-year Treasury yield:
+
+172
+00:04:21,290 --> 00:04:22,510
+if it keeps rising,
+
+173
+00:04:22,530 --> 00:04:23,810
+pressure on stocks stays.
+
+174
+00:04:24,539 --> 00:04:25,259
+Third,
+
+175
+00:04:25,059 --> 00:04:27,019
+the Federal Reserve's December meeting,
+
+176
+00:04:26,819 --> 00:04:28,579
+and whether it raises rates again.
+
+177
+00:04:28,999 --> 00:04:29,899
+And fourth,
+
+178
+00:04:29,699 --> 00:04:30,899
+chip and AI stocks,
+
+179
+00:04:31,139 --> 00:04:32,739
+which led this year's gains and
+
+180
+00:04:32,539 --> 00:04:33,659
+are now leading the losses.
+
+181
+00:04:35,250 --> 00:04:36,570
+What does this mean for you?
+
+182
+00:04:37,070 --> 00:04:38,670
+A high VIX means bigger swings,
+
+183
+00:04:38,890 --> 00:04:40,170
+and swings cut both ways:
+
+184
+00:04:40,610 --> 00:04:41,590
+some of the biggest up days
+
+185
+00:04:41,390 --> 00:04:43,010
+come during fearful weeks.
+
+186
+00:04:43,470 --> 00:04:44,910
+Your time horizon matters most:
+
+187
+00:04:45,270 --> 00:04:46,810
+money you need soon carries more
+
+188
+00:04:46,610 --> 00:04:48,010
+risk in a market like this.
+
+189
+00:04:48,684 --> 00:04:50,384
+An emergency fund means you never
+
+190
+00:04:50,184 --> 00:04:51,324
+have to sell at a bad
+
+191
+00:04:51,124 --> 00:04:51,624
+time.
+
+192
+00:04:51,984 --> 00:04:53,584
+And history shows that selling in
+
+193
+00:04:53,384 --> 00:04:54,884
+a panic can lock in losses
+
+194
+00:04:54,684 --> 00:04:55,964
+right before a rebound,
+
+195
+00:04:56,404 --> 00:04:57,624
+though no one can promise a
+
+196
+00:04:57,424 --> 00:04:58,444
+rebound comes quickly.
+
+197
+00:04:59,883 --> 00:05:00,723
+Let's recap.
+
+198
+00:05:01,183 --> 00:05:02,643
+Wall Street's fear index doubled,
+
+199
+00:05:02,443 --> 00:05:03,343
+to 30,
+
+200
+00:05:03,663 --> 00:05:05,483
+as the S&P 500 fell 7
+
+201
+00:05:05,283 --> 00:05:06,403
+days in a row.
+
+202
+00:05:06,803 --> 00:05:07,943
+Readings that high are rare:
+
+203
+00:05:07,743 --> 00:05:09,363
+only about 8 percent of days
+
+204
+00:05:09,163 --> 00:05:10,163
+since 1990.
+
+205
+00:05:10,643 --> 00:05:12,543
+After past first spikes above 30,
+
+206
+00:05:12,623 --> 00:05:14,103
+stocks were higher a year later
+
+207
+00:05:13,903 --> 00:05:15,463
+14 times out of 21.
+
+208
+00:05:16,063 --> 00:05:17,323
+Most fear spikes were short.
+
+209
+00:05:17,843 --> 00:05:18,043
+Some,
+
+210
+00:05:17,843 --> 00:05:18,823
+like 2008,
+
+211
+00:05:18,623 --> 00:05:19,363
+were not.
+
+212
+00:05:20,136 --> 00:05:20,996
+So what are you doing right
+
+213
+00:05:20,796 --> 00:05:21,196
+now:
+
+214
+00:05:21,116 --> 00:05:21,496
+buying,
+
+215
+00:05:21,496 --> 00:05:21,916
+holding,
+
+216
+00:05:21,716 --> 00:05:22,376
+or selling?
+
+217
+00:05:22,636 --> 00:05:23,476
+Tell me in the comments.
+
+218
+00:05:23,276 --> 00:05:24,196
+And subscribe,
+
+219
+00:05:23,996 --> 00:05:25,176
+so you don't miss the next
+
+220
+00:05:24,976 --> 00:05:25,536
+update.
+
+221
+00:05:26,025 --> 00:05:28,125
+This video is for education only.
+
+222
+00:05:28,585 --> 00:05:29,885
+It's not financial advice.
+
