@@ -126,7 +126,7 @@ INFL = (CPI.iloc[-1] / CPI.iloc[-13] - 1) * 100
 SRC = 'Yahoo Finance: Cboe Volatility Index (^VIX) and S&P 500 daily closes'
 TICK = (f'VIX  {V_NOW:.2f}  {(V_NOW / V_PREV - 1) * 100:+.1f}%     S&P 500  {SP_NOW:,.2f}  {SP_DAY:+.2f}%     '
         f'NASDAQ  {NDQ.iloc[-1]:,.2f}     10-YR YIELD  {Y_NOW:.2f}%     CPI  {INFL:.1f}%     ')
-DOUBLED = 'doubled' if V_X >= 1.95 else 'nearly doubled'
+DOUBLED = 'more than doubled' if V_X >= 2.2 else ('doubled' if V_X >= 1.95 else 'nearly doubled')
 
 
 def ticker(draw):
@@ -465,9 +465,10 @@ corr_line = (f"It's now {abs(SP_DD):.1f} percent below its record, which officia
              f"calls a correction.")
 SCENES = [
     dict(draw=s_hook, chapter='Intro: the fear index', lead=0.15, gap=0.3, lines=[
-        f"!Wall Street's fear index just {DOUBLED}.",
+        (f"!Wall Street's fear index just jumped to {V_NOW:.0f}, and the S&P 500 just fell into a correction."
+         if IN_CORR else f"!Wall Street's fear index just {DOUBLED}."),
         f"The VIX was at {V_AT_REC:.0f} on October 6, the day the S&P 500 hit its record. Today it closed at "
-        f"{V_NOW:.1f}.",
+        f"{V_NOW:.1f}. It has {DOUBLED}.",
         f"So what happens after fear spikes like this? Here's the short answer. Since 1990, the VIX has jumped above "
         f"30 for the first time in months {len(PAST)} times. A year later, the S&P 500 was higher {UP12} times out of "
         f"{len(F12)}.",

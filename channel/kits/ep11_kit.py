@@ -25,9 +25,10 @@ desc = (
     "results.\nOriginal script and animation. Narrated with an AI voice.")
 kit = {
     'video': 'channel/out/ep11_vix.mp4',
-    'title': f"Wall Street's Fear Index Just {e.DOUBLED.title()}. What Happens Next?",
+    'title': (f"Fear Index Hits {e.V_NOW:.0f} as Stocks Enter a Correction. What Happens Next?" if e.IN_CORR
+              else f"Wall Street's Fear Index Just {e.DOUBLED.title()}. What Happens Next?"),
     'description': desc,
-    'tags': ['vix', 'vix explained', 'fear index', 'what is the vix', 'stock market volatility', 'stock market today',
+    'tags': ['stock market correction', 'vix', 'vix explained', 'fear index', 'what is the vix', 'stock market volatility', 'stock market today',
              'stock market crash', 'stock market correction', 's&p 500', 'cboe volatility index', 'stock market 2026',
              'is a crash coming', 'coin theory', 'money explained', 'personal finance'],
     'categoryId': 27,
