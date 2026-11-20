@@ -516,6 +516,9 @@ SCENES = [
         f"Meanwhile the VIX went from {V_AT_REC:.0f} to {V_NOW:.0f}. "
         + (f"That's its highest close since {HIGHEST_SINCE:%B %Y}." if HIGHEST_SINCE is not None else
            "That's a new high for this year."),
+        f"Today alone, the S&P 500 fell {abs(SP_DAY):.1f} percent, and the VIX jumped {(V_NOW / V_PREV - 1) * 100:.0f} "
+        "percent in a single day. When fear moves that fast, it usually means investors are scrambling to protect "
+        "themselves all at once.",
     ], sfx=lambda L: [(L[0] + 0.3, 'whoosh'), (L[1] + 0.3, 'down'), (L[2] + 0.3, 'hit')]),
     dict(draw=s_seesaw, chapter='A seesaw', lines=[
         "Here's the pattern to remember: the VIX and the stock market usually move like a seesaw. When stocks "
@@ -619,6 +622,7 @@ def check_numbers():
     assert len(PAST) == 22 and len(F12) == 21 and UP12 == 14 and len(F1) == 22 and UP1 == 15, (len(PAST), UP12, UP1)
     assert round(SEESAW) == 77 and BEST20 == 19 and WORST20 == 17 and round(MOVE_HI, 2) == 1.86 and round(MOVE_LO, 2) == 0.42
     assert round(MAR_PEAK) == 31 and MAR_CALM == 8 and SP_LOW26_D.strftime('%Y-%m-%d') == '2026-03-30' and round(MAR_RUN) == 23
+    assert round(SP_DAY, 1) == -3.7 and round((V_NOW / V_PREV - 1) * 100) == 31
     assert EX18 == 7 and EX22 == 47 and round(MED1) == 3 and round(V_MIN, 2) == 9.14 and V_MIN_D.year == 2017
     assert round(EX['2008']['r12']) == -12 and EX['2008']['calm'] == 321 and round(EX['2008']['peak']) == 81
     assert round(EX['2020']['r12']) == 28 and round(EX['2020']['peak']) == 83
