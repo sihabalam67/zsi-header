@@ -101,6 +101,8 @@ for key, d in (('2008', '2008-09-15'), ('2020', '2020-02-27'), ('2024', '2024-08
     EX[key] = dict(date=d, peak=VIX.iloc[j:j + 63].max(), calm=calm_days(d), r12=fwd(d, 252) * 100)
 _runs = (VIX >= 30).groupby(((VIX >= 30) != (VIX >= 30).shift()).cumsum()).sum()
 RUN_MED = float(_runs[_runs > 0].median())
+MED1 = float(np.median(F1)) * 100
+V_MIN, V_MIN_D = VIX.min(), VIX.idxmin()
 
 _j = pd.concat([VIX.pct_change(), SPX.pct_change()], axis=1, keys=['v', 'g'], sort=True).dropna()['1990-01-03':]
 SEESAW = (_j[_j.g < 0].v > 0).mean() * 100
@@ -503,7 +505,9 @@ SCENES = [
         f"So how high is {V_NOW:.0f}? On a typical day since 1990, the VIX has been around {V_MED:.0f}.",
         f"It has closed at 30 or higher on only about {SHARE30:.0f} percent of trading days.",
         f"In the 2008 financial crisis, it peaked at {V08:.0f}.",
-        f"And the all-time record is {V_MAX:.0f}, set in {V_MAX_D:%B %Y}, when the pandemic hit.",
+        f"And the all-time record is {V_MAX:.0f}, set in {V_MAX_D:%B %Y}, when the pandemic hit. The lowest close "
+        f"ever was {V_MIN:.1f}, in {V_MIN_D:%B %Y}, one of the calmest stretches the market has ever had. Today's "
+        f"reading is about {V_NOW / V_MIN:.1f} times that.",
     ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[1] + 0.3, 'pop'), (L[2] + 0.3, 'down'), (L[3] + 0.3, 'hit')]),
     dict(draw=s_jump, chapter='Why it just jumped', lines=[
         "Here's what changed. On top, the S&P 500 since August. On the bottom, the VIX.",
@@ -539,7 +543,7 @@ SCENES = [
                                                                                   (L[2] + 0.3, 'ding')]),
     dict(draw=s_next, chapter='What stocks did next', lines=[
         f"So what did stocks do next? One month after those first spikes above 30, the S&P 500 was higher {UP1} "
-        f"times out of {len(F1)}.",
+        f"times out of {len(F1)}, with a median gain of about {MED1:.0f} percent.",
         f"!One year later, it was higher {UP12} times out of {len(F12)}, with a median gain of about {MED12:.0f} "
         "percent, not counting dividends.",
         f"But look at the worst case. After the VIX passed 30 in September 2008, the S&P 500 was still "
@@ -585,6 +589,8 @@ SCENES = [
         "more risk in a market like this.",
         "An emergency fund means you never have to sell at a bad time. And history shows that selling in a panic "
         "can lock in losses right before a rebound, though no one can promise a rebound comes quickly.",
+        "And if you invest the same amount every month, through a 401(k) for example, months like this mean your "
+        "money buys shares at lower prices than it did in October.",
     ], sfx=lambda L: [(L[0] + 0.5, 'pop'), (L[0] + 3.5, 'pop'), (L[1] + 0.3, 'pop'), (L[1] + 3.5, 'pop')]),
     dict(draw=s_recap, chapter='Recap', lines=[
         f"Let's recap. Wall Street's fear index {DOUBLED}, to {V_NOW:.0f}, as the S&P 500 fell {STREAK} days in a "
@@ -612,7 +618,7 @@ def check_numbers():
     assert len(PAST) == 22 and len(F12) == 21 and UP12 == 14 and len(F1) == 22 and UP1 == 15, (len(PAST), UP12, UP1)
     assert round(SEESAW) == 77 and BEST20 == 19 and WORST20 == 17 and round(MOVE_HI, 2) == 1.86 and round(MOVE_LO, 2) == 0.42
     assert round(MAR_PEAK) == 31 and MAR_CALM == 8 and SP_LOW26_D.strftime('%Y-%m-%d') == '2026-03-30' and round(MAR_RUN) == 23
-    assert EX18 == 7 and EX22 == 47
+    assert EX18 == 7 and EX22 == 47 and round(MED1) == 3 and round(V_MIN, 2) == 9.14 and V_MIN_D.year == 2017
     assert round(EX['2008']['r12']) == -12 and EX['2008']['calm'] == 321 and round(EX['2008']['peak']) == 81
     assert round(EX['2020']['r12']) == 28 and round(EX['2020']['peak']) == 83
     assert EX['2024']['calm'] == 6 and round(EX['2024']['peak']) == 39 and round(EX['2024']['r12']) == 22
