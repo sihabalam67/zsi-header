@@ -883,354 +883,378 @@ the tariff shock took the S&P
 with a new record by June.
 
 222
-00:05:54,083 --> 00:05:55,623
-How rare is a week like
+00:05:53,338 --> 00:05:54,378
+Notice the pattern:
 
 223
-00:05:55,423 --> 00:05:55,863
-this?
+00:05:54,418 --> 00:05:56,338
+the corrections that stayed shallow tended
 
 224
-00:05:56,463 --> 00:05:57,383
-Since 1950,
+00:05:56,138 --> 00:05:57,318
+to heal within months.
 
 225
-00:05:57,383 --> 00:05:59,263
-the S&P 500 has had only
+00:05:57,898 --> 00:05:59,138
+The ones that turned into bear
 
 226
-00:05:59,063 --> 00:06:00,883
-12 weeks this bad or worse,
+00:05:58,938 --> 00:06:00,438
+markets are the ones that took
 
 227
-00:06:01,023 --> 00:06:01,923
-including this one.
+00:06:00,238 --> 00:06:00,758
+years.
 
 228
-00:06:02,383 --> 00:06:03,663
-They cluster in famous crises:
+00:06:02,217 --> 00:06:03,757
+How rare is a week like
 
 229
-00:06:03,983 --> 00:06:04,463
-1987,
+00:06:03,557 --> 00:06:03,997
+this?
 
 230
-00:06:04,883 --> 00:06:05,603
-2008,
-
-231
-00:06:05,783 --> 00:06:06,563
-the pandemic,
-
-232
-00:06:06,623 --> 00:06:08,303
-and the tariff shock of 2025.
-
-233
-00:06:08,991 --> 00:06:10,451
-A year after the earlier 11,
-
-234
-00:06:10,711 --> 00:06:12,571
-the S&P 500 was higher 7
-
-235
-00:06:12,371 --> 00:06:12,911
-times,
-
-236
-00:06:13,091 --> 00:06:14,271
-with a median gain of about
-
-237
-00:06:14,071 --> 00:06:15,031
-20 percent.
-
-238
-00:06:14,831 --> 00:06:16,231
-But the other 4 times,
-
-239
-00:06:16,031 --> 00:06:17,031
-it was still lower.
-
-240
-00:06:17,211 --> 00:06:18,711
-A terrible week has been followed
-
-241
-00:06:18,511 --> 00:06:20,511
-by both rebounds and deeper slides.
-
-242
-00:06:21,983 --> 00:06:23,263
-So what should you watch next
-
-243
-00:06:23,063 --> 00:06:23,583
-week?
-
-244
-00:06:24,183 --> 00:06:24,383
-First,
-
-245
-00:06:24,403 --> 00:06:25,223
-it's a short week.
-
-246
-00:06:25,763 --> 00:06:25,963
-U.S.
-
-247
-00:06:25,763 --> 00:06:27,823
-markets are closed on Thanksgiving Thursday
-
-248
-00:06:27,623 --> 00:06:29,343
-and close early on Friday,
-
-249
-00:06:29,543 --> 00:06:30,923
-so trading can be thin and
-
-250
-00:06:30,723 --> 00:06:31,823
-moves can be jumpy.
-
-251
-00:06:32,404 --> 00:06:32,804
-Second,
-
-252
-00:06:32,944 --> 00:06:34,084
-new inflation data.
-
-253
-00:06:34,864 --> 00:06:35,064
-Third,
-
-254
-00:06:35,144 --> 00:06:36,384
-the 10-year Treasury yield:
-
-255
-00:06:36,184 --> 00:06:37,384
-if it keeps rising,
-
-256
-00:06:37,524 --> 00:06:38,784
-pressure on stocks stays.
-
-257
-00:06:39,104 --> 00:06:39,844
-And fourth,
-
-258
-00:06:40,024 --> 00:06:40,764
-the fear index.
-
-259
-00:06:41,184 --> 00:06:42,244
-When fear fades,
-
-260
-00:06:42,304 --> 00:06:43,884
-the VIX usually falls back toward
-
-261
-00:06:43,684 --> 00:06:44,184
-20.
-
-262
-00:06:45,583 --> 00:06:46,923
-What does this mean for you?
-
-263
-00:06:47,043 --> 00:06:49,203
-Here's what most financial educators point
-
-264
-00:06:49,003 --> 00:06:49,483
-to.
-
-265
-00:06:49,623 --> 00:06:50,803
-Money you'll need in the next
-
-266
-00:06:50,603 --> 00:06:52,643
-few years usually doesn't belong in
-
-267
-00:06:52,443 --> 00:06:52,863
-stocks,
-
-268
-00:06:53,043 --> 00:06:54,383
-because a drop like this can
-
-269
-00:06:54,183 --> 00:06:55,463
-come at the worst moment.
-
-270
-00:06:56,004 --> 00:06:57,324
-For long-term money,
-
-271
-00:06:57,464 --> 00:06:59,144
-time has mattered more than timing.
-
-272
-00:06:59,724 --> 00:07:01,904
-Spreading money across many investments limits
-
-273
-00:07:01,704 --> 00:07:03,584
-the damage from any one.
-
-274
-00:07:03,384 --> 00:07:05,184
-And an emergency fund means you
-
-275
-00:07:04,984 --> 00:07:06,344
-never have to sell at the
-
-276
-00:07:06,144 --> 00:07:06,644
-bottom.
-
-277
-00:07:07,214 --> 00:07:08,874
-If you invest every month through
-
-278
-00:07:08,674 --> 00:07:09,634
-a 401(k),
-
-279
-00:07:09,854 --> 00:07:11,714
-prices this week are lower than
-
-280
-00:07:11,514 --> 00:07:12,314
-they were in October,
-
-281
-00:07:12,874 --> 00:07:14,814
-so each contribution buys more shares.
-
-282
-00:07:15,514 --> 00:07:16,694
-Nobody knows if this is the
-
-283
-00:07:16,494 --> 00:07:17,034
-bottom,
-
-284
-00:07:17,054 --> 00:07:18,674
-and that's exactly why steady investors
-
-285
-00:07:18,474 --> 00:07:19,714
-don't try to guess.
-
-286
-00:07:21,217 --> 00:07:21,997
-Let's recap.
-
-287
-00:07:22,777 --> 00:07:24,297
-The Nasdaq just had its worst
-
-288
-00:07:24,097 --> 00:07:25,457
-week since 2020,
-
-289
-00:07:25,597 --> 00:07:27,417
-and the S&P 500 is in
-
-290
-00:07:27,217 --> 00:07:27,757
-a correction,
-
-291
-00:07:28,077 --> 00:07:30,357
-11.6 percent below its record.
-
-292
-00:07:30,937 --> 00:07:31,857
+00:06:04,597 --> 00:06:05,517
 Since 1950,
 
+231
+00:06:05,517 --> 00:06:07,397
+the S&P 500 has had only
+
+232
+00:06:07,197 --> 00:06:09,017
+12 weeks this bad or worse,
+
+233
+00:06:09,157 --> 00:06:10,057
+including this one.
+
+234
+00:06:10,517 --> 00:06:11,797
+They cluster in famous crises:
+
+235
+00:06:12,117 --> 00:06:12,597
+1987,
+
+236
+00:06:13,017 --> 00:06:13,737
+2008,
+
+237
+00:06:13,917 --> 00:06:14,697
+the pandemic,
+
+238
+00:06:14,757 --> 00:06:16,437
+and the tariff shock of 2025.
+
+239
+00:06:17,124 --> 00:06:18,584
+A year after the earlier 11,
+
+240
+00:06:18,844 --> 00:06:20,704
+the S&P 500 was higher 7
+
+241
+00:06:20,504 --> 00:06:21,044
+times,
+
+242
+00:06:21,224 --> 00:06:22,404
+with a median gain of about
+
+243
+00:06:22,204 --> 00:06:23,164
+20 percent.
+
+244
+00:06:22,964 --> 00:06:24,364
+But the other 4 times,
+
+245
+00:06:24,164 --> 00:06:25,164
+it was still lower.
+
+246
+00:06:25,344 --> 00:06:26,844
+A terrible week has been followed
+
+247
+00:06:26,644 --> 00:06:28,644
+by both rebounds and deeper slides.
+
+248
+00:06:30,117 --> 00:06:31,397
+So what should you watch next
+
+249
+00:06:31,197 --> 00:06:31,717
+week?
+
+250
+00:06:32,317 --> 00:06:32,517
+First,
+
+251
+00:06:32,537 --> 00:06:33,357
+it's a short week.
+
+252
+00:06:33,897 --> 00:06:34,097
+U.S.
+
+253
+00:06:33,897 --> 00:06:35,957
+markets are closed on Thanksgiving Thursday
+
+254
+00:06:35,757 --> 00:06:37,477
+and close early on Friday,
+
+255
+00:06:37,677 --> 00:06:39,057
+so trading can be thin and
+
+256
+00:06:38,857 --> 00:06:39,957
+moves can be jumpy.
+
+257
+00:06:40,537 --> 00:06:40,937
+Second,
+
+258
+00:06:41,077 --> 00:06:42,217
+new inflation data.
+
+259
+00:06:42,997 --> 00:06:43,197
+Third,
+
+260
+00:06:43,277 --> 00:06:44,517
+the 10-year Treasury yield:
+
+261
+00:06:44,317 --> 00:06:45,517
+if it keeps rising,
+
+262
+00:06:45,657 --> 00:06:46,917
+pressure on stocks stays.
+
+263
+00:06:47,237 --> 00:06:47,977
+And fourth,
+
+264
+00:06:48,157 --> 00:06:48,897
+the fear index.
+
+265
+00:06:49,317 --> 00:06:50,377
+When fear fades,
+
+266
+00:06:50,437 --> 00:06:52,017
+the VIX usually falls back toward
+
+267
+00:06:51,817 --> 00:06:52,317
+20.
+
+268
+00:06:53,717 --> 00:06:55,057
+What does this mean for you?
+
+269
+00:06:55,177 --> 00:06:57,337
+Here's what most financial educators point
+
+270
+00:06:57,137 --> 00:06:57,617
+to.
+
+271
+00:06:57,757 --> 00:06:58,937
+Money you'll need in the next
+
+272
+00:06:58,737 --> 00:07:00,777
+few years usually doesn't belong in
+
+273
+00:07:00,577 --> 00:07:00,997
+stocks,
+
+274
+00:07:01,177 --> 00:07:02,517
+because a drop like this can
+
+275
+00:07:02,317 --> 00:07:03,597
+come at the worst moment.
+
+276
+00:07:04,137 --> 00:07:05,457
+For long-term money,
+
+277
+00:07:05,597 --> 00:07:07,277
+time has mattered more than timing.
+
+278
+00:07:07,857 --> 00:07:10,037
+Spreading money across many investments limits
+
+279
+00:07:09,837 --> 00:07:11,717
+the damage from any one.
+
+280
+00:07:11,517 --> 00:07:13,317
+And an emergency fund means you
+
+281
+00:07:13,117 --> 00:07:14,477
+never have to sell at the
+
+282
+00:07:14,277 --> 00:07:14,777
+bottom.
+
+283
+00:07:15,348 --> 00:07:17,008
+If you invest every month through
+
+284
+00:07:16,808 --> 00:07:17,768
+a 401(k),
+
+285
+00:07:17,988 --> 00:07:19,848
+prices this week are lower than
+
+286
+00:07:19,648 --> 00:07:20,448
+they were in October,
+
+287
+00:07:21,008 --> 00:07:22,948
+so each contribution buys more shares.
+
+288
+00:07:23,648 --> 00:07:24,828
+Nobody knows if this is the
+
+289
+00:07:24,628 --> 00:07:25,168
+bottom,
+
+290
+00:07:25,188 --> 00:07:26,808
+and that's exactly why steady investors
+
+291
+00:07:26,608 --> 00:07:27,848
+don't try to guess.
+
+292
+00:07:29,350 --> 00:07:30,130
+Let's recap.
+
 293
-00:07:32,157 --> 00:07:34,757
-15 of 26 corrections stopped before
+00:07:30,910 --> 00:07:32,430
+The Nasdaq just had its worst
 
 294
-00:07:34,557 --> 00:07:35,357
-a bear market,
+00:07:32,230 --> 00:07:33,590
+week since 2020,
 
 295
-00:07:35,717 --> 00:07:37,657
-and the S&P 500 was higher
+00:07:33,730 --> 00:07:35,550
+and the S&P 500 is in
 
 296
-00:07:37,457 --> 00:07:39,397
-a year after hitting minus 10
+00:07:35,350 --> 00:07:35,890
+a correction,
 
 297
-00:07:39,197 --> 00:07:41,277
-percent 18 times out of 26.
+00:07:36,210 --> 00:07:38,490
+11.6 percent below its record.
 
 298
-00:07:42,017 --> 00:07:43,837
-But some corrections got much worse,
+00:07:39,070 --> 00:07:39,990
+Since 1950,
 
 299
-00:07:44,037 --> 00:07:45,677
-so nobody can promise this one
+00:07:40,290 --> 00:07:42,890
+15 of 26 corrections stopped before
 
 300
-00:07:45,477 --> 00:07:46,417
-is close to over.
+00:07:42,690 --> 00:07:43,490
+a bear market,
 
 301
-00:07:47,041 --> 00:07:48,301
-So what do you think:
+00:07:43,850 --> 00:07:45,790
+and the S&P 500 was higher
 
 302
-00:07:48,621 --> 00:07:49,861
-will stocks be higher by New
+00:07:45,590 --> 00:07:47,530
+a year after hitting minus 10
 
 303
-00:07:49,661 --> 00:07:50,341
-Year's Day?
+00:07:47,330 --> 00:07:49,410
+percent 18 times out of 26.
 
 304
-00:07:50,681 --> 00:07:51,541
-Tell me in the comments.
+00:07:50,150 --> 00:07:51,970
+But some corrections got much worse,
 
 305
-00:07:51,801 --> 00:07:52,421
-And subscribe,
+00:07:52,170 --> 00:07:53,810
+so nobody can promise this one
 
 306
-00:07:52,221 --> 00:07:53,901
-so you don't miss next week's
+00:07:53,610 --> 00:07:54,550
+is close to over.
 
 307
-00:07:53,701 --> 00:07:54,161
-updates.
+00:07:55,174 --> 00:07:56,434
+So what do you think:
 
 308
-00:07:54,895 --> 00:07:56,995
-This video is for education only.
+00:07:56,754 --> 00:07:57,994
+will stocks be higher by New
 
 309
-00:07:57,455 --> 00:07:58,755
+00:07:57,794 --> 00:07:58,474
+Year's Day?
+
+310
+00:07:58,814 --> 00:07:59,674
+Tell me in the comments.
+
+311
+00:07:59,934 --> 00:08:00,554
+And subscribe,
+
+312
+00:08:00,354 --> 00:08:02,034
+so you don't miss next week's
+
+313
+00:08:01,834 --> 00:08:02,294
+updates.
+
+314
+00:08:03,028 --> 00:08:05,128
+This video is for education only.
+
+315
+00:08:05,588 --> 00:08:06,888
 It's not financial advice.
 
