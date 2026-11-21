@@ -507,6 +507,8 @@ SCENES = [
         "pandemic crash of 2020 went to 34 percent, and was back at a record by August.",
         "2022 was the slow one: a 25 percent bear market that took until January 2024 to recover. And in 2025, the "
         "tariff shock took the S&P 500 down about 19 percent, with a new record by June.",
+        "Notice the pattern: the corrections that stayed shallow tended to heal within months. The ones that turned "
+        "into bear markets are the ones that took years.",
     ], sfx=lambda L: [(L[0] + 0.3, 'pop'), (L[0] + 1.8, 'pop'), (L[1] + 0.3, 'pop'), (L[1] + 1.8, 'pop'),
                       (L[2] + 0.3, 'pop'), (L[2] + 1.8, 'pop')]),
     dict(draw=s_weeks, chapter='Weeks this bad', lines=[
