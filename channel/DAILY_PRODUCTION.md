@@ -36,6 +36,14 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    (sourced facts only, never personal financial advice, skip abuse).
 8. **Commit and push** everything except build files. Log the video in channel/out/LOG.md (date, title, id).
 
+## Lessons so far
+- The narration runs faster than word count suggests: ~1,450 words gave 5.5 min. Aim for ~2,000 words and check
+  the length with a pre-render before the final numbers are in; YouTube needs 8:00+ for mid-roll ads.
+- For market stories, pre-render during the day, then refresh the data after the 4 PM close, rerun --check and
+  re-render (voice is cached per line, so only changed lines are re-voiced). Update the title, thumbnail text and
+  launch question to the closing numbers too (Nov 20: the VIX moved from 30 to 37 at the close).
+- Never `pkill -f`; stop a render by its PID.
+
 ## Weekly (Thursday)
 `python3 youtube/stats.py 28` -> channel/WEEKLY_REPORT.md: watch hours, subscribers, and per video average view
 time and subscribers per 100 views. Double down on topics and title styles that hold viewers longest.
