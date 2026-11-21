@@ -87,6 +87,8 @@ SPEC = {
                     ('thumbsrc/ep10_red.jpg', 'thumbsrc/ep10_red2.jpg', 'thumbsrc/ep10_red.jpg')),
     'ep11_vix': (0, 'FEAR\nINDEX 37', 'WHAT\nNEXT?', 'CORRECTION\n-11.6%', RED, None, 1,
                  ('thumbsrc/ep11_vix.jpg', 'thumbsrc/ep11_vix.jpg', 'thumbsrc/ep11_vix.jpg')),
+    'ep12_week': (0, 'NASDAQ\n-10%', 'WORST WEEK\nSINCE 2020', 'NOW\nWHAT?', RED, None, 1,
+                  ('thumbsrc/ep12_week.jpg', 'thumbsrc/ep12_week.jpg', 'thumbsrc/ep12_week.jpg')),
 }
 
 
