@@ -28,6 +28,15 @@ Long-video watch hours, all time: 38.1 of 4,000.
 5. **YouTube pushed it through suggested videos and the home feed**, not search and not our Shorts. That only
    happens when people click and keep watching.
 
+## Topic lesson from the scout (Nov 21)
+- "Your 401(k) Is Down 10%. Here's What History Says Comes Next." from a channel with 279 subscribers: ~52,000
+  views/day. Same data story as our Nov 21 video, framed around the viewer's own money. Frame topics as "your
+  401(k) / paycheck / rent / groceries", never index jargon ("S&P 500 correction", "VIX").
+- Highest demand this week (English, views/day of recent videos): stock market crash ~255k, gold price ~137k,
+  AI bubble ~78k, Black Friday ~59k, recession ~48k, car prices ~38k, bitcoin crash ~36k, Social Security ~30k.
+  Big channels own the top of "stock market crash" and "gold price"; small channels are winning car prices,
+  housing, grocery prices, credit card debt, rent and 401(k) angles.
+
 ## Where every video loses people
 - The biggest drops are in the first 10-30 seconds, on every video. The intro is the weakest part.
 - Second drop: the first chapter change (~1 min) when the video switches from the hook to background.

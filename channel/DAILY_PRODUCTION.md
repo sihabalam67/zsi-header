@@ -17,7 +17,11 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    Write the 3 concrete improvements this video makes over the last one at the top of the new episode file, and
    update LEARNINGS.md with anything new. If a recent video's first 3 days are clearly below its peers, change its
    title or thumbnail (set_thumbs.py / the API) the same day.
-1. **Pick the story (by ~noon ET).** WebSearch today's money news (markets, Fed, inflation, jobs, housing, gas,
+1. **Pick the story with the topic-scout agent (by ~noon ET).** Spawn the `topic-scout` agent (.claude/agents/
+   topic-scout.md); it measures demand with `youtube/scout.py` and returns the top 3 with titles. Pick the one with
+   the widest everyday audience we can back with data. After drafting the script, spawn the `script-doctor` agent
+   on it before the full render.
+   (Old step, still valid:) WebSearch today's money news (markets, Fed, inflation, jobs, housing, gas,
    gold/crypto, a big IPO or layoff, a new law that changes paychecks or taxes). Check search demand with
    `python3 youtube/trends.py "<topic>" --days 3`. Choose the story most people are searching *today* that we can
    explain with real data. Title = the question people type ("Stocks Fell 6 Days in a Row. Is a Crash Coming?").

@@ -1,0 +1,545 @@
+{
+ "date": "2026-11-21",
+ "results": [
+  {
+   "topic": "stock market crash",
+   "demand": 254897,
+   "top": 575608,
+   "small": 0,
+   "score": 254897,
+   "examples": [
+    {
+     "title": "\"LOOK AT INDIA\": AMERICA'S $40T DEBT PANIC | Why Trump's Fed Rate Cut Will CRASH US Economy | Kinjal",
+     "channel": "World Affairs by Unacademy",
+     "subs": 4220000,
+     "vpd": 575608,
+     "minutes": 18.0
+    },
+    {
+     "title": "NASDAQ wipes out 2026\u2019s gains in AI correction",
+     "channel": "CNN",
+     "subs": 20100000,
+     "vpd": 572315,
+     "minutes": 11.5
+    },
+    {
+     "title": "Gold Prices Crash! How Much Further Will Gold Fall?",
+     "channel": "Pushkar Raj Thakur: Stock Market Educator \ud83d\udcc8",
+     "subs": 15500000,
+     "vpd": 489138,
+     "minutes": 11.2
+    }
+   ]
+  },
+  {
+   "topic": "gold price",
+   "demand": 137412,
+   "top": 489148,
+   "small": 0,
+   "score": 137412,
+   "examples": [
+    {
+     "title": "Gold Prices Crash! How Much Further Will Gold Fall?",
+     "channel": "Pushkar Raj Thakur: Stock Market Educator \ud83d\udcc8",
+     "subs": 15500000,
+     "vpd": 489148,
+     "minutes": 11.2
+    },
+    {
+     "title": "Gold Rate Paavangal | Parithabangal",
+     "channel": "Parithabangal",
+     "subs": 6860000,
+     "vpd": 475442,
+     "minutes": 15.1
+    },
+    {
+     "title": "Business Analyst Prabhu About Gold &Silver Rates in Telugu |Future Gold Price 2026 |SumanTV Nirupama",
+     "channel": "SumanTV Money Wallet",
+     "subs": 480000,
+     "vpd": 452230,
+     "minutes": 15.0
+    }
+   ]
+  },
+  {
+   "topic": "AI bubble",
+   "demand": 77762,
+   "top": 243420,
+   "small": 2,
+   "score": 88130,
+   "examples": [
+    {
+     "title": "The Anthropic Bubble Crash Is Worse Than It Seems",
+     "channel": "MonkeyExplains",
+     "subs": 263000,
+     "vpd": 243420,
+     "minutes": 13.3
+    },
+    {
+     "title": "Anthropic\u2019s Billion-Dollar IPO: The AI Boom Or An AI Bubble? | The Palki Sharma Show | IGR",
+     "channel": "India Global Review",
+     "subs": 976000,
+     "vpd": 238306,
+     "minutes": 9.4
+    },
+    {
+     "title": "Jensen Huang DIPECAT! Masa Depan NVIDIA HANCUR?",
+     "channel": "Raymond Chin",
+     "subs": 3530000,
+     "vpd": 201749,
+     "minutes": 14.4
+    }
+   ]
+  },
+  {
+   "topic": "black friday deals",
+   "demand": 59338,
+   "top": 490944,
+   "small": 0,
+   "score": 59338,
+   "examples": [
+    {
+     "title": "Top 50 Amazon Black Friday 2026 Deals (Updated Hourly!! \ud83d\udd25)",
+     "channel": "The Deal Guy",
+     "subs": 2980000,
+     "vpd": 490944,
+     "minutes": 15.5
+    },
+    {
+     "title": "ECOFLOW | Black Friday DEALS on Home Backup Power Stations | Generators",
+     "channel": "HOBOTECH",
+     "subs": 312000,
+     "vpd": 474399,
+     "minutes": 13.4
+    },
+    {
+     "title": "20 INSANE Amazon Deals For Your HOME \u2014 EARLY Black Friday 2026!",
+     "channel": "Rossen Reports",
+     "subs": 771000,
+     "vpd": 160034,
+     "minutes": 16.1
+    }
+   ]
+  },
+  {
+   "topic": "recession",
+   "demand": 47986,
+   "top": 181434,
+   "small": 3,
+   "score": 57583,
+   "examples": [
+    {
+     "title": "\u2018It\u2019s going to get worse\u2019: Kochie reveals his predictions for the economy | Sunrise",
+     "channel": "Sunrise",
+     "subs": 368000,
+     "vpd": 181434,
+     "minutes": 5.3
+    },
+    {
+     "title": "Without a recession, this is a correction not a bear market, says Ed Yardeni",
+     "channel": "CNBC Television",
+     "subs": 3420000,
+     "vpd": 174447,
+     "minutes": 4.7
+    },
+    {
+     "title": "What\u2019s Stopping a Recession\u2026 Is Now Under Attack",
+     "channel": "Casual Finance",
+     "subs": 441000,
+     "vpd": 131852,
+     "minutes": 16.1
+    }
+   ]
+  },
+  {
+   "topic": "car prices",
+   "demand": 37872,
+   "top": 194230,
+   "small": 5,
+   "score": 50496,
+   "examples": [
+    {
+     "title": "Can You Buy a Car With Just \u20b925,000 Salary? \ud83d\ude31 Top 10 Best Budget Cars in India 2026 | Low EMI Cars",
+     "channel": "Bharath Pulse",
+     "subs": 11100,
+     "vpd": 194230,
+     "minutes": 8.8
+    },
+    {
+     "title": "The Car Payment Crisis Is OUT OF CONTROL - This Ends BADLY",
+     "channel": "Car Questions Answered",
+     "subs": 299000,
+     "vpd": 94509,
+     "minutes": 16.3
+    },
+    {
+     "title": "Why Everyone in the UK Suddenly Has a New Car (The PCP Trap)",
+     "channel": "Ryan | Personal Finance",
+     "subs": 7610,
+     "vpd": 88871,
+     "minutes": 11.7
+    }
+   ]
+  },
+  {
+   "topic": "bitcoin crash",
+   "demand": 36108,
+   "top": 88494,
+   "small": 2,
+   "score": 40922,
+   "examples": [
+    {
+     "title": "Crypto Crash Alert! \ud83d\udea8 Don't Invest Your Money Before Watching This!",
+     "channel": "Pushkar Raj Thakur: Stock Market Educator \ud83d\udcc8",
+     "subs": 15500000,
+     "vpd": 88494,
+     "minutes": 8.1
+    },
+    {
+     "title": "Bitcoin BLOODBATH... So What Happens Now??",
+     "channel": "Altcoin Daily",
+     "subs": 1660000,
+     "vpd": 85563,
+     "minutes": 12.9
+    },
+    {
+     "title": "EMERGENCY | GLOBAL MARKET CRASH | BITCOIN - $55,000",
+     "channel": "Crypto India I \u0915\u094d\u0930\u093f\u092a\u094d\u091f\u094b \u0907\u0902\u0921\u093f\u092f\u093e",
+     "subs": 347000,
+     "vpd": 55282,
+     "minutes": 9.3
+    }
+   ]
+  },
+  {
+   "topic": "housing market crash",
+   "demand": 28003,
+   "top": 122950,
+   "small": 5,
+   "score": 37337,
+   "examples": [
+    {
+     "title": "RE/MAX drops MAJOR warning (\"it's way worse than anyone expected\")",
+     "channel": "Reventure Consulting",
+     "subs": 693000,
+     "vpd": 122950,
+     "minutes": 16.3
+    },
+    {
+     "title": "BC's New Premier Just Shook Up the Entire Housing Market",
+     "channel": "Dan Roberts Real Estate",
+     "subs": 528,
+     "vpd": 88554,
+     "minutes": 12.7
+    },
+    {
+     "title": "Housing Market Hits DISASTROUS New Low",
+     "channel": "The Young Turks",
+     "subs": 6770000,
+     "vpd": 67539,
+     "minutes": 5.4
+    }
+   ]
+  },
+  {
+   "topic": "social security",
+   "demand": 30340,
+   "top": 285716,
+   "small": 2,
+   "score": 34385,
+   "examples": [
+    {
+     "title": "All Hell Breaks Loose As Warner Reads Johnson's Comments Calling Social Security A 'Ponzi Scheme'",
+     "channel": "Forbes Breaking News",
+     "subs": 5640000,
+     "vpd": 285716,
+     "minutes": 5.9
+    },
+    {
+     "title": "Senator Mark Warner Confronts Ron Johnson Over Social Security Claims In Heated Senate Hearing",
+     "channel": "CRUX",
+     "subs": 3560000,
+     "vpd": 155280,
+     "minutes": 5.6
+    },
+    {
+     "title": "\u2018We Will Never Reduce Benefits\u2019: Ron Johnson Blasts Economist Over Social Security Tax Hike Proposal",
+     "channel": "Forbes Breaking News",
+     "subs": 5640000,
+     "vpd": 99876,
+     "minutes": 6.3
+    }
+   ]
+  },
+  {
+   "topic": "gas prices",
+   "demand": 26004,
+   "top": 96075,
+   "small": 2,
+   "score": 29471,
+   "examples": [
+    {
+     "title": "Why are oil prices falling despite the Strait of Hormuz remaining closed?",
+     "channel": "CTV News",
+     "subs": 2440000,
+     "vpd": 96075,
+     "minutes": 5.0
+    },
+    {
+     "title": "Were Gas Prices JACKED-UP Before The Election to Destroy Trump? We Investigated...The Answer is: Yes",
+     "channel": "Benny Johnson",
+     "subs": 6110000,
+     "vpd": 41663,
+     "minutes": 13.3
+    },
+    {
+     "title": "Petrol Price Reduced for Three Days in Pakistan | Today Petrol Price | 8 AM headlines | Hum News",
+     "channel": "HUM News",
+     "subs": 2220000,
+     "vpd": 29529,
+     "minutes": 11.5
+    }
+   ]
+  },
+  {
+   "topic": "layoffs",
+   "demand": 18514,
+   "top": 91587,
+   "small": 2,
+   "score": 20983,
+   "examples": [
+    {
+     "title": "I think I'm getting laid off",
+     "channel": "JP Finance",
+     "subs": 94900,
+     "vpd": 91587,
+     "minutes": 15.2
+    },
+    {
+     "title": "HAHA: Assassin's Creed Shadows team SMASHED with layoffs as Ubisoft announces HEAVY LOSSES",
+     "channel": "Doctor Disaster",
+     "subs": 239000,
+     "vpd": 71119,
+     "minutes": 14.3
+    },
+    {
+     "title": "How I'd Survive a Layoff (Ex-Amazon Engineer)",
+     "channel": "A Life Engineered",
+     "subs": 217000,
+     "vpd": 43778,
+     "minutes": 11.7
+    }
+   ]
+  },
+  {
+   "topic": "grocery prices",
+   "demand": 10363,
+   "top": 95557,
+   "small": 8,
+   "score": 15890,
+   "examples": [
+    {
+     "title": "Mayor Mamdani ERUPTS At Amazon After It SHUTS DOWN All Fresh And Go Stores In New York For Good!",
+     "channel": "THE PATRIOTS PULSE",
+     "subs": 15500,
+     "vpd": 95557,
+     "minutes": 15.0
+    },
+    {
+     "title": "Kifayah's Biggest Supermarket Announces Massive 6-Day Sale",
+     "channel": "Pakistan Kay Sath",
+     "subs": 274000,
+     "vpd": 48816,
+     "minutes": 15.8
+    },
+    {
+     "title": "Food Inflation: Are Rising Grocery Bills Forcing Indians To Rethink Their Budgets?",
+     "channel": "The Indian Express",
+     "subs": 4620000,
+     "vpd": 33769,
+     "minutes": 12.8
+    }
+   ]
+  },
+  {
+   "topic": "credit card debt",
+   "demand": 7811,
+   "top": 26512,
+   "small": 8,
+   "score": 11977,
+   "examples": [
+    {
+     "title": "Debt Levels Of The Average American In 2026",
+     "channel": "George Kamel",
+     "subs": 622000,
+     "vpd": 26512,
+     "minutes": 12.9
+    },
+    {
+     "title": "I Owed $900K and Lived in a Penthouse. Who's Actually in Debt in Singapore?",
+     "channel": "Adrian Tan",
+     "subs": 1810,
+     "vpd": 20500,
+     "minutes": 12.0
+    },
+    {
+     "title": "Just Discovered $50,000 of Mysterious Debt",
+     "channel": "The Ramsey Show Highlights",
+     "subs": 4600000,
+     "vpd": 19369,
+     "minutes": 4.9
+    }
+   ]
+  },
+  {
+   "topic": "mortgage rates",
+   "demand": 4309,
+   "top": 47237,
+   "small": 9,
+   "score": 6894,
+   "examples": [
+    {
+     "title": "2027 State of the Housing Market",
+     "channel": "Real Estate The Ramsey Way",
+     "subs": 38600,
+     "vpd": 47237,
+     "minutes": 12.0
+    },
+    {
+     "title": "The Truth About VARIABLE Rates",
+     "channel": "Angry Mortgage Podcast",
+     "subs": 76200,
+     "vpd": 33594,
+     "minutes": 9.0
+    },
+    {
+     "title": "Tracker vs Fixed Rate Mortgages: Which Is Cheaper Right Now?",
+     "channel": "PensionCraft",
+     "subs": 219000,
+     "vpd": 11988,
+     "minutes": 13.9
+    }
+   ]
+  },
+  {
+   "topic": "thanksgiving dinner cost",
+   "demand": 3342,
+   "top": 62949,
+   "small": 6,
+   "score": 4679,
+   "examples": [
+    {
+     "title": "I Cooked a Thanksgiving Dinner for Under $100. Here\u2019s What I Made | Andy Baraghani | NYT Cooking",
+     "channel": "NYT Cooking",
+     "subs": 1360000,
+     "vpd": 62949,
+     "minutes": 18.6
+    },
+    {
+     "title": "Thanksgiving Dinner for $25?! I Tried the $35 Walmart Thanksgiving Deal, here's what happened",
+     "channel": "Frugal Fit Mom",
+     "subs": 695000,
+     "vpd": 17111,
+     "minutes": 14.2
+    },
+    {
+     "title": "\ud83e\udd83 Turkey Trouble \ud83e\udd2a Kids Book Thanksgiving Read Aloud Story",
+     "channel": "Read Aloud with Mr. Paul",
+     "subs": 59600,
+     "vpd": 15212,
+     "minutes": 10.6
+    }
+   ]
+  },
+  {
+   "topic": "rent prices",
+   "demand": 2721,
+   "top": 175186,
+   "small": 9,
+   "score": 4354,
+   "examples": [
+    {
+     "title": "Apartment Complexes Are Getting Desperate",
+     "channel": "Jay Reed",
+     "subs": 322000,
+     "vpd": 175186,
+     "minutes": 19.8
+    },
+    {
+     "title": "Elon Musk\u2019s Newest Moneymaker Isn\u2019t Rockets",
+     "channel": "Yahoo Finance",
+     "subs": 1540000,
+     "vpd": 25600,
+     "minutes": 7.3
+    },
+    {
+     "title": "The Economics of Renting Forever in Canada",
+     "channel": "Money With Ricky",
+     "subs": 3840,
+     "vpd": 9169,
+     "minutes": 17.9
+    }
+   ]
+  },
+  {
+   "topic": "christmas shopping prices",
+   "demand": 2316,
+   "top": 9106,
+   "small": 11,
+   "score": 4014,
+   "examples": [
+    {
+     "title": "12 Groceries to Stock Up On the Week After Christmas \u2014 Lowest Prices of the Year",
+     "channel": "Tried & True",
+     "subs": 98600,
+     "vpd": 9106,
+     "minutes": 14.5
+    },
+    {
+     "title": "15 Things You MUST Buy at Aldi Before Christmas",
+     "channel": "Britain at the Till",
+     "subs": 302,
+     "vpd": 8537,
+     "minutes": 17.1
+    },
+    {
+     "title": "NEW Hobby Lobby Christmas Finds: You Won't Believe These Prices!",
+     "channel": "Stephanie Critelli",
+     "subs": 5340,
+     "vpd": 3318,
+     "minutes": 12.5
+    }
+   ]
+  },
+  {
+   "topic": "401k",
+   "demand": 544,
+   "top": 52033,
+   "small": 9,
+   "score": 870,
+   "examples": [
+    {
+     "title": "Your 401(k) Is Down 10%. Here's What History Says Comes Next.",
+     "channel": "Whyse",
+     "subs": 279,
+     "vpd": 52033,
+     "minutes": 10.1
+    },
+    {
+     "title": "Americans Are Cashing Out Their 401(k)s \u2014 Now They REGRET It",
+     "channel": "La Curva Habla",
+     "subs": 1150,
+     "vpd": 2773,
+     "minutes": 18.9
+    },
+    {
+     "title": "Americans Are Emptying Their 401(k)s Just to Pay the BILLS",
+     "channel": "Fehlerspeicher",
+     "subs": 3050,
+     "vpd": 2691,
+     "minutes": 19.8
+    }
+   ]
+  }
+ ]
+}
