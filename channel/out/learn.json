@@ -1,0 +1,458 @@
+[
+ {
+  "name": "ep09_gold",
+  "id": "oJBE1INlmzA",
+  "title": "Gold Fell 23% From Its Record. What Happened?",
+  "published": "2026-11-16",
+  "days": 5,
+  "duration": 488,
+  "views_lifetime": 1545,
+  "views": 1415,
+  "minutes": 2113,
+  "avg_view_s": 170,
+  "avg_pct": 35,
+  "subs": 5,
+  "likes": 12,
+  "first3": 1359,
+  "sources": {
+   "SUBSCRIBER": 913,
+   "RELATED_VIDEO": 470,
+   "NO_LINK_OTHER": 14,
+   "YT_OTHER_PAGE": 7,
+   "YT_SEARCH": 5,
+   "YT_CHANNEL": 3,
+   "EXT_URL": 1,
+   "PLAYLIST": 1
+  },
+  "minutes_by_source": {
+   "SUBSCRIBER": 626,
+   "RELATED_VIDEO": 1423,
+   "NO_LINK_OTHER": 20,
+   "YT_OTHER_PAGE": 39,
+   "YT_SEARCH": 2,
+   "YT_CHANNEL": 0,
+   "EXT_URL": 0,
+   "PLAYLIST": 0
+  },
+  "kept_30s": 66,
+  "kept_60s": 51,
+  "kept_120s": 43,
+  "kept_half": 30,
+  "drops": [
+   [
+    9.3,
+    15,
+    "Intro: gold fell 23%"
+   ],
+   [
+    6.0,
+    20,
+    "Intro: gold fell 23%"
+   ],
+   [
+    5.3,
+    10,
+    "Intro: gold fell 23%"
+   ]
+  ]
+ },
+ {
+  "name": "ep05_jobs",
+  "id": "oviirBN2INI",
+  "title": "Microsoft Just Offered 60,000 Buyouts. Are Layoffs Really Rising?",
+  "published": "2026-11-05",
+  "days": 16,
+  "duration": 441,
+  "views_lifetime": 132,
+  "views": 131,
+  "minutes": 67,
+  "avg_view_s": 113,
+  "avg_pct": 26,
+  "subs": 0,
+  "likes": 0,
+  "first3": 93,
+  "sources": {
+   "SUBSCRIBER": 101,
+   "YT_SEARCH": 16,
+   "RELATED_VIDEO": 13,
+   "NO_LINK_OTHER": 1
+  },
+  "minutes_by_source": {
+   "SUBSCRIBER": 41,
+   "YT_SEARCH": 4,
+   "RELATED_VIDEO": 20,
+   "NO_LINK_OTHER": 0
+  },
+  "kept_30s": 74,
+  "kept_60s": 53,
+  "kept_120s": 38,
+  "kept_half": 21,
+  "drops": [
+   [
+    14.7,
+    26,
+    "Intro: 60,000 buyouts"
+   ],
+   [
+    8.8,
+    137,
+    "The weekly warning sign"
+   ],
+   [
+    8.8,
+    13,
+    "Intro: 60,000 buyouts"
+   ]
+  ]
+ },
+ {
+  "name": "ep04_fed",
+  "id": "JlrNu4toOc8",
+  "title": "The Fed Just Raised Rates. What It Means for Your Money",
+  "published": "2026-11-02",
+  "days": 19,
+  "duration": 483,
+  "views_lifetime": 29,
+  "views": 29,
+  "minutes": 36,
+  "avg_view_s": 109,
+  "avg_pct": 23,
+  "subs": 1,
+  "likes": 0,
+  "first3": 18,
+  "sources": {
+   "RELATED_VIDEO": 17,
+   "SUBSCRIBER": 8,
+   "NO_LINK_OTHER": 2,
+   "YT_OTHER_PAGE": 2
+  },
+  "minutes_by_source": {
+   "RELATED_VIDEO": 28,
+   "SUBSCRIBER": 7,
+   "NO_LINK_OTHER": 0,
+   "YT_OTHER_PAGE": 0
+  },
+  "kept_30s": 50,
+  "kept_60s": 35,
+  "kept_120s": 25,
+  "kept_half": 20,
+  "drops": [
+   [
+    15.0,
+    10,
+    "Intro: the first hike since 2023"
+   ],
+   [
+    5.0,
+    63,
+    "What the Fed actually controls"
+   ],
+   [
+    5.0,
+    48,
+    "What the Fed actually controls"
+   ]
+  ]
+ },
+ {
+  "name": "ep08_midterms",
+  "id": "37Aow08f8zk",
+  "title": "Stocks Rose 18 Times Out of 18 After Midterms. Will 2026 Break the Streak?",
+  "published": "2026-11-02",
+  "days": 19,
+  "duration": 288,
+  "views_lifetime": 112,
+  "views": 112,
+  "minutes": 30,
+  "avg_view_s": 54,
+  "avg_pct": 19,
+  "subs": 0,
+  "likes": 0,
+  "first3": 77,
+  "sources": {
+   "SUBSCRIBER": 84,
+   "RELATED_VIDEO": 19,
+   "YT_SEARCH": 5,
+   "NO_LINK_OTHER": 2,
+   "YT_OTHER_PAGE": 1,
+   "EXT_URL": 1
+  },
+  "minutes_by_source": {
+   "SUBSCRIBER": 8,
+   "RELATED_VIDEO": 21,
+   "YT_SEARCH": 0,
+   "NO_LINK_OTHER": 0,
+   "YT_OTHER_PAGE": 0,
+   "EXT_URL": 0
+  },
+  "kept_30s": 48,
+  "kept_60s": 31,
+  "kept_120s": 17,
+  "kept_half": 17,
+  "drops": [
+   [
+    17.2,
+    14,
+    "Intro: 18 out of 18"
+   ],
+   [
+    13.8,
+    6,
+    "Intro: 18 out of 18"
+   ],
+   [
+    10.3,
+    32,
+    "What is a midterm?"
+   ]
+  ]
+ },
+ {
+  "name": "ep01_inflation",
+  "id": "9MxTKS-nKNc",
+  "title": "Your $100 Is Now Worth $12. Here's Where It Went (Inflation Explained)",
+  "published": "2026-11-06",
+  "days": 15,
+  "duration": 331,
+  "views_lifetime": 9,
+  "views": 7,
+  "minutes": 17,
+  "avg_view_s": 173,
+  "avg_pct": 52,
+  "subs": 0,
+  "likes": 1,
+  "first3": 6,
+  "sources": {
+   "YT_SEARCH": 3,
+   "RELATED_VIDEO": 2,
+   "NO_LINK_OTHER": 1,
+   "YT_CHANNEL": 1
+  },
+  "minutes_by_source": {
+   "YT_SEARCH": 6,
+   "RELATED_VIDEO": 5,
+   "NO_LINK_OTHER": 0,
+   "YT_CHANNEL": 5
+  },
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ },
+ {
+  "name": "ep03_gas",
+  "id": "XKD-BqxeMFw",
+  "title": "Why Is Gas So Expensive Right Now? (2026 Oil Shock Explained)",
+  "published": "2026-10-30",
+  "days": 22,
+  "duration": 494,
+  "views_lifetime": 21,
+  "views": 21,
+  "minutes": 15,
+  "avg_view_s": 72,
+  "avg_pct": 15,
+  "subs": 0,
+  "likes": 0,
+  "first3": 10,
+  "sources": {
+   "YT_SEARCH": 8,
+   "RELATED_VIDEO": 8,
+   "NO_LINK_OTHER": 2,
+   "YT_CHANNEL": 2,
+   "SUBSCRIBER": 1
+  },
+  "minutes_by_source": {
+   "YT_SEARCH": 0,
+   "RELATED_VIDEO": 15,
+   "NO_LINK_OTHER": 0,
+   "YT_CHANNEL": 0,
+   "SUBSCRIBER": 0
+  },
+  "kept_30s": 46,
+  "kept_60s": 31,
+  "kept_120s": 15,
+  "kept_half": 15,
+  "drops": [
+   [
+    23.1,
+    10,
+    "Intro: $2.78 to $4.50"
+   ],
+   [
+    15.4,
+    59,
+    "February 28: the shock"
+   ],
+   [
+    7.7,
+    25,
+    "One narrow strait"
+   ]
+  ]
+ },
+ {
+  "name": "ep07_binance_long",
+  "id": "fB_1VJsUvT4",
+  "title": "$6.3 Billion Stolen in 20 Minutes: How the Biggest Crypto Hack Ever Happened",
+  "published": "2026-11-04",
+  "days": 17,
+  "duration": 312,
+  "views_lifetime": 7,
+  "views": 7,
+  "minutes": 5,
+  "avg_view_s": 166,
+  "avg_pct": 53,
+  "subs": 0,
+  "likes": 0,
+  "first3": 4,
+  "sources": {
+   "YT_SEARCH": 5,
+   "RELATED_VIDEO": 2,
+   "NO_LINK_OTHER": 0
+  },
+  "minutes_by_source": {
+   "YT_SEARCH": 0,
+   "RELATED_VIDEO": 5,
+   "NO_LINK_OTHER": 0
+  },
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ },
+ {
+  "name": "ep02_housing",
+  "id": "Ln54Ec_mjq8",
+  "title": "A House Cost $23,000 in 1970. Now It's $393,000. Why?",
+  "published": "2026-11-09",
+  "days": 12,
+  "duration": 208,
+  "views_lifetime": 4,
+  "views": 3,
+  "minutes": 1,
+  "avg_view_s": 43,
+  "avg_pct": 21,
+  "subs": 0,
+  "likes": 0,
+  "first3": 1,
+  "sources": {
+   "NO_LINK_OTHER": 1,
+   "YT_CHANNEL": 1,
+   "YT_SEARCH": 1
+  },
+  "minutes_by_source": {
+   "NO_LINK_OTHER": 1,
+   "YT_CHANNEL": 0,
+   "YT_SEARCH": 0
+  },
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ },
+ {
+  "name": "ep06_banks",
+  "id": "ixGj1vl5eQE",
+  "title": "Only 1 Dollar in 10 Is Cash. How Banks Create Money Out of Thin Air",
+  "published": "2026-11-13",
+  "days": 8,
+  "duration": 503,
+  "views_lifetime": 21,
+  "views": 8,
+  "minutes": 1,
+  "avg_view_s": 20,
+  "avg_pct": 4,
+  "subs": 0,
+  "likes": 0,
+  "first3": 2,
+  "sources": {
+   "YT_SEARCH": 5,
+   "RELATED_VIDEO": 2,
+   "SUBSCRIBER": 1,
+   "NO_LINK_OTHER": 0
+  },
+  "minutes_by_source": {
+   "YT_SEARCH": 0,
+   "RELATED_VIDEO": 1,
+   "SUBSCRIBER": 0,
+   "NO_LINK_OTHER": 0
+  },
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ },
+ {
+  "name": "ep10_stocks",
+  "id": "lmXODEAxdJc",
+  "title": "Stocks Fell 6 Days in a Row. Is a Crash Coming?",
+  "published": "2026-11-20",
+  "days": 1,
+  "duration": 495,
+  "views_lifetime": 194,
+  "views": 0,
+  "minutes": 0,
+  "avg_view_s": 0,
+  "avg_pct": 0,
+  "subs": 0,
+  "likes": 0,
+  "first3": 0,
+  "sources": {},
+  "minutes_by_source": {},
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ },
+ {
+  "name": "ep11_vix",
+  "id": "f8OkPpAPeRg",
+  "title": "Fear Index Hits 37 as Stocks Enter a Correction. What Happens Next?",
+  "published": "2026-11-20",
+  "days": 1,
+  "duration": 488,
+  "views_lifetime": 21,
+  "views": 0,
+  "minutes": 0,
+  "avg_view_s": 0,
+  "avg_pct": 0,
+  "subs": 0,
+  "likes": 0,
+  "first3": 0,
+  "sources": {},
+  "minutes_by_source": {},
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ },
+ {
+  "name": "ep12_week",
+  "id": "w8y0rEUenp4",
+  "title": "The Nasdaq's Worst Week Since 2020. What Happens After a Correction?",
+  "published": "2026-11-21",
+  "days": 0,
+  "duration": 489,
+  "views_lifetime": 34,
+  "views": 0,
+  "minutes": 0,
+  "avg_view_s": 0,
+  "avg_pct": 0,
+  "subs": 0,
+  "likes": 0,
+  "first3": 0,
+  "sources": {},
+  "minutes_by_source": {},
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": []
+ }
+]

@@ -12,6 +12,11 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
 - So: one long video (8-10 min) every day about the biggest money story of that day, published the same day.
 
 ## Every day
+0. **Learn first (mandatory).** `python3 youtube/learn.py`, then read channel/LEARNINGS.md. Compare the newest
+   video with the best one (views in first 3 days, % still watching at 30 s / 1 min, average view, traffic).
+   Write the 3 concrete improvements this video makes over the last one at the top of the new episode file, and
+   update LEARNINGS.md with anything new. If a recent video's first 3 days are clearly below its peers, change its
+   title or thumbnail (set_thumbs.py / the API) the same day.
 1. **Pick the story (by ~noon ET).** WebSearch today's money news (markets, Fed, inflation, jobs, housing, gas,
    gold/crypto, a big IPO or layoff, a new law that changes paychecks or taxes). Check search demand with
    `python3 youtube/trends.py "<topic>" --days 3`. Choose the story most people are searching *today* that we can
@@ -25,8 +30,10 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    no real people, no logos.
 4. **Check and render.** `--check`, then `--stills` and look at every still (no overlaps; keep chips above y=600,
    the caption band starts at ~620). Then the full render (~30-40 min). Fix pace warnings with --only.
-5. **Thumbnails.** Add a SPEC entry in thumbs_v3.py (A shock number, B question + alert bar, C stakes); draw a
-   background in code if there's no free photo; run it and look at the sheet.
+5. **Thumbnails.** Bright photo-real background (Canva generate-image: one object/scene, no text, no logos, no
+   faces/real people; place it on a 1920x1080 page of design DAHZ5Imlf3g and export PNG), then a SPEC entry in
+   thumbs_v3.py: max 3 words with one number. Never a dark abstract chart. Look at the sheet next to the gold
+   thumbnail (our best) and only ship if it's as clickable.
 6. **Publish the same day.** Write `channel/out/epNN_<slug>.upload.json` (title, description with chapters and
    sources, tags, thumbnail B for news, captions .srt, categoryId 27, not made for kids, language en) and a plan
    in `channel/plans/`, with the launch time in New York time: as soon as it's ready, at a whole hour, ideally

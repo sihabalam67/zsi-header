@@ -83,12 +83,12 @@ SPEC = {
     'ep09_gold': (0, 'GOLD\n-23%', 'WHAT\nHAPPENED?', 'IS GOLD\nSTILL SAFE?', RED, None, 0,
                   ('photos/ep09/bars.jpg', 'photos/ep09/bullion.jpg', 'photos/ep09/vault.jpg')),
     'ep05_jobs': (0, '60,000\nBUYOUTS', 'LAYOFFS?', 'IS YOUR\nJOB SAFE?', YEL, None, 1),
-    'ep10_stocks': (0, '6 DAYS\nDOWN', 'CRASH\nCOMING?', 'NASDAQ\n-13%', RED, None, 1,
-                    ('thumbsrc/ep10_red.jpg', 'thumbsrc/ep10_red2.jpg', 'thumbsrc/ep10_red.jpg')),
+    'ep10_stocks': (0, 'CRASH\nNEXT?', 'CRASH\nCOMING?', '6 DAYS\nDOWN', RED, None, 1,
+                    ('thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg')),
     'ep11_vix': (0, 'FEAR\nINDEX 37', 'WHAT\nNEXT?', 'CORRECTION\n-11.6%', RED, None, 1,
-                 ('thumbsrc/ep11_vix.jpg', 'thumbsrc/ep11_vix.jpg', 'thumbsrc/ep11_vix.jpg')),
+                 ('thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg')),
     'ep12_week': (0, 'NASDAQ\n-10%', 'WORST WEEK\nSINCE 2020', 'NOW\nWHAT?', RED, None, 1,
-                  ('thumbsrc/ep12_week.jpg', 'thumbsrc/ep12_week.jpg', 'thumbsrc/ep12_week.jpg')),
+                  ('thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg')),
 }
 
 

@@ -1,6 +1,6 @@
 {
  "video": "channel/out/ep11_vix.mp4",
- "title": "Fear Index Hits 37 as Stocks Enter a Correction. What Happens Next?",
+ "title": "Fear Index Hits 37. What Happens Next?",
  "description": "Wall Street's fear index, the Cboe Volatility Index (VIX), closed at 37.37 on Nov 20, 2026, up from 15.01 on Oct 6, the day the S&P 500 set its record. The S&P 500 fell 7 days in a row to 6,910.39, 11.6% below that record. We explain what the VIX measures, how rare readings like this are (30+ on about 8% of days since 1990), and what the S&P 500 did after each of the 22 times since 1990 that the VIX first closed above 30: higher a month later 15 of 22 times, higher a year later 14 of 21 times (median +15%), with 2008 as the big exception.\n\n0:00 Intro: the fear index\n0:50 What is the VIX?\n1:37 What it means in dollars\n2:11 How high is 30?\n2:40 Why it just jumped\n3:16 A seesaw\n3:35 Why investors are nervous\n4:04 Every spike above 30\n4:36 What stocks did next\n5:03 Four fear spikes\n5:49 It already happened this year\n6:17 Best and worst days\n6:40 What to watch next\n7:02 What it means for you\n7:35 Recap\n\nSources: Yahoo Finance daily closes for the Cboe Volatility Index (^VIX, from 1990), the S&P 500 (^GSPC) and the Nasdaq Composite (^IXIC), saved Nov 20, 2026 after the close. FRED (Federal Reserve Bank of St. Louis): DGS10 (10-year Treasury yield), CPIAUCSL (CPI). Spike and return statistics are our calculations, prices only (no dividends). A 'first spike' is the first close at 30 or higher after at least 60 trading days below 30.\n\nWatch next: Stocks fell 6 days in a row. Is a crash coming? https://youtu.be/lmXODEAxdJc\n\nThis video is for education only and is not financial advice. Past performance does not guarantee future results.\nOriginal script and animation. Narrated with an AI voice.",
  "tags": [
   "stock market correction",
@@ -21,7 +21,7 @@
   "personal finance"
  ],
  "categoryId": 27,
- "thumbnail": "channel/out/thumbs/ep11_vix_b.jpg",
+ "thumbnail": "channel/out/thumbs/ep11_vix_a.jpg",
  "captions": "channel/out/ep11_vix.en.srt",
  "privacy": "private",
  "madeForKids": false,
