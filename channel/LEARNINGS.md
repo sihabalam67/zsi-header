@@ -77,6 +77,10 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    faces), ONE hook, max 3 words that never repeat the title, bright saturated `rays` background, must read at
    120 px wide. Upload bet A by API; B and C go to the owner for Studio Test & Compare. Log the winner per lever
    here. Example: out/thumbs/s03_janitor_A/B/C.jpg (specs s03_janitor_A/B/C).
+   CHANNEL GRID RULE (owner's screenshot, Nov 24: "why all 4 look same"): viewers see thumbnails as a stack on the
+   channel page, so the LIVE bet is chosen to differ from the 3 newer/older neighbours in lever, background color
+   AND face side (alternate left/right). Never make the same letter (A) live for every video. Before uploading, stack
+   the last 4 live thumbnails vertically at 480 px wide and look at it like the channel page.
    KEEP THE BOTTOM-RIGHT CORNER EMPTY (x > 1450, y > 850 on 1920x1080): YouTube's duration badge covers it (owner's
    phone screenshot, Nov 24: the $126,766 / $16,368 / $132.50 tags were hidden). Titles: checked with yt-title-optimizer
    (40-60 chars, one number, positive outcome framing, no words shared with the thumbnail).

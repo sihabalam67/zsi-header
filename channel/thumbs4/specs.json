@@ -982,26 +982,26 @@
   "els": [
    {
     "type": "rays",
-    "x": 560,
+    "x": 1350,
     "y": 520,
     "c1": "#2DD4BF",
     "c2": "#0F766E"
    },
    {
     "type": "js",
-    "code": "`<circle cx='560' cy='520' r='430' fill='#FFF3A0' opacity='.7' filter='url(#soft)'/>`"
+    "code": "`<circle cx='1350' cy='520' r='430' fill='#FFF3A0' opacity='.7' filter='url(#soft)'/>`"
    },
    {
     "type": "js",
-    "code": "`<g filter='url(#sticker)'>${tree({x:560,y:1180,size:1.25,leaves:1,coins:30,t:.3})}</g>`"
+    "code": "`<g filter='url(#sticker)'>${tree({x:1350,y:1150,size:1.25,leaves:1,coins:30,t:.3})}</g>`"
    },
    {
     "type": "js",
-    "code": "`<g filter='url(#sticker)'>${CAST.rosie({x:1430,y:2150,h:2000,mood:'shocked',t:.3,look:[-1,0],adult:true})}</g>`"
+    "code": "`<g filter='url(#sticker)'>${CAST.rosie({x:520,y:2150,h:2000,mood:'shocked',t:.3,look:[1,0],adult:true})}</g>`"
    },
    {
     "type": "raw",
-    "svg": "<text x='560' y='170' text-anchor='middle' font-size='110' fill='#fff' stroke='#000' stroke-width='18' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>SHE PLANTED IT</text>"
+    "svg": "<text x='1350' y='170' text-anchor='middle' font-size='110' fill='#fff' stroke='#000' stroke-width='18' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>SHE PLANTED IT</text>"
    }
   ]
  },
