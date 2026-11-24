@@ -9,7 +9,7 @@ import numpy as np
 import soundfile as sf
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUTNAMES = {'s01': 's01_grandpa', 's02': 's02_salary'}
+OUTNAMES = {'s01': 's01_grandpa', 's02': 's02_salary', 's03': 's03_janitor'}
 sys.path.insert(0, os.path.dirname(HERE))
 import engine as E  # noqa: E402
 
