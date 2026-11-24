@@ -1,0 +1,1296 @@
+1
+00:00:00,150 --> 00:00:02,070
+Your groceries cost 32 percent more
+
+2
+00:00:01,870 --> 00:00:03,310
+than in January 2020.
+
+3
+00:00:03,830 --> 00:00:04,050
+Look:
+
+4
+00:00:04,110 --> 00:00:04,470
+coffee,
+
+5
+00:00:04,710 --> 00:00:04,990
+beef,
+
+6
+00:00:05,110 --> 00:00:05,450
+eggs.
+
+7
+00:00:05,904 --> 00:00:08,414
+This Thursday's Thanksgiving dinner for 10?
+
+8
+00:00:08,904 --> 00:00:11,104
+58.63 dollars.
+
+9
+00:00:10,904 --> 00:00:12,564
+The turkey alone is up 10
+
+10
+00:00:12,364 --> 00:00:13,604
+percent from last year.
+
+11
+00:00:14,049 --> 00:00:15,509
+And one item in your cart
+
+12
+00:00:15,309 --> 00:00:17,209
+more than doubled since 2020.
+
+13
+00:00:17,689 --> 00:00:18,269
+Which one?
+
+14
+00:00:18,569 --> 00:00:19,649
+Stay for minute 3.
+
+15
+00:00:20,071 --> 00:00:20,851
+By the end,
+
+16
+00:00:20,911 --> 00:00:22,091
+you'll know what this costs your
+
+17
+00:00:21,891 --> 00:00:22,891
+family each year,
+
+18
+00:00:22,691 --> 00:00:24,391
+and whether your paycheck kept up.
+
+19
+00:00:25,583 --> 00:00:26,463
+Here's the plan:
+
+20
+00:00:26,623 --> 00:00:27,683
+your Thanksgiving receipt,
+
+21
+00:00:27,903 --> 00:00:28,603
+line by line.
+
+22
+00:00:28,883 --> 00:00:30,003
+What went up the most.
+
+23
+00:00:30,243 --> 00:00:31,503
+Why food really costs more.
+
+24
+00:00:31,783 --> 00:00:33,223
+And whether your pay kept up.
+
+25
+00:00:34,350 --> 00:00:35,210
+Here's your receipt.
+
+26
+00:00:35,670 --> 00:00:36,650
+Watch the right column:
+
+27
+00:00:36,790 --> 00:00:37,510
+red went up,
+
+28
+00:00:37,550 --> 00:00:38,350
+green got cheaper.
+
+29
+00:00:38,910 --> 00:00:40,570
+Every year since 1986,
+
+30
+00:00:40,790 --> 00:00:41,970
+the American Farm Bureau,
+
+31
+00:00:42,110 --> 00:00:42,930
+a farmers' group,
+
+32
+00:00:43,010 --> 00:00:44,610
+prices the same menu for 10:
+
+33
+00:00:44,890 --> 00:00:46,070
+a 16-pound turkey,
+
+34
+00:00:46,390 --> 00:00:46,870
+stuffing,
+
+35
+00:00:47,030 --> 00:00:47,730
+sweet potatoes,
+
+36
+00:00:47,910 --> 00:00:48,290
+rolls,
+
+37
+00:00:48,430 --> 00:00:48,730
+peas,
+
+38
+00:00:48,950 --> 00:00:49,450
+cranberries,
+
+39
+00:00:49,670 --> 00:00:50,350
+a veggie tray,
+
+40
+00:00:50,410 --> 00:00:51,850
+pumpkin pie with whipped cream,
+
+41
+00:00:51,650 --> 00:00:52,410
+and milk.
+
+42
+00:00:52,998 --> 00:00:53,758
+This year,
+
+43
+00:00:53,738 --> 00:00:56,918
+it adds up to 58.63 dollars.
+
+44
+00:00:56,718 --> 00:00:58,598
+That's more than 6 percent higher
+
+45
+00:00:58,398 --> 00:00:59,338
+than last year.
+
+46
+00:00:59,776 --> 00:01:02,176
+That's about 5.86 per person.
+
+47
+00:01:02,636 --> 00:01:03,356
+And the good news:
+
+48
+00:01:03,516 --> 00:01:05,836
+it's still 5.42 dollars below the
+
+49
+00:01:05,636 --> 00:01:08,836
+record of 64.05 set in 2022.
+
+50
+00:01:09,682 --> 00:01:11,242
+Where you live matters too.
+
+51
+00:01:11,702 --> 00:01:13,222
+The South has the cheapest average
+
+52
+00:01:13,022 --> 00:01:13,662
+dinner,
+
+53
+00:01:13,462 --> 00:01:15,042
+at 54.33.
+
+54
+00:01:15,402 --> 00:01:17,042
+The Northeast pays the most:
+
+55
+00:01:16,842 --> 00:01:18,362
+61.57.
+
+56
+00:01:20,117 --> 00:01:21,677
+Now zoom out from one dinner
+
+57
+00:01:21,477 --> 00:01:23,017
+to everything you buy at the
+
+58
+00:01:22,817 --> 00:01:23,577
+grocery store.
+
+59
+00:01:24,057 --> 00:01:25,557
+This line is the government's price
+
+60
+00:01:25,357 --> 00:01:27,237
+tag for a typical grocery cart,
+
+61
+00:01:27,037 --> 00:01:29,637
+set to 100 in January 2020.
+
+62
+00:01:30,237 --> 00:01:32,137
+Watch what happens after 2021.
+
+63
+00:01:32,883 --> 00:01:34,363
+It's now about 132.
+
+64
+00:01:34,883 --> 00:01:35,563
+In plain terms:
+
+65
+00:01:35,603 --> 00:01:37,423
+groceries that cost 100 dollars in
+
+66
+00:01:37,223 --> 00:01:39,323
+January 2020 cost about 132 dollars
+
+67
+00:01:39,123 --> 00:01:39,903
+today.
+
+68
+00:01:40,485 --> 00:01:41,665
+And it's still climbing.
+
+69
+00:01:42,225 --> 00:01:43,265
+In October alone,
+
+70
+00:01:43,345 --> 00:01:45,885
+grocery prices rose 0.4 percent,
+
+71
+00:01:45,685 --> 00:01:47,945
+the biggest one-month jump since April.
+
+72
+00:01:49,217 --> 00:01:50,817
+So is eating out the answer?
+
+73
+00:01:51,357 --> 00:01:51,857
+Not really.
+
+74
+00:01:52,277 --> 00:01:53,397
+Since January 2020,
+
+75
+00:01:53,337 --> 00:01:55,837
+grocery prices rose about 32 percent.
+
+76
+00:01:55,637 --> 00:01:58,157
+Restaurant prices rose about 39 percent.
+
+77
+00:01:58,558 --> 00:02:00,298
+Eating out went up even faster,
+
+78
+00:02:00,098 --> 00:02:02,078
+because restaurants pay for the same
+
+79
+00:02:01,878 --> 00:02:02,418
+food,
+
+80
+00:02:02,218 --> 00:02:03,158
+plus wages,
+
+81
+00:02:03,278 --> 00:02:04,318
+rent and energy.
+
+82
+00:02:04,838 --> 00:02:06,098
+Cooking at home is still the
+
+83
+00:02:05,898 --> 00:02:06,898
+cheaper way to eat.
+
+84
+00:02:08,183 --> 00:02:09,423
+So which item doubled?
+
+85
+00:02:10,083 --> 00:02:11,103
+Let's count up to it.
+
+86
+00:02:11,543 --> 00:02:13,403
+Bananas are up only 15 percent
+
+87
+00:02:13,203 --> 00:02:14,203
+since 2020.
+
+88
+00:02:14,763 --> 00:02:16,003
+A gallon of whole milk,
+
+89
+00:02:15,803 --> 00:02:17,303
+26 percent.
+
+90
+00:02:17,103 --> 00:02:18,043
+White bread,
+
+91
+00:02:17,843 --> 00:02:18,583
+38.
+
+92
+00:02:19,363 --> 00:02:19,563
+Eggs,
+
+93
+00:02:19,363 --> 00:02:20,023
+59.
+
+94
+00:02:20,583 --> 00:02:21,463
+And ground beef,
+
+95
+00:02:21,263 --> 00:02:22,863
+up 74 percent,
+
+96
+00:02:22,663 --> 00:02:25,763
+from 3.89 to 6.75 a pound.
+
+97
+00:02:26,266 --> 00:02:27,766
+And here's the one that more
+
+98
+00:02:27,566 --> 00:02:28,286
+than doubled:
+
+99
+00:02:28,446 --> 00:02:28,766
+coffee.
+
+100
+00:02:29,206 --> 00:02:30,686
+A pound of ground coffee averaged
+
+101
+00:02:30,486 --> 00:02:32,926
+4.17 in January 2020.
+
+102
+00:02:33,306 --> 00:02:33,846
+In October,
+
+103
+00:02:34,026 --> 00:02:35,046
+it was 9.25.
+
+104
+00:02:35,366 --> 00:02:37,146
+That's up 122 percent.
+
+105
+00:02:36,946 --> 00:02:38,686
+Your morning cup costs more than
+
+106
+00:02:38,486 --> 00:02:39,406
+twice what it did.
+
+107
+00:02:39,586 --> 00:02:40,586
+If that surprised you,
+
+108
+00:02:40,526 --> 00:02:40,966
+subscribe:
+
+109
+00:02:41,386 --> 00:02:43,226
+we explain everyday money in plain
+
+110
+00:02:43,026 --> 00:02:43,626
+English,
+
+111
+00:02:43,426 --> 00:02:44,526
+every day.
+
+112
+00:02:45,783 --> 00:02:47,143
+Let's look closer at coffee.
+
+113
+00:02:47,623 --> 00:02:49,223
+This line is the average price
+
+114
+00:02:49,023 --> 00:02:50,503
+of a pound of ground coffee
+
+115
+00:02:50,303 --> 00:02:51,163
+in U.S.
+
+116
+00:02:50,963 --> 00:02:51,423
+stores.
+
+117
+00:02:51,823 --> 00:02:53,123
+It barely moved for years,
+
+118
+00:02:53,423 --> 00:02:54,223
+then took off.
+
+119
+00:02:54,871 --> 00:02:56,645
+It hit a record of 9.72
+
+120
+00:02:56,445 --> 00:02:58,831
+dollars a pound in April 2026.
+
+121
+00:02:59,519 --> 00:03:00,819
+It has eased a little since,
+
+122
+00:03:00,619 --> 00:03:01,759
+to 9.25,
+
+123
+00:03:02,159 --> 00:03:03,699
+but that's still more than double
+
+124
+00:03:03,499 --> 00:03:05,539
+the 4.17 it cost in January
+
+125
+00:03:05,339 --> 00:03:06,259
+2020.
+
+126
+00:03:07,783 --> 00:03:09,363
+Beef is the other big one,
+
+127
+00:03:09,443 --> 00:03:10,903
+and it matters for a lot
+
+128
+00:03:10,703 --> 00:03:11,643
+of family dinners.
+
+129
+00:03:12,223 --> 00:03:14,003
+This is the average price of
+
+130
+00:03:13,803 --> 00:03:15,183
+a pound of ground beef.
+
+131
+00:03:15,774 --> 00:03:17,684
+It set a record of 6.92
+
+132
+00:03:17,484 --> 00:03:20,134
+dollars a pound in August 2026,
+
+133
+00:03:20,194 --> 00:03:21,374
+just a few months ago.
+
+134
+00:03:21,904 --> 00:03:23,984
+In October it was 6.75,
+
+135
+00:03:23,784 --> 00:03:27,184
+compared with 3.89 in January 2020.
+
+136
+00:03:27,704 --> 00:03:28,244
+Burgers,
+
+137
+00:03:28,204 --> 00:03:29,944
+tacos and chili all cost a
+
+138
+00:03:29,744 --> 00:03:31,004
+lot more to make at home.
+
+139
+00:03:32,250 --> 00:03:34,090
+So why does food cost so
+
+140
+00:03:33,890 --> 00:03:34,490
+much more?
+
+141
+00:03:34,990 --> 00:03:36,650
+The Farm Bureau's economists point to
+
+142
+00:03:36,450 --> 00:03:37,710
+the trip from the farm to
+
+143
+00:03:37,510 --> 00:03:38,230
+your table.
+
+144
+00:03:38,510 --> 00:03:40,270
+Diesel for the trucks and tractors.
+
+145
+00:03:40,410 --> 00:03:42,230
+A shortage of farm workers.
+
+146
+00:03:42,030 --> 00:03:43,330
+And the cost of processing,
+
+147
+00:03:43,310 --> 00:03:44,870
+packaging and shipping everything.
+
+148
+00:03:45,638 --> 00:03:47,478
+Here's the part most people don't
+
+149
+00:03:47,278 --> 00:03:47,738
+know:
+
+150
+00:03:48,198 --> 00:03:49,598
+by the USDA's estimate,
+
+151
+00:03:49,998 --> 00:03:51,598
+less than 6 cents of every
+
+152
+00:03:51,398 --> 00:03:53,398
+dollar you spend on groceries goes
+
+153
+00:03:53,198 --> 00:03:54,118
+back to the farmer.
+
+154
+00:03:54,618 --> 00:03:56,278
+The rest pays for everything that
+
+155
+00:03:56,078 --> 00:03:57,398
+happens after the farm.
+
+156
+00:03:58,116 --> 00:03:59,576
+Turkey has its own story.
+
+157
+00:03:59,656 --> 00:04:00,976
+Production costs are higher,
+
+158
+00:04:01,096 --> 00:04:02,816
+and turkey flocks are still recovering,
+
+159
+00:04:02,916 --> 00:04:04,116
+which pushed the price of a
+
+160
+00:04:03,916 --> 00:04:07,605
+16-pound bird to 23.68 dollars.
+
+161
+00:04:08,550 --> 00:04:10,190
+But prices don't only go up.
+
+162
+00:04:10,350 --> 00:04:11,090
+Remember eggs?
+
+163
+00:04:11,570 --> 00:04:12,690
+In January 2020,
+
+164
+00:04:12,490 --> 00:04:14,610
+a dozen averaged 1.46.
+
+165
+00:04:15,590 --> 00:04:16,110
+Then,
+
+166
+00:04:16,130 --> 00:04:17,590
+as bird flu hit flocks,
+
+167
+00:04:17,650 --> 00:04:18,490
+the price exploded,
+
+168
+00:04:18,290 --> 00:04:20,390
+to a peak of 6.23 a
+
+169
+00:04:20,190 --> 00:04:21,590
+dozen in March 2025.
+
+170
+00:04:22,585 --> 00:04:24,905
+Today it's back down to 2.32.
+
+171
+00:04:25,305 --> 00:04:26,745
+Still higher than 2020,
+
+172
+00:04:27,125 --> 00:04:28,325
+but way off the peak.
+
+173
+00:04:28,885 --> 00:04:29,945
+When supply recovers,
+
+174
+00:04:30,005 --> 00:04:31,465
+prices can fall fast.
+
+175
+00:04:32,917 --> 00:04:33,937
+Now the big question.
+
+176
+00:04:34,617 --> 00:04:35,577
+Did your pay keep up?
+
+177
+00:04:35,857 --> 00:04:37,157
+Since January 2020,
+
+178
+00:04:37,317 --> 00:04:39,837
+grocery prices rose 32.5 percent.
+
+179
+00:04:39,637 --> 00:04:41,237
+All consumer prices,
+
+180
+00:04:41,497 --> 00:04:42,517
+30.2 percent.
+
+181
+00:04:42,317 --> 00:04:44,377
+And average hourly pay for workers
+
+182
+00:04:44,177 --> 00:04:46,777
+at private companies rose 33.7 percent.
+
+183
+00:04:47,423 --> 00:04:49,923
+Average pay is now 38.00 dollars
+
+184
+00:04:49,723 --> 00:04:51,043
+an hour.
+
+185
+00:04:51,303 --> 00:04:53,223
+So this year's Thanksgiving dinner for
+
+186
+00:04:53,023 --> 00:04:55,483
+10 costs about 1.5 hours of
+
+187
+00:04:55,283 --> 00:04:56,103
+average pay.
+
+188
+00:04:56,638 --> 00:04:57,578
+So on average,
+
+189
+00:04:57,858 --> 00:04:59,378
+pay just barely stayed ahead of
+
+190
+00:04:59,178 --> 00:04:59,518
+groceries.
+
+191
+00:05:00,258 --> 00:05:01,158
+But that's an average.
+
+192
+00:05:01,678 --> 00:05:02,938
+If your raises were smaller,
+
+193
+00:05:02,738 --> 00:05:04,358
+or you're on a fixed income,
+
+194
+00:05:04,618 --> 00:05:06,318
+money that doesn't rise with prices,
+
+195
+00:05:06,738 --> 00:05:08,338
+groceries have taken a bigger bite
+
+196
+00:05:08,138 --> 00:05:08,998
+out of your budget.
+
+197
+00:05:09,358 --> 00:05:10,738
+That's why so many people feel
+
+198
+00:05:10,538 --> 00:05:11,138
+squeezed,
+
+199
+00:05:10,938 --> 00:05:12,838
+even when the averages look okay.
+
+200
+00:05:14,217 --> 00:05:15,957
+And groceries aren't the only bill
+
+201
+00:05:15,757 --> 00:05:16,357
+that grew.
+
+202
+00:05:16,917 --> 00:05:18,437
+Here's how much the main household
+
+203
+00:05:18,237 --> 00:05:20,837
+costs went up since January 2020.
+
+204
+00:05:21,617 --> 00:05:22,817
+Gas at the pump is up
+
+205
+00:05:22,617 --> 00:05:23,217
+the most,
+
+206
+00:05:23,317 --> 00:05:24,937
+about 52 percent.
+
+207
+00:05:24,737 --> 00:05:25,377
+Electricity,
+
+208
+00:05:25,997 --> 00:05:27,057
+about 45 percent.
+
+209
+00:05:27,477 --> 00:05:28,417
+Eating out,
+
+210
+00:05:28,597 --> 00:05:28,997
+39.
+
+211
+00:05:29,937 --> 00:05:30,137
+Rent,
+
+212
+00:05:30,197 --> 00:05:30,717
+34.
+
+213
+00:05:31,337 --> 00:05:31,957
+Groceries,
+
+214
+00:05:31,937 --> 00:05:32,417
+32.
+
+215
+00:05:33,057 --> 00:05:33,677
+And used cars,
+
+216
+00:05:33,977 --> 00:05:34,437
+29.
+
+217
+00:05:35,425 --> 00:05:36,545
+Now the green line:
+
+218
+00:05:36,685 --> 00:05:37,805
+average hourly pay,
+
+219
+00:05:38,025 --> 00:05:39,285
+up 34 percent.
+
+220
+00:05:39,085 --> 00:05:40,645
+Everything to the right of that
+
+221
+00:05:40,445 --> 00:05:42,005
+line rose faster than pay.
+
+222
+00:05:42,665 --> 00:05:42,865
+Gas,
+
+223
+00:05:43,025 --> 00:05:44,985
+electricity and eating out all beat
+
+224
+00:05:44,785 --> 00:05:45,145
+it,
+
+225
+00:05:44,945 --> 00:05:46,045
+and rent just barely.
+
+226
+00:05:46,665 --> 00:05:47,925
+That's why a budget that worked
+
+227
+00:05:47,725 --> 00:05:49,745
+in 2019 feels tight today.
+
+228
+00:05:51,017 --> 00:05:52,217
+Let's put that in dollars.
+
+229
+00:05:52,517 --> 00:05:53,897
+Say your family spent 150 dollars
+
+230
+00:05:53,697 --> 00:05:55,837
+a week on groceries in January
+
+231
+00:05:55,637 --> 00:05:56,517
+2020.
+
+232
+00:05:56,957 --> 00:05:59,117
+That's 7,800 dollars a year.
+
+233
+00:05:59,748 --> 00:06:01,748
+The same cart today costs about
+
+234
+00:06:01,548 --> 00:06:03,648
+199 dollars a week,
+
+235
+00:06:03,448 --> 00:06:06,508
+or 10,331 a year.
+
+236
+00:06:06,963 --> 00:06:09,603
+That's about 2,531 dollars more every
+
+237
+00:06:09,403 --> 00:06:09,903
+year,
+
+238
+00:06:09,703 --> 00:06:11,083
+for the exact same food.
+
+239
+00:06:12,317 --> 00:06:13,817
+Here's another way to measure it:
+
+240
+00:06:13,857 --> 00:06:15,077
+how many hours of work does
+
+241
+00:06:14,877 --> 00:06:16,177
+that weekly cart cost?
+
+242
+00:06:16,397 --> 00:06:17,577
+In January 2020,
+
+243
+00:06:17,377 --> 00:06:20,077
+average pay was 28.43 an hour,
+
+244
+00:06:20,097 --> 00:06:21,937
+so a 150 dollar cart took
+
+245
+00:06:21,737 --> 00:06:23,557
+about 5.3 hours of work.
+
+246
+00:06:24,042 --> 00:06:24,582
+Today,
+
+247
+00:06:24,682 --> 00:06:26,442
+the bigger bill divided by today's
+
+248
+00:06:26,242 --> 00:06:28,502
+higher pay comes to about 5.2
+
+249
+00:06:28,302 --> 00:06:28,842
+hours.
+
+250
+00:06:29,022 --> 00:06:30,502
+Almost exactly the same.
+
+251
+00:06:31,123 --> 00:06:32,563
+So for the average worker,
+
+252
+00:06:33,163 --> 00:06:34,603
+groceries take about the same slice
+
+253
+00:06:34,403 --> 00:06:35,063
+of time.
+
+254
+00:06:35,543 --> 00:06:36,743
+But averages hide a lot.
+
+255
+00:06:37,143 --> 00:06:38,403
+If your pay grew slower than
+
+256
+00:06:38,203 --> 00:06:38,643
+average,
+
+257
+00:06:38,863 --> 00:06:40,363
+the same cart takes you more
+
+258
+00:06:40,163 --> 00:06:41,423
+hours than it used to.
+
+259
+00:06:42,683 --> 00:06:44,663
+Not everything on the Thanksgiving table
+
+260
+00:06:44,463 --> 00:06:45,463
+went up this year.
+
+261
+00:06:45,683 --> 00:06:46,403
+The veggie tray,
+
+262
+00:06:46,503 --> 00:06:47,343
+pie crusts,
+
+263
+00:06:47,263 --> 00:06:48,923
+frozen peas and whipping cream all
+
+264
+00:06:48,723 --> 00:06:49,643
+got a little cheaper.
+
+265
+00:06:50,328 --> 00:06:50,868
+In fact,
+
+266
+00:06:50,968 --> 00:06:52,088
+a third of the dinner items
+
+267
+00:06:51,888 --> 00:06:52,748
+fell in price,
+
+268
+00:06:52,888 --> 00:06:54,188
+and the Farm Bureau says low
+
+269
+00:06:53,988 --> 00:06:55,968
+wheat prices helped keep flour-based foods
+
+270
+00:06:55,768 --> 00:06:56,288
+down.
+
+271
+00:06:57,683 --> 00:06:59,363
+One warning before Black Friday.
+
+272
+00:06:59,843 --> 00:07:01,403
+The average credit card rate on
+
+273
+00:07:01,203 --> 00:07:03,123
+balances that charge interest is now
+
+274
+00:07:02,923 --> 00:07:04,703
+22.36 percent,
+
+275
+00:07:04,503 --> 00:07:05,923
+according to the Federal Reserve.
+
+276
+00:07:06,283 --> 00:07:08,763
+In early 2020 it was 16.61.
+
+277
+00:07:09,554 --> 00:07:11,054
+So if you put 500 dollars
+
+278
+00:07:10,854 --> 00:07:12,814
+of holiday shopping on a card
+
+279
+00:07:12,614 --> 00:07:13,874
+and leave it there for a
+
+280
+00:07:13,674 --> 00:07:14,114
+year,
+
+281
+00:07:14,454 --> 00:07:16,674
+you'd pay about 124 dollars in
+
+282
+00:07:16,474 --> 00:07:16,934
+interest.
+
+283
+00:07:17,394 --> 00:07:18,574
+That can wipe out the discount
+
+284
+00:07:18,374 --> 00:07:19,294
+you were chasing.
+
+285
+00:07:20,650 --> 00:07:22,130
+So what can you actually do?
+
+286
+00:07:22,650 --> 00:07:24,130
+These are the habits consumer experts
+
+287
+00:07:23,930 --> 00:07:24,990
+recommend most.
+
+288
+00:07:25,650 --> 00:07:26,870
+Compare the unit price on the
+
+289
+00:07:26,670 --> 00:07:27,410
+shelf tag,
+
+290
+00:07:27,550 --> 00:07:28,510
+not the sticker price:
+
+291
+00:07:28,870 --> 00:07:30,310
+it shows the cost per ounce
+
+292
+00:07:30,110 --> 00:07:31,050
+or per pound.
+
+293
+00:07:31,603 --> 00:07:32,603
+Try store brands,
+
+294
+00:07:32,923 --> 00:07:34,503
+which usually cost less for similar
+
+295
+00:07:34,303 --> 00:07:35,123
+products.
+
+296
+00:07:35,203 --> 00:07:37,023
+Plan the week's meals so less
+
+297
+00:07:36,823 --> 00:07:37,963
+food gets thrown away.
+
+298
+00:07:38,363 --> 00:07:40,083
+And frozen fruit and vegetables keep
+
+299
+00:07:39,883 --> 00:07:41,903
+longer and often cost less than
+
+300
+00:07:41,703 --> 00:07:42,183
+fresh.
+
+301
+00:07:43,750 --> 00:07:44,630
+Let's recap.
+
+302
+00:07:45,350 --> 00:07:47,190
+Your groceries cost about 32 percent
+
+303
+00:07:46,990 --> 00:07:48,770
+more than in January 2020.
+
+304
+00:07:49,090 --> 00:07:51,690
+Thanksgiving dinner for 10 is 58.63
+
+305
+00:07:51,490 --> 00:07:52,850
+dollars this year,
+
+306
+00:07:53,030 --> 00:07:54,750
+with the turkey up 10 percent.
+
+307
+00:07:54,550 --> 00:07:55,910
+Coffee more than doubled,
+
+308
+00:07:56,330 --> 00:07:57,710
+beef is up nearly three quarters,
+
+309
+00:07:57,750 --> 00:07:58,850
+and eggs came back down.
+
+310
+00:07:59,310 --> 00:08:00,470
+Most of what you pay goes
+
+311
+00:08:00,270 --> 00:08:00,830
+to fuel,
+
+312
+00:08:00,950 --> 00:08:01,970
+labor and packaging,
+
+313
+00:08:02,350 --> 00:08:02,890
+not the farm.
+
+314
+00:08:03,110 --> 00:08:04,950
+And average pay only barely kept
+
+315
+00:08:04,750 --> 00:08:05,190
+up.
+
+316
+00:08:05,710 --> 00:08:06,330
+So tell me:
+
+317
+00:08:06,130 --> 00:08:07,950
+which grocery price shocked you the
+
+318
+00:08:07,750 --> 00:08:08,170
+most?
+
+319
+00:08:08,350 --> 00:08:09,150
+Drop it in the comments.
+
+320
+00:08:08,950 --> 00:08:09,990
+And subscribe,
+
+321
+00:08:09,790 --> 00:08:11,830
+so you don't miss tomorrow's video.
+
+322
+00:08:12,362 --> 00:08:14,482
+This video is for education only.
+
+323
+00:08:14,722 --> 00:08:16,122
+It's not financial advice.
+
+324
+00:08:16,462 --> 00:08:17,202
+Happy Thanksgiving.
+
