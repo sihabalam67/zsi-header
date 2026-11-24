@@ -1,20 +1,22 @@
+import Link from 'next/link';
 import BuyBox from './components/BuyBox';
 import { BRAND, PRODUCT } from '@/lib/product';
+import { FAQ } from '@/lib/faq';
+import { GUIDES } from '@/lib/guides';
+import { JsonLd, productLd, faqLd } from '@/lib/seo';
 
-const FAQ = [
-  ['How long does shipping take?', 'Orders ship from a US warehouse and usually arrive in 5–7 business days. You get a tracking number by email as soon as it ships.'],
-  ['Will my cat actually play with it?', 'Most cats chase moving prey-like lures, but every cat is different. If yours isn’t interested, see our 30-day return policy.'],
-  ['Is it safe?', 'It’s a string toy, so play together and store it out of reach afterwards. Replace a lure when it gets worn.'],
-  ['Can I get extra lures?', 'Yes. You can add a 3-lure refill pack at checkout.'],
-  ['What if it arrives damaged?', 'Email us a photo within 30 days and we’ll send a replacement or a refund.'],
-];
+export const metadata = {
+  title: { absolute: `${PRODUCT.name}: Interactive Cat Toy for Indoor Cats | ${BRAND.name}` },
+  description: `${PRODUCT.short}. Built for the 10-minute nightly hunt. Ships from a US warehouse in 5–7 business days, free US shipping over $29, 30-day returns.`,
+  alternates: { canonical: '/' },
+};
 
 export default function Home() {
   return (
     <>
       <section className="hero">
         <div className="hero-media">
-          <img src={PRODUCT.images[0]} alt={PRODUCT.short} />
+          <img src={PRODUCT.images[0]} alt={PRODUCT.short} width="600" height="600" />
         </div>
         <div className="hero-copy">
           <p className="eyebrow">For indoor cats with too much energy</p>
@@ -32,23 +34,38 @@ export default function Home() {
       <section className="band">
         <h2>The 10-minute nightly hunt</h2>
         <div className="steps">
-          <div><b>1. Cast</b><p>Extend the rod and flick the lure across the floor.</p></div>
-          <div><b>2. Reel</b><p>Wind it back slowly. Prey that “escapes” is what triggers the stalk.</p></div>
-          <div><b>3. Let them win</b><p>End with a catch. A finished hunt is the satisfying part for your cat.</p></div>
+          <div><b>1. Cast</b><p>Extend the rod and flick the lure across the floor, away from your cat.</p></div>
+          <div><b>2. Reel</b><p>Wind it back in short darts with pauses. Prey that “escapes” is what triggers the stalk.</p></div>
+          <div><b>3. Let them win</b><p>End with a catch, then feed. A finished hunt is the satisfying part for your cat.</p></div>
         </div>
+        <p className="more"><Link href="/guides/how-to-play-with-an-indoor-cat">Read the full play guide →</Link></p>
       </section>
 
       <section className="faq">
         <h2>Questions</h2>
-        {FAQ.map(([q, a]) => (
+        {FAQ.slice(0, 6).map(({ q, a }) => (
           <details key={q}>
             <summary>{q}</summary>
             <p>{a}</p>
           </details>
         ))}
-        <p className="fine">{PRODUCT.safety}</p>
+        <p className="fine">{PRODUCT.safety} <Link href="/faq">All questions →</Link></p>
       </section>
+
+      <section className="guides-teaser">
+        <h2>Indoor cat play guides</h2>
+        <ul className="cards">
+          {GUIDES.slice(0, 3).map((g) => (
+            <li key={g.slug}>
+              <Link href={`/guides/${g.slug}`}><b>{g.title}</b><span>{g.description}</span></Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <p className="tagline">{BRAND.tagline}</p>
+      <JsonLd data={productLd()} />
+      <JsonLd data={faqLd(FAQ)} />
     </>
   );
 }

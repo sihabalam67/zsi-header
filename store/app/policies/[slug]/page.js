@@ -50,6 +50,13 @@ export function generateStaticParams() {
   return Object.keys(POLICIES).map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const p = POLICIES[slug];
+  if (!p) return {};
+  return { title: p.title, description: p.body[0], alternates: { canonical: `/policies/${slug}` } };
+}
+
 export default async function Policy({ params }) {
   const { slug } = await params;
   const p = POLICIES[slug];

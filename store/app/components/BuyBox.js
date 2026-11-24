@@ -1,9 +1,15 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OFFERS, UPSELL, FREE_SHIPPING_THRESHOLD, money } from '@/lib/product';
 
 export default function BuyBox() {
   const [selected, setSelected] = useState('duo');
+
+  // Links from Google Shopping / structured data use ?offer=<id>.
+  useEffect(() => {
+    const offer = new URLSearchParams(window.location.search).get('offer');
+    if (OFFERS.some((o) => o.id === offer)) setSelected(offer);
+  }, []);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
