@@ -1,0 +1,14 @@
+{
+ "videos": {
+  "s03_janitor": "2026-11-29T12:00"
+ },
+ "playlists": {
+  "s03": [
+   "Money Stories",
+   "Family-friendly money stories with real numbers."
+  ]
+ },
+ "launch_questions": {
+  "s03_janitor": "Could you live like Walter for 10 years? Yes or no?"
+ }
+}

@@ -13,3 +13,4 @@
 
 - 2026-11-27 12 PM ET: STORY #2 "Same Salary. 10 Years Later, One Is Broke." (9:27, living characters, 5 voices)
 - 2026-11-24: story #2 re-made (calm motion, cloned natural character voices, 10:22) as s02_salary_v2 https://youtu.be/Zx821nqQL9w scheduled Fri Nov 27 12 PM ET; first upload TPoQ-Aiiw8c unscheduled, kept private (owner may delete it)
+- 2026-11-29 12 PM ET: STORY #3 "The Poorest Man in Town Left $2 Million. How?" (13:06, master story prompt, Loot Reveal box, cloned voices for Walter/Lily/Derek/Kowalski) https://youtu.be/Ug5gOlHXzH0

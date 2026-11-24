@@ -49,5 +49,16 @@
    "Money Machine",
    "Coins as Data"
   ]
+ },
+ "s03_janitor": {
+  "look": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Living characters",
+   "Loot Reveal",
+   "Timeline Slam",
+   "Receipt & Recipe",
+   "Cloned character voices"
+  ]
  }
 }
