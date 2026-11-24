@@ -1,0 +1,14 @@
+{
+ "videos": {
+  "s01_grandpa": "2026-11-25T12:00"
+ },
+ "playlists": {
+  "s01": [
+   "Money Stories",
+   "Family-friendly money stories with real numbers."
+  ]
+ },
+ "launch_questions": {
+  "s01_grandpa": "Which grandkid are you: Mia, Ben, or Rosie?"
+ }
+}

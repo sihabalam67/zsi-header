@@ -19,5 +19,15 @@
    "Receipt & Recipe",
    "Coins as Data"
   ]
+ },
+ "s01_grandpa": {
+  "look": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Money Machine",
+   "Coins as Data",
+   "Timeline Slam",
+   "Follow the Dollar"
+  ]
  }
 }

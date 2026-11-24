@@ -303,7 +303,7 @@ SCN.mia=(t,s,L)=>{
     const n=Math.max(2,Math.round(DCA.length*Math.max(t>=L[3]?0.075:0,reveal)));
     for(const yr of [2008,2012,2016,2020,2024]) gg+=`<line x1="${f(px(yr))}" y1="${y0}" x2="${f(px(yr))}" y2="${y0+12}" stroke="${INK}" stroke-width="4"/><text x="${f(px(yr))}" y="${y0+50}" text-anchor="middle" font-size="30" fill="#475569">${yr}</text>`;
     gg+=`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="${INK}" stroke-width="5"/>`;
-    if(t>=L[2]) gg+=`<line x1="${f(px(2007.75))}" y1="${y0}" x2="${f(px(2007.75))}" y2="${y0-230}" stroke="#E11D48" stroke-width="6"/>`+label(px(2007.75)+150,y0-260,'START: OCT 2007',36,'#fff','#E11D48',pop(t,L[2]+.4));
+    if(t>=L[2]) gg+=`<line x1="${f(px(2007.75))}" y1="${y0}" x2="${f(px(2007.75))}" y2="${y0-400}" stroke="#E11D48" stroke-width="6"/>`+label(px(2007.75)+150,y0-430,'START: OCT 2007',36,'#fff','#E11D48',pop(t,L[2]+.4));
     if(t>=L[3]){ const sub=DCA.slice(0,n);
       gg+=`<path d="M${sub.map(p=>f(px(p[0]))+' '+f(py(p[1]))).join(' L')}" stroke="#94A3B8" stroke-width="8" fill="none" stroke-dasharray="14 10"/>`;
       gg+=`<path d="M${sub.map(p=>f(px(p[0]))+' '+f(py(p[2]))).join(' L')}" stroke="#16A34A" stroke-width="12" fill="none" stroke-linejoin="round"/>`;

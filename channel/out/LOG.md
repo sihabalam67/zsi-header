@@ -8,3 +8,5 @@
 | 2026-11-24 | Your Groceries Cost 32% More. Why? (live 12 PM ET) | https://youtu.be/T5cc_bivdow |
 
 - 2026-11-24 2 PM ET: Short "Coffee Costs 122% More Than in 2020" (Penny character, HTML frame(t) render) https://youtu.be/AlVmYwoZoTc
+
+- 2026-11-25 12 PM ET: STORY #1 "Grandpa Gave 3 Kids $1,000. Who Won?" (8:23, Playwright story render) https://youtu.be/o0-ZXEnRyDg
