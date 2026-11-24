@@ -108,3 +108,11 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
   Every long video still loses its biggest share at 0:05-0:15 (the intro line), even the best one (Gold, 1,602 views,
   65% at 30 s). Next videos: open on the picture of the payoff, not on the number read aloud; first line under 8 words.
   Best traffic = SUBSCRIBER + RELATED_VIDEO (Gold 926 + 602): topics next to big news videos win.
+
+0. **ORIGINALITY FIRST (Nov 24, TubeLab audit-channel-risk, free mode): demonetization risk 60/100.** YouTube's
+   "inauthentic content" policy blocks channels whose videos feel interchangeable. Our two problems: (a) stories 1-3
+   share one plot (same money, saver wins); (b) market videos ep10-ep12 were written by copying the previous file
+   (same chapters, copied passages, same thumbnail layout). Rules from now on: every script from a blank outline,
+   `channel/tools/originality.py` must PASS before render, stories follow stories/STORY_BIBLE.md (new plot type,
+   setting and ending vs the last 3), title shapes rotate (no shape on >= 40% of videos; "[number]. [question]?" is
+   at 46% overall, 69% of long videos: use other shapes next), thumbnail layouts rotate. Re-run the audit monthly.

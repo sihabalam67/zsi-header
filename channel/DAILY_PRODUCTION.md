@@ -35,7 +35,10 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    can be HTML pages rendered with `window.frame(t)` + Playwright using `channel/motion/kit.js` (springs, beat grid,
    count-ups, coins-to-balance, shockwave, mask-rise text, grain); see `channel/demo_character/` for a full example
    with Penny. Record look, family and devices in channel/out/styles.json.
-   **Then write `channel/epNN_<slug>.py`** using the newest episode as the template (ep10_stocks.py): 10-13 scenes,
+   **Then write `channel/epNN_<slug>.py`** FROM A BLANK OUTLINE written for today's topic (never copy the last episode file; reuse only the engine
+   calls, see ep13_groceries.py for the API). Its chapters, examples, analogies and advice must be new: run
+   `python3 channel/tools/originality.py <file>` and fix every COPY line before rendering (YouTube "inauthentic
+   content" policy, risk audit Nov 24 = 60/100). Make a market update only when something genuinely new happened. 10-13 scenes,
    ~1,300-1,450 words (8-9 min). The answer in the first 30 s; a subscribe ask right after the hook's payoff and
    at the end; one question for the comments; "education only, not financial advice". Drawn charts are enough;
    no real people, no logos.

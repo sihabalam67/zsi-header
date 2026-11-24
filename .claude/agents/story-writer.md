@@ -33,3 +33,9 @@ codes, '!' for dramatic reads, asserts on the numbers you rely on), run `python3
 then report the minute-by-minute cliffhanger list (one line per chapter) and the word count.
 
 Before writing, also read channel/stories/STORY_PROMPT.md (master visual/sound prompt): write lines that give the animators a visible action or reaction every few seconds, and keep jokes and drama in the characters' own words (each character has a cloned natural voice).
+
+ORIGINALITY (YouTube "inauthentic content" policy; our risk audit Nov 24 scored 60/100 because stories 1-3 all used
+"same money, different choices, the patient saver wins"). Before writing, read channel/stories/STORY_BIBLE.md and the
+last 3 story scripts. The new story must use a DIFFERENT plot type, setting, conflict and ending from all 3 (the
+saver must not simply win again), may not reuse their lines, jokes or analogies, and must add a real insight of its
+own. After writing, run `python3 channel/tools/originality.py <file>` and fix every COPY line; report the result.
