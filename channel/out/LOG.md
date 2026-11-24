@@ -12,3 +12,4 @@
 - 2026-11-25 12 PM ET: STORY #1 "Grandpa Gave 3 Kids $1,000. Who Won?" (8:23, Playwright story render) https://youtu.be/o0-ZXEnRyDg
 
 - 2026-11-27 12 PM ET: STORY #2 "Same Salary. 10 Years Later, One Is Broke." (9:27, living characters, 5 voices)
+- 2026-11-24: story #2 re-made (calm motion, cloned natural character voices, 10:22) as s02_salary_v2 https://youtu.be/Zx821nqQL9w scheduled Fri Nov 27 12 PM ET; first upload TPoQ-Aiiw8c unscheduled, kept private (owner may delete it)
