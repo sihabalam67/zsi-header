@@ -63,19 +63,29 @@ export async function getBalance() {
 // it's paid from the CJ wallet. `items` = [{ vid, quantity }].
 // `orderNumber` must be unique (we use the Stripe Checkout Session ID, so a
 // retried webhook can't double-order).
+// Returns { orderId, paid }. `paid` is false when the CJ wallet doesn't have
+// enough balance yet. The order still exists at CJ, and ensurePaid() can be
+// retried later (the tracking cron does this automatically).
 export async function createOrder({ orderNumber, address, name, phone, email, items }) {
   const logisticName = await pickShipping(items);
   const orderId = await placeOrder({ orderNumber, address, name, phone, email, items, logisticName });
-  await ensurePaid(orderId);
-  return orderId;
+  const paid = await ensurePaid(orderId);
+  return { orderId, paid };
 }
 
 // payType 2 asks CJ to pay from the wallet at creation, but CJ's documented
 // flow also has an explicit pay step. If the order is still unpaid, pay it.
-async function ensurePaid(orderId) {
+// Returns true when the order is paid, false if the wallet is short.
+export async function ensurePaid(orderId) {
   const order = await getOrder(orderId);
-  if (!['CREATED', 'IN_CART', 'UNPAID'].includes(order?.orderStatus)) return;
-  await call('/shopping/pay/payBalance', { method: 'POST', body: { orderId } });
+  if (!['CREATED', 'IN_CART', 'UNPAID'].includes(order?.orderStatus)) return true;
+  try {
+    await call('/shopping/pay/payBalance', { method: 'POST', body: { orderId } });
+    return true;
+  } catch (err) {
+    console.error(`CJ payBalance failed for ${orderId}:`, err.message);
+    return false;
+  }
 }
 
 async function placeOrder({ orderNumber, address, name, phone, email, items, logisticName }) {

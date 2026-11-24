@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
-import { getOrder } from '@/lib/cj';
+import { getOrder, ensurePaid } from '@/lib/cj';
 import { sendEmail } from '@/lib/email';
 import { PRODUCT } from '@/lib/product';
 
@@ -11,12 +11,31 @@ export async function GET(req) {
     return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
   }
 
+  const results = [];
+
+  // 1. Retry paying CJ for orders that were waiting on wallet balance.
+  const unpaid = await stripe().paymentIntents.search({
+    query: "metadata['fulfillment']:'unpaid'",
+    limit: 100,
+  });
+  for (const pi of unpaid.data) {
+    try {
+      if (await ensurePaid(pi.metadata.cj_order_id)) {
+        await stripe().paymentIntents.update(pi.id, { metadata: { fulfillment: 'placed' } });
+        results.push({ pi: pi.id, paidNow: true });
+      } else {
+        results.push({ pi: pi.id, stillUnpaid: true });
+      }
+    } catch (err) {
+      results.push({ pi: pi.id, error: err.message });
+    }
+  }
+
+  // 2. Email tracking numbers for orders that have shipped.
   const pending = await stripe().paymentIntents.search({
     query: "metadata['fulfillment']:'placed'",
     limit: 100,
   });
-
-  const results = [];
   for (const pi of pending.data) {
     try {
       const order = await getOrder(pi.metadata.cj_order_id);

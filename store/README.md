@@ -7,7 +7,8 @@ Customer pays (Stripe Checkout)
    → Stripe webhook  /api/stripe-webhook
    → order placed at CJ Dropshipping (US warehouse), paid from CJ wallet
    → confirmation email (Resend)
-Every 6 hours: Vercel cron  /api/cron/sync-tracking
+Once a day: Vercel cron  /api/cron/sync-tracking (Hobby plan allows daily; Pro allows hourly)
+   → retries paying CJ for orders that waited on wallet balance
    → reads CJ order status → emails tracking number to the customer
 If a supplier order fails → OWNER_EMAIL gets an "ACTION NEEDED" alert
 ```

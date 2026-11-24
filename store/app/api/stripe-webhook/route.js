@@ -43,7 +43,7 @@ export async function POST(req) {
   const email = session.customer_details?.email;
 
   try {
-    const cjOrderId = await createOrder({
+    const { orderId: cjOrderId, paid } = await createOrder({
       orderNumber: session.id,
       address: ship.address,
       name: ship.name,
@@ -52,8 +52,15 @@ export async function POST(req) {
       items,
     });
     await stripe().paymentIntents.update(pi.id, {
-      metadata: { fulfillment: 'placed', cj_order_id: String(cjOrderId) },
+      metadata: { fulfillment: paid ? 'placed' : 'unpaid', cj_order_id: String(cjOrderId) },
     });
+    if (!paid && process.env.OWNER_EMAIL) {
+      await sendEmail({
+        to: process.env.OWNER_EMAIL,
+        subject: `New order: top up your CJ wallet to ship it (${PRODUCT.name})`,
+        text: `A customer paid and the order is waiting at CJ (order ${cjOrderId}), but the CJ wallet balance is too low to pay for it.\n\nAdd funds at https://cjdropshipping.com (My CJ → Wallet). The store retries the payment automatically on its next daily check, or you can pay the order directly in CJ under My Orders.`,
+      });
+    }
     await sendEmail({
       to: email,
       subject: `Your ${PRODUCT.name} order is confirmed`,
