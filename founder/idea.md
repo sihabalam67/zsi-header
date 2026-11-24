@@ -1,0 +1,7 @@
+# The Barber Shop (working name)
+
+- What it is: ready-made, done-for-you websites for barbershops (and other local shops such as nail salons, hair salons, dry cleaners, electricians), built before the owner is ever contacted, then pitched to the owner with a link to their own finished site.
+- Who it is for: owners of small independent barbershops and similar local shops that have no website or a weak one. Barbers are the lead category ("kill it in the barbershop market").
+- What it sells, at what price: a hosted website for the shop (services and prices, hours, booking button that links to their existing booking system such as Setmore/Square/Vagaro or calls them, Google rating and reviews, map, mobile call bar). Free for the first month, then $10 per month.
+- Where and how: online, US. Lead lists already gathered: 4,937 local-business leads across Manhattan, Florida, Texas, New Orleans/Corpus Christi, Phoenix/Las Vegas, North Carolina, Nashville/Chattanooga and Boise. Sites are generated from the lead data and hosted on Vercel (nyc-shopfronts.vercel.app/s/<shop>); the owner is shown their own finished site and asked to keep it.
+- Budget and constraints: not stated yet (open question). Already built: a site engine with 297 category templates, 171 sample templates with photos, and 271 real North Carolina shop sites live and hidden from Google until the owner approves. How owners will be contacted (phone, walk-in, text, email) and who does the selling is not decided yet.
