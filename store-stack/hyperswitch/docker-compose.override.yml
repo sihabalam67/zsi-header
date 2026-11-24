@@ -1,0 +1,16 @@
+# Fixes for Hyperswitch's `latest` Docker setup (Nov 2026). Works on any machine.
+services:
+  superposition-init:
+    # Upstream runs this bash script with `sh` (busybox), which fails on bash syntax.
+    command: sh -c "apk add --no-cache curl jq yq bash && bash /seed_superposition.sh"
+  migration_runner:
+    # Upstream `just migrate` regenerates schema.rs and applies drop_id.patch,
+    # which currently fails ("error applying hunk #5"). That step is for
+    # Hyperswitch developers only, so run the same migrations without it.
+    command: >
+      bash -c "
+      apt-get update && apt-get install -y curl xz-utils &&
+      curl --proto '=https' --tlsv1.2 -LsSf https://github.com/diesel-rs/diesel/releases/download/v2.3.5/diesel_cli-installer.sh | bash &&
+      export PATH="$${PATH}:$${HOME}/.cargo/bin" &&
+      printf '[migrations_directory]\ndir = \"/app/migrations\"\n' > /tmp/diesel-run.toml &&
+      diesel migration run --database-url \"$${DATABASE_URL}\" --migration-dir /app/migrations --config-file /tmp/diesel-run.toml"

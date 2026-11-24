@@ -1,0 +1,13 @@
+# Only for Claude Code cloud sessions: lets containers trust the session's
+# HTTPS proxy. setup.sh adds this file automatically when it detects one.
+x-proxy-ca: &proxy-ca
+  volumes:
+    - /root/.ccr/ca-bundle.crt:/proxy-ca.crt:ro
+  environment:
+    - SSL_CERT_FILE=/proxy-ca.crt
+    - CURL_CA_BUNDLE=/proxy-ca.crt
+
+services:
+  superposition-init: *proxy-ca
+  migration_runner: *proxy-ca
+  create-default-user: *proxy-ca
