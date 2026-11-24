@@ -1,0 +1,304 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-700.ttf);font-weight:700}
+@font-face{font-family:A;src:url(file:///root/.fonts/Anton-400.ttf)}
+html,body{margin:0;background:#000;overflow:hidden}
+svg{display:block}
+text{font-family:P;font-weight:900}
+.cap{paint-order:stroke;stroke:#2a1608;stroke-width:16px;stroke-linejoin:round}
+</style></head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFF3DC"/><stop offset=".55" stop-color="#FFD9B5"/><stop offset="1" stop-color="#FFB98F"/></linearGradient>
+  <linearGradient id="skyR" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFE1DA"/><stop offset=".6" stop-color="#FFB3A6"/><stop offset="1" stop-color="#FF8F7E"/></linearGradient>
+  <radialGradient id="coin" cx=".36" cy=".3" r=".8">
+    <stop offset="0" stop-color="#FFF4B8"/><stop offset=".35" stop-color="#FFD54A"/><stop offset=".8" stop-color="#F2A81D"/><stop offset="1" stop-color="#D98C0C"/></radialGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#B9764A"/><stop offset=".08" stop-color="#9C5E37"/><stop offset="1" stop-color="#6E3F24"/></linearGradient>
+  <linearGradient id="bag" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#A86B3A"/><stop offset=".5" stop-color="#C98B52"/><stop offset="1" stop-color="#94592D"/></linearGradient>
+  <linearGradient id="barC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6B5A"/><stop offset="1" stop-color="#E0392B"/></linearGradient>
+  <linearGradient id="barG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4BE0A0"/><stop offset="1" stop-color="#16A673"/></linearGradient>
+  <linearGradient id="barN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC861"/><stop offset="1" stop-color="#F09A1A"/></linearGradient>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#5a2a0a" flood-opacity=".28"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<g id="root"></g>
+</svg>
+<script>
+const W=1080,H=1920;
+let TL=null;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const eio=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+const eout=x=>1-Math.pow(1-x,3);
+const back=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const elastic=x=>x<=0?0:x>=1?1:Math.pow(2,-10*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;
+const pop=(t,s,d=.45)=>back(seg(t,s,s+d));
+const lerp=(a,b,k)=>a+(b-a)*k;
+const f=n=>n.toFixed(1);
+
+// ---------------------------------------------------------------- Penny ---
+// origin = between the feet on the ground; r = coin radius
+function penny(o){
+  const {x,y,r=150,t=0,mood='happy',look=[0,0],mouth=0,armL=200,armR=-20,sx=1,sy=1,rot=0,walk=0,hold='',blink=false,sweat=0}=o;
+  const leg=r*.55, cy=-(leg+r*.92);
+  let g='';
+  // legs + sneakers (walk cycle swings the feet)
+  for(const s of [-1,1]){
+    const ph=walk?Math.sin(t*14+(s>0?Math.PI:0))*r*.28:0, lift=walk?Math.max(0,Math.cos(t*14+(s>0?Math.PI:0)))*r*.12:0;
+    const hx=s*r*.34, fx=hx+ph;
+    g+=`<path d="M${f(hx)} ${f(cy+r*.8)} Q${f(hx+ph*.3)} ${f(-leg*.4)} ${f(fx)} ${f(-r*.1-lift)}" stroke="#A8670A" stroke-width="${f(r*.12)}" fill="none" stroke-linecap="round"/>`;
+    g+=`<ellipse cx="${f(fx+s*r*.07)}" cy="${f(-r*.07-lift)}" rx="${f(r*.23)}" ry="${f(r*.12)}" fill="#E8453A" stroke="#7a1d16" stroke-width="${f(r*.04)}"/>`;
+    g+=`<ellipse cx="${f(fx+s*r*.07)}" cy="${f(-r*.02-lift)}" rx="${f(r*.22)}" ry="${f(r*.05)}" fill="#fff" opacity=".9"/>`;
+  }
+  // arms (angle in degrees, 0 = right, 90 = down) with white gloves
+  const arm=(s,ang)=>{
+    const ax=s*r*.9, ay=cy+r*.15, a=ang*Math.PI/180, L=r*.78;
+    const hx=ax+Math.cos(a)*L, hy=ay+Math.sin(a)*L;
+    const mx=ax+Math.cos(a)*L*.5+s*r*.08, my=ay+Math.sin(a)*L*.5+r*.08;
+    return {p:`<path d="M${f(ax)} ${f(ay)} Q${f(mx)} ${f(my)} ${f(hx)} ${f(hy)}" stroke="#A8670A" stroke-width="${f(r*.12)}" fill="none" stroke-linecap="round"/>`+
+      `<circle cx="${f(hx)}" cy="${f(hy)}" r="${f(r*.17)}" fill="#fff" stroke="#3a2a1a" stroke-width="${f(r*.035)}"/>`+
+      `<circle cx="${f(hx-s*r*.07)}" cy="${f(hy-r*.07)}" r="${f(r*.07)}" fill="#fff" stroke="#3a2a1a" stroke-width="${f(r*.03)}"/>`,hx,hy};
+  };
+  const L=arm(-1,armL), R=arm(1,armR);
+  g+=L.p;
+  // body: coin with rim, inner ring and gloss
+  g+=`<circle cx="0" cy="${f(cy+r*.06)}" r="${f(r)}" fill="#B9740C"/>`;
+  g+=`<circle cx="0" cy="${f(cy)}" r="${f(r)}" fill="url(#coin)" stroke="#A8670A" stroke-width="${f(r*.06)}"/>`;
+  g+=`<circle cx="0" cy="${f(cy)}" r="${f(r*.82)}" fill="none" stroke="#FFE9A0" stroke-width="${f(r*.035)}" opacity=".85"/>`;
+  g+=`<circle cx="0" cy="${f(cy)}" r="${f(r*.78)}" fill="none" stroke="#C98612" stroke-width="${f(r*.02)}" opacity=".6"/>`;
+  g+=`<ellipse cx="${f(-r*.42)}" cy="${f(cy-r*.5)}" rx="${f(r*.24)}" ry="${f(r*.12)}" fill="#fff" opacity=".55" transform="rotate(-30 ${f(-r*.42)} ${f(cy-r*.5)})"/>`;
+  // face
+  const ey=cy-r*.1, shocked=mood==='shocked';
+  for(const s of [-1,1]){
+    const ex=s*r*.3, rx=r*(shocked?.2:.16), ry=r*(shocked?.25:.21)*(blink?.1:1);
+    g+=`<ellipse cx="${f(ex)}" cy="${f(ey)}" rx="${f(rx)}" ry="${f(ry)}" fill="#fff" stroke="#3a2a1a" stroke-width="${f(r*.03)}"/>`;
+    if(!blink){
+      const pr=r*(shocked?.07:.105), px=ex+look[0]*r*.06, py=ey+look[1]*r*.06+r*.02;
+      g+=`<circle cx="${f(px)}" cy="${f(py)}" r="${f(pr)}" fill="#2b1a0e"/>`;
+      g+=`<circle cx="${f(px+pr*.35)}" cy="${f(py-pr*.4)}" r="${f(pr*.38)}" fill="#fff"/>`;
+      g+=`<circle cx="${f(px-pr*.35)}" cy="${f(py+pr*.35)}" r="${f(pr*.16)}" fill="#fff"/>`;
+    }
+    // brows
+    const by=ey-r*(shocked?.36:.3), tilt=mood==='worried'?-1:mood==='proud'?.4:shocked?0:.2;
+    g+=`<path d="M${f(ex-s*r*.14)} ${f(by+tilt*s*0+ (mood==='worried'?-r*.0:0))} Q${f(ex)} ${f(by-r*.07)} ${f(ex+s*r*.14)} ${f(by+(mood==='worried'?r*.08:0))}" stroke="#7a4a08" stroke-width="${f(r*.045)}" fill="none" stroke-linecap="round" transform="rotate(${mood==='worried'?-s*14:0} ${f(ex)} ${f(by)})"/>`;
+    g+=`<ellipse cx="${f(s*r*.5)}" cy="${f(cy+r*.16)}" rx="${f(r*.12)}" ry="${f(r*.07)}" fill="#FF7A6B" opacity=".55"/>`;
+  }
+  // mouth
+  const my=cy+r*.28;
+  if(shocked){
+    g+=`<ellipse cx="0" cy="${f(my+r*.04)}" rx="${f(r*.1)}" ry="${f(r*.14)}" fill="#5a1410"/>`;
+  }else if(mouth>.06){
+    const o=r*(.04+.17*mouth);
+    g+=`<path d="M${f(-r*.17)} ${f(my-r*.02)} Q0 ${f(my-r*.05)} ${f(r*.17)} ${f(my-r*.02)} Q${f(r*.14)} ${f(my+o)} 0 ${f(my+o)} Q${f(-r*.14)} ${f(my+o)} ${f(-r*.17)} ${f(my-r*.02)}Z" fill="#5a1410"/>`;
+    g+=`<ellipse cx="0" cy="${f(my+o*.75)}" rx="${f(r*.08)}" ry="${f(o*.3)}" fill="#FF7A88"/>`;
+  }else if(mood==='worried'){
+    g+=`<path d="M${f(-r*.13)} ${f(my+r*.06)} Q0 ${f(my-r*.05)} ${f(r*.13)} ${f(my+r*.06)}" stroke="#5a1410" stroke-width="${f(r*.045)}" fill="none" stroke-linecap="round"/>`;
+  }else{
+    g+=`<path d="M${f(-r*.17)} ${f(my-r*.02)} Q0 ${f(my+r*.2)} ${f(r*.17)} ${f(my-r*.02)}Z" fill="#5a1410"/><ellipse cx="0" cy="${f(my+r*.09)}" rx="${f(r*.07)}" ry="${f(r*.03)}" fill="#FF7A88"/>`;
+  }
+  if(sweat>0){
+    g+=`<path d="M${f(r*.72)} ${f(cy-r*.55+sweat*r*.15)} q${f(r*.07)} ${f(r*.12)} 0 ${f(r*.16)} q${f(-r*.07)} ${f(-r*.04)} 0 ${f(-r*.16)}Z" fill="#7CD3FF" stroke="#2a7fb8" stroke-width="3" opacity="${f(sweat)}"/>`;
+  }
+  g+=R.p;
+  if(hold==='bag') g+=coffeeBag(R.hx+r*.05,R.hy-r*.1,r*.0045,-8);
+  if(hold==='check') g+=paycheck(R.hx+r*.2,R.hy-r*.25,r*.0042,-10);
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)}) scale(${f(sx)} ${f(sy)})">`+
+    `<ellipse cx="0" cy="${f(r*.02)}" rx="${f(r*.75/sy)}" ry="${f(r*.12)}" fill="#5a2a0a" opacity=".18"/>`+g+`</g>`;
+}
+
+// ---------------------------------------------------------------- props ---
+function coffeeBag(x,y,s,rot){ // s = scale (1 => 220 px wide)
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)}) scale(${s})" filter="url(#sh)">
+   <path d="M-110 -150 L110 -150 L128 150 Q0 168 -128 150Z" fill="url(#bag)"/>
+   <path d="M-110 -150 L110 -150 L104 -112 L-104 -112Z" fill="#7d4a22"/>
+   <path d="M-96 -150 L-90 -190 L90 -190 L96 -150Z" fill="#C98B52"/>
+   <path d="M-90 -178 L90 -178" stroke="#7d4a22" stroke-width="6" stroke-dasharray="10 8"/>
+   <rect x="-82" y="-80" width="164" height="170" rx="18" fill="#FFF7EA"/>
+   <text x="0" y="-36" text-anchor="middle" font-size="32" fill="#5a2f12">COFFEE</text>
+   <ellipse cx="0" cy="20" rx="30" ry="40" fill="#5a2f12" transform="rotate(25 0 20)"/>
+   <path d="M-6 -14 Q14 20 -4 56" stroke="#C98B52" stroke-width="7" fill="none" transform="rotate(25 0 20)"/>
+   <text x="0" y="82" text-anchor="middle" font-size="22" fill="#a0603a">1 LB</text>
+  </g>`;
+}
+function tag(x,y,label,col,rot,s=1){
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)}) scale(${f(s)})" filter="url(#sh)">
+   <path d="M0 -150 L0 -60" stroke="#6b4a2a" stroke-width="5"/>
+   <path d="M-150 -60 L120 -60 Q150 -60 150 -30 L150 70 Q150 100 120 100 L-150 100 L-200 20Z" fill="${col}" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+   <circle cx="-150" cy="20" r="14" fill="#FFF3DC"/>
+   <text x="10" y="50" text-anchor="middle" font-size="96" fill="#fff">${label}</text>
+  </g>`;
+}
+function paycheck(x,y,s,rot){
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)}) scale(${s})" filter="url(#sh)">
+   <rect x="-150" y="-80" width="300" height="160" rx="14" fill="#E9FFF3" stroke="#16A673" stroke-width="8"/>
+   <text x="-130" y="-30" font-size="30" fill="#16A673">PAYCHECK</text>
+   <circle cx="95" cy="-30" r="32" fill="#16A673"/><text x="95" y="-17" text-anchor="middle" font-size="40" fill="#fff">$</text>
+   <rect x="-130" y="10" width="170" height="12" rx="6" fill="#9ad9bb"/><rect x="-130" y="40" width="110" height="12" rx="6" fill="#9ad9bb"/>
+  </g>`;
+}
+function mug(x,y,s,t,run){ // a running coffee mug with a face
+  const b=run?Math.abs(Math.sin(t*14))*18:0;
+  let g=`<g transform="translate(${f(x)} ${f(y-b)}) scale(${s})">`;
+  for(const k of [-1,1]){const ph=run?Math.sin(t*14+(k>0?Math.PI:0))*40:0;
+    g+=`<path d="M${k*40} 60 L${f(k*40+ph)} ${f(150+b)}" stroke="#5a2f12" stroke-width="16" stroke-linecap="round"/><ellipse cx="${f(k*40+ph+12)}" cy="${f(152+b)}" rx="34" ry="16" fill="#3b82f6"/>`;}
+  for(let i=0;i<3;i++){const w=Math.sin(t*4+i*2)*14;
+    g+=`<path d="M${-40+i*40} -110 q${f(w)} -30 0 -60 q${f(-w)} -30 0 -60" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" opacity=".75"/>`;}
+  g+=`<path d="M95 -40 q70 0 70 50 q0 50 -70 50" stroke="#F5F0E8" stroke-width="26" fill="none"/>`;
+  g+=`<path d="M-110 -100 L110 -100 L95 70 Q0 90 -95 70Z" fill="#FFFDF8" stroke="#d8cfc0" stroke-width="6" filter="url(#sh)"/>`;
+  g+=`<ellipse cx="0" cy="-100" rx="110" ry="24" fill="#6b3a17" stroke="#d8cfc0" stroke-width="6"/>`;
+  g+=`<circle cx="-38" cy="-30" r="15" fill="#2b1a0e"/><circle cx="38" cy="-30" r="15" fill="#2b1a0e"/><circle cx="-33" cy="-35" r="5" fill="#fff"/><circle cx="43" cy="-35" r="5" fill="#fff"/>`;
+  g+=`<path d="M-30 10 Q0 40 30 10" stroke="#2b1a0e" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+  g+=`<text x="0" y="62" text-anchor="middle" font-size="34" fill="#E0392B">+122%</text></g>`;
+  return g;
+}
+function steak(x,y,s){return `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-40 -20 Q-30 -45 10 -40 Q50 -35 45 0 Q40 35 0 35 Q-45 35 -40 -20Z" fill="#E2574C" stroke="#fff" stroke-width="6"/><circle cx="12" cy="-4" r="10" fill="#fff"/></g>`}
+function egg(x,y,s){return `<g transform="translate(${x} ${y}) scale(${s})"><ellipse cx="0" cy="0" rx="32" ry="42" fill="#FFF9EF" stroke="#e8d8bd" stroke-width="6"/><ellipse cx="-10" cy="-14" rx="8" ry="12" fill="#fff"/></g>`}
+function bread(x,y,s){return `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-42 34 L-42 -6 Q-50 -40 0 -40 Q50 -40 42 -6 L42 34Z" fill="#E9A85B" stroke="#a8652a" stroke-width="6"/><path d="M-30 -6 Q0 -22 30 -6" stroke="#a8652a" stroke-width="5" fill="none"/></g>`}
+function bean(x,y,s,rot){return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)}) scale(${f(s)})"><ellipse rx="22" ry="30" fill="#6b3a17"/><path d="M-3 -24 Q10 0 -3 24" stroke="#C98B52" stroke-width="5" fill="none"/></g>`}
+function bigText(x,y,s,size,col,k,rot=0){
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)}) scale(${f(k)})"><text text-anchor="middle" font-size="${size}" fill="${col}" class="cap" style="stroke-width:${size*.14}px">${s}</text></g>`;
+}
+function burst(x,y,k,col,n=14,R=260){
+  if(k<=0||k>=1)return '';let g='';
+  for(let i=0;i<n;i++){const a=i/n*Math.PI*2, r0=R*(.3+.6*eout(k)), r1=r0+R*.35*(1-k);
+    g+=`<line x1="${f(x+Math.cos(a)*r0)}" y1="${f(y+Math.sin(a)*r0)}" x2="${f(x+Math.cos(a)*r1)}" y2="${f(y+Math.sin(a)*r1)}" stroke="${col}" stroke-width="${f(14*(1-k)+2)}" stroke-linecap="round"/>`;}
+  return g;
+}
+
+// --------------------------------------------------------------- scenes ---
+const FLOOR=1250;
+function background(t,red,win=1){
+  let g=`<rect width="${W}" height="${H}" fill="url(#sky)"/>`;
+  if(red>0) g+=`<rect width="${W}" height="${H}" fill="url(#skyR)" opacity="${f(red)}"/>`;
+  // soft floating bubbles (parallax)
+  for(let i=0;i<9;i++){const bx=(i*173+t*(10+i*3))%(W+300)-150, by=180+((i*311)%900)+Math.sin(t*.8+i)*30;
+    g+=`<circle cx="${f(bx)}" cy="${f(by)}" r="${50+(i*37)%90}" fill="#fff" opacity=".22" filter="url(#soft)"/>`;}
+  // window + shelf for a kitchen feel
+  if(win>0){ g+=`<g opacity="${f(win)}">`;
+  g+=`<rect x="640" y="330" width="330" height="390" rx="30" fill="#BFE7FF" stroke="#fff" stroke-width="18" opacity=".9"/>`;
+  g+=`<path d="M805 330 L805 720 M640 525 L970 525" stroke="#fff" stroke-width="14"/>`;
+  g+=`<circle cx="740" cy="430" r="40" fill="#FFF3B0" opacity=".9"/>`; g+='</g>';}
+  g+=`<rect x="0" y="${FLOOR}" width="${W}" height="${H-FLOOR}" fill="url(#wood)"/>`;
+  g+=`<rect x="0" y="${FLOOR}" width="${W}" height="22" fill="#D08A57"/>`;
+  return g;
+}
+
+function header(t,txt,start,col='#5a2f12'){
+  const k=pop(t,start,.5);
+  return `<g transform="translate(540 210) scale(${f(k)})" opacity="${f(clamp(k))}"><text text-anchor="middle" font-size="64" fill="${col}" font-family="A" style="font-family:A;letter-spacing:2px">${txt}</text></g>`;
+}
+
+function captions(t){
+  let line=null;
+  for(const l of TL.lines){ if(t>=l.start-.05 && t<=l.start+l.dur+.3) line=l; }
+  if(!line) return '';
+  const ws=line.words; let i=0; for(let k=0;k<ws.length;k++) if(t>=ws[k].s-.05) i=k;
+  const c0=Math.floor(i/4)*4, chunk=ws.slice(c0,c0+4);
+  // lay words out centred; Poppins Black ~0.62em per char
+  const size=76, MC=(window._mc=window._mc||document.createElement('canvas').getContext('2d')); MC.font='900 76px P'; const widths=chunk.map(w=>MC.measureText(w.w.toUpperCase()).width+size*.38), tot=widths.reduce((a,b)=>a+b,0);
+  let x=540-tot/2, g='';
+  chunk.forEach((w,k)=>{
+    const cx=x+widths[k]/2; x+=widths[k];
+    const on=c0+k===i, sc=on?1+.12*(1-seg(t,w.s,w.s+.18)):1;
+    if(t<w.s-.05) return;
+    g+=`<g transform="translate(${f(cx)} 1520) scale(${f(sc)})"><text text-anchor="middle" font-size="${size}" fill="${on?'#FFD23F':'#fff'}" class="cap">${w.w.toUpperCase()}</text></g>`;
+  });
+  return g;
+}
+
+function frame(t){
+  const fr=Math.min(TL.mouth.length-1,Math.round(t*TL.fps)), mouth=TL.mouth[fr];
+  const blink=(t%3.1)<.12;
+  const L=TL.lines.map(l=>l.start);
+  const red=seg(t,5.55,5.8)*(1-seg(t,8,8.6))*.9 + seg(t,21.4,21.8)*(1-seg(t,24.3,24.7))*.35;
+  const win=1-seg(t,13.0,13.3)*(1-seg(t,21.3,21.6));
+  let g=background(t,red,win);
+  const wob=Math.sin(t*2.2)*2;
+
+  if(t<L[1]){                                   // S0: Penny with the coffee bag, $4.17 in 2020
+    const enter=back(seg(t,0,.55)), land=seg(t,.45,.7);
+    const sq=land>0&&land<1?1-.18*Math.sin(land*Math.PI):1;
+    g+=header(t,'THE PRICE OF COFFEE',.1);
+    g+=penny({x:lerp(-200,420,enter),y:FLOOR,r:165,t,mouth,blink,sx:2-sq,sy:sq,rot:wob,armL:150,armR:-40,hold:'bag',look:[1,-.3]});
+    const tk=elastic(seg(t,1.55,2.4));
+    g+=tag(800,lerp(-200,820,tk),'$4.17','#16A673',Math.sin(t*3)*6*(1-seg(t,2.4,4)) );
+    g+=`<g opacity="${f(seg(t,3.55,3.8))}"><rect x="700" y="990" width="200" height="74" rx="37" fill="#5a2f12"/><text x="800" y="1044" text-anchor="middle" font-size="44" fill="#FFD23F">2020</text></g>`;
+  } else if(t<L[2]){                            // S1: TODAY $9.25 - shock jump
+    const lt=t-L[1];
+    const crouch=seg(lt,.45,.65), jump=seg(lt,.65,1.25);
+    const sy=jump>0?1+.18*Math.sin(jump*Math.PI):1-.22*Math.sin(crouch*Math.PI);
+    const jy=-Math.sin(jump*Math.PI)*260;
+    const shake=lt>.7&&lt<2.3?Math.sin(t*60)*6:0;
+    g+=header(t,'TODAY',L[1]+.05,'#B3261E');
+    g+=burst(420,FLOOR-400,seg(lt,.65,1.3),'#fff',16,330);
+    g+=penny({x:420+shake,y:FLOOR+jy,r:165,t,mouth:0,mood:'shocked',sx:2-sy,sy,rot:shake*.5,armL:230,armR:-50,hold:'bag',sweat:seg(lt,1.3,1.7)});
+    const flip=seg(lt,.6,.9), sc=Math.abs(Math.cos(flip*Math.PI));
+    const lab=flip<.5?'$4.17':'$9.25', col=flip<.5?'#16A673':'#E0392B';
+    g+=`<g transform="translate(800 820) scale(${f(Math.max(.05,sc))} 1)">${tag(0,0,lab,col,Math.sin(t*5)*4,1+.15*pop(lt,.9,.4)*(flip>=1?1:0))}</g>`;
+  } else if(t<L[3]){                            // S2: +122% counter, bag grows, beans rain
+    const lt=t-L[2];
+    const cnt=Math.round(122*eout(seg(t,8.5,9.6)));
+    g+=header(t,'SINCE JANUARY 2020',L[2]);
+    for(let i=0;i<14;i++){const by=((t-L[2])*420+i*163)%1500-100, bx=(i*197)%1040+20; g+=bean(bx,by,.9+(i%3)*.3,t*90+i*40);}
+    const grow=1+.9*eout(seg(t,8.6,9.8));
+    g+=coffeeBag(560,FLOOR-180*grow,grow,Math.sin(t*2)*3);
+    g+=bigText(540,700,`+${cnt}%`,190,'#E0392B',pop(t,8.5,.5),-4);
+    g+=penny({x:180,y:FLOOR,r:120,t,mouth,blink,mood:mouth>.06?'happy':'worried',armL:200,armR:-70,look:[1,-1],rot:wob});
+    // beef / eggs / bread icons pop as they are named
+    const ic=[[steak,11.16,330],[egg,11.42,540],[bread,12.08,750]];
+    g+=`<g opacity="${f(seg(t,11.1,11.3))}"><text x="540" y="330" text-anchor="middle" font-size="40" fill="#5a2f12" style="font-weight:700">MORE THAN</text></g>`;
+    for(const [fn,s0,ix] of ic){const k=pop(t,s0,.35); if(k>0) g+=`<g opacity="${f(clamp(k))}">${fn(ix,420,k*1.4)}</g>`;}
+  } else if(t<L[4]){                            // S3: the race - bars
+    g+=header(t,'PRICE RISE SINCE 2020',L[3]);
+    const items=[['COFFEE',122,null,13.1,'url(#barC)'],['BEEF',74,steak,13.87,'url(#barN)'],['EGGS',59,egg,15.47,'url(#barN)'],['BREAD',38,bread,16.83,'url(#barN)']];
+    const base=FLOOR-6, maxh=720;
+    items.forEach(([n,v,ic,s0,fill],i)=>{
+      const k=eout(seg(t,s0,s0+.7)), h=maxh*v/122*k, bx=150+i*240;
+      g+=`<rect x="${bx-80}" y="${f(base-h)}" width="160" height="${f(h)}" rx="22" fill="${fill}" filter="url(#sh)"/>`;
+      if(k>0){ g+=`<text x="${bx}" y="${f(base-h-24)}" text-anchor="middle" font-size="60" fill="#5a2f12">+${Math.round(v*k)}%</text>`;
+        g+=`<text x="${bx}" y="${base+80}" text-anchor="middle" font-size="44" fill="#FFE9C7">${n}</text>`;
+        if(ic) g+=ic(bx,f(base-60),1.1); else g+=bean(bx,base-70,1.4,20);}
+    });
+    const ph=maxh*eout(seg(t,13.1,13.8));
+    g+=penny({x:150,y:base-ph-110,r:62,t,mouth,blink,armL:200,armR:-60,rot:wob*2,look:[1,0]});
+  } else if(t<L[5]){                            // S4: paycheck +34%
+    const lt=t-L[4];
+    g+=header(t,'YOUR PAY SINCE 2020',L[4],'#0f7a52');
+    const hc=720, hp=720*34/122*eout(seg(t,19.7,20.4)), base=FLOOR-6;
+    g+=`<rect x="620" y="${base-hc}" width="170" height="${hc}" rx="22" fill="url(#barC)" opacity=".95"/>`;
+    g+=`<text x="705" y="${base-hc-24}" text-anchor="middle" font-size="58" fill="#B3261E">+122%</text>`;
+    g+=bean(705,base-70,1.5,20);
+    g+=`<rect x="840" y="${f(base-hp)}" width="170" height="${f(hp)}" rx="22" fill="url(#barG)" filter="url(#sh)"/>`;
+    if(hp>2) g+=`<text x="925" y="${f(base-hp-24)}" text-anchor="middle" font-size="58" fill="#0f7a52">+34%</text>`;
+    g+=`<text x="705" y="${base+80}" text-anchor="middle" font-size="44" fill="#FFE9C7">COFFEE</text><text x="925" y="${base+80}" text-anchor="middle" font-size="44" fill="#FFE9C7">PAY</text>`;
+    const k=back(seg(lt,0,.5));
+    g+=penny({x:290,y:FLOOR,r:150,t,mouth,blink,armL:160,armR:-55,hold:'check',sx:k,sy:k,rot:wob,look:[1,-.4],mood:t>20.3?'worried':'happy'});
+  } else if(t<L[6]){                            // S5: the mug runs away, Penny chases with the paycheck
+    const lt=t-L[5];
+    g+=header(t,'COFFEE IS RUNNING AWAY',L[5],'#B3261E');
+    const mx=lerp(560,1020,seg(lt,.4,3.1)), px=lerp(-120,520,eio(seg(lt,.2,3)));
+    g+=`<g opacity=".5">${[0,1,2].map(i=>`<line x1="${f(mx-180-i*60)}" y1="${1120+i*40}" x2="${f(mx-120-i*60)}" y2="${1120+i*40}" stroke="#fff" stroke-width="10" stroke-linecap="round"/>`).join('')}</g>`;
+    g+=mug(mx,FLOOR-160,1,t,true);
+    g+=penny({x:px,y:FLOOR,r:130,t,mouth,walk:1,armL:170,armR:-30+Math.sin(t*14)*25,hold:'check',rot:8,mood:'worried',sweat:.9,look:[1,0]});
+  } else {                                       // S6: wave + follow
+    const lt=t-L[6];
+    g+=header(t,'ONE MONEY FACT A DAY',L[6]);
+    const k=back(seg(lt,0,.5));
+    g+=penny({x:540,y:FLOOR,r:200,t,mouth,blink,mood:'proud',armL:150,armR:-120+Math.sin(t*10)*28,sx:k,sy:k,look:[0,0]});
+    const bk=pop(t,25.0,.5), press=t>26.6&&t<26.9?.9:1;
+    g+=`<g transform="translate(540 1720) scale(${f(bk*press)})" opacity="${f(clamp(bk))}"><rect x="-260" y="-70" width="520" height="140" rx="70" fill="${t>26.75?'#5a2f12':'#E0392B'}" filter="url(#sh)"/><text x="0" y="24" text-anchor="middle" font-size="62" fill="#fff">${t>26.75?'FOLLOWING ✓':'FOLLOW'}</text></g>`;
+    g+=burst(540,1720,seg(t,26.75,27.4),'#FFD23F',14,300);
+  }
+  g+=captions(t);
+  g+=`<text x="40" y="1890" font-size="22" fill="#FFE9C7" opacity=".75" style="font-weight:700">Source: BLS average prices &amp; hourly earnings, Jan 2020 - Oct 2026</text>`;
+  document.getElementById('root').innerHTML=g;
+}
+window.setup=tl=>{TL=tl};
+window.frame=frame;
+</script></body></html>
