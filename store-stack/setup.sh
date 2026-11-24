@@ -49,13 +49,16 @@ dc() { ONE_CLICK_SETUP=true docker compose "${FILES[@]}" "$@"; } # ONE_CLICK_SET
 
 # Database first, then the one config row the server needs at startup
 # (Hyperswitch's own CI loads it from .github/data/payment_callback_config.sql).
-dc up -d --wait pg redis-standalone   # migration_runner doesn't wait for the DB itself
-dc up -d migration_runner
+dc up -d --pull missing --wait pg redis-standalone   # migration_runner doesn't wait for the DB itself
+dc up -d --pull missing migration_runner
 # `docker compose wait` exits with the container's exit code.
 dc wait migration_runner >/dev/null || { echo "Database migrations failed: run 'docker compose logs migration_runner'"; exit 1; }
 dc exec -T pg psql -U db_user -d hyperswitch_db -v ON_ERROR_STOP=1 < .github/data/payment_callback_config.sql
 dc exec -T redis-standalone redis-cli DEL payment_callback >/dev/null
-dc up -d || true   # the two usage-ping hooks may fail; that's harmless
+# Reuse downloaded images (upstream forces re-pulls, which trips Docker Hub's
+# rate limit). The two usage-ping hooks are expected to fail; that's harmless.
+dc up -d --pull missing || true
+dc up -d --pull missing --wait hyperswitch-server || { echo "Hyperswitch server didn't start: run 'docker compose logs hyperswitch-server'"; exit 1; }
 
 echo
 for url in http://localhost:8080/health http://localhost:9000 http://localhost:9050; do
