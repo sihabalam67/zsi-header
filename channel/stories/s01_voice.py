@@ -1,4 +1,5 @@
 """Voice + timeline for story #1: per-line narration (cached), word timings, lip-sync envelope -> stories/build/s01/."""
+import hashlib
 import json
 import os
 import sys
@@ -23,7 +24,7 @@ for si, sc in enumerate(SCENES):
         drama = text.startswith('!')
         text = text.lstrip('!')
         toks = E.parse_line(text)
-        key = f'{si:02d}_{li:02d}_' + str(abs(hash(text)) % 10**8)
+        key = f'{si:02d}_{li:02d}_' + hashlib.md5(text.encode()).hexdigest()[:10]
         p = os.path.join(B, 'vo', key + '.npy')
         if os.path.exists(p):
             a = np.load(p)
