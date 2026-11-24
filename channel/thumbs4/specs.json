@@ -659,5 +659,76 @@
     ]
    }
   ]
+ },
+ "s03_janitor_v5": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "split",
+    "x": 860
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1400' cy='600' r='430' fill='#FFF3A0' opacity='.6' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`${safebox({x:1400,y:1010,s:1.15,open:1,glow:1,t:.3})}<g filter='url(#sh)'>${[0,1,2,3,4,5,6,7].map(i=>`<g transform='translate(${1230+(i%4)*110} ${760-Math.floor(i/4)*60}) rotate(${(i*13)%20-10})'><rect x='-60' y='-28' width='120' height='56' rx='6' fill='#86C98B' stroke='#2F6B3A' stroke-width='4'/><circle r='16' fill='#BBF7D0' stroke='#2F6B3A' stroke-width='3'/></g>`).join('')}</g>`"
+   },
+   {
+    "type": "coinrain",
+    "x": 1000,
+    "y": 80,
+    "w": 880,
+    "h": 700,
+    "n": 24
+   },
+   {
+    "type": "sparkles",
+    "x": 980,
+    "y": 40,
+    "w": 900,
+    "h": 650,
+    "n": 20
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.walter({x:430,y:1230,h:960,mood:'happy',armL:110,armR:-20,t:.3,look:[1,0],holdR:soup({x:20,y:0,s:.9,t:.3})})}</g>`"
+   },
+   {
+    "type": "tag",
+    "x": 600,
+    "y": 720,
+    "label": "JANITOR",
+    "sub": "SOUP EVERY NIGHT",
+    "color": "#475569",
+    "rot": -6,
+    "s": 0.9
+   },
+   {
+    "type": "tag",
+    "x": 1420,
+    "y": 300,
+    "label": "$2,032,554",
+    "sub": "HIS SECRET",
+    "color": "#16A673",
+    "rot": 5,
+    "s": 0.92
+   },
+   {
+    "type": "text",
+    "x": 960,
+    "y": 1010,
+    "size": 100,
+    "lines": [
+     [
+      [
+       "HOW?!",
+       "r"
+      ]
+     ]
+    ]
+   }
+  ]
  }
 }

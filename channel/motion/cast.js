@@ -303,3 +303,37 @@ function door(o) { const { x, y, s = 1, open = 0 } = o;
 function phonePost(o) { const { x, y, s = 1, place = 'CANCUN', likes = 0, bg = '#38BDF8', rot = 0 } = o;
   return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(rot)}) scale(${ff(s)})" filter="url(#sh)"><rect x="-150" y="-280" width="300" height="560" rx="36" fill="#111827" stroke="${INK}" stroke-width="6"/><rect x="-130" y="-250" width="260" height="300" rx="10" fill="${bg}"/><circle cx="60" cy="-180" r="40" fill="#FDE047"/><path d="M-130 20 Q-40 -60 50 0 Q100 30 130 -10 L130 50 L-130 50Z" fill="#FDE68A"/>` +
     `<text x="0" y="110" text-anchor="middle" font-size="34" fill="#fff" font-family="P" font-weight="900">${place}</text><text x="0" y="170" text-anchor="middle" font-size="30" fill="#F472B6" font-family="P" font-weight="900">♥ ${likes.toLocaleString('en-US')}</text></g>`; }
+
+// ---------------------------------------------------------------- story #3 cast & props ---
+Object.assign(CAST, {
+  walter: o => person(Object.assign({ h: 560, skin: '#EBC3A0', hair: '#D1D5DB', hairStyle: 'bald', shirt: '#7C5A3A', pants: '#4B5563', shoes: '#3f2a1a', glasses: true, beard: false,
+    extra: (hr, hy) => `<path d="M${ff(-hr * 1.05)} ${ff(hy - hr * .55)} Q0 ${ff(hy - hr * 1.45)} ${ff(hr * 1.05)} ${ff(hy - hr * .55)} L${ff(hr * 1.3)} ${ff(hy - hr * .45)} L${ff(-hr * 1.05)} ${ff(hy - hr * .45)}Z" fill="#57534E" stroke="${INK}" stroke-width="4"/>` +
+      [0, 1, 2].map(i => `<path d="M${ff(-hr * .5 + i * hr * .45)} ${ff(hy + hr * 1.9 + i * hr * .5)} l${ff(hr * .22)} 0 a${ff(hr * .06)} ${ff(hr * .06)} 0 0 1 0 ${ff(hr * .12)} l-${ff(hr * .22)} 0" stroke="#CBD5E1" stroke-width="4" fill="none"/>`).join('') }, o)),
+  lily: o => person(Object.assign({ h: 540, skin: '#F1C6A3', hair: '#B45309', hairStyle: 'pony', shirt: '#10B981', pants: '#1E3A8A', shoes: '#F43F5E' }, o)),
+  derek: o => person(Object.assign({ h: 570, skin: '#E9B994', hair: '#111827', hairStyle: 'short', shirt: '#7E22CE', pants: '#581C87', shoes: '#111827',
+    extra: (hr, hy) => `<path d="M${ff(-hr * .9)} ${ff(hy - hr * .7)} q${ff(hr * .9)} ${ff(-hr * .7)} ${ff(hr * 1.9)} ${ff(-hr * .05)}" stroke="#111827" stroke-width="${ff(hr * .22)}" fill="none" stroke-linecap="round"/><path d="M${ff(-hr * .25)} ${ff(hy + hr * .58)} q${ff(hr * .25)} ${ff(hr * .1)} ${ff(hr * .5)} 0" stroke="${INK}" stroke-width="3" fill="none"/>` }, o)),
+  kowalski: o => person(Object.assign({ h: 540, skin: '#C9926B', hair: '#3f2a1a', hairStyle: 'curly', shirt: '#475569', pants: '#334155', shoes: '#111827', glasses: true }, o)),
+});
+// safe-deposit box: open 0..1, glow 0..1 (loot reveal: charge -> burst handled by the scene)
+function safebox(o) { const { x, y, s = 1, open = 0, glow = 0, t = 0 } = o;
+  let g = glow > 0 ? `<circle cx="0" cy="-120" r="${ff(260 + glow * 80)}" fill="#FFE58A" opacity="${ff(glow * .6)}" filter="url(#soft)"/>` + [0, 1, 2, 3, 4, 5].map(i => { const a = -Math.PI / 2 + (i - 2.5) * .35 + Math.sin(t) * .05; return `<path d="M0 -120 L${ff(Math.cos(a - .08) * 700)} ${ff(-120 + Math.sin(a - .08) * 700)} L${ff(Math.cos(a + .08) * 700)} ${ff(-120 + Math.sin(a + .08) * 700)}Z" fill="#FFF3A0" opacity="${ff(glow * .35)}"/>`; }).join('') : '';
+  g += `<rect x="-240" y="-200" width="480" height="200" rx="18" fill="#94A3B8" stroke="${INK}" stroke-width="7"/><rect x="-220" y="-180" width="440" height="160" rx="10" fill="#64748B"/>`;
+  g += `<g transform="translate(0 -200) rotate(${ff(-open * 70)} -240 0)"><rect x="-240" y="-60" width="480" height="60" rx="14" fill="#CBD5E1" stroke="${INK}" stroke-width="7"/><rect x="-30" y="-38" width="60" height="22" rx="6" fill="#FDE047" stroke="${INK}" stroke-width="4"/></g>`;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})" filter="url(#sh)">${g}</g>`; }
+function newspaper(o) { const { x, y, s = 1, rot = 0, crack = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(rot)}) scale(${ff(s)})" filter="url(#sh)"><rect x="-300" y="-380" width="600" height="760" fill="#F5EBD0" stroke="${INK}" stroke-width="6"/>` +
+    `<text x="0" y="-320" text-anchor="middle" font-size="40" fill="#44403C" font-family="A" style="font-family:A">THE DAILY LEDGER · OCT 20, 1987</text><line x1="-270" y1="-300" x2="270" y2="-300" stroke="#44403C" stroke-width="4"/>` +
+    `<text x="0" y="-200" text-anchor="middle" font-size="104" fill="#111" font-family="A" style="font-family:A">STOCKS</text><text x="0" y="-90" text-anchor="middle" font-size="104" fill="#B91C1C" font-family="A" style="font-family:A">CRASH</text>` +
+    `<text x="0" y="-20" text-anchor="middle" font-size="44" fill="#111" font-family="A" style="font-family:A">WORST DAY IN HISTORY: -20.5%</text>` + [0, 1, 2, 3, 4, 5, 6].map(i => `<rect x="-270" y="${30 + i * 44}" width="${250 + (i % 3) * 20}" height="14" fill="#A8A29E"/><rect x="20" y="${30 + i * 44}" width="${230 - (i % 2) * 30}" height="14" fill="#A8A29E"/>`).join('') +
+    (crack > 0 ? `<path d="M-300 -150 L-120 -120 L-60 -40 L80 -70 L170 20 L300 0" stroke="#111" stroke-width="${ff(6 * crack)}" fill="none"/>` : '') + `</g>`; }
+function envelopes(o) { const { x, y, s = 1, n = 30 } = o; let g = '';
+  for (let i = 0; i < n; i++) g += `<g transform="translate(${ff(Math.sin(i * 2.3) * 14)} ${-i * 9}) rotate(${ff(Math.sin(i * 1.7) * 4)})"><rect x="-120" y="-40" width="240" height="80" rx="6" fill="${i % 2 ? '#FEF3C7' : '#FDE68A'}" stroke="${INK}" stroke-width="3"/><path d="M-120 -40 L0 10 L120 -40" fill="none" stroke="${INK}" stroke-width="3"/></g>`;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})" filter="url(#sh)">${g}</g>`; }
+function card(o) { const { x, y, s = 1, open = 0, rot = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(rot)}) scale(${ff(s)})" filter="url(#sh)"><rect x="-220" y="-160" width="440" height="320" rx="14" fill="#FBCFE8" stroke="${INK}" stroke-width="6"/>` +
+    `<text x="0" y="-60" text-anchor="middle" font-size="48" fill="#9D174D" font-family="P" font-weight="900">FOR LILY</text><text x="0" y="0" text-anchor="middle" font-size="32" fill="#9D174D" font-family="P" font-weight="700">June 1, 1998</text>` +
+    `<path d="M-40 70 C-80 40 -60 0 0 30 C60 0 80 40 40 70 L0 110Z" fill="#F43F5E" stroke="${INK}" stroke-width="4" transform="scale(.7) translate(0 60)"/></g>`; }
+function soup(o) { const { x, y, s = 1, t = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})">${[0, 1, 2].map(i => `<path d="M${-30 + i * 30} -50 q${ff(Math.sin(t * 3 + i) * 10)} -25 0 -50" stroke="#fff" stroke-width="7" fill="none" opacity=".8"/>`).join('')}<path d="M-90 -40 L90 -40 Q80 40 0 45 Q-80 40 -90 -40Z" fill="#F97316" stroke="${INK}" stroke-width="6"/><ellipse cx="0" cy="-40" rx="90" ry="16" fill="#FDBA74" stroke="${INK}" stroke-width="5"/></g>`; }
+function gavel(o) { const { x, y, s = 1, hit = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})"><g transform="rotate(${ff(-35 + hit * 35)} 60 0)"><rect x="-20" y="-120" width="40" height="160" rx="10" fill="#92400E" stroke="${INK}" stroke-width="5" transform="rotate(-90 0 0) translate(40 -60)"/><rect x="-70" y="-60" width="140" height="70" rx="14" fill="#B45309" stroke="${INK}" stroke-width="6"/></g><rect x="-90" y="40" width="180" height="30" rx="8" fill="#78350F" stroke="${INK}" stroke-width="5"/></g>`; }
