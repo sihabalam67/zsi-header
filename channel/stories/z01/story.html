@@ -260,7 +260,7 @@ SCN.close=(t,s,L)=>{
   el(`<div class="abs" style="left:1180px;top:760px;width:680px;text-align:center;font-weight:900;font-size:30px;color:#E2BE62;opacity:${fade(t,.9)}">moosa-proposal-calculator.vercel.app</div>`);
   el(`<div class="abs lbl" style="left:1180px;top:810px;width:680px;text-align:center;font-size:26px;opacity:${fade(t,1.2)}">Scan to test the numbers yourself</div>`);
   if(t>L[2]-.3){const q=fade(t,L[2]-.3,.8);
-    el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:#0B1628;opacity:${q*.88}"></div>`);
+    el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:#0B1628;opacity:${q}"></div>`);
     el(`<div class="abs title" style="left:0;width:1300px;top:330px;text-align:center;font-size:150px;color:#E2BE62;opacity:${q}">Thank you</div><div class="abs" style="left:0;width:1300px;top:540px;text-align:center;font-weight:700;font-size:54px;opacity:${fade(t,L[2]+.6)}">Questions?</div>`);
     el(`<div class="abs" style="left:1330px;top:290px;width:420px;height:420px;padding:18px;box-sizing:border-box;border-radius:20px;background:#fff;opacity:${q}"><img src="${CAPS}qr_calculator.svg" style="width:384px;height:384px"></div><div class="abs" style="left:1240px;top:735px;width:600px;text-align:center;font-weight:700;font-size:24px;color:#E2BE62;opacity:${q}">moosa-proposal-calculator.vercel.app</div>`);}
   else if(t>L[1]-.2){ const q=fade(t,L[1]-.2,.7); el(`<div class="abs title" style="left:150px;top:930px;font-size:56px;color:#E2BE62;opacity:${q}">ZSI.Ai <span style="color:#F5EFE0;font-size:40px">· 7 products · 4 revenue streams</span></div>`);}
