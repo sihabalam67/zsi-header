@@ -59,6 +59,12 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    (sourced facts only, never personal financial advice, skip abuse).
 8. **Commit and push** everything except build files. Log the video in channel/out/LOG.md (date, title, id).
 
+## Story videos (owner's request, Nov 24)
+About half the long videos are family-friendly money STORIES (characters, twists, real numbers), the rest are
+news/market updates. Plans and backlog: channel/stories/ (BACKLOG.md). Story #1 "Grandpa Gave 3 Kids $1,000. Who
+Won?" is scheduled for Wed Nov 25 (the day before Thanksgiving): on that day the daily run makes NO other long video,
+only the Short (cut from the story's reunion scene: Ben's jar worth $470).
+
 ## Daily Short (from Nov 24)
 One native 9:16 Short a day (20-50 s), Penny Storybook style like channel/demo_character/, from the day's best fact,
 published 2-3 h after the long video. Before making one, check channel/out/LOG.md and video_ids.json: if a Short
