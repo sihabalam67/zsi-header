@@ -9,7 +9,7 @@ import numpy as np
 import soundfile as sf
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUTNAMES = {'s01': 's01_grandpa', 's02': 's02_salary', 's03': 's03_janitor'}
+OUTNAMES = {'s01': 's01_grandpa', 's02': 's02_salary', 's03': 's03_janitor', 'z01': 'zsi_investor'}
 sys.path.insert(0, os.path.dirname(HERE))
 import engine as E  # noqa: E402
 
@@ -28,12 +28,12 @@ for p in procs:
 open(os.path.join(B, 'segs.txt'), 'w').write(''.join(f"file '{s}'\n" for s in segs))
 # 2) audio: voice + music + sfx on story beats
 v = np.load(os.path.join(B, 'voice.npy'))
-mus = E.music(total, os.path.join(B, 'music.wav'), tempo=96, seed=11)
+mus = E.music(total, os.path.join(B, 'music.wav'), tempo=84 if SID.startswith('z') else 96, seed=11)
 fx = np.zeros(int(total * E.SR), np.float32)
 for s in tl['scenes']:
     E.place(fx, E.sfx('pop'), max(0, s['start']) + 0.05)
     for ln in s['lines']:
-        if ln['who'] == 'N':
+        if ln['who'] == 'N' and not SID.startswith('z'):  # z01: N is the male presenter, not a sound cue
             E.place(fx, E.sfx('ding'), ln['start'])
 out = E.master(v, mus, fx, total)
 sf.write(os.path.join(B, 'mix.wav'), out, E.SR)

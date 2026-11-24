@@ -19,9 +19,10 @@ SCENES = importlib.import_module(f'{SID}_script').SCENES
 VOICES = {  # who -> (kokoro voice, speed)
     'J': ('am_puck', 1.08), 'S': ('am_michael', 1.0), 'A': ('af_bella', 1.04), 'H': ('am_santa', 0.95),
     'G': ('bm_george', 0.95), 'W': ('am_onyx', 0.9), 'L': ('af_nicole', 1.02), 'D': ('am_fenrir', 1.05), 'K': ('bf_emma', 0.98), 'M': ('af_nicole', 1.05), 'B': ('am_echo', 1.05), 'R': ('af_sky', 1.04),
+    'F': ('af_heart', 0.98), 'N': ('am_michael', 0.97),
 }
-REFS = {'J': 'jay', 'S': 'sam', 'A': 'ava', 'H': 'hank', 'G': 'grandpa', 'W': 'walter', 'L': 'lily', 'D': 'derek', 'K': 'kowalski'}
-EXAG = {'J': .75, 'S': .45, 'A': .6, 'H': .7, 'G': .55, 'W': .5, 'L': .6, 'D': .75, 'K': .4}  # how expressive each character sounds
+REFS = {'J': 'jay', 'S': 'sam', 'A': 'ava', 'H': 'hank', 'G': 'grandpa', 'W': 'walter', 'L': 'lily', 'D': 'derek', 'K': 'kowalski', 'F': 'presenter_f', 'N': 'presenter_m'}
+EXAG = {'J': .75, 'S': .45, 'A': .6, 'H': .7, 'G': .55, 'W': .5, 'L': .6, 'D': .75, 'K': .4, 'F': .4, 'N': .4}  # how expressive each character sounds
 _k = None
 
 

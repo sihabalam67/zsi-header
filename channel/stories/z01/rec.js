@@ -1,0 +1,30 @@
+// node rec.js <timeline.json> stills "t1,t2,..." | full <outdir> [from] [to]
+const { chromium } = require('playwright'); const fs = require('fs');
+(async () => {
+  const dir = __dirname, B = dir + '/../build/z01';
+  const tl = JSON.parse(fs.readFileSync(process.argv[2])), dca = fs.existsSync(B + '/dca.json') ? JSON.parse(fs.readFileSync(B + '/dca.json')) : [], N = JSON.parse(fs.readFileSync(B + '/N.json'));
+  const mode = process.argv[3];
+  const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
+  const errs = []; p.on('pageerror', e => errs.push(String(e)));
+  await p.goto('file://' + dir + '/story.html'); await p.evaluate(() => document.fonts.ready);
+  await p.evaluate(([a, c, n]) => window.setup(a, c, n), [tl, dca, N]);
+  if (mode === 'stills') {
+    const ts = process.argv[4].split(',').map(Number); fs.mkdirSync(B + '/stills', { recursive: true });
+    for (const t of ts) { await p.evaluate(t => window.frame(t), t); await p.screenshot({ path: `${B}/stills/s_${t.toFixed(1)}.jpg`, type: 'jpeg', quality: 85 }); }
+  } else if (mode === 'pipe') { // stream JPEG frames into ffmpeg -> one video segment (no frames on disk)
+    const { spawn } = require('child_process');
+    const out = process.argv[4], from = +process.argv[5], to = +process.argv[6];
+    const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', '30', '-c:v', 'mjpeg', '-i', '-',
+      '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    for (let i = from; i < to; i++) {
+      await p.evaluate(t => window.frame(t), i / 30);
+      const buf = await p.screenshot({ type: 'jpeg', quality: 93 });
+      if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
+    }
+    ff.stdin.end(); await new Promise(r => ff.on('close', r));
+  } else {
+    const out = process.argv[4], from = +(process.argv[5] || 0), to = +(process.argv[6] || Math.ceil(tl.total * 30)); fs.mkdirSync(out, { recursive: true });
+    for (let i = from; i < to; i++) { await p.evaluate(t => window.frame(t), i / 30); await p.screenshot({ path: `${out}/${String(i).padStart(6, '0')}.jpg`, type: 'jpeg', quality: 92 }); }
+  }
+  console.log('errors', errs.length ? errs.slice(0, 5) : 'none'); await b.close();
+})();

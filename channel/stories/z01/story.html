@@ -1,0 +1,283 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- ZSI.Ai investor video (Gold Desk). Plan: investor/zsi/SCRIPT.md + MASTER_PROMPT.md. Scenes are keyed by the
+     scene ids in channel/stories/z01_script.py and timed from build/z01/timeline.json (line starts). -->
+<style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-700.ttf);font-weight:700}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#0B1628;font-family:P,sans-serif;color:#F5EFE0}
+.abs{position:absolute}
+#bg{position:absolute;inset:0;background:radial-gradient(1200px 800px at 50% 40%,#16294A 0%,#0B1628 60%,#070F1C 100%)}
+#glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,#C9A24A40,#C9A24A00 65%);left:510px;top:90px}
+.card{position:absolute;width:420px;height:262px;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px #0008;border:2px solid #C9A24A66;background:#fff}
+.bar{height:30px;background:#EDE7DA;display:flex;align-items:center;padding-left:14px;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%}
+.card .shot{width:100%;height:232px;background-size:420px auto;background-position:top center}
+.title{font-weight:900;letter-spacing:-1.5px}
+.chip{position:absolute;padding:12px 22px;border-radius:40px;background:#E2BE62;color:#0B1628;font-weight:900;font-size:28px;white-space:nowrap;box-shadow:0 12px 30px #0008;transform-origin:center bottom}
+.pin{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#E2BE62;box-shadow:0 0 0 9px #E2BE6255}
+.win{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 40px 90px #000a;border:2px solid #C9A24A55;background:#fff}
+.url{margin-left:18px;background:#fff;border-radius:8px;padding:3px 16px;font:700 17px P;color:#555;width:560px}
+.view{position:relative;overflow:hidden}
+.view img{position:absolute;left:0;top:0}
+.tag{position:absolute;padding:10px 20px;border-radius:10px;font-weight:700;font-size:26px;color:#fff}
+.chap{position:absolute;left:70px;top:44px;padding:8px 20px;border-radius:30px;border:2px solid #E2BE6288;color:#E2BE62;font-weight:700;font-size:24px;letter-spacing:.5px}
+.big{font-weight:900;color:#E2BE62}
+.lbl{font-weight:700;color:#C9BFA8}
+.panel{position:absolute;border-radius:22px;background:#12233F;border:2px solid #E2BE6233;box-shadow:0 30px 70px #0008}
+.check{position:absolute;border-radius:14px;background:linear-gradient(135deg,#FBF7EC,#F1E6C8);box-shadow:0 40px 80px #000a;color:#2B2416;overflow:hidden}
+.note{position:absolute;left:0;right:0;bottom:26px;text-align:center;font-weight:700;font-size:20px;color:#8E8672}
+</style></head><body>
+<div id="bg"></div><div id="glow"></div><div id="stage"></div>
+<script>
+const CAPS='file:///home/user/zsi-header/investor/zsi/caps/';
+const W=1920,H=1080; let TL=null;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const lerp=(a,b,k)=>a+(b-a)*k;
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eout=x=>1-Math.pow(1-x,3);
+const spring=(t,t0,k=1)=>{const x=t-t0;if(x<=0)return 0;return 1-Math.exp(-6*x*k)*Math.cos(9*x*k);};
+const money=v=>'$'+Math.round(v).toLocaleString('en-US');
+const short=v=>v>=1e6?'$'+(v/1e6).toFixed(2)+'M':'$'+Math.round(v/1000)+'K';
+const st=document.getElementById('stage'); let HTML='';
+const el=h=>{HTML+=h;};
+const fade=(t,a,d=.5)=>eout(seg(t,a,a+d));
+// keyframes [[frac,value],...] -> value at fraction f
+function keys(f,K){ if(f<=K[0][0]) return K[0][1]; for(let i=1;i<K.length;i++){ if(f<=K[i][0]){const k=eio(seg(f,K[i-1][0],K[i][0]));return lerp(K[i-1][1],K[i][1],k);} } return K[K.length-1][1]; }
+const DOTS='<span class="dot" style="background:#E5675B"></span><span class="dot" style="background:#E9B949"></span><span class="dot" style="background:#69B25B"></span>';
+function browser({img,url,x,y,w,vh,sy,op=1,dy=0,sc=1}){
+  const s=w/1440;
+  return `<div class="win" style="left:${x}px;top:${y}px;width:${w}px;opacity:${op};transform:translateY(${dy}px) scale(${sc})"><div class="bar">${DOTS}<span class="url">🔒 ${url}</span></div><div class="view" style="width:${w}px;height:${vh}px"><img src="${CAPS}${img}.jpg" style="width:${w}px;transform:translateY(${-sy*s}px)"></div></div>`;
+}
+function chip(x,y,txt,k,dy=-70){ if(k<=0) return ''; return `<div class="pin" style="left:${x}px;top:${y}px;transform:scale(${k})"></div><div class="chip" style="left:${x}px;top:${y+dy}px;transform:translate(-50%,0) scale(${k})">${txt}</div>`; }
+const chap=(t,txt)=>el(`<div class="chap" style="opacity:${fade(t,.1)}">${txt}</div>`);
+function countUp(t,a,d,v){ return v*eout(seg(t,a,a+d)); }
+
+// ------------------------------------------------------------------ product tour
+const TOUR={
+ kabab:{img:'kababking',url:'kk-express.vercel.app',name:'Kabab King',tag:['#1D5C7A','SaaS platform · 1 of 5'],desc:'Restaurant platform: menu, online ordering, table booking and catering.',
+   scroll:[[0,0],[.42,0],[.62,870],[1,870]],
+   chips:[[.08,'Online ordering',1064,41,70],[.64,'Table booking',258,1408,-70],[.69,'Pickup',566,1408,-120],[.74,'Delivery',874,1408,-70],[.79,'Catering',1182,1408,-120]]},
+ store:{img:'goldenmarkstore',url:'goldenmarkstore.com',name:'GoldenMark Store',tag:['#1D5C7A','SaaS platform · 2 of 5'],desc:'A complete online store: categories, deals, search, cart and order tracking.',
+   scroll:[[0,0],[.5,0],[.72,980],[1,980]],
+   chips:[[.08,'Product categories',230,128,60],[.18,'Featured deals',1150,300,-70],[.28,'Search & cart',760,72,60],[.38,'Order tracking',189,12,60],[.76,'New arrivals',300,1094,-70]]},
+ marry:{img:'usamarry',url:'usamarry.com',name:'USA Marry',tag:['#1D5C7A','SaaS platform · 3 of 5'],desc:'Muslim marriage and matchmaking: profiles, partner search, messaging, plans.',
+   scroll:[[0,0],[.3,0],[.48,1880],[.74,1880],[.86,2480],[1,2480]],
+   chips:[[.1,'Marriage, not dating',720,420,-70],[.5,'Create a profile',166,2009,-70],[.56,'Search partners',832,2009,-120],[.62,'Message securely',1210,2009,-70],[.88,'Membership plans',720,2631,-70]]},
+ print:{img:'dgprint24',url:'dgprint24.com',name:'DG Print 24',tag:['#1D5C7A','SaaS platform · 4 of 5'],desc:'Online printing: pick a product, upload artwork, track delivery.',
+   scroll:[[0,0],[.45,0],[.62,160],[1,160]],
+   chips:[[.08,'Business cards',345,64,60],[.18,'Posters & more',730,64,60],[.68,'Upload artwork',720,917,-70],[.76,'Track your order',1170,917,-120]]},
+ limo:{img:'rpclimo',url:'rpclimo.com',name:'RPC LIMO',tag:['#1D5C7A','SaaS platform · 5 of 5'],desc:'Luxury limo and chauffeur booking in 300+ cities, with rider and driver apps.',
+   scroll:[[0,0],[.22,0],[.4,520],[.66,520],[.82,2950],[1,2950]],
+   chips:[[.1,'300+ cities',720,300,-70],[.44,'Hourly · per ride · round trip',720,800,-80],[.86,'Airport · corporate · weddings',720,3264,-80]]},
+ gmm:{img:'goldenmarkmoney',url:'goldenmark.money',name:'GoldenMark Money',tag:['#A8822A','Digital checks'],desc:'Print checks, email eChecks and pay vendors in batches, from the browser.',
+   scroll:[[0,0],[.52,0],[.74,1000],[1,1000]],
+   chips:[[.1,'Print checks',780,540,-70],[.2,'Email eChecks',880,540,60],[.3,'Batch payments',985,540,-120],[.4,'Major US banks',760,490,-170],[.78,'One check workspace',720,1250,-70]]},
+};
+function tour(t,s,L,c){
+  const dur=s.end-s.start, f=t/dur, enter=eout(seg(t,0,.6));
+  const x=90,y=150,w=1220,vh=760, sc=w/1440, sy=keys(f,c.scroll);
+  el(browser({img:c.img,url:c.url,x,y,w,vh,sy,op:enter,dy:(1-enter)*60}));
+  for(const [at,txt,px,py,dy] of c.chips){ const ta=at*dur; if(t<ta) continue; const vy=y+30+(py-sy)*sc; if(vy<y+40||vy>y+30+vh-20) continue;
+    el(chip(x+px*sc,vy,txt,clamp(spring(t,ta,1.1)),dy)); }
+  // cursor glides between chips
+  const vis=c.chips.filter(q=>t>=q[0]*dur); const last=vis[vis.length-1]||c.chips[0];
+  const cx=x+last[2]*sc+40, cy=y+30+(last[3]-sy)*sc+30;
+  el(`<svg class="abs" style="left:${cx}px;top:${clamp(cy,y+40,y+vh)}px;transition:none" width="40" height="50"><path d="M4 4 L4 38 L14 29 L21 45 L28 42 L21 26 L34 26Z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg>`);
+  el(`<div class="tag" style="left:1370px;top:170px;background:${c.tag[0]};opacity:${fade(t,.4)}">${c.tag[1]}</div>`);
+  el(`<div class="abs title" style="left:1370px;top:250px;width:500px;font-size:76px;line-height:1.02;opacity:${fade(t,.6)};transform:translateY(${(1-fade(t,.6))*20}px)">${c.name}</div>`);
+  el(`<div class="abs lbl" style="left:1370px;top:${c.name.length>12?440:350}px;width:480px;font-size:32px;line-height:1.35;opacity:${fade(t,1.0)}">${c.desc}</div>`);
+  chap(t,'Our products');
+}
+
+// ------------------------------------------------------------------ scenes
+const SCN={};
+SCN.open=(t,s,L)=>{
+  const SITES=['kababking','goldenmarkstore','usamarry','dgprint24','rpclimo','goldenmarkmoney','calc_overview'];
+  const grid=[[230,150],[750,150],[1270,150],[230,450],[750,450],[1270,450],[750,750]];
+  const g=eio(seg(t,L[2]-.6,L[2]+.4));
+  for(let i=0;i<7;i++){const k=spring(t,.1+i*.16,.9); const x0=W/2-210+(i-3)*60,y0=H+200;
+    const x=lerp(x0,grid[i][0],k), y=lerp(y0,grid[i][1],k), sc=(.8+.2*k)*(1-.25*g), op=clamp(k*1.2)*(1-.8*g);
+    el(`<div class="card" style="left:${x}px;top:${y}px;transform:scale(${sc}) rotate(${(1-k)*(i%2?6:-6)}deg);opacity:${op}"><div class="bar">${DOTS}</div><div class="shot" style="background-image:url(${CAPS}${SITES[i]}.jpg)"></div></div>`);}
+  if(t>L[1]-.2){const k=fade(t,L[1]-.2,.6); ['SaaS','GoldenMark Money','ZSI PAY','Miscellaneous'].forEach((n,i)=>{const c=['#1D5C7A','#A8822A','#C4502F','#5B4B8A'][i];
+    el(`<div class="abs" style="left:${300+i*340}px;top:${960-(1-g)*0}px;width:300px;padding:12px 0;border-radius:12px;background:${c};text-align:center;font-weight:700;font-size:26px;opacity:${clamp(k*4-i*.6)*(g>0?1:1)};transform:translateY(${(1-clamp(k*4-i*.6))*30}px)">${n}</div>`);});}
+  const a=fade(t,L[2]-.2,.8), b=fade(t,L[2]+.6,.8);
+  el(`<div class="abs title" style="left:0;right:0;top:300px;text-align:center;font-size:190px;color:#E2BE62;opacity:${a};transform:translateY(${(1-a)*40}px);text-shadow:0 10px 40px #000">ZSI.Ai</div>`);
+  el(`<div class="abs" style="left:0;right:0;top:560px;text-align:center;font-weight:700;font-size:50px;opacity:${b}">7 live products <span style="color:#E2BE62">·</span> 4 ways to make money</div>`);
+};
+for(const k of ['kabab','store','marry','print','limo','gmm']) SCN[k]=(t,s,L)=>tour(t,s,L,TOUR[k]);
+SCN.saas=(t,s,L)=>{
+  chap(t,'Our products');
+  const P=['kababking','goldenmarkstore','usamarry','dgprint24','rpclimo'], N=['Kabab King','GoldenMark Store','USA Marry','DG Print 24','RPC LIMO'];
+  const k=fade(t,.1,.7);
+  el(`<div class="panel" style="left:110px;top:170px;width:1700px;height:700px;border-color:#1D5C7A;background:#0F2740;opacity:${k}"></div>`);
+  el(`<div class="abs title" style="left:170px;top:210px;font-size:64px;opacity:${k}"><span style="color:#5FA9CF">SaaS</span> Platforms</div>`);
+  for(let i=0;i<5;i++){const q=spring(t,.3+i*.18,1); const x=170+i*322, y=360;
+    el(`<div class="card" style="left:${x}px;top:${y}px;width:290px;height:200px;transform:scale(${q});opacity:${clamp(q)}"><div class="bar">${DOTS}</div><div class="shot" style="height:170px;background-size:290px auto;background-image:url(${CAPS}${P[i]}.jpg)"></div></div>`);
+    el(`<div class="abs lbl" style="left:${x}px;top:${y+215}px;width:290px;text-align:center;font-size:26px;opacity:${clamp(q)}">${N[i]}</div>`);}
+  const b=fade(t,L[1]+.2,.7);
+  el(`<div class="abs" style="left:170px;top:680px;font-weight:700;font-size:40px;opacity:${b};transform:translateY(${(1-b)*20}px)">Businesses pay a <span class="big">monthly subscription</span> to use the software.</div>`);
+};
+SCN.zsipay=(t,s,L)=>{
+  chap(t,'Our products');
+  el(`<div class="tag" style="left:110px;top:150px;background:#C4502F;opacity:${fade(t,.2)}">ZSI PAY · payments</div>`);
+  // two merchants -> terminal -> split
+  const m=[['Restaurant','🍽️',300],['Online shop','🛍️',620]];
+  m.forEach(([n,ic,y],i)=>{const k=spring(t,.3+i*.25,1); el(`<div class="panel" style="left:110px;top:${y}px;width:360px;height:230px;transform:scale(${k});opacity:${clamp(k)};text-align:center"><div style="font-size:90px;margin-top:20px">${ic}</div><div style="font-weight:700;font-size:34px">${n}</div></div>`);});
+  const tk=spring(t,.9,1);
+  el(`<div class="panel" style="left:760px;top:350px;width:420px;height:400px;border-color:#C4502F;transform:scale(${tk});opacity:${clamp(tk)}"><div class="abs title" style="left:0;right:0;top:40px;text-align:center;font-size:60px;color:#F08A6A">ZSI PAY</div><div class="abs" style="left:60px;top:150px;width:300px;height:180px;border-radius:16px;background:#0B1628;border:2px solid #C4502F88"></div><div class="abs lbl" style="left:0;right:0;top:215px;text-align:center;font-size:34px">online checkout</div></div>`);
+  // flow lines
+  if(t>1.2) el(`<svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M470 415 C620 415 620 550 760 550" stroke="#C4502F" stroke-width="6" fill="none" stroke-dasharray="14 12" stroke-dashoffset="${-t*40}"/><path d="M470 735 C620 735 620 550 760 550" stroke="#C4502F" stroke-width="6" fill="none" stroke-dasharray="14 12" stroke-dashoffset="${-t*40}"/></svg>`);
+  // a $1,000 sale passes through and splits
+  const p=seg(t,L[0]+2.2,L[0]+4.2), sp=seg(t,L[1]-.4,L[1]+.8);
+  if(p>0){ const x=lerp(470,1240,eio(p)), y=lerp(735,520,eio(p));
+    el(`<div class="abs" style="left:${x}px;top:${y}px;padding:14px 26px;border-radius:12px;background:#2F7D4F;font-weight:900;font-size:40px;box-shadow:0 12px 30px #0008">$1,000</div>`);}
+  if(sp>0){
+    el(`<div class="abs" style="left:1300px;top:${lerp(520,330,eio(sp))}px;padding:12px 24px;border-radius:12px;background:#2F7D4F;font-weight:900;font-size:38px;opacity:${sp}">$995 <span style="font-size:24px;font-weight:700">to the merchant</span></div>`);
+    el(`<div class="abs" style="left:${lerp(1300,1560,eio(sp))}px;top:${lerp(560,700,eio(sp))}px;width:110px;height:110px;border-radius:55px;background:radial-gradient(circle at 35% 30%,#FFF4B8,#E2BE62 50%,#B8860B);box-shadow:0 10px 30px #0008;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px;color:#5a3a00;opacity:${sp}">$5</div>`);
+    el(`<div class="abs lbl" style="left:1500px;top:850px;width:300px;text-align:center;font-size:30px;opacity:${sp}">we keep <span class="big" style="font-size:44px">0.5%</span></div>`);}
+};
+SCN.terms=(t,s,L)=>{
+  chap(t,'How it makes money');
+  const k=fade(t,0,.6);
+  el(browser({img:'calc_overview',url:'moosa-proposal-calculator.vercel.app',x:90,y:150,w:900,vh:760,sy:lerp(0,250,eio(seg(t,0,L[1]))),op:k}));
+  const d=(s.lines[1]||{dur:6}).dur, T=[['Revenue','All the money customers pay us.',0],['Expenses','What we spend to run each business.',.36],['Bottom line','Revenue minus expenses: the money we keep.',.68]];
+  T.forEach(([h,b,fr],i)=>{const a=L[1]+fr*d; const q=spring(t,a,1);
+    el(`<div class="panel" style="left:1060px;top:${170+i*215}px;width:780px;height:180px;transform:scale(${q});opacity:${clamp(q)}"><div class="abs big" style="left:36px;top:22px;font-size:48px">${h}</div><div class="abs" style="left:36px;top:100px;font-weight:700;font-size:32px">${b}</div></div>`);});
+  if(t>L[2]) el(`<div class="abs" style="left:1060px;top:830px;width:780px;text-align:center;padding:16px;border-radius:14px;border:2px solid #E2BE62;color:#E2BE62;font-weight:700;font-size:30px;opacity:${fade(t,L[2])}">5-year projections · a plan, not a guarantee</div>`);
+};
+SCN.saas_model=(t,s,L)=>{
+  chap(t,'Stream 1 · SaaS');
+  const rows=[['$75 / month','subscription',0],['+ $500','one-time setup',1.6],['= $1,400','first year',3.4]];
+  rows.forEach(([v,l,a],i)=>{const q=fade(t,L[0]+a,.5); el(`<div class="abs" style="left:150px;top:${200+i*150}px;opacity:${q};transform:translateX(${(1-q)*-30}px)"><span class="big" style="font-size:${i==2?96:78}px;color:${i==2?'#7FC4E8':'#F5EFE0'}">${v}</span> <span class="lbl" style="font-size:32px">${l}</span></div>`);});
+  if(t>L[0]+3.2) el(`<div class="abs" style="left:150px;top:500px;width:560px;height:5px;background:#5FA9CF;transform:scaleX(${fade(t,L[0]+3.2,.4)});transform-origin:left"></div>`);
+  // new subscriptions per year (bars) + active counter
+  const NEW=[300,500,750,1000,1250];
+  if(t>L[1]-.3){ el(`<div class="abs lbl" style="left:1000px;top:190px;font-size:30px;opacity:${fade(t,L[1]-.3)}">New subscriptions per year</div>`);
+    NEW.forEach((v,i)=>{const q=eout(seg(t,L[1]+i*.55,L[1]+i*.55+.7)); const h=v/1250*380;
+      el(`<div class="abs" style="left:${1000+i*165}px;top:${700-h*q}px;width:120px;height:${h*q}px;border-radius:10px 10px 0 0;background:#1D5C7A"></div><div class="abs" style="left:${990+i*165}px;top:${650-h*q}px;width:140px;text-align:center;font-weight:900;font-size:34px;opacity:${q}">${v.toLocaleString()}</div><div class="abs lbl" style="left:${990+i*165}px;top:715px;width:140px;text-align:center;font-size:26px">Year ${i+1}</div>`);});
+    const c=fade(t,L[1]+3.2,.6);
+    el(`<div class="abs" style="left:1000px;top:800px;opacity:${c}"><span class="lbl" style="font-size:30px">1 in 10 cancel each year · </span><span class="big" style="font-size:40px">${Math.round(countUp(t,L[1]+3.2,1.6,3319)).toLocaleString()}</span><span class="lbl" style="font-size:30px"> active by Year 5</span></div>`);}
+};
+SCN.saas_num=(t,s,L)=>{
+  chap(t,'Stream 1 · SaaS');
+  el(browser({img:'calc_saas',url:'proposal calculator · SaaS',x:90,y:150,w:1000,vh:740,sy:lerp(150,330,eio(seg(t,0,4))),op:fade(t,0)}));
+  const R=[['Year 1 revenue',285000,L[0]+.4],['Year 5 revenue',3152889,L[0]+2.2]];
+  R.forEach(([l,v,a],i)=>{el(`<div class="abs" style="left:1170px;top:${180+i*170}px;opacity:${fade(t,a)}"><div class="lbl" style="font-size:30px">${l}</div><div class="big" style="font-size:80px">${money(countUp(t,a,1.4,v))}</div></div>`);});
+  el(`<div class="abs" style="left:1170px;top:540px;opacity:${fade(t,L[1]+3.5)}"><div class="lbl" style="font-size:30px">Profit before tax · 5 years</div><div class="big" style="font-size:80px;color:#7FC4E8">${money(countUp(t,L[1]+3.5,1.6,5053683))}</div></div>`);
+  if(t>L[1]+6.5) el(`<div class="abs" style="left:1170px;top:760px;padding:14px 28px;border-radius:40px;background:#1D5C7A;font-weight:900;font-size:36px;transform:scale(${spring(t,L[1]+6.5)})">Profitable from Year 1</div>`);
+  if(t>L[1]) el(`<div class="abs lbl" style="left:1170px;top:880px;width:680px;font-size:24px;opacity:${fade(t,L[1])}">after sales staff, marketing, development, hosting and card fees</div>`);
+};
+SCN.gmm_model=(t,s,L)=>{
+  chap(t,'Stream 2 · GoldenMark Money');
+  const k=eout(seg(t,.2,1.0));
+  el(`<div class="abs" style="left:200px;top:230px;width:960px;height:30px;border-radius:15px;background:#1B2C48;box-shadow:inset 0 4px 10px #000"></div>`);
+  el(`<div class="check" style="left:250px;top:280px;width:860px;height:390px;transform:translateY(${(1-k)*-300}px);clip-path:inset(0 0 ${(1-k)*100}% 0)">
+    <div class="abs" style="left:40px;top:30px;font-weight:900;font-size:30px;color:#8A6A1C">GoldenMark Money</div><div class="abs" style="right:40px;top:34px;font-weight:700;font-size:22px">No. 0001</div>
+    <div class="abs" style="left:40px;top:140px;font-weight:700;font-size:22px">PAY TO THE ORDER OF</div>
+    <div class="abs" style="left:40px;top:175px;width:560px;border-bottom:3px solid #2B2416;font-weight:700;font-size:30px;padding-bottom:6px">Any US business</div>
+    <div class="abs" style="right:40px;top:160px;border:3px solid #2B2416;border-radius:8px;padding:6px 18px;font-weight:900;font-size:34px">eCHECK</div>
+    <div class="abs" style="left:40px;top:320px;font:700 22px monospace;letter-spacing:4px">⑆000001⑆ ⑈021000021⑈</div></div>`);
+  const rows=[[L[0]+1.4,'Price per check','$0.65','#F5EFE0'],[L[1]+.2,'Our cost','− $0.02','#E07A6A'],[L[1]+1.8,'We keep','$0.63','#E2BE62']];
+  rows.forEach(([a,l,v,c],i)=>{const q=fade(t,a); el(`<div class="abs" style="left:1230px;top:${230+i*175}px;opacity:${q};transform:translateX(${(1-q)*40}px);line-height:1.1"><div class="lbl" style="font-size:32px">${l}</div><div style="font-weight:900;color:${c};font-size:${i==2?96:76}px">${v}</div></div>`);});
+  if(t>L[1]+1.6) el(`<div class="abs" style="left:1230px;top:570px;width:440px;height:5px;background:#E2BE62;transform:scaleX(${fade(t,L[1]+1.6,.4)});transform-origin:left"></div>`);
+  if(t>L[1]+2.6) el(`<div class="abs" style="left:1230px;top:860px;padding:10px 26px;border-radius:30px;border:3px solid #E2BE62;color:#E2BE62;font-weight:900;font-size:36px;transform:scale(${spring(t,L[1]+2.6)})">96.9% margin</div>`);
+  if(t>L[0]+3.5) el(`<div class="abs lbl" style="left:250px;top:720px;font-size:32px;opacity:${fade(t,L[0]+3.5)}">No monthly fee · No setup fee</div>`);
+};
+SCN.gmm_num=(t,s,L)=>{
+  chap(t,'Stream 2 · GoldenMark Money');
+  el(browser({img:'calc_goldenmark',url:'proposal calculator · GoldenMark Money',x:90,y:150,w:1000,vh:740,sy:lerp(600,760,eio(seg(t,0,4))),op:fade(t,0)}));
+  el(`<div class="abs" style="left:1170px;top:180px;opacity:${fade(t,L[0])}"><div class="lbl" style="font-size:30px">Business customers</div><div class="big" style="font-size:72px">${Math.round(lerp(100,2000,eout(seg(t,L[0]+.5,L[0]+3)))).toLocaleString()}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:350px;opacity:${fade(t,L[0]+2.5)}"><div class="lbl" style="font-size:30px">Revenue per year</div><div class="big" style="font-size:66px">$78,000 → ${money(countUp(t,L[0]+3,1.5,1950000))}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:540px;opacity:${fade(t,L[1])}"><div class="lbl" style="font-size:30px">5-year revenue</div><div class="big" style="font-size:72px">${money(countUp(t,L[1],1.4,3685500))}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:720px;opacity:${fade(t,L[1]+2.4)}"><div class="lbl" style="font-size:30px">Left after check costs & marketing</div><div class="big" style="font-size:72px;color:#F5D98A">${money(countUp(t,L[1]+2.4,1.4,3212100))}</div></div>`);
+};
+SCN.pay_num=(t,s,L)=>{
+  chap(t,'Stream 3 · ZSI PAY');
+  // merchants: 30 rows of icons build up (each dot = 10 merchants): 30 restaurants + 60 shops = 900
+  const n=Math.round(90*eout(seg(t,L[0]+.5,L[1]+1.5)));
+  let g='';for(let i=0;i<n;i++){const r=i<30; const ix=i%15, iy=Math.floor(i/15); g+=`<div class="abs" style="left:${130+ix*56}px;top:${230+iy*56}px;width:42px;height:42px;border-radius:${r?'50%':'10px'};background:${r?'#F08A6A':'#C4502F'}"></div>`;}
+  el(g);
+  el(`<div class="abs lbl" style="left:130px;top:590px;font-size:28px;opacity:${fade(t,L[0]+.5)}"><span style="color:#F08A6A">●</span> restaurants (+60 a year) &nbsp; <span style="color:#C4502F">■</span> online shops (+120 a year) &nbsp; each = 10</div>`);
+  el(`<div class="abs" style="left:130px;top:660px;opacity:${fade(t,L[1])}"><span class="big" style="font-size:80px">${Math.round(lerp(0,900,eout(seg(t,L[1],L[1]+1.5))))}</span><span class="lbl" style="font-size:34px"> merchants by Year 5</span></div>`);
+  el(`<div class="abs" style="left:130px;top:800px;opacity:${fade(t,L[1]+2.5)}"><span class="big" style="font-size:72px;color:#F08A6A">${money(countUp(t,L[1]+2.5,1.6,720000000))}</span><span class="lbl" style="font-size:30px"> in sales processed (5 yrs)</span></div>`);
+  // revenue bars
+  const R=[144000,432000,720000,1008000,1296000];
+  if(t>L[2]-.4){ R.forEach((v,i)=>{const q=eout(seg(t,L[2]+i*.35,L[2]+i*.35+.6)); const h=v/1296000*420;
+      el(`<div class="abs" style="left:${1150+i*140}px;top:${760-h*q}px;width:100px;height:${h*q}px;border-radius:10px 10px 0 0;background:#C4502F"></div><div class="abs" style="left:${1130+i*140}px;top:${715-h*q}px;width:140px;text-align:center;font-weight:900;font-size:28px;opacity:${q}">${short(v)}</div><div class="abs lbl" style="left:${1130+i*140}px;top:775px;width:140px;text-align:center;font-size:24px">Year ${i+1}</div>`);});
+    el(`<div class="abs" style="left:1150px;top:850px;opacity:${fade(t,L[2]+2.2)}"><span class="lbl" style="font-size:30px">5-year fee revenue </span><span class="big" style="font-size:56px">${money(countUp(t,L[2]+2.2,1.3,3600000))}</span></div>`);}
+};
+SCN.misc=(t,s,L)=>{
+  chap(t,'Stream 4 · Miscellaneous');
+  for(let i=0;i<5;i++){const q=spring(t,.4+i*.25,1); const off=eio(seg(t,L[1]+.2+i*.1,L[1]+1.2+i*.1));
+    const x=180+i*320;
+    el(`<div class="panel" style="left:${x}px;top:300px;width:270px;height:300px;border-color:#5B4B8A;transform:scale(${q});opacity:${clamp(q)}"><div class="abs lbl" style="left:0;right:0;top:40px;text-align:center;font-size:26px">Project ${i+1}</div><div class="abs big" style="left:0;right:0;top:110px;text-align:center;font-size:54px;color:#B8A6F0">$10,000</div></div>`);
+    if(off>0) el(`<div class="abs" style="left:${x+20}px;top:${520+off*160}px;width:230px;padding:10px 0;border-radius:10px;background:#3A2F5C;text-align:center;font-weight:700;font-size:24px;opacity:${1-off*.3}">− $5,000 development</div>`);}
+  el(`<div class="abs" style="left:180px;top:190px;font-weight:700;font-size:40px;opacity:${fade(t,L[0]+1.5)}">About 5 outside projects a year = <span class="big">$50,000</span></div>`);
+  el(`<div class="abs" style="left:180px;top:860px;font-weight:700;font-size:44px;opacity:${fade(t,L[1]+1.6)}">Net over 5 years: <span class="big" style="color:#B8A6F0">$125,000</span></div>`);
+};
+SCN.combined=(t,s,L)=>{
+  chap(t,'All four together');
+  const Y=[[285000,78000,144000,50000],[731500,195000,432000,50000],[1370850,487500,720000,50000],[2183765,975000,1008000,50000],[3152889,1950000,1296000,50000]];
+  const C=['#1D5C7A','#A8822A','#C4502F','#5B4B8A'], NM=['SaaS Platforms','GoldenMark Money','ZSI PAY','Miscellaneous'];
+  const scale=600/6500000;
+  el(`<div class="abs title" style="left:150px;top:110px;font-size:56px;opacity:${fade(t,0)}">Combined revenue by year</div>`);
+  el(`<div class="abs" style="left:150px;top:190px;display:flex;gap:30px;font-weight:700;font-size:26px;opacity:${fade(t,.3)}">${NM.map((n,i)=>`<span><i style="display:inline-block;width:22px;height:22px;border-radius:5px;margin-right:9px;vertical-align:-3px;background:${C[i]}"></i>${n}</span>`).join('')}</div>`);
+  for(let y=0;y<5;y++){ const a=L[1]-.2+y*.9, g=eout(seg(t,a,a+.9)); const x=220+y*230;
+    let h='';for(let q=3;q>=0;q--) h+=`<div style="height:${Y[y][q]*scale*g}px;background:${C[q]};${q==3?'border-radius:8px 8px 0 0':''}"></div>`;
+    el(`<div class="abs" style="left:${x}px;bottom:200px;width:150px">${h}</div><div class="abs lbl" style="left:${x}px;bottom:150px;width:150px;text-align:center;font-size:28px">Year ${y+1}</div>`);
+    const tot=Y[y].reduce((p,c)=>p+c,0); el(`<div class="abs" style="left:${x-35}px;bottom:${215+tot*scale*g}px;width:220px;text-align:center;font-weight:900;font-size:36px;opacity:${seg(t,a+.4,a+.8)}">${short(tot*g)}</div>`); }
+  el(`<div class="abs" style="left:1440px;top:420px;width:440px;opacity:${fade(t,L[1]+4.2)}"><div class="lbl" style="font-size:28px">Year 5, every month</div><div class="big" style="font-size:58px">≈ $537,000</div></div>`);
+  el(`<div class="abs" style="left:1440px;top:600px;width:440px;opacity:${fade(t,L[2])}"><div class="lbl" style="font-size:28px">Five-year revenue</div><div class="big" style="font-size:60px">${money(countUp(t,L[2],1.5,15259504))}</div></div>`);
+};
+SCN.bottom=(t,s,L)=>{
+  chap(t,'The bottom line');
+  const B=[245050,991122,1990835,3390334,5373443], M=[44.0,70.4,75.7,80.4,83.3];
+  el(`<div class="abs title" style="left:150px;top:110px;font-size:54px;opacity:${fade(t,0)}">Bottom line by year <span class="lbl" style="font-size:28px">(revenue minus expenses, best case)</span></div>`);
+  B.forEach((v,i)=>{const a=.4+i*.5, q=eout(seg(t,a,a+.7)); const h=v/5373443*470; const x=200+i*200;
+    el(`<div class="abs" style="left:${x}px;top:${830-h*q}px;width:130px;height:${h*q}px;border-radius:10px 10px 0 0;background:linear-gradient(#F5D98A,#A8822A)"></div><div class="abs" style="left:${x-25}px;top:${785-h*q}px;width:180px;text-align:center;font-weight:900;font-size:32px;opacity:${q}">${short(v)}</div><div class="abs lbl" style="left:${x}px;top:845px;width:130px;text-align:center;font-size:26px">Year ${i+1}</div>`);});
+  // margin dial
+  if(t>L[1]-.2){ const k=eout(seg(t,L[1]+.3,L[1]+3)); const m=lerp(44,83.3,k); const ang=m/100*360;
+    el(`<div class="abs" style="left:1330px;top:250px;width:380px;height:380px;border-radius:50%;opacity:${fade(t,L[1]-.2)};background:conic-gradient(#E2BE62 0deg ${ang}deg,#1B2C48 ${ang}deg 360deg)"></div><div class="abs" style="left:1375px;top:295px;width:290px;height:290px;border-radius:50%;background:#0B1628;opacity:${fade(t,L[1]-.2)}"></div>`);
+    el(`<div class="abs" style="left:1330px;top:370px;width:380px;text-align:center;opacity:${fade(t,L[1]-.2)}"><div class="big" style="font-size:90px">${Math.round(m)}%</div><div class="lbl" style="font-size:28px">profit margin</div></div>`);
+    el(`<div class="abs lbl" style="left:1330px;top:650px;width:380px;text-align:center;font-size:28px;opacity:${fade(t,L[1]+.5)}">Year 1: 44% → Year 5: 83%</div>`);}
+  if(t>L[2]-.2){ const q=fade(t,L[2]-.2);
+    el(`<div class="panel" style="left:1180px;top:720px;width:680px;height:250px;opacity:${q}"><div class="abs" style="left:28px;top:18px;font-weight:900;font-size:28px;color:#E2BE62">Best case · not audited profit</div>
+      <div class="abs" style="left:28px;top:70px;font-weight:700;font-size:23px;line-height:1.55;color:#DDD3BC">SaaS: all costs included<br>GoldenMark Money: only check cost + marketing<br>ZSI PAY: no costs added yet</div></div>`);}
+};
+SCN.why=(t,s,L)=>{
+  chap(t,'Why invest');
+  el(`<div class="abs title" style="left:150px;top:110px;font-size:64px;opacity:${fade(t,0)}">Why invest in <span style="color:#E2BE62">ZSI.Ai</span></div>`);
+  const C=[['7 live products','4 ways to earn, no single point of failure'],['Recurring revenue','subscriptions and payment fees, every month'],['High margins','a $0.65 check costs us $0.02'],['Fast growth','$557K → $6.45M a year in 5 years'],['Early profit','SaaS profitable in Year 1'],['Transparent','open the live calculator and test it']];
+  C.forEach(([h,b],i)=>{const a=L[Math.min(i+1,L.length-1)]-.1; const q=spring(t,a,1); const x=150+(i%3)*560, y=250+Math.floor(i/3)*330;
+    el(`<div class="panel" style="left:${x}px;top:${y}px;width:520px;height:290px;transform:scale(${q});opacity:${clamp(q)}"><div class="abs" style="left:32px;top:28px;width:56px;height:56px;border-radius:50%;background:#E2BE62;color:#0B1628;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:30px">${i+1}</div><div class="abs big" style="left:32px;top:104px;font-size:44px">${h}</div><div class="abs" style="left:32px;top:176px;width:460px;font-weight:700;font-size:28px;line-height:1.35">${b}</div></div>`);});
+};
+SCN.close=(t,s,L)=>{
+  const k=fade(t,0,.6);
+  el(browser({img:'calc_overview',url:'moosa-proposal-calculator.vercel.app',x:90,y:150,w:1050,vh:740,sy:lerp(0,700,eio(seg(t,0,L[1]))),op:k*(1-fade(t,L[2],.6)*.6)}));
+  el(`<div class="abs" style="left:1240px;top:170px;width:560px;height:560px;padding:24px;box-sizing:border-box;border-radius:24px;background:#fff;opacity:${fade(t,.6)};transform:scale(${.9+.1*fade(t,.6)})"><img src="${CAPS}qr_calculator.svg" style="width:512px;height:512px"></div>`);
+  el(`<div class="abs" style="left:1180px;top:760px;width:680px;text-align:center;font-weight:900;font-size:30px;color:#E2BE62;opacity:${fade(t,.9)}">moosa-proposal-calculator.vercel.app</div>`);
+  el(`<div class="abs lbl" style="left:1180px;top:810px;width:680px;text-align:center;font-size:26px;opacity:${fade(t,1.2)}">Scan to test the numbers yourself</div>`);
+  if(t>L[2]-.3){const q=fade(t,L[2]-.3,.8);
+    el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:#0B1628;opacity:${q*.88}"></div>`);
+    el(`<div class="abs title" style="left:0;width:1300px;top:330px;text-align:center;font-size:150px;color:#E2BE62;opacity:${q}">Thank you</div><div class="abs" style="left:0;width:1300px;top:540px;text-align:center;font-weight:700;font-size:54px;opacity:${fade(t,L[2]+.6)}">Questions?</div>`);
+    el(`<div class="abs" style="left:1330px;top:290px;width:420px;height:420px;padding:18px;box-sizing:border-box;border-radius:20px;background:#fff;opacity:${q}"><img src="${CAPS}qr_calculator.svg" style="width:384px;height:384px"></div><div class="abs" style="left:1240px;top:735px;width:600px;text-align:center;font-weight:700;font-size:24px;color:#E2BE62;opacity:${q}">moosa-proposal-calculator.vercel.app</div>`);}
+  else if(t>L[1]-.2){ const q=fade(t,L[1]-.2,.7); el(`<div class="abs title" style="left:150px;top:930px;font-size:56px;color:#E2BE62;opacity:${q}">ZSI.Ai <span style="color:#F5EFE0;font-size:40px">· 7 products · 4 revenue streams</span></div>`);}
+  el(`<div class="note" style="opacity:${fade(t,.5)}">Five-year projections from the ZSI.Ai Proposal Calculator's default assumptions. Not a guarantee of future results. Combined bottom line is a best case, not audited profit.</div>`);
+};
+
+// ------------------------------------------------------------------ frame
+function scene(t){ let cur=TL.scenes[0]; for(const s of TL.scenes) if(t>=s.start) cur=s; return cur; }
+function frame(t){
+  const s=scene(t), lt=t-s.start, L=s.lines.map(l=>l.start-s.start); HTML='';
+  document.getElementById('glow').style.transform=`scale(${1+.05*Math.sin(t*.6)})`;
+  (SCN[s.id]||(()=>{}))(lt,s,L);
+  // soft dip at every scene change
+  const k=seg(lt,0,.35); if(k<1&&s.start>0) HTML+=`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:#0B1628;opacity:${(1-k)*.9}"></div>`;
+  const nx=TL.scenes[TL.scenes.indexOf(s)+1]; if(nx){const e=seg(t,nx.start-.25,nx.start); if(e>0) HTML+=`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:#0B1628;opacity:${e*.9}"></div>`;}
+  st.innerHTML=HTML;
+}
+window.setup=(tl,dca,N)=>{ TL=tl; };
+window.frame=frame;
+</script></body></html>
