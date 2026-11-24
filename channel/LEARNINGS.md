@@ -13,10 +13,17 @@ After each video's first 3 days, add its numbers to the table below and update t
 | Stocks Rose 18 Times Out of 18 After Midterms... | 112 | 77 | 30 | 0.9 min | 48% / 31% / 17% | browse |
 | Why Is Gas So Expensive Right Now? | 21 | 10 | 15 | 1.2 min | 46% / 31% / 15% | search |
 | Only 1 Dollar in 10 Is Cash (Banks) | 21 | 2 | 1 | 0.3 min | - | search |
-| Stocks Fell 6 Days in a Row. Is a Crash Coming? | 194 | (analytics pending) | | | | |
-| Fear Index Hits 37 as Stocks Enter a Correction... | 21 | pending | | | | |
-| The Nasdaq's Worst Week Since 2020... | 34 | pending | | | | |
-Long-video watch hours, all time: 38.1 of 4,000.
+| Stocks Fell 6 Days in a Row. Is a Crash Coming? | 218 | 167 | 209 | 3.1 min (38%) | 68% / 57% / 45% | browse |
+| Fear Index Hits 37. What Happens Next? | 71 | 46 | 115 | 4.0 min (49%) | 73% / 64% / 55% | search, browse |
+| The Nasdaq's Worst Week Since 2020. Now What? | 288 | 221 | 551 | 3.6 min (44%) | 75% / 61% / 53% | suggested 127, browse 83 |
+Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
+
+## Progress check (Nov 23)
+- Retention got much better with the daily format: the last 3 videos hold 68-75% at 30 s and 3.1-4.0 min on
+  average (gold: 65% and 2.8 min). Pass mark "over 3 min average" met by all three.
+- Clicks are still the weak spot: 71-288 views vs gold's 1,357 in 3 days. Thumbnails were changed to bright
+  photos on Nov 21; titles shortened. Next: broader, everyday topics (see topic lesson) to raise clicks.
+- Missed Nov 22 and Nov 23 videos: the session was down and the daily run didn't fire on time.
 
 ## What the winner did that the others didn't
 1. **Thumbnail: bright, real photo of one recognizable thing (gold bars) + 2 huge words with one number
