@@ -1118,8 +1118,15 @@
     "code": "`<circle cx='1160' cy='560' r='430' fill='#FF6A3D' opacity='0.75' filter='url(#soft)'/>`"
    },
    {
+    "type": "bagc",
+    "x": 1130,
+    "y": 540,
+    "s": 2.0,
+    "rot": -7
+   },
+   {
     "type": "raw",
-    "svg": "<g transform='rotate(-7 1160 565)' filter='url(#sh)'><path d='M900 330 L1420 330 L1420 800 L900 800Z' fill='#FFD21F' stroke='#fff' stroke-width='16' stroke-linejoin='round'/><path d='M900 330 L1420 330 L1420 800 L900 800Z' fill='none' stroke='#111' stroke-width='6'/><circle cx='960' cy='390' r='22' fill='#111'/><text x='1160' y='700' text-anchor='middle' font-size='400' fill='#111'>?</text></g><g transform='rotate(12 1440 520)' filter='url(#sh)'><circle cx='1440' cy='520' r='115' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1440' y='565' text-anchor='middle' font-size='130' fill='#fff'>x2</text></g>"
+    "svg": "<g transform='rotate(12 1440 520)' filter='url(#sh)'><circle cx='1440' cy='520' r='115' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1440' y='565' text-anchor='middle' font-size='130' fill='#fff'>x2</text></g>"
    },
    {
     "type": "penny",
@@ -1138,11 +1145,7 @@
    },
    {
     "type": "raw",
-    "svg": "<text x='1110' y='120' text-anchor='middle' font-size='120' fill='#fff' stroke='#000' stroke-width='20' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>ONE ITEM</text>"
-   },
-   {
-    "type": "raw",
-    "svg": "<g transform='rotate(-3 1110 245)' filter='url(#sh)'><rect x='827' y='179' width='567' height='132' rx='15' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1110' y='284' text-anchor='middle' font-size='110' fill='#fff'>DOUBLED</text></g>"
+    "svg": "<g transform='rotate(-3 1110 200)' filter='url(#sh)'><rect x='631' y='140' width='958' height='120' rx='14' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1110' y='236' text-anchor='middle' font-size='100' fill='#fff'>COFFEE DOUBLED</text></g>"
    }
   ]
  },
@@ -1162,11 +1165,15 @@
    },
    {
     "type": "js",
-    "code": "`<g filter='url(#sticker)'><g transform='translate(590 1010) scale(2.7)'>${jar({x:0,y:0,s:1,bills:10})}</g></g>`"
+    "code": "`<g filter='url(#sticker)'><g transform='translate(590 1010) scale(2.7)'>${jar({x:0,y:0,s:1,bills:10,label:''})}</g></g>`"
    },
    {
     "type": "js",
     "code": "`${mouse({x:500,y:900,s:2.6,t:.3,nibble:1,tag:false})}<circle cx='575' cy='795' r='185' fill='none' stroke='#E5202B' stroke-width='22'/>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<g filter='url(#sh)'><rect x='800' y='700' width='44' height='24' rx='3' fill='#86C98F' stroke='#1F5130' stroke-width='3' transform='rotate(-25 800 700)'/><rect x='845' y='650' width='44' height='24' rx='3' fill='#86C98F' stroke='#1F5130' stroke-width='3' transform='rotate(20 845 650)'/><rect x='770' y='620' width='44' height='24' rx='3' fill='#86C98F' stroke='#1F5130' stroke-width='3' transform='rotate(40 770 620)'/></g>"
    },
    {
     "type": "js",
@@ -1197,12 +1204,12 @@
     "code": "`<g filter='url(#sticker)'>${car({x:1080,y:820,s:1.2,kind:'sedan',t:.3})}</g>`"
    },
    {
-    "type": "sparkles",
+    "type": "coinrain",
     "x": 760,
-    "y": 420,
-    "w": 700,
-    "h": 380,
-    "n": 10
+    "y": 480,
+    "w": 640,
+    "h": 260,
+    "n": 16
    },
    {
     "type": "js",
@@ -1210,11 +1217,7 @@
    },
    {
     "type": "raw",
-    "svg": "<text x='1110' y='170' text-anchor='middle' font-size='130' fill='#fff' stroke='#000' stroke-width='21' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>BORING</text>"
-   },
-   {
-    "type": "raw",
-    "svg": "<line x1='880' y1='120' x2='1340' y2='150' stroke='#E5202B' stroke-width='22' stroke-linecap='round'/>"
+    "svg": "<text x='1110' y='170' text-anchor='middle' font-size='120' fill='#fff' stroke='#000' stroke-width='20' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>BORING CAR</text>"
    },
    {
     "type": "raw",
@@ -1242,7 +1245,15 @@
    },
    {
     "type": "js",
-    "code": "`<circle cx='600' cy='760' r='230' fill='#FFD54A' opacity='.85' filter='url(#soft)'/><g filter='url(#sticker)'>${envelopes({x:560,y:880,s:1.05,n:9})}</g>`"
+    "code": "`<circle cx='600' cy='760' r='230' fill='#FFD54A' opacity='.85' filter='url(#soft)'/><g filter='url(#sh)'><g transform='translate(590 860) rotate(-6)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(608 840) rotate(1)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(590 820) rotate(-4)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(608 800) rotate(3)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(590 780) rotate(-2)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(608 760) rotate(5)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(590 740) rotate(0)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g><g transform='translate(608 720) rotate(-5)'><rect x='-130' y='-35' width='260' height='70' rx='8' fill='#86C98F' stroke='#1F5130' stroke-width='5'/><circle r='22' fill='#BBF7D0' stroke='#1F5130' stroke-width='4'/><text x='0' y='12' text-anchor='middle' font-size='34' fill='#1F5130'>$</text></g></g>`"
+   },
+   {
+    "type": "coinrain",
+    "x": 330,
+    "y": 330,
+    "w": 560,
+    "h": 300,
+    "n": 14
    },
    {
     "type": "js",
@@ -1250,7 +1261,7 @@
    },
    {
     "type": "raw",
-    "svg": "<text x='600' y='210' text-anchor='middle' font-size='190' fill='#FFD21F' stroke='#000' stroke-width='31' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>BOX 467</text>"
+    "svg": "<text x='600' y='210' text-anchor='middle' font-size='170' fill='#FFD21F' stroke='#000' stroke-width='28' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>HIS SECRET</text>"
    }
   ]
  }

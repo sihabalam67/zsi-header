@@ -85,6 +85,10 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    opens ONE gap only the video closes, each with a different trigger: hidden item ("ONE ITEM DOUBLED" + ? tag),
    dramatic irony (happy kid, mouse eating his "TOTALLY SAFE" jar), identity reversal ("BORING" crossed out, "WON"),
    forbidden secret (glowing open vault, "BOX 467"). Live set = <name>_X specs. Log which trigger wins.
+   OWNER STANDING ORDER (Nov 24): ALWAYS follow and take suggestions from the two installed repos (youtube-skills,
+   youtube-packaging) via the thumbnail-expert agent (.claude/agents/thumbnail-expert.md), and every thumbnail must
+   pass the CHILD TEST: a small child can say what it's about in one second = one big face + one object everyone
+   knows + money VISIBLE (coins/cash) + max 3 everyday words. No codes ("BOX 467"), jargon (401k) or word games.
    KEEP THE BOTTOM-RIGHT CORNER EMPTY (x > 1450, y > 850 on 1920x1080): YouTube's duration badge covers it (owner's
    phone screenshot, Nov 24: the $126,766 / $16,368 / $132.50 tags were hidden). Titles: checked with yt-title-optimizer
    (40-60 chars, one number, positive outcome framing, no words shared with the thumbnail).

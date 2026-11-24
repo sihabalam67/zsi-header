@@ -178,7 +178,7 @@ function jar(o) {
   g += `<path d="M-110 -250 Q-140 -230 -140 -180 L-140 -40 Q-140 0 -100 0 L100 0 Q140 0 140 -40 L140 -180 Q140 -230 110 -250Z" fill="none" stroke="${INK}" stroke-width="6"/>`;
   g += `<path d="M-115 -205 Q-120 -120 -112 -50" stroke="#fff" stroke-width="10" opacity=".7" fill="none" stroke-linecap="round"/>`;
   g += `<rect x="-120" y="-292" width="240" height="46" rx="14" fill="#D97706" stroke="${INK}" stroke-width="6"/><rect x="-40" y="-312" width="80" height="24" rx="10" fill="#B45309" stroke="${INK}" stroke-width="5"/>`;
-  g += `<g transform="rotate(-4)"><rect x="-100" y="-175" width="200" height="54" rx="10" fill="#FFF7E6" stroke="${INK}" stroke-width="4"/><text x="0" y="-138" text-anchor="middle" font-size="25" fill="#7C2D12" font-family="P" font-weight="900">${label}</text></g>`;
+  if (label) g += `<g transform="rotate(-4)"><rect x="-100" y="-175" width="200" height="54" rx="10" fill="#FFF7E6" stroke="${INK}" stroke-width="4"/><text x="0" y="-138" text-anchor="middle" font-size="25" fill="#7C2D12" font-family="P" font-weight="900">${label}</text></g>`;
   if (glow) g = `<circle cx="0" cy="-150" r="220" fill="#FFE58A" opacity="${ff(glow * .5)}" filter="url(#soft)"/>` + g;
   return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})">${g}</g>`;
 }
