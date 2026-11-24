@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { GUIDES, getGuide } from '@/lib/guides';
-import { PRODUCT } from '@/lib/product';
+import { FEATURED } from '@/lib/product';
 import { CONTENT_UPDATED } from '@/lib/site';
 import { JsonLd, articleLd, faqLd, breadcrumbLd } from '@/lib/seo';
 
@@ -68,8 +68,8 @@ export default async function Guide({ params }) {
 
       <aside className="cta-box">
         <b>Make the nightly hunt easy</b>
-        <p>{PRODUCT.short}. Ships from a US warehouse.</p>
-        <Link href="/" className="cta inline">See the {PRODUCT.name}</Link>
+        <p>{FEATURED.tagline}. Ships from a US warehouse.</p>
+        <Link href={`/products/${FEATURED.slug}`} className="btn primary">See the {FEATURED.name}</Link>
       </aside>
 
       <section>

@@ -1,68 +1,73 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { OFFERS, UPSELL, FREE_SHIPPING_THRESHOLD, money } from '@/lib/product';
+import { useEffect, useRef, useState } from 'react';
+import { useCart } from './cart';
+import { getProduct, money, FREE_SHIPPING_THRESHOLD } from '@/lib/product';
 
-export default function BuyBox() {
-  const [selected, setSelected] = useState('duo');
+// Bundle picker + add to cart, with a sticky bar on mobile once the main button scrolls away.
+export default function BuyBox({ slug }) {
+  const product = getProduct(slug);
+  const { add } = useCart();
+  const defaultBundle = product.bundles.find((b) => b.badge)?.id || product.bundles[0].id;
+  const [selected, setSelected] = useState(defaultBundle);
+  const [showSticky, setShowSticky] = useState(false);
+  const btnRef = useRef(null);
 
-  // Links from Google Shopping / structured data use ?offer=<id>.
+  // Links from Google Shopping / structured data use ?offer=<bundle id>.
   useEffect(() => {
     const offer = new URLSearchParams(window.location.search).get('offer');
-    if (OFFERS.some((o) => o.id === offer)) setSelected(offer);
-  }, []);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+    if (product.bundles.some((b) => b.id === offer)) setSelected(offer);
+  }, [product]);
 
-  async function checkout() {
-    setLoading(true);
-    setError('');
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ offerId: selected }),
-      });
-      const data = await res.json();
-      if (!data.url) throw new Error(data.error || 'Checkout unavailable');
-      window.location.href = data.url;
-    } catch (e) {
-      setError(e.message);
-      setLoading(false);
-    }
-  }
+  useEffect(() => {
+    const el = btnRef.current;
+    if (!el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([e]) => setShowSticky(!e.isIntersecting && e.boundingClientRect.top < 0));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const bundle = product.bundles.find((b) => b.id === selected);
+  const single = product.bundles[0];
 
   return (
     <div className="buybox">
-      {OFFERS.map((o) => {
-        const perUnit = o.price / o.units;
-        return (
-          <label key={o.id} className={`offer ${selected === o.id ? 'on' : ''}`}>
-            <input
-              type="radio"
-              name="offer"
-              checked={selected === o.id}
-              onChange={() => setSelected(o.id)}
-            />
-            <span className="offer-main">
-              <strong>{o.label}</strong>
-              {o.badge && <em className="badge">{o.badge}</em>}
-              <small>{o.sub}</small>
-            </span>
-            <span className="offer-price">
-              <strong>{money(o.price)}</strong>
-              {o.units > 1 && <small>{money(perUnit)} each</small>}
-            </span>
-          </label>
-        );
-      })}
-      <button className="cta" onClick={checkout} disabled={loading}>
-        {loading ? 'Opening secure checkout…' : 'Get my cat hunting'}
+      <fieldset className="bundles">
+        <legend className="sr-only">Choose a bundle</legend>
+        {product.bundles.map((b) => {
+          const save = single.price * b.units - b.price;
+          return (
+            <label key={b.id} className={`bundle ${selected === b.id ? 'on' : ''}`}>
+              <input type="radio" name={`bundle-${slug}`} checked={selected === b.id} onChange={() => setSelected(b.id)} />
+              <span className="b-main">
+                <span className="b-label">{b.label}{b.badge && <em className="badge">{b.badge}</em>}</span>
+                <small>{b.sub}</small>
+              </span>
+              <span className="b-price">
+                <b>{money(b.price)}</b>
+                {save > 0 && <small className="save">Save {money(save)}</small>}
+              </span>
+            </label>
+          );
+        })}
+      </fieldset>
+      <button ref={btnRef} className="btn primary block lg" onClick={() => add(product.slug, selected)}>
+        Add to cart · {money(bundle.price)}
       </button>
-      {error && <p className="error">{error}</p>}
-      <p className="fine">
-        Free US shipping on orders over {money(FREE_SHIPPING_THRESHOLD)} · Ships from a US warehouse in 5–7
-        business days · Add a {UPSELL.name.toLowerCase()} at checkout
-      </p>
+      <ul className="assurances">
+        <li><Icon d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" /><span>Free US shipping over {money(FREE_SHIPPING_THRESHOLD)}</span></li>
+        <li><Icon d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" /><span>Secure checkout by Stripe</span></li>
+        <li><Icon d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4" /><span>30-day returns</span></li>
+      </ul>
+      <div className={`sticky-buy ${showSticky ? 'show' : ''}`}>
+        <div><b>{product.name}</b><small>{bundle.label} · {money(bundle.price)}</small></div>
+        <button className="btn primary" onClick={() => add(product.slug, selected)}>Add to cart</button>
+      </div>
     </div>
+  );
+}
+
+function Icon({ d }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
   );
 }

@@ -1,6 +1,6 @@
 import { stripe } from './stripe';
 import { getBalance } from './cj';
-import { PRODUCT } from './product';
+import { PRODUCTS } from './product';
 
 // Everything the admin dashboard shows, read live from Stripe and CJ.
 
@@ -66,9 +66,8 @@ export function readiness() {
     { group: 'Payments', label: 'Stripe secret key', ok: env('STRIPE_SECRET_KEY'), note: env('STRIPE_SECRET_KEY') ? (live ? 'Live mode' : 'Test mode') : 'STRIPE_SECRET_KEY' },
     { group: 'Payments', label: 'Stripe webhook signing secret', ok: env('STRIPE_WEBHOOK_SECRET'), note: 'STRIPE_WEBHOOK_SECRET' },
     { group: 'Supplier', label: 'CJ API key', ok: env('CJ_API_KEY'), note: 'CJ_API_KEY' },
-    { group: 'Supplier', label: 'CJ product variant ID', ok: env('CJ_VID_WAND'), note: 'CJ_VID_WAND' },
-    { group: 'Supplier', label: 'CJ add-on variant ID', ok: env('CJ_VID_REFILL'), note: 'CJ_VID_REFILL' },
-    { group: 'Supplier', label: 'Real product photos', ok: !PRODUCT.images.some((i) => i.includes('placeholder')), note: 'lib/product.js images' },
+    ...PRODUCTS.map((p) => ({ group: 'Supplier', label: `CJ variant: ${p.name}`, ok: env(p.cjVidEnv), note: p.cjVidEnv })),
+    { group: 'Supplier', label: 'Real product photos (not illustrations)', ok: !PRODUCTS.some((p) => p.images.some((i) => i.endsWith('.svg'))), note: 'lib/product.js images' },
     { group: 'Email', label: 'Resend API key', ok: env('RESEND_API_KEY'), note: 'RESEND_API_KEY' },
     { group: 'Email', label: 'Your alert email', ok: env('OWNER_EMAIL'), note: 'OWNER_EMAIL' },
     { group: 'Email', label: 'Support email', ok: env('SUPPORT_EMAIL'), note: 'SUPPORT_EMAIL' },

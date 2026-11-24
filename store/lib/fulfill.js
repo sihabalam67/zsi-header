@@ -1,7 +1,7 @@
 import { stripe } from './stripe';
 import { createOrder, ensurePaid, getOrder } from './cj';
 import { sendEmail } from './email';
-import { CJ_VARIANTS, UPSELL, PRODUCT, BRAND } from './product';
+import { BRAND, getProduct, cjVid } from './product';
 
 // Order state lives in the Stripe PaymentIntent's metadata (no database):
 //   fulfillment: pending | placed | unpaid | shipped | error
@@ -18,19 +18,18 @@ export async function sessionForPaymentIntent(piId) {
   return list.data[0] ? loadSession(list.data[0].id) : null;
 }
 
-// What the customer bought, translated into supplier units.
+// What the customer bought, translated into supplier units: each Stripe price
+// carries { product, units } metadata, and each product has a CJ variant ID.
 export function supplierItems(session) {
-  let wands = 0;
-  let refills = 0;
+  const byVid = new Map();
   for (const li of session.line_items.data) {
-    const offerId = li.price.metadata?.offer_id;
-    if (offerId === UPSELL.id) refills += li.quantity;
-    else wands += Number(li.price.metadata?.units || 0) * li.quantity;
+    const product = getProduct(li.price.metadata?.product);
+    const vid = product && cjVid(product);
+    if (!vid) throw new Error(`No CJ variant configured for "${li.description}"`);
+    const units = Number(li.price.metadata?.units || 1) * li.quantity;
+    byVid.set(vid, (byVid.get(vid) || 0) + units);
   }
-  const items = [];
-  if (wands) items.push({ vid: CJ_VARIANTS.wand, quantity: wands });
-  if (refills) items.push({ vid: CJ_VARIANTS.refill, quantity: refills });
-  return items;
+  return [...byVid].map(([vid, quantity]) => ({ vid, quantity }));
 }
 
 export function shippingOf(session) {
@@ -44,11 +43,12 @@ export async function fulfillSession(session, { notifyCustomer = true } = {}) {
   if (session.payment_status !== 'paid' || !pi) return { skipped: 'not paid' };
   if (pi.metadata?.cj_order_id) return { skipped: 'already placed', cjOrderId: pi.metadata.cj_order_id };
 
-  const items = supplierItems(session);
   const ship = shippingOf(session);
   const email = session.customer_details?.email;
+  let items = [];
 
   try {
+    items = supplierItems(session);
     const { orderId, paid } = await createOrder({
       orderNumber: session.id,
       address: ship.address,
@@ -63,7 +63,7 @@ export async function fulfillSession(session, { notifyCustomer = true } = {}) {
     if (notifyCustomer) {
       await sendEmail({
         to: email,
-        subject: `Your ${PRODUCT.name} order is confirmed`,
+        subject: `Your ${BRAND.name} order is confirmed`,
         text: `Thanks for your order from ${BRAND.name}!\n\nIt ships from our US warehouse and usually arrives in 5–7 business days. We'll email your tracking number as soon as it ships.`,
       });
     }
@@ -105,7 +105,7 @@ export async function syncTracking(pi, { force = false } = {}) {
   if (email) {
     await sendEmail({
       to: email,
-      subject: `Your ${PRODUCT.name} has shipped`,
+      subject: `Your ${BRAND.name} order has shipped`,
       text: `Good news: your order is on its way.\n\nTracking number: ${tracking}\nTrack it here: ${link}`,
     });
   }

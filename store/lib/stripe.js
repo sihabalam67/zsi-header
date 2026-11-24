@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { CURRENCY, OFFERS, UPSELL, PRODUCT } from './product';
+import { CURRENCY, PRODUCTS } from './product';
 
 let client;
 export function stripe() {
@@ -8,37 +8,34 @@ export function stripe() {
   return client;
 }
 
-// Find-or-create Stripe prices by lookup_key, so nothing has to be set up
-// by hand in the Stripe dashboard. Changing a price in product.js creates a
-// new lookup key (the amount is part of it).
-const lookupKey = (id, amount) => `${PRODUCT.slug}-${id}-${amount}`;
+// Find-or-create a Stripe price for every product bundle, keyed by lookup_key,
+// so nothing has to be set up by hand in Stripe. The amount is part of the key,
+// so changing a price in lib/product.js creates a new Stripe price.
+export const priceKey = (slug, bundleId) => `${slug}:${bundleId}`;
+const lookupKey = (slug, b) => `${slug}-${b.id}-${b.price}`;
 
 export async function ensurePrices() {
-  const items = [
-    ...OFFERS.map((o) => ({ id: o.id, amount: o.price, name: `${PRODUCT.name} — ${o.label}`, units: o.units })),
-    { id: UPSELL.id, amount: UPSELL.price, name: UPSELL.name, units: 0 },
-  ];
-  const keys = items.map((i) => lookupKey(i.id, i.amount));
-  const existing = await stripe().prices.list({ lookup_keys: keys, active: true, limit: 100 });
-  const byKey = Object.fromEntries(existing.data.map((p) => [p.lookup_key, p.id]));
-
+  const items = PRODUCTS.flatMap((p) => p.bundles.map((b) => ({ p, b, key: lookupKey(p.slug, b) })));
+  const byKey = {};
+  for (let i = 0; i < items.length; i += 10) {
+    const keys = items.slice(i, i + 10).map((x) => x.key);
+    const existing = await stripe().prices.list({ lookup_keys: keys, active: true, limit: 10 });
+    for (const pr of existing.data) byKey[pr.lookup_key] = pr.id;
+  }
   const result = {};
-  for (const item of items) {
-    const key = lookupKey(item.id, item.amount);
+  for (const { p, b, key } of items) {
     if (!byKey[key]) {
+      const meta = { product: p.slug, bundle: b.id, units: String(b.units) };
       const price = await stripe().prices.create({
         currency: CURRENCY,
-        unit_amount: item.amount,
+        unit_amount: b.price,
         lookup_key: key,
-        product_data: {
-          name: item.name,
-          metadata: { offer_id: item.id, units: String(item.units) },
-        },
-        metadata: { offer_id: item.id, units: String(item.units) },
+        product_data: { name: `${p.name}: ${b.label}`, metadata: meta },
+        metadata: meta,
       });
       byKey[key] = price.id;
     }
-    result[item.id] = byKey[key];
+    result[priceKey(p.slug, b.id)] = byKey[key];
   }
   return result;
 }

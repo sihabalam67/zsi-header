@@ -1,79 +1,123 @@
-// Single source of truth for the store's brand, product and offer.
-// Swap the product here later without touching the rest of the site
-// (the brand is the sub-niche "indoor cat play", not the product).
+// The catalog: single source of truth for brand, products, bundles and prices.
+// The brand is the sub-niche ("indoor cat play"), so products can be added or
+// swapped here without touching the rest of the site.
+//
+// A product can only be bought once its CJ variant ID env var is set
+// (checkout refuses anything not connected to the supplier).
 
 export const BRAND = {
   name: 'Indoor Hunt Co.',
   tagline: 'Ten minutes of real hunting for indoor cats.',
+  promise: 'Play that feels like the wild, for cats who live indoors.',
   supportEmail: process.env.SUPPORT_EMAIL || 'support@example.com',
-  // Physical mailing address is legally required in commercial emails (CAN-SPAM)
-  // and expected on policy pages. Fill in before launch.
   address: process.env.BUSINESS_ADDRESS || 'Business address to be added',
 };
 
 export const CURRENCY = 'usd';
-
-// Free shipping once the cart's main items reach this amount (cents).
-// Set just above the single-unit price so the 2-pack unlocks it.
-export const FREE_SHIPPING_THRESHOLD = 2900;
+export const FREE_SHIPPING_THRESHOLD = 2900; // cents
 export const STANDARD_SHIPPING = 499;
+export const RETURN_DAYS = 30;
 
-export const PRODUCT = {
-  slug: 'reel-hunter-wand',
-  name: 'Reel Hunter Wand',
-  short: 'Telescopic fishing-rod cat toy with a working reel + 3 lures',
-  // Supplier media goes in /public/product/. Placeholder until real photos arrive.
-  images: ['/product-placeholder.svg'],
-  bullets: [
-    'Telescopic rod extends so you can play from the couch',
-    'Working reel lets you "cast" and reel the lure in, so your cat stalks it like prey',
-    '3 interchangeable lures (feather, fuzzy mouse, crinkle fish)',
-    'Lightweight, folds down for storage',
-  ],
-  safety:
-    'String toy: play together, then store it out of reach. Replace lures when worn.',
-};
-
-// Bundles = the AOV engine. `cjVid` is the CJ Dropshipping variant ID for one unit.
-export const OFFERS = [
+export const PRODUCTS = [
   {
-    id: 'single',
-    label: '1 Wand',
-    sub: 'For one cat',
-    price: 2499,
-    units: 1,
+    slug: 'indoor-hunt-wand',
+    name: 'Indoor Hunt Wand',
+    tagline: 'Telescopic cat wand with 6 interchangeable lures',
+    category: 'Wand toys',
+    featured: true,
+    images: ['/products/indoor-hunt-wand.svg', '/products/indoor-hunt-wand-lures.svg', '/products/how-to-hunt.svg'],
+    bullets: [
+      'Extends from 14 in to about 3 ft, so the lure moves like real prey, away from your hand',
+      '6 clip-on lures: feathers, fuzzy mice and crinkle fish to match how your cat likes to hunt',
+      'Play from the couch: the long reach does the running for you',
+      'Folds down small and stores in a drawer',
+    ],
+    details: [
+      ['What’s in the box', 'One telescopic wand and 6 interchangeable lures.'],
+      ['How to use it', 'Move the lure away from your cat in short darts with pauses, let your cat catch it often, and end each session with a final catch and a meal or treat.'],
+      ['Safety', 'String toy: play together, then store it out of reach. Replace lures when they start to fray.'],
+    ],
+    bundles: [
+      { id: 'single', label: '1 wand', sub: 'For one cat', units: 1, price: 1999 },
+      { id: 'duo', label: '2 wands', sub: 'Multi-cat home · free shipping', units: 2, price: 3499, badge: 'Best value' },
+      { id: 'trio', label: '3 wands', sub: 'One for every room · free shipping', units: 3, price: 4799 },
+    ],
+    cjVidEnv: 'CJ_VID_HUNT_WAND',
   },
   {
-    id: 'duo',
-    label: '2 Wands',
-    sub: 'Multi-cat home · free shipping',
-    price: 3999,
-    units: 2,
-    badge: 'Best value',
+    slug: 'cat-tv-window-bird-feeder',
+    name: 'Cat TV Window Bird Feeder',
+    tagline: 'Clear window feeder that brings birds to your cat’s eye level',
+    category: 'Window watching',
+    images: ['/products/cat-tv-window-bird-feeder.svg'],
+    bullets: [
+      'Clear acrylic: your cat watches birds up close through the glass',
+      'Strong suction cups mount it on most windows in a minute',
+      'Removable seed tray for easy refills and cleaning',
+      'Hours of “cat TV” while you’re at work',
+    ],
+    details: [
+      ['What’s in the box', 'One clear window feeder with suction cups. Bird seed not included.'],
+      ['Tip', 'Mount it on a window your cat already sits by. Birds can take a few days to find a new feeder.'],
+      ['Care', 'Clean the window and cups before mounting; wipe the tray every week or two.'],
+    ],
+    bundles: [
+      { id: 'single', label: '1 feeder', sub: 'One window', units: 1, price: 3299 },
+      { id: 'duo', label: '2 feeders', sub: 'Two windows · free shipping', units: 2, price: 5999, badge: 'Best value' },
+    ],
+    cjVidEnv: 'CJ_VID_WINDOW_FEEDER',
   },
   {
-    id: 'trio',
-    label: '3 Wands',
-    sub: 'Never run out · free shipping',
-    price: 5499,
-    units: 3,
+    slug: 'lure-refill-pack',
+    name: 'Lure Refill Pack',
+    tagline: '6 replacement lures for the Indoor Hunt Wand',
+    category: 'Refills',
+    upsell: true,
+    images: ['/products/lure-refill-pack.svg'],
+    bullets: [
+      'Mixed set of feathers, fuzzy mice and crinkle fish',
+      'Clips straight onto the Indoor Hunt Wand',
+      'Swap lures to keep play new: cats lose interest in the same “prey”',
+    ],
+    details: [
+      ['What’s in the box', '6 assorted lures.'],
+      ['When to replace', 'Whenever a lure looks worn or frayed. Active cats go through lures in a few weeks.'],
+    ],
+    bundles: [
+      { id: 'single', label: '1 pack', sub: '6 lures', units: 1, price: 999 },
+      { id: 'duo', label: '2 packs', sub: '12 lures', units: 2, price: 1799 },
+    ],
+    cjVidEnv: 'CJ_VID_LURE_REFILL',
+  },
+  {
+    slug: 'silvervine-chew-sticks',
+    name: 'Silvervine Chew Sticks',
+    tagline: 'Natural silvervine sticks for chewing and play',
+    category: 'Treats & play',
+    images: ['/products/silvervine-chew-sticks.svg'],
+    bullets: [
+      'Natural silvervine (matatabi) wood sticks',
+      'Many cats who ignore catnip respond to silvervine',
+      'Rub on a lure to make a “boring” toy interesting again',
+    ],
+    details: [
+      ['What’s in the box', 'A pack of silvervine sticks.'],
+      ['Good to know', 'Not every cat responds to silvervine. Supervise chewing and replace sticks once they splinter.'],
+    ],
+    bundles: [
+      { id: 'single', label: '1 pack', sub: 'Try it', units: 1, price: 999 },
+      { id: 'duo', label: '2 packs', sub: 'Stock up', units: 2, price: 1799 },
+    ],
+    cjVidEnv: 'CJ_VID_SILVERVINE',
   },
 ];
 
-// Upsell shown as an optional add-on inside Stripe Checkout.
-export const UPSELL = {
-  id: 'lure-refill',
-  name: 'Lure Refill Pack (3 lures)',
-  price: 999,
-};
+export const FEATURED = PRODUCTS.find((p) => p.featured) || PRODUCTS[0];
+export const UPSELL = PRODUCTS.find((p) => p.upsell);
 
-export const CJ_VARIANTS = {
-  wand: process.env.CJ_VID_WAND, // variant ID of the wand
-  refill: process.env.CJ_VID_REFILL, // variant ID of the lure refill
-};
-
-export function getOffer(id) {
-  return OFFERS.find((o) => o.id === id);
-}
+export const getProduct = (slug) => PRODUCTS.find((p) => p.slug === slug);
+export const getBundle = (product, id) => product?.bundles.find((b) => b.id === id);
+export const fromPrice = (p) => Math.min(...p.bundles.map((b) => b.price));
+export const cjVid = (p) => process.env[p.cjVidEnv];
 
 export const money = (cents) => `$${(cents / 100).toFixed(2)}`;

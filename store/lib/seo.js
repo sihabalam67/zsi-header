@@ -1,4 +1,4 @@
-import { BRAND, PRODUCT, OFFERS, CURRENCY, FREE_SHIPPING_THRESHOLD, STANDARD_SHIPPING } from './product';
+import { BRAND, CURRENCY, FREE_SHIPPING_THRESHOLD, STANDARD_SHIPPING, RETURN_DAYS } from './product';
 import { SITE_URL, abs, CONTENT_UPDATED } from './site';
 
 // schema.org structured data (JSON-LD) used by Google, Bing, Apple and AI answer engines.
@@ -14,38 +14,20 @@ export function organizationLd() {
     name: BRAND.name,
     url: SITE_URL,
     logo: abs('/icon.svg'),
-    description: BRAND.tagline,
+    description: BRAND.promise,
     email: BRAND.supportEmail,
     sameAs: [process.env.SOCIAL_INSTAGRAM, process.env.SOCIAL_TIKTOK].filter(Boolean),
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer support',
-      email: BRAND.supportEmail,
-      areaServed: 'US',
-      availableLanguage: 'en',
-    },
+    contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: BRAND.supportEmail, areaServed: 'US', availableLanguage: 'en' },
   };
 }
 
 export function websiteLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${SITE_URL}/#website`,
-    name: BRAND.name,
-    url: SITE_URL,
-    publisher: { '@id': ORG_ID },
-    inLanguage: 'en-US',
-  };
+  return { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: BRAND.name, url: SITE_URL, publisher: { '@id': ORG_ID }, inLanguage: 'en-US' };
 }
 
 const shippingDetails = (price) => ({
   '@type': 'OfferShippingDetails',
-  shippingRate: {
-    '@type': 'MonetaryAmount',
-    value: price >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING / 100,
-    currency: CURRENCY.toUpperCase(),
-  },
+  shippingRate: { '@type': 'MonetaryAmount', value: price >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING / 100, currency: CURRENCY.toUpperCase() },
   shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
   deliveryTime: {
     '@type': 'ShippingDeliveryTime',
@@ -58,35 +40,45 @@ const returnPolicy = {
   '@type': 'MerchantReturnPolicy',
   applicableCountry: 'US',
   returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-  merchantReturnDays: 30,
+  merchantReturnDays: RETURN_DAYS,
   returnMethod: 'https://schema.org/ReturnByMail',
   returnFees: 'https://schema.org/FreeReturn',
 };
 
-export function productLd() {
+export function productLd(p) {
+  const url = abs(`/products/${p.slug}`);
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    '@id': `${SITE_URL}/#product`,
-    name: PRODUCT.name,
-    description: `${PRODUCT.short}. ${PRODUCT.bullets.join('. ')}.`,
-    image: PRODUCT.images.map((src) => abs(src)),
-    sku: PRODUCT.slug,
+    '@id': `${url}#product`,
+    name: p.name,
+    description: `${p.tagline}. ${p.bullets.join('. ')}.`,
+    image: p.images.map((src) => abs(src)),
+    sku: p.slug,
+    url,
     brand: { '@type': 'Brand', name: BRAND.name },
-    category: 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys',
-    offers: OFFERS.map((o) => ({
+    category: `Animals & Pet Supplies > Pet Supplies > Cat Supplies > ${p.category}`,
+    offers: p.bundles.map((b) => ({
       '@type': 'Offer',
-      name: `${PRODUCT.name}: ${o.label}`,
-      sku: `${PRODUCT.slug}-${o.id}`,
-      url: abs(`/?offer=${o.id}`),
-      price: (o.price / 100).toFixed(2),
+      name: `${p.name}: ${b.label}`,
+      sku: `${p.slug}-${b.id}`,
+      url: `${url}?offer=${b.id}`,
+      price: (b.price / 100).toFixed(2),
       priceCurrency: CURRENCY.toUpperCase(),
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@id': ORG_ID },
-      shippingDetails: shippingDetails(o.price),
+      shippingDetails: shippingDetails(b.price),
       hasMerchantReturnPolicy: returnPolicy,
     })),
+  };
+}
+
+export function itemListLd(products) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/products/${p.slug}`), name: p.name })),
   };
 }
 
@@ -94,11 +86,7 @@ export function faqLd(items) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: items.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
+    mainEntity: items.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
   };
 }
 
@@ -106,12 +94,7 @@ export function breadcrumbLd(crumbs) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: crumbs.map(([name, path], i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name,
-      item: abs(path),
-    })),
+    itemListElement: crumbs.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: abs(path) })),
   };
 }
 

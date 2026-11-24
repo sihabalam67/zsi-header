@@ -25,7 +25,7 @@ export const FAQ = [
   },
   {
     q: 'Can I buy extra lures?',
-    a: `Yes. You can add the ${UPSELL.name.toLowerCase()} for ${money(UPSELL.price)} at checkout.`,
+    a: `Yes. The ${UPSELL.name} has 6 replacement lures for ${money(UPSELL.bundles[0].price)}, and you can add it from the cart or at checkout.`,
   },
   {
     q: 'What is your return policy?',
