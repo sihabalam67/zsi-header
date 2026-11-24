@@ -19,6 +19,11 @@
  "madeForKids": false,
  "syntheticMedia": false,
  "language": "en",
- "thumbnail": "channel/out/thumbs/s03_janitor_v5.jpg",
- "captions": "channel/out/s03_janitor.en.srt"
+ "thumbnail": "channel/out/thumbs/s03_janitor_A.jpg",
+ "captions": "channel/out/s03_janitor.en.srt",
+ "thumb_bets": {
+  "A": "channel/out/thumbs/s03_janitor_A.jpg",
+  "B": "channel/out/thumbs/s03_janitor_B.jpg",
+  "C": "channel/out/thumbs/s03_janitor_C.jpg"
+ }
 }

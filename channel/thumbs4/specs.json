@@ -730,5 +730,125 @@
     ]
    }
   ]
+ },
+ "s03_janitor_A": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 560,
+    "y": 420,
+    "c1": "#FFE14D",
+    "c2": "#FFC21A"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.walter({x:560,y:2150,h:2000,mood:'laugh',t:.3,look:[1,-.2],})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1430 400)' filter='url(#sh)'><rect x='1080' y='250' width='700' height='300' rx='34' fill='#11A866' stroke='#fff' stroke-width='12'/><text x='1430' y='480' text-anchor='middle' font-size='250' fill='#fff'>$300</text></g>"
+   },
+   {
+    "type": "text",
+    "x": 1430,
+    "y": 700,
+    "size": 120,
+    "lines": [
+     [
+      [
+       "A",
+       "w"
+      ],
+      [
+       "MONTH",
+       "y"
+      ]
+     ]
+    ]
+   }
+  ]
+ },
+ "s03_janitor_B": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 520,
+    "y": 520,
+    "c1": "#22D3EE",
+    "c2": "#0891B2"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='480' cy='450' r='420' fill='#FFF3A0' opacity='.75' filter='url(#soft)'/><g transform='translate(300 470) rotate(-18) scale(3.2)' filter='url(#sh)'><circle r='40' fill='none' stroke='#FDE047' stroke-width='16'/><rect x='30' y='-12' width='150' height='24' fill='#FDE047' stroke='#111' stroke-width='3'/><rect x='140' y='12' width='16' height='30' fill='#FDE047'/><rect x='100' y='12' width='16' height='22' fill='#FDE047'/></g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.lily({x:1380,y:2150,h:2000,mood:'shocked',t:.3,look:[-1,0]})}</g>`"
+   },
+   {
+    "type": "text",
+    "x": 520,
+    "y": 960,
+    "size": 150,
+    "lines": [
+     [
+      [
+       "BOX",
+       "w"
+      ],
+      [
+       "467",
+       "y"
+      ]
+     ]
+    ]
+   }
+  ]
+ },
+ "s03_janitor_C": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 1350,
+    "y": 480,
+    "c1": "#FF5A3C",
+    "c2": "#D7261E"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1350' cy='560' r='380' fill='#FFE38A' opacity='.7' filter='url(#soft)'/><g transform='translate(1350 640) scale(3.2)' filter='url(#sticker)'>${soup({x:0,y:0,s:1,t:.3})}</g><g filter='url(#sh)'>${[0,1,2,3,4,5,6].map(i=>`<circle cx='${1350+(i-3)*70}' cy='${560-Math.abs(i-3)*-8-((i*37)%40)}' r='46' fill='url(#coin)' stroke='#B45309' stroke-width='5'/>`).join('')}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.walter({x:470,y:2150,h:2000,mood:'happy',t:.3,look:[1,0]})}</g>`"
+   },
+   {
+    "type": "text",
+    "x": 1350,
+    "y": 220,
+    "size": 130,
+    "lines": [
+     [
+      [
+       "SOUP",
+       "y"
+      ],
+      [
+       "EVERY",
+       "w"
+      ]
+     ],
+     [
+      [
+       "NIGHT",
+       "w"
+      ]
+     ]
+    ]
+   }
+  ]
  }
 }

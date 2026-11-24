@@ -41,7 +41,8 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    no real people, no logos.
 4. **Check and render.** `--check`, then `--stills` and look at every still (no overlaps; keep chips above y=600,
    the caption band starts at ~620). Then the full render (~30-40 min). Fix pace warnings with --only.
-5. **Thumbnails (v4 system, mandatory):** add a spec to `channel/thumbs4/specs.json` and render with
+5. **Thumbnails (v4 system, mandatory; plan them with the `youtube-packaging` skill: 3 bets, one big positive
+   face + one hook each, never the same layout as the last video, see LEARNINGS 1b):** add a spec to `channel/thumbs4/specs.json` and render with
    `node channel/thumbs4/render.js channel/thumbs4/specs.json <name>` (elements: penny, text with a red-box word, tag
    with strike, arrow, chart, candles, gauge, stamp, rays, bar, img). Rules in LEARNINGS.md rule 1. Export 1280x720
    JPG to out/thumbs/<name>_v4.jpg and use it as the upload thumbnail. Look at it at 320x180 next to

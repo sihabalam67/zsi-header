@@ -15,7 +15,7 @@ QA. Fill in every `{…}` and keep it in the episode docstring.
   One governing visual rule [gdgtify-989608 "the baseline is a trajectory"; rossaxbt-707651 "one dot threads every
   scene"]: {e.g. "the 401(k) form never leaves the story: it is checked, crumpled, kept, returned"}.
   Look: Penny Storybook on warm paper; ONE saturated hero color per scene (gold = money that grows, red = debt)
-  [notdwd-998633]; cold blue-gray world for the losing path, warm gold world for the winning path [two-worlds].
+  [notdwd-998633]; cold blue-gray world for the losing path, warm gold world for the winning path (scenes only; thumbnails follow LEARNINGS 1b).
   Characters are actors, not stickers [astrothewizard-618782 "give it a personality"; jakubantowski-020905 felt
   blob]: blink, breathe, look at whoever speaks, react within 0.3 s (gasp, laugh, nod), squash on landings.
   MOTION LIMITS (owner feedback Nov 24): calm, readable motion. Talking = slow head nod (<= 2.5 deg) + one hand
