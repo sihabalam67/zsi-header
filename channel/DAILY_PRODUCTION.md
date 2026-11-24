@@ -100,3 +100,6 @@ time and subscribers per 100 views. Double down on topics and title styles that 
 No bought views/subscribers, bots, sub-for-sub, comment spam or misleading titles. No real people or logos in
 AI images. Every number sourced and recomputed. Never personal financial advice. No spending money. Keep secrets
 out of logs and git. Don't delete published videos.
+
+
+**Format test (Nov 24):** follow channel/FORMATS.md: set `format` in out/styles.json for every video, never run the same format twice in a row, and compare "By FORMAT" in learn.py every Thursday.

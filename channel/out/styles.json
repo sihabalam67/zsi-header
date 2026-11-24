@@ -28,7 +28,8 @@
    "Coins as Data",
    "Timeline Slam",
    "Follow the Dollar"
-  ]
+  ],
+  "format": "family parable story"
  },
  "s02_salary": {
   "look": "paper",
@@ -38,7 +39,8 @@
    "Receipt & Recipe",
    "Money Machine",
    "Coins as Data"
-  ]
+  ],
+  "format": "family parable story"
  },
  "s02_salary_v2": {
   "look": "paper",
@@ -48,7 +50,8 @@
    "Receipt & Recipe",
    "Money Machine",
    "Coins as Data"
-  ]
+  ],
+  "format": "family parable story"
  },
  "s03_janitor": {
   "look": "paper",
@@ -59,6 +62,7 @@
    "Timeline Slam",
    "Receipt & Recipe",
    "Cloned character voices"
-  ]
+  ],
+  "format": "mystery story"
  }
 }

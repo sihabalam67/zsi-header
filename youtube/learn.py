@@ -103,6 +103,8 @@ def main():
         r['style'] = st_.get('look', 'newsroom')
         r['family'] = st_.get('family', '')
         r['devices'] = st_.get('devices', [])
+        # video FORMAT under test (channel/FORMATS.md); defaults for videos made before formats were tracked
+        r['format'] = st_.get('format') or ('family parable story' if r['name'].startswith('s0') else 'news explainer')
     rows.sort(key=lambda r: -r['minutes'])
     json.dump(rows, open(os.path.join(OUT, 'learn.json'), 'w'), indent=1)
     print(f"{'min':>5} {'views':>6} {'3day':>5} {'avg':>5} {'%':>3} {'30s':>4} {'1m':>4} {'2m':>4} {'subs':>4}  title")
@@ -122,6 +124,13 @@ def main():
         if g:
             print(f"  {sty:9s} n={len(g):2d}  first-3-day views {st.median(r['first3'] for r in g):>6.0f}  kept@30s "
                   f"{st.median(r['kept_30s'] for r in g):>3.0f}%  avg view {st.median(r['avg_view_s'] for r in g) / 60:.1f} min")
+    print('\nBy FORMAT (channel/FORMATS.md; videos live 3+ days; subs = new subscribers per video):')
+    for fm in sorted({r['format'] for r in rows}):
+        g = [r for r in rows if r['format'] == fm and r['days'] >= 3 and r['kept_30s']]
+        if g:
+            print(f"  {fm:24s} n={len(g):2d}  first-3-day views {st.median(r['first3'] for r in g):>6.0f}  kept@30s "
+                  f"{st.median(r['kept_30s'] for r in g):>3.0f}%  avg view {st.median(r['avg_view_s'] for r in g) / 60:.1f} min"
+                  f"  subs {st.mean(r['subs'] for r in g):.1f}")
     devs = sorted({d for r in rows for d in r['devices']})
     if devs:
         print('\nBy animation device (STYLE_PLAYBOOK.md; videos live 3+ days):')
