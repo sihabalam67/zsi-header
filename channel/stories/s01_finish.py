@@ -15,13 +15,14 @@ import engine as E  # noqa: E402
 B = os.path.join(HERE, 'build', 's01')
 tl = json.load(open(os.path.join(B, 'timeline.json')))
 total, nfr = tl['total'], int(tl['total'] * 30)
-fr = os.path.join(B, 'frames')
-# 1) frames, 4 workers
+# 1) video in 4 parallel segments, frames streamed straight into ffmpeg
 W = 4
-procs = [subprocess.Popen(['node', os.path.join(HERE, 's01', 'rec.js'), os.path.join(B, 'timeline.json'), 'full', fr,
+segs = [os.path.join(B, f'seg{i}.mp4') for i in range(W)]
+procs = [subprocess.Popen(['node', os.path.join(HERE, 's01', 'rec.js'), os.path.join(B, 'timeline.json'), 'pipe', segs[i],
                            str(nfr * i // W), str(nfr * (i + 1) // W)]) for i in range(W)]
 for p in procs:
     p.wait()
+open(os.path.join(B, 'segs.txt'), 'w').write(''.join(f"file '{s}'\n" for s in segs))
 # 2) audio: voice + music + sfx on story beats
 v = np.load(os.path.join(B, 'voice.npy'))
 mus = E.music(total, os.path.join(B, 'music.wav'), tempo=96, seed=11)
@@ -35,9 +36,9 @@ out = E.master(v, mus, fx, total)
 sf.write(os.path.join(B, 'mix.wav'), out, E.SR)
 # 3) encode
 dst = os.path.join(os.path.dirname(HERE), 'out', 's01_grandpa.mp4')
-subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-framerate', '30', '-i', os.path.join(fr, '%06d.jpg'), '-i',
-                os.path.join(B, 'mix.wav'), '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p',
-                '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', dst], check=True)
+subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', os.path.join(B, 'segs.txt'), '-i',
+                os.path.join(B, 'mix.wav'), '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
+                '-shortest', '-movflags', '+faststart', dst], check=True)
 # 4) captions .srt from word timings
 def ts(x):
     return f'{int(x // 3600):02d}:{int(x % 3600 // 60):02d}:{int(x % 60):02d},{int(x * 1000 % 1000):03d}'
