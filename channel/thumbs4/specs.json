@@ -356,5 +356,81 @@
     ]
    }
   ]
+ },
+ "s01_grandpa_v4": {
+  "bgcolor": "#1E3A5F",
+  "els": [
+   {
+    "type": "rays",
+    "x": 1180,
+    "y": 560,
+    "c1": "#2E6FAE",
+    "c2": "#1E4E80"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${tree({x:1250,y:1180,size:1.05,leaves:1,coins:16,t:.3})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.rosie({adult:true,x:1180,y:1150,h:820,mood:'laugh',armL:215,armR:-35,t:.3})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.ben({adult:true,x:420,y:1180,h:860,mood:'shocked',armL:110,armR:-60,t:.3,look:[1,0]})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${jar({x:620,y:1060,s:.95,bills:10})}</g>${mouse({x:720,y:1050,s:.9,t:.2,nibble:1})}`"
+   },
+   {
+    "type": "tag",
+    "x": 780,
+    "y": 700,
+    "label": "$470",
+    "sub": "JAR",
+    "color": "#E5202B",
+    "rot": -8,
+    "s": 0.95
+   },
+   {
+    "type": "tag",
+    "x": 1560,
+    "y": 470,
+    "label": "$16,368",
+    "sub": "TREE",
+    "color": "#16A673",
+    "rot": 5,
+    "s": 1.05
+   },
+   {
+    "type": "text",
+    "x": 960,
+    "y": 190,
+    "size": 128,
+    "lines": [
+     [
+      [
+       "SAME",
+       "w"
+      ],
+      [
+       "$1,000",
+       "y"
+      ]
+     ],
+     [
+      [
+       "WHO",
+       "w"
+      ],
+      [
+       "WON?",
+       "r"
+      ]
+     ]
+    ]
+   }
+  ]
  }
 }

@@ -1,0 +1,370 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-700.ttf);font-weight:700}
+@font-face{font-family:A;src:url(file:///root/.fonts/Anton-400.ttf)}
+html,body{margin:0;background:#000;overflow:hidden}
+svg{display:block}
+text{font-family:P;font-weight:900}
+.cap{paint-order:stroke;stroke:#1a0f06;stroke-width:13px;stroke-linejoin:round}
+</style></head><body>
+<svg id="s" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="coin" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#FFF4B8"/><stop offset=".35" stop-color="#FFD54A"/><stop offset=".8" stop-color="#F2A81D"/><stop offset="1" stop-color="#D98C0C"/></radialGradient>
+  <linearGradient id="bag" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#A86B3A"/><stop offset=".5" stop-color="#C98B52"/><stop offset="1" stop-color="#94592D"/></linearGradient>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#3a1a05" flood-opacity=".3"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+  <linearGradient id="capfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>
+</defs>
+<g id="root"></g>
+</svg>
+<script src="../../motion/kit.js"></script>
+<script>const f=n=>(+n).toFixed(1);</script>
+<script src="../../motion/penny.js"></script>
+<script src="../../motion/cast.js"></script>
+<script>
+const W=1920,H=1080,GY=830;
+const {clamp,seg,lerp,spring,springBounce,countUp,shockwave,rand,squash}=MK;
+const eo=x=>1-Math.pow(1-clamp(x),3), eio=x=>{x=clamp(x);return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2};
+const back=x=>{x=clamp(x);const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const pop=(t,s,d=.45)=>t<s?0:back(seg(t,s,s+d));
+let TL=null, DCA=null, SC={};
+const money=v=>'$'+Math.round(v).toLocaleString('en-US');
+
+// ---------------------------------------------------------------- helpers ---
+function scene(t){ let cur=TL.scenes[0]; for(const s of TL.scenes) if(t>=s.start) cur=s; return cur; }
+function talkOf(t,who){ // mouth openness for a character if it's their line
+  const fr=Math.min(TL.mouth.length-1,Math.round(t*TL.fps));
+  for(const s of TL.scenes) for(const l of s.lines) if(l.who===who && t>=l.start && t<=l.start+l.dur) return TL.mouth[fr];
+  return 0;
+}
+const blinkAt=(t,ph=0)=>((t+ph)%3.7)<.12;
+function sky(t,stormK=0,night=0){
+  const top=mixc('#9ED8FF','#4A5568',stormK), bot=mixc('#FFF1DC','#A0AEC0',stormK);
+  let g=`<defs><linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${bot}"/></linearGradient></defs><rect width="${W}" height="${H}" fill="url(#skyg)"/>`;
+  if(stormK<.6) g+=`<circle cx="1640" cy="170" r="90" fill="#FFE58A" opacity="${f(1-stormK*1.6)}"/><circle cx="1640" cy="170" r="140" fill="#FFE58A" opacity="${f(.25*(1-stormK*1.6))}"/>`;
+  for(let i=0;i<4;i++){const cx=((i*520+t*14)%(W+400))-200, cy=120+i*45; g+=`<g opacity="${f(.85*(1-stormK))}"><ellipse cx="${f(cx)}" cy="${cy}" rx="110" ry="38" fill="#fff"/><ellipse cx="${f(cx+60)}" cy="${cy-20}" rx="70" ry="34" fill="#fff"/></g>`;}
+  return g;
+}
+function mixc(a,b,k){k=clamp(k);const p=s=>[1,3,5].map(i=>parseInt(s.slice(i,i+2),16));const A=p(a),B=p(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*k).toString(16).padStart(2,'0')).join('');}
+function ground(stormK=0){
+  return `<rect y="${GY}" width="${W}" height="${H-GY}" fill="${mixc('#7CC46A','#5E7F57',stormK)}"/><rect y="${GY}" width="${W}" height="14" fill="${mixc('#5DA84B','#4A6A44',stormK)}"/>`+
+    Array.from({length:14},(_,i)=>`<path d="M${i*140+30} ${GY+60+(i%3)*40} q8 -22 16 0 q8 -18 16 0" stroke="#4E9A3E" stroke-width="5" fill="none"/>`).join('');
+}
+function house(x,y,s=1){
+  return `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#sh)"><rect x="-200" y="-300" width="400" height="300" fill="#F9E3C3" stroke="${INK}" stroke-width="6"/><path d="M-240 -290 L0 -470 L240 -290Z" fill="#C2410C" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>`+
+    `<rect x="-50" y="-170" width="100" height="170" rx="8" fill="#7C2D12" stroke="${INK}" stroke-width="6"/><circle cx="30" cy="-85" r="8" fill="#FDE047"/>`+
+    `<rect x="-160" y="-240" width="90" height="80" fill="#BFE7FF" stroke="${INK}" stroke-width="6"/><rect x="70" y="-240" width="90" height="80" fill="#BFE7FF" stroke="${INK}" stroke-width="6"/></g>`;
+}
+function fence(){ let g=''; for(let x=0;x<W;x+=70) g+=`<rect x="${x+10}" y="${GY-110}" width="44" height="118" rx="6" fill="#FFF7ED" stroke="${INK}" stroke-width="4"/>`; return `<g opacity=".9">${g}<rect x="0" y="${GY-80}" width="${W}" height="16" fill="#FFF7ED" stroke="${INK}" stroke-width="4"/></g>`; }
+// big year badge (springs in when the year changes)
+function yearBadge(t,year,since){
+  const k=pop(t,since,.5);
+  return `<g transform="translate(160 120) scale(${f(k)}) rotate(-4)" filter="url(#sh)"><rect x="-130" y="-62" width="260" height="124" rx="22" fill="#1E293B" stroke="#FDE047" stroke-width="8"/><text x="0" y="32" text-anchor="middle" font-size="86" fill="#FDE047" font-family="A" style="font-family:A">${year}</text></g>`;
+}
+function hud(t,label,val,k=1,col='#16A34A'){
+  if(k<=0) return '';
+  return `<g transform="translate(1600 110) scale(${f(k)})" filter="url(#sh)"><rect x="-260" y="-70" width="520" height="140" rx="26" fill="#fff" stroke="${INK}" stroke-width="6"/>`+
+    `<text x="0" y="-18" text-anchor="middle" font-size="34" fill="#475569" style="font-weight:700">${label}</text><text x="0" y="48" text-anchor="middle" font-size="68" fill="${col}">${val}</text></g>`;
+}
+function bigNum(x,y,text,size,col,k,rot=0){
+  if(k<=0) return '';
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot}) scale(${f(k)})"><text text-anchor="middle" font-size="${size}" fill="${col}" class="cap" style="stroke-width:${size*.15}px">${text}</text></g>`;
+}
+function card(x,y,w,h,k){ return `<rect x="${f(x-w/2)}" y="${f(y-h/2)}" width="${w}" height="${h}" rx="30" fill="#fff" stroke="${INK}" stroke-width="6" filter="url(#sh)" transform="translate(${f(x*(1-k))} ${f(y*(1-k))}) scale(${f(k)})" />`; }
+function label(x,y,text,size,col='#fff',bg='#1E293B',k=1,rot=0){
+  if(k<=0) return ''; MC0.font=`900 ${size}px P`; const w=MC0.measureText(text).width+size*.9;
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot}) scale(${f(k)})" filter="url(#sh)"><rect x="${f(-w/2)}" y="${f(-size*.85)}" width="${f(w)}" height="${f(size*1.5)}" rx="${f(size*.4)}" fill="${bg}"/><text x="0" y="${f(size*.32)}" text-anchor="middle" font-size="${size}" fill="${col}">${text}</text></g>`;
+}
+function confetti(t,t0,n=60){ const k=t-t0; if(k<0||k>3.2) return ''; let g='';
+  for(let i=0;i<n;i++){const x=W/2+(rand(i,1)-.5)*1600*Math.min(1,k*2), y=-40+k*380*(.6+rand(i,2))+Math.sin(k*5+i)*20, c=['#F43F5E','#FDE047','#22C55E','#3B82F6','#F97316'][i%5];
+    g+=`<rect x="${f(x)}" y="${f(y)}" width="18" height="10" fill="${c}" transform="rotate(${f(k*300+i*40)} ${f(x)} ${f(y)})"/>`;} return g; }
+function leavesFalling(t,t0,dur,x0,y0,n=24){ const k=t-t0; if(k<0||k>dur) return ''; let g='';
+  for(let i=0;i<n;i++){const st=rand(i,7)*dur*.6, kk=k-st; if(kk<0) continue; const x=x0+(rand(i,3)-.3)*500+kk*260, y=y0+(rand(i,4)-.5)*200+kk*kk*120+kk*60;
+    if(y>GY+40) continue; g+=`<ellipse cx="${f(x)}" cy="${f(y)}" rx="18" ry="10" fill="${i%3?'#2E9E4F':'#FFD23F'}" stroke="${INK}" stroke-width="3" transform="rotate(${f(kk*400+i*30)} ${f(x)} ${f(y)})"/>`;} return g; }
+function captions(t){
+  let line=null; for(const s of TL.scenes) for(const l of s.lines) if(t>=l.start-.05 && t<=l.start+l.dur+.25) line=l;
+  if(!line||!line.words.length) return '';
+  const ws=line.words; let i=0; for(let k=0;k<ws.length;k++) if(t>=ws[k].s-.05) i=k;
+  const c0=Math.floor(i/6)*6, chunk=ws.slice(c0,c0+6), size=54; MC0.font=`900 ${size}px P`;
+  const wd=chunk.map(w=>MC0.measureText(w.w.toUpperCase()).width+size*.36), tot=wd.reduce((a,b)=>a+b,0);
+  let x=W/2-tot/2, g=`<rect y="880" width="${W}" height="200" fill="url(#capfade)"/>`;
+  chunk.forEach((w,k)=>{ const cx=x+wd[k]/2; x+=wd[k]; if(t<w.s-.05) return; const on=c0+k===i;
+    g+=`<text x="${f(cx)}" y="1030" text-anchor="middle" font-size="${size}" fill="${on?'#FFD21F':'#fff'}" class="cap">${w.w.toUpperCase()}</text>`; });
+  return g;
+}
+// tree value keyframes [time, value]; built once from the timeline
+let TREEK=[];
+function treeVal(t){ let v=TREEK[0][1]; for(let i=1;i<TREEK.length;i++){ const [t0,v0]=TREEK[i-1],[t1,v1]=TREEK[i]; if(t>=t1) v=v1; else if(t>t0){ v=v0+(v1-v0)*eio((t-t0)/(t1-t0)); break; } } return v; }
+
+// -------------------------------------------------------------- scenes ---
+const SCN={};
+SCN.open=(t,s,L,lt)=>{ // 2026 doorstep
+  let g=sky(t)+ground()+fence()+house(520,GY,1.15);
+  const walk=k=>eo(seg(t,s.start+.2,s.start+2.6));
+  const xs=[1000,1250,1500].map(x=>lerp(x+700,x,walk()));
+  const moving=t<s.start+2.6;
+  g+=CAST.grandpa({x:520,y:GY,t,mood:'happy',talk:talkOf(t,'G'),blink:blinkAt(t),armL:110,armR:-20,look:[1,0]});
+  g+=parrot({x:650,y:GY-440,s:.7,t,squawk:0});
+  g+=CAST.mia({adult:true,x:xs[0],y:GY,t,walk:moving,mood:t>L[4]?'sad':'happy',blink:blinkAt(t,1),armL:60,armR:120,look:[-1,0],holdR:''})+gadgets({x:xs[0]+10,y:GY-110,s:.55,t,beep:t>L[4]&&t<L[5]});
+  g+=CAST.ben({adult:true,x:xs[1],y:GY,t,walk:moving,mood:t>L[3]&&t<L[5]?'worried':'happy',blink:blinkAt(t,2),armL:60,armR:120,look:[-1,0]})+jar({x:xs[1],y:GY-150,s:.38,bills:8});
+  g+=CAST.rosie({adult:true,x:xs[2],y:GY,t,walk:moving,mood:'happy',blink:blinkAt(t,.5),armL:60,armR:120,look:[-1,0]})+
+    `<g transform="translate(${f(xs[2])} ${GY-250}) rotate(4)" filter="url(#sh)"><rect x="-70" y="-60" width="140" height="120" rx="8" fill="#fff" stroke="${INK}" stroke-width="5"/>${tree({x:0,y:45,size:.08,leaves:1,t}).replace('translate(0 45)','translate(0 45) scale(.5)')}</g>`;
+  g+=bigNum(xs[2],170,money(TL.N.now),62,'#16A34A',pop(t,L[2],.5)*(t<L[3]?1:0));
+  g+=bigNum(xs[1],170,'$1,000 = $470?',50,'#F97316',pop(t,L[3],.5)*(t<L[4]?1:0));
+  g+=bigNum(xs[0],170,'$0 + JUNK',56,'#E11D48',pop(t,L[4],.5)*(t<L[5]?1:0));
+  if(t>=L[5]&&t<L[6]) [0,1,2].forEach(i=>g+=bigNum(xs[i],160,'?',130,'#FDE047',pop(t,L[5]+i*.2,.5)));
+  if(t>=L[6]){ const k=pop(t,L[6],.5); g+=`<rect width="${W}" height="${H}" fill="#FFF1DC" opacity="${f(.85*Math.min(1,k))}"/>`;
+    g+=penny({x:960,y:780,r:190,t,mouth:TL.mouth[Math.round(t*30)]||0,blink:blinkAt(t),armL:150,armR:-40,sx:k,sy:k});
+    g+=label(960,230,"KIDS: MADE UP",50,'#fff','#334155',pop(t,L[6]+1.6)); g+=label(960,330,'NUMBERS: 100% REAL',58,'#14532D','#86EFAC',pop(t,L[6]+2.6));
+    if(t>=L[7]){ const yr=Math.round(2026-30*eio(seg(t,L[7]+.3,L[7]+2.0))); g+=`<rect width="${W}" height="${H}" fill="#1E293B" opacity="${f(.9*seg(t,L[7],L[7]+.3))}"/>`+bigNum(960,600,yr,260,'#FDE047',1); }
+  }
+  return g;
+};
+SCN.y1996=(t,s,L)=>{
+  let g=sky(t)+ground()+fence()+house(300,GY,1.0);
+  const gt=talkOf(t,'G');
+  g+=yearBadge(t,1996,s.start);
+  g+=CAST.grandpa({x:700,y:GY,t,mood:'happy',talk:gt,blink:blinkAt(t),armL:110,armR:t>L[3]&&t<L[4]+1?-30:60,look:[1,0]});
+  const sq=talkOf(t,'N'); g+=parrot({x:830,y:GY-440,s:.7,t,squawk:sq>0?Math.min(1,sq*1.5):0});
+  const kids=[['mia',1060,'MIA, 12'],['rosie',1300,'ROSIE, 11'],['ben',1530,'BEN, 10']];
+  kids.forEach(([k,x,nm],i)=>{ const env=t>L[3]+i*.35; g+=CAST[k]({x,y:GY,t,mood:'happy',blink:blinkAt(t,i),armL:110,armR:env?-40:70,look:[-1,0],holdR:env?envelope({x:0,y:-20,s:.45,open:t>L[4]?1:0}):''});
+    g+=label(x,GY+60,nm,40,'#fff',['#EC4899','#F59E0B','#22C55E'][i],pop(t,L[4]+i*.3)); });
+  if(t>L[3]&&t<L[3]+1.4) kids.forEach(([k,x],i)=>{ const p=seg(t,L[3]+i*.25,L[3]+i*.25+.7); if(p>0&&p<1){ const [ex,ey]=MK.bez([760,GY-300],[800,GY-600],[x-50,GY-600],[x+60,GY-240],eo(p)); g+=envelope({x:ex,y:ey,s:.5,rot:p*360}); } });
+  if(t>=L[1]&&t<L[2]+.5) g+=bubble({x:520,y:GY-760,text:'...a little more CENTS!',size:44,k:pop(t,L[1]+1.6),tail:'right'});
+  if(t>=L[2]&&t<L[3]) g+=label(980,GY-700,'JOKE #400',46,'#fff','#E11D48',pop(t,L[2]+.8),-6);
+  if(t>=L[6]&&t<L[7]) g+=bubble({x:1000,y:GY-800,text:'BORING!',size:60,k:pop(t,L[6]),tail:'left',color:'#FDE047'});
+  if(t>=L[7]){ const k=pop(t,L[7],.5); g+=`<rect width="${W}" height="${H}" fill="#000" opacity="${f(.55*Math.min(1,k))}"/>`;
+    g+=`<g transform="translate(960 520) scale(${f(k)})" filter="url(#sh)"><rect x="-330" y="-200" width="660" height="400" rx="20" fill="#92400E" stroke="${INK}" stroke-width="8"/><rect x="-280" y="-150" width="560" height="140" rx="10" fill="#B45309" stroke="${INK}" stroke-width="5"/>`+
+      `<rect x="-40" y="-110" width="80" height="22" rx="10" fill="#FDE047"/><circle cx="0" cy="60" r="44" fill="#FDE047" stroke="${INK}" stroke-width="6"/><rect x="-10" y="52" width="20" height="40" fill="${INK}"/></g>`;
+    g+=envelope({x:960,y:lerp(200,380,eo(seg(t,L[7]+.4,L[7]+1.4))),s:.9,rot:-6,label:'?'})+label(960,840,'SECRET NOTE: OPEN IN 2026',48,'#1E293B','#FDE047',pop(t,L[7]+1.2)); }
+  return g;
+};
+SCN.choices=(t,s,L)=>{
+  let g=sky(t)+ground()+fence();
+  // three zones; spotlight follows the line
+  const focus=t<L[1]?0:t<L[3]?1:2;
+  const xs=[400,960,1500];
+  // Mia
+  const mk=t<L[1]?1:.45;
+  g+=`<g opacity="${f(focus===0?1:.55)}">`+CAST.mia({x:xs[0],y:GY,t,mood:'laugh',blink:blinkAt(t),armL:200,armR:-30,talk:talkOf(t,'M')})+'</g>';
+  if(t>=L[0]){ const items=[['VIRTUAL PET','#F472B6'],['LIGHT-UP SNEAKERS','#22D3EE'],['CANDY!','#F97316']];
+    items.forEach(([nm,c],i)=>{ const k=pop(t,L[0]+1.2+i*1.1); if(t<L[1]+.5) g+=label(xs[0]+(i-1)*40,GY-670-i*90,nm,36,'#fff',c,k,(i-1)*5); });
+    for(let i=0;i<8;i++){ const p=seg(t,L[0]+.5+i*.25,L[0]+2+i*.25); if(p>0&&p<1) g+=`<g transform="translate(${f(xs[0]+60+p*500)} ${f(GY-300-Math.sin(p*3)*200)}) rotate(${f(p*200)})"><rect x="-40" y="-18" width="80" height="36" rx="5" fill="#86C98B" stroke="#2F6B3A" stroke-width="3"/></g>`; }
+  }
+  if(t>=L[6]&&t<L[7]) g+=bubble({x:xs[0]+120,y:GY-700,text:"A STICK?",size:56,k:pop(t,L[6])});
+  // Ben
+  if(t>=L[1]-.3){ g+=`<g opacity="${f(focus===1?1:.55)}">`+jar({x:xs[1]+120,y:GY,s:.75*pop(t,L[1]),bills:t>L[1]+1?10:Math.floor(10*seg(t,L[1],L[1]+1))})+
+    CAST.ben({x:xs[1]-130,y:GY,t,mood:'happy',talk:talkOf(t,'B'),blink:blinkAt(t,1),armL:110,armR:-10,look:[1,0]})+'</g>';
+    if(t>=L[2]&&t<L[3]) g+=bubble({x:xs[1]-60,y:GY-680,text:'NEVER LOSE A DOLLAR!',size:40,k:pop(t,L[2]+.4)}); }
+  // Rosie
+  if(t>=L[3]-.3){ g+=`<g opacity="${f(focus===2?1:.55)}">`+CAST.rosie({x:xs[2]-120,y:GY,t,mood:'happy',talk:talkOf(t,'R'),blink:blinkAt(t,2),armL:110,armR:t>L[5]?40:-20,look:[1,0]})+'</g>';
+    if(t>=L[3]&&t<L[5]){ // 500 companies grid
+      const k=pop(t,L[3]+1.5,.6); let gg=`<g transform="translate(${xs[2]+170} ${GY-420}) scale(${f(k)})" filter="url(#sh)"><rect x="-200" y="-150" width="400" height="300" rx="20" fill="#fff" stroke="${INK}" stroke-width="5"/>`;
+      for(let i=0;i<50;i++){ const cx=-170+(i%10)*37, cy=-115+Math.floor(i/10)*48, on=seg(t,L[3]+1.8+i*.04,L[3]+1.9+i*.04); gg+=`<rect x="${cx}" y="${cy}" width="26" height="${30+(i*7)%14}" rx="3" fill="${['#60A5FA','#F472B6','#FBBF24','#34D399'][i%4]}" opacity="${f(on)}" stroke="${INK}" stroke-width="2"/>`; }
+      gg+=`<text x="0" y="138" text-anchor="middle" font-size="30" fill="${INK}">500 BIG COMPANIES</text></g>`; g+=gg;
+      if(t>=L[4]) for(let i=0;i<6;i++){ const p=((t-L[4])*.6+i/6)%1; const [cx,cy]=MK.bez([xs[2]+170,GY-420],[xs[2]+60,GY-650],[xs[2]-120,GY-600],[xs[2]-120,GY-350],p); g+=`<circle cx="${f(cx)}" cy="${f(cy)}" r="18" fill="#FFD23F" stroke="${INK}" stroke-width="4"/>`; }
+    }
+    if(t>=L[5]){ g+=tree({x:xs[2]+120,y:GY,size:.05*pop(t,L[5]+.6),leaves:1,t}); g+=label(xs[2]+120,GY+70,'MONEY TREE',38,'#fff','#16A34A',pop(t,L[5]+1.2)); }
+    if(t>=L[7]) g+=bubble({x:xs[2]-60,y:GY-680,text:'TREES TAKE TIME.',size:42,k:pop(t,L[7]),tail:'left'});
+  }
+  return g;
+};
+function treeScene(t,s,L,opts){ // shared yard with Rosie's tree, HUD and storm
+  const {size,leaves,stormK=0,bolt=false,shake=0,year,ysince,cloudLabel=''}=opts;
+  let g=sky(t,stormK)+ground(stormK)+fence();
+  if(stormK>0) g+=storm({x:1100,y:150,w:1300,k:stormK,t,bolt})+(cloudLabel?label(1100,120,cloudLabel,44,'#fff','#E11D48',Math.min(1,stormK*1.4)):'');
+  g+=tree({x:1100,y:GY,size,leaves,shake,coins:Math.round(6*leaves*size),t});
+  g+=yearBadge(t,year,ysince);
+  g+=hud(t,"ROSIE'S TREE",money(treeVal(t)),1,treeVal(t)>=1000?'#16A34A':'#DC2626');
+  return g;
+}
+SCN.storm1=(t,s,L)=>{
+  const grow=eo(seg(t,L[0],L[0]+4)), stormK=seg(t,L[2],L[2]+1.2)*(1-seg(t,L[5],L[5]+1.5));
+  const leaves=1-.55*seg(t,L[2]+1,L[3]+3)+.0*seg(t,L[8],L[8]+3);
+  const year=t<L[0]+1?1997:t<L[2]?2000:t<L[3]?2001:2002;
+  const ys=t<L[0]+1?s.start:t<L[2]?L[0]+1:t<L[3]?L[2]:L[3];
+  let g=treeScene(t,s,L,{size:.12+.33*grow,leaves,stormK,bolt:Math.sin(t*3)>.8&&stormK>.5,shake:stormK*2,year,ysince:ys,cloudLabel:'DOT-COM BUST'});
+  g+=leavesFalling(t,L[2]+.8,6,1100,GY-400);
+  g+=CAST.rosie({x:700,y:GY,t,mood:stormK>.4?'worried':'happy',blink:blinkAt(t,2),armL:110,armR:70,look:[1,-1]});
+  if(t>=L[1]&&t<L[2]){ const k=pop(t,L[1]); g+=CAST.mia({x:350,y:GY,t,mood:'sad',blink:blinkAt(t),armL:110,armR:-30});
+    g+=`<g transform="translate(470 ${GY-440}) scale(${f(k)})" filter="url(#sh)"><ellipse cx="0" cy="0" rx="70" ry="88" fill="#F472B6" stroke="${INK}" stroke-width="6"/><rect x="-45" y="-45" width="90" height="70" rx="8" fill="#BEF264" stroke="${INK}" stroke-width="4"/><path d="M-30 -30 l20 20 m0 -20 l-20 20 M10 -30 l20 20 m0 -20 l-20 20" stroke="${INK}" stroke-width="6"/></g>`+label(470,GY-300,'x 11',48,'#fff','#E11D48',pop(t,L[1]+1.4)); }
+  if(t>=L[4]&&t<L[6]){ g+=CAST.mia({x:350,y:GY,t,mood:'laugh',talk:talkOf(t,'M'),blink:blinkAt(t),armL:200,armR:-30}); if(t<L[5]) g+=bubble({x:420,y:GY-680,text:'TOLD YOU!',size:52,k:pop(t,L[4])}); }
+  if(t>=L[5]&&t<L[6]+.5){ g+=CAST.ben({x:1600,y:GY,t,mood:'happy',blink:blinkAt(t,1),armL:110,armR:200})+jar({x:1700,y:GY,s:.45})+label(1700,GY-180,'$1,000',44,'#fff','#16A34A',pop(t,L[5]+.6)); }
+  if(t>=L[6]){ const sq=talkOf(t,'N'); g+=parrot({x:520,y:GY-250,s:.8,t,squawk:sq?1:0}); if(t>=L[7]&&t<L[8]) g+=bubble({x:620,y:GY-670,text:"DON'T CHOP THE TREE!",size:50,k:pop(t,L[7]),color:'#FDE047'}); }
+  if(t>=L[8]){ // roots underground
+    const k=eo(seg(t,L[8],L[8]+1)); g+=`<rect y="${GY}" width="${W}" height="${f((H-GY)*k)}" fill="#7A4E2D" opacity=".95"/>`;
+    for(let i=0;i<7;i++) g+=`<path d="M1100 ${GY} q${(i-3)*60} 60 ${(i-3)*150} ${120+(i%2)*40}" stroke="#C08A5B" stroke-width="12" fill="none" opacity="${f(k)}" stroke-linecap="round"/>`;
+    ['FOOD','SHOES','MEDICINE'].forEach((w,i)=>g+=label(760+i*340,GY+140,w,40,'#14532D','#BBF7D0',pop(t,L[8]+2+i*.6)));
+  }
+  return g;
+};
+SCN.storm2=(t,s,L)=>{
+  const grow=eo(seg(t,s.start,L[0]+3)), stormK=seg(t,L[1],L[1]+1)*(1-seg(t,L[9],L[9]+2)*.3);
+  const leaves=Math.max(.3,1-.7*seg(t,L[1]+1,L[4]));
+  const year=t<L[1]?2007:t<L[4]?2008:2009, ys=t<L[1]?s.start:t<L[4]?L[1]:L[4];
+  const shakeScreen=t>L[1]&&t<L[1]+.8?Math.sin(t*70)*10:0;
+  let g=`<g transform="translate(${f(shakeScreen)} 0)">`+treeScene(t,s,L,{size:.45+.15*grow,leaves,stormK,bolt:Math.sin(t*2.3)>.7&&stormK>.5,shake:stormK*3,year,ysince:ys,cloudLabel:'THE BIG ONE'})+'</g>';
+  g+=leavesFalling(t,L[1]+.5,9,1100,GY-450,40);
+  if(t>=L[2]&&t<L[4]){ const k=pop(t,L[2]); g+=`<g transform="translate(450 ${GY}) scale(${f(k)})" filter="url(#sh)"><rect x="-170" y="-260" width="340" height="260" fill="#E2E8F0" stroke="${INK}" stroke-width="6"/><path d="M-200 -250 L0 -360 L200 -250Z" fill="#CBD5E1" stroke="${INK}" stroke-width="6"/>`+
+    [-110,-40,40,110].map(x=>`<rect x="${x-18}" y="-230" width="36" height="220" fill="#F8FAFC" stroke="${INK}" stroke-width="4"/>`).join('')+`<text x="0" y="-275" text-anchor="middle" font-size="44" fill="${INK}">BANK</text>`+
+    `<path d="M-60 -360 L-20 -250 L-60 -160 L-10 -60 L-40 0" stroke="${INK}" stroke-width="8" fill="none" opacity="${f(seg(t,L[2]+1.5,L[2]+2.5))}"/></g>`; }
+  const rosieMood=t>L[8]?'angry':stormK>.3?'worried':'happy';
+  g+=CAST.rosie({x:720,y:GY,t,mood:rosieMood,blink:blinkAt(t,2),armL:110,armR:t>L[8]?-70:70,look:[1,-1],holdR:t>L[8]&&t<L[11]?axe({x:0,y:0,rot:-30,s:.8}):''});
+  if(t>=L[5]&&t<L[8]){ // compare tree vs jar
+    const k=pop(t,L[5],.5); g+=`<g transform="translate(960 470) scale(${f(k)})" filter="url(#sh)"><rect x="-430" y="-250" width="860" height="440" rx="30" fill="#fff" stroke="${INK}" stroke-width="6"/>`+
+      `<rect x="-300" y="${f(-1103/1103*300+150)}" width="200" height="${f(300)}" rx="12" fill="#22C55E" stroke="${INK}" stroke-width="5"/><rect x="100" y="${f(-1000/1103*300+150)}" width="200" height="${f(300*1000/1103)}" rx="12" fill="#60A5FA" stroke="${INK}" stroke-width="5"/>`+
+      `<text x="-200" y="-175" text-anchor="middle" font-size="56" fill="#16A34A">${money(TL.N.d2009_low)}</text><text x="200" y="-150" text-anchor="middle" font-size="56" fill="#2563EB">$1,000</text>`+
+      `<text x="-200" y="215" text-anchor="middle" font-size="36" fill="${INK}">ROSIE'S TREE</text><text x="200" y="215" text-anchor="middle" font-size="36" fill="${INK}">BEN'S JAR</text></g>`+
+      bigNum(960,250,'ONLY +$103',80,'#E11D48',pop(t,L[5]+.8));
+    if(t>=L[6]) g+=CAST.ben({x:1650,y:GY,t,mood:'laugh',talk:talkOf(t,'B'),blink:blinkAt(t,1),armL:220,armR:-40,rot:Math.sin(t*12)*4});
+  }
+  if(t>=L[7]&&t<L[8]){ const k=pop(t,L[7]); g+=`<g transform="translate(1500 470) scale(${f(k)})" filter="url(#sh)"><rect x="-260" y="-170" width="520" height="340" rx="24" fill="#1F2937" stroke="${INK}" stroke-width="8"/><rect x="-230" y="-140" width="460" height="260" rx="10" fill="#B91C1C"/><text x="0" y="-20" text-anchor="middle" font-size="64" fill="#fff">SELL</text><text x="0" y="60" text-anchor="middle" font-size="58" fill="#FDE047">EVERYTHING!</text><rect x="-60" y="170" width="120" height="40" fill="#1F2937"/></g>`; }
+  if(t>=L[8]&&t<L[9]) g+=`<rect width="${W}" height="${H}" fill="#000" opacity="${f(.25*seg(t,L[8],L[8]+.4))}"/>`+bigNum(960,250,'CHOP?',120,'#FDE047',pop(t,L[8]+.6));
+  if(t>=L[9]&&t<L[11]){ g+=phone({x:930,y:GY-380,s:.9,t,ring:t<L[10]}); }
+  if(t>=L[10]&&t<L[11]){ const k=pop(t,L[10]); g+=`<g transform="translate(1520 420) scale(${f(k)})"><circle cx="0" cy="0" r="250" fill="#FEF3C7" stroke="${INK}" stroke-width="8" filter="url(#sh)"/><clipPath id="cg"><circle cx="0" cy="0" r="245"/></clipPath><g clip-path="url(#cg)">${CAST.grandpa({x:0,y:520,h:700,t,talk:talkOf(t,'G'),blink:blinkAt(t),armL:110,armR:70,mood:'happy'})}</g></g>`; }
+  if(t>=L[11]&&t<L[12]) g+=bigNum(960,420,'DOES SHE CHOP IT?',100,'#FDE047',pop(t,L[11]));
+  if(t>=L[12]){ const k=pop(t,L[12]); g+=`<rect width="${W}" height="${H}" fill="#0F172A" opacity="${f(.75*Math.min(1,k))}"/>`+penny({x:700,y:820,r:170,t,mouth:TL.mouth[Math.round(t*30)]||0,blink:blinkAt(t),armL:150,armR:-30,sx:k,sy:k});
+    const pr=t>L[12]+2.6; g+=`<g transform="translate(1250 470) scale(${f(pop(t,L[12]+.8))})" filter="url(#sh)"><rect x="-260" y="-75" width="520" height="150" rx="75" fill="${pr?'#475569':'#E5202B'}"/><text x="0" y="24" text-anchor="middle" font-size="64" fill="#fff">${pr?'SUBSCRIBED ✓':'SUBSCRIBE'}</text></g>`; }
+  return g;
+};
+SCN.mouse=(t,s,L)=>{
+  let g=`<rect width="${W}" height="${H}" fill="#FDF2E3"/><rect y="760" width="${W}" height="320" fill="#C08A5B"/><rect y="760" width="${W}" height="18" fill="#9A6B44"/>`;
+  g+=label(960,90,'MEANWHILE, INSIDE FORT COOKIE...',48,'#fff','#7C2D12',pop(t,s.start+.2));
+  const jx=t<L[4]?960:520, js=t<L[4]?1.35:.95;
+  g+=jar({x:jx,y:780,s:js,bills:10});
+  if(t>=L[1]&&t<L[4]) g+=bigNum(jx,300,countUp(t,L[1],2.5,1000,v=>'$'+Math.round(v).toLocaleString()),90,'#16A34A',1);
+  if(t>=L[2]){ const mx=t<L[4]?jx+30:jx+20, my=t<L[4]?720:760; g+=mouse({x:mx,y:my,s:t<L[4]?1.3:.9,t,nibble:t>L[3]?1:0,tag:t>L[2]+1}); }
+  if(t>=L[3]&&t<L[4]) g+=label(1450,420,'IT EATS WHAT MONEY CAN BUY',40,'#fff','#E11D48',pop(t,L[3]+1.5),-4);
+  if(t>=L[4]){ const yrs=Math.round(1996+30*eio(seg(t,L[6],L[8]+1))), fill=1-0.53*eio(seg(t,L[6],L[8]+1));
+    g+=cart({x:1350,y:760,s:1.5*(.75+.25*fill),fill:Math.max(.47,fill)})+yearBadge(t,yrs,L[4])+label(1350,240,"WHAT $1,000 BUYS",50,'#fff','#1E293B',pop(t,L[4]+.4));
+    if(t>=L[5]&&t<L[6]+1) ['MILK','BREAD','SHOES','MOVIES'].forEach((w,i)=>g+=`<g transform="translate(${1000+i*230} ${330+Math.sin(t*2+i)*10})">${label(0,0,w+' ↑',34,'#fff','#F97316',pop(t,L[5]+.8+i*.5),(i%2?4:-4))}</g>`);
+    if(t>=L[7]) g+=label(520,300,'STILL $1,000 ✓',48,'#14532D','#BBF7D0',pop(t,L[7]+.3));
+    if(t>=L[8]) g+=bigNum(1350,860,'LESS THAN HALF FULL',64,'#E11D48',pop(t,L[8]+.5));
+  }
+  return g;
+};
+SCN.storm3=(t,s,L)=>{
+  const stormK=seg(t,L[1],L[1]+1)*(1-seg(t,L[5],L[5]+1.5)), leaves=1-.4*seg(t,L[1]+1,L[2]+2)+.4*seg(t,L[5],L[5]+2);
+  const year=2020;
+  let g=treeScene(t,s,L,{size:.62,leaves,stormK,shake:stormK*2,year,ysince:s.start,cloudLabel:'VIRUS'});
+  if(stormK>0) for(let i=0;i<8;i++){ const x=300+i*200+Math.sin(t+i)*30, y=380+Math.cos(t*1.3+i)*60; g+=`<g opacity="${f(stormK)}" transform="translate(${f(x)} ${f(y)})"><circle r="26" fill="#A78BFA" stroke="${INK}" stroke-width="4"/>${[0,1,2,3,4,5].map(j=>`<line x1="0" y1="0" x2="${f(Math.cos(j)*40)}" y2="${f(Math.sin(j)*40)}" stroke="${INK}" stroke-width="4"/>`).join('')}<circle r="22" fill="#A78BFA"/></g>`; }
+  if(t>=L[1]&&t<L[3]) g+=label(400,GY-330,'SCHOOL CLOSED',44,'#fff','#E11D48',pop(t,L[1]+1.6),-5);
+  if(t>=L[2]&&t<L[3]+1) g+=bigNum(1100,360,'-34%',150,'#E11D48',pop(t,L[2]+1.5));
+  g+=CAST.rosie({adult:true,x:640,y:GY,t,mood:'happy',blink:blinkAt(t,2),armL:110,armR:t>L[3]?-10:70,holdR:t>L[3]?cocoa({x:20,y:-20,s:.4,t}):''});
+  if(t>=L[4]&&t<L[5]){ g+=parrot({x:380,y:GY-260,s:.8,t,squawk:talkOf(t,'N')?1:0})+bubble({x:480,y:GY-670,text:"DON'T CHOP THE TREE!",size:46,k:pop(t,L[4]),color:'#FDE047'}); }
+  if(t>=L[5]) g+=label(1100,300,'NEW RECORD · AUG 2020',52,'#fff','#16A34A',pop(t,L[5]+2.2));
+  if(t>=L[6]){ const k=pop(t,L[6]); g+=`<rect width="${W}" height="${H}" fill="#FFF7ED" opacity="${f(.92*Math.min(1,k))}"/>`;
+    g+=`<g transform="scale(${f(k)})" style="transform-origin:960px 540px"><g transform="translate(560 860)"><rect x="-40" y="-60" width="80" height="60" fill="#8B5A2B" stroke="${INK}" stroke-width="6"/><ellipse cx="0" cy="-60" rx="40" ry="12" fill="#D9A374" stroke="${INK}" stroke-width="5"/></g>${label(560,880,'CHOPPED IN MARCH',40,'#fff','#E11D48',1)}`+tree({x:1360,y:860,size:.62,leaves:1,coins:5,t})+label(1360,880,'WAITED',40,'#fff','#16A34A',1)+'</g>'; }
+  return g;
+};
+SCN.reunion=(t,s,L)=>{
+  let g=sky(t)+ground()+fence();
+  g+=yearBadge(t,2026,s.start);
+  const showTree=t>=L[10];
+  if(!showTree){
+    g+=scoreboard({x:1300,y:450,k:pop(t,L[1],.6),rows:[
+      {name:'MIA',color:'#F472B6',value:t>L[3]+1.5?'$0':'...',show:t>L[1]+.6},
+      {name:'BEN',color:'#4ADE80',value:t>L[7]?'$1,000 → $470':t>L[4]+1?'$1,000':'...',show:t>L[1]+.9},
+      {name:'ROSIE',color:'#FBBF24',value:'...',show:t>L[1]+1.2}]});
+    g+=CAST.grandpa({x:300,y:GY,t,mood:'happy',talk:talkOf(t,'G'),blink:blinkAt(t),armL:110,armR:t>L[6]&&t<L[9]?-30:60,holdR:t>L[6]&&t<L[9]?`<g transform="rotate(-10)"><rect x="-40" y="-120" width="110" height="150" fill="#fff" stroke="${INK}" stroke-width="4"/>${[0,1,2,3,4].map(i=>`<rect x="-28" y="${-105+i*22}" width="${60+(i%2)*20}" height="8" fill="#94A3B8"/>`).join('')}<text x="15" y="20" text-anchor="middle" font-size="22" fill="#E11D48">x2.13</text></g>`:''});
+    if(t>=L[2]&&t<L[4]){ g+=CAST.mia({adult:true,x:640,y:GY,t,mood:t>L[3]?'sad':'happy',blink:blinkAt(t),armL:60,armR:120})+gadgets({x:650,y:GY-110,s:.6,t,beep:t>L[3]&&t<L[3]+1.2});
+      if(t>L[3]&&t<L[3]+1.2) g+=bigNum(650,GY-380,'BEEP!',70,'#A3E635',pop(t,L[3])); }
+    if(t>=L[4]){ const benMood=t>L[9]?'sad':t>L[7]?'shocked':'happy';
+      g+=CAST.ben({adult:true,x:640,y:GY,t,mood:benMood,talk:talkOf(t,'B'),blink:blinkAt(t,1),armL:110,armR:-30})+jar({x:780,y:GY,s:.5}); }
+    if(t>=L[7]&&t<L[10]){ g+=label(820,150,`$1,000 NOW BUYS WHAT ${money(TL.N.jar_buys)} DID`,46,'#fff','#F97316',pop(t,L[7]+.4));
+      if(t>=L[8]) g+=label(820,250,`NEED ${money(TL.N.need_today)} TODAY`,40,'#fff','#E11D48',pop(t,L[8]+.4)); }
+  } else {
+    const k=eo(seg(t,L[10],L[10]+2.5));
+    g+=tree({x:960,y:GY,size:.62+.33*k,leaves:1,coins:14,t});
+    g+=CAST.rosie({adult:true,x:520,y:GY,t,mood:t>L[11]?'laugh':'happy',blink:blinkAt(t,2),armL:t>L[11]?210:110,armR:t>L[11]?-30:70});
+    g+=CAST.grandpa({x:1450,y:GY,t,mood:'happy',blink:blinkAt(t),armL:110,armR:-20});
+    g+=parrot({x:1580,y:GY-440,s:.7,t});
+    if(t<L[11]) g+=bigNum(960,250,countUp(t,L[10]+1,3.5,TL.N.now*0.7,v=>'$'+Math.round(v).toLocaleString()).replace(/\d(?=[\d,]*$)/g,c=>c),90,'#16A34A',Math.min(1,pop(t,L[10]+1))*0) ;
+    if(t>=L[11]){ g+=bigNum(960,300,money(TL.N.now),170,'#FDE047',pop(t,L[11],.6)); g+=confetti(t,L[11]); g+=shockwave(t,L[11],960,250,500,'#FDE047'); }
+    if(t>=L[12]) g+=label(960,470,'16x WHAT SHE STARTED WITH',50,'#fff','#16A34A',pop(t,L[12]+.3));
+    if(t>=L[13]) g+=label(960,580,"SHE DIDN'T CHOP THE TREE",56,INK,'#FDE047',pop(t,L[13]+1),-3);
+  }
+  return g;
+};
+SCN.mia=(t,s,L)=>{
+  let g=sky(t)+ground()+fence();
+  if(t<L[1]){ g+=CAST.mia({adult:true,x:700,y:GY,t,mood:'sad',talk:talkOf(t,'M'),blink:blinkAt(t),armL:110,armR:70})+CAST.grandpa({x:1200,y:GY,t,mood:'happy',blink:blinkAt(t),armL:110,armR:70});
+    g+=bubble({x:820,y:GY-700,text:'IS IT TOO LATE FOR ME?',size:44,k:pop(t,s.lines[0].start+.3)}); }
+  else if(t<L[7]){
+    // chart: the unluckiest planter (real monthly data)
+    const k=pop(t,L[1]+.4,.5), x0=260,x1=1660,y0=820,y1=200, maxV=105000;
+    const px=yr=>x0+(yr-2007.7)/(2027-2007.7)*(x1-x0), py=v=>y0-(v/maxV)*(y0-y1);
+    let gg=`<rect x="160" y="120" width="1600" height="820" rx="30" fill="#fff" stroke="${INK}" stroke-width="6" filter="url(#sh)"/>`+
+      `<text x="960" y="185" text-anchor="middle" font-size="44" fill="${INK}">THE UNLUCKIEST PLANTER: $100 A MONTH FROM OCT 2007</text>`;
+    const prog=t<L[2]?0:t<L[3]?.08:t<L[5]?eio(seg(t,L[3],L[3]+2))*.12+.08*0+.0:1;
+    const reveal=t<L[3]?0.0:t<L[5]?0.075+0.0:eio(seg(t,L[5],L[5]+3.5));
+    const n=Math.max(2,Math.round(DCA.length*Math.max(t>=L[3]?0.075:0,reveal)));
+    for(const yr of [2008,2012,2016,2020,2024]) gg+=`<line x1="${f(px(yr))}" y1="${y0}" x2="${f(px(yr))}" y2="${y0+12}" stroke="${INK}" stroke-width="4"/><text x="${f(px(yr))}" y="${y0+50}" text-anchor="middle" font-size="30" fill="#475569">${yr}</text>`;
+    gg+=`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="${INK}" stroke-width="5"/>`;
+    if(t>=L[2]) gg+=`<line x1="${f(px(2007.75))}" y1="${y0}" x2="${f(px(2007.75))}" y2="${y0-230}" stroke="#E11D48" stroke-width="6"/>`+label(px(2007.75)+150,y0-260,'START: OCT 2007',36,'#fff','#E11D48',pop(t,L[2]+.4));
+    if(t>=L[3]){ const sub=DCA.slice(0,n);
+      gg+=`<path d="M${sub.map(p=>f(px(p[0]))+' '+f(py(p[1]))).join(' L')}" stroke="#94A3B8" stroke-width="8" fill="none" stroke-dasharray="14 10"/>`;
+      gg+=`<path d="M${sub.map(p=>f(px(p[0]))+' '+f(py(p[2]))).join(' L')}" stroke="#16A34A" stroke-width="12" fill="none" stroke-linejoin="round"/>`;
+      const last=sub[sub.length-1]; gg+=`<circle cx="${f(px(last[0]))}" cy="${f(py(last[2]))}" r="16" fill="#16A34A" stroke="#fff" stroke-width="5"/>`;
+      if(t<L[5]) gg+=label(px(2009.2)+260,560,`PAID ${money(TL.N.dca_2009_paid)} · WORTH ${money(TL.N.dca_2009_worth)}`,38,'#fff','#E11D48',pop(t,L[3]+1.2));
+    }
+    if(t>=L[4]&&t<L[5]) for(let i=0;i<8;i++){ const p=((t-L[4])*.7+i/8)%1; g+=''; gg+=`<circle cx="${f(300+p*1300)}" cy="${f(300-Math.sin(p*Math.PI)*60)}" r="16" fill="#FFD23F" stroke="${INK}" stroke-width="4"/>`; }
+    if(t>=L[5]){ gg+=label(1250,330,`PUT IN ${money(TL.N.dca_paid)}`,44,'#334155','#E2E8F0',pop(t,L[5]+3.5))+label(1250,430,`NOW ${money(TL.N.dca_now)}`,60,'#fff','#16A34A',pop(t,L[5]+4.4)); }
+    if(t>=L[6]) gg+=bigNum(700,420,'4x',150,'#FDE047',pop(t,L[6]+.3),-6);
+    g+=`<g transform="translate(${f(960*(1-k))} ${f(540*(1-k))}) scale(${f(k)})">${gg}</g>`;
+    if(t<L[2]) g+=envelope({x:960,y:540,s:1.6*pop(t,L[1]),open:seg(t,L[1]+1,L[1]+2),label:'TRUE STORY'});
+  } else {
+    g+=CAST.grandpa({x:1300,y:GY,t,mood:'happy',talk:talkOf(t,'G'),blink:blinkAt(t),armL:110,armR:70});
+    if(t<L[8]) g+=label(960,260,'"The best time to plant a tree was 30 years ago.',44,INK,'#FEF3C7',pop(t,L[7]+.2))+label(960,360,'The second best time is today."',44,INK,'#FEF3C7',pop(t,L[7]+2.5));
+    if(t>=L[8]){ g+=CAST.mia({adult:true,x:700,y:GY,t,mood:'happy',blink:blinkAt(t),armL:110,armR:t<L[8]+2?100:70})+tree({x:860,y:GY,size:.02*eo(seg(t,L[8]+1.5,L[8]+2.5)),leaves:1,t}); }
+    if(t>=L[9]&&t<L[10]){ g+=parrot({x:1430,y:GY-440,s:.7,t,squawk:talkOf(t,'N')?1:0})+bubble({x:1280,y:GY-640,text:"DON'T CHOP THE TREE!",size:44,k:pop(t,L[9]),color:'#FDE047',tail:'right'}); }
+    if(t>=L[10]){ const k=pop(t,L[10]); g+=`<rect width="${W}" height="${H}" fill="#000" opacity="${f(.5*Math.min(1,k))}"/>`+
+      `<g transform="translate(960 470) rotate(-2) scale(${f(k)})" filter="url(#sh)"><rect x="-560" y="-220" width="1120" height="440" rx="16" fill="#FEF9C3" stroke="${INK}" stroke-width="6"/><text x="0" y="-120" text-anchor="middle" font-size="40" fill="#92400E" style="font-weight:700">GRANDPA'S SECRET NOTE · 1996</text>`+
+      `<text x="0" y="0" text-anchor="middle" font-size="56" fill="${INK}">I'm proud of all three of you.</text><text x="0" y="100" text-anchor="middle" font-size="56" fill="#16A34A">Now go plant something.</text></g>`; }
+  }
+  return g;
+};
+SCN.lessons=(t,s,L)=>{
+  let g=`<rect width="${W}" height="${H}" fill="#FFF1DC"/>`;
+  if(t<L[4]){
+    g+=label(960,120,"GRANDPA'S 3 LESSONS",64,'#fff','#1E293B',pop(t,s.start+.3));
+    const cards=[[L[1],'1','MONEY IN A JAR SHRINKS','#2563EB'],[L[2],'2',"DON'T CHOP THE TREE",'#16A34A'],[L[3],'3','START SMALL. START NOW.','#F59E0B']];
+    cards.forEach(([st,n,txt,c],i)=>{ const k=pop(t,st); if(k<=0) return; const x=380+i*580;
+      g+=`<g transform="translate(${x} 520) scale(${f(k)})" filter="url(#sh)"><rect x="-260" y="-300" width="520" height="560" rx="30" fill="#fff" stroke="${INK}" stroke-width="6"/><circle cx="0" cy="-300" r="56" fill="${c}" stroke="${INK}" stroke-width="6"/><text x="0" y="-278" text-anchor="middle" font-size="64" fill="#fff">${n}</text></g>`;
+      if(i===0) g+=jar({x,y:640,s:.55})+mouse({x:x+80,y:640,s:.6,t,nibble:1,tag:false});
+      if(i===1) g+=tree({x,y:640,size:.32,leaves:1,coins:3,t});
+      if(i===2) g+=tree({x:x-60,y:640,size:.05,leaves:1,t})+penny({x:x+90,y:640,r:60,t,blink:blinkAt(t),armL:150,armR:-30});
+      g+=label(x,730,txt,34,'#fff',c,k); });
+  } else if(t<L[6]){
+    g+=`<g transform="translate(960 480) scale(${f(pop(t,L[4]))})" filter="url(#sh)"><rect x="-720" y="-260" width="1440" height="520" rx="30" fill="#fff" stroke="${INK}" stroke-width="6"/>`+
+      `<text x="0" y="-150" text-anchor="middle" font-size="54" fill="${INK}">ROSIE'S FUND = AN S&amp;P 500 INDEX FUND</text>`+
+      ['Real past results, dividends reinvested','Before fees and taxes','The past doesn\'t promise the future','Education, not financial advice'].map((s,i)=>`<text x="-600" y="${-50+i*80}" font-size="44" fill="#334155" style="font-weight:700">• ${s}</text>`).join('')+'</g>';
+    g+=`<text x="960" y="860" text-anchor="middle" font-size="28" fill="#64748B" style="font-weight:700">Data: S&amp;P 500 Total Return index (Yahoo Finance ^SP500TR), CPI-U (BLS via FRED). Nov 25, 1996 to Nov 23, 2026.</text>`;
+  } else {
+    const kids=[['mia','MIA','#EC4899'],['ben','BEN','#22C55E'],['rosie','ROSIE','#F59E0B']];
+    kids.forEach(([k,n,c],i)=>{ const x=520+i*440, kk=pop(t,L[6]+.3+i*.4); g+=`<g transform="translate(${x} ${GY+40}) scale(${f(kk)}) translate(${-x} ${-(GY+40)})">`+CAST[k]({adult:true,x,y:GY+40,t,mood:'happy',blink:blinkAt(t,i),armL:110,armR:-30})+label(x,GY+90,n,48,'#fff',c,1)+'</g>'; });
+    g+=label(960,170,'WHICH GRANDKID ARE YOU?',80,'#fff','#1E293B',pop(t,L[6]));
+    if(t>=L[8]){ g+=`<rect width="${W}" height="${H}" fill="#FFF1DC" opacity="${f(.9*seg(t,L[8],L[8]+.4))}"/>`+penny({x:760,y:900,r:220,t,mouth:TL.mouth[Math.round(t*30)]||0,blink:blinkAt(t),armL:150,armR:-120+Math.sin(t*10)*25});
+      const pr=t>L[8]+2.2; g+=`<g transform="translate(1320 500) scale(${f(pop(t,L[8]+.6))})" filter="url(#sh)"><rect x="-280" y="-80" width="560" height="160" rx="80" fill="${pr?'#475569':'#E5202B'}"/><text x="0" y="26" text-anchor="middle" font-size="66" fill="#fff">${pr?'SUBSCRIBED ✓':'SUBSCRIBE'}</text></g>`; }
+  }
+  return g;
+};
+
+function frame(t){
+  const s=scene(t), L=s.lines.map(l=>l.start);
+  let g=(SCN[s.id]||(()=>''))(t,s,L);
+  // scene transition: quick iris/wipe in the first 0.35 s
+  const k=seg(t,s.start,s.start+.4); if(k<1&&s.start>0) g+=`<rect width="${W}" height="${H}" fill="#1E293B" opacity="${f(1-k)}"/>`;
+  g+=captions(t);
+  document.getElementById('root').innerHTML=g;
+}
+window.setup=(tl,dca,N)=>{ TL=tl; DCA=dca; TL.N=N;
+  const st=id=>TL.scenes.find(s=>s.id===id), Ls=id=>st(id).lines.map(l=>l.start);
+  const a=Ls('storm1'), b=Ls('storm2'), c=Ls('storm3'), r=Ls('reunion');
+  TREEK=[[0,1000],[a[0],1000],[a[0]+4,N.d2000_peak],[a[2]+1,N.d2000_peak],[a[3]+2.5,N.d2002_low],[b[0],N.d2002_low],[b[0]+3,N.d2007_peak],[b[1]+1,N.d2007_peak],[b[4]+.5,N.d2009_low],
+    [c[0],N.d2009_low],[c[0]+3,N.d2020_peak],[c[1]+1,N.d2020_peak],[c[2]+2,N.d2020_low],[c[5],N.d2020_low],[c[5]+2.5,N.d2020_peak*1.01],[r[10],N.d2020_peak*1.01],[r[11],N.now]];
+};
+window.frame=frame;
+</script></body></html>
