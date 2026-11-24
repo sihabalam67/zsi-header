@@ -116,3 +116,12 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    `channel/tools/originality.py` must PASS before render, stories follow stories/STORY_BIBLE.md (new plot type,
    setting and ending vs the last 3), title shapes rotate (no shape on >= 40% of videos; "[number]. [question]?" is
    at 46% overall, 69% of long videos: use other shapes next), thumbnail layouts rotate. Re-run the audit monthly.
+
+0b. **What wins in our niche (Nov 24 trend report, channel/research/trend-report-2026-11-24.md; free mode, 108
+   channels, outlier = views / channel median).** Winners open on a SCENE or a personal dollar number ("You hand the
+   cashier $100..."), state the promise + "explained simply" by 0:20, use named mini-chapters every 60-120 s with a
+   re-hook question in the back half, and end at the kitchen table with a small challenge + comment prompt. Length:
+   winning explainers 8.5-11 min (ours ~8: go 10-12), winning stories 16-19 min. Proven title shapes beyond ours:
+   "Why [everyday thing] Costs $N Now", "[Headline] Explained Like You're Five", "Once You Understand X, You'll Stop
+   Y", "What If You Could See Everyone's [money secret]?". Topic bank = its 10 ideas; ideas 1, 7, 9 are "saver
+   wins" stories, so only use them with a NEW plot type per stories/STORY_BIBLE.md. Re-run monthly.

@@ -24,3 +24,8 @@ Work in /home/user/zsi-header. Steps:
    views/day, channel size) with what to do better. Recommend one.
 Never invent numbers; say "unverified" for anything you couldn't confirm. Don't edit files except
 channel/out/scout.json (written by scout.py).
+
+Also read the newest channel/research/trend-report-*.md (outliers in our niche, proven title shapes, idea bank) and
+LEARNINGS rules 0 and 0b: prefer topics with outlier proof, and never return an angle that repeats one of our last
+10 videos (YouTube inauthentic-content policy). The installed TubeLab skills (trend-report, video-ideation,
+title-formulas, comment-mining) may be used in their free "Without TubeLab" mode; never connect or pay for TubeLab.
