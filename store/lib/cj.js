@@ -33,10 +33,52 @@ async function call(path, { method = 'GET', body } = {}) {
   return json.data;
 }
 
-// Creates the order at CJ, shipping from its US warehouse.
-// `items` = [{ vid, quantity }]. `orderNumber` must be unique (we use the
-// Stripe Checkout Session ID, so a retried webhook can't double-order).
+// Picks the cheapest US→US shipping method that arrives within `maxDays`.
+// Falls back to CJ_LOGISTIC_NAME if CJ returns nothing usable.
+export async function pickShipping(items, maxDays = Number(process.env.CJ_MAX_SHIP_DAYS || 5)) {
+  try {
+    const options = await call('/logistic/freightCalculate', {
+      method: 'POST',
+      body: { startCountryCode: 'US', endCountryCode: 'US', products: items },
+    });
+    const usable = (options || [])
+      .map((o) => ({ name: o.logisticName, price: Number(o.logisticPrice), days: maxAging(o.logisticAging) }))
+      .filter((o) => o.name && o.days <= maxDays)
+      .sort((a, b) => a.price - b.price);
+    if (usable.length) return usable[0].name;
+  } catch (err) {
+    console.error('CJ freightCalculate failed, using fallback logistic', err.message);
+  }
+  return process.env.CJ_LOGISTIC_NAME || 'USPS+';
+}
+
+// "2-5" → 5
+const maxAging = (aging) => Math.max(...String(aging || '99').split(/[^0-9]+/).filter(Boolean).map(Number));
+
+export async function getBalance() {
+  return call('/shopping/pay/getBalance');
+}
+
+// Creates the order at CJ, shipping from its US warehouse, and makes sure
+// it's paid from the CJ wallet. `items` = [{ vid, quantity }].
+// `orderNumber` must be unique (we use the Stripe Checkout Session ID, so a
+// retried webhook can't double-order).
 export async function createOrder({ orderNumber, address, name, phone, email, items }) {
+  const logisticName = await pickShipping(items);
+  const orderId = await placeOrder({ orderNumber, address, name, phone, email, items, logisticName });
+  await ensurePaid(orderId);
+  return orderId;
+}
+
+// payType 2 asks CJ to pay from the wallet at creation, but CJ's documented
+// flow also has an explicit pay step. If the order is still unpaid, pay it.
+async function ensurePaid(orderId) {
+  const order = await getOrder(orderId);
+  if (!['CREATED', 'IN_CART', 'UNPAID'].includes(order?.orderStatus)) return;
+  await call('/shopping/pay/payBalance', { method: 'POST', body: { orderId } });
+}
+
+async function placeOrder({ orderNumber, address, name, phone, email, items, logisticName }) {
   const data = await call('/shopping/order/createOrderV2', {
     method: 'POST',
     body: {
@@ -52,7 +94,7 @@ export async function createOrder({ orderNumber, address, name, phone, email, it
       shippingPhone: phone || '',
       email,
       fromCountryCode: 'US',
-      logisticName: process.env.CJ_LOGISTIC_NAME || 'USPS+',
+      logisticName,
       // 2 = pay from CJ wallet balance automatically. Keep the wallet topped up.
       payType: Number(process.env.CJ_PAY_TYPE || 2),
       products: items,
