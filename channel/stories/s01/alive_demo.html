@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+html,body{margin:0}text{font-family:P;font-weight:900}</style></head><body>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080"><defs>
+<radialGradient id="coin" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#FFF4B8"/><stop offset=".35" stop-color="#FFD54A"/><stop offset=".8" stop-color="#F2A81D"/><stop offset="1" stop-color="#D98C0C"/></radialGradient>
+<filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#3a1a05" flood-opacity=".3"/></filter>
+<filter id="soft"><feGaussianBlur stdDeviation="18"/></filter></defs><g id="root"></g></svg>
+<script src="../../motion/kit.js"></script><script>const f=n=>(+n).toFixed(1);</script><script src="../../motion/penny.js"></script><script src="../../motion/cast.js"></script>
+<script>
+const GY=900;
+window.frame=t=>{
+  const talk=Math.max(0,Math.sin(t*13))*.8*(Math.sin(t*1.7)>-.3?1:0);
+  let g='<rect width="1920" height="1080" fill="#9ED8FF"/><rect y="'+GY+'" width="1920" height="180" fill="#7CC46A"/>';
+  // camera push-in on the talker
+  const z=1+0.06*Math.min(1,t/10);
+  g+=`<g transform="translate(960 600) scale(${z}) translate(-960 -600)">`;
+  g+=CAST.grandpa({x:260,y:GY,t,act:t<3.5?'wave':(t<6?'think':'laugh'),mood:t<6?'happy':'laugh'});
+  g+=parrot({x:340,y:GY-450,s:.7,t,squawk:Math.sin(t*3)>.7?1:0});
+  g+=CAST.ben({x:680,y:GY,t,talk,mood:'happy',look:[1,0]})+bubble({x:760,y:GY-700,text:'I NEVER LOSE A DOLLAR!',size:40,k:1});
+  g+=CAST.mia({x:1060,y:GY,t,act:'cheer',mood:'laugh'});
+  g+=CAST.rosie({x:1400,y:GY,t,act:t<5?'shrug':'jump',actT:t<5?1:5,mood:'happy'});
+  const wx=1950-((t*140)%600);
+  g+=CAST.grandpa({x:wx+300,y:GY,h:420,t,act:'walk',mood:'happy',shirt:'#9333EA',hairStyle:'short',hair:'#3b2412',beard:false,glasses:false,suspenders:false,sx:-1});
+  g+='</g>';
+  document.getElementById('root').innerHTML=g;
+};
+</script></body></html>

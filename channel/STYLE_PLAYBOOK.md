@@ -157,3 +157,15 @@ Record each video in `channel/out/styles.json` as `{"epNN_slug": {"look": "paper
 "devices": ["Receipt & Recipe", "Crash Quake"]}}`. `python3 youtube/learn.py` compares looks **and**
 devices (first-3-day views, % kept at 30 s, average view). Every Thursday, move devices up or down this playbook
 based on that table. A device that holds viewers moves into more topics; one that loses them is dropped.
+
+## 8. Living characters (owner feedback on story #1, Nov 24: "more moving, talking, action characters")
+`channel/motion/cast.js` characters are alive by default: breathing, a small sway, auto-blink, and head bob plus hand
+gestures whenever `talk` > 0 (feed it the lip-sync envelope from the timeline). Acting presets: `act: 'wave' |
+'cheer' | 'point' | 'shrug' | 'think' | 'facepalm' | 'laugh' | 'jump' | 'shock' | 'shake' | 'walk'` (with `actT` =
+start time). Demo: channel/out/alive_demo.mp4. Rules for every story video:
+1. Whoever speaks moves: lip-sync + head bob + gesture; the others react (look at the speaker, nod, laugh, gasp).
+2. An action every 2-3 s in every scene: someone walks in, jumps, points, celebrates, gets shocked.
+3. Camera follows the talker: slow push-in, then a close-up on punchlines and big reactions.
+4. More dialogue in the characters' own words (G| M| B| R| N| lines), less narration. Target 50%+ of lines
+   spoken by characters, with distinct voices where possible.
+5. Physical comedy: the parrot flaps and hops on squawks, things fall, Ben hugs the jar.

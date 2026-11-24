@@ -36,27 +36,49 @@ function hand(x, y, r, skin) { return `<circle cx="${ff(x)}" cy="${ff(y)}" r="${
 
 // A person. o: {x,y,h, skin, hair, hairStyle:'pony'|'short'|'curly'|'bald', shirt, pants, shoes, mood, talk, t, walk,
 // armL, armR (deg, 0=right, 90=down), look, blink, hold:{svg} drawn at right hand, sx, sy, rot, extra(fn)}
+const lerpA = (a, b, k) => a + (b - a) * k;
 function person(o) {
   const { x, y, h = 420, skin = '#F2C9A0', hair = '#5a3418', hairStyle = 'short', shirt = '#3B82F6', pants = '#334155',
     shoes = '#E5453A', t = 0, walk = 0, armL = 110, armR = 70, sx = 1, sy = 1, rot = 0, beard = false, glasses = false,
     suspenders = false, holdR = '', holdL = '' } = o;
+  // ---- "alive" layer: breathing, sway, auto-blink, talking gestures, acting presets ----
+  const ph = o.phase !== undefined ? o.phase : (h * .37) % 6.28, talk = o.talk || 0;
+  let aL = armL, aR = armR, yOff = 0, rOff = Math.sin(t * .9 + ph) * 1.2, headRot = Math.sin(t * .7 + ph) * 2, sq = 1;
+  if (o.blink === undefined) o.blink = ((t + ph) % 3.6) < .12;
+  if (talk > .04 || o.talking) { const k = Math.min(1, talk * 2 + (o.talking ? .6 : 0));
+    headRot += Math.sin(t * 6.3 + ph) * 5 * k; aR += Math.sin(t * 3.3 + ph) * 22 * k - 18 * k; aL += Math.sin(t * 2.7 + ph + 1) * 12 * k;
+    yOff -= Math.abs(Math.sin(t * 6.3 + ph)) * h * .008 * k; }
+  const act = o.act, at = t - (o.actT || 0);
+  if (act === 'wave') { aR = -70 + Math.sin(t * 11) * 28; }
+  if (act === 'cheer') { aL = 230 + Math.sin(t * 9) * 14; aR = -50 - Math.sin(t * 9) * 14; yOff -= Math.abs(Math.sin(t * 7)) * h * .07; sq = 1 + Math.sin(t * 14) * .03; }
+  if (act === 'point') { aR = -15 + Math.sin(t * 4) * 4; }
+  if (act === 'shrug') { const k = Math.sin(Math.min(1, at * 3) * Math.PI / 2); aL = lerpA(armL, 150, k); aR = lerpA(armR, 30, k); headRot += 8 * k; }
+  if (act === 'facepalm') { aR = -115; headRot -= 10; }
+  if (act === 'think') { aR = -95 + Math.sin(t * 2) * 4; headRot += 6; }
+  if (act === 'laugh') { rOff += Math.sin(t * 22) * 3; yOff -= Math.abs(Math.sin(t * 11)) * h * .015; }
+  if (act === 'jump') { const k = (at % 1.1) / 1.1; yOff -= Math.sin(k * Math.PI) * h * .22; sq = k < .08 || k > .92 ? .9 : 1.04; }
+  if (act === 'shock') { const k = Math.min(1, at * 4); yOff -= Math.sin(k * Math.PI) * h * .1; aL = 220; aR = -40; rOff += -6 * k; }
+  if (act === 'shake') { rOff += Math.sin(t * 40) * 4; }
+  if (act === 'walk') { o.walk = 1; yOff -= Math.abs(Math.sin(t * 9)) * h * .015; aL = 100 + Math.sin(t * 9) * 25; aR = 80 - Math.sin(t * 9) * 25; }
+  const breathe = 1 + Math.sin(t * 2.4 + ph) * .012;
   const hr = h * .17, hy = -h + hr * 1.05, sh = hy + hr * .95, hip = -h * .36, bw = h * .2;
   let g = '';
   // legs
   for (const s of [-1, 1]) {
-    const ph = walk ? Math.sin(t * 9 + (s > 0 ? Math.PI : 0)) * h * .07 : 0, lift = walk ? Math.max(0, Math.cos(t * 9 + (s > 0 ? Math.PI : 0))) * h * .03 : 0;
-    g += limb(s * bw * .28, hip, s * bw * .3 + ph, -h * .04 - lift, pants, h * .075);
-    g += `<ellipse cx="${ff(s * bw * .3 + ph + s * h * .025)}" cy="${ff(-h * .025 - lift)}" rx="${ff(h * .065)}" ry="${ff(h * .035)}" fill="${shoes}" stroke="${INK}" stroke-width="${OUT}"/>`;
+    const ph2 = (walk || o.walk) ? Math.sin(t * 9 + (s > 0 ? Math.PI : 0)) * h * .07 : 0, lift = (walk || o.walk) ? Math.max(0, Math.cos(t * 9 + (s > 0 ? Math.PI : 0))) * h * .03 : 0;
+    g += limb(s * bw * .28, hip, s * bw * .3 + ph2, -h * .04 - lift, pants, h * .075);
+    g += `<ellipse cx="${ff(s * bw * .3 + ph2 + s * h * .025)}" cy="${ff(-h * .025 - lift)}" rx="${ff(h * .065)}" ry="${ff(h * .035)}" fill="${shoes}" stroke="${INK}" stroke-width="${OUT}"/>`;
   }
   // arms behind body? left arm first
   const arm = (s, ang, hold) => { const ax = s * bw * .5, ay = sh + h * .05, a = ang * Math.PI / 180, L = h * .27;
     const hx = ax + Math.cos(a) * L, hy2 = ay + Math.sin(a) * L;
     return limb(ax, ay, hx, hy2, shirt, h * .06, s * h * .02) + hand(hx, hy2, h * .04, skin) + (hold ? `<g transform="translate(${ff(hx)} ${ff(hy2)})">${hold}</g>` : ''); };
-  g += arm(-1, armL, holdL);
+  g += arm(-1, aL, holdL);
   // body
   g += `<path d="M${ff(-bw * .5)} ${ff(sh + h * .02)} Q${ff(-bw * .62)} ${ff(hip + h * .02)} ${ff(-bw * .45)} ${ff(hip + h * .03)} L${ff(bw * .45)} ${ff(hip + h * .03)} Q${ff(bw * .62)} ${ff(hip + h * .02)} ${ff(bw * .5)} ${ff(sh + h * .02)} Q0 ${ff(sh - h * .02)} ${ff(-bw * .5)} ${ff(sh + h * .02)}Z" fill="${shirt}" stroke="${INK}" stroke-width="${OUT}" stroke-linejoin="round"/>`;
   if (suspenders) for (const s of [-1, 1]) g += `<path d="M${ff(s * bw * .28)} ${ff(sh + h * .01)} L${ff(s * bw * .25)} ${ff(hip + h * .03)}" stroke="#D3302B" stroke-width="${ff(h * .022)}"/>`;
-  // head
+  // head (rotates around the neck)
+  g += `<g transform="rotate(${ff(headRot)} 0 ${ff(sh)})">`;
   g += `<rect x="${ff(-h * .03)}" y="${ff(sh - h * .03)}" width="${ff(h * .06)}" height="${ff(h * .05)}" fill="${skin}"/>`;
   if (hairStyle === 'pony') g += `<ellipse cx="${ff(hr * 1.25)}" cy="${ff(hy + hr * .05)}" rx="${ff(hr * .42)}" ry="${ff(hr * .7)}" fill="${hair}" stroke="${INK}" stroke-width="${OUT}" transform="rotate(${ff(20 + Math.sin(t * 5) * 6)} ${ff(hr * .7)} ${ff(hy - hr * .5)})"/>`;
   if (hairStyle === 'curly') for (let i = 0; i < 9; i++) { const a = Math.PI * (1.05 + i * .11); g += `<circle cx="${ff(Math.cos(a) * hr * 1.0)}" cy="${ff(hy + Math.sin(a) * hr * 1.0)}" r="${ff(hr * .3)}" fill="${hair}" stroke="${INK}" stroke-width="${OUT}"/>`; }
@@ -70,9 +92,10 @@ function person(o) {
   if (glasses) for (const s of [-1, 1]) g += `<circle cx="${ff(s * hr * .36)}" cy="${ff(hy - hr * .05)}" r="${ff(hr * .27)}" fill="none" stroke="${INK}" stroke-width="${ff(hr * .06)}"/>`;
   g += mouthP(0, hy + hr * .42, hr, o);
   if (beard) g += `<path d="M${ff(-hr * .62)} ${ff(hy + hr * .32)} Q${ff(-hr * .3)} ${ff(hy + hr * .12)} 0 ${ff(hy + hr * .28)} Q${ff(hr * .3)} ${ff(hy + hr * .12)} ${ff(hr * .62)} ${ff(hy + hr * .32)} Q${ff(hr * .35)} ${ff(hy + hr * .5)} 0 ${ff(hy + hr * .38)} Q${ff(-hr * .35)} ${ff(hy + hr * .5)} ${ff(-hr * .62)} ${ff(hy + hr * .32)}Z" fill="#F4F4F4" stroke="${INK}" stroke-width="${ff(OUT * .8)}" stroke-linejoin="round"/>`;
-  g += arm(1, armR, holdR);
+  g += `</g>`;
+  g += arm(1, aR, holdR);
   if (o.extra) g += o.extra(hr, hy);
-  return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(rot)}) scale(${ff(sx)} ${ff(sy)})"><ellipse cx="0" cy="0" rx="${ff(h * .16)}" ry="${ff(h * .025)}" fill="#000" opacity=".18"/>${g}</g>`;
+  return `<g transform="translate(${ff(x)} ${ff(y)})"><ellipse cx="0" cy="0" rx="${ff(h * .16)}" ry="${ff(h * .025)}" fill="#000" opacity=".18"/><g transform="translate(0 ${ff(yOff)}) rotate(${ff(rot + rOff)}) scale(${ff(sx / Math.sqrt(sq * breathe))} ${ff(sy * sq * breathe)})">${g}</g></g>`;
 }
 
 // The family. age: 'kid' (1996) or 'adult' (2026); pass extra options through.
