@@ -580,5 +580,84 @@
     "s": 1.05
    }
   ]
+ },
+ "s02_salary_v5": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "split",
+    "x": 860
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1400' cy='520' r='430' fill='#FFF3A0' opacity='.55' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g transform='translate(470 1010) rotate(-10) scale(.75)'>${towtruck({x:-560,y:30,s:1,t:0})}${car({x:0,y:0,s:1,kind:'red',tilt:-6})}</g>`"
+   },
+   {
+    "type": "coinrain",
+    "x": 980,
+    "y": 60,
+    "w": 900,
+    "h": 800,
+    "n": 22
+   },
+   {
+    "type": "sparkles",
+    "x": 980,
+    "y": 40,
+    "w": 900,
+    "h": 700,
+    "n": 20
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.sam({x:1380,y:1200,h:900,mood:'laugh',act:'cheer',t:.25,look:[0,0]})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.jay({x:420,y:1200,h:900,mood:'sad',tears:true,armL:110,armR:70,t:.3,look:[0,.6]})}</g>`"
+   },
+   {
+    "type": "tag",
+    "x": 560,
+    "y": 720,
+    "label": "$0 SAVED",
+    "sub": "NEW CAR, NO PLAN",
+    "color": "#E5202B",
+    "rot": -7,
+    "s": 0.95
+   },
+   {
+    "type": "tag",
+    "x": 1500,
+    "y": 740,
+    "label": "$126,766",
+    "sub": "ONE LITTLE BOX",
+    "color": "#16A673",
+    "rot": 5,
+    "s": 1.05
+   },
+   {
+    "type": "text",
+    "x": 960,
+    "y": 140,
+    "size": 110,
+    "lines": [
+     [
+      [
+       "SAME",
+       "w"
+      ],
+      [
+       "SALARY",
+       "y"
+      ]
+     ]
+    ]
+   }
+  ]
  }
 }

@@ -259,3 +259,47 @@ function scoreboard(o) { const { x, y, rows, k = 1 } = o; let g = `<rect x="-420
   rows.forEach((r, i) => { if (!r.show) return; const yy = -90 + i * 120;
     g += `<rect x="-390" y="${yy}" width="780" height="100" rx="16" fill="#334155"/><text x="-360" y="${yy + 68}" font-size="54" fill="${r.color}" font-family="P" font-weight="900">${r.name}</text><text x="360" y="${yy + 68}" text-anchor="end" font-size="58" fill="#fff" font-family="P" font-weight="900">${r.value}</text>`; });
   return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(k)})" filter="url(#sh)">${g}</g>`; }
+
+// ---------------------------------------------------------------- story #2 cast & props ---
+Object.assign(CAST, {
+  jay: o => person(Object.assign({ h: 560, skin: '#D9A27A', hair: '#1a120b', hairStyle: 'short', shirt: '#EF4444', pants: '#111827', shoes: '#F8FAFC',
+    extra: o.shades ? (hr, hy) => `<rect x="${ff(-hr * .7)}" y="${ff(hy - hr * .3)}" width="${ff(hr * 1.4)}" height="${ff(hr * .38)}" rx="${ff(hr * .15)}" fill="#111"/>` : undefined }, o)),
+  sam: o => person(Object.assign({ h: 555, skin: '#F3D0B0', hair: '#6B4226', hairStyle: 'short', shirt: '#5B7DB1', pants: '#A8865B', shoes: '#4B5563', glasses: true }, o)),
+  ava: o => person(Object.assign({ h: 535, skin: '#C68B5E', hair: '#2b1608', hairStyle: 'pony', shirt: '#8B5CF6', pants: '#1F2937', shoes: '#F59E0B' }, o)),
+  hank: o => person(Object.assign({ h: 560, skin: '#F1C7A3', hair: '#9CA3AF', hairStyle: 'bald', shirt: '#F1F5F9', pants: '#475569', shoes: '#3f2a1a', glasses: true,
+    extra: (hr, hy) => `<path d="M0 ${ff(hy + hr * 1.05)} l${ff(hr * .14)} ${ff(hr * .2)} l-${ff(hr * .1)} ${ff(hr * 1.3)} l-${ff(hr * .08)} ${ff(hr * .2)} l-${ff(hr * .08)} -${ff(hr * .2)} l-${ff(hr * .1)} -${ff(hr * 1.3)}z" fill="#B91C1C" stroke="${INK}" stroke-width="3"/>` }, o)),
+});
+// red sports car / beige sedan. kind: 'red'|'sedan'; tilt for towing; wheelsSpin
+function car(o) {
+  const { x, y, s = 1, kind = 'red', t = 0, tilt = 0, flip = false } = o, red = kind === 'red';
+  const body = red ? '#E11D48' : '#D6C7A1', dark = red ? '#9F1239' : '#A8956B';
+  let g = red
+    ? `<path d="M-300 -60 Q-290 -120 -200 -130 L-90 -200 Q60 -215 140 -140 L270 -120 Q320 -110 320 -60 L320 -20 L-300 -20Z" fill="${body}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/><path d="M-70 -185 L-10 -190 L-10 -135 L-150 -135Z M10 -190 Q80 -190 120 -138 L10 -136Z" fill="#BAE6FD" stroke="${INK}" stroke-width="5"/><path d="M-290 -75 L310 -75" stroke="#fff" stroke-width="10" opacity=".5"/>`
+    : `<path d="M-300 -50 L-300 -120 L-200 -125 L-140 -220 L130 -220 L190 -125 L300 -115 L300 -50Z" fill="${body}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/><path d="M-125 -205 L-10 -205 L-10 -130 L-180 -130Z M10 -205 L120 -205 L170 -130 L10 -130Z" fill="#BAE6FD" stroke="${INK}" stroke-width="5"/><circle cx="-60" cy="-95" r="14" fill="#8B5A2B" opacity=".6"/><circle cx="150" cy="-80" r="20" fill="#8B5A2B" opacity=".5"/>`;
+  g += `<rect x="-300" y="-55" width="620" height="40" rx="10" fill="${dark}" stroke="${INK}" stroke-width="6"/>`;
+  for (const wx of [-170, 190]) { const sp = t * 400 % 360;
+    g += `<circle cx="${wx}" cy="-10" r="62" fill="#1F2937" stroke="${INK}" stroke-width="6"/>` + (red || wx < 0 ? `<g transform="rotate(${ff(sp)} ${wx} -10)"><circle cx="${wx}" cy="-10" r="34" fill="#CBD5E1" stroke="${INK}" stroke-width="4"/><path d="M${wx - 30} -10 L${wx + 30} -10 M${wx} -40 L${wx} 20" stroke="${INK}" stroke-width="5"/></g>` : `<circle cx="${wx}" cy="-10" r="20" fill="#6B7280"/>`); }
+  return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(tilt)}) scale(${ff((flip ? -1 : 1) * s)} ${ff(s)})"><ellipse cx="0" cy="40" rx="330" ry="20" fill="#000" opacity=".18"/>${g}</g>`;
+}
+function towtruck(o) { const { x, y, s = 1, t = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})"><rect x="-40" y="-170" width="380" height="140" rx="12" fill="#F59E0B" stroke="${INK}" stroke-width="7"/><rect x="200" y="-260" width="150" height="110" rx="12" fill="#F59E0B" stroke="${INK}" stroke-width="7"/><rect x="225" y="-240" width="100" height="60" fill="#BAE6FD" stroke="${INK}" stroke-width="5"/>` +
+    `<path d="M0 -170 L-160 -250 L-230 -140" stroke="#334155" stroke-width="14" fill="none"/><circle cx="${ff(Math.sin(t * 20) * 2 + 40)}" cy="-260" r="16" fill="#FDE047" stroke="${INK}" stroke-width="4"/><circle cx="40" cy="-20" r="50" fill="#1F2937" stroke="${INK}" stroke-width="6"/><circle cx="270" cy="-20" r="50" fill="#1F2937" stroke="${INK}" stroke-width="6"/>` +
+    `<text x="130" y="-85" text-anchor="middle" font-size="40" fill="#7C2D12" font-family="P" font-weight="900">TOW</text></g>`; }
+function couch(o) { const { x, y, s = 1 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})"><rect x="-330" y="-230" width="660" height="150" rx="40" fill="#0EA5E9" stroke="${INK}" stroke-width="7"/><rect x="-360" y="-130" width="720" height="110" rx="30" fill="#38BDF8" stroke="${INK}" stroke-width="7"/><rect x="-380" y="-200" width="80" height="180" rx="30" fill="#0284C7" stroke="${INK}" stroke-width="7"/><rect x="300" y="-200" width="80" height="180" rx="30" fill="#0284C7" stroke="${INK}" stroke-width="7"/><rect x="-330" y="-20" width="20" height="30" fill="${INK}"/><rect x="310" y="-20" width="20" height="30" fill="${INK}"/></g>`; }
+function laptop(o) { const { x, y, s = 1, screen = '', k = 1 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s * k)})" filter="url(#sh)"><rect x="-300" y="-380" width="600" height="380" rx="20" fill="#1E293B" stroke="${INK}" stroke-width="8"/><rect x="-270" y="-350" width="540" height="320" rx="8" fill="#F8FAFC"/>${screen}<path d="M-360 0 L360 0 L320 40 L-320 40Z" fill="#94A3B8" stroke="${INK}" stroke-width="7"/></g>`; }
+function form(o) { const { x, y, s = 1, rot = 0, checked = 0, crumple = 0, title = '401(k) ENROLLMENT' } = o;
+  const sk = 1 - crumple * .6;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(rot + crumple * 40)}) scale(${ff(s * sk)})" filter="url(#sh)"><rect x="-170" y="-220" width="340" height="440" rx="8" fill="#fff" stroke="${INK}" stroke-width="5"/>` +
+    `<text x="0" y="-170" text-anchor="middle" font-size="30" fill="${INK}" font-family="P" font-weight="900">${title}</text>` + [0, 1, 2, 3].map(i => `<rect x="-130" y="${-130 + i * 40}" width="${200 + (i % 2) * 50}" height="12" rx="6" fill="#CBD5E1"/>`).join('') +
+    `<rect x="-130" y="40" width="64" height="64" rx="8" fill="#fff" stroke="${INK}" stroke-width="6"/>` + (checked > 0 ? `<path d="M-120 72 L-102 ${ff(72 + 20 * Math.min(1, checked * 2))} L${ff(-102 + 40 * Math.max(0, checked * 2 - 1))} ${ff(92 - 50 * Math.max(0, checked * 2 - 1))}" stroke="#16A34A" stroke-width="12" fill="none" stroke-linecap="round"/>` : '') +
+    `<text x="-50" y="85" font-size="26" fill="${INK}" font-family="P" font-weight="900">YES, MATCH ME</text>` + (crumple > 0 ? `<path d="M-170 -220 L170 220 M170 -220 L-170 220" stroke="#94A3B8" stroke-width="4" opacity="${ff(crumple)}"/>` : '') + `</g>`; }
+function stringLights(t, y = 130) { let g = `<path d="M0 ${y} Q480 ${y + 90} 960 ${y} Q1440 ${y + 90} 1920 ${y}" stroke="${INK}" stroke-width="4" fill="none"/>`;
+  for (let i = 0; i < 24; i++) { const x = 40 + i * 80, q = (x % 960) / 960, yy = y + Math.sin(q * Math.PI) * 45 + 10, on = Math.sin(t * 3 + i) > -.3;
+    g += `<circle cx="${x}" cy="${ff(yy)}" r="13" fill="${['#FDE047', '#F472B6', '#60A5FA', '#4ADE80'][i % 4]}" opacity="${on ? 1 : .5}" stroke="${INK}" stroke-width="3"/>`; } return g; }
+function door(o) { const { x, y, s = 1, open = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) scale(${ff(s)})"><rect x="-150" y="-560" width="300" height="560" fill="#7C2D12" stroke="${INK}" stroke-width="8"/><rect x="-130" y="-540" width="${ff(260 * (1 - open * .8))}" height="540" fill="#9A3412" stroke="${INK}" stroke-width="6"/><circle cx="${ff(90 - open * 200)}" cy="-280" r="12" fill="#FDE047"/><rect x="-210" y="-20" width="420" height="30" fill="#A8A29E" stroke="${INK}" stroke-width="5"/></g>`; }
+function phonePost(o) { const { x, y, s = 1, place = 'CANCUN', likes = 0, bg = '#38BDF8', rot = 0 } = o;
+  return `<g transform="translate(${ff(x)} ${ff(y)}) rotate(${ff(rot)}) scale(${ff(s)})" filter="url(#sh)"><rect x="-150" y="-280" width="300" height="560" rx="36" fill="#111827" stroke="${INK}" stroke-width="6"/><rect x="-130" y="-250" width="260" height="300" rx="10" fill="${bg}"/><circle cx="60" cy="-180" r="40" fill="#FDE047"/><path d="M-130 20 Q-40 -60 50 0 Q100 30 130 -10 L130 50 L-130 50Z" fill="#FDE68A"/>` +
+    `<text x="0" y="110" text-anchor="middle" font-size="34" fill="#fff" font-family="P" font-weight="900">${place}</text><text x="0" y="170" text-anchor="middle" font-size="30" fill="#F472B6" font-family="P" font-weight="900">♥ ${likes.toLocaleString('en-US')}</text></g>`; }
