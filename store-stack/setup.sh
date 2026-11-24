@@ -51,7 +51,7 @@ dc() { ONE_CLICK_SETUP=true docker compose "${FILES[@]}" "$@"; } # ONE_CLICK_SET
 # (Hyperswitch's own CI loads it from .github/data/payment_callback_config.sql).
 dc up -d --wait pg redis-standalone   # migration_runner doesn't wait for the DB itself
 dc up -d migration_runner
-[ "$(dc wait migration_runner)" = "0" ] || { echo "Database migrations failed: run 'docker compose logs migration_runner'"; exit 1; }
+dc wait migration_runner >/dev/null || {   # exit status = the container's exit code echo "Database migrations failed: run 'docker compose logs migration_runner'"; exit 1; }
 dc exec -T pg psql -U db_user -d hyperswitch_db -v ON_ERROR_STOP=1 < .github/data/payment_callback_config.sql
 dc exec -T redis-standalone redis-cli DEL payment_callback >/dev/null
 dc up -d || true   # the two usage-ping hooks may fail; that's harmless
