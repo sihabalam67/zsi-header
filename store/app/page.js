@@ -26,15 +26,15 @@ export default function Home() {
   const feeder = getProduct('cat-tv-window-bird-feeder');
   return (
     <>
-      <section className="hero-photo-sec" data-intro>
+      <section className="hero-photo-sec">
         <div className="hero-photo">
           <Image src={PHOTOS.hero.src} alt={PHOTOS.hero.alt} fill priority sizes="100vw" />
         </div>
         <div className="hero-scrim" />
         <div className="wrap hero-content">
-          <p className="eyebrow light" data-intro-meta><span>For indoor cats with energy to burn</span></p>
+          <p className="eyebrow light"><span>For indoor cats with energy to burn</span></p>
           <h1 data-split>Give your indoor cat a <em>real</em> hunt.</h1>
-          <div data-intro-meta>
+          <div>
             <p className="lede light">Ten minutes of the right kind of play a day. Built on how cats actually hunt, made easy for busy people.</p>
             <div className="hero-ctas">
               <Link href={`/products/${FEATURED.slug}`} className="btn primary lg on-dark" data-magnetic>Shop the {FEATURED.name}</Link>
@@ -55,8 +55,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hunt" data-hunt aria-labelledby="hunt-title">
-        <div className="hunt-track" data-hunt-track>
+      <section className="hunt" aria-labelledby="hunt-title">
+        <div className="hunt-track">
           <div className="hunt-intro">
             <p className="eyebrow">The 10-minute nightly hunt</p>
             <h2 id="hunt-title" data-split>Four steps your cat already knows.</h2>

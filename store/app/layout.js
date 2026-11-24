@@ -40,19 +40,8 @@ export const viewport = { themeColor: '#1f2a2e', width: 'device-width', initialS
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-US" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{if(location.pathname==='/'&&!sessionStorage.getItem('ih_intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro')}}catch(e){}`,
-          }}
-        />
-      </head>
+    <html lang="en-US" className={`${display.variable} ${sans.variable}`}>
       <body>
-        <div className="loader" aria-hidden="true">
-          <span className="loader-brand">{BRAND.name}</span>
-          <span className="loader-count">0</span>
-        </div>
         <CartProvider>
           <a href="#main" className="skip">Skip to content</a>
           <div className="announce" aria-label="Store benefits">
