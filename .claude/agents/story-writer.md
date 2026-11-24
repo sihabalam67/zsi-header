@@ -31,3 +31,5 @@ Craft rules (non-negotiable):
 Output: write the script file in exactly the s01_script.py format (SCENES list of dict(id, chapter, lines), prefix
 codes, '!' for dramatic reads, asserts on the numbers you rely on), run `python3 <file>` to print the word count,
 then report the minute-by-minute cliffhanger list (one line per chapter) and the word count.
+
+Before writing, also read channel/stories/STORY_PROMPT.md (master visual/sound prompt): write lines that give the animators a visible action or reaction every few seconds, and keep jokes and drama in the characters' own words (each character has a cloned natural voice).

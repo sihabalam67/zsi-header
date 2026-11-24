@@ -158,7 +158,7 @@ Record each video in `channel/out/styles.json` as `{"epNN_slug": {"look": "paper
 devices (first-3-day views, % kept at 30 s, average view). Every Thursday, move devices up or down this playbook
 based on that table. A device that holds viewers moves into more topics; one that loses them is dropped.
 
-## 8. Living characters (owner feedback on story #1, Nov 24: "more moving, talking, action characters")
+## 8. Living characters (owner feedback on story #1, Nov 24: "more moving, talking, action characters"; Nov 24 #2: "shaking too much" → calm motion limits in channel/stories/STORY_PROMPT.md)
 `channel/motion/cast.js` characters are alive by default: breathing, a small sway, auto-blink, and head bob plus hand
 gestures whenever `talk` > 0 (feed it the lip-sync envelope from the timeline). Acting presets: `act: 'wave' |
 'cheer' | 'point' | 'shrug' | 'think' | 'facepalm' | 'laugh' | 'jump' | 'shock' | 'shake' | 'walk'` (with `actT` =
