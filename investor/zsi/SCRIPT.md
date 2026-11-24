@@ -12,6 +12,7 @@ Every number below comes from the live calculator's default proposal values (che
 | 1 | Navy screen; seven browser windows flip in one by one (real site screenshots), then gather into a grid. "ZSI.Ai" writes on in gold. | **ZSI.Ai** · 7 live products · 4 ways to make money | "Seven products you can open in your browser today. Four separate ways they make money. This is ZSI.Ai." |
 
 ## PART 2: Live product tour (0:15-2:35)
+Owner rule (Nov 24): each product explanation is SHORT, never more than 20 seconds (target 12-16 s).
 Each product: a clean browser frame, the real website scrolling smoothly, a cursor, and gold callout chips that
 pop on each feature as it is named. A small tag in the corner: which revenue stream it belongs to.
 

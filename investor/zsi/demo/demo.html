@@ -1,0 +1,130 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-700.ttf);font-weight:700}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#0B1628;font-family:P,sans-serif;color:#F5EFE0}
+.abs{position:absolute}
+#bg{position:absolute;inset:0;background:radial-gradient(1200px 800px at 50% 40%,#16294A 0%,#0B1628 60%,#070F1C 100%)}
+#glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,#C9A24A55,#C9A24A00 65%);left:510px;top:90px}
+.card{position:absolute;width:420px;height:262px;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px #0008;border:2px solid #C9A24A66;background:#fff}
+.card .bar,.win .bar{height:26px;background:#EDE7DA;display:flex;align-items:center;padding-left:12px;gap:7px}
+.dot{width:10px;height:10px;border-radius:50%}
+.card .shot{width:100%;height:236px;background-size:420px auto;background-position:top center}
+.title{font-weight:900;letter-spacing:-2px}
+.chip{position:absolute;padding:12px 20px;border-radius:40px;background:#C9A24A;color:#0B1628;font-weight:900;font-size:24px;white-space:nowrap;box-shadow:0 12px 30px #0007;transform-origin:left center}
+.chip:before{content:"";position:absolute;left:-16px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:#C9A24A;box-shadow:0 0 0 8px #C9A24A44}
+.win{position:absolute;left:180px;top:150px;width:1280px;border-radius:16px;overflow:hidden;box-shadow:0 40px 90px #000a;border:2px solid #C9A24A55;background:#fff}
+.url{margin-left:16px;background:#fff;border-radius:8px;padding:2px 14px;font:700 15px P;color:#555;width:540px}
+.view{position:relative;width:1280px;height:700px;overflow:hidden}
+.view img{position:absolute;left:0;top:0;width:1280px}
+.tag{position:absolute;padding:10px 20px;border-radius:10px;font-weight:700;font-size:24px;color:#fff}
+.check{position:absolute;left:260px;top:250px;width:860px;height:390px;border-radius:14px;background:linear-gradient(135deg,#FBF7EC,#F1E6C8);box-shadow:0 40px 80px #000a;color:#2B2416;overflow:hidden}
+.line{position:absolute;left:1220px;font-size:46px;font-weight:700;white-space:nowrap;line-height:1.15}
+.num{font-weight:900}
+.barwrap{position:absolute;bottom:200px;width:150px}
+.seg{width:150px}
+.yl{position:absolute;bottom:150px;width:150px;text-align:center;font-weight:700;font-size:26px;color:#C9BFA8}
+.tot{position:absolute;width:220px;text-align:center;font-weight:900;font-size:34px;color:#F5EFE0}
+.legend{position:absolute;display:flex;gap:28px;font-weight:700;font-size:24px}
+.legend i{display:inline-block;width:20px;height:20px;border-radius:5px;margin-right:8px;vertical-align:-3px}
+#lower{position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(#0000,#070F1Ccc)}
+</style></head><body>
+<div id="bg"></div><div id="glow"></div><div id="stage"></div><div id="lower"></div>
+<script>
+const CAPS='../caps/';
+const W=1920,H=1080;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eout=x=>1-Math.pow(1-x,3);
+const spring=(t,t0,k=1)=>{const x=t-t0;if(x<=0)return 0;return 1-Math.exp(-6*x*k)*Math.cos(9*x*k);};
+const money=v=>'$'+Math.round(v).toLocaleString('en-US');
+const short=v=>v>=1e6?'$'+(v/1e6).toFixed(2)+'M':'$'+Math.round(v/1000)+'K';
+const st=document.getElementById('stage');
+function el(html){st.insertAdjacentHTML('beforeend',html);}
+const SITES=[['kababking','kk-express.vercel.app'],['goldenmarkstore','goldenmarkstore.com'],['usamarry','usamarry.com'],['dgprint24','dgprint24.com'],['rpclimo','rpclimo.com'],['goldenmarkmoney','goldenmark.money'],['calc_overview','proposal calculator']];
+function browserCard(i,x,y,s,r,op){const [n]=SITES[i];return `<div class="card" style="left:${x}px;top:${y}px;transform:scale(${s}) rotate(${r}deg);opacity:${op}"><div class="bar"><span class="dot" style="background:#E5675B"></span><span class="dot" style="background:#E9B949"></span><span class="dot" style="background:#69B25B"></span></div><div class="shot" style="background-image:url(${CAPS}${n}.jpg)"></div></div>`;}
+
+// Scene timings
+const S1=[0,5.5],S2=[5.5,13.6],S3=[13.6,19.6],S4=[19.6,28.5];
+function sceneIntro(t){
+  // 7 browser windows fly in, gather into a grid, then shrink behind the title
+  const grid=[[230,140],[750,140],[1270,140],[230,440],[750,440],[1270,440],[750,740]];
+  for(let i=0;i<7;i++){const k=spring(t,.15+i*.18,.9);const g=eio(seg(t,3.0,4.2));
+    const x0=W/2-210+(i-3)*60, y0=H+200;
+    let x=x0+(grid[i][0]-x0)*k, y=y0+(grid[i][1]-y0)*k;
+    const s=(.8+.2*k)*(1-.25*g), op=clamp(k*1.2)*(1-.75*g);
+    x=x+(W/2-210-x)*g*.15; y=y+(H/2-131-y)*g*.15;
+    el(browserCard(i,x,y,s,(1-k)*(i%2?6:-6),op));}
+  const a=seg(t,3.3,4.3), b=seg(t,3.9,4.9);
+  el(`<div class="abs title" style="left:0;right:0;top:330px;text-align:center;font-size:${170}px;color:#E2BE62;opacity:${a};transform:translateY(${(1-eout(a))*40}px);text-shadow:0 10px 40px #000">ZSI.Ai</div>`);
+  el(`<div class="abs" style="left:0;right:0;top:560px;text-align:center;font-weight:700;font-size:46px;opacity:${b}">7 live products <span style="color:#E2BE62">·</span> 4 ways to make money</div>`);
+}
+function sceneTour(t){
+  const enter=eout(seg(t,0,.6));
+  // scroll plan (page px): hero -> "How would you like" cards
+  const sy= t<3.2?0: 870*eio(seg(t,3.2,5.0));
+  const sc=1280/1440;
+  el(`<div class="win" style="transform:translateY(${(1-enter)*80}px) scale(${.96+.04*enter});opacity:${enter}"><div class="bar"><span class="dot" style="background:#E5675B"></span><span class="dot" style="background:#E9B949"></span><span class="dot" style="background:#69B25B"></span><span class="url">🔒 kk-express.vercel.app</span></div><div class="view"><img src="${CAPS}kababking.jpg" style="transform:translateY(${-sy*sc}px)"></div></div>`);
+  // cursor
+  const cx= t<2?900:t<3.2?900+(1100-900)*eio(seg(t,2,2.8)):1100+(520-1100)*eio(seg(t,5,6));
+  const cy= t<2?600:t<3.2?600+(205-600)*eio(seg(t,2,2.8)):205+(560-205)*eio(seg(t,5,6));
+  el(`<svg class="abs" style="left:${cx}px;top:${cy}px" width="40" height="50"><path d="M4 4 L4 38 L14 29 L21 45 L28 42 L21 26 L34 26Z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg>`);
+  const pagePt=(px,py)=>[180+px*sc,150+26+(py-sy)*sc];
+  const chips=[[1.0,'Online ordering',1004+60,41,40],[5.6,'Table booking',141+40,1408,-150],[6.1,'Pickup',449+60,1408,-210],[6.5,'Delivery',757+50,1408,-150],[6.9,'Catering',1065+50,1408,-210]];
+  for(const [at,txt,px,py,dy] of chips){ if(t<at) continue; const [x,y]=pagePt(px,py); const k=spring(t,at,1.1); if(at===1.0&&t>3.2) continue;
+    el(`<div class="chip" style="left:${x+20}px;top:${y+dy}px;transform:scale(${k})">${txt}</div>`);}
+  el(`<div class="tag" style="left:1500px;top:160px;background:#1D5C7A;opacity:${seg(t,.6,1.2)}">SaaS platform<br><span style="font-size:20px;opacity:.8">1 of 5</span></div>`);
+  el(`<div class="abs title" style="left:1500px;top:290px;font-size:62px;line-height:1;opacity:${seg(t,.8,1.4)}">Kabab<br>King</div>`);
+  el(`<div class="abs" style="left:1500px;top:440px;width:380px;font-weight:700;font-size:26px;color:#C9BFA8;opacity:${seg(t,1.2,1.8)}">A complete restaurant platform: order online, reserve, book catering.</div>`);
+}
+function sceneCheck(t){
+  const k=eout(seg(t,0,.7));
+  // the check slides up out of a printer slot
+  el(`<div class="abs" style="left:230px;top:200px;width:920px;height:30px;border-radius:15px;background:#1B2C48;box-shadow:inset 0 4px 10px #000"></div>`);
+  el(`<div class="check" style="transform:translateY(${(1-k)*-300}px);clip-path:inset(0 0 ${(1-k)*100}% 0)">
+    <div class="abs" style="left:40px;top:30px;font-weight:900;font-size:30px;color:#8A6A1C">GoldenMark Money</div>
+    <div class="abs" style="right:40px;top:34px;font-weight:700;font-size:22px">No. 0001</div>
+    <div class="abs" style="left:40px;top:140px;font-weight:700;font-size:22px">PAY TO THE ORDER OF</div>
+    <div class="abs" style="left:40px;top:175px;width:560px;border-bottom:3px solid #2B2416;font-weight:700;font-size:30px;padding-bottom:6px">Any US business</div>
+    <div class="abs" style="right:40px;top:160px;border:3px solid #2B2416;border-radius:8px;padding:6px 18px;font-weight:900;font-size:34px">eCHECK</div>
+    <div class="abs" style="left:40px;top:320px;font:700 22px monospace;letter-spacing:4px">⑆000001⑆ ⑈021000021⑈</div></div>`);
+  el(`<div class="tag" style="left:260px;top:120px;background:#A8822A;opacity:${seg(t,.3,.9)}">Revenue stream 2 · GoldenMark Money</div>`);
+  const rows=[[1.0,'Price per check','$0.65','#F5EFE0'],[1.9,'Our cost','− $0.02','#E07A6A'],[3.0,'We keep','$0.63','#E2BE62']];
+  rows.forEach(([at,l,v,c],i)=>{const a=seg(t,at,at+.5); el(`<div class="line" style="top:${250+i*165}px;opacity:${a};transform:translateX(${(1-eout(a))*40}px)"><span style="color:#C9BFA8;font-size:32px">${l}</span><br><span class="num" style="color:${c};font-size:${i==2?84:64}px">${v}</span></div>`);});
+  if(t>2.8) el(`<div class="abs" style="left:1220px;top:572px;width:420px;height:4px;background:#E2BE62;transform:scaleX(${eout(seg(t,2.8,3.2))});transform-origin:left"></div>`);
+  if(t>3.6) el(`<div class="abs" style="left:1530px;top:760px;padding:10px 22px;border-radius:30px;border:3px solid #E2BE62;color:#E2BE62;font-weight:900;font-size:34px;transform:scale(${spring(t,3.6,1)})">96.9% margin</div>`);
+}
+function sceneChart(t){
+  const Y=[[285000,78000,144000,50000],[731500,195000,432000,50000],[1370850,487500,720000,50000],[2183765,975000,1008000,50000],[3152889,1950000,1296000,50000]];
+  const C=['#1D5C7A','#A8822A','#C4502F','#5B4B8A'], NAMES=['SaaS Platforms','GoldenMark Money','ZSI PAY','Miscellaneous'];
+  const maxH=620, scale=maxH/6500000;
+  el(`<div class="abs title" style="left:180px;top:70px;font-size:54px;opacity:${seg(t,0,.5)}">Combined revenue by year</div>`);
+  el(`<div class="legend" style="left:180px;top:150px;opacity:${seg(t,.3,.8)}">${NAMES.map((n,i)=>`<span><i style="background:${C[i]}"></i>${n}</span>`).join('')}</div>`);
+  for(let y=0;y<5;y++){
+    const at=.6+y*.7, g=eout(seg(t,at,at+.9)); const x=260+y*250;
+    let h='';for(let s=3;s>=0;s--){ h+=`<div class="seg" style="height:${Y[y][s]*scale*g}px;background:${C[s]};${s==3?'border-radius:8px 8px 0 0':''}"></div>`;}
+    el(`<div class="barwrap" style="left:${x}px">${h}</div>`);
+    el(`<div class="yl" style="left:${x}px">Year ${y+1}</div>`);
+    const tot=Y[y].reduce((a,b)=>a+b,0);
+    el(`<div class="tot" style="left:${x-35}px;bottom:${215+tot*scale*g}px;opacity:${seg(t,at+.4,at+.8)}">${short(tot*g)}</div>`);
+  }
+  const a=seg(t,4.6,5.4); const v=15259504*eout(seg(t,4.6,6.2));
+  el(`<div class="abs" style="left:1530px;top:330px;width:370px;opacity:${a};transform:translateY(${(1-eout(a))*30}px)"><div style="font-weight:700;font-size:28px;color:#C9BFA8">Five-year revenue</div><div class="num" style="font-size:52px;color:#E2BE62">${money(v)}</div><div style="font-weight:700;font-size:24px;color:#C9BFA8;margin-top:10px">≈ $537,000 a month in Year 5</div></div>`);
+  el(`<div class="abs" style="left:0;right:0;bottom:40px;text-align:center;font-weight:700;font-size:20px;color:#8E8672;opacity:${seg(t,6,6.6)}">Five-year projections from the ZSI.Ai Proposal Calculator's default assumptions · not a guarantee</div>`);
+}
+window.TOTAL=28.5;
+window.frame=function(t){
+  st.innerHTML='';
+  const glow=document.getElementById('glow');
+  glow.style.transform=`scale(${1+.05*Math.sin(t*.6)})`;
+  if(t<S1[1]) sceneIntro(t-S1[0]);
+  else if(t<S2[1]) sceneTour(t-S2[0]);
+  else if(t<S3[1]) sceneCheck(t-S3[0]);
+  else sceneChart(t-S4[0]);
+  // quick dip between scenes
+  const cuts=[S1[1],S2[1],S3[1]]; let d=0; for(const c of cuts){ d=Math.max(d,1-Math.abs(t-c)/.25);}
+  st.style.opacity=1-clamp(d)*.85;
+};
+</script></body></html>
