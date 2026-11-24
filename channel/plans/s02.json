@@ -1,0 +1,14 @@
+{
+ "videos": {
+  "s02_salary": "2026-11-27T12:00"
+ },
+ "playlists": {
+  "s02": [
+   "Money Stories",
+   "Family-friendly money stories with real numbers."
+  ]
+ },
+ "launch_questions": {
+  "s02_salary": "One word: are you Jay or Sam?"
+ }
+}

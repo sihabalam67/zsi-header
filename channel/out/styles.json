@@ -29,5 +29,15 @@
    "Timeline Slam",
    "Follow the Dollar"
   ]
+ },
+ "s02_salary": {
+  "look": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Living characters",
+   "Receipt & Recipe",
+   "Money Machine",
+   "Coins as Data"
+  ]
  }
 }

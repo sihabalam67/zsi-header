@@ -1,0 +1,24 @@
+{
+ "video": "channel/out/s02_salary.mp4",
+ "title": "Same Salary. 10 Years Later, One Is Broke.",
+ "description": "Jay and Sam started the same job, on the same day, for the same salary. Ten years later, one of them has $126,766. The other is standing at his door at midnight, asking for help. It came down to one little box on one boring form. A money story about friendship, car payments, credit cards, a layoff, a wedding... and the red SELL button.\n\n0:00 Midnight, 2026\n0:37 2016: the boring form\n1:42 The red car\n2:45 Living for the likes\n4:10 2020: the red button\n5:11 The couch\n6:08 Raises and rings\n7:15 The ask\n8:06 The best man\n\nThe real numbers behind the story:\n- Sam puts 6% of a $60,000 salary ($300/month) into his 401(k); the company adds half ($150/month). Invested in the S&P 500 with dividends from Feb 2016 to Nov 2026 (paused Apr-Aug 2020 while laid off): $37,500 of his money + $18,750 free match = $126,766 (before fees and taxes). The free match alone grew to $42,255.\n- March 23, 2020: the account fell to $20,730 from about $30,816 in February.\n- Jay's $40,000 car at the 2017 average new-car loan rate (4.6%), 72 months: $637/month, $5,864 interest.\n- A $6,000 card balance at today's average card rate (22.36%), paying only the minimum (interest + 1%): 20.8 years and $10,105 in interest.\n\nAre you Jay or Sam? Tell me in one word.\n\nData: S&P 500 Total Return index (Yahoo Finance ^SP500TR); Federal Reserve G.19 via FRED (TERMCBCCINTNS card APR, TERMCBAUTO48NS new-car loan rate).\n\nJay, Sam and their choices are made up; the rates and market returns are real. Past results don't promise future returns. Education only, not financial advice.\nOriginal story, characters and animation. Voices are AI.",
+ "tags": [
+  "money story",
+  "401k match",
+  "lifestyle creep",
+  "credit card debt",
+  "car payment",
+  "same salary different life",
+  "personal finance",
+  "saving vs spending",
+  "investing for beginners",
+  "coin theory"
+ ],
+ "categoryId": 27,
+ "privacy": "private",
+ "madeForKids": false,
+ "syntheticMedia": false,
+ "language": "en",
+ "thumbnail": "channel/out/thumbs/s02_salary_v5.jpg",
+ "captions": "channel/out/s02_salary.en.srt"
+}
