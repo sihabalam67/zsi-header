@@ -1,0 +1,53 @@
+MISCELLANEOUS REVENUE · PROPOSAL MODEL · USD · 5 YEARS
+Miscellaneous Revenue Calculator
+
+Extra income from outside projects the sales team wins while selling the seven core projects.
+
+Assumptions
+Reset to proposal
+PER YEAR	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5
+Outside customers won					
+Average project value per customer
+$
+Development cost (% of project value)
+%
+Five-year project income
+$250,000
+25 outside customers
+Development cost
+$125,000
+50% of project income
+Five-year net revenue
+$125,000
+50% of project income
+Net revenue per year (Year 1)
+$25,000
+$50,000 income in Year 1
+Project income by year
+Development cost
+Net revenue
+$0
+$20K
+$40K
+$60K
+$50K
+Year 1
+$50K
+Year 2
+$50K
+Year 3
+$50K
+Year 4
+$50K
+Year 5
+Five-year projection
+MEASURE	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5	5-YR TOTAL
+Outside customers won	5	5	5	5	5	25
+Project income	$50,000	$50,000	$50,000	$50,000	$50,000	$250,000
+Development cost (50%)	$25,000	$25,000	$25,000	$25,000	$25,000	$125,000
+Net revenue	$25,000	$25,000	$25,000	$25,000	$25,000	$125,000
+Net as % of project income	50%	50%	50%	50%	50%	50%
+
+How it works. While selling the seven core projects, the sales team also wins outside projects. The proposal assumes 5 outside customers a year at $10,000 each, or $50,000 a year. Development costs 50% of that, so $25,000 a year is net revenue.
+
+Change the customers for any year, the average project value or the development cost, and every figure updates.

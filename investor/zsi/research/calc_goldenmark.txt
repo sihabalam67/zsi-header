@@ -1,0 +1,130 @@
+GOLDENMARK MONEY · PROPOSAL MODEL · USD
+GoldenMark Money Revenue Calculator
+
+Prepared for Moosa. Customers pay per digital check, with no monthly or setup fee. Change the price, cost or any yearly figure and the projection updates. This is an illustrative growth target, not confirmed sales or advertising results.
+
+PER DIGITAL CHECK
+No. 0001
+CUSTOMER PRICE
+$
+OUR COST
+$
+GROSS PROFIT / CHECK
+$0.63
+GROSS MARGIN
+96.9%
+PRICE $0.65 : COST $0.02 : KEEP $0.63
+Growth plan inputs
+Reset to proposal
+ASSUMPTION	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5
+Average active business customers					
+Average checks per customer / month					
+Digital marketing budget / month	
+$
+	
+$
+	
+$
+	
+$
+	
+$
+
+Other operating expenses / year (optional)	
+$
+	
+$
+	
+$
+	
+$
+	
+$
+
+Average active customers means customers paying throughout the year on average. The year-end count would need to be higher when customers join gradually. Other operating expenses start at $0; add staff, hosting, support or admin there to see a fuller picture.
+
+Five-year check revenue
+$3,685,500
+5,670,000 checks
+Gross profit after check cost
+$3,572,100
+96.9% of revenue
+Digital marketing, five years
+$360,000
+9.8% of revenue
+Remaining before other costs
+$3,212,100
+87.2% of revenue
+Where each year's revenue goes
+Direct check cost
+Digital marketing
+Other operating
+Remaining (labelled % of revenue)
+$0
+$500K
+$1.0M
+$1.5M
+$2.0M
+$78K
+66.2%
+Year 1
+$195K
+78.5%
+Year 2
+$488K
+84.6%
+Year 3
+$975K
+87.7%
+Year 4
+$1.9M
+89.2%
+Year 5
+Five-year revenue and marketing projection
+Copy summary
+FINANCIAL MEASURE	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5
+Average active customers	100	250	500	1,000	2,000
+Checks per customer / month	100	100	125	125	125
+Digital checks sold	120,000	300,000	750,000	1,500,000	3,000,000
+Average checks / month	10,000	25,000	62,500	125,000	250,000
+Revenue at $0.65 / check	$78,000	$195,000	$487,500	$975,000	$1,950,000
+Annual revenue growth	—	150%	150%	100%	100%
+Average monthly revenue	$6,500	$16,250	$40,625	$81,250	$162,500
+Direct cost at $0.02 / check	$2,400	$6,000	$15,000	$30,000	$60,000
+Gross profit	$75,600	$189,000	$472,500	$945,000	$1,890,000
+Gross margin	96.9%	96.9%	96.9%	96.9%	96.9%
+Digital marketing expense	$24,000	$36,000	$60,000	$90,000	$150,000
+Marketing as % of revenue	30.8%	18.5%	12.3%	9.2%	7.7%
+Remaining after direct cost and marketing	$51,600	$153,000	$412,500	$855,000	$1,740,000
+Remaining as % of revenue	66.2%	78.5%	84.6%	87.7%	89.2%
+Marketing per added customer	$240	$240	$240	$180	$150
+Customers needed to cover marketing	32	48	64	96	159
+Sales and digital marketing plan
+Budget covers advertising, content, SEO, email and campaign management
+YEAR	MONTHLY BUDGET	ANNUAL BUDGET	MAIN OBJECTIVE	SALES AND MARKETING FOCUS
+Year 1	$2,000	$24,000	Validate demand and secure initial customers	Test targeted search ads, build landing pages, publish demonstrations, and measure paying-customer acquisition. Founder-led demos and outreach to small businesses, accountants and bookkeepers.
+Year 2	$3,000	$36,000	Build a repeatable sales process	Expand successful campaigns, retarget visitors, introduce customer referrals, and reach accountants and bookkeepers.
+Year 3	$5,000	$60,000	Increase customer volume and usage	Grow SEO, educational content and referral campaigns. Target businesses with recurring vendor payments; develop multi-business accounts.
+Year 4	$7,500	$90,000	Expand distribution	Target higher-volume businesses, develop partner-led campaigns, reseller relationships and software integrations.
+Year 5	$12,500	$150,000	Scale retention and partnerships	Scale channels with proven returns, automate onboarding, improve retention, and offer volume plans with minimum commitments.
+Five-year totals
+MEASURE	FIVE-YEAR TOTAL	% OF REVENUE
+Revenue	$3,685,500	100.0%
+Direct check costs	$113,400	3.1%
+Gross profit	$3,572,100	96.9%
+Digital marketing	$360,000	9.8%
+Remaining before other operating expenses and taxes	$3,212,100	87.2%
+Value of one customer
+At the current price and cost
+CHECKS / MONTH	MONTHLY REVENUE	ANNUAL REVENUE	ANNUAL GROSS PROFIT
+50	$32.50	$390	$378
+100	$65.00	$780	$756
+250	$162.50	$1,950	$1,890
+500	$325.00	$3,900	$3,780
+1,000	$650.00	$7,800	$7,560
+
+Pricing. Customers pay $0.65 per digital check with no monthly subscription or setup fee. Each check costs $0.02 to produce, leaving $0.63 (96.9% gross margin) before marketing and other costs.
+
+Not net profit. The remaining amount must also cover any staff, software maintenance, hosting, customer support, payment processing, administration and taxes not already included in the per-check cost.
+
+Customers required. Year 1 needs about 100 average active customers printing 100 checks a month; Year 5 needs about 2,000 printing 125. Revenue grows at 124% a year on average over the period. Increase marketing only when campaigns bring in customers whose check usage supports the cost.

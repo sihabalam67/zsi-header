@@ -1,0 +1,142 @@
+URL https://moosa-proposal-calculator.vercel.app/#overview
+TITLE ZSI.Ai Proposal Calculator
+HEIGHT 900
+
+ZSI.Ai Proposal Calculator4 REVENUE STREAMS · 5 YEARS
+Overview
+SaaS Platforms
+GoldenMark Money
+ZSI PAY
+Miscellaneous
+COMBINED PROPOSAL · USD · 5 YEARS
+Five-Year Revenue Growth Projections for GoldenMark Money, ZSI PAY, and Five SaaS Products
+Key terms, in simple words
+Revenue
+All the money customers pay us.
+Expenses
+What we spend to run each project: staff, marketing, development, hosting, office and so on.
+Bottom line (profit)
+Revenue minus expenses. The money we keep.
+Revenue stream
+One way the company makes money. Here there are four: SaaS, GoldenMark Money, ZSI PAY and Miscellaneous.
+Combined five-year revenue
+$15,259,504
+All money customers pay us, from all four revenue streams
+Combined Year 5 revenue
+$6,448,889
+Money coming in during Year 5, about $537,407 a month
+Combined bottom line, five years
+$11,990,783
+Money left after expenses (best case; see notes)
+Largest revenue source
+SaaS Platforms
+Brings in the most money: 50.6% of the total
+SaaS Platforms
+
+Customers pay a monthly subscription to use five software products, plus a one-time setup fee.
+
+Five-year revenue
+$7,724,004
+Profit before tax
+$5,053,683
+Year 1 revenue
+$285,000
+Year 5 revenue
+$3,152,889
+Open calculator
+GoldenMark Money
+
+Customers pay a small fee for each digital check they send. No monthly or setup fee.
+
+Five-year revenue
+$3,685,500
+After check cost and marketing
+$3,212,100
+Year 1 revenue
+$78,000
+Year 5 revenue
+$1,950,000
+Open calculator
+ZSI PAY
+
+We keep a small percentage of every online sale we process for restaurants and online shops.
+
+Five-year revenue
+$3,600,000
+Gross fee revenue
+$3,600,000
+Year 1 revenue
+$144,000
+Year 5 revenue
+$1,296,000
+Open calculator
+Miscellaneous
+
+Extra outside projects our sales team wins while selling the main products.
+
+Five-year revenue
+$250,000
+Net after development cost
+$125,000
+Year 1 revenue
+$50,000
+Year 5 revenue
+$50,000
+Open calculator
+Combined revenue by year
+Total money coming in each year. Each colour is one revenue stream.
+SaaS Platforms
+GoldenMark Money
+ZSI PAY
+Miscellaneous
+$0
+$2.00M
+$4.00M
+$6.00M
+$8.00M
+$557K
+Year 1
+$1.41M
+Year 2
+$2.63M
+Year 3
+$4.22M
+Year 4
+$6.45M
+Year 5
+Revenue by business
+How much money each business brings in. The grey % is its share of that year's total.
+	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5	5-YR TOTAL
+SaaS Platforms	$285,000	$731,500	$1,370,850	$2,183,765	$3,152,889	$7,724,004
+Share of combined revenue (part of the year’s total)	51.2%	51.9%	52.2%	51.8%	48.9%	50.6%
+GoldenMark Money	$78,000	$195,000	$487,500	$975,000	$1,950,000	$3,685,500
+Share of combined revenue (part of the year’s total)	14.0%	13.8%	18.5%	23.1%	30.2%	24.2%
+ZSI PAY	$144,000	$432,000	$720,000	$1,008,000	$1,296,000	$3,600,000
+Share of combined revenue (part of the year’s total)	25.9%	30.7%	27.4%	23.9%	20.1%	23.6%
+Miscellaneous	$50,000	$50,000	$50,000	$50,000	$50,000	$250,000
+Share of combined revenue (part of the year’s total)	9.0%	3.5%	1.9%	1.2%	0.8%	1.6%
+Combined revenue (total money in)	$557,000	$1,408,500	$2,628,350	$4,216,765	$6,448,889	$15,259,504
+Annual growth (increase from last year)	—	152.9%	86.6%	60.4%	52.9%	
+Bottom line by business
+Money left after expenses. Not every business has all its costs added yet; see notes below.
+	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5	5-YR TOTAL
+SaaS Platforms profit before tax	$24,450	$381,122	$833,335	$1,502,334	$2,312,443	$5,053,683
+GoldenMark Money after check cost and marketing	$51,600	$153,000	$412,500	$855,000	$1,740,000	$3,212,100
+ZSI PAY gross fee revenue	$144,000	$432,000	$720,000	$1,008,000	$1,296,000	$3,600,000
+Miscellaneous net after development cost	$25,000	$25,000	$25,000	$25,000	$25,000	$125,000
+Combined bottom line (total money left)	$245,050	$991,122	$1,990,835	$3,390,334	$5,373,443	$11,990,783
+Profit margin (% of revenue we keep)	44.0%	70.4%	75.7%	80.4%	83.3%	78.6%
+
+What each bottom line includes (which costs are taken out):
+
+• SaaS Platforms – profit before tax: all expenses are taken out (staff, marketing, travel, development, hosting, admin and card processing fees). Tax is not taken out.
+
+• GoldenMark Money: only the 2¢ cost per check and digital marketing are taken out. Staff, hosting and admin are not added yet.
+
+• ZSI PAY – gross fee revenue: the full fee we earn, because no expenses are added yet.
+
+• Miscellaneous – net after development cost: project income minus the 50% development cost.
+
+Combined bottom line is an upper bound (the best case). Because some costs are still missing, the real profit will be somewhat lower.
+
+Assumptions you change in a calculator are saved in this browser only, so other people opening this link see the proposal numbers.

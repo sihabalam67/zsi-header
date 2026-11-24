@@ -1,0 +1,119 @@
+ZSI PAY · PROPOSAL MODEL · USD · 5 YEARS
+ZSI PAY Revenue Calculator
+
+Prepared for Moosa. ZSI PAY earns a percentage of the online sales processed for restaurants and e-commerce businesses. Change the fee, sales per merchant or merchants added each year and every figure updates. Actual merchant volumes are not yet available, so these are planning assumptions, not forecasts.
+
+ZSI PAY FEE ON ONLINE SALES
+%
+$5.00
+for every $1,000 processed
+ZSI PAY keeps the full fee; processor and card-network charges are paid separately.
+Merchant assumptions
+Reset to proposal
+Restaurants
+Average online sales processed per business / month
+$
+ZSI PAY revenue per business: $100.00 / month · $1,200 / year
+New businesses added each year
+Y1
+Y2
+Y3
+Y4
+Y5
+E-commerce businesses
+Average online sales processed per business / month
+$
+ZSI PAY revenue per business: $150.00 / month · $1,800 / year
+New businesses added each year
+Y1
+Y2
+Y3
+Y4
+Y5
+Merchants leaving per year (optional)
+%
+Processor and card-network charges paid out of the fee (optional)
+%
+
+Merchants join evenly through each year, so revenue uses the average active merchants. Both optional settings start at 0%, which matches the proposal: no merchant departures, and ZSI PAY keeps the full fee.
+
+Five-year ZSI PAY fee revenue
+$3,600,000
+before operating expenses
+Online payments processed
+$720.0M
+$720,000,000 over five years
+Merchants at end of Year 5
+900
+300 restaurants · 600 e-commerce
+Monthly revenue at full capacity
+$120,000
+$1,440,000 a year once all are active
+Fee revenue by year
+Restaurants
+E-commerce
+Labels show total and growth vs prior year
+$0
+$500K
+$1.00M
+$1.50M
+$144K
+start
+Year 1
+$432K
++200%
+Year 2
+$720K
++66.7%
+Year 3
+$1.01M
++40%
+Year 4
+$1.30M
++28.6%
+Year 5
+Five-year revenue projection
+Copy summary
+REVENUE DRIVER	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5
+MERCHANTS
+Restaurants at year-end	60	120	180	240	300
+E-commerce businesses at year-end	120	240	360	480	600
+Average active restaurants during year	30	90	150	210	270
+Average active e-commerce during year	60	180	300	420	540
+ONLINE PAYMENT VOLUME
+Restaurant online payment volume	$7,200,000	$21,600,000	$36,000,000	$50,400,000	$64,800,000
+E-commerce online payment volume	$21,600,000	$64,800,000	$108,000,000	$151,200,000	$194,400,000
+Total payment volume	$28,800,000	$86,400,000	$144,000,000	$201,600,000	$259,200,000
+ZSI PAY REVENUE
+Restaurant fee revenue at 0.5%	$36,000	$108,000	$180,000	$252,000	$324,000
+E-commerce fee revenue at 0.5%	$108,000	$324,000	$540,000	$756,000	$972,000
+Total ZSI PAY revenue	$144,000	$432,000	$720,000	$1,008,000	$1,296,000
+Annual revenue growth	—	200%	66.7%	40%	28.6%
+Average monthly revenue	$12,000	$36,000	$60,000	$84,000	$108,000
+Restaurant share of revenue	25%	25%	25%	25%	25%
+E-commerce share of revenue	75%	75%	75%	75%	75%
+Five-year totals and full capacity
+MEASURE	AMOUNT
+Total online payments processed over five years	$720,000,000
+Restaurant payments	$180,000,000
+E-commerce payments	$540,000,000
+Total ZSI PAY fee revenue over five years	$3,600,000
+From restaurants	$900,000 · 25%
+From e-commerce	$2,700,000 · 75%
+Monthly revenue once all 900 merchants are active	$120,000
+Annual revenue with all 900 active for a full year	$1,440,000
+Fee per merchant
+Monthly online sales vs ZSI PAY revenue
+ONLINE SALES / MONTH	FEE / MONTH	FEE / YEAR
+$5,000	$25.00	$300
+$10,000	$50.00	$600
+$20,000 restaurant avg	$100.00	$1,200
+$30,000 e-commerce avg	$150.00	$1,800
+$50,000	$250.00	$3,000
+$100,000	$500.00	$6,000
+
+How revenue is earned. ZSI PAY charges 0.5% of online sales processed, which is $5.00 for every $1,000. Only online sales processed through ZSI PAY count.
+
+Assumptions. Restaurants process $20,000 and e-commerce businesses $30,000 in online sales a month, constant over time. Merchants join evenly through each year, and none leave.
+
+Gross fee revenue. These figures are before operating expenses. They assume ZSI PAY keeps the full fee, with processor and card-network charges paid separately. If those charges come out of the fee, enter them in the optional setting to see retained revenue.
