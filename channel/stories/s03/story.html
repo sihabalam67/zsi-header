@@ -150,7 +150,7 @@ SCN.open=(t,s,L)=>{
   g+=`<rect x="900" y="${GY-215}" width="120" height="16" fill="#fff" stroke="${INK}" stroke-width="3"/>`;
   if(t>=L[2]&&t<L[5]){ ov(bigNum(960,220,countUp(t,L[2]+.3,1.6,TL.N.now,v=>'$'+Math.round(v).toLocaleString('en-US')),120,'#FDE047',pop(t,L[2]+.2))+shockwave(t,L[2]+1.9,960,180,520,'#FDE047')); }
   if(t>=L[3]&&t<L[5]) ov(bubble({x:620,y:330,text:'SOUP. EVERY. NIGHT!',size:40,k:pop(t,L[3]+.5)}));
-  if(t>=L[4]&&t<L[6]) ov(label(1380,150,'11 SAFETY PINS',46,'#fff','#475569',pop(t,L[4]+1.4)));
+  if(t>=L[4]&&t<L[6]) ov(label(1640,150,'11 SAFETY PINS',46,'#fff','#475569',pop(t,L[4]+1.4)));
   if(t>=L[5]&&t<L[6]){ const k=pop(t,L[5]); ov(`<g transform="translate(1500 470) scale(${f(k)})"><circle r="240" fill="#FEF3C7" stroke="${INK}" stroke-width="8" filter="url(#sh)"/><clipPath id="cw"><circle r="235"/></clipPath><g clip-path="url(#cw)">${CAST.walter({x:0,y:560,h:720,t,mood:'happy',act:'think'})}</g></g>`+label(1500,770,'WALTER · SCHOOL JANITOR',38,'#fff','#7C5A3A',k)); }
   if(t>=L[6]&&t<L[7]) ov(bigNum(960,250,'HOW?',150,'#E11D48',pop(t,L[6]+.6)));
   if(t>=L[7]&&t<L[9]){ const p=eo(seg(t,L[7]+.3,L[7]+2.2)); g+=`<g transform="translate(${f(lerp(960,1260,p))} ${GY-212}) rotate(${f(p*90)})"><circle r="16" fill="none" stroke="#FDE047" stroke-width="7"/><rect x="10" y="-5" width="60" height="10" fill="#FDE047"/><rect x="50" y="5" width="8" height="14" fill="#FDE047"/></g>`;
@@ -252,7 +252,7 @@ SCN.crash=(t,s,L)=>{
   return g;
 };
 SCN.growth=(t,s,L)=>{
-  Object.assign(POS,{W:1600,L:1600,K:1600,D:1600});
+  Object.assign(POS,{W:960,L:960,K:960,D:960});
   let g=`<rect width="${W}" height="${H}" fill="#FFF7E6"/>`;
   const pts=[[1988,0],[1996,TL.N.v1996],[2006,TL.N.v2006],[2016,TL.N.v2016],[2026.9,TL.N.now]];
   const x0=180,x1=1300,y0=880,yt=170, px=y=>x0+(y-1988)/(2027-1988)*(x1-x0), py=v=>y0-v/2100000*(y0-yt);
@@ -264,13 +264,13 @@ SCN.growth=(t,s,L)=>{
   g+=`<text x="${x0}" y="${yt+20}" font-size="40" fill="${INK}">WALTER'S BALANCE, EVERY 10 YEARS</text>`;
   for(let i=1;i<=Math.min(reveal,3);i++){ const [yr,v]=pts[i]; g+=`<circle cx="${f(px(yr))}" cy="${f(py(v))}" r="14" fill="#16A34A" stroke="#fff" stroke-width="4"/>`+label(px(yr),py(v)-50,money(v),36,'#fff','#16A34A',pop(t,[L[1],L[3],L[5]][i-1]+.3)); }
   if(reveal>=4){ g+=label(px(2026),py(TL.N.now*kk)-50,money(TL.N.now*kk),42,'#fff','#16A34A',1); if(t>=L[8]) g+=`<rect x="${f(px(2016))}" y="${yt}" width="${f(px(2026.9)-px(2016))}" height="${y0-yt}" fill="#FDE047" opacity=".25"/>`; }
-  if(t>=L[8]&&t<L[11]) ov(bigNum(760,330,`${TL.N.last10_share}% IN THE LAST 10 YEARS`,70,'#E11D48',pop(t,L[8]+.3)));
+  if(t>=L[8]&&t<L[11]) ov(bigNum(600,330,`${TL.N.last10_share}% IN THE LAST 10 YEARS`,70,'#E11D48',pop(t,L[8]+.3)));
   const who=t<L[6]?'W':(t<L[10]?'L':(t<L[11]?'K':(t<L[12]?'W':(t<L[13]?'D':'L'))));
   const C={W:CAST.walter,L:CAST.lily,K:CAST.kowalski,D:CAST.derek}[who];
   g+=(who==='W'?'':'')+C({x:1600,y:GY+20,t,talk:talkOf(t,who),mood:who==='D'?'worried':'happy',look:[-1,0]});
   if(t>=L[11]&&t<L[12]){ // snowball rolls and grows
     const p=seg(t,L[11],L[12]); g+=`<circle cx="${f(300+p*900)}" cy="${f(y0-30-p*60)}" r="${f(20+p*120)}" fill="#F8FAFC" stroke="${INK}" stroke-width="5"/>`; }
-  if(t>=L[14]){ const dx=lerp(1600,2300,seg(t,L[14]+.5,L[14]+2.5)); g+=CAST.derek({x:dx,y:GY+20,t,act:'walk',mood:'angry'}); ov(label(960,150,'TO THE COURTHOUSE',54,'#fff','#7E22CE',pop(t,L[14]+.4))); }
+  if(t>=L[14]){ const dx=lerp(1600,2300,seg(t,L[14]+.5,L[14]+2.5)); g+=CAST.derek({x:dx,y:GY+20,t,act:'walk',mood:'angry'}); ov(label(1620,110,'TO THE COURTHOUSE',54,'#fff','#7E22CE',pop(t,L[14]+.4))); }
   return g;
 };
 SCN.contest=(t,s,L)=>{
@@ -307,7 +307,7 @@ SCN.friday=(t,s,L)=>{
   g+=CAST.lily({x:1260,y:GY,t,mood:t>L[10]?'laugh':'worried',act:t>L[10]&&t<L[11]?'cheer':undefined,look:[-1,0]});
   g+=CAST.kowalski({x:1500,y:GY,t,talk:talkOf(t,'K'),mood:'happy',look:[-1,0]});
   if(t>=L[3]&&t<L[8]){ const rules=['1. PAY YOURSELF FIRST: $300, EVERY MONTH','2. WHEN THE WORLD PANICS, GO SHOPPING','3. DON\'T TOUCH IT. TIME DOES THE WORK','4. BUY FREEDOM, NOT STUFF','5. IT GOES TO THE LIBRARY & THE HOSPITAL'];
-    ov(`<g filter="url(#sh)"><rect x="380" y="130" width="1160" height="${f(70+rules.length*72)}" rx="16" fill="#FEF9C3" stroke="${INK}" stroke-width="5"/></g>`); rules.forEach((r,i)=>{ if(t>=L[3+i]) ov(`<text x="420" y="${205+i*72}" font-size="44" fill="${INK}" opacity="${f(seg(t,L[3+i],L[3+i]+.4))}">${r}</text>`); }); }
+    ov(`<rect width="${W}" height="${H}" fill="#0F172A" opacity="${f(.6*seg(t,L[3],L[3]+.4))}"/><g filter="url(#sh)"><rect x="380" y="200" width="1160" height="${f(70+rules.length*72)}" rx="16" fill="#FEF9C3" stroke="${INK}" stroke-width="5"/></g>`); rules.forEach((r,i)=>{ if(t>=L[3+i]) ov(`<text x="420" y="${275+i*72}" font-size="44" fill="${INK}" opacity="${f(seg(t,L[3+i],L[3+i]+.4))}">${r}</text>`); }); }
   if(t>=L[10]&&t<L[12]) ov(label(960,170,'THE WILL STANDS',80,'#fff','#16A34A',pop(t,L[10]+.3))+confetti(t,L[10]+.3,40));
   if(t>=L[13]&&t<L[15]) ov(`<g transform="translate(960 430) scale(${f(pop(t,L[13]+.3))})" filter="url(#sh)"><rect x="-150" y="-230" width="300" height="460" rx="20" fill="#334155" stroke="${INK}" stroke-width="6"/><rect x="-120" y="-180" width="240" height="380" rx="20" fill="#7C5A3A"/>${[0,1,2,3,4].map(i=>`<path d="M-40 ${-120+i*70} l60 0 a10 10 0 0 1 0 20 l-60 0" stroke="#CBD5E1" stroke-width="6" fill="none"/>`).join('')}</g>`);
   if(t>=L[15]&&t<L[16]+.5) ov(`<circle cx="${f(420+(t-L[15])*60)}" cy="${f(GY-300+Math.min(1,(t-L[15]))*-80+Math.pow(Math.max(0,t-L[15]-1),2)*200)}" r="10" fill="#CBD5E1" stroke="${INK}" stroke-width="3"/>`);
