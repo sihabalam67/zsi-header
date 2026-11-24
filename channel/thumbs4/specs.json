@@ -432,5 +432,153 @@
     ]
    }
   ]
+ },
+ "s01_grandpa_v5a": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "split",
+    "x": 860
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1400' cy='520' r='430' fill='#FFF3A0' opacity='.55' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${tree({x:1430,y:1200,size:1.1,leaves:1,coins:30,t:.3})}</g>`"
+   },
+   {
+    "type": "coinrain",
+    "x": 1000,
+    "y": 60,
+    "w": 880,
+    "h": 900,
+    "n": 24
+   },
+   {
+    "type": "sparkles",
+    "x": 980,
+    "y": 40,
+    "w": 900,
+    "h": 700,
+    "n": 22
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.rosie({adult:true,x:1330,y:1180,h:900,mood:'laugh',armL:215,armR:-35,t:.3})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.ben({adult:true,x:380,y:1220,h:960,mood:'sad',tears:true,armL:115,armR:35,t:.3,look:[0,0.6]})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${jar({x:610,y:1070,s:1.0,bills:2})}</g>${mouse({x:700,y:1060,s:1.0,t:.2,nibble:1})}`"
+   },
+   {
+    "type": "tag",
+    "x": 600,
+    "y": 700,
+    "label": "$470",
+    "sub": "30 YEARS IN A JAR",
+    "color": "#E5202B",
+    "rot": -6,
+    "s": 1.0
+   },
+   {
+    "type": "tag",
+    "x": 1600,
+    "y": 760,
+    "label": "$16,368",
+    "sub": "SAME $1,000, PLANTED",
+    "color": "#16A673",
+    "rot": 4,
+    "s": 1.05
+   },
+   {
+    "type": "text",
+    "x": 960,
+    "y": 160,
+    "size": 128,
+    "lines": [
+     [
+      [
+       "SAME",
+       "w"
+      ],
+      [
+       "$1,000",
+       "y"
+      ]
+     ]
+    ]
+   }
+  ]
+ },
+ "s01_grandpa_v5b": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "split",
+    "x": 860
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1400' cy='520' r='430' fill='#FFF3A0' opacity='.55' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${tree({x:1430,y:1200,size:1.1,leaves:1,coins:30,t:.3})}</g>`"
+   },
+   {
+    "type": "coinrain",
+    "x": 1000,
+    "y": 60,
+    "w": 880,
+    "h": 900,
+    "n": 24
+   },
+   {
+    "type": "sparkles",
+    "x": 980,
+    "y": 40,
+    "w": 900,
+    "h": 700,
+    "n": 22
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.rosie({adult:true,x:1330,y:1180,h:900,mood:'laugh',armL:215,armR:-35,t:.3})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.ben({adult:true,x:380,y:1220,h:960,mood:'sad',tears:true,armL:115,armR:35,t:.3,look:[0,0.6]})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${jar({x:610,y:1070,s:1.0,bills:2})}</g>${mouse({x:700,y:1060,s:1.0,t:.2,nibble:1})}`"
+   },
+   {
+    "type": "tag",
+    "x": 600,
+    "y": 700,
+    "label": "$470",
+    "sub": "30 YEARS IN A JAR",
+    "color": "#E5202B",
+    "rot": -6,
+    "s": 1.0
+   },
+   {
+    "type": "tag",
+    "x": 1600,
+    "y": 760,
+    "label": "$16,368",
+    "sub": "SAME $1,000, PLANTED",
+    "color": "#16A673",
+    "rot": 4,
+    "s": 1.05
+   }
+  ]
  }
 }

@@ -136,6 +136,26 @@ const EL={
   img(e){ const {href,x,y,w,h,opacity=1}=e; return `<image href="${href}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice" opacity="${opacity}"/>`; },
   bagc(e){ return `<g filter="url(#sticker)">${coffeeBag(e.x,e.y,e.s||1,e.rot||0)}</g>`; },
   raw(e){ return e.svg; },
+  // two worlds: cold/sad left, warm/gold right, jagged divider
+  split(e){
+    const {x=880,l1='#1E2A44',l2='#3B4A6B',r1='#FFB300',r2='#FF6A00'}=e;
+    let g=`<defs><linearGradient id="spl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${l2}"/><stop offset="1" stop-color="${l1}"/></linearGradient><radialGradient id="spr" cx=".6" cy=".45" r=".7"><stop offset="0" stop-color="#FFF6B0"/><stop offset=".45" stop-color="${r1}"/><stop offset="1" stop-color="${r2}"/></radialGradient></defs>`;
+    g+=`<rect width="1920" height="1080" fill="url(#spr)"/>`;
+    for(let i=0;i<18;i+=2){const a0=i/18*Math.PI*2,a1=(i+1)/18*Math.PI*2,cx=1400,cy=460;g+=`<path d="M${cx} ${cy} L${f(cx+Math.cos(a0)*2400)} ${f(cy+Math.sin(a0)*2400)} L${f(cx+Math.cos(a1)*2400)} ${f(cy+Math.sin(a1)*2400)}Z" fill="#FFF3A0" opacity=".28"/>`;}
+    const pts=[[x+60,0],[x-30,180],[x+50,330],[x-40,520],[x+40,700],[x-50,880],[x+20,1080]];
+    g+=`<path d="M0 0 L${pts.map(p=>p.join(' ')).join(' L')} L0 1080Z" fill="url(#spl)"/>`;
+    for(let i=0;i<30;i++){const rx=(i*137)%(x-40), ry=(i*263)%1080; g+=`<line x1="${rx}" y1="${ry}" x2="${rx-12}" y2="${ry+40}" stroke="#93C5FD" stroke-width="4" opacity=".45"/>`;}
+    g+=`<path d="M${pts.map(p=>p.join(' ')).join(' L')}" stroke="#fff" stroke-width="16" fill="none" stroke-linejoin="round" filter="url(#sh)"/>`;
+    return g;
+  },
+  sparkles(e){ const {x,y,w,h,n=18,color='#FFF7B0'}=e; let g='';
+    for(let i=0;i<n;i++){const sx=x+((i*197)%w), sy=y+((i*311)%h), r=10+(i*7)%26;
+      g+=`<path d="M${sx} ${sy-r} Q${sx+r*.18} ${sy-r*.18} ${sx+r} ${sy} Q${sx+r*.18} ${sy+r*.18} ${sx} ${sy+r} Q${sx-r*.18} ${sy+r*.18} ${sx-r} ${sy} Q${sx-r*.18} ${sy-r*.18} ${sx} ${sy-r}Z" fill="${color}"/>`;}
+    return g; },
+  coinrain(e){ const {x,y,w,h,n=26}=e; let g='';
+    for(let i=0;i<n;i++){const cx=x+((i*173)%w), cy=y+((i*251)%h), r=26+(i*5)%18, rot=(i*47)%360, sq=.45+((i*13)%10)/18;
+      g+=`<g transform="translate(${cx} ${cy}) rotate(${rot}) scale(1 ${sq.toFixed(2)})"><circle r="${r}" fill="#FFD23F" stroke="#7a4a08" stroke-width="5"/><circle r="${r*.68}" fill="none" stroke="#FFF2A8" stroke-width="4"/><text y="${r*.36}" text-anchor="middle" font-size="${r}" fill="#B7791F">$</text></g>`;}
+    return `<g filter="url(#sh)">${g}</g>`; },
   js(e){ return (new Function('return '+e.code))(); },
   // sunburst rays from a point (cartoon energy background)
   rays(e){

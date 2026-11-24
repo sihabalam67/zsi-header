@@ -69,6 +69,11 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    views/day before vs after on Nov 27.
    Old rule (still true for the background): bright photo-real background (Canva AI image: one object or scene, no text, no logos, no real
    people) + max 3 words incl. one number, high contrast, warm colors. Never a dark abstract chart again.
+1b. **Story-video thumbnails (Nov 24, from the most-watched animated money stories):** TWO WORLDS split screen: a
+   cold, rainy, dark-blue side with the loser crying (tears) next to a glowing gold side with the winner cheering
+   (sunburst, coin rain, sparkles), with a white jagged divider. The faces are huge (50%+ of the frame height),
+   there's almost no headline, and price tags tell the story ($470 vs $16,368). Elements: `split`, `coinrain`,
+   `sparkles`, `tears:true` in thumbs4. Example: out/thumbs/s01_grandpa_v5.jpg.
 2. **Title:** under 50 characters; one big number; curiosity ("What happened?", "Why?", "Now what?").
 3. **First 15 seconds:** say the most surprising fact in the first sentence, show a new visual every 2-3 s, no
    long first sentence, and promise the payoff ("by the end, you'll know ..."). Keep the full intro under 25 s.

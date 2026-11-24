@@ -94,6 +94,8 @@ function person(o) {
   if (beard) g += `<path d="M${ff(-hr * .62)} ${ff(hy + hr * .32)} Q${ff(-hr * .3)} ${ff(hy + hr * .12)} 0 ${ff(hy + hr * .28)} Q${ff(hr * .3)} ${ff(hy + hr * .12)} ${ff(hr * .62)} ${ff(hy + hr * .32)} Q${ff(hr * .35)} ${ff(hy + hr * .5)} 0 ${ff(hy + hr * .38)} Q${ff(-hr * .35)} ${ff(hy + hr * .5)} ${ff(-hr * .62)} ${ff(hy + hr * .32)}Z" fill="#F4F4F4" stroke="${INK}" stroke-width="${ff(OUT * .8)}" stroke-linejoin="round"/>`;
   g += `</g>`;
   g += arm(1, aR, holdR);
+  if (o.tears) for (const s2 of [-1, 1]) { const ex = s2 * hr * .36, ty = hy + hr * .1;
+    g += `<path d="M${ff(ex - hr * .08)} ${ff(ty)} Q${ff(ex - hr * .12)} ${ff(ty + hr * .5)} ${ff(ex - hr * .02)} ${ff(ty + hr * 1.0)} L${ff(ex + hr * .1)} ${ff(ty + hr * 1.0)} Q${ff(ex + hr * .1)} ${ff(ty + hr * .45)} ${ff(ex + hr * .08)} ${ff(ty)}Z" fill="#7DD3FC" stroke="#0369A1" stroke-width="3" opacity=".9"/>`; }
   if (o.extra) g += o.extra(hr, hy);
   return `<g transform="translate(${ff(x)} ${ff(y)})"><ellipse cx="0" cy="0" rx="${ff(h * .16)}" ry="${ff(h * .025)}" fill="#000" opacity=".18"/><g transform="translate(0 ${ff(yOff)}) rotate(${ff(rot + rOff)}) scale(${ff(sx / Math.sqrt(sq * breathe))} ${ff(sy * sq * breathe)})">${g}</g></g>`;
 }
@@ -158,10 +160,10 @@ function tree(o) {
   for (let i = 0; i < blobs.length; i++) {
     const [bx, by, br] = blobs[i], k = i < shown ? 1 : Math.max(0, leaves * blobs.length - i);
     if (k <= 0) continue;
-    g += `<circle cx="${ff(bx)}" cy="${ff(by)}" r="${ff(br * (.5 + .5 * k))}" fill="#2E9E4F" stroke="${INK}" stroke-width="${OUT}"/>`;
+    g += `<circle cx="${ff(bx)}" cy="${ff(by)}" r="${ff(br * (.5 + .5 * k))}" fill="${o.gold ? '#F5B700' : '#2E9E4F'}" stroke="${INK}" stroke-width="${OUT}"/>`;
   }
   for (let i = 0; i < blobs.length; i++) { const [bx, by, br] = blobs[i]; if (i >= shown) continue;
-    g += `<circle cx="${ff(bx - br * .25)}" cy="${ff(by - br * .3)}" r="${ff(br * .45)}" fill="#46C266"/>`; }
+    g += `<circle cx="${ff(bx - br * .25)}" cy="${ff(by - br * .3)}" r="${ff(br * .45)}" fill="${o.gold ? '#FFE066' : '#46C266'}"/>`; }
   for (let i = 0; i < coins; i++) { const a = i * 2.39996, rr = R * .65 * Math.sqrt((i + .5) / Math.max(coins, 1));
     const cx = Math.cos(a) * rr * 1.1 + sw * 1.2, cyy = cy + Math.sin(a) * rr * .7;
     g += `<circle cx="${ff(cx)}" cy="${ff(cyy)}" r="${ff(12 + 10 * size)}" fill="#FFD23F" stroke="${INK}" stroke-width="4"/><text x="${ff(cx)}" y="${ff(cyy + 7 + 3 * size)}" text-anchor="middle" font-size="${ff(16 + 10 * size)}" fill="#A16207" font-family="P" font-weight="900">$</text>`; }
