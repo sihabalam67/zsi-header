@@ -54,7 +54,10 @@
     10,
     "Intro: gold fell 23%"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep12_week",
@@ -105,7 +108,10 @@
     108,
     "What a correction is"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep10_stocks",
@@ -156,7 +162,10 @@
     490,
     "Recap"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep11_vix",
@@ -207,7 +216,10 @@
     220,
     "Why investors are nervous"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep05_jobs",
@@ -256,7 +268,10 @@
     13,
     "Intro: 60,000 buyouts"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep06_banks",
@@ -265,7 +280,7 @@
   "published": "2026-11-13",
   "days": 11,
   "duration": 503,
-  "views_lifetime": 30,
+  "views_lifetime": 32,
   "views": 28,
   "minutes": 64,
   "avg_view_s": 173,
@@ -305,7 +320,10 @@
     126,
     "Paying it back destroys money"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep04_fed",
@@ -354,7 +372,10 @@
     48,
     "What the Fed actually controls"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep08_midterms",
@@ -409,7 +430,10 @@
     32,
     "What is a midterm?"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep01_inflation",
@@ -418,7 +442,7 @@
   "published": "2026-11-06",
   "days": 18,
   "duration": 331,
-  "views_lifetime": 10,
+  "views_lifetime": 11,
   "views": 9,
   "minutes": 23,
   "avg_view_s": 173,
@@ -442,7 +466,10 @@
   "kept_60s": null,
   "kept_120s": null,
   "kept_half": null,
-  "drops": []
+  "drops": [],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep03_gas",
@@ -451,7 +478,7 @@
   "published": "2026-10-30",
   "days": 25,
   "duration": 494,
-  "views_lifetime": 22,
+  "views_lifetime": 23,
   "views": 21,
   "minutes": 15,
   "avg_view_s": 72,
@@ -493,7 +520,10 @@
     25,
     "One narrow strait"
    ]
-  ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep07_binance_long",
@@ -524,7 +554,10 @@
   "kept_60s": null,
   "kept_120s": null,
   "kept_half": null,
-  "drops": []
+  "drops": [],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  },
  {
   "name": "ep02_housing",
@@ -555,6 +588,9 @@
   "kept_60s": null,
   "kept_120s": null,
   "kept_half": null,
-  "drops": []
+  "drops": [],
+  "style": "newsroom",
+  "family": "",
+  "devices": []
  }
 ]
