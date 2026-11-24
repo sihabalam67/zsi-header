@@ -18,8 +18,9 @@ for line in sys.stdin:
     try:
         job = json.loads(line)
         torch.manual_seed(int(job.get('seed', 0)))
+        kw = {'audio_prompt_path': job['ref']} if job.get('ref') else {}  # optional voice reference (cloned timbre)
         wav = model.generate(job['text'], exaggeration=float(job.get('exaggeration', 0.6)),
-                             cfg_weight=float(job.get('cfg', 0.4)))
+                             cfg_weight=float(job.get('cfg', 0.4)), **kw)
         torchaudio.save(job['out'], wav, model.sr)
         print(json.dumps({'ok': True}), file=OUT, flush=True)
     except Exception as e:  # keep serving; the caller falls back to Kokoro

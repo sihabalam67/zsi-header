@@ -139,7 +139,7 @@ SCN.y2020=(t,s,L)=>{
 };
 SCN.couch=(t,s,L)=>{
   Object.assign(POS,{J:700,S:1300});
-  const slam=t>L[13]+1.2&&t<L[13]+1.7?Math.sin(t*80)*14:0;
+  const slam=t>L[13]+1.2&&t<L[13]+1.7?Math.sin(t*30)*6:0;
   let g=`<g transform="translate(${f(slam)} 0)">`+apartment()+door({x:180,y:GY,s:.9,open:t>L[13]&&t<L[13]+1.3?1:0})+couch({x:820,y:GY,s:.9})+'</g>';
   const jx=t<L[2]?lerp(-200,700,eo(seg(t,s.start,L[1]+1))):(t>L[13]?lerp(700,150,seg(t,L[13],L[13]+1.2)):700);
   if(t<L[13]+1.2) g+=CAST.jay({x:jx,y:GY,t,talk:talkOf(t,'J'),mood:t>L[9]?'angry':(t>L[5]&&t<L[8]?'sad':'happy'),act:t<L[1]+1?'walk':(t>L[10]&&t<L[11]?'shake':undefined),look:[1,0]});

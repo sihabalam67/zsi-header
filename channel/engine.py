@@ -626,7 +626,7 @@ def _cb_start():
             return bool(line)
 
 
-def tts_chatterbox(text, seed=0, _retry=True, exag=None):
+def tts_chatterbox(text, seed=0, _retry=True, exag=None, ref=None, cfg=None):
     """One line through the persistent Chatterbox worker; returns float32 audio at SR, or None on failure.
     A crashed worker is restarted once, so one bad line can't silently switch the rest of a video to Kokoro."""
     import json
@@ -636,7 +636,7 @@ def tts_chatterbox(text, seed=0, _retry=True, exag=None):
     out = tempfile.mktemp(suffix='.wav')
     try:
         _cb.stdin.write(json.dumps({'text': text, 'seed': seed, 'out': out, 'exaggeration': exag or CB_EXAG,
-                                    'cfg': CB_CFG}) + '\n')
+                                    'cfg': cfg if cfg is not None else CB_CFG, 'ref': ref}) + '\n')
         _cb.stdin.flush()
         line = _cb.stdout.readline()
         while line and not line.startswith('{'):
@@ -644,7 +644,7 @@ def tts_chatterbox(text, seed=0, _retry=True, exag=None):
     except (BrokenPipeError, OSError):
         line = ''
     if not line:  # worker died mid-line
-        return tts_chatterbox(text, seed, _retry=False, exag=exag) if _retry and _cb_start() else None
+        return tts_chatterbox(text, seed, _retry=False, exag=exag, ref=ref, cfg=cfg) if _retry and _cb_start() else None
     if not json.loads(line).get('ok'):
         return None
     if abs(CB_TEMPO - 1) > 0.01:

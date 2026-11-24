@@ -20,6 +20,8 @@ VOICES = {  # who -> (kokoro voice, speed)
     'J': ('am_puck', 1.08), 'S': ('am_michael', 1.0), 'A': ('af_bella', 1.04), 'H': ('am_santa', 0.95),
     'G': ('bm_george', 0.95), 'M': ('af_nicole', 1.05), 'B': ('am_echo', 1.05), 'R': ('af_sky', 1.04),
 }
+REFS = {'J': 'jay', 'S': 'sam', 'A': 'ava', 'H': 'hank', 'G': 'grandpa'}
+EXAG = {'J': .75, 'S': .45, 'A': .6, 'H': .7, 'G': .55}  # how expressive each character sounds
 _k = None
 
 
@@ -45,12 +47,31 @@ for si, sc in enumerate(SCENES):
         text = text.lstrip('!')
         toks = E.parse_line(text)
         spoken = ' '.join(sp for _, sp in toks)
-        key = f'{si:02d}_{li:02d}_{who}_' + hashlib.md5(spoken.encode()).hexdigest()[:10]
+        key = f'{si:02d}_{li:02d}_{who}{"c" if who in REFS else ""}_' + hashlib.md5(spoken.encode()).hexdigest()[:10]
         p = os.path.join(B, 'vo', key + '.npy')
         if os.path.exists(p):
             a = np.load(p)
         else:
-            a = E.speak(toks, exag=0.7 if drama else None) if who == 'P' or who not in VOICES else kokoro(spoken, *VOICES[who])
+            if who == 'P' or who not in VOICES:
+                a = E.speak(toks, exag=0.7 if drama else None)
+            else:  # character: Chatterbox (natural delivery) cloned from that character's reference voice
+                a = None
+                ref = os.path.join(HERE, 'voices', REFS.get(who, '') + '.wav')
+                if os.path.exists(ref):
+                    best = None
+                    for seed in range(3):
+                        c = E.tts_chatterbox(spoken, seed=seed, exag=EXAG.get(who, .6) + (.15 if drama else 0), ref=ref)
+                        if c is None:
+                            break
+                        cov = E.align(toks, E.word_times(c), len(c) / E.SR)[1]
+                        if best is None or cov > best[1]:
+                            best = (c, cov)
+                        if cov >= .9:
+                            break
+                    if best and best[1] >= .8:
+                        a = best[0]
+                if a is None:
+                    a = kokoro(spoken, *VOICES[who])
             if who in VOICES:
                 a = a / (np.abs(a).max() + 1e-6) * 0.9
             np.save(p, a)

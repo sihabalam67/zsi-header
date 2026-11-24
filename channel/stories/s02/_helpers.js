@@ -2,7 +2,9 @@
 function scene(t){ let cur=TL.scenes[0]; for(const s of TL.scenes) if(t>=s.start) cur=s; return cur; }
 function talkOf(t,who){ // mouth openness for a character if it's their line
   const fr=Math.min(TL.mouth.length-1,Math.round(t*TL.fps));
-  for(const s of TL.scenes) for(const l of s.lines) if(l.who===who && t>=l.start && t<=l.start+l.dur) return TL.mouth[fr];
+  for(const s of TL.scenes) for(const l of s.lines) if(l.who===who && t>=l.start && t<=l.start+l.dur){
+    let m=0,n=0; for(let i=-2;i<=2;i++){ const j=Math.min(TL.mouth.length-1,Math.max(0,fr+i)); m+=TL.mouth[j]; n++; }
+    return Math.max(.05, m/n); } // smoothed mouth; never 0 inside the line, so gestures don't flicker
   return 0;
 }
 const blinkAt=(t,ph=0)=>((t+ph)%3.7)<.12;

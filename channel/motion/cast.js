@@ -43,29 +43,29 @@ function person(o) {
     suspenders = false, holdR = '', holdL = '' } = o;
   // ---- "alive" layer: breathing, sway, auto-blink, talking gestures, acting presets ----
   const ph = o.phase !== undefined ? o.phase : (h * .37) % 6.28, talk = o.talk || 0;
-  let aL = armL, aR = armR, yOff = 0, rOff = Math.sin(t * .9 + ph) * 1.2, headRot = Math.sin(t * .7 + ph) * 2, sq = 1;
+  let aL = armL, aR = armR, yOff = 0, rOff = Math.sin(t * .6 + ph) * .4, headRot = Math.sin(t * .5 + ph) * .8, sq = 1;
   if (o.blink === undefined) o.blink = ((t + ph) % 3.6) < .12;
-  if (talk > .04 || o.talking) { const k = Math.min(1, talk * 2 + (o.talking ? .6 : 0));
-    headRot += Math.sin(t * 6.3 + ph) * 5 * k; aR += Math.sin(t * 3.3 + ph) * 22 * k - 18 * k; aL += Math.sin(t * 2.7 + ph + 1) * 12 * k;
-    yOff -= Math.abs(Math.sin(t * 6.3 + ph)) * h * .008 * k; }
+  if (talk > .04 || o.talking) { // calm, readable talking: slow head nods and one hand gesturing (no jitter: k is not driven by loudness)
+    const k = .8;
+    headRot += Math.sin(t * 2.2 + ph) * 2.2 * k; aR += Math.sin(t * 1.6 + ph) * 9 * k - 14 * k; aL += Math.sin(t * 1.3 + ph + 1) * 4 * k; }
   const act = o.act, at = t - (o.actT || 0);
-  if (act === 'wave') { aR = -70 + Math.sin(t * 11) * 28; }
-  if (act === 'cheer') { aL = 230 + Math.sin(t * 9) * 14; aR = -50 - Math.sin(t * 9) * 14; yOff -= Math.abs(Math.sin(t * 7)) * h * .07; sq = 1 + Math.sin(t * 14) * .03; }
+  if (act === 'wave') { aR = -70 + Math.sin(t * 6) * 20; }
+  if (act === 'cheer') { aL = 225 + Math.sin(t * 5) * 8; aR = -45 - Math.sin(t * 5) * 8; yOff -= Math.abs(Math.sin(t * 4)) * h * .035; }
   if (act === 'point') { aR = -15 + Math.sin(t * 4) * 4; }
   if (act === 'shrug') { const k = Math.sin(Math.min(1, at * 3) * Math.PI / 2); aL = lerpA(armL, 150, k); aR = lerpA(armR, 30, k); headRot += 8 * k; }
   if (act === 'facepalm') { aR = -115; headRot -= 10; }
   if (act === 'think') { aR = -95 + Math.sin(t * 2) * 4; headRot += 6; }
-  if (act === 'laugh') { rOff += Math.sin(t * 22) * 3; yOff -= Math.abs(Math.sin(t * 11)) * h * .015; }
+  if (act === 'laugh') { rOff += Math.sin(t * 8) * 1.2; yOff -= Math.abs(Math.sin(t * 8)) * h * .006; }
   if (act === 'jump') { const k = (at % 1.1) / 1.1; yOff -= Math.sin(k * Math.PI) * h * .22; sq = k < .08 || k > .92 ? .9 : 1.04; }
   if (act === 'shock') { const k = Math.min(1, at * 4); yOff -= Math.sin(k * Math.PI) * h * .1; aL = 220; aR = -40; rOff += -6 * k; }
-  if (act === 'shake') { rOff += Math.sin(t * 40) * 4; }
-  if (act === 'walk') { o.walk = 1; yOff -= Math.abs(Math.sin(t * 9)) * h * .015; aL = 100 + Math.sin(t * 9) * 25; aR = 80 - Math.sin(t * 9) * 25; }
-  const breathe = 1 + Math.sin(t * 2.4 + ph) * .012;
+  if (act === 'shake') { rOff += Math.sin(t * 10) * 1.5; }
+  if (act === 'walk') { o.walk = 1; yOff -= Math.abs(Math.sin(t * 7)) * h * .01; aL = 100 + Math.sin(t * 7) * 18; aR = 80 - Math.sin(t * 7) * 18; }
+  const breathe = 1 + Math.sin(t * 1.8 + ph) * .006;
   const hr = h * .17, hy = -h + hr * 1.05, sh = hy + hr * .95, hip = -h * .36, bw = h * .2;
   let g = '';
   // legs
   for (const s of [-1, 1]) {
-    const ph2 = (walk || o.walk) ? Math.sin(t * 9 + (s > 0 ? Math.PI : 0)) * h * .07 : 0, lift = (walk || o.walk) ? Math.max(0, Math.cos(t * 9 + (s > 0 ? Math.PI : 0))) * h * .03 : 0;
+    const ph2 = (walk || o.walk) ? Math.sin(t * 7 + (s > 0 ? Math.PI : 0)) * h * .06 : 0, lift = (walk || o.walk) ? Math.max(0, Math.cos(t * 7 + (s > 0 ? Math.PI : 0))) * h * .025 : 0;
     g += limb(s * bw * .28, hip, s * bw * .3 + ph2, -h * .04 - lift, pants, h * .075);
     g += `<ellipse cx="${ff(s * bw * .3 + ph2 + s * h * .025)}" cy="${ff(-h * .025 - lift)}" rx="${ff(h * .065)}" ry="${ff(h * .035)}" fill="${shoes}" stroke="${INK}" stroke-width="${OUT}"/>`;
   }
