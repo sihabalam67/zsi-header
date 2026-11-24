@@ -12,7 +12,7 @@ export default function About() {
   return (
     <section className="article">
       <nav className="crumbs" aria-label="Breadcrumb"><Link href="/">Home</Link> › About</nav>
-      <h1>About {BRAND.name}</h1>
+      <h1 data-split>About {BRAND.name}</h1>
       <p className="lede">{BRAND.tagline}</p>
       <p>
         Indoor cats are safer, but many of them are bored. Cats are built to stalk, chase and catch, and a few

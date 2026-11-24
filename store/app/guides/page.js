@@ -12,7 +12,7 @@ export default function Guides() {
   return (
     <section className="article">
       <nav className="crumbs" aria-label="Breadcrumb"><Link href="/">Home</Link> › Guides</nav>
-      <h1>Indoor cat play guides</h1>
+      <h1 data-split>Indoor cat play guides</h1>
       <p className="lede">Practical answers for keeping an indoor cat active and happy, starting with the direct answer.</p>
       <ul className="cards">
         {GUIDES.map((g) => (

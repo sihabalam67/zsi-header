@@ -6,6 +6,7 @@ import { SITE_URL } from '@/lib/site';
 import { JsonLd, organizationLd, websiteLd } from '@/lib/seo';
 import { CartProvider } from './components/cart';
 import { CartButton, CartDrawer } from './components/CartDrawer';
+import Motion from './components/Motion';
 
 // Fonts are downloaded at build time and served from our own domain (no runtime dependency).
 const display = Fraunces({ subsets: ['latin'], variable: '--font-display', display: 'swap', axes: ['opsz'] });
@@ -39,11 +40,30 @@ export const viewport = { themeColor: '#1f2a2e', width: 'device-width', initialS
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-US" className={`${display.variable} ${sans.variable}`}>
+    <html lang="en-US" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(location.pathname==='/'&&!sessionStorage.getItem('ih_intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro')}}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
+        <div className="loader" aria-hidden="true">
+          <span className="loader-brand">{BRAND.name}</span>
+          <span className="loader-count">0</span>
+        </div>
         <CartProvider>
           <a href="#main" className="skip">Skip to content</a>
-          <div className="announce">Free US shipping on orders over {money(FREE_SHIPPING_THRESHOLD)} · Ships from a US warehouse in 5–7 business days</div>
+          <div className="announce" aria-label="Store benefits">
+            <div className="marquee">
+              {[0, 1].map((n) => (
+                <div className="marquee-row" key={n} aria-hidden={n === 1}>
+                  <span>Free US shipping over {money(FREE_SHIPPING_THRESHOLD)}</span><span>Ships from a US warehouse</span><span>Arrives in 5–7 business days</span><span>30-day returns</span><span>Secure checkout by Stripe</span>
+                </div>
+              ))}
+            </div>
+          </div>
           <header className="site-head">
             <div className="wrap head-row">
               <Link href="/" className="logo" aria-label={`${BRAND.name} home`}>
@@ -51,10 +71,9 @@ export default function RootLayout({ children }) {
                 <span>{BRAND.name}</span>
               </Link>
               <nav aria-label="Main" className="mainnav">
-                <Link href="/shop">Shop</Link>
-                <Link href="/guides">Play guides</Link>
-                <Link href="/about">Our story</Link>
-                <Link href="/faq">Help</Link>
+                {[['/shop', 'Shop'], ['/guides', 'Play guides'], ['/about', 'Our story'], ['/faq', 'Help']].map(([href, label]) => (
+                  <Link key={href} href={href} className="roll" data-text={label}><span>{label}</span></Link>
+                ))}
               </nav>
               <CartButton />
             </div>
@@ -98,6 +117,7 @@ export default function RootLayout({ children }) {
             </div>
           </footer>
           <CartDrawer />
+          <Motion />
         </CartProvider>
         <JsonLd data={organizationLd()} />
         <JsonLd data={websiteLd()} />

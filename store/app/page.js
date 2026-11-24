@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import BuyBox from './components/BuyBox';
 import Gallery from './components/Gallery';
 import ProductCard from './components/ProductCard';
-import { BRAND, FEATURED, PRODUCTS, RETURN_DAYS, money, FREE_SHIPPING_THRESHOLD } from '@/lib/product';
+import { BRAND, FEATURED, PRODUCTS, RETURN_DAYS, money, FREE_SHIPPING_THRESHOLD, getProduct } from '@/lib/product';
 import { FAQ } from '@/lib/faq';
 import { GUIDES } from '@/lib/guides';
+import { PHOTOS } from '@/lib/photos';
 import { JsonLd, productLd, faqLd, itemListLd } from '@/lib/seo';
 
 export const metadata = {
@@ -13,43 +15,60 @@ export const metadata = {
   alternates: { canonical: '/' },
 };
 
+const HUNT = [
+  { n: '01', title: 'Stalk', text: 'Move the lure away from your cat in short darts. Prey runs; it never charges.', photo: PHOTOS.stalk },
+  { n: '02', title: 'Pounce', text: 'Pause. Let it peek out from behind the couch. The pause is when the wiggle starts.', photo: PHOTOS.pounce },
+  { n: '03', title: 'Catch', text: 'Let your cat win often. A hunt with no catch is just frustration.', photo: PHOTOS.feather },
+  { n: '04', title: 'Eat & rest', text: 'Finish with a meal or a treat. Hunt, catch, eat, sleep: the natural order.', photo: PHOTOS.rest },
+];
+
 export default function Home() {
+  const feeder = getProduct('cat-tv-window-bird-feeder');
   return (
     <>
-      <section className="hero-split">
-        <div className="wrap hero-grid">
-          <div className="hero-text">
-            <p className="eyebrow">For indoor cats with energy to burn</p>
-            <h1>Give your indoor cat a <em>real</em> hunt.</h1>
-            <p className="lede">Cats are built to stalk, pounce and catch. Ten minutes of the right kind of play a day makes a big difference for a lot of indoor cats, and we make it easy.</p>
-            <div className="hero-ctas">
-              <Link href={`/products/${FEATURED.slug}`} className="btn primary lg">Shop the {FEATURED.name}</Link>
-              <Link href="/guides/how-to-play-with-an-indoor-cat" className="btn ghost lg">How the hunt works</Link>
-            </div>
-            <ul className="trust-inline">
-              <li>Ships from the US</li><li>{RETURN_DAYS}-day returns</li><li>Secure checkout</li>
-            </ul>
-          </div>
-          <div className="hero-art"><img src="/products/indoor-hunt-wand.svg" alt={`${FEATURED.name}: ${FEATURED.tagline}`} width="800" height="800" fetchPriority="high" /></div>
+      <section className="hero-photo-sec" data-intro>
+        <div className="hero-photo">
+          <Image src={PHOTOS.hero.src} alt={PHOTOS.hero.alt} fill priority sizes="100vw" />
         </div>
-      </section>
-
-      <section className="trust-bar">
-        <div className="wrap trust-grid">
-          <div><b>Fast US shipping</b><span>5–7 business days, tracking by email</span></div>
-          <div><b>Free over {money(FREE_SHIPPING_THRESHOLD)}</b><span>Flat $4.99 below that</span></div>
-          <div><b>{RETURN_DAYS}-day returns</b><span>Damaged? Just send a photo</span></div>
-          <div><b>Secure checkout</b><span>Payments handled by Stripe</span></div>
+        <div className="hero-scrim" />
+        <div className="wrap hero-content">
+          <p className="eyebrow light" data-intro-meta><span>For indoor cats with energy to burn</span></p>
+          <h1 data-split>Give your indoor cat a <em>real</em> hunt.</h1>
+          <div data-intro-meta>
+            <p className="lede light">Ten minutes of the right kind of play a day. Built on how cats actually hunt, made easy for busy people.</p>
+            <div className="hero-ctas">
+              <Link href={`/products/${FEATURED.slug}`} className="btn primary lg on-dark" data-magnetic>Shop the {FEATURED.name}</Link>
+              <Link href="/shop" className="btn light lg">Shop all</Link>
+            </div>
+            <ul className="trust-inline light"><li>Ships from the US</li><li>{RETURN_DAYS}-day returns</li><li>Secure checkout</li></ul>
+          </div>
         </div>
       </section>
 
       <section className="section">
         <div className="wrap">
           <div className="section-head">
-            <h2>Shop indoor cat play</h2>
+            <h2 data-split>Shop indoor cat play</h2>
             <Link href="/shop" className="link-arrow">View all →</Link>
           </div>
-          <div className="pgrid">{PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}</div>
+          <div className="pgrid" data-stagger>{PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}</div>
+        </div>
+      </section>
+
+      <section className="hunt" data-hunt aria-labelledby="hunt-title">
+        <div className="hunt-track" data-hunt-track>
+          <div className="hunt-intro">
+            <p className="eyebrow">The 10-minute nightly hunt</p>
+            <h2 id="hunt-title" data-split>Four steps your cat already knows.</h2>
+            <p className="lede">Cats are built for short bursts: stalk, pounce, catch, then rest. Play that follows that order is the play they come back for.</p>
+            <Link href="/guides/how-to-play-with-an-indoor-cat" className="link-arrow">Read the full guide →</Link>
+          </div>
+          {HUNT.map((h) => (
+            <article className="hunt-panel" key={h.n}>
+              <figure className="hunt-photo"><Image src={h.photo.src} alt={h.photo.alt} fill sizes="(min-width: 821px) 34vw, 100vw" /></figure>
+              <div className="hunt-text"><span className="hunt-n">{h.n}</span><h3>{h.title}</h3><p>{h.text}</p></div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -58,7 +77,7 @@ export default function Home() {
           <Gallery images={FEATURED.images} alt={`${FEATURED.name}: ${FEATURED.tagline}`} />
           <div>
             <p className="eyebrow">Our signature toy</p>
-            <h2 className="h1">{FEATURED.name}</h2>
+            <h2 className="h1" data-split>{FEATURED.name}</h2>
             <p className="lede">{FEATURED.tagline}.</p>
             <ul className="ticks">{FEATURED.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
             <BuyBox slug={FEATURED.slug} />
@@ -66,24 +85,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section band-dark">
-        <div className="wrap">
-          <h2 className="center">The 10-minute nightly hunt</h2>
-          <p className="center lede light">A simple routine built on how cats hunt: stalk, pounce, catch, eat.</p>
-          <div className="steps3">
-            <div><span className="step-n">1</span><h3>Stalk</h3><p>Move the lure away from your cat in short darts. Prey runs; it never charges.</p></div>
-            <div><span className="step-n">2</span><h3>Pounce</h3><p>Pause and let it peek out from behind the couch. The pause is when the wiggle starts.</p></div>
-            <div><span className="step-n">3</span><h3>Catch &amp; eat</h3><p>Let your cat win, then offer a meal or treat. Hunt, catch, eat, rest.</p></div>
+      {feeder && (
+        <section className="section editorial">
+          <div className="wrap editorial-grid">
+            <figure className="editorial-photo" data-reveal><Image src={PHOTOS.window.src} alt={PHOTOS.window.alt} fill sizes="(min-width: 821px) 45vw, 100vw" /></figure>
+            <div>
+              <p className="eyebrow">While you’re at work</p>
+              <h2 data-split>Cat TV, starring the birds outside.</h2>
+              <p className="lede">A clear window feeder brings birds to your cat’s eye level. It’s hours of watching for the times you can’t play.</p>
+              <ul className="ticks">{feeder.bullets.slice(0, 3).map((b) => <li key={b}>{b}</li>)}</ul>
+              <Link href={`/products/${feeder.slug}`} className="btn primary lg" data-magnetic>Shop the {feeder.name}</Link>
+            </div>
           </div>
-          <p className="center"><Link href="/guides/how-to-play-with-an-indoor-cat" className="btn light">Read the full guide</Link></p>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="section">
         <div className="wrap compare-wrap">
           <div>
             <p className="eyebrow">Why ours</p>
-            <h2>Built for the way cats actually hunt</h2>
+            <h2 data-split>Built for the way cats actually hunt</h2>
             <p className="lede">Most wand toys are a stick and a single feather. Here’s what we changed.</p>
           </div>
           <table className="compare">
@@ -99,34 +120,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section promise">
-        <div className="wrap promise-grid">
+      <section className="promise-photo">
+        <div className="promise-bg"><Image src={PHOTOS.couch.src} alt={PHOTOS.couch.alt} fill sizes="100vw" /></div>
+        <div className="promise-scrim" />
+        <div className="wrap promise-inner">
           <div className="seal" aria-hidden="true"><span>{RETURN_DAYS}</span><small>DAY</small></div>
-          <div>
-            <h2>The play-or-return promise</h2>
-            <p>If your cat isn’t into it, return it within {RETURN_DAYS} days of delivery. If anything arrives damaged, send us a photo and we’ll replace it or refund you. No forms, no fuss.</p>
-            <Link href="/policies/returns" className="link-arrow">Read the returns policy →</Link>
-          </div>
+          <h2 data-split>The play-or-return promise</h2>
+          <p className="lede light">If your cat isn’t into it, return it within {RETURN_DAYS} days of delivery. Arrived damaged? Send a photo and we’ll replace it or refund you.</p>
+          <Link href="/policies/returns" className="btn light">Read the returns policy</Link>
         </div>
       </section>
 
       <section className="section">
         <div className="wrap">
           <div className="section-head">
-            <h2>Indoor cat play guides</h2>
+            <h2 data-split>Indoor cat play guides</h2>
             <Link href="/guides" className="link-arrow">All guides →</Link>
           </div>
-          <ul className="cards">
-            {GUIDES.slice(0, 3).map((g) => (
-              <li key={g.slug}><Link href={`/guides/${g.slug}`}><b>{g.title}</b><span>{g.description}</span></Link></li>
-            ))}
+          <ul className="gcards" data-stagger>
+            {GUIDES.slice(0, 3).map((g, i) => {
+              const photo = [PHOTOS.eyes, PHOTOS.pounce, PHOTOS.rest][i];
+              return (
+                <li key={g.slug}>
+                  <Link href={`/guides/${g.slug}`}>
+                    <span className="gcard-img"><Image src={photo.src} alt="" fill sizes="(min-width: 821px) 33vw, 100vw" /></span>
+                    <b>{g.title}</b><span className="muted">{g.description}</span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
 
       <section className="section faq-sec">
         <div className="wrap narrow">
-          <h2 className="center">Questions, answered</h2>
+          <h2 className="center" data-split>Questions, answered</h2>
           {FAQ.slice(0, 6).map(({ q, a }) => (
             <details key={q}><summary>{q}</summary><p>{a}</p></details>
           ))}

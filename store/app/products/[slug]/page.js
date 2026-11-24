@@ -56,8 +56,8 @@ export default async function ProductPage({ params }) {
 
       <section className="section">
         <div className="wrap">
-          <h2>You might also like</h2>
-          <div className="pgrid three">{related.map((r) => <ProductCard key={r.slug} product={r} />)}</div>
+          <h2 data-split>You might also like</h2>
+          <div className="pgrid three" data-stagger>{related.map((r) => <ProductCard key={r.slug} product={r} />)}</div>
         </div>
       </section>
 

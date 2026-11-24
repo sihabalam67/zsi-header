@@ -32,7 +32,7 @@ export default async function Guide({ params }) {
       <nav className="crumbs" aria-label="Breadcrumb">
         <Link href="/">Home</Link> › <Link href="/guides">Guides</Link> › {g.title}
       </nav>
-      <h1>{g.title}</h1>
+      <h1 data-split>{g.title}</h1>
       <p className="meta">By the Indoor Hunt Co. team · Updated <time dateTime={CONTENT_UPDATED}>{new Date(CONTENT_UPDATED).toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</time></p>
 
       <div className="answer" role="note" aria-label="Short answer">

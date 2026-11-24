@@ -14,9 +14,9 @@ export default function Shop() {
     <section className="section">
       <div className="wrap">
         <nav className="crumbs" aria-label="Breadcrumb"><Link href="/">Home</Link> › Shop</nav>
-        <h1>Shop indoor cat play</h1>
+        <h1 data-split>Shop indoor cat play</h1>
         <p className="lede">Everything you need for the 10-minute nightly hunt, plus things to keep your cat busy while you’re out.</p>
-        <div className="pgrid">{PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}</div>
+        <div className="pgrid" data-stagger>{PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}</div>
       </div>
       <JsonLd data={itemListLd(PRODUCTS)} />
       <JsonLd data={breadcrumbLd([['Home', '/'], ['Shop', '/shop']])} />
