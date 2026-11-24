@@ -103,3 +103,8 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
 7. **Length:** 8-10 min (mid-roll ads need 8:00+), but never pad: if retention data shows a dull section, cut it.
 8. **Every 3 days:** re-run learn.py on the newest videos; if a title or thumbnail underperforms its peers in the
    first 3 days, change it (titles and thumbnails can be changed after upload).
+
+- 2026-11-24 daily check: no new long video today (ep13 Groceries 12 PM + Coffee Short 2 PM were already scheduled).
+  Every long video still loses its biggest share at 0:05-0:15 (the intro line), even the best one (Gold, 1,602 views,
+  65% at 30 s). Next videos: open on the picture of the payoff, not on the number read aloud; first line under 8 words.
+  Best traffic = SUBSCRIBER + RELATED_VIDEO (Gold 926 + 602): topics next to big news videos win.
