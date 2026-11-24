@@ -12,7 +12,7 @@ P = e.PRICES
 desc = (
     f"U.S. grocery prices (CPI food at home) are up {e.FOOD_UP:.1f}% since January 2020, and this year's classic "
     f"Thanksgiving dinner for 10 costs ${e.DINNER_TOTAL:.2f}, more than 6% above last year, with the 16-lb turkey up "
-    f"10%, per the American Farm Bureau. Coffee is up {P['Coffee']['up']:.0f}% (${P['Coffee']['then']:.2f} -> "
+    f"10%, per the American Farm Bureau. Coffee is up {P['Coffee']['up']:.0f}% (${P['Coffee']['then']:.2f} to "
     f"${P['Coffee']['now']:.2f} a pound), ground beef {P['Ground beef']['up']:.0f}%, eggs {P['Eggs']['up']:.0f}% "
     f"after peaking at ${P['Eggs']['peak']:.2f} a dozen. We look at why food costs more (fuel, labor, packaging: "
     f"under 6 cents of each grocery dollar reaches the farm), groceries vs your other bills, and whether pay kept up "
