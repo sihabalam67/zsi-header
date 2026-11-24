@@ -87,6 +87,8 @@ SPEC = {
                     ('thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg')),
     'ep11_vix': (0, 'FEAR\nINDEX 37', 'WHAT\nNEXT?', 'CORRECTION\n-11.6%', RED, None, 1,
                  ('thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg')),
+    'ep13_groceries': (0, 'GROCERIES\n+32%', 'WHY SO\nEXPENSIVE?', 'COFFEE\n+122%', RED, None, 0,
+                       ('thumbsrc/ep13_cart.jpg', 'thumbsrc/ep13_dinner.jpg', 'thumbsrc/ep13_cart.jpg')),
     'ep12_week': (0, 'NASDAQ\n-10%', 'WORST WEEK\nSINCE 2020', 'NOW\nWHAT?', RED, None, 1,
                   ('thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg', 'thumbsrc/stocks_cash_arrow.jpg')),
 }
