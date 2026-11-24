@@ -58,7 +58,16 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
 - Second drop: the first chapter change (~1 min) when the video switches from the hook to background.
 
 ## Rules for the next video (apply every one, every day)
-1. **Thumbnail:** bright photo-real background (Canva AI image: one object or scene, no text, no logos, no real
+1. **Thumbnail (v4, Nov 24, owner: "the thumbnail is the main part"):** made with `channel/thumbs4/` (specs.json +
+   `node channel/thumbs4/render.js channel/thumbs4/specs.json <name>`). Learned from the 30 most-viewed money videos of
+   the last 4 months: (a) a BIG emotional face, 30-50% of the frame: for us Penny, shocked, hands up, sweat, shock
+   lines, white sticker outline; (b) a mini-story in the picture: old price tag crossed out → red arrow → new price,
+   red candles stepping down, a fear gauge in the red, a crashing chart; (c) 2-5 words, one in a red box, yellow/white
+   with thick black outline; (d) high contrast, saturated, sunburst or photo background, dark vignette; (e) never reuse
+   the same background on two videos; (f) the viewer must understand the topic from the picture alone. Check the
+   thumbnail at 320x180 (phone size) before shipping. Nov 24: new v4 thumbnails set on ep10-ep13; compare their
+   views/day before vs after on Nov 27.
+   Old rule (still true for the background): bright photo-real background (Canva AI image: one object or scene, no text, no logos, no real
    people) + max 3 words incl. one number, high contrast, warm colors. Never a dark abstract chart again.
 2. **Title:** under 50 characters; one big number; curiosity ("What happened?", "Why?", "Now what?").
 3. **First 15 seconds:** say the most surprising fact in the first sentence, show a new visual every 2-3 s, no

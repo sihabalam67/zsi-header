@@ -1,0 +1,166 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-700.ttf);font-weight:700}
+@font-face{font-family:A;src:url(file:///root/.fonts/Anton-400.ttf)}
+html,body{margin:0;background:#000}
+svg{display:block}
+text{font-family:P;font-weight:900}
+</style></head><body>
+<svg id="s" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <radialGradient id="coin" cx=".36" cy=".3" r=".8">
+    <stop offset="0" stop-color="#FFF4B8"/><stop offset=".35" stop-color="#FFD54A"/><stop offset=".8" stop-color="#F2A81D"/><stop offset="1" stop-color="#D98C0C"/></radialGradient>
+  <linearGradient id="bag" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#A86B3A"/><stop offset=".5" stop-color="#C98B52"/><stop offset="1" stop-color="#94592D"/></linearGradient>
+  <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".78"/></radialGradient>
+  <linearGradient id="fadeL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset=".55" stop-color="#000" stop-opacity=".0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/></linearGradient>
+  <linearGradient id="fadeR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset=".55" stop-color="#000" stop-opacity=".0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/></linearGradient>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".55"/></filter>
+  <!-- sticker outline: white border + dark shadow around any group (makes subjects pop off the photo) -->
+  <filter id="sticker" x="-20%" y="-20%" width="140%" height="140%">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="11" result="d"/>
+    <feFlood flood-color="#fff"/><feComposite in2="d" operator="in" result="w"/>
+    <feGaussianBlur in="d" stdDeviation="16" result="b"/><feFlood flood-color="#000" flood-opacity=".7"/><feComposite in2="b" operator="in" result="s"/>
+    <feOffset in="s" dy="10" result="so"/>
+    <feMerge><feMergeNode in="so"/><feMergeNode in="w"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"/></filter>
+  <filter id="grade"><feColorMatrix type="saturate" values="1.3"/><feComponentTransfer><feFuncR type="linear" slope="1.12" intercept="-.04"/><feFuncG type="linear" slope="1.12" intercept="-.04"/><feFuncB type="linear" slope="1.12" intercept="-.04"/></feComponentTransfer></filter>
+  <filter id="blur"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+<g id="root"></g>
+</svg>
+<script src="../motion/penny.js"></script>
+<script>
+const f=n=>(+n).toFixed(1);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+// width of a string in Poppins Black at size (for highlight boxes)
+const MC=document.createElement('canvas').getContext('2d');
+const tw=(s,size,fam='P',w=900)=>{MC.font=`${w} ${size}px ${fam}`;return MC.measureText(s).width;};
+
+const EL={
+  // big headline: lines = [[word, style]...] style: 'w' white, 'y' yellow, 'r' red box, 'g' green box
+  text(e){
+    const {x,y,size=150,lines,anchor='middle',gap=1.02,fam='P',rot=0}=e; let g='',yy=y;
+    for(const ln of lines){
+      const parts=ln.map(([w,st])=>({w,st,wd:tw(w,size,fam)}));
+      const sp=size*.22, tot=parts.reduce((a,p)=>a+p.wd,0)+sp*(parts.length-1);
+      let xx=anchor==='middle'?x-tot/2:anchor==='end'?x-tot:x;
+      for(const p of parts){
+        if(p.st==='r'||p.st==='g'||p.st==='k'){
+          const col=p.st==='r'?'#E5202B':p.st==='g'?'#11A866':'#111';
+          g+=`<rect x="${f(xx-size*.14)}" y="${f(yy-size*.86)}" width="${f(p.wd+size*.28)}" height="${f(size*1.04)}" rx="${size*.12}" fill="${col}" filter="url(#sh)" transform="rotate(-2 ${f(xx)} ${f(yy)})"/>`;
+          g+=`<text x="${f(xx)}" y="${f(yy)}" font-size="${size}" fill="#fff" font-family="${fam}" style="font-family:${fam}" transform="rotate(-2 ${f(xx)} ${f(yy)})">${esc(p.w)}</text>`;
+        }else{
+          const col=p.st==='y'?'#FFD21F':'#fff';
+          g+=`<text x="${f(xx)}" y="${f(yy)}" font-size="${size}" fill="${col}" stroke="#000" stroke-width="${size*.16}" stroke-linejoin="round" paint-order="stroke" font-family="${fam}" style="font-family:${fam};word-spacing:.2em;filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))">${esc(p.w)}</text>`;
+        }
+        xx+=p.wd+sp;
+      }
+      yy+=size*gap;
+    }
+    return `<g transform="rotate(${rot} ${x} ${y})">${g}</g>`;
+  },
+  penny(e){ // big expressive mascot with white sticker outline
+    const o=Object.assign({t:0.4,r:230,mood:'shocked',armL:-35,armR:215,look:[0,0],sweat:1,blink:false},e);
+    let g=`<g filter="url(#sticker)">${penny(o)}</g>`;
+    if(e.lines){ // "shock lines" around the head
+      const cy=o.y-(o.r*.55+o.r*.92)*(o.sy||1);
+      for(let i=0;i<7;i++){const a=(-160+i*23)*Math.PI/180, r0=o.r*1.25, r1=o.r*1.5;
+        g+=`<line x1="${f(o.x+Math.cos(a)*r0)}" y1="${f(cy+Math.sin(a)*r0)}" x2="${f(o.x+Math.cos(a)*r1)}" y2="${f(cy+Math.sin(a)*r1)}" stroke="#fff" stroke-width="14" stroke-linecap="round" filter="url(#sh)"/>`;}
+    }
+    return g;
+  },
+  // price tag: label, color, rot, strike (old price crossed out), s scale
+  tag(e){
+    const {x,y,label,color='#16A673',rot=0,s=1,strike=false,sub=''}=e;
+    const w=Math.max(300,tw(label,110)+120);
+    let g=`<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" filter="url(#sh)">`+
+      `<path d="M${-w/2+50} -85 L${w/2-20} -85 Q${w/2} -85 ${w/2} -65 L${w/2} 65 Q${w/2} 85 ${w/2-20} 85 L${-w/2+50} 85 L${-w/2} 0Z" fill="${color}" stroke="#fff" stroke-width="10" stroke-linejoin="round"/>`+
+      `<circle cx="${-w/2+48}" cy="0" r="16" fill="#fff"/>`+
+      `<text x="${30}" y="38" text-anchor="middle" font-size="110" fill="#fff">${esc(label)}</text>`;
+    if(sub) g+=`<text x="${30}" y="-48" text-anchor="middle" font-size="34" fill="#fff" opacity=".95" style="font-weight:700">${esc(sub)}</text>`;
+    if(strike) g+=`<line x1="${-w/2+70}" y1="20" x2="${w/2-20}" y2="-14" stroke="#E5202B" stroke-width="20" stroke-linecap="round"/>`;
+    return g+'</g>';
+  },
+  // fat curved arrow from (x1,y1) to (x2,y2); bend = curvature
+  arrow(e){
+    const {x1,y1,x2,y2,color='#E5202B',w=40,bend=.25}=e;
+    const mx=(x1+x2)/2-(y2-y1)*bend, my=(y1+y2)/2+(x2-x1)*bend;
+    const a=Math.atan2(y2-my,x2-mx), hl=w*2.4, hw=w*1.9;
+    const bx=x2-Math.cos(a)*hl*.8, by=y2-Math.sin(a)*hl*.8;
+    const p1=[x2-Math.cos(a)*hl+Math.sin(a)*hw, y2-Math.sin(a)*hl-Math.cos(a)*hw], p2=[x2-Math.cos(a)*hl-Math.sin(a)*hw, y2-Math.sin(a)*hl+Math.cos(a)*hw];
+    const d=`M${x1} ${y1} Q${f(mx)} ${f(my)} ${f(bx)} ${f(by)}`;
+    return `<g filter="url(#sh)"><path d="${d}" stroke="#fff" stroke-width="${w+20}" fill="none" stroke-linecap="round"/><path d="${d}" stroke="${color}" stroke-width="${w}" fill="none" stroke-linecap="round"/>`+
+      `<path d="M${f(x2)} ${f(y2)} L${f(p1[0])} ${f(p1[1])} L${f(p2[0])} ${f(p2[1])}Z" fill="${color}" stroke="#fff" stroke-width="10" stroke-linejoin="round"/></g>`;
+  },
+  // jagged chart line (pts normalized 0..1) inside box, red crash or green rise, with glow
+  chart(e){
+    const {x,y,w,h,pts,color='#FF2D2D',sw=22,dot=true}=e;
+    const P=pts.map(([u,v])=>[x+u*w,y+(1-v)*h]);
+    const d='M'+P.map(p=>f(p[0])+' '+f(p[1])).join(' L');
+    let g=`<path d="${d}" stroke="${color}" stroke-width="${sw*3}" fill="none" stroke-linejoin="round" opacity=".35" filter="url(#glow)"/>`+
+      `<path d="${d}" stroke="#fff" stroke-width="${sw+12}" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`+
+      `<path d="${d}" stroke="${color}" stroke-width="${sw}" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+    if(dot){const q=P[P.length-1]; g+=`<circle cx="${f(q[0])}" cy="${f(q[1])}" r="${sw*1.3}" fill="${color}" stroke="#fff" stroke-width="8"/>`;}
+    return g;
+  },
+  // rubber stamp text
+  stamp(e){
+    const {x,y,label,color='#E5202B',rot=-12,size=90}=e, w=tw(label,size,'A',400)+80;
+    return `<g transform="translate(${x} ${y}) rotate(${rot})" opacity=".93"><rect x="${-w/2}" y="${-size*.75}" width="${w}" height="${size*1.3}" rx="14" fill="none" stroke="${color}" stroke-width="12"/>`+
+      `<text x="0" y="${size*.32}" text-anchor="middle" font-size="${size}" fill="${color}" font-family="A" style="font-family:A">${esc(label)}</text></g>`;
+  },
+  // semicircle "fear" gauge with needle
+  gauge(e){
+    const {x,y,r=260,value=.85,label='',sub=''}=e; let g='';
+    const cols=['#16A673','#9BD13B','#FFD21F','#FF8A1F','#E5202B'];
+    for(let i=0;i<5;i++){const a0=Math.PI+i*Math.PI/5, a1=a0+Math.PI/5;
+      g+=`<path d="M${f(x+Math.cos(a0)*r)} ${f(y+Math.sin(a0)*r)} A${r} ${r} 0 0 1 ${f(x+Math.cos(a1)*r)} ${f(y+Math.sin(a1)*r)}" stroke="${cols[i]}" stroke-width="${r*.28}" fill="none"/>`;}
+    const a=Math.PI+value*Math.PI;
+    g+=`<line x1="${x}" y1="${y}" x2="${f(x+Math.cos(a)*r*.95)}" y2="${f(y+Math.sin(a)*r*.95)}" stroke="#fff" stroke-width="${r*.09+10}" stroke-linecap="round"/>`;
+    g+=`<line x1="${x}" y1="${y}" x2="${f(x+Math.cos(a)*r*.95)}" y2="${f(y+Math.sin(a)*r*.95)}" stroke="#111" stroke-width="${r*.09}" stroke-linecap="round"/><circle cx="${x}" cy="${y}" r="${r*.13}" fill="#111" stroke="#fff" stroke-width="8"/>`;
+    if(label) g+=`<text x="${x}" y="${y+r*.42}" text-anchor="middle" font-size="${r*.42}" fill="#fff" stroke="#000" stroke-width="18" paint-order="stroke">${esc(label)}</text>`;
+    return `<g filter="url(#sh)">${g}</g>`;
+  },
+  // "BREAKING"-style lower bar
+  bar(e){
+    const {label='MARKET ALERT',text='',y=930}=e, w1=tw(label,58)+60;
+    return `<g filter="url(#sh)"><rect x="0" y="${y}" width="1920" height="110" fill="#fff"/><rect x="0" y="${y}" width="${w1}" height="110" fill="#E5202B"/>`+
+      `<text x="30" y="${y+76}" font-size="58" fill="#fff">${esc(label)}</text><text x="${w1+30}" y="${y+78}" font-size="64" fill="#111">${esc(text)}</text></g>`;
+  },
+  img(e){ const {href,x,y,w,h,opacity=1}=e; return `<image href="${href}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice" opacity="${opacity}"/>`; },
+  bagc(e){ return `<g filter="url(#sticker)">${coffeeBag(e.x,e.y,e.s||1,e.rot||0)}</g>`; },
+  raw(e){ return e.svg; },
+  // sunburst rays from a point (cartoon energy background)
+  rays(e){
+    const {x=960,y=540,n=22,c1='#FF3B2F',c2='#C9161F',R=2600}=e; let g=`<rect width="1920" height="1080" fill="${c2}"/>`;
+    for(let i=0;i<n;i+=2){const a0=i/n*Math.PI*2, a1=(i+1)/n*Math.PI*2;
+      g+=`<path d="M${x} ${y} L${f(x+Math.cos(a0)*R)} ${f(y+Math.sin(a0)*R)} L${f(x+Math.cos(a1)*R)} ${f(y+Math.sin(a1)*R)}Z" fill="${c1}"/>`;}
+    return g;
+  },
+  // descending red candles (n days down), with day labels
+  candles(e){
+    const {x,y,n=6,w=90,gap=34,drop=70,h=210,label=true}=e; let g='';
+    for(let i=0;i<n;i++){const cx=x+i*(w+gap), top=y+i*drop;
+      g+=`<line x1="${cx+w/2}" y1="${top-40}" x2="${cx+w/2}" y2="${top+h+40}" stroke="#fff" stroke-width="12"/><line x1="${cx+w/2}" y1="${top-40}" x2="${cx+w/2}" y2="${top+h+40}" stroke="#7a0b10" stroke-width="5"/>`+
+        `<rect x="${cx}" y="${top}" width="${w}" height="${h}" rx="10" fill="#E5202B" stroke="#fff" stroke-width="9"/>`;
+      if(label) g+=`<text x="${cx+w/2}" y="${top+h+105}" text-anchor="middle" font-size="44" fill="#fff" stroke="#000" stroke-width="10" paint-order="stroke">D${i+1}</text>`;}
+    return `<g filter="url(#sh)">${g}</g>`;
+  },
+};
+
+window.render=spec=>{
+  let g=`<rect width="1920" height="1080" fill="${spec.bgcolor||'#111'}"/>`;
+  if(spec.bg) g+=`<image href="${spec.bg}" x="${spec.bgx||0}" y="0" width="${spec.bgw||1920}" height="1080" preserveAspectRatio="xMidYMid slice" filter="url(#grade)"/>`;
+  if(spec.darken) g+=`<rect width="1920" height="1080" fill="#000" opacity="${spec.darken}"/>`;
+  if(spec.tint) g+=`<rect width="1920" height="1080" fill="${spec.tint}" opacity=".28" style="mix-blend-mode:multiply"/>`;
+  if(spec.side==='right') g+=`<rect width="1920" height="1080" fill="url(#fadeL)"/>`;
+  if(spec.side==='left') g+=`<rect width="1920" height="1080" fill="url(#fadeR)"/>`;
+  g+=`<rect width="1920" height="1080" fill="url(#vig)"/>`;
+  for(const e of spec.els) g+=EL[e.type](e);
+  document.getElementById('root').innerHTML=g;
+};
+</script></body></html>

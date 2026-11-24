@@ -41,7 +41,12 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    no real people, no logos.
 4. **Check and render.** `--check`, then `--stills` and look at every still (no overlaps; keep chips above y=600,
    the caption band starts at ~620). Then the full render (~30-40 min). Fix pace warnings with --only.
-5. **Thumbnails.** Bright photo-real background (Canva generate-image: one object/scene, no text, no logos, no
+5. **Thumbnails (v4 system, mandatory):** add a spec to `channel/thumbs4/specs.json` and render with
+   `node channel/thumbs4/render.js channel/thumbs4/specs.json <name>` (elements: penny, text with a red-box word, tag
+   with strike, arrow, chart, candles, gauge, stamp, rays, bar, img). Rules in LEARNINGS.md rule 1. Export 1280x720
+   JPG to out/thumbs/<name>_v4.jpg and use it as the upload thumbnail. Look at it at 320x180 next to
+   out/thumbs/v4_sheet.jpg and only ship if it's at least as eye-catching.
+   (Older step:) **Thumbnails.** Bright photo-real background (Canva generate-image: one object/scene, no text, no logos, no
    faces/real people; place it on a 1920x1080 page of design DAHZ5Imlf3g and export PNG), then a SPEC entry in
    thumbs_v3.py: max 3 words with one number. Never a dark abstract chart. Look at the sheet next to the gold
    thumbnail (our best) and only ship if it's as clickable.
