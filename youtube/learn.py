@@ -98,7 +98,11 @@ def main():
                          drops=top_drops))
     styles = json.load(open(os.path.join(OUT, 'styles.json'))) if os.path.exists(os.path.join(OUT, 'styles.json')) else {}
     for r in rows:
-        r['style'] = styles.get(r['name'], 'newsroom')
+        st_ = styles.get(r['name'], 'newsroom')  # "paper" or {"look": "paper", "family": ..., "devices": [...]}
+        st_ = st_ if isinstance(st_, dict) else {'look': st_}
+        r['style'] = st_.get('look', 'newsroom')
+        r['family'] = st_.get('family', '')
+        r['devices'] = st_.get('devices', [])
     rows.sort(key=lambda r: -r['minutes'])
     json.dump(rows, open(os.path.join(OUT, 'learn.json'), 'w'), indent=1)
     print(f"{'min':>5} {'views':>6} {'3day':>5} {'avg':>5} {'%':>3} {'30s':>4} {'1m':>4} {'2m':>4} {'subs':>4}  title")
@@ -118,6 +122,14 @@ def main():
         if g:
             print(f"  {sty:9s} n={len(g):2d}  first-3-day views {st.median(r['first3'] for r in g):>6.0f}  kept@30s "
                   f"{st.median(r['kept_30s'] for r in g):>3.0f}%  avg view {st.median(r['avg_view_s'] for r in g) / 60:.1f} min")
+    devs = sorted({d for r in rows for d in r['devices']})
+    if devs:
+        print('\nBy animation device (STYLE_PLAYBOOK.md; videos live 3+ days):')
+        for d in devs:
+            g = [r for r in rows if d in r['devices'] and r['days'] >= 3 and r['kept_30s']]
+            if g:
+                print(f"  {d:24s} n={len(g):2d}  first-3-day views {st.median(r['first3'] for r in g):>6.0f}  kept@30s "
+                      f"{st.median(r['kept_30s'] for r in g):>3.0f}%  avg view {st.median(r['avg_view_s'] for r in g) / 60:.1f} min")
     print(f'\nlong-video watch hours, all time: {hours:.1f} of 4,000')
 
 

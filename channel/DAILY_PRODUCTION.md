@@ -28,7 +28,14 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
 2. **Get the numbers.** Only from primary data we can download and recompute: Yahoo chart API (indexes, futures,
    stocks), FRED via `channel/fetch_data.py`, BLS/BEA/Treasury/Fed releases. If a fact can't be verified from a
    primary source or two major outlets, leave it out. Never invent; every number gets an assert in check_numbers.
-3. **Write `channel/epNN_<slug>.py`** using the newest episode as the template (ep10_stocks.py): 10-13 scenes,
+3. **Pick the look and animation with channel/STYLE_PLAYBOOK.md** (built from all 703 prompts of the
+   awesome-opus5-5-videos library): use the topic table to choose the main family + look and 2-4 devices (Crash
+   Quake, Coins as Data, Receipt & Recipe, Loot Reveal, Money Machine, ...). Write the 6-part creative brief
+   (inputs/direction/structure/build/gotchas/start, with the BANNED list) into the episode docstring. Device scenes
+   can be HTML pages rendered with `window.frame(t)` + Playwright using `channel/motion/kit.js` (springs, beat grid,
+   count-ups, coins-to-balance, shockwave, mask-rise text, grain); see `channel/demo_character/` for a full example
+   with Penny. Record look, family and devices in channel/out/styles.json.
+   **Then write `channel/epNN_<slug>.py`** using the newest episode as the template (ep10_stocks.py): 10-13 scenes,
    ~1,300-1,450 words (8-9 min). The answer in the first 30 s; a subscribe ask right after the hook's payoff and
    at the end; one question for the comments; "education only, not financial advice". Drawn charts are enough;
    no real people, no logos.
