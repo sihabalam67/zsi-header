@@ -60,6 +60,23 @@ SKY, SKY_D = (96, 165, 250), (37, 99, 200)
 CREAM, INK, MUTED = (250, 245, 235), (17, 20, 35), (148, 163, 184)
 BILL, BILL_D = (134, 190, 120), (62, 120, 70)
 WHITE = (255, 255, 255)
+CAP_TEXT = (255, 255, 255)  # captions keep their own colors in every style
+SHADOW = 110  # alpha of the soft text shadow
+STROKE = (17, 20, 35)  # outline color for big stroked numbers
+# Visual templates, picked per video with the STYLE environment variable (set before importing the engine), so
+# different looks can be A/B tested against each other (youtube/learn.py groups results by style):
+#   newsroom (default): dark navy, data-desk look.  paper: light notebook paper, ink-dark text, no shadows.
+#   bold: near-black stage, saturated accents, premium "product film" look.
+STYLE = os.environ.get('STYLE', 'newsroom')
+if STYLE == 'paper':
+    BG1, BG2 = (250, 246, 236), (236, 228, 210)
+    WHITE, MUTED = (34, 36, 48), (118, 114, 104)
+    GOLD, MINT, CORAL, SKY = (204, 128, 0), (16, 146, 96), (212, 62, 56), (34, 100, 210)
+    SHADOW = 0
+    STROKE = (252, 249, 240)
+elif STYLE == 'bold':
+    BG1, BG2 = (6, 6, 9), (20, 20, 26)
+    GOLD, MINT, CORAL, SKY = (255, 212, 0), (0, 228, 150), (255, 70, 70), (80, 176, 255)
 
 # ---------------------------------------------------------------- easing ---
 
@@ -204,15 +221,16 @@ class Canvas:
                    width=max(1, int(width * self.k)))
 
     def text(self, x, y, s, size, fill=WHITE, weight=700, anchor='mm', a=1.0, shadow=True, family='Poppins',
-             stroke=0, stroke_fill=INK):
+             stroke=0, stroke_fill=None):
+        stroke_fill = STROKE if stroke_fill is None else stroke_fill
         if a * self.alpha <= 0.004:
             return
         f = font(size, weight, family, self.k)
         if self._c(fill, a) is None:
             return
-        if shadow and self._c((0, 0, 0, 110), a) is not None:
-            self.d.text(((x + 2) * self.k, (y + 3) * self.k), s, font=f, fill=self._c((0, 0, 0, 110), a), anchor=anchor,
-                        stroke_width=int(stroke * self.k), stroke_fill=self._c((0, 0, 0, 110), a))
+        if shadow and SHADOW and self._c((0, 0, 0, SHADOW), a) is not None:
+            self.d.text(((x + 2) * self.k, (y + 3) * self.k), s, font=f, fill=self._c((0, 0, 0, SHADOW), a), anchor=anchor,
+                        stroke_width=int(stroke * self.k), stroke_fill=self._c((0, 0, 0, SHADOW), a))
         self.d.text((x * self.k, y * self.k), s, font=f, fill=self._c(fill, a), anchor=anchor,
                     stroke_width=int(stroke * self.k), stroke_fill=self._c(stroke_fill, a))
 
@@ -564,7 +582,7 @@ def draw_captions(c, t, chunks, x=W / 2, y=H - 64, size=30, maxw=1180):
         px = x - sum(widths) / 2
         pk = ease_out(seg(t, s, s + 0.15))
         for p, wdt, w in zip(parts, widths, ch):
-            col = GOLD if w['s'] <= t else WHITE
+            col = (255, 196, 61) if w['s'] <= t else CAP_TEXT
             c.text(px, y + 6 * (1 - pk), p, sz, col, 900, anchor='lm', a=pk, shadow=False, stroke=max(2, sz // 9),
                    stroke_fill=(10, 12, 24))
             px += wdt

@@ -96,6 +96,9 @@ def main():
                          sources={k: v for k, v, _ in src}, minutes_by_source={k: mm for k, _, mm in src},
                          kept_30s=at(30), kept_60s=at(60), kept_120s=at(120), kept_half=at(dur / 2),
                          drops=top_drops))
+    styles = json.load(open(os.path.join(OUT, 'styles.json'))) if os.path.exists(os.path.join(OUT, 'styles.json')) else {}
+    for r in rows:
+        r['style'] = styles.get(r['name'], 'newsroom')
     rows.sort(key=lambda r: -r['minutes'])
     json.dump(rows, open(os.path.join(OUT, 'learn.json'), 'w'), indent=1)
     print(f"{'min':>5} {'views':>6} {'3day':>5} {'avg':>5} {'%':>3} {'30s':>4} {'1m':>4} {'2m':>4} {'subs':>4}  title")
@@ -107,6 +110,14 @@ def main():
         if r['drops']:
             print(f"{'':>40}biggest drops: " + '; '.join(f'-{d}% at {s // 60}:{s % 60:02d} ({c})' for d, s, c in r['drops']))
     hours = sum(r['minutes'] for r in rows) / 60
+    # template A/B test: compare styles on the videos old enough to judge (3+ days live)
+    import statistics as st
+    print('\nBy template (videos live 3+ days):')
+    for sty in sorted({r['style'] for r in rows}):
+        g = [r for r in rows if r['style'] == sty and r['days'] >= 3 and r['kept_30s']]
+        if g:
+            print(f"  {sty:9s} n={len(g):2d}  first-3-day views {st.median(r['first3'] for r in g):>6.0f}  kept@30s "
+                  f"{st.median(r['kept_30s'] for r in g):>3.0f}%  avg view {st.median(r['avg_view_s'] for r in g) / 60:.1f} min")
     print(f'\nlong-video watch hours, all time: {hours:.1f} of 4,000')
 
 

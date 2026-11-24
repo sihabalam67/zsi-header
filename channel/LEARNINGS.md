@@ -44,6 +44,15 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
   Big channels own the top of "stock market crash" and "gold price"; small channels are winning car prices,
   housing, grocery prices, credit card debt, rent and 401(k) angles.
 
+## Ideas taken from the awesome-opus5-5-videos prompt library (703 code-animation prompts, Nov 24)
+- "Something happens on every beat": top motion pieces change the frame on a fixed rhythm (often a 120 BPM grid,
+  i.e. every 0.5 s). Our pace check allows 6 s; aim for a visible change every 2-3 s in the intro and every 4-5 s
+  after.
+- Real data, real objects, no placeholders: the best explainers show the actual thing (a receipt, a store shelf,
+  a phone app) rather than abstract boxes. Our Thanksgiving receipt scene is this idea.
+- Distinct visual identity per piece (hand-drawn pencil, storybook character, black-stage product film): we now
+  A/B test templates (newsroom / paper / bold) instead of one fixed look.
+
 ## Where every video loses people
 - The biggest drops are in the first 10-30 seconds, on every video. The intro is the weakest part.
 - Second drop: the first chapter change (~1 min) when the video switches from the hook to background.

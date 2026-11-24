@@ -47,6 +47,16 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    (sourced facts only, never personal financial advice, skip abuse).
 8. **Commit and push** everything except build files. Log the video in channel/out/LOG.md (date, title, id).
 
+## Template A/B test (owner's request, Nov 24)
+Each video uses one visual template, set at the top of the episode file BEFORE importing the engine:
+`os.environ.setdefault('STYLE', 'paper')`. Templates: `newsroom` (dark navy data desk, Nov 19-24), `paper` (light
+notebook, ink-dark text), `bold` (near-black stage, saturated accents). Rotate so every template gets at least 3
+videos (next order: paper, bold, newsroom, ...); record the choice in channel/out/styles.json ({"epNN_slug": style})
+when publishing. `python3 youtube/learn.py` prints a "By template" comparison (first-3-day views, % kept at 30 s,
+average view). After 3+ videos each, use the winner most days and keep testing a challenger 1 day in 3. New
+templates are welcome (ideas: hand-drawn pencil, storybook mascot, receipt/real-object close-ups, from the prompt
+library github.com/yihui-dev/awesome-opus5-5-videos): add them to engine.py the same way.
+
 ## Lessons so far
 - The narration runs faster than word count suggests: ~1,450 words gave 5.5 min. Aim for ~2,000 words and check
   the length with a pre-render before the final numbers are in; YouTube needs 8:00+ for mid-roll ads.
