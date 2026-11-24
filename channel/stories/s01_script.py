@@ -45,6 +45,7 @@ SCENES = [
         "Grandpa calls it a money tree. Rosie plants it in his backyard, and it is very, very small.",
         "M|That's it? A stick?",
         "R|Just wait. Trees take time.",
+        "Grandpa winks. Nickel yawns. And thirty years start ticking.",
     ]),
     dict(id='storm1', chapter='The first storm', lines=[
         f"For a few years, the tree grows fast. By September 2000, Rosie's thousand dollars has grown to "
@@ -85,6 +86,7 @@ SCENES = [
         "But year after year, the same thousand dollars fills a smaller and smaller cart.",
         "Nobody notices, because the number on the bills never changes. That's what makes the mouse so sneaky.",
         "By 2026, the mouse has nibbled so much that Ben's cart is less than half full.",
+        "And Ben has no idea. He still sleeps right next to Fort Cookie, every single night.",
     ]),
     dict(id='storm3', chapter='The weird storm', lines=[
         f"Back to the tree. Rosie didn't chop it. By early 2020, it's worth {m(N['d2020_peak'])}.",
@@ -110,6 +112,7 @@ SCENES = [
         f"!{m(N['now'])}.",
         "Sixteen times what she started with. And she never picked a hot stock. She never guessed when to sell.",
         "She just did one thing. The hardest thing. She didn't chop the tree.",
+        "Grandpa gives her a high five. Nickel tries to count the coins on the tree, and gives up at forty-two.",
     ]),
     dict(id='mia', chapter="Mia's second chance", lines=[
         "M|Is it too late for me? I'm forty-two.",
