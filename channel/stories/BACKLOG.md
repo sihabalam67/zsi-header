@@ -1,4 +1,4 @@
-**Next story (target Wed Dec 2): s04 "What If You Could See Everyone's Real Savings?"** (format 4, superpower POV; pitch below). Then **Newton vs. the Counterfeiter** (true-history chase, format 5). Same Salary (s02) moved to Wed Dec 9 so two "saver wins" stories never run back to back.
+**ON HOLD - do NOT produce until the owner says go (owner, Nov 24). Next story when approved: s04 "What If You Could See Everyone's Real Savings?"** (format 4, superpower POV; pitch below). Then **Newton vs. the Counterfeiter** (true-history chase, format 5). Same Salary (s02) moved to Wed Dec 9 so two "saver wins" stories never run back to back.
 
 # Story video backlog (ranked by current YouTube demand; re-check with youtube/scout.py before producing)
 
