@@ -1,0 +1,74 @@
+[
+  {
+    "file": "hero.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/ginger-tabby-kitten-playing-with-toy-YnfgU-m9tp4",
+    "photographer": "Dmytro Koplyk",
+    "orientation": "landscape",
+    "width_px": 2000,
+    "description": "Ginger tabby kitten leaping toward a dangling feather toy in a warm, backlit living room"
+  },
+  {
+    "file": "stalk.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/selective-focus-photography-of-gray-cat-peeking-at-the-table-bsSIk3LV_NE",
+    "photographer": "Biel Morro",
+    "orientation": "portrait",
+    "width_px": 1600,
+    "description": "Gray tabby peeking over a table edge, wide yellow eyes locked on target"
+  },
+  {
+    "file": "pounce.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/orange-tabby-kitten-playing-with-feather-e9r9v3p5Z2o",
+    "photographer": "Dmytro Koplyk",
+    "orientation": "landscape",
+    "width_px": 1600,
+    "description": "Kitten rearing up and swatting a feather mid-air on a rug (same series as hero)"
+  },
+  {
+    "file": "rest.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/a-ginger-and-white-cat-sleeping-peacefully-on-a-bed-uPcNSakAqww",
+    "photographer": "Evgeniya Shustikova",
+    "orientation": "landscape",
+    "width_px": 1600,
+    "description": "Ginger and white cat sleeping peacefully on soft bedding"
+  },
+  {
+    "file": "window.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/a-cat-sitting-on-a-window-sill-looking-out-the-window-xvLbcfXSVTY",
+    "photographer": "Mykyta Krav\u010denko",
+    "orientation": "portrait",
+    "width_px": 1600,
+    "description": "Tabby seen from behind sitting on a sunlit windowsill looking out at greenery"
+  },
+  {
+    "file": "couch-play.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/a-cat-playing-with-a-toy-on-a-bed-ks6JOh8cW5Y",
+    "photographer": "Tatyana Rubleva",
+    "orientation": "landscape",
+    "width_px": 1600,
+    "description": "Person's hand holding a stick toy as a tabby grabs and bites it on a soft bed/couch; no face"
+  },
+  {
+    "file": "eyes.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/brown-and-white-tabby-cat-IZ7W626JoQs",
+    "photographer": "Jan Kop\u0159iva",
+    "orientation": "landscape",
+    "width_px": 1600,
+    "description": "Warm close-up of a tabby's amber eyes and face (square original cropped to 16:10 via Unsplash fit=crop)"
+  },
+  {
+    "file": "feather.jpg",
+    "source": "unsplash",
+    "page_url": "https://unsplash.com/photos/a-cat-playing-with-a-toy-on-the-floor-RjevsjqTBk8",
+    "photographer": "Piotr Musio\u0142",
+    "orientation": "landscape",
+    "width_px": 1600,
+    "description": "Fluffy white-gray cat lying on its back clutching a feather wand toy"
+  }
+]
