@@ -850,5 +850,259 @@
     ]
    }
   ]
+ },
+ "ep13_groceries_A": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 520,
+    "y": 520,
+    "c1": "#4ADE80",
+    "c2": "#16A34A"
+   },
+   {
+    "type": "penny",
+    "x": 520,
+    "y": 1200,
+    "r": 360,
+    "mood": "shocked",
+    "armL": -125,
+    "armR": -55,
+    "sweat": 0,
+    "lines": true,
+    "look": [
+     0.6,
+     -0.2
+    ]
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='1380' y='250' text-anchor='middle' font-size='110' fill='#fff' stroke='#000' stroke-width='18' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>WAS $100</text>"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1380 520)' filter='url(#sh)'><rect x='1025' y='370' width='710' height='300' rx='35' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1380' y='610' text-anchor='middle' font-size='250' fill='#fff'>$132</text></g>"
+   }
+  ]
+ },
+ "ep13_groceries_B": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 1300,
+    "y": 480,
+    "c1": "#38BDF8",
+    "c2": "#0369A1"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1300' cy='480' r='380' fill='#FFF3A0' opacity='.7' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${egg(1300,480,7.5)}</g>`"
+   },
+   {
+    "type": "penny",
+    "x": 470,
+    "y": 1200,
+    "r": 330,
+    "mood": "shocked",
+    "armL": -125,
+    "armR": -55,
+    "sweat": 0,
+    "look": [
+     0.7,
+     -0.3
+    ]
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1300 150)' filter='url(#sh)'><rect x='883' y='78' width='834' height='144' rx='17' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1300' y='193' text-anchor='middle' font-size='120' fill='#fff'>EGGS $6.23</text></g>"
+   }
+  ]
+ },
+ "ep13_groceries_C": {
+  "bgcolor": "#111",
+  "bg": "thumbsrc/ep13_cart.jpg",
+  "els": [
+   {
+    "type": "raw",
+    "svg": "<rect width='1920' height='1080' fill='#000' opacity='.25'/>"
+   },
+   {
+    "type": "penny",
+    "x": 1350,
+    "y": 1200,
+    "r": 360,
+    "mood": "shocked",
+    "armL": -125,
+    "armR": -55,
+    "sweat": 1,
+    "lines": true,
+    "look": [
+     -0.6,
+     -0.2
+    ]
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 560 240)' filter='url(#sh)'><rect x='125' y='156' width='871' height='168' rx='20' fill='#FFD21F' stroke='#fff' stroke-width='12'/><text x='560' y='290' text-anchor='middle' font-size='140' fill='#111'>SAME CART</text></g>"
+   }
+  ]
+ },
+ "s01_grandpa_A": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 520,
+    "y": 460,
+    "c1": "#FFE14D",
+    "c2": "#FFB000"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.grandpa({x:520,y:2150,h:2000,mood:'laugh',t:.3,look:[1,-0.2]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='1400' y='230' text-anchor='middle' font-size='120' fill='#fff' stroke='#000' stroke-width='20' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>ONE KID:</text>"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1400 480)' filter='url(#sh)'><rect x='921' y='360' width='958' height='240' rx='28' fill='#11A866' stroke='#fff' stroke-width='12'/><text x='1400' y='552' text-anchor='middle' font-size='200' fill='#fff'>$16,368</text></g>"
+   }
+  ]
+ },
+ "s01_grandpa_B": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 560,
+    "y": 520,
+    "c1": "#2DD4BF",
+    "c2": "#0F766E"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='560' cy='520' r='430' fill='#FFF3A0' opacity='.7' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${tree({x:560,y:1180,size:1.25,leaves:1,coins:30,t:.3})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.rosie({x:1430,y:2150,h:2000,mood:'shocked',t:.3,look:[-1,0],adult:true})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='560' y='170' text-anchor='middle' font-size='110' fill='#fff' stroke='#000' stroke-width='18' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>SHE PLANTED IT</text>"
+   }
+  ]
+ },
+ "s01_grandpa_C": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 1380,
+    "y": 480,
+    "c1": "#C084FC",
+    "c2": "#7E22CE"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.grandpa({x:1380,y:2150,h:2000,mood:'shocked',t:.3,look:[-1,0]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='560' y='330' text-anchor='middle' font-size='170' fill='#FFD21F' stroke='#000' stroke-width='28' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>30 YEARS</text>"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='560' y='520' text-anchor='middle' font-size='170' fill='#fff' stroke='#000' stroke-width='28' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>LATER</text>"
+   }
+  ]
+ },
+ "s02_salary_A": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 520,
+    "y": 480,
+    "c1": "#86EFAC",
+    "c2": "#15803D"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.sam({x:520,y:2150,h:2000,mood:'laugh',t:.3,look:[1,-0.2]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1400 260)' filter='url(#sh)'><rect x='1145' y='158' width='511' height='204' rx='24' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1400' y='321' text-anchor='middle' font-size='170' fill='#fff'>FREE</text></g>"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1400 560)' filter='url(#sh)'><rect x='943' y='446' width='914' height='228' rx='27' fill='#11A866' stroke='#fff' stroke-width='12'/><text x='1400' y='628' text-anchor='middle' font-size='190' fill='#fff'>$42,255</text></g>"
+   }
+  ]
+ },
+ "s02_salary_B": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 560,
+    "y": 520,
+    "c1": "#60A5FA",
+    "c2": "#1D4ED8"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='560' cy='520' r='420' fill='#FFF3A0' opacity='.7' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${form({x:560,y:640,s:2.0,rot:-6,checked:1})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.sam({x:1430,y:2150,h:2000,mood:'shocked',t:.3,look:[-1,0]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='560' y='120' text-anchor='middle' font-size='110' fill='#fff' stroke='#000' stroke-width='18' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>ONE CHECKBOX</text>"
+   }
+  ]
+ },
+ "s02_salary_C": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 1380,
+    "y": 480,
+    "c1": "#FB923C",
+    "c2": "#C2410C"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.jay({x:1380,y:2150,h:2000,mood:'laugh',t:.3,look:[-1,-0.2]})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${car({x:470,y:660,s:1.45,kind:'red',t:.3})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 560 220)' filter='url(#sh)'><rect x='143' y='148' width='834' height='144' rx='17' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='560' y='263' text-anchor='middle' font-size='120' fill='#fff'>$637/MONTH</text></g>"
+   }
+  ]
  }
 }

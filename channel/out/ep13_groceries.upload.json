@@ -22,10 +22,15 @@
   "personal finance"
  ],
  "categoryId": 27,
- "thumbnail": "channel/out/thumbs/ep13_groceries_v4.jpg",
+ "thumbnail": "channel/out/thumbs/ep13_groceries_A.jpg",
  "captions": "channel/out/ep13_groceries.en.srt",
  "privacy": "private",
  "madeForKids": false,
  "syntheticMedia": false,
- "language": "en"
+ "language": "en",
+ "thumb_bets": {
+  "A": "channel/out/thumbs/ep13_groceries_A.jpg",
+  "B": "channel/out/thumbs/ep13_groceries_B.jpg",
+  "C": "channel/out/thumbs/ep13_groceries_C.jpg"
+ }
 }

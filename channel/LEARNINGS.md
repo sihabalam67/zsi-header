@@ -77,6 +77,9 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    faces), ONE hook, max 3 words that never repeat the title, bright saturated `rays` background, must read at
    120 px wide. Upload bet A by API; B and C go to the owner for Studio Test & Compare. Log the winner per lever
    here. Example: out/thumbs/s03_janitor_A/B/C.jpg (specs s03_janitor_A/B/C).
+   KEEP THE BOTTOM-RIGHT CORNER EMPTY (x > 1450, y > 850 on 1920x1080): YouTube's duration badge covers it (owner's
+   phone screenshot, Nov 24: the $126,766 / $16,368 / $132.50 tags were hidden). Titles: checked with yt-title-optimizer
+   (40-60 chars, one number, positive outcome framing, no words shared with the thumbnail).
 2. **Title:** under 50 characters; one big number; curiosity ("What happened?", "Why?", "Now what?").
 3. **First 15 seconds:** say the most surprising fact in the first sentence, show a new visual every 2-3 s, no
    long first sentence, and promise the payoff ("by the end, you'll know ..."). Keep the full intro under 25 s.

@@ -1,4 +1,4 @@
-"""Story #2 narration: "Same Salary. 10 Years Later, One Is Broke." Every number comes from s02_numbers.N.
+"""Story #2 narration: "Same Salary. 10 Years Later, One Has $126,766." Every number comes from s02_numbers.N.
 A line prefix sets who talks on screen: J| Jay, S| Sam, A| Ava, H| Hank; none = Penny.
 A '!' after the prefix (or at the start) = dramatic read.
 Model note: Sam's raises are not in his 401(k) number (same $300/month all 10 years, nothing Apr-Aug 2020)."""
@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from s02_numbers import N  # noqa: E402
 
-TITLE = "Same Salary. 10 Years Later, One Is Broke."
+TITLE = "Same Salary. 10 Years Later, One Has $126,766."
 
 
 def m(v):
