@@ -1104,5 +1104,154 @@
     "svg": "<g transform='rotate(-3 560 220)' filter='url(#sh)'><rect x='143' y='148' width='834' height='144' rx='17' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='560' y='263' text-anchor='middle' font-size='120' fill='#fff'>$637/MONTH</text></g>"
    }
   ]
+ },
+ "ep13_groceries_X": {
+  "bgcolor": "#111",
+  "bg": "thumbsrc/ep13_cart.jpg",
+  "els": [
+   {
+    "type": "raw",
+    "svg": "<rect width='1920' height='1080' fill='#000' opacity='.45'/><rect width='1920' height='1080' fill='url(#vig)'/>"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1160' cy='560' r='430' fill='#FF6A3D' opacity='0.75' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-7 1160 565)' filter='url(#sh)'><path d='M900 330 L1420 330 L1420 800 L900 800Z' fill='#FFD21F' stroke='#fff' stroke-width='16' stroke-linejoin='round'/><path d='M900 330 L1420 330 L1420 800 L900 800Z' fill='none' stroke='#111' stroke-width='6'/><circle cx='960' cy='390' r='22' fill='#111'/><text x='1160' y='700' text-anchor='middle' font-size='400' fill='#111'>?</text></g><g transform='rotate(12 1440 520)' filter='url(#sh)'><circle cx='1440' cy='520' r='115' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1440' y='565' text-anchor='middle' font-size='130' fill='#fff'>x2</text></g>"
+   },
+   {
+    "type": "penny",
+    "x": 470,
+    "y": 1230,
+    "r": 340,
+    "mood": "shocked",
+    "armL": -125,
+    "armR": -55,
+    "sweat": 1,
+    "lines": true,
+    "look": [
+     0.7,
+     -0.1
+    ]
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='1110' y='120' text-anchor='middle' font-size='120' fill='#fff' stroke='#000' stroke-width='20' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>ONE ITEM</text>"
+   },
+   {
+    "type": "raw",
+    "svg": "<g transform='rotate(-3 1110 245)' filter='url(#sh)'><rect x='827' y='179' width='567' height='132' rx='15' fill='#E5202B' stroke='#fff' stroke-width='12'/><text x='1110' y='284' text-anchor='middle' font-size='110' fill='#fff'>DOUBLED</text></g>"
+   }
+  ]
+ },
+ "s01_grandpa_X": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 600,
+    "y": 560,
+    "c1": "#5EEAD4",
+    "c2": "#0E9488"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='590' cy='650' r='420' fill='#ffffff' opacity='0.55' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'><g transform='translate(590 1010) scale(2.7)'>${jar({x:0,y:0,s:1,bills:10})}</g></g>`"
+   },
+   {
+    "type": "js",
+    "code": "`${mouse({x:500,y:900,s:2.6,t:.3,nibble:1,tag:false})}<circle cx='575' cy='795' r='185' fill='none' stroke='#E5202B' stroke-width='22'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.ben({adult:true,x:1300,y:2130,h:2000,mood:'happy',blink:true,t:.3,look:[-1,0]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='600' y='190' text-anchor='middle' font-size='140' fill='#FFD21F' stroke='#000' stroke-width='23' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>TOTALLY SAFE</text>"
+   }
+  ]
+ },
+ "s02_salary_X": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 1000,
+    "y": 480,
+    "c1": "#BEF264",
+    "c2": "#4D9E0F"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='1080' cy='700' r='380' fill='#FFF3A0' opacity='0.7' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${car({x:1080,y:820,s:1.2,kind:'sedan',t:.3})}</g>`"
+   },
+   {
+    "type": "sparkles",
+    "x": 760,
+    "y": 420,
+    "w": 700,
+    "h": 380,
+    "n": 10
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.sam({x:460,y:2100,h:2000,mood:'laugh',t:.3,look:[1,-.2]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='1110' y='170' text-anchor='middle' font-size='130' fill='#fff' stroke='#000' stroke-width='21' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>BORING</text>"
+   },
+   {
+    "type": "raw",
+    "svg": "<line x1='880' y1='120' x2='1340' y2='150' stroke='#E5202B' stroke-width='22' stroke-linecap='round'/>"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='1110' y='420' text-anchor='middle' font-size='240' fill='#FFD21F' stroke='#000' stroke-width='40' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>WON</text>"
+   }
+  ]
+ },
+ "s03_janitor_X": {
+  "bgcolor": "#000",
+  "els": [
+   {
+    "type": "rays",
+    "x": 620,
+    "y": 560,
+    "c1": "#8B5CF6",
+    "c2": "#4C1D95"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='600' cy='640' r='460' fill='#FFE58A' opacity='0.8' filter='url(#soft)'/>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${safebox({x:600,y:960,s:1.35,open:1,glow:1,t:.3})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<circle cx='600' cy='760' r='230' fill='#FFD54A' opacity='.85' filter='url(#soft)'/><g filter='url(#sticker)'>${envelopes({x:560,y:880,s:1.05,n:9})}</g>`"
+   },
+   {
+    "type": "js",
+    "code": "`<g filter='url(#sticker)'>${CAST.walter({x:1300,y:2130,h:2000,mood:'happy',t:.3,look:[-1,.2]})}</g>`"
+   },
+   {
+    "type": "raw",
+    "svg": "<text x='600' y='210' text-anchor='middle' font-size='190' fill='#FFD21F' stroke='#000' stroke-width='31' stroke-linejoin='round' paint-order='stroke' style='filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))'>BOX 467</text>"
+   }
+  ]
  }
 }

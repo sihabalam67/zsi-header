@@ -81,6 +81,10 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    channel page, so the LIVE bet is chosen to differ from the 3 newer/older neighbours in lever, background color
    AND face side (alternate left/right). Never make the same letter (A) live for every video. Before uploading, stack
    the last 4 live thumbnails vertically at 480 px wide and look at it like the channel page.
+   PRE-CLICK PSYCHOLOGY (Nov 24, thumbnail-expert agent briefs from the installed skills): every live thumbnail
+   opens ONE gap only the video closes, each with a different trigger: hidden item ("ONE ITEM DOUBLED" + ? tag),
+   dramatic irony (happy kid, mouse eating his "TOTALLY SAFE" jar), identity reversal ("BORING" crossed out, "WON"),
+   forbidden secret (glowing open vault, "BOX 467"). Live set = <name>_X specs. Log which trigger wins.
    KEEP THE BOTTOM-RIGHT CORNER EMPTY (x > 1450, y > 850 on 1920x1080): YouTube's duration badge covers it (owner's
    phone screenshot, Nov 24: the $126,766 / $16,368 / $132.50 tags were hidden). Titles: checked with yt-title-optimizer
    (40-60 chars, one number, positive outcome framing, no words shared with the thumbnail).
