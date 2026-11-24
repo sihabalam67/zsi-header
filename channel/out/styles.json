@@ -11,5 +11,13 @@
  "ep10_stocks": "newsroom",
  "ep11_vix": "newsroom",
  "ep12_week": "newsroom",
- "ep13_groceries": "newsroom"
+ "ep13_groceries": "newsroom",
+ "ep13_short_coffee": {
+  "look": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Receipt & Recipe",
+   "Coins as Data"
+  ]
+ }
 }

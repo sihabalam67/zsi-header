@@ -6,3 +6,5 @@
 | 2026-11-20 | Fear Index Hits 37 as Stocks Enter a Correction. What Happens Next? (live 6 PM ET) | https://youtu.be/f8OkPpAPeRg |
 | 2026-11-21 | The Nasdaq's Worst Week Since 2020. What Happens After a Correction? (live 1 PM ET) | https://youtu.be/w8y0rEUenp4 |
 | 2026-11-24 | Your Groceries Cost 32% More. Why? (live 12 PM ET) | https://youtu.be/T5cc_bivdow |
+
+- 2026-11-24 2 PM ET: Short "Coffee Costs 122% More Than in 2020" (Penny character, HTML frame(t) render) https://youtu.be/AlVmYwoZoTc
