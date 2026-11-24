@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Channel Risk Audit: Coin Theory</title>
+<style>
+:root{--bg:#fff;--fg:#1c1c1c;--mut:#666;--line:#e3e3e3;--low:#0c8a4d;--med:#c26a00;--high:#d42a2a}
+@media(prefers-color-scheme:dark){:root{--bg:#0f0f0f;--fg:#f1f1f1;--mut:#9a9a9a;--line:#2b2b2b;--low:#3ddc97;--med:#ffa400;--high:#ff4e42}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:920px;margin:auto;padding:32px 16px 72px}
+a{color:inherit}
+h1{font-size:24px;margin:0}
+h2{font-size:19px;margin:44px 0 6px}
+h3{font-size:13px;margin:16px 0 0;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.mut{color:var(--mut)}
+.center{text-align:center}
+.low{--c:var(--low)}.med{--c:var(--med)}.high{--c:var(--high)}
+.gauges{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin:40px 0 24px;text-align:center}
+.gauge{position:relative;width:200px;font-weight:600}
+.gauge svg{display:block;width:132px;margin:0 auto 8px;transform:rotate(-90deg)}
+.gauge circle{fill:none;stroke:var(--line);stroke-width:8}
+.gauge .arc{stroke:var(--c);fill:color-mix(in srgb,var(--c) 12%,transparent)}
+.gauge b{position:absolute;top:0;left:0;width:100%;line-height:132px;font-size:44px;color:var(--c)}
+.legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:13px}
+.legend i,.row i{flex:none;display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c)}
+.big{font-size:19px;max-width:660px;margin:24px auto 8px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 44px}
+.row{border-bottom:1px solid var(--line)}
+div.row,.row>summary{display:flex;align-items:center;gap:12px;padding:13px 0}
+.row>summary{cursor:pointer;list-style:none}
+.row>summary::-webkit-details-marker{display:none}
+.row>summary::after{content:"+";color:var(--mut);width:12px;text-align:center}
+.row[open]>summary::after{content:"\2212"}
+.row span{flex:1}
+.row b{color:var(--c)}
+.row small{display:block;font-size:13px;color:var(--mut)}
+.proof{padding:0 24px 18px 22px}
+.proof p{margin:6px 0}
+.vids{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0}
+.vids a{width:200px;font-size:13px;line-height:1.35;text-decoration:none}
+.vids img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:6px;background:var(--line)}
+blockquote{margin:10px 0;padding-left:12px;border-left:3px solid var(--line);color:var(--mut)}
+ol{padding-left:22px}
+li{margin:12px 0}
+table{border-collapse:collapse;width:100%;margin-top:24px}
+td,th{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Channel Risk Audit: <a href="https://www.youtube.com/@cointheoryhq">Coin Theory</a></h1>
+<p class="mut">November 24, 2026 · checked against <a href="https://support.google.com/youtube/answer/1311392?hl=en">YouTube's channel monetization policies</a> (live page, read today) · guidelines check only, run without TubeLab</p>
+
+<div class="gauges">
+  <div class="gauge high"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54"/><circle class="arc" cx="60" cy="60" r="54" pathLength="100" stroke-dasharray="60 100"/></svg><b>60</b>Demonetization risk</div>
+  <div class="gauge"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54"/><circle class="arc" cx="60" cy="60" r="54" pathLength="100" stroke-dasharray="0 100"/></svg><b>n/a</b>Termination risk</div>
+</div>
+<div class="legend"><span class="low"><i></i> 0–29 low</span><span class="med"><i></i> 30–59 medium</span><span class="high"><i></i> 60–100 high</span></div>
+<p class="big center">6 of our 48 public or scheduled videos (12%) reuse the same script template, and 5 of them are among the newest 10: three "same money, different choices, the patient saver wins" stories in one week, and three market-drop videos in a row with the same chapters and the same passages.</p>
+<p class="mut center">Higher is riskier. The highest signal sets each score. A low score means no signal was found, not that the channel is safe.</p>
+<p class="mut center">Termination risk is not scored. It rests on what happened to similar channels, and that needs TubeLab: terminated channels vanish from YouTube and ad status is not public. The demonetization score rests on the guidelines alone.</p>
+
+<h2>Signals</h2>
+<div class="cols">
+  <div>
+    <h3>Demonetization</h3>
+    <div class="row"><i></i><span>Similar channels terminated or demonetized<small>not checked: needs TubeLab (paid, not connected)</small></span><b>n/a</b></div>
+    <div class="row high"><i></i><span>Guidelines<small>1 of 4 sections failed</small></span><b>60</b></div>
+  </div>
+  <div>
+    <h3>Termination</h3>
+    <div class="row"><i></i><span>Similar channels terminated<small>not checked: needs TubeLab (paid, not connected)</small></span><b>n/a</b></div>
+  </div>
+</div>
+
+<h2>Guidelines check</h2>
+<p class="mut">What was checked: all 48 public or scheduled uploads (titles, descriptions), 9 scripts read in full or by chapter (ep10_stocks, ep11_vix, ep12_week, ep09_gold, ep13_groceries, stories s01, s02, s03, and Shorts sx01, sx05, sx12), the live thumbnails of the videos cited, the live About text and our production docs. Two private, unscheduled duplicates (a second "$42 Billion Pulled From One Bank" Short and the first "Same Salary" cut) are left out of the counts. The section "Quality principles for kids and family content" was skipped: the channel is set to not made for kids.</p>
+
+<details class="row high" open>
+  <summary><i></i><span>Generic or Repetitive Content</span><b>60</b></summary>
+  <div class="proof">
+    <p><strong>Stories.</strong> The three story videos scheduled for Nov 25, 27 and 29 follow one plot: people get the same money or the same job, one spends, one saves or invests, the market crashes (2000, 2008, 2020) and the patient one is rewarded. Each opens the same way ("I'm Penny. These people are made up. Every number is real.") and re-uses the same entries: a "money tree" you must not chop, buying during crashes, credit card minimums, and compounding where most of the money comes at the end. The names and places could be swapped and the scripts would still work. The Shorts started this: "Same $200 a Month" (sx01) and "$5 a Day for 30 Years" (sx05) are the same jar-versus-7% calculation, and story 3 repeats sx05's "the last ten years add more than the first twenty" and its closing line "Time does the heavy lifting". The hen Short (sx12) is not counted: its outcome flips when bird flu hits.</p>
+    <p><strong>Market updates.</strong> "Stocks Fell 6 Days in a Row" (Nov 20), "Fear Index Hits 37" (Nov 20) and "The Nasdaq's Worst Week Since 2020" (Nov 21) cover one sell-off with the same chapter list (what happened, definitions, why, what history says, recent drops, best and worst days, what to watch next, what it means for you, recap). ep11 repeats ep10's entries: the best-days-near-worst-days point, the same watch list (10-year yield, the Fed's December meeting) and the same "emergency fund, keep investing through a 401(k)" advice. Our production rule causes this: DAILY_PRODUCTION.md says to write each episode "using the newest episode as the template (ep10_stocks.py)". The three thumbnails share one layout too (a scared Penny on the left, rays, a chart on the right, a two-word headline).</p>
+    <p><strong>Count.</strong> 6 of 48 videos run into it (12%, more than two and over a tenth: 60): sx05, ep11, ep12, s01, s02 (the "One Has $126,766" cut) and s03. The newest ten have 5 (50%), the older 38 have 1 (3%), so the problem is growing and the score was not lowered.</p>
+    <p><strong>Titles (watch, not counted).</strong> The shape "[number claim]. [short question or Here's why]" ("Your Groceries Cost 32% More. Why?") is on 22 of 48 videos (46%), just under the half that would count. It is on 11 of 16 long videos (69%) and 6 of the newest 10. A few more and it counts.</p>
+    <div class="vids">
+      <a href="https://www.youtube.com/watch?v=Ug5gOlHXzH0"><img src="../out/thumbs/s03_janitor_v5.jpg" alt="">The Poorest Man in Town Left $2 Million. How? · scheduled Nov 29</a>
+      <a href="https://www.youtube.com/watch?v=Zx821nqQL9w"><img src="../out/thumbs/s02_salary_v5.jpg" alt="">Same Salary. 10 Years Later, One Has $126,766. · scheduled Nov 27</a>
+      <a href="https://www.youtube.com/watch?v=f8OkPpAPeRg"><img src="https://i.ytimg.com/vi/f8OkPpAPeRg/mqdefault.jpg" alt="">Fear Index Hits 37. What Happens Next? · 72 views, 1.3x median, Nov 20</a>
+    </div>
+    <blockquote>"Videos where characters are put in the same situation over and over again with the same outcome (i.e., using a highly similar storyline template across multiple videos)"</blockquote>
+    <blockquote>"That means channels where content feels interchangeable from video to video are not allowed to monetize."</blockquote>
+    <blockquote>"AI-generated content made with generic or unoriginal templates giving the impression of mass production without adding the creator’s original, authentic insights or perspective"</blockquote>
+    <p class="mut">What is fine, from the same section: "Same intro and outro for your videos, but the bulk of your content is different" and "a series following a set of characters across episodes ... but in which each video has a distinct storyline, focus, or concept". Penny as a recurring host and our sourced numbers are not the problem. The same plot and the same passages are.</p>
+    <p><strong>Fix:</strong> Give each story its own plot, lesson and ending, including stories where saving is not the answer or the "safe" choice wins. Write each market video from a blank outline around the one new question of the day, and skip a daily update when the story has not really changed. Never copy a passage from an earlier script. Rotate title shapes and thumbnail layouts.</p>
+  </div>
+</details>
+
+<details class="row low">
+  <summary><i></i><span>AI Personas Related to Sensitive Topics</span><b>0</b></summary>
+  <div class="proof">
+    <p>Watch closely. Finance is one of the named topics, and every long video is voiced by Penny with synthetic speech and ends with a "What it means for you" chapter (keep an emergency fund, don't sell in a panic, keep buying through a 401(k)). It does not run into the policy as written: Penny is plainly a cartoon coin, never claims to be a human expert, the stories say the people are made up, and every video says "education only, not financial advice". No video counts, so the score is 0. But nothing on the channel shows a real person who stands behind that guidance, so a reviewer may read Penny as the policy's example below.</p>
+    <blockquote>"This includes any content that presents itself as a human expert providing advice to viewers on topics such as health, legal issues, finances, or politics."</blockquote>
+    <blockquote>"AI-generated podcast hosts offering financial guidance, investment tips, or wealth management advice"</blockquote>
+  </div>
+</details>
+
+<details class="row low">
+  <summary><i></i><span>Reused content</span><b>0</b></summary>
+  <div class="proof">
+    <p>Almost everything is our own code-drawn animation over our own scripts, built from numbers we download and recompute (FRED, BLS, Yahoo). One Short, "$100 in 1962 = $1,112 Today (Real 1962 Footage)" (1,204 views), uses public-domain Prelinger Archives footage, with our narration, data and effects on top. One video is below the threshold, so the score is 0.</p>
+  </div>
+</details>
+
+<details class="row low">
+  <summary><i></i><span>Unsatisfying or Off-putting Content</span><b>0</b></summary>
+  <div class="proof">
+    <p>Each video has a clear storyline and sourced numbers. Nothing is designed only to shock. Three fear-led market titles in two days ("Is a Crash Coming?", "Fear Index Hits 37", "Worst Week Since 2020") are worth watching, but the videos themselves are calm and data-led. Videos that feel interchangeable are counted under Generic or Repetitive Content above, not twice. The page's own allowed example fits our method: "If you use automated tools or templates to help create your content, the final product must still demonstrate your creative vision and provide educational or entertainment value."</p>
+  </div>
+</details>
+
+<h2>What happened to similar channels</h2>
+<p class="mut">Not checked. This run had no TubeLab access (paid, not connected), and without it there is no evidence about similar channels: terminated channels vanish from YouTube and ad status is not public. Neither score includes this signal.</p>
+
+<h2>What already shows real people behind the channel</h2>
+<p>Nothing yet. No real presenter appears on camera in any video, and the live About text names only the mascot: "Hosted by Penny, a coin who's seen a lot of prices change." It does not say who researches, writes and checks the videos. Reviewers read the About text: the policy lists "Channel’s “About” section" among what they may check, and says "if we cannot clearly tell that you made the content, monetization may be removed from your entire channel."</p>
+
+<h2>Actions to reduce risk</h2>
+<ol>
+  <li><strong>Give every story video its own plot and ending</strong><br><span class="mut">Three stories in one week (Nov 25, 27, 29) use the same "same money, the patient saver wins" plot and the same lines, which is the policy's "same situation over and over again with the same outcome".</span></li>
+  <li><strong>Write each market video from a blank outline, not from the last episode</strong><br><span class="mut">ep10, ep11 and ep12 share chapters and passages because the daily routine copies the newest episode file. Make one update per real new development and drop passages already used.</span></li>
+  <li><strong>Add a real presenter on camera and name who makes the videos in the About text</strong><br><span class="mut">Nothing shows a person behind the channel. A short video presenting the channel and how its videos are made, plus an About line naming the maker, also shows a human stands behind the money guidance Penny gives.</span></li>
+  <li><strong>Try new title formulas and thumbnail layouts</strong><br><span class="mut">"[Number claim]. [Short question]?" is on 11 of 16 long videos (69%) and 6 of the newest 10, and the three market videos share one thumbnail layout. That is close to the point where titles alone count as repetitive.</span></li>
+</ol>
+</main>
+</body>
+</html>
