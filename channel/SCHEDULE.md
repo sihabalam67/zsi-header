@@ -48,7 +48,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Mon Nov 16 | Short | 2 PM: Gold fell 10.8% in one day | https://youtu.be/CU7Lt5mhKsk |
 | Tue Nov 17 | Short | 2 PM: America's gold on the books at $42.22 an ounce | https://youtu.be/pNM3tFW7_pM |
 | Wed Nov 18 | Short | 2 PM: Central banks bought 321 tonnes | https://youtu.be/N7KNTf9Xa-0 |
-| Fri Nov 27 | Story | 12 PM: Same Salary. 10 Years Later, One Has $126,766. | https://youtu.be/Zx821nqQL9w |
+| Wed Dec 9 | Story | 12 PM: Same Salary. 10 Years Later, One Has $126,766. (moved from Nov 27: too close to story #1's plot) | https://youtu.be/Zx821nqQL9w |
 | Sun Nov 29 | Story | 12 PM: The Poorest Man in Town Left $2 Million. How? | https://youtu.be/Ug5gOlHXzH0 |
 
 Next: week 3 (Fri Nov 13 to Wed Nov 18) is made automatically on Thu Nov 5: ep06 "How banks create money out of

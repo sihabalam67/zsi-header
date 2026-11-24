@@ -1,3 +1,5 @@
+**Next story (target Wed Dec 2): Newton vs. the Counterfeiter** (true-history chase; new plot type per STORY_BIBLE.md). Same Salary (s02) moved to Wed Dec 9 so two "saver wins" stories never run back to back.
+
 # Story video backlog (ranked by current YouTube demand; re-check with youtube/scout.py before producing)
 
 1. s01 Grandpa's $1,000 Test (in production, Nov 24).
