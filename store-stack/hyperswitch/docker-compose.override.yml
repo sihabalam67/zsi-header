@@ -4,6 +4,9 @@ services:
     # Upstream runs this bash script with `sh` (busybox), which fails on bash syntax.
     command: sh -c "apk add --no-cache curl jq yq bash && bash /seed_superposition.sh"
   migration_runner:
+    # Upstream forces a fresh image pull on every run (pull_policy: always),
+    # which trips Docker Hub's anonymous rate limit on reruns.
+    pull_policy: missing
     # Upstream `just migrate` regenerates schema.rs and applies drop_id.patch,
     # which currently fails ("error applying hunk #5"). That step is for
     # Hyperswitch developers only, so run the same migrations without it.
