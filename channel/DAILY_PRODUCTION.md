@@ -54,6 +54,11 @@ make same-day videos on what's live today, no week-ahead schedules." This file i
    (sourced facts only, never personal financial advice, skip abuse).
 8. **Commit and push** everything except build files. Log the video in channel/out/LOG.md (date, title, id).
 
+## Daily Short (from Nov 24)
+One native 9:16 Short a day (20-50 s), Penny Storybook style like channel/demo_character/, from the day's best fact,
+published 2-3 h after the long video. Before making one, check channel/out/LOG.md and video_ids.json: if a Short
+is already scheduled for today (e.g. Nov 24: ep13_short_coffee, 2 PM ET), don't make another.
+
 ## Template A/B test (owner's request, Nov 24)
 Each video uses one visual template, set at the top of the episode file BEFORE importing the engine:
 `os.environ.setdefault('STYLE', 'paper')`. Templates: `newsroom` (dark navy data desk, Nov 19-24), `paper` (light
