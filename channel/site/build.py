@@ -50,6 +50,7 @@ def page(title, desc, body, path, extra_head=''):
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:type" content="website">
+<meta name="google-site-verification" content="1rca9qC0icAjWlFwoUrtEcZy4N8kj7eHTteeZ8AduZE">
 <style>{CSS}</style>{extra_head}</head><body>
 <header><div class="w"><a class="logo" href="/"><span class="coin"></span>Coin Theory</a>
 <nav><a href="/calculators/inflation.html">Inflation calculator</a><a href="/calculators/sp500.html">"What if I invested?"</a><a href="/#videos">Videos</a></nav>
