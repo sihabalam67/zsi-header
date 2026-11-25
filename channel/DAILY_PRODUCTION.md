@@ -103,3 +103,13 @@ out of logs and git. Don't delete published videos.
 
 
 **Format test (Nov 24):** follow channel/FORMATS.md: set `format` in out/styles.json for every video, never run the same format twice in a row, and compare "By FORMAT" in learn.py every Thursday.
+
+## Growth chores (Nov 25; all done through the API, no owner action needed)
+- Channel home page has sections (Money Stories, Popular, Everyday Money, Money Basics, Stock Market, Recent) and a
+  non-subscriber trailer (story #1, o0-ZXEnRyDg). Monthly (first Thursday): set the trailer to the best evergreen
+  story by average view duration, and refresh the channel keywords with the yt-channel-optimizer skill.
+- Every new long video goes into its playlist (publish_batch does it) and, once live, becomes the "Watch next"
+  link in the descriptions of the 5 most-viewed related public videos (replace the old "Watch next" line).
+- Every daily Short links its parent long video in the description and goes into the same playlist.
+- Never swap a thumbnail more than once in a video's first 3 days (Groceries, Nov 24: 4 swaps, 2 views in 24 h).
+- Not worth it yet: Spanish/other title localizations (our audio is English; foreign-language clicks bounce).
