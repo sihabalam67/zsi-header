@@ -115,3 +115,10 @@ out of logs and git. Don't delete published videos.
 - Not worth it yet: Spanish/other title localizations (our audio is English; foreign-language clicks bounce).
 
 **Seasonal + search (Nov 25):** follow channel/GROWTH_IDEAS.md: make seasonal Shorts 1-3 days before the day (next: Black Friday Nov 27, Cyber Monday Dec 1) and put the exact autocomplete phrase in each description's first line and tags.
+
+## Website (Nov 25): https://coin-theory-money.vercel.app (Vercel project coin-theory-money, team sihabs-projects)
+Free calculators (inflation, S&P 500 "what if I invested"), one page per public long video (transcript, sources,
+embedded video, VideoObject schema), sitemap.xml, robots.txt, llms.txt. After each new long video goes public:
+`python3 channel/site/build.py`, commit + push, then redeploy with the Vercel MCP create_deployment (gitSource
+github sihabalam67/zsi-header, ref = this branch, sha = new commit, project coin-theory-money, target production,
+rootDirectory channel/site/dist, no build command). Link the matching calculator in the video's description.
