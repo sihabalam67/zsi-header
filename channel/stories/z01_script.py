@@ -78,7 +78,7 @@ SCENES = [
     dict(id='bottom', chapter='The bottom line', lines=[
         "N|The bottom line rises from about three hundred thirty-one thousand dollars to twenty-three point two million a year.",
         "F|And the profit margin, the share of revenue we keep, climbs from about fifty-one percent to ninety-three.",
-        "N|To be clear, that's a best case. SaaS includes all its costs. GoldenMark Money counts only check costs and marketing so far. And ZSI PAY has no costs added yet.",
+        "N|One shared team sells and runs all seven products, and its costs are already counted under SaaS. So GoldenMark Money only adds its check costs and marketing, and ZSI PAY needs no extra team.",
     ]),
     dict(id='why', chapter='Why invest', lines=[
         "F|So, why invest?",

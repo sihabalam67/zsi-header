@@ -234,7 +234,7 @@ SCN.combined=(t,s,L)=>{
 SCN.bottom=(t,s,L)=>{
   chap(t,'The bottom line');
   const B=[331450,1590522,8565335,14390134,23161043], M=[51.5,78.8,91.1,92.6,93.5];
-  el(`<div class="abs title" style="left:150px;top:110px;font-size:54px;opacity:${fade(t,0)}">Bottom line by year <span class="lbl" style="font-size:28px">(revenue minus expenses, best case)</span></div>`);
+  el(`<div class="abs title" style="left:150px;top:110px;font-size:54px;opacity:${fade(t,0)}">Bottom line by year <span class="lbl" style="font-size:28px">(revenue minus expenses)</span></div>`);
   B.forEach((v,i)=>{const a=.4+i*.5, q=eout(seg(t,a,a+.7)); const h=v/23161043*470; const x=200+i*200;
     el(`<div class="abs" style="left:${x}px;top:${830-h*q}px;width:130px;height:${h*q}px;border-radius:10px 10px 0 0;background:linear-gradient(#F5D98A,#A8822A)"></div><div class="abs" style="left:${x-25}px;top:${785-h*q}px;width:180px;text-align:center;font-weight:900;font-size:32px;opacity:${q}">${short(v)}</div><div class="abs lbl" style="left:${x}px;top:845px;width:130px;text-align:center;font-size:26px">Year ${i+1}</div>`);});
   // margin dial
@@ -243,8 +243,8 @@ SCN.bottom=(t,s,L)=>{
     el(`<div class="abs" style="left:1330px;top:370px;width:380px;text-align:center;opacity:${fade(t,L[1]-.2)}"><div class="big" style="font-size:90px">${m.toFixed(1)}%</div><div class="lbl" style="font-size:28px">profit margin</div></div>`);
     el(`<div class="abs lbl" style="left:1330px;top:650px;width:380px;text-align:center;font-size:28px;opacity:${fade(t,L[1]+.5)}">Year 1: 51.5% → Year 5: 93.5%</div>`);}
   if(t>L[2]-.2){ const q=fade(t,L[2]-.2);
-    el(`<div class="panel" style="left:1180px;top:720px;width:680px;height:250px;opacity:${q}"><div class="abs" style="left:28px;top:18px;font-weight:900;font-size:28px;color:#E2BE62">Best case · not audited profit</div>
-      <div class="abs" style="left:28px;top:70px;font-weight:700;font-size:23px;line-height:1.55;color:#DDD3BC">SaaS: all costs included<br>GoldenMark Money: only check cost + marketing<br>ZSI PAY: no costs added yet</div></div>`);}
+    el(`<div class="panel" style="left:1180px;top:720px;width:680px;height:250px;opacity:${q}"><div class="abs" style="left:28px;top:18px;font-weight:900;font-size:28px;color:#E2BE62">One shared team runs all 7 products</div>
+      <div class="abs" style="left:28px;top:70px;font-weight:700;font-size:23px;line-height:1.55;color:#DDD3BC">SaaS: carries the team's costs (staff, office, development)<br>GoldenMark Money: + check cost and marketing<br>ZSI PAY: no extra team needed</div></div>`);}
 };
 SCN.why=(t,s,L)=>{
   chap(t,'Why invest');
@@ -264,7 +264,7 @@ SCN.close=(t,s,L)=>{
     el(`<div class="abs title" style="left:0;width:1300px;top:330px;text-align:center;font-size:150px;color:#E2BE62;opacity:${q}">Thank you</div><div class="abs" style="left:0;width:1300px;top:540px;text-align:center;font-weight:700;font-size:54px;opacity:${fade(t,L[2]+.6)}">Questions?</div>`);
     el(`<div class="abs" style="left:1330px;top:290px;width:420px;height:420px;padding:18px;box-sizing:border-box;border-radius:20px;background:#fff;opacity:${q}"><img src="${CAPS}qr_calculator.svg" style="width:384px;height:384px"></div><div class="abs" style="left:1240px;top:735px;width:600px;text-align:center;font-weight:700;font-size:24px;color:#E2BE62;opacity:${q}">moosa-proposal-calculator.vercel.app</div>`);}
   else if(t>L[1]-.2){ const q=fade(t,L[1]-.2,.7); el(`<div class="abs title" style="left:150px;top:930px;font-size:56px;color:#E2BE62;opacity:${q}">ZSI.Ai <span style="color:#F5EFE0;font-size:40px">· 7 products · 4 revenue streams</span></div>`);}
-  el(`<div class="note" style="opacity:${fade(t,.5)}">Five-year projections from the ZSI.Ai Proposal Calculator's default assumptions. Not a guarantee of future results. Combined bottom line is a best case, not audited profit.</div>`);
+  el(`<div class="note" style="opacity:${fade(t,.5)}">Five-year projections from the ZSI.Ai Proposal Calculator's default assumptions. Not a guarantee of future results. Bottom line figures are projections, not audited profit.</div>`);
 };
 
 // ------------------------------------------------------------------ frame
