@@ -125,3 +125,7 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    "Why [everyday thing] Costs $N Now", "[Headline] Explained Like You're Five", "Once You Understand X, You'll Stop
    Y", "What If You Could See Everyone's [money secret]?". Topic bank = its 10 ideas; ideas 1, 7, 9 are "saver
    wins" stories, so only use them with a NEW plot type per stories/STORY_BIBLE.md. Re-run monthly.
+
+- 2026-11-25 daily check: Groceries (ep13, live Nov 24 noon) has only 2 views after 24 h (status public, no
+  restrictions) vs 70-310 for ep10-ep12 at the same age; its thumbnail was swapped 4 times on launch day. Judge it
+  on day 3 (Thursday report) before changing anything; avoid repeated thumbnail swaps in a video's first hours.

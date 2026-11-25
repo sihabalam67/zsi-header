@@ -64,5 +64,14 @@
    "Cloned character voices"
   ],
   "format": "mystery story"
+ },
+ "s01_short_mouse": {
+  "look": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Receipt & Recipe",
+   "Living characters"
+  ],
+  "format": "short from story"
  }
 }
