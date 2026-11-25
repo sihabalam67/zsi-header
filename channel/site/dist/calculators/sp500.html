@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What if you invested $1,000 in the S&amp;P 500? Calculator | Coin Theory</title><meta name="description" content="Free calculator: what $1,000 (or any amount) invested in the S&amp;P 500 in any year since 1988 would be worth today, dividends reinvested."><link rel="canonical" href="https://coin-theory-money.vercel.app/calculators/sp500.html">
+<meta property="og:title" content="What if you invested $1,000 in the S&amp;P 500? Calculator | Coin Theory"><meta property="og:description" content="Free calculator: what $1,000 (or any amount) invested in the S&amp;P 500 in any year since 1988 would be worth today, dividends reinvested."><meta property="og:type" content="website">
+<style>
+:root{--bg:#FFF8EC;--card:#fff;--ink:#2b1a0e;--mut:#7a6650;--gold:#E2A21F;--goldd:#B87F0E;--green:#11885A;--red:#D7261E;--line:#EBDCC2}
+@media(prefers-color-scheme:dark){:root{--bg:#14110C;--card:#1E1A13;--ink:#F5EFE0;--mut:#B9AA90;--line:#3A3226}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--goldd)}header{padding:18px 16px;border-bottom:1px solid var(--line)}header .w{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--ink);text-decoration:none}
+.coin{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF4B8,#FFD54A 45%,#D98C0C);display:inline-block;box-shadow:inset 0 -3px 0 #b8760a}
+nav{display:flex;gap:16px;margin-left:auto;flex-wrap:wrap}nav a{color:var(--ink);text-decoration:none;font-weight:600}
+.w{max-width:1080px;margin:0 auto;padding:0 16px}
+.btn{display:inline-block;background:var(--red);color:#fff!important;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:999px}
+.btn.alt{background:var(--gold);color:#2b1a0e!important}
+.hero{padding:44px 0 26px}.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.1;margin:0 0 12px}.hero p{color:var(--mut);font-size:19px;max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin:18px 0 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);display:block}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.card div{padding:12px 14px;font-weight:700}
+h2{font-size:28px;margin:36px 0 6px}.mut{color:var(--mut)}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin:20px 0}
+.tool label{display:block;font-weight:700;margin:10px 0 4px}.tool input,.tool select{font-size:20px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%;max-width:320px}
+.out{font-size:clamp(30px,7vw,52px);font-weight:900;color:var(--green);margin:14px 0 4px}.out.red{color:var(--red)}
+.vid{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;margin:18px 0}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.note{font-size:14px;color:var(--mut)}footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:40px;color:var(--mut);font-size:15px}
+.tx{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;white-space:pre-wrap}
+</style></head><body>
+<header><div class="w"><a class="logo" href="/"><span class="coin"></span>Coin Theory</a>
+<nav><a href="/calculators/inflation.html">Inflation calculator</a><a href="/calculators/sp500.html">"What if I invested?"</a><a href="/#videos">Videos</a></nav>
+<a class="btn" href="https://www.youtube.com/@cointheoryhq?sub_confirmation=1">Subscribe on YouTube</a></div></header>
+<main class="w"><h1 style="margin-top:30px">What if I had invested in the S&amp;P 500?</h1>
+<p class="mut">Pick an amount and a starting year. We use the S&amp;P 500 total return index (dividends reinvested) from the first trading day of that year to 2026-11-23.</p>
+<div class="tool"><label>Amount invested once</label><input id="amt" type="number" value="1000" min="1">
+<label>Starting year</label><select id="yr"><option>1988</option><option>1989</option><option>1990</option><option>1991</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option><option selected>1996</option><option>1997</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option></select>
+<div class="out" id="o1"></div><div id="o2" class="mut"></div><div id="o3" class="mut"></div></div>
+<p class="note">Index level on the first trading day of the year vs 2026-11-23. Before fees and taxes; you can't invest in an index directly; past returns don't guarantee future results. Source: Yahoo Finance ^SP500TR. Education only, not financial advice.</p>
+<h2>Watch the story behind this calculator</h2><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/o0-ZXEnRyDg" title="Grandpa Gave 3 Kids $1,000. Who Won?" allowfullscreen loading="lazy"></iframe></div>
+<script>const T={"1988": 256.0199890136719, "1989": 285.6499938964844, "1990": 386.1600036621094, "1991": 363.44000244140625, "1992": 479.8399963378906, "1993": 516.0, "1994": 567.0999755859375, "1995": 575.52001953125, "1996": 798.219970703125, "1997": 969.0499877929688, "1998": 1305.0400390625, "1999": 1668.52001953125, "2000": 2002.1099853515625, "2001": 1785.8599853515625, "2002": 1628.510009765625, "2003": 1303.1700439453125, "2004": 1618.050048828125, "2005": 1784.9599609375, "2006": 1918.9599609375, "2007": 2183.919921875, "2008": 2273.409912109375, "2009": 1499.1700439453125, "2010": 1867.06005859375, "2011": 2138.300048828125, "2012": 2192.39990234375, "2013": 2568.550048828125, "2014": 3286.68994140625, "2015": 3768.679931640625, "2016": 3763.989990234375, "2017": 4315.080078125, "2018": 5256.27978515625, "2019": 4990.56005859375, "2020": 6609.2900390625, "2021": 7645.27001953125, "2022": 10050.41015625, "2023": 8145.60009765625, "2024": 10269.6904296875, "2025": 12883.580078125, "2026": 15252.8203125},NOW=16256.400390625;
+function go(){const a=+amt.value||0,y=yr.value,v=a*NOW/T[y],yrs=(2026-+y)||1,cagr=Math.pow(v/a,1/yrs)-1;
+o1.textContent='$'+Math.round(v).toLocaleString('en-US');o2.textContent='is what $'+a.toLocaleString('en-US')+' invested at the start of '+y+' would be worth now ('+(v/a).toFixed(1)+'x).';
+o3.textContent='That is about '+(cagr*100).toFixed(1)+'% a year, with plenty of crashes along the way.';}
+amt.oninput=yr.onchange=go;go();</script></main>
+<footer><div class="w">Coin Theory explains money with short animated stories and real data from official sources.
+Education only, not financial advice. Past returns don't guarantee future results.<br>
+<a href="https://www.youtube.com/@cointheoryhq">YouTube</a> · <a href="/llms.txt">llms.txt</a> · Data: FRED (CPI-U), Yahoo Finance (^SP500TR), BLS, Federal Reserve.</div></footer>
+</body></html>
