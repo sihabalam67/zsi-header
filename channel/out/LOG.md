@@ -16,3 +16,4 @@
 - 2026-11-29 12 PM ET: STORY #3 "The Poorest Man in Town Left $2 Million. How?" (13:06, master story prompt, Loot Reveal box, cloned voices for Walter/Lily/Derek/Kowalski) https://youtu.be/Ug5gOlHXzH0
 - 2026-11-24: risk audit 60/100 (inauthentic content). s02 Same Salary moved Nov 27 -> Wed Dec 9 (too close to s01 plot); About text now says how videos are made (AI tools, scripts from scratch, sourced data). Owner: real-person video in ~1 month (reminder set for Dec 24).
 - 2026-11-25 2:30 PM ET: SHORT "$1,000 in a Cookie Jar for 30 Years #shorts" (31 s, from story #1, links o0-ZXEnRyDg) https://youtu.be/IrSCC3UurS0
+- 2026-11-25 7 PM ET: SHORT "Thanksgiving Dinner for 10 Costs $58.63 #shorts" (AFBF 2026 survey, seasonal) https://youtu.be/r-lsh1uzNiM

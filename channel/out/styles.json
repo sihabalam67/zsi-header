@@ -73,5 +73,13 @@
    "Living characters"
   ],
   "format": "short from story"
+ },
+ "sx13_short_thanksgiving": {
+  "look": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Receipt & Recipe"
+  ],
+  "format": "seasonal short"
  }
 }

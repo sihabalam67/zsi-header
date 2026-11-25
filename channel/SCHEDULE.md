@@ -50,6 +50,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Wed Nov 18 | Short | 2 PM: Central banks bought 321 tonnes | https://youtu.be/N7KNTf9Xa-0 |
 | Wed Nov 25 | Short | 2:30 PM: $1,000 in a Cookie Jar for 30 Years | https://youtu.be/IrSCC3UurS0 |
 | Wed Dec 9 | Story | 12 PM: Same Salary. 10 Years Later, One Has $126,766. (moved from Nov 27: too close to story #1's plot) | https://youtu.be/Zx821nqQL9w |
+| Wed Nov 25 | Short | 7 PM: Thanksgiving Dinner for 10 Costs $58.63 | https://youtu.be/r-lsh1uzNiM |
 | Sun Nov 29 | Story | 12 PM: The Poorest Man in Town Left $2 Million. How? | https://youtu.be/Ug5gOlHXzH0 |
 
 Next: week 3 (Fri Nov 13 to Wed Nov 18) is made automatically on Thu Nov 5: ep06 "How banks create money out of
