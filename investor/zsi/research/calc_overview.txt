@@ -1,7 +1,3 @@
-URL https://moosa-proposal-calculator.vercel.app/#overview
-TITLE ZSI.Ai Proposal Calculator
-HEIGHT 900
-
 ZSI.Ai Proposal Calculator4 REVENUE STREAMS · 5 YEARS
 Overview
 SaaS Platforms
@@ -20,17 +16,17 @@ Revenue minus expenses. The money we keep.
 Revenue stream
 One way the company makes money. Here there are four: SaaS, GoldenMark Money, ZSI PAY and Miscellaneous.
 Combined five-year revenue
-$15,259,504
+$52,383,004
 All money customers pay us, from all four revenue streams
 Combined Year 5 revenue
-$6,448,889
-Money coming in during Year 5, about $537,407 a month
+$24,776,489
+Money coming in during Year 5, about $2,064,707 a month
 Combined bottom line, five years
-$11,990,783
+$48,038,483
 Money left after expenses (best case; see notes)
 Largest revenue source
-SaaS Platforms
-Brings in the most money: 50.6% of the total
+GoldenMark Money
+Brings in the most money: 73.8% of the total
 SaaS Platforms
 
 Customers pay a monthly subscription to use five software products, plus a one-time setup fee.
@@ -49,26 +45,26 @@ GoldenMark Money
 Customers pay a small fee for each digital check they send. No monthly or setup fee.
 
 Five-year revenue
-$3,685,500
+$38,649,000
 After check cost and marketing
-$3,212,100
+$37,099,800
 Year 1 revenue
 $78,000
 Year 5 revenue
-$1,950,000
+$19,500,000
 Open calculator
 ZSI PAY
 
 We keep a small percentage of every online sale we process for restaurants and online shops.
 
 Five-year revenue
-$3,600,000
+$5,760,000
 Gross fee revenue
-$3,600,000
+$5,760,000
 Year 1 revenue
-$144,000
+$230,400
 Year 5 revenue
-$1,296,000
+$2,073,600
 Open calculator
 Miscellaneous
 
@@ -90,42 +86,43 @@ GoldenMark Money
 ZSI PAY
 Miscellaneous
 $0
-$2.00M
-$4.00M
-$6.00M
-$8.00M
-$557K
+$5.00M
+$10.0M
+$15.0M
+$20.0M
+$25.0M
+$643K
 Year 1
-$1.41M
+$2.02M
 Year 2
-$2.63M
+$9.40M
 Year 3
-$4.22M
+$15.5M
 Year 4
-$6.45M
+$24.8M
 Year 5
 Revenue by business
 How much money each business brings in. The grey % is its share of that year's total.
 	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5	5-YR TOTAL
 SaaS Platforms	$285,000	$731,500	$1,370,850	$2,183,765	$3,152,889	$7,724,004
-Share of combined revenue (part of the year’s total)	51.2%	51.9%	52.2%	51.8%	48.9%	50.6%
-GoldenMark Money	$78,000	$195,000	$487,500	$975,000	$1,950,000	$3,685,500
-Share of combined revenue (part of the year’s total)	14.0%	13.8%	18.5%	23.1%	30.2%	24.2%
-ZSI PAY	$144,000	$432,000	$720,000	$1,008,000	$1,296,000	$3,600,000
-Share of combined revenue (part of the year’s total)	25.9%	30.7%	27.4%	23.9%	20.1%	23.6%
+Share of combined revenue (part of the year’s total)	44.3%	36.2%	14.6%	14.0%	12.7%	14.7%
+GoldenMark Money	$78,000	$546,000	$6,825,000	$11,700,000	$19,500,000	$38,649,000
+Share of combined revenue (part of the year’s total)	12.1%	27.0%	72.6%	75.3%	78.7%	73.8%
+ZSI PAY	$230,400	$691,200	$1,152,000	$1,612,800	$2,073,600	$5,760,000
+Share of combined revenue (part of the year’s total)	35.8%	34.2%	12.3%	10.4%	8.4%	11.0%
 Miscellaneous	$50,000	$50,000	$50,000	$50,000	$50,000	$250,000
-Share of combined revenue (part of the year’s total)	9.0%	3.5%	1.9%	1.2%	0.8%	1.6%
-Combined revenue (total money in)	$557,000	$1,408,500	$2,628,350	$4,216,765	$6,448,889	$15,259,504
-Annual growth (increase from last year)	—	152.9%	86.6%	60.4%	52.9%	
+Share of combined revenue (part of the year’s total)	7.8%	2.5%	0.5%	0.3%	0.2%	0.5%
+Combined revenue (total money in)	$643,400	$2,018,700	$9,397,850	$15,546,565	$24,776,489	$52,383,004
+Annual growth (increase from last year)	—	213.8%	365.5%	65.4%	59.4%	
 Bottom line by business
 Money left after expenses. Not every business has all its costs added yet; see notes below.
 	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5	5-YR TOTAL
 SaaS Platforms profit before tax	$24,450	$381,122	$833,335	$1,502,334	$2,312,443	$5,053,683
-GoldenMark Money after check cost and marketing	$51,600	$153,000	$412,500	$855,000	$1,740,000	$3,212,100
-ZSI PAY gross fee revenue	$144,000	$432,000	$720,000	$1,008,000	$1,296,000	$3,600,000
+GoldenMark Money after check cost and marketing	$51,600	$493,200	$6,555,000	$11,250,000	$18,750,000	$37,099,800
+ZSI PAY gross fee revenue	$230,400	$691,200	$1,152,000	$1,612,800	$2,073,600	$5,760,000
 Miscellaneous net after development cost	$25,000	$25,000	$25,000	$25,000	$25,000	$125,000
-Combined bottom line (total money left)	$245,050	$991,122	$1,990,835	$3,390,334	$5,373,443	$11,990,783
-Profit margin (% of revenue we keep)	44.0%	70.4%	75.7%	80.4%	83.3%	78.6%
+Combined bottom line (total money left)	$331,450	$1,590,522	$8,565,335	$14,390,134	$23,161,043	$48,038,483
+Profit margin (% of revenue we keep)	51.5%	78.8%	91.1%	92.6%	93.5%	91.7%
 
 What each bottom line includes (which costs are taken out):
 

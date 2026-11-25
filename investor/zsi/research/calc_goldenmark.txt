@@ -44,60 +44,60 @@ $
 Average active customers means customers paying throughout the year on average. The year-end count would need to be higher when customers join gradually. Other operating expenses start at $0; add staff, hosting, support or admin there to see a fuller picture.
 
 Five-year check revenue
-$3,685,500
-5,670,000 checks
+$38,649,000
+59,460,000 checks
 Gross profit after check cost
-$3,572,100
+$37,459,800
 96.9% of revenue
 Digital marketing, five years
 $360,000
-9.8% of revenue
+0.9% of revenue
 Remaining before other costs
-$3,212,100
-87.2% of revenue
+$37,099,800
+96.0% of revenue
 Where each year's revenue goes
 Direct check cost
 Digital marketing
 Other operating
 Remaining (labelled % of revenue)
 $0
-$500K
-$1.0M
-$1.5M
-$2.0M
+$5.0M
+$10.0M
+$15.0M
+$20.0M
 $78K
 66.2%
 Year 1
-$195K
-78.5%
+$546K
+90.3%
 Year 2
-$488K
-84.6%
+$6.8M
+96.0%
 Year 3
-$975K
-87.7%
+$11.7M
+96.2%
 Year 4
-$1.9M
-89.2%
+$19.5M
+96.2%
 Year 5
 Five-year revenue and marketing projection
 Copy summary
 FINANCIAL MEASURE	YEAR 1	YEAR 2	YEAR 3	YEAR 4	YEAR 5
-Average active customers	100	250	500	1,000	2,000
+Average active customers	100	700	7,000	12,000	20,000
 Checks per customer / month	100	100	125	125	125
-Digital checks sold	120,000	300,000	750,000	1,500,000	3,000,000
-Average checks / month	10,000	25,000	62,500	125,000	250,000
-Revenue at $0.65 / check	$78,000	$195,000	$487,500	$975,000	$1,950,000
-Annual revenue growth	—	150%	150%	100%	100%
-Average monthly revenue	$6,500	$16,250	$40,625	$81,250	$162,500
-Direct cost at $0.02 / check	$2,400	$6,000	$15,000	$30,000	$60,000
-Gross profit	$75,600	$189,000	$472,500	$945,000	$1,890,000
+Digital checks sold	120,000	840,000	10,500,000	18,000,000	30,000,000
+Average checks / month	10,000	70,000	875,000	1,500,000	2,500,000
+Revenue at $0.65 / check	$78,000	$546,000	$6,825,000	$11,700,000	$19,500,000
+Annual revenue growth	—	600%	1150%	71%	67%
+Average monthly revenue	$6,500	$45,500	$568,750	$975,000	$1,625,000
+Direct cost at $0.02 / check	$2,400	$16,800	$210,000	$360,000	$600,000
+Gross profit	$75,600	$529,200	$6,615,000	$11,340,000	$18,900,000
 Gross margin	96.9%	96.9%	96.9%	96.9%	96.9%
 Digital marketing expense	$24,000	$36,000	$60,000	$90,000	$150,000
-Marketing as % of revenue	30.8%	18.5%	12.3%	9.2%	7.7%
-Remaining after direct cost and marketing	$51,600	$153,000	$412,500	$855,000	$1,740,000
-Remaining as % of revenue	66.2%	78.5%	84.6%	87.7%	89.2%
-Marketing per added customer	$240	$240	$240	$180	$150
+Marketing as % of revenue	30.8%	6.6%	0.9%	0.8%	0.8%
+Remaining after direct cost and marketing	$51,600	$493,200	$6,555,000	$11,250,000	$18,750,000
+Remaining as % of revenue	66.2%	90.3%	96.0%	96.2%	96.2%
+Marketing per added customer	$240	$60	$10	$18	$19
 Customers needed to cover marketing	32	48	64	96	159
 Sales and digital marketing plan
 Budget covers advertising, content, SEO, email and campaign management
@@ -109,11 +109,11 @@ Year 4	$7,500	$90,000	Expand distribution	Target higher-volume businesses, devel
 Year 5	$12,500	$150,000	Scale retention and partnerships	Scale channels with proven returns, automate onboarding, improve retention, and offer volume plans with minimum commitments.
 Five-year totals
 MEASURE	FIVE-YEAR TOTAL	% OF REVENUE
-Revenue	$3,685,500	100.0%
-Direct check costs	$113,400	3.1%
-Gross profit	$3,572,100	96.9%
-Digital marketing	$360,000	9.8%
-Remaining before other operating expenses and taxes	$3,212,100	87.2%
+Revenue	$38,649,000	100.0%
+Direct check costs	$1,189,200	3.1%
+Gross profit	$37,459,800	96.9%
+Digital marketing	$360,000	0.9%
+Remaining before other operating expenses and taxes	$37,099,800	96.0%
 Value of one customer
 At the current price and cost
 CHECKS / MONTH	MONTHLY REVENUE	ANNUAL REVENUE	ANNUAL GROSS PROFIT
@@ -127,4 +127,4 @@ Pricing. Customers pay $0.65 per digital check with no monthly subscription or s
 
 Not net profit. The remaining amount must also cover any staff, software maintenance, hosting, customer support, payment processing, administration and taxes not already included in the per-check cost.
 
-Customers required. Year 1 needs about 100 average active customers printing 100 checks a month; Year 5 needs about 2,000 printing 125. Revenue grows at 124% a year on average over the period. Increase marketing only when campaigns bring in customers whose check usage supports the cost.
+Customers required. Year 1 needs about 100 average active customers printing 100 checks a month; Year 5 needs about 20,000 printing 125. Revenue grows at 298% a year on average over the period. Increase marketing only when campaigns bring in customers whose check usage supports the cost.

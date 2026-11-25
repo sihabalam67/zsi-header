@@ -134,9 +134,9 @@ SCN.zsipay=(t,s,L)=>{
   if(p>0){ const x=lerp(470,1240,eio(p)), y=lerp(735,520,eio(p));
     el(`<div class="abs" style="left:${x}px;top:${y}px;padding:14px 26px;border-radius:12px;background:#2F7D4F;font-weight:900;font-size:40px;box-shadow:0 12px 30px #0008">$1,000</div>`);}
   if(sp>0){
-    el(`<div class="abs" style="left:1300px;top:${lerp(520,330,eio(sp))}px;padding:12px 24px;border-radius:12px;background:#2F7D4F;font-weight:900;font-size:38px;opacity:${sp}">$995 <span style="font-size:24px;font-weight:700">to the merchant</span></div>`);
-    el(`<div class="abs" style="left:${lerp(1300,1560,eio(sp))}px;top:${lerp(560,700,eio(sp))}px;width:110px;height:110px;border-radius:55px;background:radial-gradient(circle at 35% 30%,#FFF4B8,#E2BE62 50%,#B8860B);box-shadow:0 10px 30px #0008;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px;color:#5a3a00;opacity:${sp}">$5</div>`);
-    el(`<div class="abs lbl" style="left:1500px;top:850px;width:300px;text-align:center;font-size:30px;opacity:${sp}">we keep <span class="big" style="font-size:44px">0.5%</span></div>`);}
+    el(`<div class="abs" style="left:1300px;top:${lerp(520,330,eio(sp))}px;padding:12px 24px;border-radius:12px;background:#2F7D4F;font-weight:900;font-size:38px;opacity:${sp}">$992 <span style="font-size:24px;font-weight:700">to the merchant</span></div>`);
+    el(`<div class="abs" style="left:${lerp(1300,1560,eio(sp))}px;top:${lerp(560,700,eio(sp))}px;width:110px;height:110px;border-radius:55px;background:radial-gradient(circle at 35% 30%,#FFF4B8,#E2BE62 50%,#B8860B);box-shadow:0 10px 30px #0008;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px;color:#5a3a00;opacity:${sp}">$8</div>`);
+    el(`<div class="abs lbl" style="left:1500px;top:850px;width:300px;text-align:center;font-size:30px;opacity:${sp}">we keep <span class="big" style="font-size:44px">0.8%</span></div>`);}
 };
 SCN.terms=(t,s,L)=>{
   chap(t,'How it makes money');
@@ -188,10 +188,10 @@ SCN.gmm_model=(t,s,L)=>{
 SCN.gmm_num=(t,s,L)=>{
   chap(t,'Stream 2 · GoldenMark Money');
   el(browser({img:'calc_goldenmark',url:'proposal calculator · GoldenMark Money',x:90,y:150,w:1000,vh:740,sy:lerp(600,760,eio(seg(t,0,4))),op:fade(t,0)}));
-  el(`<div class="abs" style="left:1170px;top:180px;opacity:${fade(t,L[0])}"><div class="lbl" style="font-size:30px">Business customers</div><div class="big" style="font-size:72px">${Math.round(lerp(100,2000,eout(seg(t,L[0]+.5,L[0]+3)))).toLocaleString()}</div></div>`);
-  el(`<div class="abs" style="left:1170px;top:350px;opacity:${fade(t,L[0]+2.5)}"><div class="lbl" style="font-size:30px">Revenue per year</div><div class="big" style="font-size:66px">$78,000 → ${money(countUp(t,L[0]+3,1.5,1950000))}</div></div>`);
-  el(`<div class="abs" style="left:1170px;top:540px;opacity:${fade(t,L[1])}"><div class="lbl" style="font-size:30px">5-year revenue</div><div class="big" style="font-size:72px">${money(countUp(t,L[1],1.4,3685500))}</div></div>`);
-  el(`<div class="abs" style="left:1170px;top:720px;opacity:${fade(t,L[1]+2.4)}"><div class="lbl" style="font-size:30px">Left after check costs & marketing</div><div class="big" style="font-size:72px;color:#F5D98A">${money(countUp(t,L[1]+2.4,1.4,3212100))}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:180px;opacity:${fade(t,L[0])}"><div class="lbl" style="font-size:30px">Business customers</div><div class="big" style="font-size:72px">${Math.round(lerp(100,20000,eout(seg(t,L[0]+.5,L[0]+3)))).toLocaleString()}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:350px;opacity:${fade(t,L[0]+2.5)}"><div class="lbl" style="font-size:30px">Revenue per year</div><div class="big" style="font-size:66px">$78K → ${short(countUp(t,L[0]+3,1.5,19500000))}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:540px;opacity:${fade(t,L[1])}"><div class="lbl" style="font-size:30px">5-year revenue</div><div class="big" style="font-size:72px">${money(countUp(t,L[1],1.4,38649000))}</div></div>`);
+  el(`<div class="abs" style="left:1170px;top:720px;opacity:${fade(t,L[1]+2.4)}"><div class="lbl" style="font-size:30px">Left after check costs & marketing</div><div class="big" style="font-size:72px;color:#F5D98A">${money(countUp(t,L[1]+2.4,1.4,37099800))}</div></div>`);
 };
 SCN.pay_num=(t,s,L)=>{
   chap(t,'Stream 3 · ZSI PAY');
@@ -203,10 +203,10 @@ SCN.pay_num=(t,s,L)=>{
   el(`<div class="abs" style="left:130px;top:660px;opacity:${fade(t,L[1])}"><span class="big" style="font-size:80px">${Math.round(lerp(0,900,eout(seg(t,L[1],L[1]+1.5))))}</span><span class="lbl" style="font-size:34px"> merchants by Year 5</span></div>`);
   el(`<div class="abs" style="left:130px;top:800px;opacity:${fade(t,L[1]+2.5)}"><span class="big" style="font-size:72px;color:#F08A6A">${money(countUp(t,L[1]+2.5,1.6,720000000))}</span><span class="lbl" style="font-size:30px"> in sales processed (5 yrs)</span></div>`);
   // revenue bars
-  const R=[144000,432000,720000,1008000,1296000];
-  if(t>L[2]-.4){ R.forEach((v,i)=>{const q=eout(seg(t,L[2]+i*.35,L[2]+i*.35+.6)); const h=v/1296000*420;
+  const R=[230400,691200,1152000,1612800,2073600];
+  if(t>L[2]-.4){ R.forEach((v,i)=>{const q=eout(seg(t,L[2]+i*.35,L[2]+i*.35+.6)); const h=v/2073600*420;
       el(`<div class="abs" style="left:${1150+i*140}px;top:${760-h*q}px;width:100px;height:${h*q}px;border-radius:10px 10px 0 0;background:#C4502F"></div><div class="abs" style="left:${1130+i*140}px;top:${715-h*q}px;width:140px;text-align:center;font-weight:900;font-size:28px;opacity:${q}">${short(v)}</div><div class="abs lbl" style="left:${1130+i*140}px;top:775px;width:140px;text-align:center;font-size:24px">Year ${i+1}</div>`);});
-    el(`<div class="abs" style="left:1150px;top:850px;opacity:${fade(t,L[2]+2.2)}"><span class="lbl" style="font-size:30px">5-year fee revenue </span><span class="big" style="font-size:56px">${money(countUp(t,L[2]+2.2,1.3,3600000))}</span></div>`);}
+    el(`<div class="abs" style="left:1150px;top:850px;opacity:${fade(t,L[2]+2.2)}"><span class="lbl" style="font-size:30px">5-year fee revenue </span><span class="big" style="font-size:56px">${money(countUp(t,L[2]+2.2,1.3,5760000))}</span></div>`);}
 };
 SCN.misc=(t,s,L)=>{
   chap(t,'Stream 4 · Miscellaneous');
@@ -219,29 +219,29 @@ SCN.misc=(t,s,L)=>{
 };
 SCN.combined=(t,s,L)=>{
   chap(t,'All four together');
-  const Y=[[285000,78000,144000,50000],[731500,195000,432000,50000],[1370850,487500,720000,50000],[2183765,975000,1008000,50000],[3152889,1950000,1296000,50000]];
+  const Y=[[285000,78000,230400,50000],[731500,546000,691200,50000],[1370850,6825000,1152000,50000],[2183765,11700000,1612800,50000],[3152889,19500000,2073600,50000]];
   const C=['#1D5C7A','#A8822A','#C4502F','#5B4B8A'], NM=['SaaS Platforms','GoldenMark Money','ZSI PAY','Miscellaneous'];
-  const scale=600/6500000;
+  const scale=600/25500000;
   el(`<div class="abs title" style="left:150px;top:110px;font-size:56px;opacity:${fade(t,0)}">Combined revenue by year</div>`);
   el(`<div class="abs" style="left:150px;top:190px;display:flex;gap:30px;font-weight:700;font-size:26px;opacity:${fade(t,.3)}">${NM.map((n,i)=>`<span><i style="display:inline-block;width:22px;height:22px;border-radius:5px;margin-right:9px;vertical-align:-3px;background:${C[i]}"></i>${n}</span>`).join('')}</div>`);
   for(let y=0;y<5;y++){ const a=L[1]-.2+y*.9, g=eout(seg(t,a,a+.9)); const x=220+y*230;
     let h='';for(let q=3;q>=0;q--) h+=`<div style="height:${Y[y][q]*scale*g}px;background:${C[q]};${q==3?'border-radius:8px 8px 0 0':''}"></div>`;
     el(`<div class="abs" style="left:${x}px;bottom:200px;width:150px">${h}</div><div class="abs lbl" style="left:${x}px;bottom:150px;width:150px;text-align:center;font-size:28px">Year ${y+1}</div>`);
     const tot=Y[y].reduce((p,c)=>p+c,0); el(`<div class="abs" style="left:${x-35}px;bottom:${215+tot*scale*g}px;width:220px;text-align:center;font-weight:900;font-size:36px;opacity:${seg(t,a+.4,a+.8)}">${short(tot*g)}</div>`); }
-  el(`<div class="abs" style="left:1440px;top:420px;width:440px;opacity:${fade(t,L[1]+4.2)}"><div class="lbl" style="font-size:28px">Year 5, every month</div><div class="big" style="font-size:58px">≈ $537,000</div></div>`);
-  el(`<div class="abs" style="left:1440px;top:600px;width:440px;opacity:${fade(t,L[2])}"><div class="lbl" style="font-size:28px">Five-year revenue</div><div class="big" style="font-size:60px">${money(countUp(t,L[2],1.5,15259504))}</div></div>`);
+  el(`<div class="abs" style="left:1440px;top:420px;width:440px;opacity:${fade(t,L[1]+4.2)}"><div class="lbl" style="font-size:28px">Year 5, every month</div><div class="big" style="font-size:58px">≈ $2.06M</div></div>`);
+  el(`<div class="abs" style="left:1440px;top:600px;width:440px;opacity:${fade(t,L[2])}"><div class="lbl" style="font-size:28px">Five-year revenue</div><div class="big" style="font-size:60px">${money(countUp(t,L[2],1.5,52383004))}</div></div>`);
 };
 SCN.bottom=(t,s,L)=>{
   chap(t,'The bottom line');
-  const B=[245050,991122,1990835,3390334,5373443], M=[44.0,70.4,75.7,80.4,83.3];
+  const B=[331450,1590522,8565335,14390134,23161043], M=[51.5,78.8,91.1,92.6,93.5];
   el(`<div class="abs title" style="left:150px;top:110px;font-size:54px;opacity:${fade(t,0)}">Bottom line by year <span class="lbl" style="font-size:28px">(revenue minus expenses, best case)</span></div>`);
-  B.forEach((v,i)=>{const a=.4+i*.5, q=eout(seg(t,a,a+.7)); const h=v/5373443*470; const x=200+i*200;
+  B.forEach((v,i)=>{const a=.4+i*.5, q=eout(seg(t,a,a+.7)); const h=v/23161043*470; const x=200+i*200;
     el(`<div class="abs" style="left:${x}px;top:${830-h*q}px;width:130px;height:${h*q}px;border-radius:10px 10px 0 0;background:linear-gradient(#F5D98A,#A8822A)"></div><div class="abs" style="left:${x-25}px;top:${785-h*q}px;width:180px;text-align:center;font-weight:900;font-size:32px;opacity:${q}">${short(v)}</div><div class="abs lbl" style="left:${x}px;top:845px;width:130px;text-align:center;font-size:26px">Year ${i+1}</div>`);});
   // margin dial
-  if(t>L[1]-.2){ const k=eout(seg(t,L[1]+.3,L[1]+3)); const m=lerp(44,83.3,k); const ang=m/100*360;
+  if(t>L[1]-.2){ const k=eout(seg(t,L[1]+.3,L[1]+3)); const m=lerp(51.5,93.5,k); const ang=m/100*360;
     el(`<div class="abs" style="left:1330px;top:250px;width:380px;height:380px;border-radius:50%;opacity:${fade(t,L[1]-.2)};background:conic-gradient(#E2BE62 0deg ${ang}deg,#1B2C48 ${ang}deg 360deg)"></div><div class="abs" style="left:1375px;top:295px;width:290px;height:290px;border-radius:50%;background:#0B1628;opacity:${fade(t,L[1]-.2)}"></div>`);
-    el(`<div class="abs" style="left:1330px;top:370px;width:380px;text-align:center;opacity:${fade(t,L[1]-.2)}"><div class="big" style="font-size:90px">${Math.round(m)}%</div><div class="lbl" style="font-size:28px">profit margin</div></div>`);
-    el(`<div class="abs lbl" style="left:1330px;top:650px;width:380px;text-align:center;font-size:28px;opacity:${fade(t,L[1]+.5)}">Year 1: 44% → Year 5: 83%</div>`);}
+    el(`<div class="abs" style="left:1330px;top:370px;width:380px;text-align:center;opacity:${fade(t,L[1]-.2)}"><div class="big" style="font-size:90px">${m.toFixed(1)}%</div><div class="lbl" style="font-size:28px">profit margin</div></div>`);
+    el(`<div class="abs lbl" style="left:1330px;top:650px;width:380px;text-align:center;font-size:28px;opacity:${fade(t,L[1]+.5)}">Year 1: 51.5% → Year 5: 93.5%</div>`);}
   if(t>L[2]-.2){ const q=fade(t,L[2]-.2);
     el(`<div class="panel" style="left:1180px;top:720px;width:680px;height:250px;opacity:${q}"><div class="abs" style="left:28px;top:18px;font-weight:900;font-size:28px;color:#E2BE62">Best case · not audited profit</div>
       <div class="abs" style="left:28px;top:70px;font-weight:700;font-size:23px;line-height:1.55;color:#DDD3BC">SaaS: all costs included<br>GoldenMark Money: only check cost + marketing<br>ZSI PAY: no costs added yet</div></div>`);}
@@ -249,7 +249,7 @@ SCN.bottom=(t,s,L)=>{
 SCN.why=(t,s,L)=>{
   chap(t,'Why invest');
   el(`<div class="abs title" style="left:150px;top:110px;font-size:64px;opacity:${fade(t,0)}">Why invest in <span style="color:#E2BE62">ZSI.Ai</span></div>`);
-  const C=[['7 live products','4 ways to earn, no single point of failure'],['Recurring revenue','subscriptions and payment fees, every month'],['High margins','a $0.65 check costs us $0.02'],['Fast growth','$557K → $6.45M a year in 5 years'],['Early profit','SaaS profitable in Year 1'],['Transparent','open the live calculator and test it']];
+  const C=[['7 live products','4 ways to earn, no single point of failure'],['Recurring revenue','subscriptions and payment fees, every month'],['High margins','a $0.65 check costs us $0.02'],['Fast growth','$643K → $24.8M a year in 5 years'],['Early profit','SaaS profitable in Year 1'],['Transparent','open the live calculator and test it']];
   C.forEach(([h,b],i)=>{const a=L[Math.min(i+1,L.length-1)]-.1; const q=spring(t,a,1); const x=150+(i%3)*560, y=250+Math.floor(i/3)*330;
     el(`<div class="panel" style="left:${x}px;top:${y}px;width:520px;height:290px;transform:scale(${q});opacity:${clamp(q)}"><div class="abs" style="left:32px;top:28px;width:56px;height:56px;border-radius:50%;background:#E2BE62;color:#0B1628;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:30px">${i+1}</div><div class="abs big" style="left:32px;top:104px;font-size:44px">${h}</div><div class="abs" style="left:32px;top:176px;width:460px;font-weight:700;font-size:28px;line-height:1.35">${b}</div></div>`);});
 };

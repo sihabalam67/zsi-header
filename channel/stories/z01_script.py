@@ -1,6 +1,6 @@
 """ZSI.Ai investor presentation (played in person to 10+ investors). Two presenters, like business partners:
 F| = female presenter, N| = male presenter. Plan: investor/zsi/SCRIPT.md + MASTER_PROMPT.md (Gold Desk style).
-Every number is the live calculator's default proposal value (captured Nov 24, 2026, investor/zsi/research/).
+Every number is the live calculator's default proposal value (re-captured Nov 25, 2026 after the owner's update: GoldenMark Money customers 100/700/7,000/12,000/20,000 and ZSI PAY fee 0.8%, investor/zsi/research/).
 Each product explanation stays under 20 seconds (owner rule). Owner decisions Nov 24: GoldenMark Money uses the
 calculator's $0.65 price; SaaS = businesses pay $75/month to use the five platforms; no raise amount or valuation."""
 
@@ -37,8 +37,8 @@ SCENES = [
         "N|GoldenMark Money lets any business print checks on its own printer, email eChecks, and pay a whole batch of vendors at once, right from the browser.",
     ]),
     dict(id='zsipay', chapter='ZSI PAY', lines=[
-        "F|And ZSI PAY. Restaurants and online shops process their online sales through ZSI PAY, and we keep half a percent of every sale.",
-        "N|That's five dollars on every thousand.",
+        "F|And ZSI PAY. Restaurants and online shops process their online sales through ZSI PAY, and we keep eight tenths of one percent of every sale.",
+        "N|That's eight dollars on every thousand.",
     ]),
     dict(id='terms', chapter='How it makes money', lines=[
         "N|Now, how it makes money. Three words first.",
@@ -58,13 +58,13 @@ SCENES = [
         "F|Our cost is two cents. So we keep sixty-three cents of every check.",
     ]),
     dict(id='gmm_num', chapter='Stream 2: GoldenMark Money', lines=[
-        "N|As customers grow from one hundred businesses to two thousand, revenue rises from seventy-eight thousand dollars to one point nine five million a year.",
-        "F|Over five years: three point seven million in revenue, and three point two million left after check costs and marketing.",
+        "N|As customers grow from one hundred businesses to twenty thousand, revenue rises from seventy-eight thousand dollars to nineteen and a half million a year.",
+        "F|Over five years: thirty-eight point six million in revenue, and thirty-seven point one million left after check costs and marketing.",
     ]),
     dict(id='pay_num', chapter='Stream 3: ZSI PAY', lines=[
         "F|Stream three: ZSI PAY. The plan adds sixty restaurants and one hundred twenty online shops every year.",
         "N|By Year 5 that's nine hundred merchants, and seven hundred twenty million dollars in sales processed over five years.",
-        "F|Our half a percent becomes one point three million dollars a year, and three point six million over five years.",
+        "F|Our eight tenths of a percent becomes about two point one million dollars a year, and five point seven six million over five years.",
     ]),
     dict(id='misc', chapter='Stream 4: Miscellaneous', lines=[
         "N|Stream four is a bonus. While selling our products, the sales team wins outside projects: about five a year, at ten thousand dollars each.",
@@ -72,12 +72,12 @@ SCENES = [
     ]),
     dict(id='combined', chapter='All four together', lines=[
         "F|Now put all four together.",
-        "N|Revenue grows from five hundred fifty-seven thousand dollars in Year 1 to six point four million in Year 5. That's about five hundred thirty-seven thousand dollars every month.",
-        "F|Fifteen point two six million dollars over five years.",
+        "N|Revenue grows from six hundred forty-three thousand dollars in Year 1 to twenty-four point eight million in Year 5. That's over two million dollars every month.",
+        "F|Fifty-two point four million dollars over five years.",
     ]),
     dict(id='bottom', chapter='The bottom line', lines=[
-        "N|The bottom line rises from about two hundred forty-five thousand dollars to five point three seven million a year.",
-        "F|And the profit margin, the share of revenue we keep, climbs from forty-four percent to eighty-three.",
+        "N|The bottom line rises from about three hundred thirty-one thousand dollars to twenty-three point two million a year.",
+        "F|And the profit margin, the share of revenue we keep, climbs from about fifty-one percent to ninety-three.",
         "N|To be clear, that's a best case. SaaS includes all its costs. GoldenMark Money counts only check costs and marketing so far. And ZSI PAY has no costs added yet.",
     ]),
     dict(id='why', chapter='Why invest', lines=[
@@ -85,7 +85,7 @@ SCENES = [
         "N|Seven real, working products and four ways to earn, so we never depend on just one.",
         "F|Revenue that comes back every month.",
         "N|High margins: a check that sells for sixty-five cents costs us two.",
-        "F|Fast growth: from five hundred fifty-seven thousand to six point four five million dollars a year.",
+        "F|Fast growth: from six hundred forty-three thousand to twenty-four point eight million dollars a year.",
         "N|Profit from Year 1 in SaaS.",
         "F|And full transparency.",
     ]),
