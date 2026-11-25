@@ -113,3 +113,5 @@ out of logs and git. Don't delete published videos.
 - Every daily Short links its parent long video in the description and goes into the same playlist.
 - Never swap a thumbnail more than once in a video's first 3 days (Groceries, Nov 24: 4 swaps, 2 views in 24 h).
 - Not worth it yet: Spanish/other title localizations (our audio is English; foreign-language clicks bounce).
+
+**Seasonal + search (Nov 25):** follow channel/GROWTH_IDEAS.md: make seasonal Shorts 1-3 days before the day (next: Black Friday Nov 27, Cyber Monday Dec 1) and put the exact autocomplete phrase in each description's first line and tags.

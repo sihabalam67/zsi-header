@@ -29,3 +29,8 @@ Also read the newest channel/research/trend-report-*.md (outliers in our niche, 
 LEARNINGS rules 0 and 0b: prefer topics with outlier proof, and never return an angle that repeats one of our last
 10 videos (YouTube inauthentic-content policy). The installed TubeLab skills (trend-report, video-ideation,
 title-formulas, comment-mining) may be used in their free "Without TubeLab" mode; never connect or pay for TubeLab.
+
+Also check channel/GROWTH_IDEAS.md every run: (1) the seasonal calendar: if a money moment is 1-3 days away,
+prefer it (verify the official data exists first); (2) mine YouTube autocomplete for the topic with the free endpoint
+https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=<seed> and return the exact search
+phrases to use in the title's keyword, the description's first line and the tags.
