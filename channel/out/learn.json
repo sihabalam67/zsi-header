@@ -4,33 +4,33 @@
   "id": "oJBE1INlmzA",
   "title": "Gold Fell 23% From Its Record. What Happened?",
   "published": "2026-11-16",
-  "days": 8,
+  "days": 10,
   "duration": 488,
-  "views_lifetime": 1602,
-  "views": 1566,
-  "minutes": 2448,
+  "views_lifetime": 1643,
+  "views": 1601,
+  "minutes": 2499,
   "avg_view_s": 168,
   "avg_pct": 34,
   "subs": 6,
   "likes": 14,
   "first3": 1357,
   "sources": {
-   "SUBSCRIBER": 926,
-   "RELATED_VIDEO": 602,
-   "NO_LINK_OTHER": 16,
+   "SUBSCRIBER": 951,
+   "RELATED_VIDEO": 612,
+   "NO_LINK_OTHER": 13,
+   "YT_CHANNEL": 7,
+   "YT_SEARCH": 7,
    "YT_OTHER_PAGE": 7,
-   "YT_SEARCH": 6,
-   "YT_CHANNEL": 5,
    "EXT_URL": 3,
    "PLAYLIST": 1
   },
   "minutes_by_source": {
-   "SUBSCRIBER": 627,
-   "RELATED_VIDEO": 1736,
-   "NO_LINK_OTHER": 30,
-   "YT_OTHER_PAGE": 39,
-   "YT_SEARCH": 2,
+   "SUBSCRIBER": 647,
+   "RELATED_VIDEO": 1774,
+   "NO_LINK_OTHER": 20,
    "YT_CHANNEL": 2,
+   "YT_SEARCH": 5,
+   "YT_OTHER_PAGE": 39,
    "EXT_URL": 8,
    "PLAYLIST": 0
   },
@@ -45,188 +45,251 @@
     "Intro: gold fell 23%"
    ],
    [
-    5.8,
+    5.9,
     20,
     "Intro: gold fell 23%"
    ],
    [
-    5.6,
+    5.5,
     10,
     "Intro: gold fell 23%"
    ]
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep12_week",
   "id": "w8y0rEUenp4",
   "title": "The Nasdaq's Worst Week Since 2020. Now What?",
   "published": "2026-11-21",
-  "days": 3,
+  "days": 5,
   "duration": 489,
-  "views_lifetime": 290,
-  "views": 221,
-  "minutes": 551,
-  "avg_view_s": 214,
-  "avg_pct": 44,
+  "views_lifetime": 309,
+  "views": 291,
+  "minutes": 730,
+  "avg_view_s": 221,
+  "avg_pct": 45,
   "subs": 3,
-  "likes": 2,
-  "first3": 221,
+  "likes": 3,
+  "first3": 291,
   "sources": {
-   "RELATED_VIDEO": 127,
-   "SUBSCRIBER": 83,
-   "NO_LINK_OTHER": 7,
-   "YT_OTHER_PAGE": 2,
-   "PLAYLIST": 2
+   "RELATED_VIDEO": 171,
+   "SUBSCRIBER": 104,
+   "YT_SEARCH": 6,
+   "NO_LINK_OTHER": 4,
+   "PLAYLIST": 3,
+   "YT_OTHER_PAGE": 2
   },
   "minutes_by_source": {
-   "RELATED_VIDEO": 452,
-   "SUBSCRIBER": 69,
-   "NO_LINK_OTHER": 21,
-   "YT_OTHER_PAGE": 7,
-   "PLAYLIST": 0
+   "RELATED_VIDEO": 633,
+   "SUBSCRIBER": 77,
+   "YT_SEARCH": 5,
+   "NO_LINK_OTHER": 0,
+   "PLAYLIST": 2,
+   "YT_OTHER_PAGE": 7
   },
-  "kept_30s": 75,
-  "kept_60s": 61,
-  "kept_120s": 53,
-  "kept_half": 41,
+  "kept_30s": 77,
+  "kept_60s": 63,
+  "kept_120s": 55,
+  "kept_half": 44,
   "drops": [
    [
-    8.0,
+    7.0,
     10,
     "Intro: the worst week since 2020"
    ],
    [
-    5.1,
+    4.1,
     20,
     "Intro: the worst week since 2020"
    ],
    [
-    3.6,
-    108,
-    "What a correction is"
+    4.1,
+    29,
+    "Intro: the worst week since 2020"
    ]
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep10_stocks",
   "id": "lmXODEAxdJc",
   "title": "Stocks Fell 6 Days in a Row. Is a Crash Coming?",
   "published": "2026-11-20",
-  "days": 4,
+  "days": 6,
   "duration": 495,
   "views_lifetime": 218,
-  "views": 167,
-  "minutes": 209,
-  "avg_view_s": 189,
-  "avg_pct": 38,
+  "views": 187,
+  "minutes": 235,
+  "avg_view_s": 204,
+  "avg_pct": 41,
   "subs": 0,
   "likes": 1,
-  "first3": 167,
+  "first3": 187,
   "sources": {
-   "SUBSCRIBER": 121,
-   "RELATED_VIDEO": 38,
+   "SUBSCRIBER": 139,
+   "RELATED_VIDEO": 40,
    "YT_SEARCH": 4,
    "NO_LINK_OTHER": 3,
    "EXT_URL": 1
   },
   "minutes_by_source": {
-   "SUBSCRIBER": 51,
-   "RELATED_VIDEO": 149,
+   "SUBSCRIBER": 60,
+   "RELATED_VIDEO": 165,
    "YT_SEARCH": 8,
    "NO_LINK_OTHER": 0,
    "EXT_URL": 0
   },
-  "kept_30s": 68,
-  "kept_60s": 57,
-  "kept_120s": 45,
-  "kept_half": 33,
+  "kept_30s": 70,
+  "kept_60s": 59,
+  "kept_120s": 48,
+  "kept_half": 37,
   "drops": [
    [
-    15.0,
+    14.3,
     15,
     "Intro: 6 days down"
    ],
    [
-    6.7,
-    173,
-    "Why: bonds pay 5%"
-   ],
-   [
-    5.0,
+    4.8,
     490,
     "Recap"
+   ],
+   [
+    4.8,
+    124,
+    "Pullback, correction, bear market"
    ]
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep11_vix",
   "id": "f8OkPpAPeRg",
   "title": "Fear Index Hits 37. What Happens Next?",
   "published": "2026-11-20",
-  "days": 4,
+  "days": 6,
   "duration": 488,
-  "views_lifetime": 72,
-  "views": 46,
-  "minutes": 115,
+  "views_lifetime": 74,
+  "views": 72,
+  "minutes": 152,
   "avg_view_s": 241,
-  "avg_pct": 49,
+  "avg_pct": 50,
   "subs": 0,
   "likes": 1,
-  "first3": 46,
+  "first3": 64,
   "sources": {
-   "YT_SEARCH": 20,
-   "SUBSCRIBER": 16,
-   "RELATED_VIDEO": 8,
-   "NO_LINK_OTHER": 1,
-   "YT_OTHER_PAGE": 1
+   "SUBSCRIBER": 36,
+   "YT_SEARCH": 22,
+   "RELATED_VIDEO": 11,
+   "YT_OTHER_PAGE": 2,
+   "PLAYLIST": 1,
+   "NO_LINK_OTHER": 0
   },
   "minutes_by_source": {
-   "YT_SEARCH": 60,
-   "SUBSCRIBER": 2,
-   "RELATED_VIDEO": 43,
-   "NO_LINK_OTHER": 0,
-   "YT_OTHER_PAGE": 7
+   "SUBSCRIBER": 5,
+   "YT_SEARCH": 61,
+   "RELATED_VIDEO": 61,
+   "YT_OTHER_PAGE": 16,
+   "PLAYLIST": 8,
+   "NO_LINK_OTHER": 0
   },
-  "kept_30s": 73,
-  "kept_60s": 64,
-  "kept_120s": 55,
-  "kept_half": 50,
+  "kept_30s": 68,
+  "kept_60s": 61,
+  "kept_120s": 58,
+  "kept_half": 48,
   "drops": [
    [
-    13.6,
+    9.7,
     10,
     "Intro: the fear index"
    ],
    [
-    9.1,
-    54,
-    "What is the VIX?"
+    6.5,
+    15,
+    "Intro: the fear index"
    ],
    [
-    9.1,
+    6.5,
     220,
     "Why investors are nervous"
    ]
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
+ },
+ {
+  "name": "ep06_banks",
+  "id": "ixGj1vl5eQE",
+  "title": "Only 1 Dollar in 10 Is Cash. How Banks Create Money Out of Thin Air",
+  "published": "2026-11-13",
+  "days": 13,
+  "duration": 503,
+  "views_lifetime": 38,
+  "views": 32,
+  "minutes": 73,
+  "avg_view_s": 168,
+  "avg_pct": 33,
+  "subs": 1,
+  "likes": 0,
+  "first3": 2,
+  "sources": {
+   "RELATED_VIDEO": 21,
+   "YT_SEARCH": 7,
+   "SUBSCRIBER": 2,
+   "NO_LINK_OTHER": 1,
+   "YT_CHANNEL": 1
+  },
+  "minutes_by_source": {
+   "RELATED_VIDEO": 72,
+   "YT_SEARCH": 0,
+   "SUBSCRIBER": 0,
+   "NO_LINK_OTHER": 0,
+   "YT_CHANNEL": 0
+  },
+  "kept_30s": 54,
+  "kept_60s": 46,
+  "kept_120s": 38,
+  "kept_half": 25,
+  "drops": [
+   [
+    16.7,
+    5,
+    "Intro: 1 dollar in 10"
+   ],
+   [
+    16.7,
+    10,
+    "Intro: 1 dollar in 10"
+   ],
+   [
+    8.3,
+    15,
+    "Intro: 1 dollar in 10"
+   ]
+  ],
+  "style": "newsroom",
+  "family": "",
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep05_jobs",
   "id": "oviirBN2INI",
   "title": "Microsoft Just Offered 60,000 Buyouts. Are Layoffs Really Rising?",
   "published": "2026-11-05",
-  "days": 19,
+  "days": 21,
   "duration": 441,
   "views_lifetime": 132,
   "views": 131,
@@ -271,66 +334,15 @@
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
- },
- {
-  "name": "ep06_banks",
-  "id": "ixGj1vl5eQE",
-  "title": "Only 1 Dollar in 10 Is Cash. How Banks Create Money Out of Thin Air",
-  "published": "2026-11-13",
-  "days": 11,
-  "duration": 503,
-  "views_lifetime": 33,
-  "views": 28,
-  "minutes": 64,
-  "avg_view_s": 173,
-  "avg_pct": 35,
-  "subs": 0,
-  "likes": 0,
-  "first3": 2,
-  "sources": {
-   "RELATED_VIDEO": 19,
-   "YT_SEARCH": 7,
-   "SUBSCRIBER": 2,
-   "NO_LINK_OTHER": 0
-  },
-  "minutes_by_source": {
-   "RELATED_VIDEO": 63,
-   "YT_SEARCH": 0,
-   "SUBSCRIBER": 0,
-   "NO_LINK_OTHER": 0
-  },
-  "kept_30s": 55,
-  "kept_60s": 45,
-  "kept_120s": 40,
-  "kept_half": 25,
-  "drops": [
-   [
-    20.0,
-    5,
-    "Intro: 1 dollar in 10"
-   ],
-   [
-    20.0,
-    10,
-    "Intro: 1 dollar in 10"
-   ],
-   [
-    5.0,
-    126,
-    "Paying it back destroys money"
-   ]
-  ],
-  "style": "newsroom",
-  "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep04_fed",
   "id": "JlrNu4toOc8",
   "title": "The Fed Just Raised Rates. What It Means for Your Money",
   "published": "2026-11-02",
-  "days": 22,
+  "days": 24,
   "duration": 483,
   "views_lifetime": 29,
   "views": 29,
@@ -375,14 +387,15 @@
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep08_midterms",
   "id": "37Aow08f8zk",
   "title": "Stocks Rose 18 Times Out of 18 After Midterms. Will 2026 Break the Streak?",
   "published": "2026-11-02",
-  "days": 22,
+  "days": 24,
   "duration": 288,
   "views_lifetime": 113,
   "views": 113,
@@ -433,32 +446,33 @@
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep01_inflation",
   "id": "9MxTKS-nKNc",
   "title": "Your $100 Is Now Worth $12. Here's Where It Went (Inflation Explained)",
   "published": "2026-11-06",
-  "days": 18,
+  "days": 20,
   "duration": 331,
   "views_lifetime": 11,
-  "views": 9,
-  "minutes": 23,
-  "avg_view_s": 173,
-  "avg_pct": 52,
+  "views": 10,
+  "minutes": 28,
+  "avg_view_s": 191,
+  "avg_pct": 58,
   "subs": 0,
   "likes": 1,
   "first3": 6,
   "sources": {
+   "RELATED_VIDEO": 4,
    "YT_SEARCH": 3,
-   "RELATED_VIDEO": 3,
    "YT_CHANNEL": 2,
    "NO_LINK_OTHER": 1
   },
   "minutes_by_source": {
+   "RELATED_VIDEO": 11,
    "YT_SEARCH": 6,
-   "RELATED_VIDEO": 5,
    "YT_CHANNEL": 11,
    "NO_LINK_OTHER": 0
   },
@@ -469,68 +483,70 @@
   "drops": [],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep03_gas",
   "id": "XKD-BqxeMFw",
   "title": "Why Is Gas So Expensive Right Now? (2026 Oil Shock Explained)",
   "published": "2026-10-30",
-  "days": 25,
+  "days": 27,
   "duration": 494,
   "views_lifetime": 23,
-  "views": 21,
-  "minutes": 15,
-  "avg_view_s": 72,
-  "avg_pct": 15,
+  "views": 23,
+  "minutes": 16,
+  "avg_view_s": 68,
+  "avg_pct": 14,
   "subs": 0,
   "likes": 0,
   "first3": 10,
   "sources": {
-   "YT_SEARCH": 8,
+   "YT_SEARCH": 9,
    "RELATED_VIDEO": 8,
+   "YT_CHANNEL": 3,
    "NO_LINK_OTHER": 2,
-   "YT_CHANNEL": 2,
    "SUBSCRIBER": 1
   },
   "minutes_by_source": {
    "YT_SEARCH": 0,
    "RELATED_VIDEO": 15,
-   "NO_LINK_OTHER": 0,
    "YT_CHANNEL": 0,
+   "NO_LINK_OTHER": 0,
    "SUBSCRIBER": 0
   },
-  "kept_30s": 46,
-  "kept_60s": 31,
-  "kept_120s": 15,
-  "kept_half": 15,
+  "kept_30s": 43,
+  "kept_60s": 29,
+  "kept_120s": 14,
+  "kept_half": 14,
   "drops": [
    [
-    23.1,
+    21.4,
     10,
     "Intro: $2.78 to $4.50"
    ],
    [
-    15.4,
+    14.3,
     59,
     "February 28: the shock"
    ],
    [
-    7.7,
-    25,
-    "One narrow strait"
+    7.2,
+    311,
+    "Why everything else costs more"
    ]
   ],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep07_binance_long",
   "id": "fB_1VJsUvT4",
   "title": "$6.3 Billion Stolen in 20 Minutes: How the Biggest Crypto Hack Ever Happened",
   "published": "2026-11-04",
-  "days": 20,
+  "days": 22,
   "duration": 312,
   "views_lifetime": 7,
   "views": 7,
@@ -557,14 +573,15 @@
   "drops": [],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
  },
  {
   "name": "ep02_housing",
   "id": "Ln54Ec_mjq8",
   "title": "A House Cost $23,000 in 1970. Now It's $393,000. Why?",
   "published": "2026-11-09",
-  "days": 15,
+  "days": 17,
   "duration": 208,
   "views_lifetime": 4,
   "views": 3,
@@ -591,6 +608,66 @@
   "drops": [],
   "style": "newsroom",
   "family": "",
-  "devices": []
+  "devices": [],
+  "format": "news explainer"
+ },
+ {
+  "name": "ep13_groceries",
+  "id": "T5cc_bivdow",
+  "title": "Your Groceries Cost 32% More. Why?",
+  "published": "2026-11-24",
+  "days": 2,
+  "duration": 499,
+  "views_lifetime": 2,
+  "views": 0,
+  "minutes": 0,
+  "avg_view_s": 0,
+  "avg_pct": 0,
+  "subs": 0,
+  "likes": 0,
+  "first3": 0,
+  "sources": {},
+  "minutes_by_source": {},
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": [],
+  "style": "newsroom",
+  "family": "",
+  "devices": [],
+  "format": "news explainer"
+ },
+ {
+  "name": "s01_grandpa",
+  "id": "o0-ZXEnRyDg",
+  "title": "Grandpa Gave 3 Kids $1,000. Who Won?",
+  "published": "2026-11-25",
+  "days": 1,
+  "duration": 504,
+  "views_lifetime": 2,
+  "views": 0,
+  "minutes": 0,
+  "avg_view_s": 0,
+  "avg_pct": 0,
+  "subs": 0,
+  "likes": 0,
+  "first3": 0,
+  "sources": {},
+  "minutes_by_source": {},
+  "kept_30s": null,
+  "kept_60s": null,
+  "kept_120s": null,
+  "kept_half": null,
+  "drops": [],
+  "style": "paper",
+  "family": "Penny Storybook",
+  "devices": [
+   "Money Machine",
+   "Coins as Data",
+   "Timeline Slam",
+   "Follow the Dollar"
+  ],
+  "format": "family parable story"
  }
 ]
