@@ -129,3 +129,7 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
 - 2026-11-25 daily check: Groceries (ep13, live Nov 24 noon) has only 2 views after 24 h (status public, no
   restrictions) vs 70-310 for ep10-ep12 at the same age; its thumbnail was swapped 4 times on launch day. Judge it
   on day 3 (Thursday report) before changing anything; avoid repeated thumbnail swaps in a video's first hours.
+- 2026-11-25 evening: Grandpa story (s01, live noon) has 2 views after ~9 h, the same pattern as Groceries (2 views
+  in 24 h), while the cookie-jar Short got 82 views in 6 h. Long-form reach collapsed after Nov 23 (ep12: 310).
+  Thursday report must dig in: traffic sources of s01/ep13 (learn.py), impressions/CTR in Analytics if available,
+  any policy/limited-ads flags, and whether the Nov 24-25 bulk edits (thumbnails x4, 33 descriptions) correlate.
