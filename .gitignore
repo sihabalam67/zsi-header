@@ -10,3 +10,8 @@ channel/out/thumbs/*_sheet.png
 english/build/
 english/out/
 channel/out/thumbs/*_full.png
+
+# Short build files
+channel/shorts/*/vo/
+channel/shorts/*/stills/
+channel/shorts/*/voice.npy
