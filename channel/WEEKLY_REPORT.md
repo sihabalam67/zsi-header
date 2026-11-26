@@ -26,3 +26,14 @@
 - Nothing is scheduled after Nov 18. Next 2 long videos: timely money questions on news people are searching now
   (the Gold pattern), answer in the first 30 s, ask to subscribe at the payoff. Topics to be confirmed with the owner.
 - Decision day for Coin Theory stays Thu Dec 10.
+
+## Week of Nov 19-26, 2026 (Thursday report)
+- Channel: ~60 long-video watch hours of 4,000; 11 subscribers. 28 days: Shorts 3,147 views (55%), home feed 1,429,
+  related videos 946, search 270. Top countries: Japan (Shorts), US (watch time).
+- Long videos: Nasdaq week 309 views / 730 min (best retention: 77% at 30 s); Stocks 6 days 218; VIX 74;
+  Groceries 2 and Grandpa 2 (no browse burst, see LEARNINGS 0c).
+- Shorts: 1962 footage 1,204; gas prices 284; savings vs inflation 265; cookie jar (new) 82 in 6 h.
+- Thumbnails (ep10-12 v4 on Nov 24): too early and too few views to separate from the release bursts; re-check next week.
+- Shorts bring views but few subscribers (0-1 each). Keep them as doors to long videos (link in description).
+- Decisions: alternate market-news and story/explainer long videos; 2-3 Shorts per story; no thumbnail swaps in the
+  first 3 days.

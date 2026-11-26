@@ -133,3 +133,14 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
   in 24 h), while the cookie-jar Short got 82 views in 6 h. Long-form reach collapsed after Nov 23 (ep12: 310).
   Thursday report must dig in: traffic sources of s01/ep13 (learn.py), impressions/CTR in Analytics if available,
   any policy/limited-ads flags, and whether the Nov 24-25 bulk edits (thumbnails x4, 33 descriptions) correlate.
+
+0c. **WHY LONG VIDEOS GET VIEWS (Thursday report Nov 26, YouTube Analytics daily views Nov 5-23).** Every long video
+   lives or dies in ONE burst in its first 1-2 days (Gold: ~1,400 views Nov 16-17; Nasdaq: ~400 Nov 21); between
+   bursts the channel gets 30-100 views/day. The burst comes from the home feed ("SUBSCRIBER" = browse features, 44% of
+   views) and RELATED_VIDEO (next to big finance-news videos, 29%), i.e. YouTube tests us with the audience it
+   learned from our market-news hits. Groceries (ep13) and the Grandpa story (s01) got NO burst (2 views each in
+   24-30 h, zero traffic in any source) - a new topic type gets no browse test yet. Shorts are unaffected (cookie-jar
+   Short: 82 views in 6 h). Strategy: (1) keep the market/money-news lane alive (1 in 2 long videos) so the channel
+   keeps its browse audience, and bridge new formats from it (a story whose topic rides a market headline); (2)
+   promote every story/explainer with 2-3 Shorts that link it (Shorts reach is independent); (3) don't judge stories
+   by day-1 views: they need search/related traffic over weeks (Grandpa now leads with "what if you invested $1,000").
