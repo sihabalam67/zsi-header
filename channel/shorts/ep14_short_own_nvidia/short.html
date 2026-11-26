@@ -1,0 +1,87 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Daily Short Nov 26 (from ep14): "You own Nvidia". Penny Storybook, 1080x1920. Device: Coins as Data ($100 of an
+     S&P 500 fund = 100 coins; 6 are Nvidia, 37 sit in the top 10 holdings). Data: channel/data/ep14.json. -->
+<style>
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-900.ttf);font-weight:900}
+@font-face{font-family:P;src:url(file:///root/.fonts/Poppins-700.ttf);font-weight:700}
+html,body{margin:0;background:#000;overflow:hidden} svg{display:block} text{font-family:P;font-weight:900}
+</style></head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6E2"/><stop offset=".6" stop-color="#FFE3B8"/><stop offset="1" stop-color="#FFC98A"/></linearGradient>
+ <radialGradient id="coin" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#FFF4B8"/><stop offset=".35" stop-color="#FFD54A"/><stop offset=".8" stop-color="#F2A81D"/><stop offset="1" stop-color="#D98C0C"/></radialGradient>
+ <radialGradient id="nv" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#D9FFB0"/><stop offset=".4" stop-color="#76B900"/><stop offset="1" stop-color="#3E6B00"/></radialGradient>
+ <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#5a2a0a" flood-opacity=".28"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+</defs><g id="root"></g></svg>
+<script src="../../motion/kit.js"></script>
+<script>const f=n=>(+n).toFixed(1);</script>
+<script src="../../motion/penny.js"></script>
+<script>
+let TL=null;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), seg=(t,a,b)=>clamp((t-a)/(b-a)), lerp=(a,b,k)=>a+(b-a)*k;
+const eout=x=>1-Math.pow(1-x,3);
+const pop=(t,a)=>{const x=t-a;if(x<=0)return 0;return 1-Math.exp(-7*x)*Math.cos(10*x);};
+function big(x,y,txt,size,col,k){ if(k<=0) return ''; return `<g transform="translate(${f(x)} ${f(y)}) scale(${f(k)})" filter="url(#sh)"><text text-anchor="middle" font-size="${size}" fill="${col}" stroke="#fff" stroke-width="${size*.14}" stroke-linejoin="round" paint-order="stroke">${txt}</text></g>`; }
+function label(x,y,txt,size,fg,bg,k){ if(k<=0) return ''; const w=txt.length*size*.62+60; return `<g transform="translate(${f(x)} ${f(y)}) scale(${f(k)})" filter="url(#sh)"><rect x="${-w/2}" y="${-size*.85}" width="${w}" height="${size*1.4}" rx="${size*.35}" fill="${bg}"/><text text-anchor="middle" y="${size*.12}" font-size="${size}" fill="${fg}">${txt}</text></g>`; }
+function captions(t){
+  let line=null; for(const l of TL.lines) if(t>=l.start-.05&&t<=l.start+l.dur+.25) line=l; if(!line) return '';
+  const ws=line.words; let i=ws.findIndex(w=>t<w.e); if(i<0) i=ws.length-1; const a=Math.max(0,i-(i%3)), chunk=ws.slice(a,a+3);
+  const txt=chunk.map((w,j)=>`<tspan fill="${a+j===i?'#FFD21F':'#fff'}">${w.w.toUpperCase()}</tspan>`).join(' ');
+  return `<text x="540" y="1420" text-anchor="middle" font-size="80" stroke="#2a1608" stroke-width="18" stroke-linejoin="round" paint-order="stroke">${txt}</text>`;
+}
+// 100 coins: index 0-5 = Nvidia, 0-36 = top 10 holdings
+function coins(t,L,mode){
+  let g=''; const x0=165,y0=430,s=75;
+  for(let i=0;i<100;i++){ const r=Math.floor(i/10), c=i%10; const k=clamp(pop(t,.3+i*.012));
+    const nv=i<6, top=i<37; let fill='url(#coin)', op=1;
+    if(mode>=1&&nv) fill='url(#nv)';
+    if(mode===2&&!top) op=.28;
+    if(mode===4&&nv){ const fade=seg(t,L[4]+.2,L[4]+1.4); if(i<2) op=1-fade*.85; }
+    const cx=x0+c*s, cy=y0+r*s; const lift=(mode>=1&&nv)?-8*Math.sin(t*4+i):0;
+    g+=`<circle cx="${cx}" cy="${cy+lift}" r="${f(30*k)}" fill="${fill}" stroke="${nv&&mode>=1?'#2F5200':'#B87F0E'}" stroke-width="4" opacity="${op}"/>`;
+    if(mode===2&&top) g+=`<circle cx="${cx}" cy="${cy}" r="35" fill="none" stroke="#D7261E" stroke-width="5" opacity=".8"/>`;
+  }
+  return g;
+}
+function frame(t){
+  const L=TL.lines.map(l=>l.start);
+  let g=`<rect width="1080" height="1920" fill="url(#sky)"/>`;
+  if(t<L[1]-.1){ // hook
+    g+=label(540,250,'YOUR 401(k)',72,'#fff','#2b1a0e',clamp(pop(t,.2)));
+    g+=big(540,640,'YOU OWN',150,'#2b1a0e',clamp(pop(t,.4)))+big(540,820,'NVIDIA',170,'#76B900',clamp(pop(t,.9)));
+    g+=`<text x="540" y="940" text-anchor="middle" font-size="46" fill="#5a2f12" opacity="${f(seg(t,1.6,2.2))}">even if you never bought a share</text>`;
+  } else if(t<L[3]-.1){
+    const mode=t<L[2]-.1?1:2;
+    g+=label(540,250,mode===1?'$100 IN AN S&P 500 FUND':'TOP 10 HOLDINGS = $37',mode===1?56:58,'#fff',mode===1?'#2b1a0e':'#D7261E',1);
+    g+=coins(t,L,mode);
+    if(mode===1) g+=label(540,1250,'$6 = NVIDIA',72,'#fff','#4E8A00',clamp(pop(t,L[1]+2.2)));
+  } else if(t<L[4]-.1){ // the drop
+    const k=eout(seg(t,L[3]+.2,L[3]+1.8)), x0=160,x1=920,y0=540,y1=lerp(540,1060,k);
+    g+=label(540,250,'NVIDIA SINCE OCT 6',62,'#fff','#2b1a0e',1);
+    g+=`<line x1="140" y1="1120" x2="940" y2="1120" stroke="#5a2f12" stroke-width="6"/><path d="M${x0} ${y0} L${lerp(x0,x1,.45)} ${lerp(y0,y1,.55)} L${lerp(x0,x1,.62)} ${lerp(y0,y1,.9)} L${lerp(x0,x1,.78)} ${lerp(y0,y1,.62)} L${x1} ${y1}" stroke="#D7261E" stroke-width="16" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+    g+=big(300,480,'$239',80,'#2b1a0e',clamp(pop(t,L[3]+.2)))+big(820,y1+100,'$149',80,'#D7261E',clamp(pop(t,L[3]+1.6)));
+    g+=big(540,820,'−37.6%',180,'#D7261E',clamp(pop(t,L[3]+1.8)));
+  } else if(t<L[5]-.1){ // $2 of every $100
+    g+=label(540,250,'ABOUT $2 OF EVERY $100',56,'#fff','#D7261E',1);
+    g+=coins(t,L,4);
+  } else if(t<L[6]-.1){ // whole index
+    const k=eout(seg(t,L[5]+.2,L[5]+1.4));
+    g+=label(540,250,'THE WHOLE S&P 500',62,'#fff','#2b1a0e',1);
+    g+=`<rect x="290" y="${520}" width="500" height="560" rx="20" fill="#E8D7B8"/><rect x="290" y="${520+560*.081*k}" width="500" height="${560*(1-.081*k)}" rx="20" fill="#F2A81D"/>`;
+    g+=big(540,1260,'−8.1%',170,'#D7261E',clamp(pop(t,L[5]+1.2)));
+  } else { // end card
+    const k=clamp(pop(t,L[6]));
+    g+=label(540,300,'DID YOU KNOW?',84,'#fff','#2b1a0e',k);
+    g+=label(330,600,'YES',100,'#fff','#11885A',clamp(pop(t,L[6]+.4)))+label(750,600,'NO',100,'#fff','#D7261E',clamp(pop(t,L[6]+.6)));
+    g+=`<text x="540" y="860" text-anchor="middle" font-size="50" fill="#5a2f12" opacity="${f(k)}">Full breakdown on Coin Theory</text>`;
+  }
+  const fr=Math.min(TL.mouth.length-1,Math.round(t*30));
+  g+=`<g filter="url(#sh)">${penny({x:190,y:1720,r:115,t,mood:t>=L[3]&&t<L[6]?'worried':'happy',mouth:TL.mouth[fr],blink:(t%3.6)<.12,armL:200,armR:-20})}</g>`;
+  g+=captions(t);
+  g+=`<text x="540" y="1890" text-anchor="middle" font-size="24" fill="#7a6650">SPY holdings as of Nov 24, 2026 · Yahoo Finance closes · education only</text>`;
+  document.getElementById('root').innerHTML=g;
+}
+window.setup=tl=>{TL=tl;}; window.frame=frame;
+</script></body></html>

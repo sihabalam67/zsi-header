@@ -1,543 +1,543 @@
 {
- "date": "2026-11-24",
+ "date": "2026-11-26",
  "results": [
   {
-   "topic": "stock market crash",
-   "demand": 175378,
-   "top": 837555,
-   "small": 2,
-   "score": 198762,
+   "topic": "new tariffs 2026",
+   "demand": 128000,
+   "top": 576798,
+   "small": 1,
+   "score": 136533,
    "examples": [
     {
-     "title": "\u20b96.39 Lakh Crore WIPED OUT! Today's Market Crash EXPOSED",
-     "channel": "Abhishek Kar",
-     "subs": 2160000,
-     "vpd": 837555,
-     "minutes": 10.7
+     "title": "Trump Announces 25% Tariffs on India: What Next? | The Palki Sharma Show | IGR | India Global Review",
+     "channel": "India Global Review",
+     "subs": 984000,
+     "vpd": 576798,
+     "minutes": 8.6
     },
     {
-     "title": "America\u2019s Biggest Crisis? Trump, Nvidia & Market Crash | Impact on India by Ankit Avasthi Sir ",
-     "channel": "Apni Pathshala -Civil Services ",
-     "subs": 1060000,
-     "vpd": 499719,
-     "minutes": 4.8
+     "title": "Trump to impose new tariffs on India-China | The Chanakya Dialogues Major Gaurav Arya |",
+     "channel": "THE CHANAKYA DIALOGUES HINDI",
+     "subs": 4820000,
+     "vpd": 324428,
+     "minutes": 18.8
     },
     {
-     "title": "Jensen's Back! Epic Crash, HUGE Insider Buys as Scared Retail Dumps: Stocks, Gold, Silver, BTC",
-     "channel": "Verified Investing",
-     "subs": 140000,
-     "vpd": 314846,
-     "minutes": 18.6
+     "title": "What do Trump\u2019s latest tariffs tell us about his trade war with Canada? | Power & Politics",
+     "channel": "CBC News",
+     "subs": 4790000,
+     "vpd": 235401,
+     "minutes": 16.2
     }
    ]
   },
   {
-   "topic": "gold price",
-   "demand": 124002,
-   "top": 514630,
-   "small": 0,
-   "score": 124002,
+   "topic": "nvidia stock crash",
+   "demand": 96352,
+   "top": 329500,
+   "small": 5,
+   "score": 128469,
    "examples": [
     {
-     "title": "\ud83d\udea8GOLD & SILVER Prices Crash | 4 Real Reasons Behind 2026 Gold Crash | SEBI Warning| VR Raja Explains",
-     "channel": "V R RAJA",
-     "subs": 1960000,
-     "vpd": 514630,
-     "minutes": 19.4
+     "title": "Wall Street Just Did The UNTHINKABLE To Nvidia | Jensen huang Return Just Failed ",
+     "channel": "Next Trillion ",
+     "subs": 3240,
+     "vpd": 329500,
+     "minutes": 15.4
     },
     {
-     "title": "Gold Price Crash: Why Gold Is Falling, US Debt, Dollar Strength & AI Market Fear By Ankit Sir\u0964",
-     "channel": "Ankit Avasthi Insights",
-     "subs": 1020000,
-     "vpd": 479817,
-     "minutes": 9.8
+     "title": "Wall Street Is Selling Tech Stocks. Here's Why.",
+     "channel": "Hedge Fund Explained",
+     "subs": 10900,
+     "vpd": 277385,
+     "minutes": 12.6
     },
     {
-     "title": "\ud83d\udea8Gold Prices Drop | Dont Buy Gold Before Watching This Video | \u20b915,000 Loss Per 10g Gold | VR Raja",
-     "channel": "V R RAJA",
-     "subs": 1960000,
-     "vpd": 434422,
-     "minutes": 16.1
-    }
-   ]
-  },
-  {
-   "topic": "black friday deals",
-   "demand": 64223,
-   "top": 1029746,
-   "small": 3,
-   "score": 77068,
-   "examples": [
-    {
-     "title": "Top 10 Costco Black Friday Deals 2026",
-     "channel": "The Deal Guy",
-     "subs": 2990000,
-     "vpd": 1029746,
-     "minutes": 17.8
-    },
-    {
-     "title": "Top 50 Walmart Black Friday Deals 2026",
-     "channel": "The Deal Guy",
-     "subs": 2990000,
-     "vpd": 682242,
-     "minutes": 13.7
-    },
-    {
-     "title": "ECOFLOW | Black Friday DEALS on Home Backup Power Stations | Generators",
-     "channel": "HOBOTECH",
-     "subs": 313000,
-     "vpd": 428015,
-     "minutes": 13.4
-    }
-   ]
-  },
-  {
-   "topic": "bitcoin crash",
-   "demand": 32301,
-   "top": 314846,
-   "small": 3,
-   "score": 38761,
-   "examples": [
-    {
-     "title": "Jensen's Back! Epic Crash, HUGE Insider Buys as Scared Retail Dumps: Stocks, Gold, Silver, BTC",
-     "channel": "Verified Investing",
-     "subs": 140000,
-     "vpd": 314846,
-     "minutes": 18.6
-    },
-    {
-     "title": "Bitcoin Crashed: But These 4 Signals Point To Epic Rebound (I Bought!)",
-     "channel": "Gareth Soloway",
-     "subs": 308000,
-     "vpd": 138453,
-     "minutes": 11.6
-    },
-    {
-     "title": "Is Bitcoin Going to $0? The Truth About This Crash | Full Analysis | Deepak Wadhwa",
-     "channel": "DeepakWadhwa.Official",
-     "subs": 1000000,
-     "vpd": 56164,
-     "minutes": 16.6
-    }
-   ]
-  },
-  {
-   "topic": "grocery prices",
-   "demand": 19185,
-   "top": 49482,
-   "small": 8,
-   "score": 29417,
-   "examples": [
-    {
-     "title": "Americans Are CANCELING Thanksgiving Because They Can't Afford Groceries! \ud83d\ude33",
-     "channel": "Nino Brown",
-     "subs": 560000,
-     "vpd": 49482,
-     "minutes": 10.4
-    },
-    {
-     "title": "Walmart Black Friday Just Got EXPOSED... And America Is ABSOLUTELY FURIOUS!",
-     "channel": "Checkout Revolt",
-     "subs": 1750,
-     "vpd": 48833,
-     "minutes": 19.3
-    },
-    {
-     "title": "Publix New Warning - \u201cPeople Have Stopped Shopping Here\u201d",
-     "channel": "Michael Bordenaro Clips",
-     "subs": 42400,
-     "vpd": 37969,
-     "minutes": 9.8
-    }
-   ]
-  },
-  {
-   "topic": "car payments",
-   "demand": 16243,
-   "top": 87135,
-   "small": 12,
-   "score": 29237,
-   "examples": [
-    {
-     "title": "Why Everyone in the UK Suddenly Has a New Car (The PCP Trap)",
-     "channel": "Ryan | Personal Finance",
-     "subs": 8910,
-     "vpd": 87135,
-     "minutes": 11.7
-    },
-    {
-     "title": "PAYMENT SET TO DOUBLE. Game Over For Luxury SUVs?",
-     "channel": "The Logbook",
-     "subs": 112000,
-     "vpd": 78826,
-     "minutes": 17.9
-    },
-    {
-     "title": "Suzuki Alto 2027 on Easy Installments | Rs. 10,000 Monthly | HBL Car Loan Scheme",
-     "channel": "Pak Automobile ",
-     "subs": 49600,
-     "vpd": 60820,
-     "minutes": 5.4
-    }
-   ]
-  },
-  {
-   "topic": "is black friday worth it",
-   "demand": 15426,
-   "top": 325275,
-   "small": 3,
-   "score": 18511,
-   "examples": [
-    {
-     "title": "Top 50 Amazon Black Friday 2026 Deals (Updated Hourly!! \ud83d\udd25)",
-     "channel": "The Deal Guy",
-     "subs": 2990000,
-     "vpd": 325275,
-     "minutes": 15.5
-    },
-    {
-     "title": "Black Friday Tech Deals That Are Actually Worth It",
-     "channel": "ThisIsE",
-     "subs": 501000,
-     "vpd": 47774,
-     "minutes": 14.4
-    },
-    {
-     "title": "20 AMAZON *Black Friday* Deals Worth Buying EARLY!!!",
-     "channel": "Shea Whitney",
-     "subs": 1760000,
-     "vpd": 34867,
+     "title": "BACKFIRE: Trump STUNNED as Nvidia CRASHES",
+     "channel": "Pondering Politics",
+     "subs": 912000,
+     "vpd": 193617,
      "minutes": 11.1
     }
    ]
   },
   {
-   "topic": "credit card debt",
-   "demand": 11999,
-   "top": 60348,
-   "small": 7,
-   "score": 17599,
+   "topic": "ai bubble",
+   "demand": 105259,
+   "top": 675860,
+   "small": 0,
+   "score": 105259,
    "examples": [
     {
-     "title": "Taking on credit card debt to buy food",
-     "channel": "CBS Sunday Morning",
-     "subs": 1890000,
-     "vpd": 60348,
-     "minutes": 6.5
+     "title": "It's Worth Being Angry About This",
+     "channel": "Hank Green",
+     "subs": 3210000,
+     "vpd": 675860,
+     "minutes": 14.9
     },
     {
-     "title": "My Daughter Has Spending Episodes",
-     "channel": "The Ramsey Show Highlights",
-     "subs": 4600000,
-     "vpd": 27038,
-     "minutes": 8.8
+     "title": "The AI Bubble Finally Deflates: But Why Now?",
+     "channel": "TLDR Business",
+     "subs": 243000,
+     "vpd": 323524,
+     "minutes": 8.7
     },
     {
-     "title": "What Happens If You Just Stop Paying Your Credit Cards?",
-     "channel": "The Lady Like Lawyer | Adrienne Hines",
-     "subs": 3200,
-     "vpd": 23353,
-     "minutes": 7.4
+     "title": "Who's Actually Paying For The AI Bubble?",
+     "channel": "MonkeyExplains",
+     "subs": 264000,
+     "vpd": 227520,
+     "minutes": 15.0
     }
    ]
   },
   {
-   "topic": "social security 2027",
-   "demand": 10243,
-   "top": 50019,
-   "small": 4,
-   "score": 12974,
+   "topic": "black friday deals",
+   "demand": 75563,
+   "top": 579198,
+   "small": 2,
+   "score": 85638,
    "examples": [
     {
-     "title": "OFFICIALLY RELEASED! 2027 Medicare Premiums & IRMAA Amounts",
-     "channel": "The Retirement Nerds",
-     "subs": 337000,
-     "vpd": 50019,
-     "minutes": 15.5
+     "title": "Drew Barrymore & Ross Mathews Reveal Stunning Amazon Black Friday Week & Cyber Monday Deals!",
+     "channel": "The Drew Barrymore Show",
+     "subs": 1500000,
+     "vpd": 579198,
+     "minutes": 4.7
     },
     {
-     "title": "MEDICARE 2027: \u00a1EST\u00c1N ENVIANDO CARTAS! \u00bfPUEDE PERDER SU SEGURO?",
-     "channel": "Maria Diaz Seguro Social Social Security",
-     "subs": 338000,
-     "vpd": 43471,
-     "minutes": 11.9
+     "title": "Top 10 Costco Black Friday Deals 2026",
+     "channel": "The Deal Guy",
+     "subs": 2990000,
+     "vpd": 529211,
+     "minutes": 17.8
     },
     {
-     "title": "Breaking: 2027 Medicare Costs Are Out | Here's Every Number",
-     "channel": "Holy Schmidt!",
-     "subs": 481000,
-     "vpd": 26398,
-     "minutes": 16.3
+     "title": "Best BLACK FRIDAY Gaming Deals You SHOULDN'T Miss (2026)",
+     "channel": "gameranx",
+     "subs": 8670000,
+     "vpd": 527634,
+     "minutes": 13.0
     }
    ]
   },
   {
-   "topic": "rent prices",
-   "demand": 8433,
-   "top": 91148,
-   "small": 8,
-   "score": 12931,
+   "topic": "black friday 2026",
+   "demand": 75563,
+   "top": 529210,
+   "small": 2,
+   "score": 85638,
    "examples": [
     {
-     "title": "Apartment Complexes Are Getting Desperate",
-     "channel": "Jay Reed",
-     "subs": 322000,
-     "vpd": 91148,
-     "minutes": 19.8
+     "title": "Top 10 Costco Black Friday Deals 2026",
+     "channel": "The Deal Guy",
+     "subs": 2990000,
+     "vpd": 529210,
+     "minutes": 17.8
     },
     {
-     "title": "Millions of Aussie Renters Are About to Be Crushed by the Government\u2019s Tax Changes (No One\u2019s Ready)",
-     "channel": "Scott Kuru",
-     "subs": 126000,
-     "vpd": 30233,
-     "minutes": 13.6
+     "title": "Best BLACK FRIDAY Gaming Deals You SHOULDN'T Miss (2026)",
+     "channel": "gameranx",
+     "subs": 8670000,
+     "vpd": 527628,
+     "minutes": 13.0
     },
     {
-     "title": "What If You Sold Your House at 70 and Rented? The Math on a $400,000 Home",
-     "channel": "Money With Calvin",
-     "subs": 885,
-     "vpd": 23327,
-     "minutes": 19.3
+     "title": "Top 50 Walmart Black Friday Deals 2026",
+     "channel": "The Deal Guy",
+     "subs": 2990000,
+     "vpd": 268389,
+     "minutes": 13.7
     }
    ]
   },
   {
-   "topic": "layoffs 2026",
-   "demand": 9605,
-   "top": 108102,
-   "small": 4,
-   "score": 12166,
+   "topic": "oil prices",
+   "demand": 74172,
+   "top": 658732,
+   "small": 1,
+   "score": 79117,
    "examples": [
     {
-     "title": "Grand Theft Auto LAYOFFS Are BRUTAL! Take Two FIRES Employees During Game\u2019s Launch",
-     "channel": "WDW Pro",
-     "subs": 223000,
-     "vpd": 108102,
-     "minutes": 12.5
-    },
-    {
-     "title": "220,049 U.S. Layoffs! Meta, Amazon & Oracle Lead Job Cuts | Indians in U.S.",
-     "channel": "TimesXP",
-     "subs": 138000,
-     "vpd": 21290,
-     "minutes": 4.9
-    },
-    {
-     "title": "JACKOWSKI: POLAK\u00d3W CZEKA FALA ZWOLNIE\u0143?! CO Z PRAC\u0104 W 2027 ROKU?",
-     "channel": "Nieznany Rozdzia\u0142",
-     "subs": 3700,
-     "vpd": 20512,
-     "minutes": 9.0
-    }
-   ]
-  },
-  {
-   "topic": "mortgage rates",
-   "demand": 3498,
-   "top": 285134,
-   "small": 11,
-   "score": 6063,
-   "examples": [
-    {
-     "title": "Why Homeowners And Renters Feel Stuck",
-     "channel": "CNBC",
-     "subs": 4180000,
-     "vpd": 285134,
-     "minutes": 7.3
-    },
-    {
-     "title": "Lower Mortgage Rates Could Trigger A Housing Market Crash...",
-     "channel": "Rebel Capitalist Highlights",
-     "subs": 2630,
-     "vpd": 15327,
+     "title": "Yemen's Houthis attack Saudi Arabia's largest oil refinery | BBC News",
+     "channel": "BBC News",
+     "subs": 20300000,
+     "vpd": 658732,
      "minutes": 11.2
     },
     {
-     "title": "The Truth About VARIABLE Rates",
-     "channel": "Angry Mortgage Podcast",
-     "subs": 76300,
-     "vpd": 11165,
-     "minutes": 9.0
+     "title": "Oil Price Drop !! New Price ?? | 7PM Headlines Geo News  (25 Nov 2026)",
+     "channel": "Geo News",
+     "subs": 21400000,
+     "vpd": 146575,
+     "minutes": 12.4
+    },
+    {
+     "title": "Oil Prices Increased in Pakistan! What Are the New Rates? | 5PM Headlines Geo News (26 Nov 2026)",
+     "channel": "Geo News",
+     "subs": 21400000,
+     "vpd": 94616,
+     "minutes": 8.9
     }
    ]
   },
   {
-   "topic": "401k stock market",
-   "demand": 3280,
-   "top": 129788,
-   "small": 8,
-   "score": 5029,
+   "topic": "are black friday deals real",
+   "demand": 34913,
+   "top": 529208,
+   "small": 3,
+   "score": 41896,
    "examples": [
     {
-     "title": "Your 401(k) Is Down 10%. Here's What History Says Comes Next.",
-     "channel": "Whyse",
-     "subs": 1560,
-     "vpd": 129788,
-     "minutes": 10.1
+     "title": "Top 10 Costco Black Friday Deals 2026",
+     "channel": "The Deal Guy",
+     "subs": 2990000,
+     "vpd": 529208,
+     "minutes": 17.8
     },
     {
-     "title": "How Long Stock Market CRASHES Recover?",
-     "channel": "Steve | Call to Leap",
-     "subs": 766000,
-     "vpd": 90962,
+     "title": "Best BLACK FRIDAY Gaming Deals You SHOULDN'T Miss (2026)",
+     "channel": "gameranx",
+     "subs": 8670000,
+     "vpd": 527622,
+     "minutes": 13.0
+    },
+    {
+     "title": "Top 50 Walmart Black Friday Deals 2026",
+     "channel": "The Deal Guy",
+     "subs": 2990000,
+     "vpd": 268388,
+     "minutes": 13.7
+    }
+   ]
+  },
+  {
+   "topic": "bitcoin crash",
+   "demand": 38168,
+   "top": 189436,
+   "small": 1,
+   "score": 40713,
+   "examples": [
+    {
+     "title": "Stocks, Gold and Bitcoin All Crashed at Once. Here\u2019s What\u2019s Next",
+     "channel": "Mark Moss",
+     "subs": 834000,
+     "vpd": 189436,
+     "minutes": 19.0
+    },
+    {
+     "title": "Gold, Bitcoin and Silver Prices Crash Amid New US Tariff Plans",
+     "channel": "Haqeeqat TV - Science & Health",
+     "subs": 1130000,
+     "vpd": 126048,
+     "minutes": 10.7
+    },
+    {
+     "title": "BOMBSHELL: I Just Discovered What\u2019s REALLY Going On With Crypto Crash (Trump, Tariffs, Nvidia)",
+     "channel": "Altcoin Daily",
+     "subs": 1660000,
+     "vpd": 81407,
+     "minutes": 12.8
+    }
+   ]
+  },
+  {
+   "topic": "inflation 2026",
+   "demand": 34571,
+   "top": 128014,
+   "small": 1,
+   "score": 36876,
+   "examples": [
+    {
+     "title": "Inflation shock has economists warning Australia is entering stagflation | The Business | ABC NEWS",
+     "channel": "ABC News (Australia)",
+     "subs": 2640000,
+     "vpd": 128014,
+     "minutes": 9.4
+    },
+    {
+     "title": "Inflation surges to 4.9% shocking economists and the market | ABC NEWS",
+     "channel": "ABC News (Australia)",
+     "subs": 2640000,
+     "vpd": 91252,
+     "minutes": 7.6
+    },
+    {
+     "title": "\u2018It\u2019s going to get worse\u2019: Kochie reveals his predictions for the economy | Sunrise",
+     "channel": "Sunrise",
+     "subs": 368000,
+     "vpd": 87134,
+     "minutes": 5.3
+    }
+   ]
+  },
+  {
+   "topic": "pce inflation",
+   "demand": 15688,
+   "top": 82263,
+   "small": 5,
+   "score": 20917,
+   "examples": [
+    {
+     "title": "\u2060Gold Price Crash Alert! These 3 Dates Could Trigger a Bigger Fall\u2014or a Rally!",
+     "channel": "DeepakWadhwa.Official",
+     "subs": 1000000,
+     "vpd": 82263,
+     "minutes": 11.1
+    },
+    {
+     "title": "Core PCE 3.3%: Watch What Gold & Silver Did After 10 AM",
+     "channel": "Precious Pulse News",
+     "subs": 1590,
+     "vpd": 53616,
      "minutes": 9.7
     },
     {
-     "title": "Stock Market Crash: Generational BUYING Opportunity",
-     "channel": "Mark Roussin, CPA",
-     "subs": 166000,
-     "vpd": 54635,
-     "minutes": 15.7
+     "title": "Hotter inflation puts the Fed in a BIND",
+     "channel": "Fox Business",
+     "subs": 3400000,
+     "vpd": 50414,
+     "minutes": 5.3
     }
    ]
   },
   {
    "topic": "recession 2026",
-   "demand": 3244,
-   "top": 101411,
-   "small": 8,
-   "score": 4974,
+   "demand": 13874,
+   "top": 97209,
+   "small": 5,
+   "score": 18499,
    "examples": [
     {
-     "title": "What is the Sahm Rule recession indicator? | ABC NEWS",
-     "channel": "ABC News (Australia)",
-     "subs": 2640000,
-     "vpd": 101411,
-     "minutes": 4.7
+     "title": "Consultoras apuntan a una recesi\u00f3n t\u00e9cnica en Argentina tras dos trimestres seguidos de contracci\u00f3n",
+     "channel": "FRANCE 24 Espa\u00f1ol",
+     "subs": 2180000,
+     "vpd": 97209,
+     "minutes": 8.7
+    },
+    {
+     "title": "Is World heading towards Financial Disaster? Next Global economic crash",
+     "channel": "Study Glows",
+     "subs": 2430000,
+     "vpd": 86532,
+     "minutes": 16.8
     },
     {
      "title": "Without a recession, this is a correction not a bear market, says Ed Yardeni",
      "channel": "CNBC Television",
-     "subs": 3420000,
-     "vpd": 89861,
+     "subs": 3430000,
+     "vpd": 50699,
      "minutes": 4.7
-    },
-    {
-     "title": "They Say No Recession Is Coming. Then Someone Read The Jobs Numbers",
-     "channel": "The Canberra Files",
-     "subs": 907,
-     "vpd": 26817,
-     "minutes": 9.1
     }
    ]
   },
   {
-   "topic": "thanksgiving dinner cost",
-   "demand": 3135,
-   "top": 49094,
+   "topic": "mortgage rates",
+   "demand": 7661,
+   "top": 102461,
+   "small": 10,
+   "score": 12768,
+   "examples": [
+    {
+     "title": "The Unthinkable Is Happening To UK House Prices",
+     "channel": "British Home Group",
+     "subs": 26900,
+     "vpd": 102461,
+     "minutes": 7.6
+    },
+    {
+     "title": "Behind Ontario\u2019s surge in mortgage defaults",
+     "channel": "CTV News",
+     "subs": 2440000,
+     "vpd": 64721,
+     "minutes": 5.8
+    },
+    {
+     "title": "They're Lying About the Housing Market...Interest Rates Aren't The Problem",
+     "channel": "Michael Bordenaro Clips",
+     "subs": 42600,
+     "vpd": 25376,
+     "minutes": 11.3
+    }
+   ]
+  },
+  {
+   "topic": "credit card debt",
+   "demand": 6488,
+   "top": 63608,
+   "small": 4,
+   "score": 8218,
+   "examples": [
+    {
+     "title": "How Credit Card Companies Make Money From You (Even If You Pay in Full)",
+     "channel": "Mogulnomics",
+     "subs": 543,
+     "vpd": 63608,
+     "minutes": 10.2
+    },
+    {
+     "title": "FEDERAL OFFICIALS ARE CHANGING THE 2027 RULES ON CREDIT CARDS \u2014 AMERICANS BORN BEFORE 1965 ACT NOW",
+     "channel": "Frank USA",
+     "subs": 131000,
+     "vpd": 39404,
+     "minutes": 18.9
+    },
+    {
+     "title": "What Happens If You Just Stop Paying Your Credit Cards?",
+     "channel": "The Lady Like Lawyer | Adrienne Hines",
+     "subs": 3380,
+     "vpd": 31384,
+     "minutes": 7.4
+    }
+   ]
+  },
+  {
+   "topic": "buy now pay later",
+   "demand": 3433,
+   "top": 63608,
+   "small": 5,
+   "score": 4577,
+   "examples": [
+    {
+     "title": "How Credit Card Companies Make Money From You (Even If You Pay in Full)",
+     "channel": "Mogulnomics",
+     "subs": 543,
+     "vpd": 63608,
+     "minutes": 10.2
+    },
+    {
+     "title": "Taking on credit card debt to buy food",
+     "channel": "CBS Sunday Morning",
+     "subs": 1890000,
+     "vpd": 27000,
+     "minutes": 6.5
+    },
+    {
+     "title": "Every Type of Black Friday Shopper by Income Level",
+     "channel": "Rich Kit",
+     "subs": 1450,
+     "vpd": 25905,
+     "minutes": 16.1
+    }
+   ]
+  },
+  {
+   "topic": "fed rate hike december",
+   "demand": 2404,
+   "top": 309737,
    "small": 7,
-   "score": 4598,
+   "score": 3526,
    "examples": [
     {
-     "title": "I Tried to Cook Thanksgiving for Under $100 in One Day | Andy Baraghani | NYT Cooking",
-     "channel": "NYT Cooking",
-     "subs": 1370000,
-     "vpd": 49094,
-     "minutes": 18.6
+     "title": "\ud83d\udea8GOLD & SILVER Prices Crash | 4 Real Reasons Behind 2026 Gold Crash | SEBI Warning| VR Raja Explains",
+     "channel": "V R RAJA",
+     "subs": 1960000,
+     "vpd": 309737,
+     "minutes": 19.4
     },
     {
-     "title": "$60 for an ENTIRE Thanksgiving Dinner? | Alex Guarnaschelli",
-     "channel": "Alex Guarnaschelli",
-     "subs": 100000,
-     "vpd": 11186,
-     "minutes": 13.7
+     "title": "Bottom In, Time To Buy?",
+     "channel": "STOCK UP! with LARRY JONES",
+     "subs": 695000,
+     "vpd": 36878,
+     "minutes": 15.8
     },
     {
-     "title": "SLOW ENGLISH | Good vs Bad Manners at Thanksgiving \ud83e\udd83 | Lily & Mia | A2 English Story",
-     "channel": "Lily & Mia Slow English",
-     "subs": 3640,
-     "vpd": 7764,
-     "minutes": 15.7
-    }
-   ]
-  },
-  {
-   "topic": "tariffs prices",
-   "demand": 1404,
-   "top": 20102,
-   "small": 11,
-   "score": 2434,
-   "examples": [
-    {
-     "title": "U.S. Homebuilders BEG Congress to Drop Lumber Tariffs\u2014Canada Already Found New Buyers",
-     "channel": "Trade Realities",
-     "subs": 213,
-     "vpd": 20102,
-     "minutes": 11.9
-    },
-    {
-     "title": "Trump's BIG Mistake Canada Makes a MASSIVE Move Without the United States",
-     "channel": "Canada Brief",
-     "subs": 782,
-     "vpd": 5647,
-     "minutes": 10.9
-    },
-    {
-     "title": "Solar Panel Prices Are Going UP December 4th (New Government Rule)",
-     "channel": "Solartime with Martyna ",
-     "subs": 41100,
-     "vpd": 2443,
-     "minutes": 10.5
+     "title": "Is the Fed About to Do the One Thing Gold Can't Survive?",
+     "channel": "Cargo & Capital ",
+     "subs": 272,
+     "vpd": 19485,
+     "minutes": 12.2
     }
    ]
   },
   {
    "topic": "gas prices thanksgiving",
-   "demand": 1289,
-   "top": 351207,
-   "small": 3,
-   "score": 1547,
+   "demand": 2345,
+   "top": 420418,
+   "small": 0,
+   "score": 2345,
    "examples": [
+    {
+     "title": "Trump Celebrates Thanksgiving at Mar-a-Lago | The Tonight Show Starring Jimmy Fallon",
+     "channel": "The Tonight Show Starring Jimmy Fallon",
+     "subs": 34300000,
+     "vpd": 420418,
+     "minutes": 9.4
+    },
+    {
+     "title": "This Morning\u2019s Top Headlines \u2013 Nov. 25 | Morning News NOW",
+     "channel": "NBC News",
+     "subs": 12200000,
+     "vpd": 123296,
+     "minutes": 16.1
+    },
     {
      "title": "East Coast BRACES for heavy rain, travel delays after historic Florida flooding",
      "channel": "Fox News",
      "subs": 15600000,
-     "vpd": 351207,
+     "vpd": 105078,
      "minutes": 12.8
-    },
-    {
-     "title": "81.5 million Americans set to travel for Thanksgiving weekend",
-     "channel": "LiveNOW from FOX",
-     "subs": 5640000,
-     "vpd": 17695,
-     "minutes": 15.8
-    },
-    {
-     "title": "\u2018No credible threats,\u2019 feds say after report of air terror alert",
-     "channel": "NewsNation",
-     "subs": 2810000,
-     "vpd": 13876,
-     "minutes": 4.0
     }
    ]
   },
   {
-   "topic": "holiday spending",
-   "demand": 725,
-   "top": 3746,
-   "small": 10,
-   "score": 1208,
+   "topic": "401k",
+   "demand": 1044,
+   "top": 70721,
+   "small": 11,
+   "score": 1810,
    "examples": [
     {
-     "title": "Market Edge: Inflation impact on retailers, holiday retail spending, and 2027 outlook | ANC",
-     "channel": "ANC 24/7",
-     "subs": 3190000,
-     "vpd": 3746,
-     "minutes": 17.6
+     "title": "Your 401(k) Is Down 10%. Here's What History Says Comes Next.",
+     "channel": "Whyse",
+     "subs": 1560,
+     "vpd": 70721,
+     "minutes": 10.1
     },
     {
-     "title": "reset your home, money, and schedule BEFORE the new year (I do exactly this)",
-     "channel": "KristiDoingThings",
-     "subs": 198000,
-     "vpd": 3537,
-     "minutes": 17.9
+     "title": "Goldman Sachs & BofA Just Issued a Rare Warning for 401(k)s",
+     "channel": "Rational Wealth",
+     "subs": 3560,
+     "vpd": 27994,
+     "minutes": 17.8
     },
     {
-     "title": "\u2018Approximately 14% increase of holiday spending at the malls\u2019 compared to \u201925: JLL Canada CEO",
-     "channel": "BNN Bloomberg",
-     "subs": 191000,
-     "vpd": 2244,
-     "minutes": 7.0
+     "title": "Your 401(k) Is in a Correction. Here's the Date to Watch.",
+     "channel": "Whyse",
+     "subs": 1560,
+     "vpd": 4535,
+     "minutes": 8.8
+    }
+   ]
+  },
+  {
+   "topic": "tariffs black friday",
+   "demand": 12,
+   "top": 2632,
+   "small": 13,
+   "score": 22,
+   "examples": [
+    {
+     "title": "BITCOIN 57K: TRUMP VOLTOU COM AS TARIFAS E BLACKROCK DERRUBOU TUDO!",
+     "channel": "Investidor Matuto",
+     "subs": 89300,
+     "vpd": 2632,
+     "minutes": 14.8
+    },
+    {
+     "title": "Trump\u2019s New Tariffs: What Shoppers Need to Know Before Christmas",
+     "channel": "Money Instructor",
+     "subs": 168000,
+     "vpd": 1410,
+     "minutes": 9.3
+    },
+    {
+     "title": "Stocks rebound as CPI & Tariffs return   MPC Markets Morning Call",
+     "channel": "MPC Markets",
+     "subs": 349,
+     "vpd": 89,
+     "minutes": 17.7
     }
    ]
   }
