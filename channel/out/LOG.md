@@ -17,3 +17,5 @@
 - 2026-11-24: risk audit 60/100 (inauthentic content). s02 Same Salary moved Nov 27 -> Wed Dec 9 (too close to s01 plot); About text now says how videos are made (AI tools, scripts from scratch, sourced data). Owner: real-person video in ~1 month (reminder set for Dec 24).
 - 2026-11-25 2:30 PM ET: SHORT "$1,000 in a Cookie Jar for 30 Years #shorts" (31 s, from story #1, links o0-ZXEnRyDg) https://youtu.be/IrSCC3UurS0
 - 2026-11-25 7 PM ET: SHORT "Thanksgiving Dinner for 10 Costs $58.63 #shorts" (AFBF 2026 survey, seasonal) https://youtu.be/r-lsh1uzNiM
+- 2026-11-27 2 PM ET: LONG "Why Nvidia's 37% Crash Hits Your 401(k)" (10:24, first `bold` Poster Slam template, thumb A Mia + green coins, B/C ready for Test & Compare) https://youtu.be/FwrWmdqJViY
+- 2026-11-27 5 PM ET: SHORT "You Own Nvidia (Even If You Never Bought It) #shorts" (32 s, links FwrWmdqJViY) https://youtu.be/5uLs4C5RZsg

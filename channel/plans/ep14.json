@@ -1,0 +1,6 @@
+{
+ "videos": {"ep14_nvidia_401k": "2026-11-27T14:00", "ep14_short_own_nvidia": "2026-11-27T17:00"},
+ "playlists": {"ep14": ["Stock Market, Explained", "What moves the stock market, and what it means for your money. Real data, no hype."]},
+ "launch_questions": {"ep14_nvidia_401k": "One word: before this video, did you know your 401(k) or index fund owned Nvidia? YES or NO"},
+ "links": {"ep14_nvidia_401k": ["Watch next", "ep10_stocks"]}
+}
