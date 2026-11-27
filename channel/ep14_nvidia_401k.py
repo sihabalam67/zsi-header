@@ -220,10 +220,14 @@ def grid_pos(i, cx, cy, step):
 def hud(c, t):
     """Persistent anchor: 'your $100' as a mini 10x10 coin grid, top-left."""
     a = fade(t, 0.1)
-    c.rrect(20, 18, 196, 82, 14, (255, 255, 255, 16), (255, 255, 255, 40), 1, a=a)
+    # heartbeat on a 2.5 s beat grid: the anchor flashes green and its Nvidia coins pop (decays in 0.6 s)
+    u = t % 2.5
+    hb = (1 - u / 0.6) ** 2 if (u < 0.6 and t > 1.0) else 0.0
+    c.rrect(20, 18, 196, 82, 14, mix((22, 22, 28), NV, 0.45 * hb), mix((70, 70, 80), NV_L, hb), 1 + 2 * hb, a=a)
     for i, (n, col) in enumerate(COIN_COLS):
         x, y = grid_pos(i, 52, 50, 5.4)
-        c.circle(x, y, 2.2, NV if n == 'Nvidia' else (88, 90, 104), a=a)
+        c.circle(x, y, 2.2 + (1.6 * hb if n == 'Nvidia' else 0), NV_L if n == 'Nvidia' and hb > 0 else
+                 (NV if n == 'Nvidia' else (88, 90, 104)), a=a)
     c.text(92, 40, 'YOUR $100', 15, WHITE, 900, anchor='lm', a=a, shadow=False)
     c.text(92, 62, f'${NV_W:.2f} Nvidia', 14, NV_L, 800, anchor='lm', a=a, shadow=False)
 
@@ -310,7 +314,7 @@ def s_hook(c, x):
         items = ['how much of YOUR 401(k) rides on AI', 'what one crash costs every $100',
                  f'what {N_DONE} past drops say about getting back']
         for i, it in enumerate(items):
-            k = spring(t - L[4] - 1.2 - 1.3 * i, 14)
+            k = spring(t - L[4] - 1.2 - 2.6 * i, 14)
             if k > 0:
                 y = 260 + i * 95
                 c.rrect(250, y - 36 + 20 * (1 - k), 1030, y + 36 + 20 * (1 - k), 18, (255, 255, 255, 18),
@@ -435,6 +439,7 @@ def s_after(c, x):
         c.rrect(0, 0, W, H, 0, (6, 6, 9, int(255 * fade(t, L[5], 0.3))))
         slam(c, 640, 250, 'NEVER BOUGHT A SHARE?', 70, WHITE, t, L[5] + 0.2)
         slam(c, 640, 350, 'YOU STILL FELT IT.', 70, NV_L, t, L[5] + 1.6)
+        hud(c, t)
     source(c, t, SRC_Y + '; AP news report, Nov 25, 2026')
 
 
@@ -445,6 +450,7 @@ def pulse_ring(c, t, x, y, col):
 
 def s_coins(c, x):
     t, L = x.t, x.L
+    hud(c, t)
     headline(c, t, 'WHAT IS INSIDE $100 OF AN S&P 500 INDEX FUND')
     cx, cy, step = 380, 335, 42
     # line 0: coins pour in; line 2: companies light up group by group
@@ -962,7 +968,7 @@ SCENES = [
     ], punch=lambda L: [L[0] + 0.55, L[2] + 0.4],
         sfx=lambda L: [(L[0] + 0.05, 'hit'), (L[0] + 0.55, 'hit'), (L[1] + 0.1, 'whoosh'), (L[1] + 2.1, 'ding'),
                        (L[2] + 0.4, 'hit'), (L[2] + 3.6, 'pop'), (L[3] + 0.2, 'riser'), (L[4] + 0.2, 'whoosh'),
-                       (L[4] + 1.2, 'pop'), (L[4] + 2.5, 'pop'), (L[4] + 3.8, 'pop')]),
+                       (L[4] + 1.2, 'pop'), (L[4] + 3.8, 'pop'), (L[4] + 6.4, 'pop')]),
     dict(draw=s_quake, chapter='The crash on a seismograph', lines=[
         "Picture a seismograph, the machine that records earthquakes. Except this needle isn't measuring the ground. "
         "It's drawing Nvidia's share price, day by day, for the past year.",
