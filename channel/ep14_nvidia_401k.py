@@ -303,7 +303,7 @@ def s_hook(c, x):
         c.rrect(660, 340, 1110, 600, 20, (10, 10, 14, 245), a=clamp(k))
         slam(c, 880, 440, '+31.5%', 120, NV_L, t, L[3] + 0.2)
         c.text(880, 525, 'in ONE trading day?', 30, WHITE, 900, a=clamp(k))
-        c.text(880, 566, 'stay for chapter 2', 20, GOLD, 800, a=fade(t, L[3] + 1.4))
+        c.text(880, 566, 'the answer: in about a minute', 20, GOLD, 800, a=fade(t, L[3] + 1.4))
     if len(L) > 4 and t > L[4]:
         c.rrect(0, 0, W, H, 0, (6, 6, 9, int(255 * fade(t, L[4], 0.3))))
         slam(c, 640, 150, 'EXPLAINED SIMPLY', 64, WHITE, t, L[4] + 0.2)
@@ -954,8 +954,8 @@ SCENES = [
         "!You already own Nvidia.",
         "If you have a {401(k)|four-oh-one-k} with an {S&P|S and P} 500 index fund, about 6 dollars of every 100 "
         "sits in this one chip company.",
-        f"!And since October 6th, Nvidia's stock has crashed {NV_DROP:.1f}%. On one day last week it was down "
-        "almost half.",
+        f"!And from October 6th through Wednesday's close, Nvidia's stock crashed {NV_DROP:.1f}%. On one day "
+        "last week it was down almost half.",
         "Then it did something even stranger. Hold that thought.",
         "Explained simply, by the end you'll know how much of your retirement money rides on AI, what this crash "
         f"cost every 100 dollars you own, and what {N_DONE} past drops say about getting back.",
