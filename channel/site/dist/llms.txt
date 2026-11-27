@@ -7,6 +7,7 @@
 - [S&P 500 "what if I invested" calculator](https://coin-theory-money.vercel.app/calculators/sp500.html): growth of a one-time investment since 1988, dividends reinvested.
 
 ## Videos
+- [Why Nvidia's 37% Crash Hits Your 401(k)](https://coin-theory-money.vercel.app/videos/why-nvidia-s-37-crash-hits-your-401-k.html): Is the AI bubble bursting, and what does it mean for your 401(k)? If you own an S&P 500 index fund, about $6.05 of every $100 is Nvidia, and Nvidia's stock fell
 - [Grandpa Gave 3 Kids $1,000. Who Won?](https://coin-theory-money.vercel.app/videos/grandpa-gave-3-kids-1-000-who-won.html): What if you invested $1,000 in the S&P 500 in 1996, or kept it in a cookie jar? Grandpa's three grandkids found out.  Thirty years ago, Grandpa Joe gave his thr
 - [Your Groceries Cost 32% More. Why?](https://coin-theory-money.vercel.app/videos/your-groceries-cost-32-more-why.html): U.S. grocery prices (CPI food at home) are up 32.5% since January 2020, and this year's classic Thanksgiving dinner for 10 costs $58.63, more than 6% above last
 - [The Nasdaq's Worst Week Since 2020. Now What?](https://coin-theory-money.vercel.app/videos/the-nasdaq-s-worst-week-since-2020-now-what.html): The Nasdaq Composite fell 10.0% in the week to Nov 20, 2026, its worst week since March 2020. The S&P 500 fell 8.6%, its worst week since April 2025, and closed
