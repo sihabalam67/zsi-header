@@ -81,5 +81,16 @@
    "Receipt & Recipe"
   ],
   "format": "seasonal short"
+ },
+ "ep14_nvidia_401k": {
+  "look": "bold",
+  "family": "Poster Slam",
+  "devices": [
+   "Coins as Data",
+   "Crash Quake",
+   "Follow the Dollar",
+   "Timeline Slam"
+  ],
+  "format": "news explainer"
  }
 }
