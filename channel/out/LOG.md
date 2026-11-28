@@ -19,3 +19,5 @@
 - 2026-11-25 7 PM ET: SHORT "Thanksgiving Dinner for 10 Costs $58.63 #shorts" (AFBF 2026 survey, seasonal) https://youtu.be/r-lsh1uzNiM
 - 2026-11-27 2 PM ET: LONG "Why Nvidia's 37% Crash Hits Your 401(k)" (10:24, first `bold` Poster Slam template, thumb A Mia + green coins, B/C ready for Test & Compare) https://youtu.be/FwrWmdqJViY
 - 2026-11-27 5 PM ET: SHORT "You Own Nvidia (Even If You Never Bought It) #shorts" (32 s, links FwrWmdqJViY) https://youtu.be/5uLs4C5RZsg
+- 2026-11-28 2 PM ET: SHORT "Lose 50%? You Need 100% to Get Back #shorts" (39 s, Seesaw + coins halving/doubling, links FwrWmdqJViY) https://youtu.be/3NwsHqQksTc. Short-only day (no long video): see LEARNINGS Nov 28.
+- 2026-11-28: ep13 retitled "Your Groceries Cost 32% More. Why?" -> "Why Are Groceries So Expensive? (Up 32% Since 2020)" (1 view in 4 days; search-phrased title).

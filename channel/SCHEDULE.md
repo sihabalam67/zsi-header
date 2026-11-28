@@ -53,6 +53,7 @@ https://claude.ai/artifact/QpErtvBZgo9XZvtmFaG4Hp
 | Wed Nov 25 | Short | 7 PM: Thanksgiving Dinner for 10 Costs $58.63 | https://youtu.be/r-lsh1uzNiM |
 | Fri Nov 27 | Long | 2 PM: Why Nvidia's 37% Crash Hits Your 401(k) | https://youtu.be/FwrWmdqJViY |
 | Fri Nov 27 | Short | 5 PM: You Own Nvidia (Even If You Never Bought It) | https://youtu.be/5uLs4C5RZsg |
+| Sat Nov 28 | Short | 2 PM: Lose 50%? You Need 100% to Get Back | https://youtu.be/3NwsHqQksTc |
 | Sun Nov 29 | Story | 12 PM: The Poorest Man in Town Left $2 Million. How? | https://youtu.be/Ug5gOlHXzH0 |
 
 Next: week 3 (Fri Nov 13 to Wed Nov 18) is made automatically on Thu Nov 5: ep06 "How banks create money out of

@@ -144,3 +144,9 @@ Long-video watch hours, all time: ~59 of 4,000 (Nov 23).
    keeps its browse audience, and bridge new formats from it (a story whose topic rides a market headline); (2)
    promote every story/explainer with 2-3 Shorts that link it (Shorts reach is independent); (3) don't judge stories
    by day-1 views: they need search/related traffic over weeks (Grandpa now leads with "what if you invested $1,000").
+
+### Nov 28 daily note
+- LONG-VIDEO DISTRIBUTION HAS STOPPED. Day-1 views: ep12 Nasdaq (Nov 21) 309 -> ep13 Groceries 1 (in 4 days) -> s01 Grandpa 12 -> ep14 Nvidia 5 (a market-news topic, so rule 0c's market-news burst did NOT repeat). Channel status is clean (public, long uploads allowed, not made for kids, no restrictions). 11 subscribers.
+- Shorts still travel: cookie-jar 134, Thanksgiving 52, own-Nvidia 22 in its first 18 h.
+- Decision: Saturday = Short-only day ("Lose 50%? You Need 100% to Get Back", from ep14's comeback-math fact). Long videos: keep the scheduled ones (s03 Sun), but stop producing a new long video every day until one gets a burst again. Spend the effort on 1-2 Shorts per day that point at the long videos, and on search-phrased titles for long videos (ep13 retitled to a question people type).
+- Watch: does ep13's search title pick up YT_SEARCH views within 7 days? Does s03 (Sun) get any browse burst?
